@@ -83,7 +83,7 @@ public class NurtureChatController implements Runnable {
 	public void OnOff(L1PcInstance gm, boolean ck) {
 		if (ck) {
 			if (L1World.getInstance().findObject(list.get(0).getId()) != null) {
-				gm.sendPackets(new S_SystemMessage("현재 가동중입니다."), true);
+				gm.sendPackets(new S_SystemMessage("Currently in operation."), true);
 				return;
 			}
 			for (L1RobotInstance pc : list) {
