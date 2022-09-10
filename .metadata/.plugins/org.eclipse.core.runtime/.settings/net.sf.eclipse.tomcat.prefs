@@ -1,0 +1,5 @@
+contextsDir=G:/Program Files (x86)/eclipse/eclipse4.8Photon/tomcat/8/conf/Catalina/localhost
+eclipse.preferences.version=1
+tomcatConfigFile=G:/Program Files (x86)/eclipse/eclipse4.8Photon/tomcat/8/conf/server.xml
+tomcatDir=G:/Program Files (x86)/eclipse/eclipse4.8Photon/tomcat/8
+tomcatVersion=tomcatV8
