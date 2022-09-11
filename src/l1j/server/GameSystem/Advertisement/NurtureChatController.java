@@ -91,7 +91,7 @@ public class NurtureChatController implements Runnable {
 				L1World.getInstance().addVisibleObject(pc);
 			}
 			on = true;
-			gm.sendPackets(new S_SystemMessage("육성채팅 로봇이 가동되었습니다."), true);
+			gm.sendPackets(new S_SystemMessage("The voice chatting robot has been activated."), true);
 			return;
 		} else {
 			if (L1World.getInstance().findObject(list.get(0).getId()) == null) {
