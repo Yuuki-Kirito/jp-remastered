@@ -66,7 +66,7 @@ public class LinAllManagerInfoThread implements Runnable {
 					}
 				});
 			}
-			
+
 			if (++count >= 60) {
 				count = 0;
 				save();
@@ -79,7 +79,7 @@ public class LinAllManagerInfoThread implements Runnable {
 	}
 
 	public void save() {
-		L1Castle l1castle = CastleTable.getInstance().getCastleTable(4); // ±‚∂ıºº±›∏∏ «•±‚
+		L1Castle l1castle = CastleTable.getInstance().getCastleTable(4); // „ÇÆ„É©„É≥Á®é„ÅÆ„ÅøË°®Ë®ò
 		AdenTax = l1castle.getTaxRate();
 		ServerInfoUPDATE();
 		LinAllManager.getInstance().ServerInfoPrint("" + AdenMake, "" + AdenConsume, "" + AdenTax, "" + nf.format(Bugdividend),
@@ -88,7 +88,7 @@ public class LinAllManagerInfoThread implements Runnable {
 	}
 
 	public static String getDate() {
-		SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
 		return localSimpleDateFormat.format(Calendar.getInstance().getTime());
 	}
 

@@ -1,12 +1,5 @@
 package manager.dialog;
 
-import l1j.server.server.datatables.ItemTable;
-import l1j.server.server.model.L1Inventory;
-import l1j.server.server.model.L1World;
-import l1j.server.server.model.Instance.L1ItemInstance;
-import l1j.server.server.model.Instance.L1PcInstance;
-import l1j.server.server.templates.L1Item;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -17,6 +10,13 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import l1j.server.server.datatables.ItemTable;
+import l1j.server.server.model.L1Inventory;
+import l1j.server.server.model.L1World;
+import l1j.server.server.model.Instance.L1ItemInstance;
+import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.templates.L1Item;
 
 public class PresentDialog extends Dialog {
 	protected Shell shell;
@@ -30,12 +30,12 @@ public class PresentDialog extends Dialog {
 		super(parent);
 		setText("SWT Dialog");
 	}
-	
+
 	public Object open() {
 		Display display = getParent().getDisplay();
 		createContents();
 		shell.setBounds((display.getBounds().width/2)-(shell.getBounds().width/2), (display.getBounds().height/2)-(shell.getBounds().height/2), shell.getBounds().width, shell.getBounds().height);
-		
+
 		shell.open();
 		shell.layout();
 
@@ -52,101 +52,100 @@ public class PresentDialog extends Dialog {
 	private void createContents() {
 		shell = new Shell(getParent(), SWT.CLOSE | SWT.TITLE | SWT.PRIMARY_MODAL);
 		shell.setSize(228, 125);
-		
+
 		text = new Text(shell, SWT.BORDER);
 		text.setBounds(63, 10, 152, 21);
-		
+
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(10, 13, 47, 15);
 		lblNewLabel.setText("\uCE90\uB9AD\uBA85:");
-		
+
 		text_1 = new Text(shell, SWT.BORDER);
 		text_1.setBounds(63, 37, 73, 21);
-		
+
 		text_2 = new Text(shell, SWT.BORDER);
 		text_2.setBounds(170, 37, 45, 21);
-		
+
 		Label label = new Label(shell, SWT.NONE);
 		label.setText("\uC544\uC774\uD15C:");
 		label.setBounds(10, 40, 47, 15);
-		
+
 		Label label_1 = new Label(shell, SWT.NONE);
 		label_1.setText("\uAC2F\uC218:");
 		label_1.setBounds(139, 40, 31, 15);
-		
+
 		text_3 = new Text(shell, SWT.BORDER);
 		text_3.setBounds(63, 64, 73, 21);
-		
+
 		label_2 = new Label(shell, SWT.NONE);
 		label_2.setText("\uC778\uCC48\uD2B8:");
 		label_2.setBounds(10, 67, 47, 15);
-		
+
 		Button btnNewButton = new Button(shell, SWT.NONE);
 		btnNewButton.addSelectionListener(new SelectionAdapter() {
-			/**º±π∞ ∫∏≥ª±‚*/
+			/** „ÇÆ„Éï„Éà„ÇíÈÄÅ„Çã */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				try{
-				
-				MessageBox dialog = new MessageBox(shell,SWT.OK|SWT.CANCEL|SWT.ICON_INFORMATION);
-				dialog.setText("Present"); 
-				dialog.setMessage("¡§∏ª º±π∞¿ª ∫∏≥ªΩ√∞⁄Ω¿¥œ±Ó?"); 
-				int flag = dialog.open();
-				if (flag != SWT.OK) { 
-					return;
-				}
-				
-				
-				L1PcInstance target = L1World.getInstance().getPlayer(text.getText());
-				if(target != null){
-					
-					int itemid = Integer.parseInt(text_1.getText());
-					int count = Integer.parseInt(text_2.getText());
-					int enchant = Integer.parseInt(text_3.getText());
-					
-                    L1Item temp = null; 
-        			temp = ItemTable.getInstance().getTemplate(itemid);
-                    if (temp.isStackable()) {
-    					L1ItemInstance item = ItemTable.getInstance().createItem(itemid);
-    					item.setEnchantLevel(enchant);
-    					item.setCount(count);
-    					if (target .getInventory().checkAddItem(item, count) == L1Inventory.OK) {
-    						target .getInventory().storeItem(item);
-    						//sendPackets(new S_SystemMessage(item.getViewName()+ "(¿ª)∏¶ º±π∞«œø¥Ω¿¥œ¥Ÿ."));
-    					}
-    				} else {
-    					L1ItemInstance item = null;
-    					int createCount;
-    					for (createCount = 0; createCount < count; createCount++) {
-    						item = ItemTable.getInstance().createItem(itemid);
-    						item.setEnchantLevel(enchant);
-    						if (target .getInventory().checkAddItem(item, 1) == L1Inventory.OK) {
-    							target .getInventory().storeItem(item);
-    						} else {
-    							break;
-    						}
-    					}
-    					if (createCount > 0) {
-    						//sendPackets(new S_SystemMessage(item.getViewName()+ "(¿ª)∏¶" + createCount + "∞≥∏¶ º±π∞«œø¥Ω¿¥œ¥Ÿ."));
-    					}
-    				}
-                    MessageBox dialog2 = new MessageBox(shell, SWT.CANCEL|SWT.ICON_INFORMATION);
-    				dialog2.setText("Present"); 
-    				dialog2.setMessage("º±π∞¿ª ¡§ªÛ¿˚¿∏∑Œ ∫∏≥¬Ω¿¥œ¥Ÿ."); 
-    				dialog2.open();
-                    
-				}else {
+					MessageBox dialog = new MessageBox(shell,SWT.OK|SWT.CANCEL|SWT.ICON_INFORMATION);
+					dialog.setText("Present");
+					dialog.setMessage("Êú¨ÂΩì„Å´„ÇÆ„Éï„Éà„ÇíÈÄÅ„Çä„Åæ„Åô„ÅãÔºü");
+					int flag = dialog.open();
+					if (flag != SWT.OK) {
+						return;
+					}
+
+					L1PcInstance target = L1World.getInstance().getPlayer(text.getText());
+					if(target != null){
+
+						int itemid = Integer.parseInt(text_1.getText());
+						int count = Integer.parseInt(text_2.getText());
+						int enchant = Integer.parseInt(text_3.getText());
+
+	                    L1Item temp = null;
+	        			temp = ItemTable.getInstance().getTemplate(itemid);
+	                    if (temp.isStackable()) {
+	    					L1ItemInstance item = ItemTable.getInstance().createItem(itemid);
+	    					item.setEnchantLevel(enchant);
+	    					item.setCount(count);
+	    					if (target .getInventory().checkAddItem(item, count) == L1Inventory.OK) {
+	    						target .getInventory().storeItem(item);
+	    						//sendPackets(new S_SystemMessage(item.getViewName()+ "„ÇíË¥à„Çä„Åæ„Åó„Åü„ÄÇ"));
+	    					}
+	    				} else {
+	    					L1ItemInstance item = null;
+	    					int createCount;
+	    					for (createCount = 0; createCount < count; createCount++) {
+	    						item = ItemTable.getInstance().createItem(itemid);
+	    						item.setEnchantLevel(enchant);
+	    						if (target .getInventory().checkAddItem(item, 1) == L1Inventory.OK) {
+	    							target .getInventory().storeItem(item);
+	    						} else {
+	    							break;
+	    						}
+	    					}
+
+	    					if (createCount > 0) {
+	    						//sendPackets(new S_SystemMessage(item.getViewName()+ "„Çí" + createCount + "ÂÄãË¥à„Çä„Åæ„Åó„Åü„ÄÇ"));
+	    					}
+	    				}
+	                    MessageBox dialog2 = new MessageBox(shell, SWT.CANCEL|SWT.ICON_INFORMATION);
+	    				dialog2.setText("Present");
+	    				dialog2.setMessage("Ê≠£Â∏∏„Å´Ë¥à„Çâ„Çå„Åæ„Åó„Åü„ÄÇ");
+	    				dialog2.open();
+
+					} else {
+						MessageBox dialog2 = new MessageBox(shell, SWT.CANCEL|SWT.ICON_INFORMATION);
+						dialog2.setText("Present");
+						dialog2.setMessage(text.getText() + "„ÅØ„ÉØ„Éº„É´„Éâ„Å´Â≠òÂú®„Åó„Åæ„Åõ„Çì„ÄÇ");
+						dialog2.open();
+					}
+				} catch(Exception e1){
 					MessageBox dialog2 = new MessageBox(shell, SWT.CANCEL|SWT.ICON_INFORMATION);
-					dialog2.setText("Present"); 
-					dialog2.setMessage(text.getText()+"¥‘¿∫ ø˘µÂø° ¡∏¿Á«œ¡ˆæ Ω¿¥œ¥Ÿ."); 
+					dialog2.setText("Present");
+					dialog2.setMessage("ÂÄ§„ÅåÁÑ°Âäπ„Åß„Åô„ÄÇ");
 					dialog2.open();
 				}
-			}catch(Exception e1){
-				MessageBox dialog2 = new MessageBox(shell, SWT.CANCEL|SWT.ICON_INFORMATION);
-				dialog2.setText("Present"); 
-				dialog2.setMessage("∞™¿Ã ¿ﬂ∏¯µ«æ˙Ω¿¥œ¥Ÿ."); 
-				dialog2.open();
-			}
 			}
 		});
 		btnNewButton.setBounds(140, 62, 76, 25);

@@ -25,7 +25,7 @@ public class PlayerLevel extends Dialog {
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parent
 	 * @param style
 	 */
@@ -36,7 +36,7 @@ public class PlayerLevel extends Dialog {
 
 	/**
 	 * Open the dialog.
-	 * 
+	 *
 	 * @return the result
 	 */
 	public Object open(L1PcInstance pc) {
@@ -59,8 +59,8 @@ public class PlayerLevel extends Dialog {
 
 		shell = new Shell(getParent(), getStyle());
 		shell.setSize(251, 70);
-		shell.setText("ÇÃ·¹ÀÌ¾î ·¹º§º¯°æ");
-		// È­¸éÁß¾ÓÀ¸·Î
+		shell.setText("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒ¬ãƒ™ãƒ«ã®å¤‰æ›´");
+		// ç”»é¢ä¸­å¤®ã¸
 		display = Display.getDefault();
 		shell.setBounds((display.getBounds().width / 2) - (shell.getBounds().width / 2), (display.getBounds().height / 2)
 				- (shell.getBounds().height / 2), shell.getBounds().width, shell.getBounds().height);
@@ -71,7 +71,7 @@ public class PlayerLevel extends Dialog {
 		shell.setLayout(gl_shell);
 
 		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
-		lblNewLabel_2.setText("º¯°æÇÒ ·¹º§");
+		lblNewLabel_2.setText("å¤‰æ›´ã™ã‚‹ãƒ¬ãƒ™ãƒ«");
 
 		text_1 = new Text(shell, SWT.BORDER);
 		text_1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
@@ -81,12 +81,12 @@ public class PlayerLevel extends Dialog {
 		GridData gd_lblNewButton = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblNewButton.widthHint = 65;
 		lblNewButton.setLayoutData(gd_lblNewButton);
-		lblNewButton.setText("½Ç Çà");
+		lblNewButton.setText("å®Ÿè¡Œ");
 		lblNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				pc.setExp(ExpTable.getExpByLevel(Integer.valueOf(text_1.getText())));
-				pc.sendPackets(new S_SystemMessage("¿î¿µÀÚ´ÔÀÌ ´ç½ÅÀÇ ·¹º§À» " + Integer.valueOf(text_1.getText()) + " À¸·Î º¯°æÇÏ¿´½À´Ï´Ù."));
+				pc.sendPackets(new S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ãŒã‚ãªãŸã®ãƒ¬ãƒ™ãƒ«ã‚’" + Integer.valueOf(text_1.getText()) + "ã«å¤‰æ›´ã—ã¾ã—ãŸã€‚"));
 				close();
 			}
 		});

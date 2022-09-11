@@ -5,12 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import l1j.server.L1DatabaseFactory;
-import l1j.server.server.datatables.NpcTable;
-import l1j.server.server.templates.L1Npc;
-import l1j.server.server.utils.SQLUtil;
-import manager.LinAllManager;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -28,6 +22,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import l1j.server.L1DatabaseFactory;
+import l1j.server.server.datatables.NpcTable;
+import l1j.server.server.templates.L1Npc;
+import l1j.server.server.utils.SQLUtil;
+import manager.LinAllManager;
+
 public class DropMonsterFind extends Dialog {
 
 	protected Object result;
@@ -35,11 +35,11 @@ public class DropMonsterFind extends Dialog {
 	private Text text_1;
 	public static Display display;
 
-	static private String title = "µå¶ø ¸ó½ºÅÍ Ã£±â";
+	private static String title = "ãƒ‰ãƒ­ãƒƒãƒ—ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã®æ¤œç´¢";
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parent
 	 * @param style
 	 */
@@ -50,7 +50,7 @@ public class DropMonsterFind extends Dialog {
 
 	/**
 	 * Open the dialog.
-	 * 
+	 *
 	 * @return the result
 	 */
 	public Object open() {
@@ -74,7 +74,7 @@ public class DropMonsterFind extends Dialog {
 		shell = new Shell(getParent(), getStyle());
 		shell.setSize(270, 351);
 		shell.setText(title);
-		// È­¸éÁß¾ÓÀ¸·Î
+		// ç”»é¢ã®ä¸­å¤®ã¸
 		display = Display.getDefault();
 		shell.setBounds((display.getBounds().width / 2) - (shell.getBounds().width / 2),
 				(display.getBounds().height / 2) - (shell.getBounds().height / 2), shell.getBounds().width,
@@ -86,14 +86,14 @@ public class DropMonsterFind extends Dialog {
 		shell.setLayout(gl_shell);
 
 		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
-		lblNewLabel_2.setText("°Ë»ö¸í");
+		lblNewLabel_2.setText("æ¤œç´¢å");
 
 		text_1 = new Text(shell, SWT.BORDER);
 		text_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		text_1.setEditable(true);
 
 		Button lblNewButton = new Button(shell, SWT.PUSH);
-		lblNewButton.setText("°Ë »ö");
+		lblNewButton.setText("æ¤œç´¢");
 
 		List list = new List(shell, SWT.BORDER | SWT.V_SCROLL | SWT.SINGLE);
 		GridData gd_list = new GridData(SWT.FILL, SWT.CENTER, false, false, 3, 1);
@@ -114,7 +114,7 @@ public class DropMonsterFind extends Dialog {
 						DropEdit.open(npc);
 						close();
 					} else {
-						LinAllManager.toMessageBox(title, "Á¸ÀçÇÏÁö ¾Ê´Â ¿£ÇÇ¾¾ÀÔ´Ï´Ù.");
+						LinAllManager.toMessageBox(title, "å­˜åœ¨ã—ãªã„ã‚¨ãƒãƒŸãƒ¼ã§ã™ã€‚");
 						close();
 					}
 					break;
@@ -123,12 +123,12 @@ public class DropMonsterFind extends Dialog {
 		};
 		list.addListener(SWT.MouseDoubleClick, listener);
 
-		// ÀÌº¥Æ® µî·Ï.
+		// ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
 		text_1.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.keyCode == 13 || e.keyCode == 16777296)
-					// °Ë»ö
+					// æ¤œç´¢
 					toSearchItem(text_1, list);
 			}
 		});
@@ -136,12 +136,12 @@ public class DropMonsterFind extends Dialog {
 		lblNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// °Ë»ö
+				// æ¤œç´¢
 				toSearchItem(text_1, list);
 			}
 		});
 
-		// ¸ó½ºÅÍ Á¤º¸ ±â·Ï
+		// ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æƒ…å ±ã®è¨˜éŒ²
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -165,13 +165,13 @@ public class DropMonsterFind extends Dialog {
 		shell.dispose();
 	}
 
-	static private void toSearchItem(Text text, List list) {
+	private static void toSearchItem(Text text, List list) {
 		String name = text.getText().toLowerCase();
 
-		// ÀÌÀü ±â·Ï Á¦°Å
+		// å‰ã®å±¥æ­´ã®å‰Šé™¤
 		list.removeAll();
 
-		// °Ë»ö¸íÀÌ ¾øÀ»°æ¿ì ÀüÃ¼ Ç¥Çö.
+		// æ¤œç´¢åãŒãªã„å ´åˆã¯ã™ã¹ã¦ã‚’ãƒªã‚¹ãƒˆåŒ–
 		if (name == null || name.length() <= 0) {
 			Connection con = null;
 			PreparedStatement pstm = null;
@@ -212,11 +212,11 @@ public class DropMonsterFind extends Dialog {
 			SQLUtil.close(rs, pstm, con);
 		}
 
-		// µî·ÏµÈ°Ô ¾øÀ»°æ¿ì ¾È³» ¸àÆ®.
+		// ç™»éŒ²ã•ã‚Œã¦ãªã„å ´åˆ
 		if (list.getItemCount() <= 0)
-			LinAllManager.toMessageBox(title, "ÀÏÄ¡ÇÏ´Â ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.");
+			LinAllManager.toMessageBox(title, "ä¸€è‡´ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 
-		// Æ÷Ä¿½º.
+		// ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’ã‚»ãƒƒãƒˆ
 		text.setFocus();
 	}
 }

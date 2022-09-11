@@ -8,17 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import l1j.server.L1DatabaseFactory;
-import l1j.server.server.datatables.DropTable;
-import l1j.server.server.datatables.ItemTable;
-import l1j.server.server.model.Instance.L1ItemInstance;
-import l1j.server.server.templates.L1Drop;
-import l1j.server.server.templates.L1Item;
-import l1j.server.server.templates.L1Npc;
-import l1j.server.server.utils.SQLUtil;
-import manager.LinAllManager;
-import manager.SWTResourceManager;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.dnd.DND;
@@ -57,32 +46,48 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import l1j.server.L1DatabaseFactory;
+import l1j.server.server.datatables.DropTable;
+import l1j.server.server.datatables.ItemTable;
+import l1j.server.server.model.Instance.L1ItemInstance;
+import l1j.server.server.templates.L1Drop;
+import l1j.server.server.templates.L1Item;
+import l1j.server.server.templates.L1Npc;
+import l1j.server.server.utils.SQLUtil;
+import manager.LinAllManager;
+import manager.SWTResourceManager;
+
 public class DropEdit {
 
-	static private Shell shell;
-	// °¢ ½ºÅÇ¸¶´Ù º¯°æµÉ ºÎºĞ
-	static private Composite composite_controller;
-	// ¿ŞÂÊ ¹Ú½º¿¡ Ç¥ÇöµÉ ¶óº§
-	static private Label label_step1;
-	static private Label label_step2;
-	static private Label label_step3;
-	// ¿ŞÂÊ ¹Ú½º¿¡ Ç¥ÇöµÉ ±ÛÀÚ ÆùÆ® Á¤º¸
-	static private Font normal;
-	static private Font select;
-	// ÇØ´ç Ã¢¿¡ Å¸ÀÌÆ² ¸í
-	static private String title;
-	// ÀÌµ¿ÇÏ°ÔµÉ ÁÂÇ¥ Á¤º¸
-	static private L1Npc npc;
+	private static Shell shell;
+
+	// å„ã‚¹ã‚¿ãƒƒãƒ•ã”ã¨ã«å¤‰æ›´ã•ã‚Œã‚‹éƒ¨åˆ†
+	private static Composite composite_controller;
+
+	// å·¦ãƒœãƒƒã‚¯ã‚¹ã«è¡¨ç¤ºã•ã‚Œã‚‹ãƒ©ãƒ™ãƒ«
+	private static Label label_step1;
+	private static Label label_step2;
+	private static Label label_step3;
+
+	// å·¦ãƒœãƒƒã‚¯ã‚¹ã«è¡¨ç¤ºã•ã‚Œã‚‹æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆæƒ…å ±
+	private static Font normal;
+	private static Font select;
+
+	//ãã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¿ã‚¤ãƒˆãƒ«å
+	private static String title;
+
+	//ç§»å‹•ã™ã‚‹åº§æ¨™æƒ…å ±
+	private static L1Npc npc;
 	//
-	static private Connection con;
+	private static Connection con;
 	public static Display display;
 
 //	private final static Logger _log = Logger.getLogger(CharacterSlotItemTable.class.getName());
 
 	static {
-		normal = SWTResourceManager.getFont("¸¼Àº °íµñ", 9, SWT.NORMAL);
-		select = SWTResourceManager.getFont("¸¼Àº °íµñ", 9, SWT.BOLD);
-		title = "µå¶ø ¹°Ç° ¼öÁ¤";
+		normal = SWTResourceManager.getFont("Arial", 9, SWT.NORMAL);
+		select = SWTResourceManager.getFont("Arial", 9, SWT.BOLD);
+		title = "ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ã®ä¿®æ­£";
 	}
 
 	/**
@@ -111,13 +116,13 @@ public class DropEdit {
 		composite_status.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 
 		label_step1 = new Label(composite_status, SWT.NONE);
-		label_step1.setText("¹°Ç° ÁöÁ¤");
+		label_step1.setText("ã‚¢ã‚¤ãƒ†ãƒ ã®æŒ‡å®š");
 
 		label_step2 = new Label(composite_status, SWT.NONE);
-		label_step2.setText("Á¤º¸ ¼öÁ¤");
+		label_step2.setText("æƒ…å ±ã®ä¿®æ­£");
 
 		label_step3 = new Label(composite_status, SWT.NONE);
-		label_step3.setText("¿Ï·á");
+		label_step3.setText("å®Œäº†");
 
 		composite_controller = new Composite(shell, SWT.NONE);
 
@@ -139,8 +144,8 @@ public class DropEdit {
 		SQLUtil.close(con);
 	}
 
-	static private void step1() {
-		// ÀÌÀü ³»¿ëµé ´Ù Á¦°Å.
+	private static void step1() {
+		//ä»¥å‰ã®å†…å®¹ã‚’ã™ã¹ã¦å‰Šé™¤ã—ã¾ã™ã€‚
 		for (Control c : composite_controller.getChildren())
 			c.dispose();
 
@@ -165,10 +170,12 @@ public class DropEdit {
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Button button_4 = new Button(composite_1, SWT.NONE);
-		button_4.setText("°Ë»ö");
+		button_4.setText("\r\n" +
+				"	private static void step1() {\r\n" +
+				"		//ä»¥å‰ã®å†…å®¹ã‚’ã™ã¹ã¦å‰Šé™¤ã—ã¾ã™ã€‚");
 
 		Group group_1 = new Group(composite_controller, SWT.NONE);
-		group_1.setText("¾ÆÀÌÅÛ");
+		group_1.setText("ã‚¢ã‚¤ãƒ†ãƒ ");
 		GridLayout gl_group_1 = new GridLayout(1, false);
 		gl_group_1.verticalSpacing = 0;
 		gl_group_1.horizontalSpacing = 0;
@@ -187,7 +194,7 @@ public class DropEdit {
 		new Label(composite_controller, SWT.NONE);
 
 		Group group = new Group(composite_controller, SWT.NONE);
-		group.setText("µå¶ø"); // Ãß°¡ÇÒ°÷ ¸Ş´ºÀÌ
+		group.setText("ãƒ‰ãƒ­ãƒƒãƒ—"); // è¿½åŠ ã™ã‚‹å ´æ‰€
 		GridLayout gl_group = new GridLayout(1, false);
 		gl_group.verticalSpacing = 0;
 		gl_group.horizontalSpacing = 0;
@@ -206,12 +213,12 @@ public class DropEdit {
 		dropTarget.setTransfer(new Transfer[] { TextTransfer.getInstance() });
 
 		Button button_1 = new Button(composite_controller, SWT.NONE);
-		button_1.setToolTipText("Ãß°¡");
+		button_1.setToolTipText("è¿½åŠ ");
 		button_1.setLayoutData(new GridData(SWT.LEFT, SWT.BOTTOM, false, true, 1, 1));
 		button_1.setText("->");
 
 		Button button_2 = new Button(composite_controller, SWT.NONE);
-		button_2.setToolTipText("Á¦°Å");
+		button_2.setToolTipText("å‰Šé™¤");
 		button_2.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, true, 1, 1));
 		button_2.setText("<-");
 		new Label(composite_controller, SWT.NONE);
@@ -221,21 +228,21 @@ public class DropEdit {
 		GridData gd_button = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
 		gd_button.widthHint = 100;
 		button.setLayoutData(gd_button);
-		button.setText("´ÙÀ½");
+		button.setText("æ¬¡ã¸");
 
-		// ÀÌº¥Æ® µî·Ï.
+		// ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
 		text.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.keyCode == 13 || e.keyCode == 16777296)
-					// °Ë»ö
+					// æ¤œç´¢
 					toSearchItem(text, list);
 			}
 		});
 		button_4.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// °Ë»ö
+				// æ¤œç´¢
 				toSearchItem(text, list);
 			}
 		});
@@ -259,11 +266,11 @@ public class DropEdit {
 					int select = (Integer) list_1.getData("select");
 					int move_idx = list_1.getSelectionIndex();
 					if (select != move_idx) {
-						// À§Ä¡ ¹Ù²Ù±â.
+						// ä½ç½®å¤‰æ›´
 						String temp = list_1.getItem(select);
 						list_1.setItem(select, list_1.getItem(move_idx));
 						list_1.setItem(move_idx, temp);
-						// Á¤º¸ º¯°æ.
+						// æƒ…å ±ã®å¤‰æ›´
 						list_1.setData("select", move_idx);
 						list_1.select(move_idx);
 					}
@@ -275,7 +282,7 @@ public class DropEdit {
 			public void widgetSelected(SelectionEvent e) {
 				if (list.getSelectionCount() <= 0)
 					return;
-				// Ãß°¡
+				// è¿½åŠ 
 				for (String name : list.getSelection())
 					list_1.add(name);
 				list_1.setTopIndex(list_1.getVerticalBar().getMaximum());
@@ -286,7 +293,7 @@ public class DropEdit {
 			public void widgetSelected(SelectionEvent e) {
 				if (list_1.getSelectionCount() <= 0)
 					return;
-				// »èÁ¦
+				// å‰Šé™¤
 				list_1.remove(list_1.getSelectionIndex());
 			}
 		});
@@ -295,7 +302,7 @@ public class DropEdit {
 			public void keyReleased(KeyEvent e) {
 				if (list_1.getSelectionCount() <= 0)
 					return;
-				// »èÁ¦
+				// å‰Šé™¤
 				if (e.keyCode == SWT.DEL)
 					list_1.remove(list_1.getSelectionIndex());
 			}
@@ -319,7 +326,7 @@ public class DropEdit {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (list_1.getItemCount() == 0) {
-					LinAllManager.toMessageBox("µå¶ø¸ñ·ÏÀ» Ãß°¡ÇÏ¿© ÁÖ½Ê½Ã¿À.");
+					LinAllManager.toMessageBox("ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚");
 					return;
 				}
 				Map<Integer, Object> list = new HashMap<Integer, Object>();
@@ -344,18 +351,18 @@ public class DropEdit {
 	}
 
 	/**
-	 * ¾ÆÀÌÅÛ °Ë»ö
-	 * 
+	 * ã‚¢ã‚¤ãƒ†ãƒ æ¤œç´¢
+	 *
 	 * @param text
 	 * @param list
 	 */
-	static private void toSearchItem(Text text, List list) {
+	private static void toSearchItem(Text text, List list) {
 		String name = text.getText().toLowerCase();
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 
-		// ÀÌÀü ±â·Ï Á¦°Å
+		// å‰ã®å±¥æ­´ã‚’å‰Šé™¤
 		list.removeAll();
 
 		try {
@@ -399,16 +406,16 @@ public class DropEdit {
 			SQLUtil.close(rs, pstm, con);
 		}
 
-		// µî·ÏµÈ°Ô ¾øÀ»°æ¿ì ¾È³» ¸àÆ®.
+		// ç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã‚¬ã‚¤ãƒ‰ã‚’è¡¨ç¤º
 		if (list.getItemCount() <= 0)
-			LinAllManager.toMessageBox(title, "ÀÏÄ¡ÇÏ´Â ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.");
+			LinAllManager.toMessageBox(title, "ä¸€è‡´ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 
-		// Æ÷Ä¿½º.
+		// ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã‚’textã«ï¼Ÿ
 		text.setFocus();
 	}
 
-	static private void step2(String[] inv_list, Map<Integer, Object> list) {
-		// ÀÌÀü ³»¿ëµé ´Ù Á¦°Å.
+	private static void step2(String[] inv_list, Map<Integer, Object> list) {
+		// ä»¥å‰ã®å†…å®¹ã‚’ã™ã¹ã¦å‰Šé™¤ã€‚
 		for (Control c : composite_controller.getChildren())
 			c.dispose();
 
@@ -422,7 +429,7 @@ public class DropEdit {
 
 		final Button btnNpcshop = new Button(composite_controller, SWT.CHECK);
 		btnNpcshop.setSelection(true);
-		btnNpcshop.setText("monster_drop Á¤º¸ °»½Å");
+		btnNpcshop.setText("monster_drop æƒ…å ±ã®æ›´æ–°");
 		btnNpcshop.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
 
 		final Table table = new Table(composite_controller, SWT.FULL_SELECTION);
@@ -470,15 +477,15 @@ public class DropEdit {
 		GridData gd_button_3 = new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1);
 		gd_button_3.widthHint = 100;
 		button_3.setLayoutData(gd_button_3);
-		button_3.setText("ÀÌÀü");
+		button_3.setText("ä»¥å‰");
 
 		Button button_5 = new Button(composite_controller, SWT.NONE);
 		GridData gd_button_5 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_button_5.widthHint = 100;
 		button_5.setLayoutData(gd_button_5);
-		button_5.setText("´ÙÀ½");
+		button_5.setText("æ¬¡");
 
-		// ÀÌº¥Æ® µî·Ï.
+		// ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
 		table.addListener(SWT.MouseDown, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -534,14 +541,14 @@ public class DropEdit {
 		button_3.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// ÀÌÀü
+				// å‰
 				step1();
 			}
 		});
 		button_5.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// ´ÙÀ½
+				// æ¬¡
 				step3(table, btnNpcshop.getSelection());
 			}
 		});
@@ -577,7 +584,7 @@ public class DropEdit {
 		composite_controller.layout();
 	}
 
-	static private void step3(Table table, boolean db) {
+	private static void step3(Table table, boolean db) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		PreparedStatement pstm2 = null;
@@ -610,7 +617,7 @@ public class DropEdit {
 		}
 		DropTable.reload();
 
-		// ÀÌÀü ³»¿ëµé ´Ù Á¦°Å.
+		// ä»¥å‰ã®å†…å®¹ã‚’ã™ã¹ã¦å‰Šé™¤ã—ã¾ã™ã€‚
 		for (Control c : composite_controller.getChildren())
 			c.dispose();
 
@@ -629,29 +636,29 @@ public class DropEdit {
 		GridData gd_button_6 = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
 		gd_button_6.widthHint = 100;
 		button_6.setLayoutData(gd_button_6);
-		button_6.setText("¿Ï·á");
+		button_6.setText("å®Œäº†");
 
-		// ÀÌº¥Æ® µî·Ï.
+		// ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
 		button_6.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// ´ÙÀ½
+				// æ¬¡
 				shell.dispose();
 			}
 		});
 
-		// Ã³¸® 2.
-		list_2.add("¸Ş¸ğ¸® °»½Å ¿Ï·á.");
+		// å‡¦ç† 2.
+		list_2.add("æ›´æ–°å®Œäº†");
 
 		composite_controller.layout();
 	}
 
 	/**
-	 * ½ºÅÇ¿¡ ¸ÂÃç¼­ ¿ŞÂÊ ±Û¾¾ ÆùÆ® º¯°æÇÏ±â.
-	 * 
+	 * ã‚¹ã‚¿ãƒƒãƒ•?ã«åˆã‚ã›ã¦å·¦ã®æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆã‚’å¤‰æ›´ã™ã‚‹ã€‚
+	 *
 	 * @param step
 	 */
-	static private void selectStep(int step) {
+	private static void selectStep(int step) {
 		label_step1.setForeground(step == 1 ? SWTResourceManager.getColor(SWT.COLOR_DARK_RED)
 				: SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		label_step2.setForeground(step == 2 ? SWTResourceManager.getColor(SWT.COLOR_DARK_RED)

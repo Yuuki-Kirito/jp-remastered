@@ -53,7 +53,7 @@ import org.eclipse.swt.widgets.TrayItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-//º¸½º ÃâÇö ¾Ë¸² ¸Ş¼¼Áö
+//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ ï¿½Ş¼ï¿½ï¿½ï¿½
 
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
@@ -285,7 +285,7 @@ public class LinAllManager {
 		tabFolder_3.setBounds(0, 542, shlInbumserverManager.getBounds().width, 270);
 
 		tabItem_1 = new TabItem(tabFolder_3, SWT.NONE);
-		tabItem_1.setText("º¸½º");
+		tabItem_1.setText("boss");
 
 		text_9 = new Text(tabFolder_3, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_9.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -303,7 +303,7 @@ public class LinAllManager {
 		tbtmGm.setControl(text_11);
 
 		tabItem_2 = new TabItem(tabFolder_3, SWT.NONE);
-		tabItem_2.setText("´øÀü");
+		tabItem_2.setText("Caves");
 
 		text_12 = new Text(tabFolder_3, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_12.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -312,7 +312,7 @@ public class LinAllManager {
 		tabItem_2.setControl(text_12);
 
 		tabItem_3 = new TabItem(tabFolder_3, SWT.NONE);
-		tabItem_3.setText("½ºÇÙ");
+		tabItem_3.setText("Score");
 
 		text_13 = new Text(tabFolder_3, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_13.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -321,7 +321,7 @@ public class LinAllManager {
 		tabItem_3.setControl(text_13);
 
 		tabItem_4 = new TabItem(tabFolder_3, SWT.NONE);
-		tabItem_4.setText("°ø¼º");
+		tabItem_4.setText("æ”»åŸ");
 
 		text_14 = new Text(tabFolder_3, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_14.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -330,7 +330,7 @@ public class LinAllManager {
 		tabItem_4.setControl(text_14);
 
 		tabItem_5 = new TabItem(tabFolder_3, SWT.NONE);
-		tabItem_5.setText("Á¦ÀÛ");
+		tabItem_5.setText("åˆ¶ä½œ");
 
 		text_15 = new Text(tabFolder_3, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_15.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -347,7 +347,7 @@ public class LinAllManager {
 			}
 		}
 
-		/** ¼­¹ö Á¤º¸ ¾²·¹µå */
+		/** ã‚µãƒ¼ãƒãƒ¼æƒ…å ±ã‚¹ãƒ¬ãƒƒãƒ‰ */
 		LinAllManagerInfoThread.getInstance();
 
 		try {
@@ -359,7 +359,7 @@ public class LinAllManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		/** Àç±ÍÈ£Ãâ */
+		/** å†èµ·å‘¼ã³å‡ºã— */
 		open();
 	}
 
@@ -376,8 +376,8 @@ public class LinAllManager {
 		shlInbumserverManager.addShellListener(new ShellAdapter() {
 			@Override
 			public void shellClosed(ShellEvent e) {
-				String title = "Å×½ºÆ®";
-				String message = "°ø°³¿ë Å×½ºÆ®";
+				String title = "ãƒ†ã‚¹ãƒˆ";
+				String message = "ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ†ã‚¹ãƒˆ";
 				int style = SWT.OK | SWT.CANCEL | SWT.ICON_QUESTION;
 				// MessageBox dialog = new MessageBox(shell, style);
 				MessageBox dialog = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
@@ -385,7 +385,7 @@ public class LinAllManager {
 				dialog.setMessage(message);
 				int flag = dialog.open();
 				if (flag == SWT.OK) {
-					e.doit = false; // true·Î ÇÏ¸é Á¾·áµÊ
+					e.doit = false; // trueã§çµ‚äº†
 				} else {
 					e.doit = false;
 				}
@@ -405,7 +405,7 @@ public class LinAllManager {
 
 		txtInbumserverByleaf = new Text(composite, SWT.BORDER | SWT.READ_ONLY | SWT.V_SCROLL | SWT.MULTI);
 		txtInbumserverByleaf.setForeground(SWTResourceManager.getColor(240, 255, 255));
-		txtInbumserverByleaf.setText("===================================\r\n\r\n        ¼­¹ö°¡ Á¤»óÀûÀ¸·Î ±¸µ¿µÇ¾ú½À´Ï´Ù.\r\n\r\n===================================\r\n");
+		txtInbumserverByleaf.setText("===================================\r\n\r\n        ã‚µãƒ¼ãƒãƒ¼ãŒæ­£å¸¸ã«ç¨¼åƒã—ã¾ã—ãŸã€‚\r\n\r\n===================================\r\n");
 		txtInbumserverByleaf.setBackground(SWTResourceManager.getColor(0, 0, 0));
 		txtInbumserverByleaf.setBounds(6, 10, 305, 254);
 
@@ -417,7 +417,7 @@ public class LinAllManager {
 		tabFolder.setSelectionBackground(Display.getCurrent().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 
 		CTabItem tbtmNewItem = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem.setText("ÀüÃ¼");
+		tbtmNewItem.setText("å…¨ä½“");
 
 		chatText = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		chatText.setEditable(false);
@@ -427,7 +427,7 @@ public class LinAllManager {
 		tbtmNewItem.setControl(chatText);
 
 		tbtmNewItem_16 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_16.setText("ÀÏ¹İ");
+		tbtmNewItem_16.setText("ä¸€èˆ¬");
 
 		text_8 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_8.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -436,7 +436,7 @@ public class LinAllManager {
 		tbtmNewItem_16.setControl(text_8);
 
 		CTabItem tbtmNewItem_1 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_1.setText("±Ó¸»");
+		tbtmNewItem_1.setText("ã‚¿ãƒ–");
 
 		txtTime = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		txtTime.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -445,7 +445,7 @@ public class LinAllManager {
 		tbtmNewItem_1.setControl(txtTime);
 
 		CTabItem tbtmNewItem_2 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_2.setText("Ç÷¸Í");
+		tbtmNewItem_2.setText("Clan");
 
 		text_5 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_5.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -454,7 +454,7 @@ public class LinAllManager {
 		tbtmNewItem_2.setControl(text_5);
 
 		CTabItem tbtmNewItem_3 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_3.setText("ÆÄÆ¼");
+		tbtmNewItem_3.setText("Party");
 
 		text_6 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_6.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -463,7 +463,7 @@ public class LinAllManager {
 		tbtmNewItem_3.setControl(text_6);
 
 		CTabItem tbtmNewItem_4 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_4.setText("»óÁ¡");
+		tbtmNewItem_4.setText("Store");
 
 		txtTime_1 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		txtTime_1.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -472,7 +472,7 @@ public class LinAllManager {
 		tbtmNewItem_4.setControl(txtTime_1);
 
 		CTabItem tbtmNewItem_5 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_5.setText("°Å·¡");
+		tbtmNewItem_5.setText("Trade");
 
 		txtTime_2 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		txtTime_2.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -481,7 +481,7 @@ public class LinAllManager {
 		tbtmNewItem_5.setControl(txtTime_2);
 
 		CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
-		tabItem.setText("Ã¢°í");
+		tabItem.setText("Warehouse");
 
 		text = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -490,7 +490,7 @@ public class LinAllManager {
 		tabItem.setControl(text);
 
 		CTabItem tbtmP = new CTabItem(tabFolder, SWT.NONE);
-		tbtmP.setText("EÃ¢°í");
+		tbtmP.setText("ElfWarehouse");
 
 		text_4 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_4.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -499,7 +499,7 @@ public class LinAllManager {
 		tbtmP.setControl(text_4);
 
 		CTabItem tbtmNewItem_6 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_6.setText("ÀÎÃ¾");
+		tbtmNewItem_6.setText("ã‚¤ãƒ³ãƒã‚§ãƒ³?");
 
 		txtTime_3 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		txtTime_3.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -508,7 +508,7 @@ public class LinAllManager {
 		tbtmNewItem_6.setControl(txtTime_3);
 
 		CTabItem tbtmNewItem_7 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_7.setText("Áİ±â");
+		tbtmNewItem_7.setText("å–å¾—");
 
 		text_10 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_10.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -517,7 +517,7 @@ public class LinAllManager {
 		tbtmNewItem_7.setControl(text_10);
 
 		CTabItem tbtmNewItem_12 = new CTabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_12.setText("»ç¸Á");
+		tbtmNewItem_12.setText("æ­»");
 
 		text_7 = new Text(tabFolder, SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
 		text_7.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -574,10 +574,10 @@ public class LinAllManager {
 		tabFolder_1.setSelectionBackground(Display.getCurrent().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 
 		CTabItem tbtmNewItem_8 = new CTabItem(tabFolder_1, SWT.NONE);
-		tbtmNewItem_8.setText("Ä³¸¯Á¤º¸");
+		tbtmNewItem_8.setText("CharacterInfo");
 
 		CTabItem tbtmNewItem_9 = new CTabItem(tabFolder_1, SWT.NONE);
-		tbtmNewItem_9.setText("ÀÎº¥Åä¸®");
+		tbtmNewItem_9.setText("Inventory");
 
 		table_2 = new Table(tabFolder_1, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		table_2.setTouchEnabled(true);
@@ -589,20 +589,20 @@ public class LinAllManager {
 
 		TableColumn tblclmnNewColumn_1 = new TableColumn(table_2, SWT.NONE);
 		tblclmnNewColumn_1.setWidth(198);
-		tblclmnNewColumn_1.setText("ÀÌ¸§");
+		tblclmnNewColumn_1.setText("Name");
 
 		TableColumn tblclmnNewColumn_6 = new TableColumn(table_2, SWT.CENTER);
 		tblclmnNewColumn_6.setWidth(76);
-		tblclmnNewColumn_6.setText("¿ÀºêÁ§Æ®");
+		tblclmnNewColumn_6.setText("Object");
 
 		Menu menu_4 = new Menu(table_2);
 		table_2.setMenu(menu_4);
 
 		MenuItem mntmNewItem_23 = new MenuItem(menu_4, SWT.NONE);
-		mntmNewItem_23.setText("»ó¼¼Á¤º¸");
+		mntmNewItem_23.setText("è©³ç´°æƒ…å ±");
 
 		MenuItem mntmNewItem_21 = new MenuItem(menu_4, SWT.NONE);
-		mntmNewItem_21.setText("¾ÆÀÌÅÛ ¼öÁ¤");
+		mntmNewItem_21.setText("ã‚¢ã‚¤ãƒ†ãƒ ä¿®æ­£");
 
 		new MenuItem(menu_4, SWT.SEPARATOR);
 
@@ -612,13 +612,13 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				if (table_2.getSelectionCount() <= 0) {
 					MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-					messageBox.setMessage("¼±ÅÃµÈ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.");
+					messageBox.setMessage("é¸æŠã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 					messageBox.open();
 					return;
 				}
 
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage("ÇØ´ç ¾ÆÀÌÅÛÀ» Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î ?");
+				messageBox.setMessage("è©²å½“ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚’æœ¬å½“ã«å‰Šé™¤ã—ã¦ã‚‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					itemdelete(table_2.getSelection());
@@ -627,10 +627,10 @@ public class LinAllManager {
 				}
 			}
 		});
-		mntmNewItem_22.setText("¾ÆÀÌÅÛ È¸¼ö");
+		mntmNewItem_22.setText("ã‚¢ã‚¤ãƒ†ãƒ ã®å›å");
 
 		CTabItem tbtmNewItem_10 = new CTabItem(tabFolder_1, SWT.NONE);
-		tbtmNewItem_10.setText("Ã¢°í");
+		tbtmNewItem_10.setText("Warehouse");
 
 		table_3 = new Table(tabFolder_1, SWT.BORDER | SWT.FULL_SELECTION);
 		table_3.setLinesVisible(true);
@@ -641,20 +641,20 @@ public class LinAllManager {
 
 		TableColumn tableColumn_4 = new TableColumn(table_3, SWT.NONE);
 		tableColumn_4.setWidth(198);
-		tableColumn_4.setText("ÀÌ¸§");
+		tableColumn_4.setText("Name");
 
 		TableColumn tableColumn_5 = new TableColumn(table_3, SWT.CENTER);
 		tableColumn_5.setWidth(76);
-		tableColumn_5.setText("¿ÀºêÁ§Æ®");
+		tableColumn_5.setText("Object");
 
 		Menu menu_7 = new Menu(table_3);
 		table_3.setMenu(menu_7);
 
 		MenuItem menuItem_1 = new MenuItem(menu_7, SWT.NONE);
-		menuItem_1.setText("»ó¼¼Á¤º¸");
+		menuItem_1.setText("è©³ç´°");
 
 		MenuItem menuItem_2 = new MenuItem(menu_7, SWT.NONE);
-		menuItem_2.setText("¾ÆÀÌÅÛ ¼öÁ¤");
+		menuItem_2.setText("ã‚¢ã‚¤ãƒ†ãƒ ä¿®æ­£");
 
 		MenuItem menuItem_3 = new MenuItem(menu_7, SWT.SEPARATOR);
 
@@ -664,13 +664,13 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				if (table_3.getSelectionCount() <= 0) {
 					MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-					messageBox.setMessage("¼±ÅÃµÈ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.");
+					messageBox.setMessage("é¸æŠã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 					messageBox.open();
 					return;
 				}
 
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage("ÇØ´ç ¾ÆÀÌÅÛÀ» Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î ?");
+				messageBox.setMessage("è©²å½“ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚’æœ¬å½“ã«å‰Šé™¤ã—ã¦ã‚‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					wherehouseitemdelete(table_3.getSelection());
@@ -679,10 +679,10 @@ public class LinAllManager {
 				}
 			}
 		});
-		menuItem_4.setText("¾ÆÀÌÅÛ È¸¼ö");
+		menuItem_4.setText("ã‚¢ã‚¤ãƒ†ãƒ å›å");
 
 		CTabItem tbtmNewItem_11 = new CTabItem(tabFolder_1, SWT.NONE);
-		tbtmNewItem_11.setText("°èÁ¤Á¤º¸");
+		tbtmNewItem_11.setText("AccountInfo");
 
 		Composite composite_3 = new Composite(tabFolder_1, SWT.NONE);
 		composite_3.setBackground(SWTResourceManager.getColor(51, 51, 51));
@@ -696,13 +696,13 @@ public class LinAllManager {
 					if (tree.getSelection()[0] == null)
 						return;
 					String[] s = charlist.get(tree.getSelection()[0].getText());
-					/** Æ®¸® */
+					/** ãƒ„ãƒªãƒ¼ */
 					if (s == null)
 						return;
-					lblNewLabel_47.setText(s[1]);// Ç÷¸Í
-					lblNewLabel_46.setText(s[2]);// ·¹º§
-					label_25.setText(s[3]);// ½Ã°£
-					label_28.setText(s[4]);// ÀüÀÏ
+					lblNewLabel_47.setText(s[1]);// Clan
+					lblNewLabel_46.setText(s[2]);// Level
+					label_25.setText(s[3]);// Time
+					label_28.setText(s[4]);// å‰æ—¥
 
 				}
 			}
@@ -714,12 +714,12 @@ public class LinAllManager {
 
 		TreeColumn trclmnNewColumn = new TreeColumn(tree, SWT.CENTER);
 		trclmnNewColumn.setWidth(132);
-		trclmnNewColumn.setText("°è   Á¤");
+		trclmnNewColumn.setText("Account");
 
 		trtmNewTreeitem = new TreeItem(tree, SWT.NONE);
 		trtmNewTreeitem.setChecked(true);
 		trtmNewTreeitem.setForeground(SWTResourceManager.getColor(255, 255, 255));
-		trtmNewTreeitem.setText("Ä³¸¯ÅÍ ¸®½ºÆ®");
+		trtmNewTreeitem.setText("CharacterList");
 		trtmNewTreeitem.setExpanded(true);
 
 		lblNewLabel_42 = new Label(composite_3, SWT.NONE);
@@ -731,7 +731,7 @@ public class LinAllManager {
 		Group group_2 = new Group(composite_3, SWT.NONE);
 		group_2.setForeground(SWTResourceManager.getColor(255, 0, 0));
 		group_2.setBackground(SWTResourceManager.getColor(51, 51, 51));
-		group_2.setText("Ä³¸¯Á¤º¸");
+		group_2.setText("CharacterInfo");
 		group_2.setBounds(153, 5, 133, 96);
 
 		Label lblNewLabel_43 = new Label(group_2, SWT.NONE);
@@ -766,13 +766,13 @@ public class LinAllManager {
 		label_25.setBounds(10, 78, 113, 13);
 
 		label_28 = new Label(group_2, SWT.NONE);
-		label_28.setText("0ÀÏÀü");
+		label_28.setText("0æ—¥å‰");
 		label_28.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		label_28.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		label_28.setBounds(60, 59, 63, 13);
 
 		Group group_3 = new Group(composite_3, SWT.NONE);
-		group_3.setText("°èÁ¤Á¤º¸");
+		group_3.setText("AccountInfo");
 		group_3.setForeground(SWTResourceManager.getColor(255, 0, 0));
 		group_3.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		group_3.setBounds(153, 107, 133, 66);
@@ -1035,7 +1035,7 @@ public class LinAllManager {
 		lblNewLabel_37.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_37.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_37.setBounds(192, 179, 94, 13);
-		lblNewLabel_37.setText("00½Ã 00ºĞ 00ÃÊ");
+		lblNewLabel_37.setText("00:00:00");
 
 		lblNewLabel_38 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_38.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -1086,16 +1086,16 @@ public class LinAllManager {
 		lblNewLabel_41.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_41.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_41.setBounds(265, 65, 19, 13);
-		lblNewLabel_41.setText("ºĞ");
+		lblNewLabel_41.setText("åˆ†");
 
 		label_23 = new Label(composite_2, SWT.NONE);
-		label_23.setText("ºĞ");
+		label_23.setText("åˆ†");
 		label_23.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		label_23.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		label_23.setBounds(265, 84, 19, 13);
 
 		label_24 = new Label(composite_2, SWT.NONE);
-		label_24.setText("ºĞ");
+		label_24.setText("åˆ†");
 		label_24.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		label_24.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		label_24.setBounds(265, 103, 19, 13);
@@ -1107,12 +1107,12 @@ public class LinAllManager {
 		tabFolder_2.setSelectionBackground(Display.getCurrent().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 
 		CTabItem tbtmNewItem_13 = new CTabItem(tabFolder_2, SWT.NONE);
-		tbtmNewItem_13.setText("¼­¹öÁ¤º¸");
+		tbtmNewItem_13.setText("ServerInfo");
 
 		CTabItem tbtmNewItem_14 = new CTabItem(tabFolder_2, SWT.NONE);
-		tbtmNewItem_14.setText("ÆíÁöÇÔ");
+		tbtmNewItem_14.setText("MailBox");
 
-		/** ÀÌºÎºĞ ¹®Á¦ */
+		/** XXX ã“ã®åˆ†ã¯å•é¡Œï¼Ÿ */
 		composite_4 = new LetterComposite(tabFolder_2, SWT.NONE);
 		tbtmNewItem_14.setControl(composite_4);
 
@@ -1140,7 +1140,7 @@ public class LinAllManager {
 		group.setTouchEnabled(true);
 		group.setForeground(SWTResourceManager.getColor(204, 0, 0));
 		group.setBackground(SWTResourceManager.getColor(51, 51, 51));
-		group.setText("¼­¹öÁ¤º¸");
+		group.setText("ServerInfo");
 		group.setBounds(10, 10, 254, 170);
 
 		lblNewLabel_4 = new Label(group, SWT.NONE);
@@ -1160,7 +1160,7 @@ public class LinAllManager {
 		lblNewLabel_6.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_6.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_6.setBounds(93, 23, 39, 13);
-		lblNewLabel_6.setText("Aden :");
+		lblNewLabel_6.setText("Adena :");
 
 		lblNewLabel_7 = new Label(group, SWT.NONE);
 		lblNewLabel_7.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -1183,43 +1183,43 @@ public class LinAllManager {
 		lblNewLabel_10.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_10.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_10.setBounds(13, 42, 119, 13);
-		lblNewLabel_10.setText("ÀÏÀÏ ¾Æµ§ ÃÑ »ı»ê·® :");
+		lblNewLabel_10.setText("æ—¥ã”ã¨ã®ã‚¢ãƒ‡ãƒŠç·ç”Ÿç”£é‡ :");
 
 		lblNewLabel_11 = new Label(group, SWT.NONE);
 		lblNewLabel_11.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_11.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_11.setBounds(13, 61, 119, 13);
-		lblNewLabel_11.setText("ÀÏÀÏ ¾Æµ§ ÃÑ È¸¼ö·® :");
+		lblNewLabel_11.setText("æ—¥ã”ã¨ã®ã‚¢ãƒ‡ãƒŠç·å›åé‡ :");
 
 		lblNewLabel_12 = new Label(group, SWT.NONE);
 		lblNewLabel_12.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_12.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_12.setBounds(13, 80, 65, 13);
-		lblNewLabel_12.setText("¼¼±İ ¹èÀ² :");
+		lblNewLabel_12.setText("ç¨ç‡ :");
 
 		lblNewLabel_13 = new Label(group, SWT.NONE);
 		lblNewLabel_13.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_13.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_13.setBounds(13, 99, 65, 13);
-		lblNewLabel_13.setText("°èÁ¤ »ı¼º :");
+		lblNewLabel_13.setText("CreateAccount :");
 
 		lblNewLabel_14 = new Label(group, SWT.NONE);
 		lblNewLabel_14.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_14.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_14.setBounds(122, 99, 65, 13);
-		lblNewLabel_14.setText("Ä³¸¯ »ı¼º :");
+		lblNewLabel_14.setText("CreateCharacter :");
 
 		lblNewLabel_15 = new Label(group, SWT.NONE);
 		lblNewLabel_15.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_15.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_15.setBounds(19, 118, 63, 13);
-		lblNewLabel_15.setText("PVP È½¼ö :");
+		lblNewLabel_15.setText("PvPå›æ•° :");
 
 		lblNewLabel_16 = new Label(group, SWT.NONE);
 		lblNewLabel_16.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_16.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_16.setBounds(13, 137, 65, 13);
-		lblNewLabel_16.setText("Ç÷¸Í Ã¢¼³ :");
+		lblNewLabel_16.setText("è¡€ç›Ÿã®å‰µè¨­ :");
 
 		progressBar = new ProgressBar(group, SWT.NONE);
 		progressBar.setMaximum(60);
@@ -1230,19 +1230,19 @@ public class LinAllManager {
 		lblNewLabel_17.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_17.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_17.setBounds(122, 118, 76, 13);
-		lblNewLabel_17.setText("ÆĞ³ÎÆ¼ È½¼ö :");
+		lblNewLabel_17.setText("ãƒ‘ãƒãƒ«æ•°? :");
 
 		lblNewLabel_18 = new Label(group, SWT.NONE);
 		lblNewLabel_18.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_18.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_18.setBounds(122, 80, 89, 13);
-		lblNewLabel_18.setText("¹ö°æ ÃÖ´ë ¹è´ç :");
+		lblNewLabel_18.setText("ãƒãƒªãƒ¥ãƒ¼æœ€å¤§é…å½“? :");
 
 		lblNewLabel_19 = new Label(group, SWT.NONE);
 		lblNewLabel_19.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		lblNewLabel_19.setBackground(SWTResourceManager.getColor(51, 51, 51));
 		lblNewLabel_19.setBounds(122, 137, 76, 13);
-		lblNewLabel_19.setText("ÃÖ°í ÀÎ¿ø¼ö :");
+		lblNewLabel_19.setText("æœ€å¤§äººæ•° :");
 
 		lblNewLabel_20 = new Label(group, SWT.NONE);
 		lblNewLabel_20.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -1297,7 +1297,7 @@ public class LinAllManager {
 		Group group_1 = new Group(composite_1, SWT.NONE);
 		group_1.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 		group_1.setBackground(SWTResourceManager.getColor(51, 51, 51));
-		group_1.setText("½Ã½ºÅÛ");
+		group_1.setText("System");
 		group_1.setBounds(10, 186, 254, 40);
 
 		lblNewLabel = new Label(group_1, SWT.NONE);
@@ -1333,25 +1333,25 @@ public class LinAllManager {
 
 		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.CENTER);
 		tblclmnNewColumn.setWidth(84);
-		tblclmnNewColumn.setText("     Ä³¸¯¸í");
+		tblclmnNewColumn.setText("     ã‚­ãƒ£ãƒªãƒƒã‚¯å?");
 
 		TableColumn tblclmnNewColumn_4 = new TableColumn(table, SWT.CENTER);
 		tblclmnNewColumn_4.setResizable(false);
 		tblclmnNewColumn_4.setWidth(75);
-		tblclmnNewColumn_4.setText("Á¦¸ñ");
+		tblclmnNewColumn_4.setText("Title");
 
 		TableColumn tblclmnNewColumn_3 = new TableColumn(table, SWT.CENTER);
 		tblclmnNewColumn_3.setResizable(false);
 		tblclmnNewColumn_3.setWidth(132);
-		tblclmnNewColumn_3.setText("³»¿ë");
+		tblclmnNewColumn_3.setText("å†…å®¹");
 
 		TableColumn tblclmnNewColumn_2 = new TableColumn(table, SWT.CENTER);
 		tblclmnNewColumn_2.setResizable(false);
 		tblclmnNewColumn_2.setWidth(87);
-		tblclmnNewColumn_2.setText("³¯Â¥");
+		tblclmnNewColumn_2.setText("Date");
 
 		CTabItem tbtmNewItem_15 = new CTabItem(tabFolder_2, SWT.NONE);
-		tbtmNewItem_15.setText("°ÇÀÇ°Ô½ÃÆÇ");
+		tbtmNewItem_15.setText("æ¡ˆå†…æ²ç¤ºæ¿");
 
 		table_1 = new Table(tabFolder_2, SWT.BORDER | SWT.FULL_SELECTION);
 		table_1.setForeground(SWTResourceManager.getColor(255, 255, 255));
@@ -1362,21 +1362,21 @@ public class LinAllManager {
 
 		TableColumn tableColumn = new TableColumn(table_1, SWT.CENTER);
 		tableColumn.setWidth(84);
-		tableColumn.setText("     Ä³¸¯¸í");
+		tableColumn.setText("     ã‚­ãƒ£ãƒªãƒƒã‚¯å?");
 
 		TableColumn tableColumn_1 = new TableColumn(table_1, SWT.CENTER);
 		tableColumn_1.setWidth(75);
-		tableColumn_1.setText("Á¦¸ñ");
+		tableColumn_1.setText("Title");
 		tableColumn_1.setResizable(false);
 
 		TableColumn tableColumn_2 = new TableColumn(table_1, SWT.CENTER);
 		tableColumn_2.setWidth(132);
-		tableColumn_2.setText("³»¿ë");
+		tableColumn_2.setText("å†…å®¹");
 		tableColumn_2.setResizable(false);
 
 		TableColumn tableColumn_3 = new TableColumn(table_1, SWT.CENTER);
 		tableColumn_3.setWidth(87);
-		tableColumn_3.setText("³¯Â¥");
+		tableColumn_3.setText("Date");
 		tableColumn_3.setResizable(false);
 
 		text_2 = new Text(composite, SWT.BORDER);
@@ -1400,11 +1400,11 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage(Pcname + " À¯ÀúÀÇ ·¹º§À» º¯°æÇÏ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage(Pcname + "ã®ãƒ¬ãƒ™ãƒ«ã‚’å¤‰æ›´ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
@@ -1413,24 +1413,24 @@ public class LinAllManager {
 						PlayerLevel dialog = new PlayerLevel(LinAllManager.getShell(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 						dialog.open(pc);
 					} else {
-						toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+						toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 					}
 				}
 			}
 		});
 		btnNewButton.setBounds(420, 241, 50, 25);
-		btnNewButton.setText("·¹º§º¯°æ");
+		btnNewButton.setText("ãƒ¬ãƒ™ãƒ«å¤‰æ›´");
 
 		button = new Button(composite, SWT.NONE);
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage(Pcname + " À¯Àú¸¦ º¯½Å½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage(Pcname + "ã‚’å¤‰æ›´ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
@@ -1439,12 +1439,12 @@ public class LinAllManager {
 						PlayerPoly dialog = new PlayerPoly(LinAllManager.getShell(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 						dialog.open(pc);
 					} else {
-						toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+						toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 					}
 				}
 			}
 		});
-		button.setText("º¯½Å");
+		button.setText("Poly");
 		button.setBounds(469, 241, 50, 25);
 
 		button_1 = new Button(composite, SWT.NONE);
@@ -1456,18 +1456,18 @@ public class LinAllManager {
 //			}
 //		});
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
 				if (pc != null) {
 					PlayerInventory.open(pc);
 				} else {
-					toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+					toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 				}
 			}
 		});
-		button_1.setText("¼±¹°");
+		button_1.setText("Gift");
 		button_1.setBounds(520, 241, 50, 25);
 
 		button_2 = new Button(composite, SWT.NONE);
@@ -1475,11 +1475,11 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage(Pcname + " À¯Àú¿¡°Ô ÅëÇÕ¹öÇÁ¸¦ ÁÖ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage(Pcname + " ã«AllBuffã‚’ä»˜ä¸ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
@@ -1493,14 +1493,14 @@ public class LinAllManager {
 						}
 						pc.setBuffnoch(0);
 						pc.sendPackets(new S_SkillSound(pc.getId(), 4856));
-						pc.sendPackets(new S_ChatPacket(pc, "°ÔÀÓ¸¶½ºÅÍ¿¡°Ô 'ÀüÃ¼ ¹öÇÁ'¸¦ ¹Ş¾Ò½À´Ï´Ù."));
+						pc.sendPackets(new S_ChatPacket(pc, "GameMasterã‹ã‚‰ AllBuff ã‚’å—ã‘å–ã‚Šã¾ã—ãŸã€‚"));
 					} else {
-						toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+						toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 					}
 				}
 			}
 		});
-		button_2.setText("¹öÇÁ");
+		button_2.setText("All Buff");
 		button_2.setBounds(571, 241, 50, 25);
 
 		button_3 = new Button(composite, SWT.NONE);
@@ -1508,11 +1508,11 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage(Pcname + " À¯Àú¿¡°Ô Ã¤±İÀ» ÁÖ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage(Pcname + "ã«ãƒãƒ•ã‚’ä¸ãˆã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
@@ -1521,12 +1521,12 @@ public class LinAllManager {
 						pc.sendPackets(new S_SkillIconGFX(36, 10 * 60));
 						pc.sendPackets(new S_ServerMessage(286, String.valueOf(10)));
 					} else {
-						toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+						toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 					}
 				}
 			}
 		});
-		button_3.setText("Ã¤±İ");
+		button_3.setText("Buff");
 		button_3.setBounds(621, 241, 50, 25);
 
 		button_4 = new Button(composite, SWT.NONE);
@@ -1534,11 +1534,11 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (Pcname == null || Pcname.length() <= 0) {
-					toMessageBox("¼±ÅÃµÈ À¯Àú°¡ ¾ø½À´Ï´Ù.");
+					toMessageBox("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã¾ã›ã‚“ã€‚");
 					return;
 				}
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage(Pcname + " À¯ÀúÀÇ Ã¤±İÀ» ÇØÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage(Pcname + "ã®ãƒãƒ£ãƒƒãƒˆç¦æ­¢çŠ¶æ…‹ã‚’å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					L1PcInstance pc = L1World.getInstance().getPlayer(Pcname);
@@ -1548,15 +1548,15 @@ public class LinAllManager {
 							pc.removeSkillEffect(L1SkillId.STATUS_CHAT_PROHIBITED);
 							pc.sendPackets(new S_SkillIconGFX(36, 1));
 						} else {
-							toMessageBox("ÇØ´çÀ¯Àú´Â ÇöÀç Ã¤±İ»óÅÂ°¡ ¾Æ´Õ´Ï´Ù.");
+							toMessageBox("è©²å½“ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¯ç¾åœ¨ãƒãƒ£ãƒƒãƒˆç¦æ­¢çŠ¶æ…‹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
 						}
 					} else {
-						toMessageBox("À¯Àú°¡ ¿ùµå»ó¿¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+						toMessageBox("ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 					}
 				}
 			}
 		});
-		button_4.setText("Ã¤±İÇØÁ¦");
+		button_4.setText("ãƒãƒ£ç¦è§£é™¤");
 		button_4.setBounds(671, 241, 50, 25);
 
 		button_5 = new Button(composite, SWT.NONE);
@@ -1564,7 +1564,7 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage("¸ğµç ·Î±×¸¦ ÀúÀåÇÏ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage("ã™ã¹ã¦ã®ãƒ­ã‚°ã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					savelog();
@@ -1573,7 +1573,7 @@ public class LinAllManager {
 
 			}
 		});
-		button_5.setText("·Î±×ÀúÀå");
+		button_5.setText("SaveLog");
 		button_5.setBounds(349, 512, 65, 19);
 
 		menu = new Menu(shlInbumserverManager, SWT.BAR);
@@ -1581,13 +1581,13 @@ public class LinAllManager {
 		shlInbumserverManager.setMenuBar(menu);
 
 		mntmNewSubmenu = new MenuItem(menu, SWT.CASCADE);
-		mntmNewSubmenu.setText("ÆÄÀÏ");
+		mntmNewSubmenu.setText("File");
 
 		menu_1 = new Menu(mntmNewSubmenu);
 		mntmNewSubmenu.setMenu(menu_1);
 
 		MenuItem mntmNewItem = new MenuItem(menu_1, SWT.NONE);
-		mntmNewItem.setText("¼­¹ö¼³Á¤");
+		mntmNewItem.setText("ServerSettings");
 
 		MenuItem mntmNewItem_1 = new MenuItem(menu_1, SWT.NONE);
 		mntmNewItem_1.addSelectionListener(new SelectionAdapter() {
@@ -1595,11 +1595,11 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				GameServer.getInstance().saveAllCharInfo();
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-				messageBox.setMessage("¸ğµç Ä³¸¯ÅÍÀÇ Á¤º¸ ÀúÀå ¿Ï·á !!");
+				messageBox.setMessage("All Character Info is saved.");
 				messageBox.open();
 			}
 		});
-		mntmNewItem_1.setText("½Ã½ºÅÛÀúÀå");
+		mntmNewItem_1.setText("SaveSystem");
 
 		new MenuItem(menu_1, SWT.SEPARATOR);
 
@@ -1608,7 +1608,7 @@ public class LinAllManager {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage("¼­¹ö¸¦ Á¾·áÇÏ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage("ã‚µãƒ¼ãƒãƒ¼ã‚’çµ‚äº†ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					savelog();
@@ -1617,14 +1617,14 @@ public class LinAllManager {
 				}
 			}
 		});
-		mntmNewItem_16.setText("¹Ù·ÎÁ¾·á");
+		mntmNewItem_16.setText("ã™ãã«çµ‚äº†");
 
 		MenuItem menuItem = new MenuItem(menu_1, SWT.NONE);
 		menuItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.YES | SWT.NO | SWT.ICON_QUESTION);
-				messageBox.setMessage("¼­¹ö¸¦ Á¾·áÇÏ½Ã°Ú½À´Ï±î?");
+				messageBox.setMessage("ã‚µãƒ¼ãƒãƒ¼ã‚’çµ‚äº†ã—ã¾ã™ã‹ï¼Ÿ");
 				int type = messageBox.open();
 				if (type == SWT.YES) {
 					GameServer.getInstance().saveAllCharInfo();
@@ -1632,10 +1632,10 @@ public class LinAllManager {
 				}
 			}
 		});
-		menuItem.setText("¼­¹öÁ¾·á");
+		menuItem.setText("ã‚µãƒ¼ãƒãƒ¼ã®çµ‚äº†");
 
 		mntmNewSubmenu_1 = new MenuItem(menu, SWT.CASCADE);
-		mntmNewSubmenu_1.setText("¸ğ´ÏÅÍ");
+		mntmNewSubmenu_1.setText("Monitor");
 
 		menu_2 = new Menu(mntmNewSubmenu_1);
 		mntmNewSubmenu_1.setMenu(menu_2);
@@ -1647,7 +1647,7 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				Config.STANDBY_SERVER = true;
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-				messageBox.setMessage("¿ÀÇÂ´ë±â = ON");
+				messageBox.setMessage("isOpen = ON");
 				messageBox.open();
 			}
 		});
@@ -1659,13 +1659,13 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				Config.STANDBY_SERVER = false;
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-				messageBox.setMessage("¿ÀÇÂ´ë±â = OFF");
+				messageBox.setMessage("isOpen = OFF");
 				messageBox.open();
 			}
 		});
 
 		mntmNewSubmenu_2 = new MenuItem(menu, SWT.CASCADE);
-		mntmNewSubmenu_2.setText("µµ±¸");
+		mntmNewSubmenu_2.setText("Tools");
 
 		menu_3 = new Menu(mntmNewSubmenu_2);
 		mntmNewSubmenu_2.setMenu(menu_3);
@@ -1676,14 +1676,14 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				savelog();
 				MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-				messageBox.setMessage("Ã¤ÆÃÈ­¸éÀ» Ã»¼ÒÈÄ ÀúÀå¿Ï·á.");
+				messageBox.setMessage("ãƒãƒ£ãƒƒãƒˆç”»é¢ã‚’ãã‚Œã„ã«ã—ã¦ä¿å­˜å®Œäº†ã€‚");
 				messageBox.open();
 			}
 		});
-		mntmNewItem_20.setText("È­¸éÃ»¼Ò");
+		mntmNewItem_20.setText("ç”»é¢ã‚¯ãƒªãƒ¼ãƒ³");
 
 		MenuItem mntmNewSubmenu_4 = new MenuItem(menu, SWT.CASCADE);
-		mntmNewSubmenu_4.setText("¸®·Îµå");
+		mntmNewSubmenu_4.setText("æ›´æ–°");
 
 		Menu menu_5 = new Menu(mntmNewSubmenu_4);
 		mntmNewSubmenu_4.setMenu(menu_5);
@@ -1719,7 +1719,7 @@ public class LinAllManager {
 				LogAppend("DropList Update Complete.....");
 			}
 		});
-		mntmNewItem_4.setText("µå¶ø¸®½ºÆ®");
+		mntmNewItem_4.setText("DropList");
 
 		MenuItem mntmNewItem_5 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_5.addSelectionListener(new SelectionAdapter() {
@@ -1729,7 +1729,7 @@ public class LinAllManager {
 				LogAppend("Skills Update Complete.....");
 			}
 		});
-		mntmNewItem_5.setText("½ºÅ³");
+		mntmNewItem_5.setText("Skills");
 
 		MenuItem mntmNewItem_6 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_6.addSelectionListener(new SelectionAdapter() {
@@ -1739,7 +1739,7 @@ public class LinAllManager {
 				LogAppend("MobSkills Update Complete.....");
 			}
 		});
-		mntmNewItem_6.setText("¸÷½ºÅ³");
+		mntmNewItem_6.setText("MobSkills");
 
 		MenuItem mntmNewItem_7 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_7.addSelectionListener(new SelectionAdapter() {
@@ -1749,7 +1749,7 @@ public class LinAllManager {
 				LogAppend("Item Update Complete.....");
 			}
 		});
-		mntmNewItem_7.setText("¾ÆÀÌÅÛ");
+		mntmNewItem_7.setText("Items");
 
 		MenuItem mntmNewItem_8 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_8.addSelectionListener(new SelectionAdapter() {
@@ -1759,7 +1759,7 @@ public class LinAllManager {
 				LogAppend("Shop Update Complete.....");
 			}
 		});
-		mntmNewItem_8.setText("»óÁ¡");
+		mntmNewItem_8.setText("Store");
 
 		MenuItem mntmNewItem_17 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_17.addSelectionListener(new SelectionAdapter() {
@@ -1769,7 +1769,7 @@ public class LinAllManager {
 				LogAppend("Poly Update Complete.....");
 			}
 		});
-		mntmNewItem_17.setText("º¯½Å");
+		mntmNewItem_17.setText("Poly");
 
 		MenuItem mntmNewItem_9 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_9.addSelectionListener(new SelectionAdapter() {
@@ -1779,7 +1779,7 @@ public class LinAllManager {
 				LogAppend("Npc Update Complete.....");
 			}
 		});
-		mntmNewItem_9.setText("¿£ÇÇ¾¾");
+		mntmNewItem_9.setText("NPC");
 
 		MenuItem mntmNewItem_10 = new MenuItem(menu_1, SWT.NONE);
 		mntmNewItem_10.addSelectionListener(new SelectionAdapter() {
@@ -1787,13 +1787,13 @@ public class LinAllManager {
 			public void widgetSelected(SelectionEvent e) {
 				final Tray tray = display.getSystemTray();
 				if (tray != null) {
-					// ÇöÀç À©µµ¿ì °¨Ãß±â.
+					// ç¾åœ¨ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’éš ã™
 					shlInbumserverManager.setVisible(false);
-					// Æ®·¹ÀÌ È°¼ºÈ­.
+					// ãƒˆãƒ¬ã‚¤ã‚’æœ‰åŠ¹åŒ–
 					final TrayItem item = new TrayItem(tray, SWT.NONE);
-					item.setToolTipText(String.format("¼­ ¹ö"));
+					item.setToolTipText(String.format("ï¿½ï¿½ ï¿½ï¿½"));
 					item.setImage(SWTResourceManager.getImage("data\\img\\apple.png"));
-					// ÀÌº¥Æ® µî·Ï.
+					// ã‚¤ãƒ™ãƒ³ãƒˆã®ç™»éŒ²
 					item.addSelectionListener(new SelectionAdapter() {
 						@Override
 						public void widgetSelected(SelectionEvent e) {
@@ -1805,7 +1805,7 @@ public class LinAllManager {
 				}
 			}
 		});
-		mntmNewItem_10.setText("Æ®·¹ÀÌ¸ğµå");
+		mntmNewItem_10.setText("ãƒˆãƒ¬ã‚¤ãƒ¢ãƒ¼ãƒ‰");
 
 		MenuItem mntmNewItem_11 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_11.addSelectionListener(new SelectionAdapter() {
@@ -1815,7 +1815,7 @@ public class LinAllManager {
 				LogAppend("Clans Update Complete.....");
 			}
 		});
-		mntmNewItem_11.setText("Ç÷¸Í");
+		mntmNewItem_11.setText("Clan");
 
 		MenuItem mntmNewItem_12 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_12.addSelectionListener(new SelectionAdapter() {
@@ -1825,7 +1825,7 @@ public class LinAllManager {
 				LogAppend("Castle Update Complete.....");
 			}
 		});
-		mntmNewItem_12.setText("¼ºÁ¤º¸");
+		mntmNewItem_12.setText("Castle");
 
 		MenuItem mntmNewItem_13 = new MenuItem(menu_5, SWT.NONE);
 		mntmNewItem_13.addSelectionListener(new SelectionAdapter() {
@@ -1850,23 +1850,23 @@ public class LinAllManager {
 		mntmNewItem_15.setText("BanIP");
 
 		MenuItem mntmNewSubmenu_5 = new MenuItem(menu, SWT.CASCADE);
-		mntmNewSubmenu_5.setText("Á¤º¸");
+		mntmNewSubmenu_5.setText("Info");
 
 		Menu menu_6 = new Menu(mntmNewSubmenu_5);
 		mntmNewSubmenu_5.setMenu(menu_6);
 
 		MenuItem mntmNewItem_18 = new MenuItem(menu_6, SWT.NONE);
-		mntmNewItem_18.setText("°ø°³¿ë");
+		mntmNewItem_18.setText("å…¬é–‹ç”¨");
 
 	}
 
 	public static String getDate() {
-		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd hh-mm", Locale.KOREA);
+		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd hh-mm", Locale.JAPAN);
 		return s.format(Calendar.getInstance().getTime());
 	}
 
 	/**
-	 * ÇöÁ¦ ½Ã°£
+	 * ç¾åœ¨æ™‚åˆ»
 	 *
 	 * @return
 	 */
@@ -1891,7 +1891,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÀÎº¥Åä¸® ¾ÆÀÌÅÛ »èÁ¦ ÇÔ¼ö
+	 * åœ¨åº«ã‚¢ã‚¤ãƒ†ãƒ ã®å‰Šé™¤
 	 *
 	 * @param tableitem
 	 */
@@ -1900,12 +1900,12 @@ public class LinAllManager {
 			L1PcInstance target = L1World.getInstance().getPlayer(Pcname);
 			if (target != null) {
 				for (TableItem table : tableitem) {
-					/** ÀÎº¥Åä¸®¿¡¼­ »èÁ¦ */
+					/** ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‹ã‚‰å‰Šé™¤ */
 					target.getInventory().removeItem(Integer.parseInt(table.getText(1)));
-					/** ¾ÆÀÌÅÛ ¸®½ºÆ®¿¡¼­ »èÁ¦ */
+					/** ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ */
 					items.remove(table.getText(1));
 				}
-				/** µ¥ÀÌÅÍ ÀúÀå */
+				/** ä¿å­˜ */
 				target.saveInventory();
 			} else {
 				for (TableItem table : tableitem) {
@@ -1921,7 +1921,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ã¢°í ¾ÆÀÌÅÛ »èÁ¦
+	 * å€‰åº«ã‚¢ã‚¤ãƒ†ãƒ ã®å‰Šé™¤
 	 *
 	 * @param tableitem
 	 */
@@ -1966,7 +1966,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ä³¸¯ÅÍ ÀÎº¥Åä¸®
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒª
 	 */
 	ConcurrentHashMap<Integer, L1ItemInstance> items = new ConcurrentHashMap<Integer, L1ItemInstance>();
 
@@ -2021,7 +2021,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ã¢°í ¾ÆÀÌÅÛ ¸®½ºÆ®
+	 * å€‰åº«ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆ
 	 */
 	ConcurrentHashMap<Integer, L1ItemInstance> warehouseitems = new ConcurrentHashMap<Integer, L1ItemInstance>();
 
@@ -2066,7 +2066,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ä³¸¯ Á¢¼Ó ·Î±×
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æ¥ç¶šãƒ­ã‚°ï¼Ÿ
 	 *
 	 * @param name
 	 * @param ip
@@ -2081,10 +2081,10 @@ public class LinAllManager {
 							ch = true;
 					}
 					if (!ch) {
-						txtInbumserverByleaf.append(getLogTime() + " Á¢¼Ó [" + name + "] " + (list.getItems().length + 1) + "¸í\n");
-						// txtInbumserverByleaf.append("[Á¢¼Ó] (" + name + ")\n");
+						txtInbumserverByleaf.append(getLogTime() + "æ¥ç¶š[" + name + "] " + (list.getItems().length + 1) + "äºº\n");
+						// txtInbumserverByleaf.append("[ï¿½ï¿½ï¿½ï¿½] (" + name + ")\n");
 						// txtInbumserverByleaf.append("IP :" + ip + " Time : " + getLogTime() + " [" +
-						// (list.getItems().length + 1) + "¸í]\n\n");
+						// (list.getItems().length + 1) + "ï¿½ï¿½]\n\n");
 						list.add(name);
 						if (LinAllManagerInfoThread.MaxUser < list.getItems().length) {
 							LinAllManagerInfoThread.MaxUser = list.getItems().length;
@@ -2098,7 +2098,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ä³¸¯ Á¢¼Ó Á¾·á
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æ¥ç¶šçµ‚äº†ãƒ­ã‚°
 	 *
 	 * @param name
 	 * @param ip
@@ -2113,8 +2113,8 @@ public class LinAllManager {
 							ch = true;
 					}
 					if (ch) {
-						txtInbumserverByleaf.append("[Á¾·á](" + name + ") Ä³¸¯ÅÍ°¡ Á¾·á.\n");
-						txtInbumserverByleaf.append("IP :" + ip + " Time : " + getLogTime() + " [" + (list.getItems().length - 1) + "¸í]\n");
+						txtInbumserverByleaf.append("[çµ‚äº†](" + name + ") ãŒæ¥ç¶šã‚’çµ‚äº†ã—ã¾ã—ãŸã€‚\n");
+						txtInbumserverByleaf.append("IP :" + ip + " Time : " + getLogTime() + " [" + (list.getItems().length - 1) + "äºº]\n");
 						list.remove(name);
 					}
 				} catch (Exception e) {
@@ -2125,7 +2125,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÀüÃ¼Ã¤ÆÃ ·Î±×
+	 * ãƒ•ãƒ«ãƒãƒ£ãƒƒãƒˆãƒ­ã‚°
 	 *
 	 * @param name
 	 * @param msg
@@ -2144,7 +2144,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÀÏ¹İ Ã¤ÆÃ ·Î±×
+	 * ä¸€èˆ¬ãƒãƒ£ãƒƒãƒˆãƒ­ã‚°
 	 *
 	 * @param name
 	 * @param msg
@@ -2162,7 +2162,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ±Ó¸» Ã¤ÆÃ ·Î±×
+	 * ã‚¦ã‚£ã‚¹ãƒ‘ãƒ¼ãƒãƒ£ãƒƒãƒˆãƒ­ã‚°
 	 *
 	 * @param Aname
 	 * @param Dname
@@ -2183,7 +2183,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Å¬·£ Ã¤ÆÃ ·Î±×
+	 * ã‚¯ãƒ©ãƒ³ãƒãƒ£ãƒƒãƒˆãƒ­ã‚°
 	 *
 	 * @param Clanname
 	 * @param name
@@ -2205,7 +2205,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÆÄÆ¼Ã¤ÆÃ ·Î±×
+	 *ãƒ‘ãƒ¼ãƒ†ã‚£ãƒãƒ£ãƒƒãƒˆãƒ­ã‚°
 	 *
 	 * @param partylist
 	 * @param name
@@ -2224,7 +2224,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * »óÁ¡ ±¸ÀÔ ·Î±×
+	 * Storeè³¼å…¥ãƒ­ã‚°
 	 *
 	 * @param Itemname
 	 * @param count
@@ -2239,7 +2239,7 @@ public class LinAllManager {
 			public void run() {
 				try {
 					txtTime_1.append("[" + npcname + "]" + name + " Time : " + getLogTime() + "\n");
-					txtTime_1.append("[¾ÆÀÌÅÛ : " + Itemname + "] [°¹¼ö :" + count + "] [°¡°İ : " + price + "]\n\n");
+					txtTime_1.append("[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : " + Itemname + "] [ï¿½ï¿½ï¿½ï¿½ :" + count + "] [ï¿½ï¿½ï¿½ï¿½ : " + price + "]\n\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2248,7 +2248,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * °Å·¡ ·Î±×
+	 *TradeLog
 	 *
 	 * @param Itemname
 	 * @param count
@@ -2269,7 +2269,8 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ã¢°í ·Î±× Ã¢°í Ã¢°í¿¡ ³Ö±â : type = 0,Ã¢°í¿¡¼­ »©±â : type = 1
+	 * WarehouseLog
+	 * 		in:type0, out:type1
 	 *
 	 * @param Itemname
 	 * @param count
@@ -2282,11 +2283,11 @@ public class LinAllManager {
 			public void run() {
 				try {
 					if (type == 0) {
-						text.append("[" + name + "]->[Ã¢°í] Time : " + getLogTime() + "\n");
-						text.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text.append("[" + name + "]->[å€‰åº«] Time : " + getLogTime() + "\n");
+						text.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					} else if (type == 1) {
-						text.append("[Ã¢°í]->[" + name + "] Time : " + getLogTime() + "\n");
-						text.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text.append("[å€‰åº«]->[" + name + "] Time : " + getLogTime() + "\n");
+						text.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2297,12 +2298,13 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ¿äÁ¤³Ö±â, type = 0,¿äÁ¤ »©±â : type = 1 Ç÷¸Í³Ö±â, type = 2,Ç÷¸Í »©±â : type = 3
+	 * ElfWarehouse Log, ClanWarehouse Log
 	 *
 	 * @param Itemname
 	 * @param count
 	 * @param name
 	 * @param type
+	 * 	0:ElfWarehouse IN, 1:ElfWarehouse OUT, 2:ClanWarehouse IN 3:ClanWarehouse OUT
 	 */
 	public void EPWarehouseAppend(final String Itemname, final int count, final String name, final int type) {
 
@@ -2310,17 +2312,17 @@ public class LinAllManager {
 			public void run() {
 				try {
 					if (type == 0) {
-						text_4.append("[" + name + "]->[¿äÁ¤Ã¢°í] Time : " + getLogTime() + "\n");
-						text_4.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text_4.append("[" + name + "]->[ã‚¨ãƒ«ãƒ•å€‰åº«] Time : " + getLogTime() + "\n");
+						text_4.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					} else if (type == 1) {
-						text_4.append("[¿äÁ¤Ã¢°í]->[" + name + "] Time : " + getLogTime() + "\n");
-						text_4.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text_4.append("[ã‚¨ãƒ«ãƒ•å€‰åº«]->[" + name + "] Time : " + getLogTime() + "\n");
+						text_4.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					} else if (type == 2) {
-						text_4.append("[" + name + "]->[Ç÷¸ÍÃ¢°í] Time : " + getLogTime() + "\n");
-						text_4.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text_4.append("[" + name + "]->[ã‚¯ãƒ©ãƒ³å€‰åº«] Time : " + getLogTime() + "\n");
+						text_4.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					} else if (type == 3) {
-						text_4.append("[Ç÷¸ÍÃ¢°í]->[" + name + "] Time : " + getLogTime() + "\n");
-						text_4.append("[¾ÆÀÌÅÛ : " + Itemname + "]\n\n");
+						text_4.append("[ã‚¯ãƒ©ãƒ³å€‰åº«]->[" + name + "] Time : " + getLogTime() + "\n");
+						text_4.append("[ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "]\n\n");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2331,23 +2333,24 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÀÎÃ¾Æ® ·Î±× ¼º°ø : type = 0,½ÇÆĞ : type = 1
+	 * EnchantLog
 	 *
 	 * @param Itemname
 	 * @param name
 	 * @param type
+	 * 	0:æˆåŠŸ, 1:å¤±æ•—
 	 */
 	public void EnchantAppend(final String Itemname, final int oldEnchant, final int newEnchant, final String name, final int type) {
 
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					if (type == 0) {// ¼º°ø
-						txtTime_3.append("[" + name + "]=> ÀÎÃ¾Æ® ¼º°ø! Time : " + getLogTime() + "\n");
-						txtTime_3.append("[¾ÆÀÌÅÛ : +" + oldEnchant + " " + Itemname + "] - > [¾ÆÀÌÅÛ : +" + newEnchant + " " + Itemname + "] \n");
-					} else {// ½ÇÆĞ
-						txtTime_3.append("[" + name + "]=> ÀÎÃ¾Æ® ½ÇÆĞ! Time : " + getLogTime() + "\n");
-						txtTime_3.append("[¾ÆÀÌÅÛ : +" + oldEnchant + " " + Itemname + "]\n");
+					if (type == 0) { // æˆåŠŸ
+						txtTime_3.append("[" + name + "]=> ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆæˆåŠŸ! Time : " + getLogTime() + "\n");
+						txtTime_3.append("[ã‚¢ã‚¤ãƒ†ãƒ  : +" + oldEnchant + " " + Itemname + "] - > [ã‚¢ã‚¤ãƒ†ãƒ  : +" + newEnchant + " " + Itemname + "] \n");
+					} else { // å¤±æ•—
+						txtTime_3.append("[" + name + "]=> ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆå¤±æ•—! Time : " + getLogTime() + "\n");
+						txtTime_3.append("[ã‚¢ã‚¤ãƒ†ãƒ  : +" + oldEnchant + " " + Itemname + "]\n");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2358,22 +2361,23 @@ public class LinAllManager {
 	}
 
 	/**
-	 * µå¶ø ¿£ ÇÈ¾÷ ÇÈ¾÷ : type=0,µå¶ø : type=1
+	 * DropItemLog
 	 *
 	 * @param Itemname
 	 * @param name
 	 * @param count
 	 * @param type
+	 * 	0:pickup, 1:Drop
 	 */
 	public void PicupAppend(final String Itemname, final String name, final int count, final int type) {
 
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					if (type == 0) {// ÇÈ¾÷
-						text_10.append("ÇÈ¾÷ : [" + name + "][¾ÆÀÌÅÛ : " + Itemname + "] Time : " + getLogTime() + "\n");
-					} else {// µå¶ø
-						text_10.append("µå¶ø : [" + name + "][¾ÆÀÌÅÛ : " + Itemname + "] Time : " + getLogTime() + "\n");
+					if (type == 0) { // ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—
+						text_10.append("ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ— : [" + name + "][ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "] Time : " + getLogTime() + "\n");
+					} else { // ãƒ‰ãƒ­ãƒƒãƒ—
+						text_10.append("ãƒ‰ãƒ­ãƒƒãƒ— : [" + name + "][ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "] Time : " + getLogTime() + "\n");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2385,19 +2389,19 @@ public class LinAllManager {
 
 //	public static void savelog() {
 //		try {
-//			savelog(txtInbumserverByleaf, "½Ã½ºÅÛ");
-//			savelog(chatText, "ÀüÃ¼Ã¤ÆÃ");
-//			savelog(txtTime, "±Ó¼Ó¸»");
-//			savelog(text_5, "Ç÷¸ÍÃ¤ÆÃ");
-//			savelog(text_6, "ÆÄÆ¼Ã¤ÆÃ");
-//			savelog(txtTime_1, "»óÁ¡");
-//			savelog(txtTime_2, "±³È¯");
-//			savelog(text, "Ã¢°í");
-//			savelog(text_4, "Æ¯¼öÃ¢°í");
-//			savelog(txtTime_3, "ÀÎÃ¦Æ®");
-//			savelog(text_10, "µå¶ø&ÇÈ¾÷");
-//			savelog(text_7, "ÆĞ³ÎÆ¼");
-//			savelog(text_8, "ÀÏ¹İÃ¤ÆÃ");
+//			savelog(txtInbumserverByleaf, "System");
+//			savelog(chatText, "FullChat");
+//			savelog(txtTime, "Wisper");
+//			savelog(text_5, "ClanChat");
+//			savelog(text_6, "PartyChat");
+//			savelog(txtTime_1, "Store");
+//			savelog(txtTime_2, "Trade");
+//			savelog(text, "Warehouse");
+//			savelog(text_4, "Elf,ClanWarehouse");
+//			savelog(txtTime_3, "Enchant");
+//			savelog(text_10, "Drop'Pickup");
+//			savelog(text_7, "Panel");
+//			savelog(text_8, "NormalChat");
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
@@ -2432,7 +2436,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * ÆĞ³ÎÆ¼ ¶³±À : 0 , Áõ¹ß : 1
+	 * penaltyLog?
 	 *
 	 * @param Itemname
 	 * @param name
@@ -2444,10 +2448,10 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					if (type == 0) {// ¶³±À
-						text_7.append("¶³±À : [" + name + "][¾ÆÀÌÅÛ : " + Itemname + "] Time : " + getLogTime() + "\n");
-					} else {// Áõ¹ß
-						text_7.append("Áõ¹ß : [" + name + "][¾ÆÀÌÅÛ : " + Itemname + "] Time : " + getLogTime() + "\n");
+					if (type == 0) { // æŒ¯ã‚‹èˆã„ï¼Ÿ
+						text_7.append("æŒ¯ã‚‹èˆã„? : [" + name + "][ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "] Time : " + getLogTime() + "\n");
+					} else { // è’¸ç™ºï¼Ÿ
+						text_7.append("è’¸ç™º? : [" + name + "][ã‚¢ã‚¤ãƒ†ãƒ  : " + Itemname + "] Time : " + getLogTime() + "\n");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2461,7 +2465,7 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					text_11.append("¸í·É : [" + name + "] [" + cmd + "] [" + arg + "] Time : " + getLogTime() + "\n");
+					text_11.append("Command : [" + name + "] [" + cmd + "] [" + arg + "] Time : " + getLogTime() + "\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2474,7 +2478,7 @@ public class LinAllManager {
 			@Override
 			public void run() {
 				try {
-					text_15.append((success ? "Á¦ÀÛ¼º°ø" : "Á¦ÀÛ½ÇÆĞ") + " : [" + name + "] [" + msg + "] [" + craftId + "] Time : " + getLogTime() + "\n");
+					text_15.append((success ? "åˆ¶ä½œæˆåŠŸ" : "åˆ¶ä½œå¤±æ•—") + " : [" + name + "] [" + msg + "] [" + craftId + "] Time : " + getLogTime() + "\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2486,7 +2490,7 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					text_9.append("º¸½º½ºÆù : [" + name + "]  Time : " + getLogTime() + "\n");
+					text_9.append("BOSS SPAWN : [" + name + "]  Time : " + getLogTime() + "\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2498,7 +2502,7 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					text_12.append("´øÀü¿ÀÇÂ : [" + name + "]  Time : " + getLogTime() + "\n");
+					text_12.append("Cave Open : [" + name + "]  Time : " + getLogTime() + "\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2510,7 +2514,7 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					text_13.append("½ºÇÙÀÇ½É : [" + name + "] º¯½Å :[" + pc.getTempCharGfx() + "] Á÷¾÷ :[" + pc.getClassFeature().getClassName() + "] ½Ã°£ : "
+					text_13.append("Score? : [" + name + "] PolyID :[" + pc.getTempCharGfx() + "] Class :[" + pc.getClassFeature().getClassName() + "] TIME : "
 							+ getLogTime() + "\n");
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -2525,7 +2529,7 @@ public class LinAllManager {
 			public void run() {
 				try {
 					text_14.append(" Time : " + getLogTime() + " ");
-					text_14.append("[" + name + "] ÀÇ °ø¼ºÀÌ " + msg + "µÇ¾ú½À´Ï´Ù.\n");
+					text_14.append("[" + name + "] ã®åŸãŒ " + msg + "ã•ã‚Œã¾ã—ãŸã€‚\n");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -2536,7 +2540,7 @@ public class LinAllManager {
 	String Clanname = "";
 	String Pcname = "";
 	String exp = "";
-	String stasts = "";// ·Î±ä»óÅÂ
+	String stasts = "";// LoginçŠ¶æ…‹
 	String hp = "";
 	String mp = "";
 	String str = "";
@@ -2589,7 +2593,7 @@ public class LinAllManager {
 			String cname = rs.getString("Clanname");
 
 			if (cname == null || cname.equals("")) {
-				Clanname = "[°¡ÀÔÇÑ Ç÷¸Í ¾øÀ½]";
+				Clanname = "[None Clan]";
 			} else {
 				Clanname = "[" + cname + "]";
 			}
@@ -2624,16 +2628,16 @@ public class LinAllManager {
 			pk = "" + rs.getInt("PC_Kill");
 			deth = "" + rs.getInt("PC_Death");
 			if (rs.getTimestamp("lastLogoutTime") != null) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
 				String str2 = sdf.format(new Date(rs.getTimestamp("lastLogoutTime").getTime()));
 				logindate = str2;
 
-				SimpleDateFormat sdf2 = new SimpleDateFormat("HH½Ã mmºĞ ssÃÊ", Locale.KOREA);
+				SimpleDateFormat sdf2 = new SimpleDateFormat("HHæ™‚ mmåˆ† ssç§’", Locale.JAPAN);
 				String str3 = sdf2.format(new Date(rs.getTimestamp("lastLogoutTime").getTime()));
 				logintime = str3;
 			} else {
 				logindate = "0000-00-00";
-				logintime = "00½Ã 00ºĞ 00ÃÊ";
+				logintime = "00æ™‚ 00åˆ† 00ç§’";
 			}
 			MaxHp = rs.getShort("MaxHp");
 			CurrentHp = rs.getShort("CurHp");
@@ -2662,7 +2666,7 @@ public class LinAllManager {
 			if (target == null)
 				return false;
 			if (target.getClan() == null) {
-				Clanname = "[°¡ÀÔÇÑ Ç÷¸Í ¾øÀ½]";
+				Clanname = "[None Clan]";
 			} else {
 				Clanname = "[" + target.getClan().getClanName() + "]";
 			}
@@ -2694,15 +2698,15 @@ public class LinAllManager {
 			deth = "" + target.getDeaths();
 
 			if (target.getLogOutTime() != null) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
 				String str1 = sdf.format(new Date(target.getLogOutTime().getTime()));
 				logindate = str1;
-				SimpleDateFormat sdf2 = new SimpleDateFormat("HH½Ã mmºĞ ssÃÊ", Locale.KOREA);
+				SimpleDateFormat sdf2 = new SimpleDateFormat("HHæ™‚ mmåˆ† ssç§’", Locale.JAPAN);
 				String str2 = sdf2.format(new Date(target.getLogOutTime().getTime()));
 				logintime = str2;
 			} else {
 				logindate = "0000-00-00";
-				logintime = "00½Ã 00ºĞ 00ÃÊ";
+				logintime = "00æ™‚ 00åˆ† 00ç§’";
 			}
 
 			MaxHp = target.getMaxHp();
@@ -2778,7 +2782,7 @@ public class LinAllManager {
 				String name = rs.getString("char_name");
 				String clanname = "[" + rs.getString("Clanname") + "]";
 				if (clanname.equals("[]") || clanname.equals("[null]")) {
-					clanname = "[°¡ÀÔÇÑ Ç÷¸Í ¾øÀ½]";
+					Clanname = "[None Clan]";
 				}
 
 				int lv = rs.getInt("level");
@@ -2789,15 +2793,15 @@ public class LinAllManager {
 				double per = (currentExp / neededExp) * 100.0;
 				String exp = lv + "Lv     " + nf.format(per) + "%";
 				String login = "0000-00-00  00:00:00";
-				String loginbefore = "0ÀÏÀü";
+				String loginbefore = "0æ—¥å‰";
 				if (rs.getTimestamp("Logout_time") != null) {
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss", Locale.KOREA);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss", Locale.JAPAN);
 
 					String str2 = sdf.format(new Date(rs.getTimestamp("Logout_time").getTime()));
 					login = str2;
-					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
+					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd", Locale.JAPAN);
 					String str3 = sdf2.format(new Date(rs.getTimestamp("Logout_time").getTime()));
-					loginbefore = getDiffDayCount(str3, nowDate()) + "ÀÏÀü";
+					loginbefore = getDiffDayCount(str3, nowDate()) + "å‰";
 				}
 				charlist.put(name, new String[] { name, clanname, exp, login, loginbefore });
 			}
@@ -2811,7 +2815,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * °èÁ¤ Á¤º¸ Ãëµæ
+	 * ã‚¢ã‚«ã‚¦ãƒ³ãƒˆæƒ…å ±ã®å–å¾—
 	 *
 	 * @param name
 	 */
@@ -2821,11 +2825,11 @@ public class LinAllManager {
 			public void run() {
 				try {
 					Account account = Account.load(accountname);
-					lblNewLabel_49.setText(account.getName());// ¾ÆÀÌµğ
-					label_27.setText(account.getPassword());// ºñ¹ø
-					lblNewLabel_42.setText("IP : " + account.getHost());// ¾ÆÀÌÇÇ
+					lblNewLabel_49.setText(account.getName());// ID
+					label_27.setText(account.getPassword());// PASS
+					lblNewLabel_42.setText("IP : " + account.getHost());// IP
 					if (account.isBanned())
-						btnCheckButton.setSelection(true);// º¥ Ã¼Å©¹Ú½º
+						btnCheckButton.setSelection(true);// BANï¼Ÿ
 					else
 						btnCheckButton.setSelection(false);
 					trtmNewTreeitem.removeAll();
@@ -2843,7 +2847,7 @@ public class LinAllManager {
 	}
 
 	/**
-	 * Ä³¸¯ÅÍ Á¤º¸
+	 * characteræƒ…å ±
 	 *
 	 * @param name
 	 */
@@ -2851,23 +2855,23 @@ public class LinAllManager {
 		L1PcInstance pc = L1World.getInstance().getPlayer(name);
 		if (pc == null) {
 			MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-			messageBox.setMessage("±×·¯ÇÑ Ä³¸¯¸íÀº Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù!");
+			messageBox.setMessage("ãã®ã‚ˆã†ãªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 			messageBox.open();
 			return;
 		}
 		if (ServercharInfo(name)) {
-			/** ÀÎº¥ */
+			/** åœ¨åº« */
 			InvantoryList();
-			/** Ã¢°í */
+			/** å€‰åº« */
 			warehouseList();
 		} else if (DBcharInfo(name)) {
-			/** ÀÎº¥ */
+			/** åœ¨åº« */
 			InvantoryList();
-			/** Ã¢°í */
+			/** å€‰åº« */
 			warehouseList();
 		} else {
 			MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.OK | SWT.ICON_INFORMATION);
-			messageBox.setMessage("±×·¯ÇÑ Ä³¸¯¸íÀº Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù!");
+			messageBox.setMessage("ãã®ã‚ˆã†ãªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
 			messageBox.open();
 			return;
 		}
@@ -2939,29 +2943,29 @@ public class LinAllManager {
 						}
 					}
 
-					lblNewLabel_28.setText(Clanname);// Ç÷¸ÍÀÌ¸§[ ]Æ÷ÇÔ
-					lblNewLabel_25.setText(Pcname);// Ä³¸¯¸í
-					lblNewLabel_26.setText(exp);// ·¹º§ °æÇèÄ¡ÆÛ¼¾Æ®
-					lblNewLabel_27.setText(stasts);// ·Î±ä »óÅÂ Login : Æ÷ÇÔ
-					lblNewLabel_30.setText(hp);// hp 111/111
-					label_10.setText(mp);// mp 111/111
-					lblNewLabel_31.setText(str);// Èû º£ÀÌ½º Æ÷ÇÔ
-					label_13.setText(dex);// µ¦½º
-					label_11.setText(con);// ÄÜ
-					label_14.setText(wis);// À§Áî
-					label_12.setText(Int);// ÀÎÆ®
-					label_15.setText(cha);// Ä«¸®
-					label_17.setText(sp);// sp
-					label_16.setText(mr);// mr %Æ÷ÇÔ
-					label_18.setText(er);// ER
-					label_19.setText(dg);// DG
-					lblNewLabel_40.setText(Ltime);// ¶ó½ºÅ¸¹Ùµå Å¸ÀÓ
-					label_21.setText(toptime);// »ó¾ÆÅ¾ Å¸ÀÓ
-					label_22.setText(gitime);// ±â¶õ Å¸ÀÓ
-					lblNewLabel_39.setText(pk);// PK
-					label_20.setText(deth);// µ¥½º
-					lblNewLabel_35.setText(logindate);// ·Î±×¾Æ¿ô ³¯Â¥
-					lblNewLabel_37.setText(logintime);// ·Î±×¾Æ¿ô ½Ã°£
+					lblNewLabel_28.setText(Clanname); // è¡€ç›Ÿå
+					lblNewLabel_25.setText(Pcname); // characterå
+					lblNewLabel_26.setText(exp); // çµŒé¨“å€¤
+					lblNewLabel_27.setText(stasts); // ãƒ­ã‚°ã‚¤ãƒ³çŠ¶æ…‹
+					lblNewLabel_30.setText(hp); // hp 111/111
+					label_10.setText(mp); // mp 111/111
+					lblNewLabel_31.setText(str); // STR
+					label_13.setText(dex); // DEX
+					label_11.setText(con); // CON
+					label_14.setText(wis); // WIS
+					label_12.setText(Int); // INTÆ®
+					label_15.setText(cha); // CHA
+					label_17.setText(sp); // sp
+					label_16.setText(mr); // mr %
+					label_18.setText(er); // ER
+					label_19.setText(dg); // DG
+					lblNewLabel_40.setText(Ltime); // ãƒ©ã‚¹ã‚¿ãƒãƒ‰æ™‚é–“
+					label_21.setText(toptime); // è±¡ç‰™ã®å¡”æ™‚é–“
+					label_22.setText(gitime); // ã‚®ãƒ©ãƒ³ã‚¿ã‚¤ãƒ 
+					lblNewLabel_39.setText(pk); // PK
+					label_20.setText(deth); // ãƒ‡ã‚¹æ•°
+					lblNewLabel_35.setText(logindate); // ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ—¥
+					lblNewLabel_37.setText(logintime); // ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ™‚é–“
 
 					progressBar_1.setMaximum(MaxHp);
 					progressBar_1.setMinimum(0);
@@ -2971,7 +2975,7 @@ public class LinAllManager {
 					progressBar_2.setMinimum(0);
 					progressBar_2.setSelection(CurrentMp);
 
-					/** ÀÎº¥Åä¸® */
+					/** åœ¨åº« */
 					table_2.removeAll();
 					for (L1ItemInstance item : items.values()) {
 						if (item.getItem().getItemId() == 40308) {
@@ -3002,9 +3006,9 @@ public class LinAllManager {
 							tableItem.setForeground(SWTResourceManager.getColor(255, 0, 0));
 						tableItem.setText(new String[] { item.getViewName(), "" + item.getId() });
 					}
-					/** ÀÎº¥Åä¸® */
+					/** åœ¨åº« */
 
-					/** Ã¢°í */
+					/** å€‰åº« */
 					table_3.removeAll();
 					for (L1ItemInstance item : warehouseitems.values()) {
 						if (item.getItem().getItemId() == 40308) {
@@ -3035,7 +3039,7 @@ public class LinAllManager {
 							tableItem.setForeground(SWTResourceManager.getColor(255, 0, 0));
 						tableItem.setText(new String[] { item.getViewName(), "" + item.getId() });
 					}
-					/** Ã¢°í */
+					/** å€‰åº« */
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -3050,21 +3054,21 @@ public class LinAllManager {
 		display.syncExec(new Runnable() {
 			public void run() {
 				try {
-					lblNewLabel_5.setText("" + (int) Config.RATE_XP);// °æÇèÄ¡ ¹èÀ²
-					lblNewLabel_7.setText("" + (int) Config.RATE_DROP_ADENA);// ¾Æµ¥³ª ¹èÀ²
-					lblNewLabel_9.setText("" + (int) Config.RATE_DROP_ITEMS);// ¾ÆÀÌÅÛ ¹èÀ²
-					lblNewLabel_20.setText(AdenMake);// ¾Æµ§ ÃÑ»ı»ê·®
-					label.setText(AdenConsume);// ¾Æµ§ ÃÑ È¸¼ö·®
-					lblNewLabel_21.setText(AdenTax + "%");// ¼¼±İ ¹èÀ²
-					lblNewLabel_22.setText(Bugdividend);// ¹ö°æ ÃÖ´ë¹è´ç
-					label_1.setText(AccountCount);// °èÁ¤»ı¼º
-					lblNewLabel_23.setText(CharCount);// Ä³¸¯ »ı¼º
-					label_2.setText(PvPCount);// pvp È½¼ö
-					label_4.setText(PenaltyCount);// ÆĞ³ÎÆ¼ È½¼ö
-					label_3.setText(ClanMaker);// Ç÷¸Í Ã¢¼³
-					label_5.setText(Maxuser);// ÃÖ´ë À¯Àú¼ö
-					lblNewLabel_2.setText(ThreadCount);// ¾²·¹µå °¹¼ö
-					lblm.setText(Memory);// ¸Ş¸ğ¸® ¿ë·®
+					lblNewLabel_5.setText("" + (int) Config.RATE_XP); // çµŒé¨“å€¤å€ç‡
+					lblNewLabel_7.setText("" + (int) Config.RATE_DROP_ADENA); // ã‚¢ãƒ‡ãƒŠå€ç‡
+					lblNewLabel_9.setText("" + (int) Config.RATE_DROP_ITEMS); // ã‚¢ã‚¤ãƒ†ãƒ å€ç‡
+					lblNewLabel_20.setText(AdenMake); // ã‚¢ãƒ‡ãƒ³ç·ç”Ÿç”£é‡ï¼Ÿï¼ˆã‚¢ãƒ‡ãƒŠã®é–“é•ã„ï¼Ÿï¼‰
+					label.setText(AdenConsume); // ã‚¢ãƒ‡ãƒ³ç·å›åé‡ï¼Ÿ
+					lblNewLabel_21.setText(AdenTax + "%"); // ç¨ç‡
+					lblNewLabel_22.setText(Bugdividend); // ãƒã‚®ãƒ¼æœ€å¤§é…å½“ï¼Ÿ
+					label_1.setText(AccountCount); // ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆ
+					lblNewLabel_23.setText(CharCount); // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ä½œæˆ
+					label_2.setText(PvPCount); // pvp å›æ•°
+					label_4.setText(PenaltyCount); // ãƒšãƒŠãƒ«ãƒ†ã‚£å›æ•°
+					label_3.setText(ClanMaker); // è¡€ç›Ÿã®å‰µè¨­
+					label_5.setText(Maxuser); // æœ€å¤§ãƒ¦ãƒ¼ã‚¶ãƒ¼æ•°
+					lblNewLabel_2.setText(ThreadCount); // ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+					lblm.setText(Memory); // ãƒ¡ãƒ¢ãƒªå®¹é‡
 
 					Calendar cal = Calendar.getInstance();
 					long timeMin = ((cal.getTimeInMillis() - Server.StartTime.getTimeInMillis()) / 1000) / 60;
@@ -3105,30 +3109,30 @@ public class LinAllManager {
 
 	static public void toMessageBox(final String title, final String msg) {
 		MessageBox messageBox = new MessageBox(shlInbumserverManager, SWT.ICON_WARNING);
-		messageBox.setText(String.format("°æ°í :: %s", title));
+		messageBox.setText(String.format("ï¿½ï¿½ï¿½ :: %s", title));
 		messageBox.setMessage(msg);
 		messageBox.open();
 	}
 
 	public void savelog() {
 		try {
-			savelog(txtInbumserverByleaf, "½Ã½ºÅÛ.txt");
-			savelog(chatText, "ÀüÃ¼Ã¤ÆÃ.txt");
-			savelog(txtTime, "±Ó¼Ó¸».txt");
-			savelog(text_5, "Ç÷¸ÍÃ¤ÆÃ.txt");
-			savelog(text_6, "ÆÄÆ¼Ã¤ÆÃ.txt");
-			savelog(txtTime_1, "»óÁ¡.txt");
-			savelog(txtTime_2, "±³È¯.txt");
-			savelog(text, "Ã¢°í.txt");
-			savelog(text_4, "Æ¯¼öÃ¢°í.txt");
-			savelog(txtTime_3, "ÀÎÃ¾Æ®.txt");
-			savelog(text_10, "µå¶ø&ÇÈ¾÷.txt");
-			savelog(text_7, "ÆĞ³ÎÆ¼.txt");
-			savelog(text_8, "ÀÏ¹İÃ¤ÆÃ.txt");
-			savelog(text_9, "º¸½º½ºÆù.txt");
-			savelog(text_14, "°ø¼º·Î±×.txt");
-			savelog(text_11, "¸í·É¾î(GM).txt");
-			savelog(text_15, "Á¦ÀÛ·Î±×.txt");
+			savelog(txtInbumserverByleaf, "System.txt");
+			savelog(chatText, "FullChatLog.txt");
+			savelog(txtTime, "WisperChatLog.txt");
+			savelog(text_5, "ClanChatLog.txt");
+			savelog(text_6, "PartyChatLog.txt");
+			savelog(txtTime_1, "StoreLog.txt");
+			savelog(txtTime_2, "TradeLog.txt");
+			savelog(text, "WarehouseLog.txt");
+			savelog(text_4, "ElfClanWarehouseLog.txt");
+			savelog(txtTime_3, "EnchantLog.txt");
+			savelog(text_10, "DropLog.txt");
+			savelog(text_7, "PenaltyLog.txt");
+			savelog(text_8, "NormalChatLog.txt");
+			savelog(text_9, "BossSpawnLog.txt");
+			savelog(text_14, "CastleLog.txt");
+			savelog(text_11, "GMCommandLog.txt");
+			savelog(text_15, "CreateLog.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -3136,7 +3140,7 @@ public class LinAllManager {
 
 	public void savelog(Text textPane, String name) {
 		try {
-			// ** ³¯Â¥º°·Î Æú´õ»ı¼ºÇØ¼­ ·Î±×ÀúÀåÇÏ±â **//
+			// **æ—¥ä»˜ã§ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œæˆã—ã¦ãƒ­ã‚°ã‚’ä¿å­˜ã™ã‚‹**//
 			File f = null;
 			String sTemp = "";
 			sTemp = getDate();
@@ -3150,7 +3154,7 @@ public class LinAllManager {
 			f = new File("ManagerLog/" + date);
 			if (!f.exists())
 				f.mkdir();
-			// ** ³¯Â¥º°·Î Æú´õ»ı¼ºÇØ¼­ ·Î±×ÀúÀåÇÏ±â **//
+			// **æ—¥ä»˜ã§ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œæˆã—ã¦ãƒ­ã‚°ã‚’ä¿å­˜ã™ã‚‹**//
 			BufferedWriter w = new BufferedWriter(new FileWriter("ManagerLog/" + date + "/" + name, true));
 			PrintWriter pw = new PrintWriter(w, true);
 			pw.print(textPane.getText());

@@ -1,9 +1,5 @@
 package manager.dialog;
 
-import l1j.server.server.model.L1PolyMorph;
-import l1j.server.server.model.Instance.L1PcInstance;
-import l1j.server.server.serverpackets.S_SystemMessage;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -16,6 +12,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import l1j.server.server.model.L1PolyMorph;
+import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.serverpackets.S_SystemMessage;
+
 public class PlayerPoly extends Dialog {
 
 	protected Object result;
@@ -25,7 +25,7 @@ public class PlayerPoly extends Dialog {
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parent
 	 * @param style
 	 */
@@ -36,7 +36,7 @@ public class PlayerPoly extends Dialog {
 
 	/**
 	 * Open the dialog.
-	 * 
+	 *
 	 * @return the result
 	 */
 	public Object open(L1PcInstance pc) {
@@ -59,8 +59,8 @@ public class PlayerPoly extends Dialog {
 
 		shell = new Shell(getParent(), getStyle());
 		shell.setSize(251, 70);
-		shell.setText("«√∑π¿ÃæÓ ∫ØΩ≈");
-		// »≠∏È¡ﬂæ”¿∏∑Œ
+		shell.setText("„Éó„É¨„Ç§„É§„ÉºÂ§âË∫´");
+		// ÁîªÈù¢‰∏≠Â§Æ„Å∏
 		display = Display.getDefault();
 		shell.setBounds((display.getBounds().width / 2) - (shell.getBounds().width / 2),
 				(display.getBounds().height / 2) - (shell.getBounds().height / 2), shell.getBounds().width,
@@ -72,7 +72,7 @@ public class PlayerPoly extends Dialog {
 		shell.setLayout(gl_shell);
 
 		Label lblNewLabel_2 = new Label(shell, SWT.NONE);
-		lblNewLabel_2.setText("∫ØΩ≈π¯»£");
+		lblNewLabel_2.setText("PolyID");
 
 		text_1 = new Text(shell, SWT.BORDER);
 		text_1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
@@ -82,12 +82,12 @@ public class PlayerPoly extends Dialog {
 		GridData gd_lblNewButton = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblNewButton.widthHint = 65;
 		lblNewButton.setLayoutData(gd_lblNewButton);
-		lblNewButton.setText("Ω« «‡");
+		lblNewButton.setText("ÂÆüË°å");
 		lblNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				L1PolyMorph.doPoly(pc, Integer.valueOf(text_1.getText()), 1800, L1PolyMorph.MORPH_BY_GM);
-				pc.sendPackets(new S_SystemMessage("øÓøµ¿⁄¥‘ø°∞‘ ∫ØΩ≈πˆ«¡∏¶ πﬁæ“Ω¿¥œ¥Ÿ."));
+				pc.sendPackets(new S_SystemMessage("„Ç™„Éö„É¨„Éº„Çø„Éº„Åå„ÅÇ„Å™„Åü„ÇíÂ§âË∫´„Åï„Åõ„Åæ„Åó„Åü„ÄÇ"));
 				close();
 			}
 		});
