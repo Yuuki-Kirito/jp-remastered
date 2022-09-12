@@ -21,4 +21,7 @@ encoding//src/server/message/ServerMessage.java=UTF-8
 encoding//src/server/monitor/MessageMonitor.java=UTF-8
 encoding//src/server/monitor/Monitor.java=UTF-8
 encoding//src/server/monitor/Monitorable.java=UTF-8
+encoding//src/server/system/autoshop/AutoShop.java=UTF-8
+encoding//src/server/system/autoshop/AutoShopImpl.java=UTF-8
+encoding//src/server/system/autoshop/AutoShopManager.java=UTF-8
 encoding/<project>=MS949

@@ -18,7 +18,7 @@ public class AutoShopImpl implements AutoShop {
 
 	@Override
 	public void logout() {
-		// ø£√Æ∆Æ∏¶ DB¿« character_buffø° ∫∏¡∏«—¥Ÿ
+		// character_buff„Å´‰øùÂ≠ò
 		CharBuffTable.DeleteBuff(shopCharacter);
 		CharBuffTable.SaveBuff(shopCharacter);
 		shopCharacter.getSkillEffectTimerSet().clearSkillEffectTimer();
