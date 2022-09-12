@@ -69,7 +69,7 @@ public class Weapon extends L1ItemInstance {
 		}
 	}
 
-	private static boolean ¾¾¹ß³ð(L1ItemInstance weapon, L1PcInstance pc) {
+	private static boolean isEquipLevel(L1ItemInstance weapon, L1PcInstance pc) {
 		int min = weapon.getItem().getMinLevel();
 		int max = weapon.getItem().getMaxLevel();
 		if (min != 0 && min > pc.getLevel()) {
@@ -149,7 +149,7 @@ public class Weapon extends L1ItemInstance {
 						return;
 					}
 					if (weapon.getItem().getType() == 6) {
-						if (!¾¾¹ß³ð(weapon, activeChar))
+						if (!isEquipLevel(weapon, activeChar))
 							return;
 						
 						pcInventory.setEquipped(activeChar.getSecondWeapon(),false, false, true, true);
@@ -157,7 +157,7 @@ public class Weapon extends L1ItemInstance {
 						return;
 
 					} else {
-						if (!¾¾¹ß³ð(weapon, activeChar))
+						if (!isEquipLevel(weapon, activeChar))
 							return;
 						pcInventory.setEquipped(activeChar.getSecondWeapon(),false, false, false, true);
 						pcInventory.setEquipped(activeChar.getWeapon(), false,false, false, false);
@@ -186,7 +186,7 @@ public class Weapon extends L1ItemInstance {
 										new S_ServerMessage(128), true); 
 								return;
 							}
-							if (!¾¾¹ß³ð(weapon, activeChar)) {
+							if (!isEquipLevel(weapon, activeChar)) {
 								return;
 							}
 							int polyid = activeChar.getGfxId().getTempCharGfx();
@@ -217,7 +217,7 @@ public class Weapon extends L1ItemInstance {
 					activeChar.sendPackets(new S_Sound(2828), true);
 				return;
 			} else {
-				if (!¾¾¹ß³ð(weapon, activeChar))
+				if (!isEquipLevel(weapon, activeChar))
 					return;
 				pcInventory.setEquipped(activeChar.getWeapon(), false, false,
 						true);
@@ -230,7 +230,7 @@ public class Weapon extends L1ItemInstance {
 																			// ¼Õ¿¡
 																			// µé·¯ºÙ¾ú½À´Ï´Ù.
 		}
-		if (!¾¾¹ß³ð(weapon, activeChar))
+		if (!isEquipLevel(weapon, activeChar))
 			return;
 		pcInventory.setEquipped(weapon, true, false, false);
 		if (weapon.getItemId() == 7236) {// µ¥ºÒÁø ¾¾¹ß¸àÆ®
