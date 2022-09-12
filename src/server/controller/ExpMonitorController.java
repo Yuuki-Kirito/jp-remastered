@@ -26,14 +26,14 @@ public class ExpMonitorController implements Runnable {
 		GeneralThreadPool.getInstance().execute(this);
 	}
 
-	private Collection<L1PcInstance> list = null;
+	private Collection<L1PcInstance> _list = null;
 
 	@Override
-	public void run() { //¹ÙÆ÷¸ŞÆ®
+	public void run() { // ãƒãƒ•ã‚©ãƒ¡ãƒƒãƒˆï¼Ÿ
 		while (true) {
 			try {
-				list = L1World.getInstance().getAllPlayers();
-				for (L1PcInstance pc : list) {
+				_list = L1World.getInstance().getAllPlayers();
+				for (L1PcInstance pc : _list) {
 					if (pc instanceof L1RobotInstance) {
 						continue;
 					}
@@ -51,7 +51,7 @@ public class ExpMonitorController implements Runnable {
 							Broadcaster.broadcastPacket(pc, s_lawful, true);
 
 							/**
-							 * (º»¼·) ¹ÙÆ÷¸ŞÆ® ¼­¹ö¿¡ ¾÷µ¥ÀÌÆ®µÈ ¼ºÇâÄ¡¿¡ µû¸¥ AC ¹× MR Àû¿ë
+							 * ãƒãƒ•ã‚©ãƒ¡ãƒƒãƒˆã‚µãƒ¼ãƒãƒ¼ã«æ›´æ–°ã•ã‚ŒãŸå‚¾å‘ã«åŸºã¥ã„ã¦ACã¨MRã‚’é©ç”¨ã™ã‚‹ï¼Ÿ
 							 **/
 							 /*LawfulBonus(pc);*/
 						}
@@ -76,7 +76,7 @@ public class ExpMonitorController implements Runnable {
 		}
 	}
 
-	/*private void LawfulBonus(L1PcInstance pc) { //¹ÙÆ÷ ½Ã½ºÅÛ
+	/*private void LawfulBonus(L1PcInstance pc) { //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã½ï¿½ï¿½ï¿½
 		int ACvalue = 0;
 		int MRvalue = 0;
 		int SPvalue = 0;
@@ -138,13 +138,13 @@ public class ExpMonitorController implements Runnable {
 			pc.sendPackets(pb, true);
 			pc.sendPackets(pb2, true);
 			pc.setOBapoLevell(pc.getNBapoLevel());
-			
+
 			 * if (pc.getLevel() <= 75){ S_PacketBox pb3 = new
 			 * S_PacketBox(S_PacketBox.BAPO, 6, true); pc.sendPackets(pb3);
 			 * pb3.clear(); pb3 = null; }else { S_PacketBox pb4 = new
 			 * S_PacketBox(S_PacketBox.BAPO, 6, false); pc.sendPackets(pb4);
 			 * pb4.clear(); pb4 = null; }
-			 
+
 		}
 
 		if (ACvalue != 0 && MRvalue != 0) {

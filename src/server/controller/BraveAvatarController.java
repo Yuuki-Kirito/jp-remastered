@@ -34,7 +34,7 @@ public class BraveAvatarController implements Runnable {
 				if (pc == null || pc.getNetConnection() == null) {
 					continue;
 				}
-				
+
 				if (pc.getParty() != null && pc.getParty().getLeader().isCrown() && pc.getParty().getLeader().isSkillMastery(121) && pc.getParty().getLeader().getLocation().getTileLineDistance(pc.getLocation()) <= 18) {
 					if (pc.getParty().getNumOfMembers() >= 1) {
 						if (!pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BRAVE_AVATAR)) {
@@ -46,16 +46,16 @@ public class BraveAvatarController implements Runnable {
 							pc.addSpiritTolerance(2);
 							pc.addTechniqueTolerance(2);
 							pc.addFearTolerance(2);
-							pc.sendPackets(new S_SPMR(pc), true);				// SP, MR º¯°æ Ä¡ Àü¼Û
-							pc.sendPackets(new S_OwnCharStatus(pc), true);		// ÃÖ½Å Ä³¸¯ÅÍ ÀüÃ¼ »óÅÂ Á¤º¸ Àü¼Û
+							pc.sendPackets(new S_SPMR(pc), true); // SP,MRå¤‰æ›´
+							pc.sendPackets(new S_OwnCharStatus(pc), true); // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã®æ›´æ–°
 							pc.sendPackets(new S_PacketBox(S_PacketBox.NONE_TIME_ICON, 1, 479), true);
 							pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.get_PlusEr()), true);
 						}
-						
+
 						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.BRAVE_AVATAR, 30 * 1000);
 					}
 				} else if (pc.getParty() == null && pc.isCrown() && pc.isSkillMastery(121)) {
-					// Å¬·¡½º ÄÉ¾î ±ºÁÖ ¾Æ¿ì¶ó ½ºÅ³ Àû¿ë by white
+					// ã‚¯ãƒ©ã‚¹ã‚±ã‚¢ã€å›ä¸»ã‚ªãƒ¼ãƒ©ã‚¹ã‚­ãƒ«
 					if (!pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BRAVE_AVATAR)) {
 						pc.getAbility().addAddedStr((byte) 1);
 						pc.getAbility().addAddedDex((byte) 1);
@@ -65,12 +65,12 @@ public class BraveAvatarController implements Runnable {
 						pc.addSpiritTolerance(2);
 						pc.addTechniqueTolerance(2);
 						pc.addFearTolerance(2);
-						pc.sendPackets(new S_SPMR(pc), true);				// SP, MR º¯°æ Ä¡ Àü¼Û
-						pc.sendPackets(new S_OwnCharStatus(pc), true);		// ÃÖ½Å Ä³¸¯ÅÍ ÀüÃ¼ »óÅÂ Á¤º¸ Àü¼Û
+						pc.sendPackets(new S_SPMR(pc), true); // SP,MRå¤‰æ›´
+						pc.sendPackets(new S_OwnCharStatus(pc), true); // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã®æ›´æ–°
 						pc.sendPackets(new S_PacketBox(S_PacketBox.NONE_TIME_ICON, 1, 479), true);
 						pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.get_PlusEr()), true);
 					}
-					
+
 					pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.BRAVE_AVATAR, 30 * 1000);
 				} else {
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BRAVE_AVATAR)) {
@@ -81,7 +81,7 @@ public class BraveAvatarController implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		GeneralThreadPool.getInstance().schedule(this, 1000);
 	}
 

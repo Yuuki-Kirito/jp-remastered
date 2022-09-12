@@ -28,22 +28,22 @@ import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.utils.SQLUtil;
 
 
-
+// XXX ä½•ã‚’åˆ¶å¾¡ã—ã¦ã„ã‚‹ã‹ä¸æ˜ãªã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ by MM
 public final class InvSwapController {
-	
+
 	private static Logger _log = Logger.getLogger(InvSwapController.class.getName());
 	private static InvSwapController _instance;
-	private static Map<Integer, Map<Integer, List<Integer>>> list;	// ¼ÂÆ®º° ¾ÆÀÌÅÛ ¸ñ·Ï Á¤º¸.
-	private static Map<Integer, Integer> code_list;				// ÇöÀç ¼³Á¤µÈ ¼ÂÆ®À§Ä¡.
+	private static Map<Integer, Map<Integer, List<Integer>>> _list;	// ã‚»ãƒƒãƒˆã”ã¨ã®ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆ
+	private static Map<Integer, Integer> code_list;				// ç¾åœ¨è¨­å®šã•ã‚Œã¦ã„ã‚‹ä½ç½®ï¼Ÿ
 	public static InvSwapController getInstance() {
 		if (_instance == null) {
 			_instance = new InvSwapController();
 		}
 		return _instance;
 	}
-	
+
 	private InvSwapController() {
-		list = new HashMap<Integer, Map<Integer, List<Integer>>>();
+		_list = new HashMap<Integer, Map<Integer, List<Integer>>>();
 		code_list = new HashMap<Integer, Integer>();
 		Connection con = null;
 		PreparedStatement st = null;
@@ -55,12 +55,12 @@ public final class InvSwapController {
 			while (rs.next()) {
 				int key = rs.getInt("objectId");
 				//
-				Map<Integer, List<Integer>> db = list.get(key);
+				Map<Integer, List<Integer>> db = _list.get(key);
 				if(db == null) {
 					db = new HashMap<Integer, List<Integer>>();
 					db.put(0, new ArrayList<Integer>());
 					db.put(1, new ArrayList<Integer>());
-					list.put(key, db);
+					_list.put(key, db);
 				}
 				//
 				String set1 = rs.getString("set1");
@@ -86,13 +86,13 @@ public final class InvSwapController {
 			SQLUtil.close(con);
 		}
 	}
-	
-	
+
+
 	public  void initDB(){
 		Connection con = null;
 		PreparedStatement st = null;
-		synchronized (list) {
-			for(int key : list.keySet()) {
+		synchronized (_list) {
+			for(int key : _list.keySet()) {
 				try {
 					//
 					con = L1DatabaseFactory.getInstance().getConnection();
@@ -101,7 +101,7 @@ public final class InvSwapController {
 					st.executeUpdate();
 					st.close();
 					//
-					Map<Integer, List<Integer>> db = list.get(key);
+					Map<Integer, List<Integer>> db = _list.get(key);
 					StringBuffer set1 = new StringBuffer();
 					StringBuffer set2 = new StringBuffer();
 					for(int value : db.get(0))
@@ -124,21 +124,21 @@ public final class InvSwapController {
 					SQLUtil.close(con);
 				}
 			}
-		}						
-	}	
-	
-	public void toWorldJoin(L1PcInstance pc) {	
+		}
+	}
+
+	public void toWorldJoin(L1PcInstance pc) {
 		Map<Integer, List<Integer>> set = null;
-		synchronized (list) {
-			set = list.get(pc.getId());
+		synchronized (_list) {
+			set = _list.get(pc.getId());
 		}
 		//System.out.println(set);
 		if(set == null) {
 			set = new HashMap<Integer, List<Integer>>();
 			set.put(0, new ArrayList<Integer>());
 			set.put(1, new ArrayList<Integer>());
-			synchronized (list) {
-				list.put(pc.getId(), set);
+			synchronized (_list) {
+				_list.put(pc.getId(), set);
 			}
 			synchronized (code_list) {
 				code_list.put(pc.getId(), 0);
@@ -146,7 +146,7 @@ public final class InvSwapController {
 		}
 		pc.sendPackets(new S_InventorySwap(code_list.get(pc.getId()), set));
 	}
-	
+
 	public void toChangeSet(L1PcInstance pc, int code) {
 		if(code<0 && code>1)
 			return;
@@ -155,8 +155,8 @@ public final class InvSwapController {
 		}
 		//
 		Map<Integer, List<Integer>> set = null;
-		synchronized (list) {
-			set = list.get(pc.getId());
+		synchronized (_list) {
+			set = _list.get(pc.getId());
 		}
 		if(set == null)
 			return;
@@ -166,7 +166,7 @@ public final class InvSwapController {
 			if(set_list.contains(item.getId())){
 				continue;
 			}
-		
+
 			if(item.getItem().getType2() != 1 && item.getItem().getType2() != 2)
 				continue;
 			if(item.isEquipped()){
@@ -188,15 +188,15 @@ public final class InvSwapController {
 				UseWeapon(pc, item, code);
 			else 	if(item.getItem().getType2() == 2)
 				UseArmor(pc, item);
-				
+
 		}
 		pc.sendPackets(new S_OwnCharStatus(pc));
 		pc.sendPackets(new S_SPMR(pc));
 		pc.sendPackets(new S_InventorySwap(code));
 	}
-	
+
 	/**
-	 * ÀúÀå Å¬¸¯½Ã È£ÃâµÊ.
+	 * ä¿å­˜ã‚¯ãƒªãƒƒã‚¯æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
 	 * @param pc
 	 * @param code
 	 */
@@ -206,8 +206,8 @@ public final class InvSwapController {
 			return;
 		//
 		Map<Integer, List<Integer>> set = null;
-		synchronized (list) {
-			set = list.get(pc.getId());
+		synchronized (_list) {
+			set = _list.get(pc.getId());
 		}
 		if(set == null)
 			return;
@@ -222,76 +222,74 @@ public final class InvSwapController {
 					continue;
 				if(!item.isEquipped())
 					continue;
-				
+
 				db.add(item.getId());
-			}	
+			}
 			if(db.size() >22){
-				System.out.println("Âø¿ë°¹¼ö ÅäÅ» ¿À¹ö " + pc.getName());
+				System.out.println("ç€ç”¨å€‹æ•°ã‚ªãƒ¼ãƒãƒ¼ï¼š" + pc.getName());
 			}
 		}
 	}
-	
+
 	public void UseWeapon(L1PcInstance activeChar, L1ItemInstance weapon, int code) {
 		L1PcInventory pcInventory = activeChar.getInventory();
 		if (activeChar.getWeapon() == null
-				|| !activeChar.getWeapon().equals(weapon)) { 
+				|| !activeChar.getWeapon().equals(weapon)) {
 			int weapon_type = weapon.getItem().getType();
 			int polyid = activeChar.getGfxId().getTempCharGfx();
 
 			if (weapon.getItem().getItemId() != 7236) {
-				if (!L1PolyMorph.isEquipableWeapon(polyid, weapon_type)) { 
-					String n = ("+" + weapon.getEnchantLevel() + " " + weapon
-							.getName());
-					activeChar.sendPackets(new S_SystemMessage("ÇöÀç º¯½Å »óÅÂ¿¡¼­´Â "
-							+ n + "À» Âø¿ë ÇÒ ¼ö ¾ø½À´Ï´Ù."), true);
+				if (!L1PolyMorph.isEquipableWeapon(polyid, weapon_type)) {
+					String n = ("+" + weapon.getEnchantLevel() + " " + weapon.getName());
+					activeChar.sendPackets(new S_SystemMessage("ç¾åœ¨ã®å¤‰èº«çŠ¶æ…‹ã§ã¯" + n + "ã‚’ç€ç”¨ã§ãã¾ã›ã‚“ã€‚"), true);
 					return;
 				}
 			}
 
 			if (weapon.getItem().isTwohandedWeapon()
-					&& pcInventory.getGarderEquipped(2, 7, 13) >= 1) { 
-				activeChar.sendPackets(new S_ServerMessage(128), true); 
+					&& pcInventory.getGarderEquipped(2, 7, 13) >= 1) {
+				activeChar.sendPackets(new S_ServerMessage(128), true);
 				return;
 			}
 
 		}
 
-		activeChar.cancelAbsoluteBarrier(); // ¾Æºê¼Ò¸£Æ®¹Ù¸®¾ÆÀÇ ÇØÁ¦
+		activeChar.cancelAbsoluteBarrier(); // ã‚¢ãƒ–ã‚½ãƒªãƒ¥ãƒ¼ãƒˆãƒãƒªã‚¢ã®è§£é™¤
 		boolean isdoubleweapon = false;
 		if (activeChar.isWarrior()) {
 			if (activeChar.isSlayer) {
 				if (activeChar.getWeapon() != null && activeChar.getSecondWeapon() != null) {
-					
+
 					isdoubleweapon = true;
 				}
 				if (isdoubleweapon) {
 					if (activeChar.getWeapon().equals(weapon)) {
 						if (activeChar.getWeapon().getItem().getBless() == 2) {
-							activeChar.sendPackets(new S_ServerMessage(150)); 
+							activeChar.sendPackets(new S_ServerMessage(150));
 							return;
 						}
-						// Àåºñ ±³È¯Àº ¾Æ´Ï°í Á¦¿ÜÇÒ »Ó
+						// äº¤æ›ã§ã¯ãªãè§£é™¤
 						pcInventory.setEquipped(activeChar.getWeapon(), false, false, false, false);
 						return;
 					}
 					if (activeChar.getSecondWeapon().equals(weapon)) {
-						// Àåºñ ±³È¯Àº ¾Æ´Ï°í Á¦¿ÜÇÒ »Ó
+						// äº¤æ›ã§ã¯ãªãè§£é™¤
 						pcInventory.setEquipped(activeChar.getSecondWeapon(),
 								false, false, false, true);
 						return;
 					}
 					if (weapon.getItem().getType() == 6) {
-						if (!¾¾¹ß³ğ(weapon, activeChar)){
+						if (!isEquipLevel(weapon, activeChar)){
 							return;
 						}
-						
+
 						pcInventory.setEquipped(activeChar.getSecondWeapon(),false, false, true, true);
 						pcInventory.setEquipped(weapon, true, false, false,true);
 						return;
 
 					} else {
-						if (!¾¾¹ß³ğ(weapon, activeChar)){
-	
+						if (!isEquipLevel(weapon, activeChar)){
+
 							return;
 						}
 						pcInventory.setEquipped(activeChar.getSecondWeapon(),false, false, false, true);
@@ -302,34 +300,33 @@ public final class InvSwapController {
 				} else {
 					if (activeChar.getWeapon() != null) {
 						if (activeChar.getWeapon().equals(weapon)) {
-							if (activeChar.getWeapon().getItem().getBless() == 2) { 
+							if (activeChar.getWeapon().getItem().getBless() == 2) {
 								activeChar.sendPackets(new S_ServerMessage(150));
 								return;
 							}
-							// Àåºñ ±³È¯Àº ¾Æ´Ï°í Á¦¿ÜÇÒ »Ó
-							pcInventory.setEquipped(activeChar.getWeapon(),
-									false, false, false, false);
+							// äº¤æ›ã§ã¯ãªãè§£é™¤ã™ã‚‹
+							pcInventory.setEquipped(activeChar.getWeapon(), false, false, false, false);
 							return;
 						}
 						if (activeChar.getWeapon().getItem().getType() == 6 && weapon.getItem().getType() == 6) {
 							if (pcInventory.getGarderEquipped(2, 7, 13) >= 1) {
-								activeChar.sendPackets(new S_ServerMessage(128), true); 
+								activeChar.sendPackets(new S_ServerMessage(128), true);
 								return;
 							}
 							if (pcInventory.getGarderEquipped(2, 13, 13) >= 1) {
 								activeChar.sendPackets(
-										new S_ServerMessage(128), true); 
+										new S_ServerMessage(128), true);
 								return;
 							}
-							if (!¾¾¹ß³ğ(weapon, activeChar)) {
+							if (!isEquipLevel(weapon, activeChar)) {
 								return;
 							}
 							int polyid = activeChar.getGfxId().getTempCharGfx();
 							if (!useweaponpoly(activeChar, weapon, polyid)) {
 								return;
 							}
-							activeChar.sendPackets(new S_SkillSound(activeChar.getId(), 12534)); //½½·¹ÀÌ¾î ÀÌÆåÆ®
-				        	Broadcaster.broadcastPacket(activeChar, new S_SkillSound(activeChar.getId(), 12534)); //½½·¹ÀÌ¾î ÀÌÆåÆ®
+							activeChar.sendPackets(new S_SkillSound(activeChar.getId(), 12534)); // ã‚¹ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
+				        	Broadcaster.broadcastPacket(activeChar, new S_SkillSound(activeChar.getId(), 12534)); // ã‚¹ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
 							pcInventory.setEquipped(weapon, true, false, false,true);
 							return;
 						}
@@ -338,48 +335,44 @@ public final class InvSwapController {
 				}
 			}
 		}
-		if (activeChar.getWeapon() != null) { // ÀÌ¹Ì ¹«¾ùÀÎ°¡¸¦ Àåºñ ÇÏ°í ÀÖ´Â °æ¿ì, ÀüÀÇ Àåºñ¸¦ ¶¾´Ù
-			if (activeChar.getWeapon().getItem().getBless() == 2) { // ÀúÁÖÇØÁö°í ÀÖ¾úÀ»
-																	// °æ¿ì
-				activeChar.sendPackets(new S_ServerMessage(150), true); 
+		if (activeChar.getWeapon() != null) { // æ—¢ã«ä½•ã‹ã‚’è£…å‚™ã—ã¦ã„ã‚‹å ´åˆã€‚
+			if (activeChar.getWeapon().getItem().getBless() == 2) { // å‘ªã‚ã‚ŒãŸæ­¦å™¨
+				activeChar.sendPackets(new S_ServerMessage(150), true);
 				return;
 			}
-			if (activeChar.getWeapon().equals(weapon)) {
-				// Àåºñ ±³È¯Àº ¾Æ´Ï°í Á¦¿ÜÇÒ »Ó
-				pcInventory.setEquipped(activeChar.getWeapon(), false, false,
-						false);
-				if (weapon.getItemId() == 262)// ºí·¯µå¼­Ä¿ Âø¿ë »ç¿îµå
+			if (activeChar.getWeapon().equals(weapon)) { // è£…å‚™ã—ã¦ã‚‹æ­¦å™¨ã¨åŒã˜ãªã‚‰è§£é™¤
+				pcInventory.setEquipped(activeChar.getWeapon(), false, false, false);
+
+				if (weapon.getItemId() == 262) {// ãƒ–ãƒ©ãƒƒãƒ‰ã‚µãƒƒã‚«ãƒ¼ï¼Ÿç€ç”¨ã‚µã‚¦ãƒ³ãƒ‰
 					activeChar.sendPackets(new S_Sound(2828), true);
+				}
 				return;
 			} else {
-				if (!¾¾¹ß³ğ(weapon, activeChar))
+				if (!isEquipLevel(weapon, activeChar)) {
 					return;
-				pcInventory.setEquipped(activeChar.getWeapon(), false, false,
-						true);
+				}
+				pcInventory.setEquipped(activeChar.getWeapon(), false, false, true);
 			}
 		}
 
-		if (weapon.getItemId() == 200002) { // ÀúÁÖÇØÁø ´ÙÀÌ½º´Ù°¡
-			activeChar.sendPackets(
-					new S_ServerMessage(149, weapon.getLogName()), true); // \f1%0ÀÌ
-																			// ¼Õ¿¡
-																			// µé·¯ºÙ¾ú½À´Ï´Ù.
+		if (weapon.getItemId() == 200002) { // å‘ªã‚ã‚ŒãŸãƒ€ã‚¤ã‚¹ãƒ€ã‚¬ãƒ¼
+			// f1%0 ãŒæ‰‹ã«ãã£ã¤ãã¾ã—ãŸã€‚
+			activeChar.sendPackets(new S_ServerMessage(149, weapon.getLogName()), true);
 		}
-		if (!¾¾¹ß³ğ(weapon, activeChar))
+		if (!isEquipLevel(weapon, activeChar)) {
 			return;
-		pcInventory.setEquipped(weapon, true, false, false);
-		if (weapon.getItemId() == 7236) {// µ¥ºÒÁø ¾¾¹ß¸àÆ®
-			activeChar.sendPackets(
-					new S_ServerMessage(149, weapon.getLogName()), true); // \f1%0ÀÌ
-																			// ¼Õ¿¡
-																			// µé·¯ºÙ¾ú½À´Ï´Ù.
 		}
-		if (weapon.getItemId() == 262)// ºí·¯µå¼­Ä¿ Âø¿ë »ç¿îµå
+		pcInventory.setEquipped(weapon, true, false, false);
+		if (weapon.getItemId() == 7236) { // XXX ä¸æ˜ãªæ­¦å™¨
+			// f1%0 ãŒæ‰‹ã«ãã£ã¤ãã¾ã—ãŸã€‚
+			activeChar.sendPackets(new S_ServerMessage(149, weapon.getLogName()), true);
+		}
+		if (weapon.getItemId() == 262) {// ãƒ–ãƒ©ãƒƒãƒ‰ã‚µãƒƒã‚«ãƒ¼ï¼Ÿ
 			activeChar.sendPackets(new S_Sound(2828), true);
-
+		}
 	}
-	
-	public boolean ¾¾¹ß³ğ(L1ItemInstance weapon, L1PcInstance pc) {
+
+	public boolean isEquipLevel(L1ItemInstance weapon, L1PcInstance pc) {
 		int min = weapon.getItem().getMinLevel();
 		int max = weapon.getItem().getMaxLevel();
 		if (min != 0 && min > pc.getLevel()) {
@@ -387,28 +380,25 @@ public final class InvSwapController {
 			return false;
 		} else if (max != 0 && max < pc.getLevel()) {
 			if (max < 50) {
-				pc.sendPackets(
-						new S_PacketBox(S_PacketBox.MSG_LEVEL_OVER, max), true);
+				pc.sendPackets(new S_PacketBox(S_PacketBox.MSG_LEVEL_OVER, max), true);
 			} else {
-				pc.sendPackets(new S_SystemMessage("ÀÌ ¾ÆÀÌÅÛÀº" + max
-						+ "·¹º§ ÀÌÇÏ¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù. "), true);
+				pc.sendPackets(new S_SystemMessage("ã“ã®ã‚¢ã‚¤ãƒ†ãƒ ã¯" + max + "ãƒ¬ãƒ™ãƒ«ä»¥ä¸‹ã®ã¿ä½¿ç”¨ã§ãã¾ã™ã€‚ "), true);
 			}
 			return false;
 		}
 		return true;
 	}
-	
+
 	public boolean useweaponpoly(L1PcInstance pc, L1ItemInstance weapon,
 			int polyid) {
-		if (!L1PolyMorph.isEquipableWeapon(polyid, 19)) { // ±× º¯½Å¿¡¼­´Â Àåºñ ºÒ°¡
+		if (!L1PolyMorph.isEquipableWeapon(polyid, 19)) { // ãã®å¤‰èº«ã§ã¯è£…å‚™ä¸å¯
 			String n = ("+" + weapon.getEnchantLevel() + " " + weapon.getName());
-			pc.sendPackets(
-					new S_SystemMessage("ÇöÀç º¯½Å »óÅÂ¿¡¼­´Â ½Ö¼ö µµ³¢¸¦ Âø¿ëÇÒ ¼ö ¾ø½À´Ï´Ù."), true);
+			pc.sendPackets(new S_SystemMessage("ç¾åœ¨ã€å¤‰èº«çŠ¶æ…‹ã§ã¯åŒæ‰‹æ–§ã‚’ç€ç”¨ã§ãã¾ã›ã‚“ã€‚"), true);
 			return false;
 		}
 		return true;
 	}
-	
+
 	private static final int[] cashRingList = { 20297, 20301, 20428, 20429,
 		20430, 20431, 20432, 20433, 423011, 425100, 425101, 425102, 425103,
 		425104, 425105, 425109, 425110, 425111, 425112, 425113, 525109,
@@ -416,283 +406,210 @@ public final class InvSwapController {
 		625113, 21113, 21114, 21246, 21247, 21248, 21249, 21250, 21251,
 		21252, 21253 };
 
-private void UseArmor(L1PcInstance activeChar, L1ItemInstance armor) {
-	int type = armor.getItem().getType();
-	L1PcInventory pcInventory = activeChar.getInventory();
+	private void UseArmor(L1PcInstance activeChar, L1ItemInstance armor) {
+		int type = armor.getItem().getType();
+		L1PcInventory pcInventory = activeChar.getInventory();
 
-	/** 2011.05.19 °íÁ¤¼ö ¹èÆ²Á¸ */
-	if ((activeChar.getMapId() == 5302 || activeChar.getMapId() == 5153)
-			&& !armor.isEquipped()) {
-		if ((armor.getItemId() >= 20452 && armor.getItemId() <= 20455)
-				|| (armor.getItemId() >= 42401 && armor.getItemId() <= 42421)
-				|| (armor.getItemId() >= 421000 && armor.getItemId() <= 421023)) {
-			// activeChar.sendPackets(new
-			// S_SystemMessage("\\fY¹èÆ²Á¸¿¡¼­´Â ÅÍ¹øÀ» »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù."), true);
-			activeChar.sendPackets(
-					new S_ServerMessage(74, armor.getLogName()), true); // \f1%0Àº
-																		// »ç¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-			return;
-		} else if (armor.getItemId() == 20077 || armor.getItemId() == 20062
-				|| armor.getItemId() == 120077
-				|| armor.getItemId() == 20343 || armor.getItemId() == 20344) {
-			activeChar.sendPackets(
-					new S_ServerMessage(74, armor.getLogName()), true); // \f1%0Àº
-																		// »ç¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-			return;
+		/** 2011.05.19  ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ */
+		if ((activeChar.getMapId() == 5302 || activeChar.getMapId() == 5153)
+				&& !armor.isEquipped()) {
+			if ((armor.getItemId() >= 20452 && armor.getItemId() <= 20455)
+					|| (armor.getItemId() >= 42401 && armor.getItemId() <= 42421)
+					|| (armor.getItemId() >= 421000 && armor.getItemId() <= 421023)) {
+				// activeChar.sendPackets(new S_SystemMessage("\\fYãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã§ã¯ã‚¿ãƒ¼ãƒãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"), true);
+				activeChar.sendPackets(new S_ServerMessage(74, armor.getLogName()), true);
+				return;
+			} else if (armor.getItemId() == 20077 || armor.getItemId() == 20062
+					|| armor.getItemId() == 120077
+					|| armor.getItemId() == 20343 || armor.getItemId() == 20344) {
+				activeChar.sendPackets(new S_ServerMessage(74, armor.getLogName()), true);
+				return;
+			}
 		}
-	}
-	boolean equipeSpace; // Àåºñ ÇÏ´Â °³¼Ò°¡ ºñ¾î ÀÖÀ»±î
-	if (type == 9) { // ¸µÀÇ °æ¿ì
-		equipeSpace = pcInventory.getTypeEquipped(2, 9) <= (1 + activeChar
-				.getRingSlotLevel());
-		try {
-			if (equipeSpace) {
-				boolean cashring = false;
-				;
-				for (int i : cashRingList) {
-					if (i == armor.getItemId()) {
-						cashring = true;
-						break;
-					}
-				}
-				L1ItemInstance[] ringlist = pcInventory.getRingEquipped();
-				if (ringlist != null && ringlist.length > 0) {
-					int count = 0;
-
-					for (L1ItemInstance i : ringlist) {
-						if (i == null)
-							continue;
-						if (cashring) {
-							for (int a : cashRingList) {
-								if (a == i.getItemId()) {
-									count++;
-									break;
-								}
-							}
-						} else {
-							if (i.getItemId() == armor.getItemId())
-								count++;
-						}
-						if (count >= 2) {
-							equipeSpace = false;
+		boolean equipeSpace; // è£…å‚™ã™ã‚‹ç®‡æ‰€
+		if (type == 9) { // ãƒªãƒ³ã‚°
+			equipeSpace = pcInventory.getTypeEquipped(2, 9) <= (1 + activeChar.getRingSlotLevel());
+			try {
+				if (equipeSpace) {
+					boolean cashring = false;
+					for (int i : cashRingList) {
+						if (i == armor.getItemId()) {
+							cashring = true;
 							break;
 						}
 					}
-					/*
-					 * for(L1ItemInstance i : ringlist){ if(i == null)
-					 * continue; boolean ck = false; for(int a :
-					 * cashRingList){ if(a == i.getItemId()){ ck = true;
-					 * break; } } if(ck == cashring) count++; if(count >=
-					 * 2){ equipeSpace = false; break; } }
-					 */
-				}
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	} else if (type == 12) { // ±Í°ÉÀÌ
-		equipeSpace = pcInventory.getTypeEquipped(2, 12) < (1 + activeChar
-				.getEarringSlotLevel());
-		int armorid = 0;
-		int earid = 0;
-		try {
-			if (equipeSpace) {
-				L1ItemInstance[] earringlist = pcInventory
-						.getEarringEquipped();
-				if (earringlist != null && earringlist.length > 0) {
-					for (L1ItemInstance i : earringlist) {
-						if (i == null)
-							continue;
-						armorid = armor.getItemId();
-						earid = i.getItemId();
-						if (armorid >= 502007 && armorid <= 502010) {
-							armorid -= 2000;
-						}
-						if (earid >= 502007 && earid <= 502010) {
-							earid -= 2000;
-						}
-						if (earid == armorid)
-							equipeSpace = false;
+					L1ItemInstance[] ringlist = pcInventory.getRingEquipped();
+					if (ringlist != null && ringlist.length > 0) {
+						int count = 0;
 
-						break;
+						for (L1ItemInstance i : ringlist) {
+							if (i == null)
+								continue;
+							if (cashring) {
+								for (int a : cashRingList) {
+									if (a == i.getItemId()) {
+										count++;
+										break;
+									}
+								}
+							} else {
+								if (i.getItemId() == armor.getItemId())
+									count++;
+							}
+							if (count >= 2) {
+								equipeSpace = false;
+								break;
+							}
+						}
+						/*
+						 * for(L1ItemInstance i : ringlist){ if(i == null)
+						 * continue; boolean ck = false; for(int a :
+						 * cashRingList){ if(a == i.getItemId()){ ck = true;
+						 * break; } } if(ck == cashring) count++; if(count >=
+						 * 2){ equipeSpace = false; break; } }
+						 */
 					}
 				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} else if (type == 12) { // ã‚¤ãƒ¤ãƒªãƒ³ã‚°
+			equipeSpace = pcInventory.getTypeEquipped(2, 12) < (1 + activeChar.getEarringSlotLevel());
+			int armorid = 0;
+			int earid = 0;
+			try {
+				if (equipeSpace) {
+					L1ItemInstance[] earringlist = pcInventory
+							.getEarringEquipped();
+					if (earringlist != null && earringlist.length > 0) {
+						for (L1ItemInstance i : earringlist) {
+							if (i == null)
+								continue;
+							armorid = armor.getItemId();
+							earid = i.getItemId();
+							if (armorid >= 502007 && armorid <= 502010) {
+								armorid -= 2000;
+							}
+							if (earid >= 502007 && earid <= 502010) {
+								earid -= 2000;
+							}
+							if (earid == armorid)
+								equipeSpace = false;
+
+							break;
+						}
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			equipeSpace = pcInventory.getTypeEquipped(2, type) <= 0;
 		}
-	} else {
-		equipeSpace = pcInventory.getTypeEquipped(2, type) <= 0;
+
+		if (equipeSpace && !armor.isEquipped()) { // è£…å‚™ç®‡æ‰€ã«ã€è£…å‚™ã‚’ã—ã¦ã„ãªã„
+			int polyid = activeChar.getGfxId().getTempCharGfx();
+
+			if (!L1PolyMorph.isEquipableArmor(polyid, type)) { // ã“ã®å¤‰èº«çŠ¶æ…‹ã§ã¯è£…å‚™ä¸å¯
+				activeChar.sendPackets(new S_SystemMessage("ç¾åœ¨ã®å¤‰èº«çŠ¶æ…‹ã§ã¯"
+						+ armor.getLogName() + "ã‚’è£…å‚™ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"), true);
+				return;
+			}
+			if (type == 7 && pcInventory.getTypeEquipped(2, 13) >= 1
+					|| type == 13 && pcInventory.getTypeEquipped(2, 7) >= 1) {
+				// æ—¢ã«ä½•ã‹ã‚’è£…å‚™ã—ã¦ã„ã¾ã™ã€‚
+				activeChar.sendPackets(new S_ServerMessage(124), true);
+				return;
+			}
+
+			if (type == 7) { // ã‚·ãƒ¼ãƒ«ãƒ‰
+				if (activeChar.getWeapon() != null
+						&& activeChar.getWeapon().getItem().isTwohandedWeapon()
+						&& armor.getItem().getUseType() != 13) { // ä¸¡æ‰‹æ­¦å™¨
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+				if (activeChar.getWeapon() != null
+						&& activeChar.getSecondWeapon() != null) {
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+			}
+
+			if (type == 13) { // ã‚¬ãƒ¼ãƒ€ãƒ¼
+				if (activeChar.getWeapon() != null && activeChar.getSecondWeapon() != null) {
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+			}
+
+			activeChar.cancelAbsoluteBarrier(); // ã‚¢ãƒ–ã‚½ãƒªãƒ¥ãƒ¼ãƒˆãƒãƒªã‚¢ã®è§£é™¤
+			pcInventory.setEquipped(armor, true);
+
+			/*
+			 * if (type == 3 && pcInventory.getTypeEquipped(2, 4) >= 1) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 * ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ activeChar.sendPackets(new S_ServerMessage(126,
+			 * "$224", "$225"), true); // \f1%1ï¿½ï¿½%0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. return; } else
+			 * if ((type == 3) && pcInventory.getTypeEquipped(2, 2) >= 1) { //
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ activeChar.sendPackets(new
+			 * S_ServerMessage(126, "$224", "$226"), true); // \f1%1ï¿½ï¿½%0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. return; } else if ((type == 2) &&
+			 * pcInventory.getTypeEquipped(2, 4) >= 1) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 * È®ï¿½ï¿½ activeChar.sendPackets(new S_ServerMessage(126, "$226",
+			 * "$225"), true); // \f1%1ï¿½ï¿½%0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. return; }
+			 */
+
+		} else if (armor.isEquipped()) { // é˜²å…·ã‚’è£…å‚™ã—ã¦ã„ã‚‹å ´åˆ
+			if (armor.getItem().getBless() == 2) { // å‘ªã‚ã‚ŒãŸ é˜²å…·
+				activeChar.sendPackets(new S_ServerMessage(150), true);
+				return;
+			}
+			/*
+			 * if (type == 3 && pcInventory.getTypeEquipped(2, 2) >= 1) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 * ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ activeChar.sendPackets(new
+			 * S_ServerMessage(127), true); // \f1ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. return; } else
+			 * if ((type == 2 || type == 3) && pcInventory.getTypeEquipped(2, 4)
+			 * >= 1) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ activeChar.sendPackets(new
+			 * S_ServerMessage(127), true); // \f1ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. return; }
+			 */
+			/*
+			 * if (type == 7) { if
+			 * (activeChar.getSkillEffectTimerSet().hasSkillEffect
+			 * (L1SkillId.SOLID_CARRIAGE)) {
+			 * activeChar.getSkillEffectTimerSet().
+			 * removeSkillEffect(L1SkillId.SOLID_CARRIAGE); } }
+			 */
+
+			if (type == 7) { // ã‚·ãƒ¼ãƒ«ãƒ‰
+				if (activeChar.getWeapon() != null
+						&& activeChar.getWeapon().getItem().isTwohandedWeapon()
+						&& armor.getItem().getUseType() != 13) { // ä¸¡æ‰‹æ­¦å™¨
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+				if (activeChar.getWeapon() != null && activeChar.getSecondWeapon() != null) {
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+			}
+			if (type == 13) { // ã‚¬ãƒ¼ãƒ€ãƒ¼
+				if (activeChar.getWeapon() != null && activeChar.getSecondWeapon() != null) {
+					activeChar.sendPackets(new S_ServerMessage(129), true);
+					return;
+				}
+			}
+			pcInventory.setEquipped(armor, false);
+		} else {
+			// æ—¢ã«ä½•ã‹ã‚’è£…å‚™ã—ã¦ã„ã¾ã™ã€‚
+			activeChar.sendPackets(new S_ServerMessage(124), true);
+		}
+		activeChar.setCurrentHp(activeChar.getCurrentHp());
+		activeChar.setCurrentMp(activeChar.getCurrentMp());
+		activeChar.sendPackets(new S_OwnCharAttrDef(activeChar), true);
+		activeChar.sendPackets(new S_OwnCharStatus(activeChar), true);
+		activeChar.sendPackets(new S_PacketBox(S_PacketBox.char_ER, activeChar.get_PlusEr()), true);
+		activeChar.sendPackets(new S_SPMR(activeChar), true);
+		L1ItemDelay.onItemUse(activeChar, armor); // ä½¿ç”¨ãƒ‡ã‚£ãƒ¬ã‚¤
 	}
-
-	if (equipeSpace && !armor.isEquipped()) { // »ç¿ëÇÑ ¹æ¾î¿ë ±â±¸¸¦ Àåºñ ÇÏ°í ÀÖÁö ¾Ê¾Æ, ±×
-												// Àåºñ °³¼Ò°¡ ºñ¾î ÀÖ´Â °æ¿ì(ÀåÂøÀ» ½ÃµµÇÑ´Ù)
-		int polyid = activeChar.getGfxId().getTempCharGfx();
-
-		if (!L1PolyMorph.isEquipableArmor(polyid, type)) { // ±× º¯½Å¿¡¼­´Â Àåºñ ºÒ°¡
-			activeChar.sendPackets(new S_SystemMessage("ÇöÀç º¯½Å »óÅÂ¿¡¼­´Â "
-					+ armor.getLogName() + "À» Âø¿ë ÇÒ ¼ö ¾ø½À´Ï´Ù."), true);
-			return;
-		}
-		if (type == 7 && pcInventory.getTypeEquipped(2, 13) >= 1
-				|| type == 13 && pcInventory.getTypeEquipped(2, 7) >= 1) {
-			activeChar.sendPackets(new S_ServerMessage(124), true); // \f1
-																	// ¹ú½á
-																	// ¹«¾ùÀÎ°¡¸¦
-																	// Àåºñ ÇÏ°í
-																	// ÀÖ½À´Ï´Ù.
-			return;
-		}
-
-		if (type == 7) {// ¹æÆĞ
-			if (activeChar.getWeapon() != null
-					&& activeChar.getWeapon().getItem().isTwohandedWeapon()
-					&& armor.getItem().getUseType() != 13) { // ¾ç¼Õ ¹«±â
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-			if (activeChar.getWeapon() != null
-					&& activeChar.getSecondWeapon() != null) {
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-		}
-
-		if (type == 13) {// °¡´õ
-			if (activeChar.getWeapon() != null
-					&& activeChar.getSecondWeapon() != null) {
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-		}
-
-		/*
-		 * if (type == 3 && pcInventory.getTypeEquipped(2, 4) >= 1) { // ¼ÅÃ÷ÀÇ
-		 * °æ¿ì, ¸ÁÅä¸¦ ÀÔÁö ¾ÊÀº°¡ È®ÀÎ activeChar.sendPackets(new S_ServerMessage(126,
-		 * "$224", "$225"), true); // \f1%1»ó¿¡%0¸¦ ÀÔÀ» ¼ö ¾ø½À´Ï´Ù. return; } else
-		 * if ((type == 3) && pcInventory.getTypeEquipped(2, 2) >= 1) { //
-		 * ¼ÅÃ÷ÀÇ °æ¿ì, ¸ŞÀÏÀ» ÀÔÁö ¾ÊÀº°¡ È®ÀÎ activeChar.sendPackets(new
-		 * S_ServerMessage(126, "$224", "$226"), true); // \f1%1»ó¿¡%0¸¦ ÀÔÀ» ¼ö
-		 * ¾ø½À´Ï´Ù. return; } else if ((type == 2) &&
-		 * pcInventory.getTypeEquipped(2, 4) >= 1) { // ¸ŞÀÏÀÇ °æ¿ì, ¸ÁÅä¸¦ ÀÔÁö ¾ÊÀº°¡
-		 * È®ÀÎ activeChar.sendPackets(new S_ServerMessage(126, "$226",
-		 * "$225"), true); // \f1%1»ó¿¡%0¸¦ ÀÔÀ» ¼ö ¾ø½À´Ï´Ù. return; }
-		 */
-
-		activeChar.cancelAbsoluteBarrier(); // ¾Æºê¼Ò¸£Æ®¹Ù¸®¾ÆÀÇ ÇØÁ¦
-
-		pcInventory.setEquipped(armor, true);
-	} else if (armor.isEquipped()) { // »ç¿ëÇÑ ¹æ¾î¿ë ±â±¸¸¦ Àåºñ ÇÏ°í ÀÖ¾úÀ» °æ¿ì(Å»ÂøÀ» ½ÃµµÇÑ´Ù)
-		if (armor.getItem().getBless() == 2) { // ÀúÁÖÇØÁö°í ÀÖ¾úÀ» °æ¿ì
-			activeChar.sendPackets(new S_ServerMessage(150), true); // \f1 ¶¿
-																	// ¼ö°¡
-																	// ¾ø½À´Ï´Ù.
-																	// ÀúÁÖ¸¦
-																	// °ÉÄ¥ ¼ö
-																	// ÀÖ°í ÀÖ´Â
-																	// °Í
-																	// °°½À´Ï´Ù.
-			return;
-		}
-		/*
-		 * if (type == 3 && pcInventory.getTypeEquipped(2, 2) >= 1) { // ¼ÅÃ÷ÀÇ
-		 * °æ¿ì, ¸ŞÀÏÀ» ÀÔÁö ¾ÊÀº°¡ È®ÀÎ activeChar.sendPackets(new
-		 * S_ServerMessage(127), true); // \f1±×°ÍÀº ¹şÀ» ¼ö°¡ ¾ø½À´Ï´Ù. return; } else
-		 * if ((type == 2 || type == 3) && pcInventory.getTypeEquipped(2, 4)
-		 * >= 1) { // ¼ÅÃ÷¿Í ¸ŞÀÏÀÇ °æ¿ì, ¸ÁÅä¸¦ ÀÔÁö ¾ÊÀº°¡ È®ÀÎ activeChar.sendPackets(new
-		 * S_ServerMessage(127), true); // \f1±×°ÍÀº ¹şÀ» ¼ö°¡ ¾ø½À´Ï´Ù. return; }
-		 */
-		/*
-		 * if (type == 7) { if
-		 * (activeChar.getSkillEffectTimerSet().hasSkillEffect
-		 * (L1SkillId.SOLID_CARRIAGE)) {
-		 * activeChar.getSkillEffectTimerSet().
-		 * removeSkillEffect(L1SkillId.SOLID_CARRIAGE); } }
-		 */
-
-		if (type == 7) {// ¹æÆĞ
-			if (activeChar.getWeapon() != null
-					&& activeChar.getWeapon().getItem().isTwohandedWeapon()
-					&& armor.getItem().getUseType() != 13) { // ¾ç¼Õ ¹«±â
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-			if (activeChar.getWeapon() != null
-					&& activeChar.getSecondWeapon() != null) {
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-		}
-		if (type == 13) {// °¡´õ
-			if (activeChar.getWeapon() != null
-					&& activeChar.getSecondWeapon() != null) {
-				activeChar.sendPackets(new S_ServerMessage(129), true); // \f1¾ç¼ÕÀÇ
-																		// ¹«±â¸¦
-																		// ¹«ÀåÇÑ
-																		// Ã¤·Î
-																		// ½¯µå(shield)¸¦
-																		// Âø¿ëÇÒ
-																		// ¼ö
-																		// ¾ø½À´Ï´Ù.
-				return;
-			}
-		}
-		pcInventory.setEquipped(armor, false);
-	} else {
-		activeChar.sendPackets(new S_ServerMessage(124), true); // \f1 ¹ú½á
-																// ¹«¾ùÀÎ°¡¸¦ Àåºñ
-																// ÇÏ°í ÀÖ½À´Ï´Ù.
-	}
-	activeChar.setCurrentHp(activeChar.getCurrentHp());
-	activeChar.setCurrentMp(activeChar.getCurrentMp());
-	activeChar.sendPackets(new S_OwnCharAttrDef(activeChar), true);
-	activeChar.sendPackets(new S_OwnCharStatus(activeChar), true);
-	activeChar.sendPackets(
-			new S_PacketBox(S_PacketBox.char_ER, activeChar.get_PlusEr()),
-			true);
-	activeChar.sendPackets(new S_SPMR(activeChar), true);
-	L1ItemDelay.onItemUse(activeChar, armor); // ¾ÆÀÌÅÛ Áö¿¬ °³½Ã
-}
-
-
 }

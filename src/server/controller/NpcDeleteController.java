@@ -13,7 +13,7 @@ public class NpcDeleteController implements Runnable {
 
 	private static NpcDeleteController _instance;
 
-	private FastTable<L1NpcInstance> list;
+	private FastTable<L1NpcInstance> _list;
 
 	public static NpcDeleteController getInstance() {
 		if (_instance == null)
@@ -22,7 +22,7 @@ public class NpcDeleteController implements Runnable {
 	}
 
 	public NpcDeleteController() {
-		list = new FastTable<L1NpcInstance>();
+		_list = new FastTable<L1NpcInstance>();
 		GeneralThreadPool.getInstance().execute(this);
 	}
 
@@ -31,7 +31,7 @@ public class NpcDeleteController implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-				li = list;
+				li = _list;
 				for (L1NpcInstance npc : li) {
 
 					if (npc == null)
@@ -57,17 +57,17 @@ public class NpcDeleteController implements Runnable {
 	}
 
 	public void addNpcDelete(L1NpcInstance npc) {
-		if (!list.contains(npc))
-			list.add(npc);
+		if (!_list.contains(npc))
+			_list.add(npc);
 	}
 
 	public void removeNpcDelete(L1NpcInstance npc) {
-		if (list.contains(npc))
-			list.remove(npc);
+		if (_list.contains(npc))
+			_list.remove(npc);
 	}
 
 	public int getSize() {
-		return list.size();
+		return _list.size();
 	}
 
 }
