@@ -63,7 +63,7 @@ public class BossSpawnTable {
 				if (rs.getString("cycle_type").equals(name)) {
 					int percent = rs.getInt("percentage");
 					if (rnd.nextInt(100) > percent) {
-						continue; // ½ºÆù È®À² Àû¿ë
+						continue; // ã‚¹ãƒãƒ¼ãƒ³ç¢ºç‡ã®é©ç”¨
 					}
 
 					int npcId = rs.getInt("npc_id");
@@ -92,15 +92,15 @@ public class BossSpawnTable {
 							} else if (npc.getNpcTemplate().get_npcId() == npcId
 									&& npc.getMapId() != 666
 									&& npc.getMapId() == rs.getInt("mapid")) {
-								if (Config.Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ() > 0) {
+								if (Config.ì ‘ì†ì±„íŒ…ëª¨ë‹ˆí„°() > 0) {
 									for (L1PcInstance gm : Config
-											.toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ()) {
+											.toArrayì ‘ì†ì±„íŒ…ëª¨ë‹ˆí„°()) {
 										if (gm.getNetConnection() == null) {
-											Config.removeÁ¢¼Ó(gm);
+											Config.removeì ‘ì†(gm);
 											continue;
 										}
 										gm.sendPackets(new S_SystemMessage(
-												"ÀÌ¹Ì½ºÆùµÈ º¸½º " + npc.getName()
+												"Spawned Boss : " + npc.getName()
 														+ " x " + npc.getX()
 														+ " y " + npc.getY()
 														+ " map"
@@ -124,7 +124,7 @@ public class BossSpawnTable {
 					npc = NpcTable.getInstance().newNpcInstance(npcId);
 					npc.setId(ObjectIdFactory.getInstance().nextId());
 
-					// ·£´ı ½ÃÀÛ À§Ä¡
+					// ãƒ©ãƒ³ãƒ€ãƒ é–‹å§‹ä½ç½®
 					int locX = 0, locY = 0;
 					switch (rnd.nextInt(3)) {
 					case 1:
@@ -149,7 +149,7 @@ public class BossSpawnTable {
 					loc.setY(locY);
 					loc.setMap((short) rs.getInt("mapid"));
 
-					// ·£´ı À§Ä¡ ¼±Á¤
+					// ãƒ©ãƒ³ãƒ€ãƒ ä½ç½®é¸å®š
 					if (rndX != 0 && rndY != 0) {
 						L1Location newLocation = L1Location.randomLocation(loc,
 								0, rnd.nextInt(1) > 0 ? rndX : rndY, true);
@@ -190,7 +190,7 @@ public class BossSpawnTable {
 						}
 					}
 
-					// System.out.println("º¸½º½ºÆù"+npcId);
+					// System.out.println("ë³´ìŠ¤ìŠ¤í°"+npcId);
 					L1World.getInstance().storeObject(npc);
 					L1World.getInstance().addVisibleObject(npc);
 

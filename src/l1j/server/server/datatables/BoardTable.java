@@ -253,8 +253,8 @@ public class BoardTable {
 	}
 
 	/**
-	 * µî·ÏµÈ »ç¶÷ÀÌ ÀÖ³ª Ã£´Â´Ù (µå·¡°ï Å°)
-	 * 
+	 * ç™»éŒ²ã•ã‚ŒãŸäººãŒã„ã‚‹ã‹æ¢ã™ï¼ˆãƒ‰ãƒ©ã‚´ãƒ³ã‚­ãƒ¼ï¼‰
+	 *
 	 * @param name
 	 * @param npcid
 	 * @return
@@ -283,8 +283,8 @@ public class BoardTable {
 	}
 
 	/**
-	 * Å°°¡ µî·ÏµÇ¾ú´ÂÁö Ã£´Â´Ù (µå·¡°ï Å°)
-	 * 
+	 * ã‚­ãƒ¼ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’æ¢ã™ï¼ˆãƒ‰ãƒ©ã‚´ãƒ³ã‚­ãƒ¼ï¼‰
+	 *
 	 * @param name
 	 * @param key
 	 * @return
@@ -313,10 +313,9 @@ public class BoardTable {
 	}
 
 	/**
-	 * °Ô½ÃÆÇ¿¡¼­ ÇØ´ç Å° ³»¿ëÀ» »èÁ¦ÇÑ´Ù
-	 * 
+	 * æ²ç¤ºæ¿ã‹ã‚‰è©²å½“ã‚­ãƒ¼ã®å†…å®¹ã‚’å‰Šé™¤ã™ã‚‹
+	 *
 	 * @param id
-	 *            (¾ÆÀÌÅÛ id)
 	 */
 	public void delDayExpire(int id) {
 		Connection con = null;
@@ -333,6 +332,5 @@ public class BoardTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-
 	}
 }

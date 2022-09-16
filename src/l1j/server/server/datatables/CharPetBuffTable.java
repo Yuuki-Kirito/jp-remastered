@@ -15,7 +15,6 @@ import l1j.server.server.utils.SQLUtil;
 public class CharPetBuffTable {
 	private CharPetBuffTable() {}
 
-	/** 펫관련 스킬 저장용 체크 */
 	public static final int[] PetBuffSkill = { L1SkillId.YeagerNight, L1SkillId.GrowthFoliage, L1SkillId.DogBlood };
 
 	public static void SaveBuff(L1PetInstance Pet) {
@@ -25,7 +24,7 @@ public class CharPetBuffTable {
 			if (TimeSec > 0) StoreBuff(Pet.getMaster().getId(), SkillId, TimeSec);
 		}
 	}
-	
+
 	public static void DeleteBuff(int objId) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -40,7 +39,7 @@ public class CharPetBuffTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	private static void StoreBuff(int objId, int skillId, int time) {
 		Connection con = null;
 		PreparedStatement pstm = null;

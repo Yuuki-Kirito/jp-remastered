@@ -331,7 +331,7 @@ public class S_CreateItem extends ServerBasePacket {
 			p[2] = 9603;
 			break;
 
-		case L1SkillId.그레이스아바타:
+		case L1SkillId.GRACE:
 			// 122 15 14979 9470
 			p[0] = 122;
 			p[1] = 14979;
@@ -349,7 +349,7 @@ public class S_CreateItem extends ServerBasePacket {
 			p[1] = 14999;
 			p[2] = 9614;
 			break;*/
-		case L1SkillId.임팩트:
+		case L1SkillId.IMPACT:
 			// 478 15 15008 9625
 			p[0] = 478;
 			p[1] = 15008;

@@ -74,7 +74,7 @@ public class ClanHistoryTable {
 		}
 	}
 
-	public void delete(int clanid) {// Å¬·£¾ÆÀÌµğ·Î Ã¼Å©ÇØ 3ÀÏÁö³­ ¸ñ·Ï »èÁ¦
+	public void delete(int clanid) { //ã‚¯ãƒ©ãƒ³IDã§ãƒã‚§ãƒƒã‚¯ã—ã¦3æ—¥ç›®ã«ãƒªã‚¹ãƒˆã‚’å‰Šé™¤
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -145,12 +145,12 @@ public class ClanHistoryTable {
 			int count = 0;
 			while (rs.next() && count++ < 7) {
 				sb.append(rs.getString("text"));
-				SimpleDateFormat dateFormat = new SimpleDateFormat("mmºĞ");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("mmåˆ†");
 				String time = dateFormat.format(new Timestamp((System
 						.currentTimeMillis() - rs.getTimestamp("time")
 						.getTime())
 						+ (60 * 1000 * 60 * 15)));
-				sb.append("(°æ°ú ½Ã°£ : " + time + ")\r\n\r\n");
+				sb.append("(çµŒéæ™‚é–“ : " + time + ")\r\n\r\n");
 			}
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);

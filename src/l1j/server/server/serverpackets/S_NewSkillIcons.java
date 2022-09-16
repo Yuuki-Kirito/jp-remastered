@@ -49,15 +49,15 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(8463);// 인벤 이미지.
 			} else if (skillId == L1SkillId.포커스웨이브) {// 어쌔신
 				byteWrite(8480);
-			} else if (skillId == L1SkillId.STATUS_커츠투사) {// 블레이징 스피릿츠
+			} else if (skillId == L1SkillId.STATUS_KURTZ_FIGHTER) {// 블레이징 스피릿츠
 				byteWrite(2430);
-			} else if (skillId == L1SkillId.STATUS_커츠현자) {// 그레이스 아바타
+			} else if (skillId == L1SkillId.STATUS_KURTZ_SAGE) {// 그레이스 아바타
 				byteWrite(2430);
-			} else if (skillId == L1SkillId.STATUS_커츠명궁) {// 소울 배리어
+			} else if (skillId == L1SkillId.STATUS_KURTZ_BOWMASTER) {// 소울 배리어
 				byteWrite(2430);
 				/*} else if (skillId == L1SkillId.DESTROY) {// 디스트로이
 				byteWrite(7451);*/
-			} else if (skillId == L1SkillId.임팩트) {// 임팩트
+			} else if (skillId == L1SkillId.IMPACT) {// 임팩트
 				byteWrite(7456);
 			} else if (skillId == L1SkillId.포커스스피릿츠) {// 임팩트
 				byteWrite(4832);
@@ -87,7 +87,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(3111);
 			} else if (skillId == L1SkillId.CUBE_BALANCE) {// 큐브어버터
 				byteWrite(5402);
-			} else if (skillId == L1SkillId.그레이스아바타) {// 그레이스 아바타
+			} else if (skillId == L1SkillId.GRACE) {// 그레이스 아바타
 				byteWrite(7427);
 			} else if (skillId == L1SkillId.앱솔루트블레이드) {// 앱솔루트 블레이드
 				byteWrite(7432);// 인벤 이미지.
@@ -208,15 +208,15 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5165;
 			else if (skillId == L1SkillId.포커스웨이브)// 어쌔신
 				msgNum = 5155;
-			else if (skillId == L1SkillId.STATUS_커츠투사)// 블레이징 스피릿츠
+			else if (skillId == L1SkillId.STATUS_KURTZ_FIGHTER)// 블레이징 스피릿츠
 				msgNum = 5180;
-			else if (skillId == L1SkillId.STATUS_커츠현자)// 그레이스 아바타
+			else if (skillId == L1SkillId.STATUS_KURTZ_SAGE)// 그레이스 아바타
 				msgNum = 5182;
-			else if (skillId == L1SkillId.STATUS_커츠명궁)// 소울 배리어
+			else if (skillId == L1SkillId.STATUS_KURTZ_BOWMASTER)// 소울 배리어
 				msgNum = 5181;
 			/*else if (skillId == L1SkillId.DESTROY)// 디스트로이
 				msgNum = 4739;*/
-			else if (skillId == L1SkillId.임팩트)// 임팩트
+			else if (skillId == L1SkillId.IMPACT)// 임팩트
 				msgNum = 4761;
 			else if (skillId == L1SkillId.블로우어택)// 임팩트
 				msgNum = 5266;
@@ -246,7 +246,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 1351;
 			else if (skillId == L1SkillId.CUBE_BALANCE) //큐브아바타
 				msgNum = 3073;
-			else if (skillId == L1SkillId.그레이스아바타)// 그레이스 아바타
+			else if (skillId == L1SkillId.GRACE)// 그레이스 아바타
 				msgNum = 4734;
 			else if (skillId == L1SkillId.앱솔루트블레이드)// 앱솔루트 블레이드
 				msgNum = 4735;// 메세지.

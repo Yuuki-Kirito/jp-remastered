@@ -4392,22 +4392,22 @@ public class GMCommands {
 
 	private void 패킷5(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_커츠투사, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_FIGHTER, true, 128));
 	}
 
 	private void 패킷6(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_커츠현자, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_SAGE, true, 128));
 	}
 
 	private void 패킷7(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_커츠명궁, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_BOWMASTER, true, 128));
 	}
 
 	private void 패킷8(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.임팩트, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 128));
 	}
 
 	private void 패킷9(L1PcInstance gm) { // 데스
@@ -4477,7 +4477,7 @@ public class GMCommands {
 
 	private void 패킷22(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.그레이스아바타, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 128));
 	}
 
 	private void 패킷23(L1PcInstance gm) { // 데스

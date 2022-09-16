@@ -29,8 +29,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javolution.util.FastMap;
-import server.system.autoshop.AutoShop;
-import server.system.autoshop.AutoShopManager;
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.ObjectIdFactory;
@@ -49,19 +47,21 @@ import l1j.server.server.templates.L1NpcShop;
 import l1j.server.server.templates.L1PrivateShopBuyList;
 import l1j.server.server.templates.L1PrivateShopSellList;
 import l1j.server.server.utils.SQLUtil;
+import server.system.autoshop.AutoShop;
+import server.system.autoshop.AutoShopManager;
 
 public class AutoShopTable {
-	
+
 	private static Logger _log = Logger.getLogger(AutoShopTable.class.getName());
-	
+
 	private static AutoShopTable _instance;
 
 	public final Map<Integer, L1PcInstance> autoshoptable = new FastMap<Integer, L1PcInstance>();
-	
+
 	private final Map<Integer, L1Shop> _npcShops = new HashMap<Integer, L1Shop>();
-	
+
 	private ArrayList<L1NpcShop> npcShoplist = new ArrayList<L1NpcShop>();
-	
+
 
 	public static AutoShopTable getInstance() {
 		if (_instance == null) {
@@ -72,9 +72,9 @@ public class AutoShopTable {
 
 	private AutoShopTable() {
 		//PerformanceTimer timer = new PerformanceTimer();
-		System.out.print("¡á ±¸¹«ÀÎ»óÁ¡ µ¥ÀÌÅÍ .......................... ");;
+		System.out.print("AutoShopData .......................... ");;
 		fillSpawnTable(0);
-		System.out.println("¡á ·Îµù Á¤»ó ¿Ï·á");
+		System.out.println("Loadiong...OK!");
 	}
 
 	private synchronized void fillSpawnTable(int step) {
@@ -87,59 +87,59 @@ public class AutoShopTable {
 			pstm = con.prepareStatement("SELECT * FROM autoshoplist where step = ? and count = '1'");
 			pstm.setInt(1, step);
 			shopRs = pstm.executeQuery();
-			
-			AutoShopManager shopManager = AutoShopManager.getInstance(); 
+
+			AutoShopManager shopManager = AutoShopManager.getInstance();
 			AutoShop autoshop = null;
-			L1PcInstance pc = null;				
-			
+			L1PcInstance pc = null;
+
 			while (shopRs.next()) {
 				try {
 					String charName = shopRs.getString("char_name");
-																		
-					pc = L1World.getInstance().getPlayer(charName); 	
-					
+
+					pc = L1World.getInstance().getPlayer(charName);
+
 					if (pc != null) {
 						pc.setPrivateShop(false);
 						pc.sendPackets(new S_DoActionGFX(pc.getId(), ActionCodes.ACTION_Idle));
 						Broadcaster.broadcastPacket(pc, new S_DoActionGFX(pc.getId(), ActionCodes.ACTION_Idle));
 						//Thread.sleep(1000);
-						pc.logout();					
+						pc.logout();
 						pc = null;
 					}
-					
+
 					if (pc == null) {
 						pc = new L1PcInstance();
-						
+
 						pc.setId(ObjectIdFactory.getInstance().nextId());
-						pc.setName(shopRs.getString("char_name"));						
+						pc.setName(shopRs.getString("char_name"));
 						pc.set_sex(shopRs.getInt("Sex"));	// 0~1
-						pc.setType(shopRs.getInt("Type"));	
-						
+						pc.setType(shopRs.getInt("Type"));
+
 						if (pc.get_sex() == 0) {
 							pc.setClassId(C_CreateNewCharacter.MALE_LIST[pc.getType()]);
 						}
 						else {
 							pc.setClassId(C_CreateNewCharacter.FEMALE_LIST[pc.getType()]);
 						}
-						
+
 						pc.getGfxId().setTempCharGfx(pc.getClassId());
 						pc.getGfxId().setGfxId(pc.getClassId());
-						
+
 						pc.getMoveState().setHeading(shopRs.getInt("Heading"));
 						pc.setLawful(shopRs.getInt("Lawful"));
 						pc.setTitle(shopRs.getString("Title"));
 						pc.setX(shopRs.getInt("LocX"));
-						pc.setY(shopRs.getInt("LocY"));		
+						pc.setY(shopRs.getInt("LocY"));
 						pc.setMap(shopRs.getShort("MapID"));
 						pc.setShopStep(shopRs.getInt("step"));
-												
+
 						pc.setHighLevel(1);
 						pc.getAbility().setBaseStr(20);
 						pc.getAbility().setBaseDex(20);
 						pc.getAbility().setBaseCon(20);
 						pc.getAbility().setBaseWis(20);
 						pc.getAbility().setBaseCha(20);
-						pc.getAbility().setBaseInt(20);	
+						pc.getAbility().setBaseInt(20);
 						pc.addBaseMaxHp((short)200);
 						pc.setCurrentHp(pc.getMaxHp());
 						pc.addBaseMaxMp((short)20);
@@ -170,48 +170,48 @@ public class AutoShopTable {
 						pc.calAinHasad(0);
 						pc.setAccountName("");
 						pc.noPlayerCK = true;
-						pc.setNetConnection(null);	
+						pc.setNetConnection(null);
 						pc.getMap().setPassable(pc.getLocation(), false);
-												
+
 						pc.clearSkillMastery();
 						L1World.getInstance().storeObject(pc);
 						L1World.getInstance().addVisibleObject(pc);
-						
+
 						if (shopRs.getInt("GfxId") != 0) {
 							L1PolyMorph.doPoly(pc, shopRs.getInt("GfxId"), 0, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 						}
 					}
-					
+
 					items(pc);
-					
+
 					pstm = con.prepareStatement("SELECT * FROM autoshopitemlist WHERE char_name = ? and count = '1'");
 					pstm.setString(1, charName);
 					itemRs = pstm.executeQuery();
-					
+
 					byte[] Chat = null;
 					if (!shopRs.getString("sellmsg").trim().equalsIgnoreCase("")) {
 						Chat = stringToByte(shopRs.getString("sellmsg").trim());// + shopRs.getString("buymsg"));
 					}
-					
+
 					ArrayList<L1PrivateShopSellList> sellList = pc.getSellList();
 					ArrayList<L1PrivateShopBuyList> buyList = pc.getBuyList();
 					sellList.clear();
 					buyList.clear();
-					
-					for (L1ItemInstance item : pc.getInventory().getItems()) {						
+
+					for (L1ItemInstance item : pc.getInventory().getItems()) {
 						pc.getInventory().removeItem(item);
-					}	
-					
+					}
+
 					pc.getInventory().storeItem(40308, 10000);
-					
-					while (itemRs.next()) {		
+
+					while (itemRs.next()) {
 						if (itemRs.getInt("buy_totalcount") < 0) {
-							if (itemRs.getInt("itemenchant") > -1) {								
+							if (itemRs.getInt("itemenchant") > -1) {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), itemRs.getInt("sell_totalcount"), itemRs.getInt("itemenchant"));
 							} else {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), itemRs.getInt("sell_totalcount"));
-							} 							
-							for (L1ItemInstance item : pc.getInventory().getItems()) {							
+							}
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								if (item.getItemId() != 40308 && !item.isIdentified()) {
 									item.setIdentified(true);
 									pc.getInventory().saveItem(item, L1PcInventory.COL_IS_ID);
@@ -224,13 +224,13 @@ public class AutoShopTable {
 									if (item.getId() == sellItemList[i].getItemObjectId()) {
 										sellCheck = true;
 										break;
-									} else { 
+									} else {
 										sellCheck = false;
 									}
 								}
-								
-								if (item.getItemId() != 40308 && !sellCheck) {	
-									L1PrivateShopSellList sell = new L1PrivateShopSellList();									
+
+								if (item.getItemId() != 40308 && !sellCheck) {
+									L1PrivateShopSellList sell = new L1PrivateShopSellList();
 									sell.setItemObjectId(item.getId());
 									sell.setSellPrice(itemRs.getInt("sell_price"));
 									sell.setSellTotalCount(itemRs.getInt("sell_totalcount"));
@@ -238,12 +238,12 @@ public class AutoShopTable {
 								}
 							}
 						} else if (itemRs.getInt("sell_totalcount") < 0) {
-							if (itemRs.getInt("itemenchant") > -1) {							
+							if (itemRs.getInt("itemenchant") > -1) {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), 1, itemRs.getInt("itemenchant"));
 							} else {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), 1);
-							} 
-							for (L1ItemInstance item : pc.getInventory().getItems()) {							
+							}
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								if (item.getItemId() != 40308 && !item.isIdentified()) {
 									item.setIdentified(true);
 									pc.getInventory().saveItem(item, L1PcInventory.COL_IS_ID);
@@ -251,19 +251,19 @@ public class AutoShopTable {
 							}
 							L1PrivateShopBuyList[] buyItemList = pc.getBuyList().toArray(new L1PrivateShopBuyList[pc.getBuyList().size()]);
 							boolean buyCheck = false;
-							for (L1ItemInstance item : pc.getInventory().getItems()) {		
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								for (int i =0; i < buyItemList.length; i++) {
 									if (item.getId() == buyItemList[i].getItemObjectId()) {
 										buyCheck = true;
 										break;
-									} else { 
+									} else {
 										buyCheck = false;
 									}
 								}
-								if (item.getItemId() != 40308 && !buyCheck) {	
-									if (item.getItemId() != 40308) { 
-										L1PrivateShopBuyList buy = new L1PrivateShopBuyList();						
-										buy.setItemObjectId(item.getId());									
+								if (item.getItemId() != 40308 && !buyCheck) {
+									if (item.getItemId() != 40308) {
+										L1PrivateShopBuyList buy = new L1PrivateShopBuyList();
+										buy.setItemObjectId(item.getId());
 										buy.setBuyPrice(itemRs.getInt("buy_price"));
 										buy.setBuyTotalCount(itemRs.getInt("buy_totalcount"));
 										buyList.add(buy);
@@ -271,23 +271,23 @@ public class AutoShopTable {
 								}
 							}
 						}
-					}	
-					
-					if (Chat != null) {						
+					}
+
+					if (Chat != null) {
 						pc.setShopChat(Chat);
 					}
 					pc.setPrivateShop(true);
 					pc.sendPackets(new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));
-					Broadcaster.broadcastPacket(pc, new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));	
-					
+					Broadcaster.broadcastPacket(pc, new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));
+
 					autoshop = shopManager.getShopPlayer(charName);
 					if (autoshop == null) {
 						autoshop = shopManager.makeAutoShop(pc);
-						shopManager.register(autoshop);	
-					} 
+						shopManager.register(autoshop);
+					}
 					autoshoptable.put(pc.getId(), pc);
 				} catch (Exception e) {
-					System.out.println("¿ÀÅä»óÁ¡ ·ÎµùÁß ¿À·ù!");
+					System.out.println("Error at fillSpawnTable method.");
 					e.printStackTrace();
 				}
 			}
@@ -302,7 +302,7 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public void ReloadAutoPcShop(L1PcInstance shop) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -313,59 +313,59 @@ public class AutoShopTable {
 			pstm = con.prepareStatement("SELECT * FROM autoshoplist where char_name = ? and count = '1'");
 			pstm.setString(1, shop.getName());
 			shopRs = pstm.executeQuery();
-			
-			AutoShopManager shopManager = AutoShopManager.getInstance(); 
+
+			AutoShopManager shopManager = AutoShopManager.getInstance();
 			AutoShop autoshop = null;
-			L1PcInstance pc = null;				
-			
+			L1PcInstance pc = null;
+
 			while (shopRs.next()) {
 				try {
 					String charName = shopRs.getString("char_name");
-																		
-					pc = L1World.getInstance().getPlayer(charName); 	
-					
+
+					pc = L1World.getInstance().getPlayer(charName);
+
 					if (pc != null) {
 						pc.setPrivateShop(false);
 						pc.sendPackets(new S_DoActionGFX(pc.getId(), ActionCodes.ACTION_Idle));
 						Broadcaster.broadcastPacket(pc, new S_DoActionGFX(pc.getId(), ActionCodes.ACTION_Idle));
 						//Thread.sleep(1000);
-						pc.logout();					
+						pc.logout();
 						pc = null;
 					}
-					
+
 					if (pc == null) {
 						pc = new L1PcInstance();
-						
+
 						pc.setId(ObjectIdFactory.getInstance().nextId());
-						pc.setName(shopRs.getString("char_name"));						
+						pc.setName(shopRs.getString("char_name"));
 						pc.set_sex(shopRs.getInt("Sex"));	// 0~1
-						pc.setType(shopRs.getInt("Type"));	
-						
+						pc.setType(shopRs.getInt("Type"));
+
 						if (pc.get_sex() == 0) {
 							pc.setClassId(C_CreateNewCharacter.MALE_LIST[pc.getType()]);
 						}
 						else {
 							pc.setClassId(C_CreateNewCharacter.FEMALE_LIST[pc.getType()]);
 						}
-						
+
 						pc.getGfxId().setTempCharGfx(pc.getClassId());
 						pc.getGfxId().setGfxId(pc.getClassId());
-						
+
 						pc.getMoveState().setHeading(shopRs.getInt("Heading"));
 						pc.setLawful(shopRs.getInt("Lawful"));
 						pc.setTitle(shopRs.getString("Title"));
 						pc.setX(shopRs.getInt("LocX"));
-						pc.setY(shopRs.getInt("LocY"));		
+						pc.setY(shopRs.getInt("LocY"));
 						pc.setMap(shopRs.getShort("MapID"));
 						pc.setShopStep(shopRs.getInt("step"));
-						
+
 						pc.setHighLevel(1);
 						pc.getAbility().setBaseStr(20);
 						pc.getAbility().setBaseDex(20);
 						pc.getAbility().setBaseCon(20);
 						pc.getAbility().setBaseWis(20);
 						pc.getAbility().setBaseCha(20);
-						pc.getAbility().setBaseInt(20);	
+						pc.getAbility().setBaseInt(20);
 						pc.addBaseMaxHp((short)200);
 						pc.setCurrentHp(pc.getMaxHp());
 						pc.addBaseMaxMp((short)20);
@@ -394,49 +394,49 @@ public class AutoShopTable {
 						pc.setKarma(0);
 						pc.setReturnStat(0);
 						pc.calAinHasad(0);
-						pc.setAccountName("");				
+						pc.setAccountName("");
 						pc.noPlayerCK = true;
-						pc.setNetConnection(null);	
-												
+						pc.setNetConnection(null);
+
 						pc.clearSkillMastery();
 						L1World.getInstance().storeObject(pc);
 						L1World.getInstance().addVisibleObject(pc);
-						
+
 						if (shopRs.getInt("GfxId") != 0) {
 							L1PolyMorph.doPoly(pc, shopRs.getInt("GfxId"), 0, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 						}
 					}
-					
+
 					items(pc);
-					
+
 					pstm = con.prepareStatement("SELECT * FROM autoshopitemlist WHERE char_name = ? and count = '1'");
 					pstm.setString(1, charName);
 					itemRs = pstm.executeQuery();
-					
+
 					byte[] Chat = null;
 					if (!shopRs.getString("sellmsg").trim().equalsIgnoreCase("")) {
 						Chat = stringToByte(shopRs.getString("sellmsg"));// + shopRs.getString("buymsg"));
 					}
-					
+
 					ArrayList<L1PrivateShopSellList> sellList = pc.getSellList();
 					ArrayList<L1PrivateShopBuyList> buyList = pc.getBuyList();
 					sellList.clear();
 					buyList.clear();
-					
-					for (L1ItemInstance item : pc.getInventory().getItems()) {						
+
+					for (L1ItemInstance item : pc.getInventory().getItems()) {
 						pc.getInventory().removeItem(item);
-					}	
-					
+					}
+
 					pc.getInventory().storeItem(40308, 1900000000);
-					
-					while (itemRs.next()) {		
+
+					while (itemRs.next()) {
 						if (itemRs.getInt("buy_totalcount") < 0) {
-							if (itemRs.getInt("itemenchant") > -1) {								
+							if (itemRs.getInt("itemenchant") > -1) {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), itemRs.getInt("sell_totalcount"), itemRs.getInt("itemenchant"));
 							} else {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), itemRs.getInt("sell_totalcount"));
-							} 							
-							for (L1ItemInstance item : pc.getInventory().getItems()) {							
+							}
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								if (item.getItemId() != 40308 && !item.isIdentified()) {
 									item.setIdentified(true);
 									pc.getInventory().saveItem(item, L1PcInventory.COL_IS_ID);
@@ -449,13 +449,13 @@ public class AutoShopTable {
 									if (item.getId() == sellItemList[i].getItemObjectId()) {
 										sellCheck = true;
 										break;
-									} else { 
+									} else {
 										sellCheck = false;
 									}
 								}
-								
-								if (item.getItemId() != 40308 && !sellCheck) {	
-									L1PrivateShopSellList sell = new L1PrivateShopSellList();									
+
+								if (item.getItemId() != 40308 && !sellCheck) {
+									L1PrivateShopSellList sell = new L1PrivateShopSellList();
 									sell.setItemObjectId(item.getId());
 									sell.setSellPrice(itemRs.getInt("sell_price"));
 									sell.setSellTotalCount(itemRs.getInt("sell_totalcount"));
@@ -463,12 +463,12 @@ public class AutoShopTable {
 								}
 							}
 						} else if (itemRs.getInt("sell_totalcount") < 0) {
-							if (itemRs.getInt("itemenchant") > -1) {							
+							if (itemRs.getInt("itemenchant") > -1) {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), 1, itemRs.getInt("itemenchant"));
 							} else {
 								pc.getInventory().storeItem(itemRs.getInt("itemid"), 1);
-							} 
-							for (L1ItemInstance item : pc.getInventory().getItems()) {							
+							}
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								if (item.getItemId() != 40308 && !item.isIdentified()) {
 									item.setIdentified(true);
 									pc.getInventory().saveItem(item, L1PcInventory.COL_IS_ID);
@@ -476,19 +476,19 @@ public class AutoShopTable {
 							}
 							L1PrivateShopBuyList[] buyItemList = pc.getBuyList().toArray(new L1PrivateShopBuyList[pc.getBuyList().size()]);
 							boolean buyCheck = false;
-							for (L1ItemInstance item : pc.getInventory().getItems()) {		
+							for (L1ItemInstance item : pc.getInventory().getItems()) {
 								for (int i =0; i < buyItemList.length; i++) {
 									if (item.getId() == buyItemList[i].getItemObjectId()) {
 										buyCheck = true;
 										break;
-									} else { 
+									} else {
 										buyCheck = false;
 									}
 								}
-								if (item.getItemId() != 40308 && !buyCheck) {	
-									if (item.getItemId() != 40308) { 
-										L1PrivateShopBuyList buy = new L1PrivateShopBuyList();						
-										buy.setItemObjectId(item.getId());									
+								if (item.getItemId() != 40308 && !buyCheck) {
+									if (item.getItemId() != 40308) {
+										L1PrivateShopBuyList buy = new L1PrivateShopBuyList();
+										buy.setItemObjectId(item.getId());
 										buy.setBuyPrice(itemRs.getInt("buy_price"));
 										buy.setBuyTotalCount(itemRs.getInt("buy_totalcount"));
 										buyList.add(buy);
@@ -496,23 +496,23 @@ public class AutoShopTable {
 								}
 							}
 						}
-					}	
-					
-					if (Chat != null) {						
+					}
+
+					if (Chat != null) {
 						pc.setShopChat(Chat);
 					}
 					pc.setPrivateShop(true);
 					pc.sendPackets(new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));
-					Broadcaster.broadcastPacket(pc, new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));	
-					
+					Broadcaster.broadcastPacket(pc, new S_DoActionShop(pc.getId(), ActionCodes.ACTION_Shop, Chat));
+
 					autoshop = shopManager.getShopPlayer(charName);
 					if (autoshop == null) {
 						autoshop = shopManager.makeAutoShop(pc);
-						shopManager.register(autoshop);	
-					} 
+						shopManager.register(autoshop);
+					}
 					autoshoptable.put(pc.getId(), pc);
 				} catch (Exception e) {
-					System.out.println("¿ÀÅä»óÁ¡ ·ÎµùÁß ¿À·ù!");
+					System.out.println("Error at ReloadAutoPcShop method.");
 					e.printStackTrace();
 				}
 			}
@@ -527,11 +527,11 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public void InsertAutoPcShop(L1PcInstance pc, String message) {		
+
+	public void InsertAutoPcShop(L1PcInstance pc, String message) {
 		Connection con = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 			int i = 0;
 			con = L1DatabaseFactory.getInstance().getConnection();
@@ -550,7 +550,7 @@ public class AutoShopTable {
 			pstm.setInt(++i, pc.getMapId());
 			pstm.setString(++i, message);
 			pstm.setString(++i, "");
-			pstm.execute();			
+			pstm.execute();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -558,15 +558,15 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public void UpdateAutoPcShop(L1PcInstance pc, String message) {		
+
+	public void UpdateAutoPcShop(L1PcInstance pc, String message) {
 		Connection con = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 			int i = 0;
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("UPDATE autoshoplist SET note=?,count=?,GfxId=?,Sex=?,Type=?,Heading=?,Lawful=?,Title=?,LocX=?,LocY=?,MapID=?,SellMsg=?,BuyMsg=? where char_name=?");			
+			pstm = con.prepareStatement("UPDATE autoshoplist SET note=?,count=?,GfxId=?,Sex=?,Type=?,Heading=?,Lawful=?,Title=?,LocX=?,LocY=?,MapID=?,SellMsg=?,BuyMsg=? where char_name=?");
 			pstm.setString(++i, "");
 			pstm.setInt(++i, 1);
 			pstm.setInt(++i, 0);
@@ -581,7 +581,7 @@ public class AutoShopTable {
 			pstm.setString(++i, message);
 			pstm.setString(++i, "");
 			pstm.setString(++i, pc.getName());
-			pstm.execute();			
+			pstm.execute();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -589,18 +589,18 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public void UpdateAutoPcShopView(String charName, int count) {		
+
+	public void UpdateAutoPcShopView(String charName, int count) {
 		Connection con = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 			int i = 0;
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("UPDATE autoshoplist SET count=? where char_name=?");						
+			pstm = con.prepareStatement("UPDATE autoshoplist SET count=? where char_name=?");
 			pstm.setInt(++i, count);
 			pstm.setString(++i, charName);
-			pstm.execute();			
+			pstm.execute();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -608,11 +608,11 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public void ShopAddItem(String charName, L1ItemInstance item, int type, int price) {		
+
+	public void ShopAddItem(String charName, L1ItemInstance item, int type, int price) {
 		Connection con = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 			int i = 0;
 			con = L1DatabaseFactory.getInstance().getConnection();
@@ -638,7 +638,7 @@ public class AutoShopTable {
 				pstm.setInt(++i, price);
 				pstm.setInt(++i, 0);
 			}
-			pstm.execute();			
+			pstm.execute();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -646,19 +646,19 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public void ShopDelItem(String charName, L1ItemInstance item) {		
+
+	public void ShopDelItem(String charName, L1ItemInstance item) {
 		Connection con = null;
 		PreparedStatement pstm = null;
-		
+
 		try {
 			int i = 0;
 			con = L1DatabaseFactory.getInstance().getConnection();
 			pstm = con.prepareStatement("DELETE FROM autoshopitemlist where char_name=? and itemid=? and itemenchant=?");
 			pstm.setString(++i, charName);
-			pstm.setInt(++i, item.getItemId());		
-			pstm.setInt(++i, item.getEnchantLevel());	
-			pstm.execute();			
+			pstm.setInt(++i, item.getItemId());
+			pstm.setInt(++i, item.getEnchantLevel());
+			pstm.execute();
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		} finally {
@@ -666,7 +666,7 @@ public class AutoShopTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public static boolean doesCharNameExist(String name) {
 		boolean result = true;
 		java.sql.Connection con = null;
@@ -687,7 +687,7 @@ public class AutoShopTable {
 		}
 		return result;
 	}
-	
+
 	private byte[] stringToByte(String str) {
 		int strLen = str.length();
 		byte[] cVal = new byte[strLen];
@@ -695,7 +695,7 @@ public class AutoShopTable {
 
 		return cVal;
 	}
-	
+
 	public String byteToString(byte[] sVal) {
 		StringBuffer st = new StringBuffer();
 		String str = new String(sVal);
@@ -703,9 +703,9 @@ public class AutoShopTable {
 
 		return str;
 	}
-	
+
 	private void items(L1PcInstance pc) {
-		// DB·ÎºÎÅÍ Ä³¸¯ÅÍ¿Í Ã¢°íÀÇ ¾ÆÀÌÅÛÀ» ÀÐ¾îµéÀÎ´Ù
+		// DBï¿½Îºï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¿ï¿½ Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½Î´ï¿½
 		CharacterTable.getInstance().restoreInventory(pc);
 		pc.sendPackets(new S_InvList(pc));
 	}
@@ -719,29 +719,29 @@ public class AutoShopTable {
 		*/
 		fillSpawnTable(step);
 	}
-	
+
 	public int isAutoShop(int id) {
 		L1PcInstance pc = autoshoptable.get(id);
-		
+
 		if (pc == null) {
 			return 0;
 		}
-		
+
 		return pc.getId();
 	}
-	
+
 	public void removeAutoShop(int id) {
 		autoshoptable.remove(id);
 	}
-	
+
 	public int getAutoShopCount() {
 		return autoshoptable.size();
 	}
-	
+
 	public L1Shop get(int npcId) {
 		return _npcShops.get(npcId);
 	}
-	
+
 	public ArrayList<L1NpcShop> getList() {
 		return npcShoplist;
 	}

@@ -86,22 +86,24 @@ public class AdenShopTable {
 				list.add( _allShops.get(itemid) );
 				L1Item item = ItemTable.getInstance().getTemplate(itemid);
 				String itemname = item.getName();
-				if (pack > 1)
+				if (pack > 1) {
 					itemname = itemname + "(" + pack + ")";
-				if (item.getMaxUseTime() > 0)
+				}
+				if (item.getMaxUseTime() > 0) {
 					itemname = itemname + " [" + item.getMaxUseTime() + "]";
-				else if (item.get_enchant() > 0)
+				} else if (item.get_enchant() > 0) {
 					itemname = + item.get_enchant() + " " + item.getName();
-				else if (item.getItemId() == 65648)
-					itemname = itemname + " [7ÀÏ]";
-				else if (item.getItemId() >= 30022 && item.getItemId() <= 30025)
+				} else if (item.getItemId() == 65648) {
+					itemname = itemname + " [7ìí]";
+				} else if (item.getItemId() >= 30022 && item.getItemId() <= 30025) {
 					itemname = itemname + " [18000]";
-				else if (item.getItemId() >= 22320 && item.getItemId() <= 22327)
-					itemname = itemname + " [3½Ã°£]";
+				} else if (item.getItemId() >= 22320 && item.getItemId() <= 22327) {
+					itemname = itemname + " [3ãÁÊà]";
+				}
 				data_length += 30;
-				data_length += itemname.getBytes("UTF-16LE").length + 2;
+				data_length += itemname.getBytes("UTF-8").length + 2;
 				if (!html.equalsIgnoreCase("")) {
-					byte[] test = html.getBytes("MS932");
+					byte[] test = html.getBytes("UTF-8");
 					for (int i = 0; i < test.length;) {
 						if ((test[i] & 0xff) >= 0x7F)
 							i += 2;

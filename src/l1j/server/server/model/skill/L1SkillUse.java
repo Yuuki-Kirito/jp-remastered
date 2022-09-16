@@ -1985,7 +1985,7 @@ public class L1SkillUse {
 
 			break;
 
-		case 그레이스아바타: // 스킬 수정 by white
+		case GRACE: // 스킬 수정 by white
 
 			if (pc.isInParty()) {
 				for (L1PcInstance paty : pc.getParty().getMembers()) {
@@ -1995,7 +1995,7 @@ public class L1SkillUse {
 							continue;
 						}
 
-						if (!paty.getSkillEffectTimerSet().hasSkillEffect(그레이스아바타)) {
+						if (!paty.getSkillEffectTimerSet().hasSkillEffect(GRACE)) {
 							int c = 5;// 기본확률
 							if (paty.getLevel() > 80) {
 								c += (paty.getLevel() - 80);
@@ -2011,12 +2011,12 @@ public class L1SkillUse {
 							paty.addAllTolerance(paty.그레이스아바타);
 						}
 
-						paty.sendPackets(new S_NewSkillIcons(L1SkillId.그레이스아바타, true, 60));
+						paty.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 					}
 				}
 			} else {
 				// 중복 사용 시 지속시간 갱신
-				pc.sendPackets(new S_NewSkillIcons(L1SkillId.그레이스아바타, true, 60));
+				pc.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 			}
 
 			break;
@@ -2968,7 +2968,7 @@ public class L1SkillUse {
 				try {
 					if (cha.getSkillEffectTimerSet().hasSkillEffect(_skillId) && _skillId != 토마호크 && _skillId != BONE_BREAK && _skillId != 파워그립
 							&& _skillId != 데스페라도 && _skillId != SHOCK_STUN && _skillId != THUNDER_GRAB && _skillId != 데스힐 && _skillId != 앱솔루트블레이드
-							&& _skillId != 소울배리어 && _skillId != 라이징 && _skillId != 엠파이어 && _skillId != 임팩트 && _skillId != FORCE_STUN
+							&& _skillId != 소울배리어 && _skillId != 라이징 && _skillId != 엠파이어 && _skillId != IMPACT && _skillId != FORCE_STUN
 							&& _skillId != DEMOLITION && _skillId != ETERNITY && _skillId != 쉐도우스탭 && _skillId != PANTERA && _skillId != PHANTOM) {
 
 						addMagicList(cha, true);
@@ -2985,7 +2985,7 @@ public class L1SkillUse {
 				// GFX Check (Made by HuntBoy)
 				switch (_skillId) {
 				/* 군주 스킬 처리 START */
-				case 그레이스아바타: { // 스킬 수정 by white
+				case GRACE: { // 스킬 수정 by white
 					L1PcInstance pc = (L1PcInstance) cha;
 
 					// useSkillGrace(pc);
@@ -3010,7 +3010,7 @@ public class L1SkillUse {
 								paty.그레이스아바타 = c;
 								// 임팩트의 대한 적중 효과 적용
 								paty.addAllTolerance(paty.그레이스아바타);
-								paty.sendPackets(new S_NewSkillIcons(L1SkillId.그레이스아바타, true, 60));
+								paty.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 							}
 						}
 					} else {
@@ -3026,7 +3026,7 @@ public class L1SkillUse {
 						}
 						pc.그레이스아바타 = c;
 						pc.addAllTolerance(pc.그레이스아바타);
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.그레이스아바타, true, 60));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 					}
 
 				}
@@ -3791,7 +3791,7 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 임팩트: {
+				case IMPACT: {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 파티가 있다면 파티원이 화면안파티원 검색 해서 버프 같이 날려줌 */
 					if (pc.isInParty()) {
@@ -3801,14 +3801,14 @@ public class L1SkillUse {
 									continue;
 								}
 
-								if (paty.getSkillEffectTimerSet().hasSkillEffect(임팩트)) {
-									paty.getSkillEffectTimerSet().removeSkillEffect(임팩트);
-									paty.sendPackets(new S_NewSkillIcons(L1SkillId.임팩트, false, 15));
+								if (paty.getSkillEffectTimerSet().hasSkillEffect(IMPACT)) {
+									paty.getSkillEffectTimerSet().removeSkillEffect(IMPACT);
+									paty.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, false, 15));
 								}
 
 								/** 스킬사용자가 아니라면 버프 시간 추가 */
 								if (pc != paty) {
-									paty.getSkillEffectTimerSet().setSkillEffect(임팩트, _getBuffIconDuration * 1000);
+									paty.getSkillEffectTimerSet().setSkillEffect(IMPACT, _getBuffIconDuration * 1000);
 								}
 
 								int c = 5;// 기본확률
@@ -3824,16 +3824,16 @@ public class L1SkillUse {
 								paty.임팩트 = c;
 								/** 임팩트의 대한 적중 효과 적용 */
 								paty.addAllHit(paty.임팩트);
-								paty.sendPackets(new S_NewSkillIcons(L1SkillId.임팩트, true, 15));
+								paty.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 15));
 								paty.sendPackets(new S_SkillSound(paty.getId(), 14513), true);
 							}
 						}
 						/** 파티원이 없다면 자기만 버프효과 */
 					} else {
 						/** 중복 버프 효과 일류션 큐브 확인 중복이라면 삭제 */
-						if (pc.getSkillEffectTimerSet().hasSkillEffect(임팩트)) {
-							pc.getSkillEffectTimerSet().removeSkillEffect(임팩트);
-							pc.sendPackets(new S_NewSkillIcons(L1SkillId.임팩트, false, 15));
+						if (pc.getSkillEffectTimerSet().hasSkillEffect(IMPACT)) {
+							pc.getSkillEffectTimerSet().removeSkillEffect(IMPACT);
+							pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, false, 15));
 						}
 
 						int c = 5;// 기본확률
@@ -3847,7 +3847,7 @@ public class L1SkillUse {
 
 						pc.임팩트 = c;
 						pc.addAllHit(pc.임팩트);
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.임팩트, true, 15));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 15));
 					}
 				}
 					break;
@@ -8489,7 +8489,7 @@ public class L1SkillUse {
 
 	private static final int[] mobstun30TimeArray = { 1000, 1200, 1300, 1400, 1500, 2000, 2500 };
 
-	private static final int[] partyApplySkillArray = { ARMOR_BREAK, 그레이스아바타, SHINING_AURA };
+	private static final int[] partyApplySkillArray = { ARMOR_BREAK, GRACE, SHINING_AURA };
 
 	private static final int[] clanApplySkillArray = { PRIME };
 

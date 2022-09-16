@@ -122,11 +122,12 @@ public class CharSoldierTable {
 	}
 
 	/**
-	 * Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ¿ëº´ °¹¼ö¸¦ °¡Á®¿Â´Ù.
-	 * 
+	 * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦ã„ã‚‹å‚­å…µã®æœ¬æ•°ã‚’ã‚‚ãŸã‚‰ã™ã€‚
+	 *
 	 * @param id
-	 *            ´Â char_id
-	 * @return Cscount Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ¿ëº´ °¹¼ö
+	 *            char_id
+	 * @return Cscount
+	 *			ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒæŒã£ã¦ã„ã‚‹å‚­å…µã®æœ¬æ•°
 	 */
 
 	public int SoldierCalculate(int id) {
@@ -154,8 +155,8 @@ public class CharSoldierTable {
 	}
 
 	/**
-	 * ¿ëº´ ¹èÄ¡ÈÄ µğºñ »èÁ¦
-	 * 
+	 * å‚­å…µé…ç½®å¾Œã®ãƒ‡ã‚£ãƒ“ã®å‰Šé™¤
+	 *
 	 * @param castleid
 	 */
 	public void delCharCastleSoldier(int charid, int time) {
@@ -184,8 +185,8 @@ public class CharSoldierTable {
 	}
 
 	/**
-	 * ÀüÀïÈÄ ÇØ´ç¼ºÀÇ ¿ëº´À» ¸ğµÎ Å¬¸®¾î ÇÑ´Ù.
-	 * 
+	 * æˆ¦äº‰å¾Œã€è©²å½“æ€§ã®å‚­å…µã‚’å…¨ã¦ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
+	 *
 	 * @param castleid
 	 */
 	public void delCastleSoldier(int castleid) {

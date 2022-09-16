@@ -47,7 +47,7 @@ public class CraftInfoTable {
 				craftInfo.probability = rs.getInt("probability");
 				craftInfo.materialList = materialList(craftInfo, rs.getString("material_list"));
 				if (craftInfo.materialList == null || craftInfo.materialList.size() == 0) {
-					System.out.println("Àç·á¾ÆÀÌÅÛ °¹¼ö ¿À·ù craftId : " + craftId);
+					System.out.println("ææ–™ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°ã‚¨ãƒ©ãƒ¼ craftId : " + craftId);
 					craftInfo = null;
 				} else {
 					craftInfoList.put(craftId, craftInfo);
@@ -59,15 +59,15 @@ public class CraftInfoTable {
 		}
 	}
 	private void loadCraftNpcs() {
-		try (Connection con = L1DatabaseFactory.getInstance().getConnection(); 
-				PreparedStatement pstm = con.prepareStatement("SELECT * FROM craft_npcs"); 
+		try (Connection con = L1DatabaseFactory.getInstance().getConnection();
+				PreparedStatement pstm = con.prepareStatement("SELECT * FROM craft_npcs");
 				ResultSet rs = pstm.executeQuery()) {
 
 			while (rs.next()) {
 				int npcId = rs.getInt("npc_id");
 				int[] craftList = craftListToIntArray(rs.getString("craft_id_list"));
 				if (craftList.length == 0 || craftList == null) {
-					System.out.println("Á¦ÀÛ¸®½ºÆ® °¹¼ö ¿À·ù npcId : " + npcId);
+					System.out.println("åˆ¶ä½œãƒªã‚¹ãƒˆã®æ•°ã‚¨ãƒ©ãƒ¼  npcId : " + npcId);
 				} else {
 					craftNpcList.put(npcId, craftList);
 				}
@@ -110,8 +110,8 @@ public class CraftInfoTable {
 	}
 	private ArrayList<Material> materialList(L1CraftInfo ci, String materialList) {
 		try {
-			StringTokenizer stMaterialList = new StringTokenizer(materialList, "\r\n"); //Àç·áµé ÀüÃ¼ ´ã±è.
-			ArrayList<Material> result = new ArrayList<Material>(); //¿©±â¿¡´Â Àç·á°¡ ´ã±ä´Ù. Á¤º¸È­ÇØ¼­.
+			StringTokenizer stMaterialList = new StringTokenizer(materialList, "\r\n"); //ææ–™å…¨ä½“ã‚’æµ¸ã™ã€‚
+			ArrayList<Material> result = new ArrayList<Material>(); //ã“ã“ã«ææ–™ãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚
 			while (stMaterialList.hasMoreTokens()) {
 				Material matrial = new Material();
 				for (int i = 0; i < 5; i++) {
@@ -120,23 +120,23 @@ public class CraftInfoTable {
 					//Dlog.d("totalInfo : " + infos);
 					if (infos.startsWith("descId:")) {
 						infos = infos.replace("descId:", "");
-						matrial.descIds = strToInfo(infos); //¿©±â¿¡´Â descId °¡ ´ã±ä´Ù. ´ëÃ¼¾ÆÀÌÅÛ Æ÷ÇÔ.
+						matrial.descIds = strToInfo(infos); // ã“ã“ã«ã¯descIdãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚ ä»£æ›¿ã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€ã€‚
 					} else if (infos.startsWith("count:")) {
 						infos = infos.replace("count:", "");
-						matrial.count = strToInfo(infos); //¿©±â¿¡´Â count °¡ ´ã±ä´Ù. ´ëÃ¼¾ÆÀÌÅÛ Æ÷ÇÔ.
+						matrial.count = strToInfo(infos); // ã“ã“ã«ã¯countãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚ ä»£æ›¿ã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€ã€‚
 					} else if (infos.startsWith("enchant:")) {
 						infos = infos.replace("enchant:", "");
-						matrial.enchant = strToInfo(infos); //¿©±â¿¡´Â count °¡ ´ã±ä´Ù. ´ëÃ¼¾ÆÀÌÅÛ Æ÷ÇÔ.
+						matrial.enchant = strToInfo(infos); // ã“ã“ã«ã¯countãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚ ä»£æ›¿ã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€ã€‚
 					} else if (infos.startsWith("bless:")) {
 						infos = infos.replace("bless:", "");
-						matrial.bless = strToInfo(infos); //¿©±â¿¡´Â count °¡ ´ã±ä´Ù. ´ëÃ¼¾ÆÀÌÅÛ Æ÷ÇÔ.
-					} 
+						matrial.bless = strToInfo(infos); // ã“ã“ã«ã¯countãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚ ä»£æ›¿ã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€ã€‚
+					}
 				}
 				int len = matrial.descIds.length;
 				if (len == matrial.count.length && len == matrial.enchant.length && len == matrial.bless.length) {
 					result.add(matrial);
 				} else {
-					System.out.println("Material length ¿À·ù craftId : " + ci.craftId);
+					System.out.println("Material length ì˜¤ë¥˜ craftId : " + ci.craftId);
 					return null;
 				}
 			}
@@ -166,7 +166,7 @@ public class CraftInfoTable {
 		public int probability;
 		public ArrayList<Material> materialList;
 	}
-	public class Material { //ÇÏ³ªÀÇ Àç·á.
+	public class Material { //1ã¤ã®ææ–™ã€‚
 		public int[] descIds;
 		public int[] count;
 		public int[] enchant;

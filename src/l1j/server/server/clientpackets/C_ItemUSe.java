@@ -69,10 +69,10 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER_OF_EVA;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_덱업6;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_덱업7;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_시원한얼음조각;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠명궁;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠투사;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠현자;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_COOL_ICE_SCULPTURE;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_BOWMASTER;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_FIGHTER;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_SAGE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_힘업6;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_힘업7;
 import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit1;
@@ -711,14 +711,14 @@ public class C_ItemUSe extends ClientBasePacket {
 					} else if (itemId == 600228) {// 폴의 쾌속 릴
 						성장의릴(pc, useItem, l1iteminstance1);
 					} else if (itemId == 600481) {
-						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.드래곤의성장버프)) {
-							pc.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.드래곤의성장버프);
+						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF)) {
+							pc.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF);
 						}
 
 						pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.신스킬, 6072), true);
 						pc.sendPackets(new S_ACTION_UI(6072, 1800, 8382, 5087), true);
 
-						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.드래곤의성장버프, 1800 * 1000);
+						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF, 1800 * 1000);
 
 						pc.sendPackets(new S_SkillSound(pc.getId(), 15247), true);
 						Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(), 15247), true);
@@ -11635,30 +11635,30 @@ public class C_ItemUSe extends ClientBasePacket {
 			pc.sendPackets(new S_SPMR(pc), true);
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_커츠투사)) {
-			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_커츠투사);
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_KURTZ_FIGHTER)) {
+			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_KURTZ_FIGHTER);
 			pc.addDmgup(-3);
 			pc.addHitup(-5);
 			pc.addDamageReductionByArmor(-3);
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_커츠현자)) {
-			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_커츠현자);
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_KURTZ_SAGE)) {
+			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_KURTZ_SAGE);
 			pc.addSuccMagic(-5);
 			pc.getAbility().addSp(-3);
 			pc.addDamageReductionByArmor(-3);
 			pc.sendPackets(new S_SPMR(pc), true);
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_커츠명궁)) {
-			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_커츠명궁);
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_KURTZ_BOWMASTER)) {
+			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_KURTZ_BOWMASTER);
 			pc.addBowDmgup(-3);
 			pc.addBowHitup(-5);
 			pc.addDamageReductionByArmor(-3);
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_시원한얼음조각)) {
-			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_시원한얼음조각);
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_COOL_ICE_SCULPTURE)) {
+			pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_COOL_ICE_SCULPTURE);
 		}
 
 		if (item_id == L1ItemId.INCRESE_HP_SCROLL || item_id == L1ItemId.CHUNSANG_HP_SCROLL) {

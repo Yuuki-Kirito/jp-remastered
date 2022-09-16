@@ -334,7 +334,7 @@ public class L1SkillId {
 	public static final int 사엘 = 5959; // 사엘버프
 	public static final int 크레이 = 5858; // 사엘버프
 	public static final int 군터의조언 = 6060;
-	public static final int 드래곤의성장버프 = 6072;
+	public static final int DRAGON_GROWTH_BUFF = 6072;
 	public static final int CLAN_BLESS_BUFF = 6073;
 	public static final int 할파스권속버프 = 6062;
 
@@ -456,20 +456,20 @@ public class L1SkillId {
 	public static final int COOKING_END = 3075;
 	public static final int SPECIAL_COOKING2 = 3076;
 
-	public static final int COOKING_NEW_한우 = 3077;
-	public static final int COOKING_NEW_연어 = 3078;
-	public static final int COOKING_NEW_칠면조 = 3079;
-	public static final int COOKING_NEW_닭고기 = 3080;
+	public static final int COOKING_NEW_POWERFUL_WAGYU_STEAK = 3077;
+	public static final int COOKING_NEW_QUICK_BOILED_SALMON = 3078;
+	public static final int COOKING_NEW_CLEVER_TURKEY_ROAST = 3079;
+	public static final int COOKING_NEW_ORDEAL_CHICKEN_SOUP = 3080;
 	public static final int 메티스축복주문서 = 3081;
 	public static final int 메티스정성요리 = 3082;
 	public static final int 메티스정성스프 = 3083;
-	public static final int 싸이매콤한라면 = 3084;
-	public static final int 싸이시원한음료 = 3085;
+	public static final int COOKING_SMALL_NOODLE_DISHES = 3084;
+	public static final int COOKING_SMALL_PORTABLE_BEVERAGE = 3085;
 	public static final int WIND_SHACKLE = 3086; //몹셰클
-	public static final int COOKING_NEW_탐한우 = 3087;
-	public static final int COOKING_NEW_탐연어 = 3088;
-	public static final int COOKING_NEW_탐칠면조 = 3089;
-	public static final int COOKING_NEW_탐닭고기 = 3090;
+	public static final int COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK = 3087;
+	public static final int COOKING_NEW_TAM_QUICK_BOILED_SALMON = 3088;
+	public static final int COOKING_NEW_TAM_CLEVER_TURKEY_ROAST = 3089;
+	public static final int COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP = 3090;
 	public static final int ICE_LANCE = 3091;
 	public static final int STATUS_FREEZE = 10071;
 	public static final int CURSE_PARALYZE2 = 10101;
@@ -506,10 +506,10 @@ public class L1SkillId {
 	public static final int STATUS_CASHSCROLL = 7893;
 	public static final int STATUS_CASHSCROLL2 = 7894;
 	public static final int STATUS_CASHSCROLL3 = 7895;
-	public static final int STATUS_커츠투사 = 16551;
-	public static final int STATUS_커츠현자 = 16553;
-	public static final int STATUS_커츠명궁 = 16552;
-	public static final int STATUS_시원한얼음조각 = 84850;
+	public static final int STATUS_KURTZ_FIGHTER = 16551;
+	public static final int STATUS_KURTZ_SAGE = 16553;
+	public static final int STATUS_KURTZ_BOWMASTER = 16552;
+	public static final int STATUS_COOL_ICE_SCULPTURE = 84850;
 
 	public static final int STATUS_BLUE_POTION3 = 22004;
 
@@ -574,7 +574,7 @@ public class L1SkillId {
 
 	public static final int 흑사의기운 = 10528;
 
-	public static final int 레벨업보너스 = 10529;
+	public static final int STATUS_LEVEL_UP_BONUS = 10529;
 
 	public static final int 제로스리덕 = 10535;
 
@@ -631,12 +631,12 @@ public class L1SkillId {
 	
 	public static final int 데스힐 = 73;
 	public static final int 앱솔루트블레이드 = 92;
-	public static final int 그레이스아바타 = 122;
+	public static final int GRACE = 122;
 	public static final int 엠파이어 = 123;
 	public static final int 소울배리어 = 135;
 	public static final int 인페르노 = 136;
 	//public static final int 디스트로이 = 196;
-	public static final int 임팩트 = 222;
+	public static final int IMPACT = 222;
 	public static final int 포커스스피릿츠 = 223;
 	public static final int 뫼비우스 = 224;
 	public static final int 라이징 = 231;
@@ -657,7 +657,7 @@ public class L1SkillId {
 	public static final int 쉐도우스탭 = 199;
 	// SAFE POLY앤 dodo팩
 	public static final int POLY_SAFE = 15846;
-	public static final int 천하장사버프 = 15410;
+	public static final int TENKACHOUJI_BUFF = 15410;
 	public static final int 순간이동지배 = 15847;
 	//public static final int POLY_SAFE = 15846;
 	public static final int VALA_BUFF = 50000; // 발라카스 혈흔 버프

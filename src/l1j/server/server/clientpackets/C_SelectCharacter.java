@@ -16,10 +16,10 @@ import static l1j.server.server.model.skill.L1SkillId.COOKING_1_6_N;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_6_S;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_8_N;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_8_S;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐한우;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_한우;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
 import static l1j.server.server.model.skill.L1SkillId.DECAY_POTION;
 import static l1j.server.server.model.skill.L1SkillId.DECREASE_WEIGHT;
 import static l1j.server.server.model.skill.L1SkillId.DRESS_EVASION;
@@ -62,9 +62,9 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_ELFBRAVE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_FRUIT;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_HASTE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_TIKAL_BOSSDIE;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠명궁;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠투사;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_커츠현자;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_BOWMASTER;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_FIGHTER;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_KURTZ_SAGE;
 import static l1j.server.server.model.skill.L1SkillId.STRIKER_GALE;
 import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit1;
 import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit2;
@@ -77,8 +77,8 @@ import static l1j.server.server.model.skill.L1SkillId.WIND_SHACKLE;
 import static l1j.server.server.model.skill.L1SkillId.miso1;
 import static l1j.server.server.model.skill.L1SkillId.miso2;
 import static l1j.server.server.model.skill.L1SkillId.miso3;
-import static l1j.server.server.model.skill.L1SkillId.싸이매콤한라면;
-import static l1j.server.server.model.skill.L1SkillId.천하장사버프;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_NOODLE_DISHES;
+import static l1j.server.server.model.skill.L1SkillId.TENKACHOUJI_BUFF;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -1967,22 +1967,22 @@ public class C_SelectCharacter extends ClientBasePacket {
 					continue;
 				}
 
-				if (skillid >= COOKING_NEW_한우 && skillid <= COOKING_NEW_닭고기) {
+				if (skillid >= COOKING_NEW_POWERFUL_WAGYU_STEAK && skillid <= COOKING_NEW_ORDEAL_CHICKEN_SOUP) {
 					L1Cooking.newEatCooking(pc, skillid, remaining_time);
 					continue;
 				}
 
-				if (skillid >= COOKING_NEW_탐한우 && skillid <= COOKING_NEW_탐닭고기) {
+				if (skillid >= COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK && skillid <= COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP) {
 					L1Cooking.newEatCooking(pc, skillid, remaining_time);
 					continue;
 				}
 
-				if (skillid >= 싸이매콤한라면 && skillid <= L1SkillId.싸이시원한음료) {
+				if (skillid >= COOKING_SMALL_NOODLE_DISHES && skillid <= L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE) {
 					L1Cooking.newEatCooking(pc, skillid, remaining_time);
 					continue;
 				}
 
-				if (skillid == 천하장사버프) {
+				if (skillid == TENKACHOUJI_BUFF) {
 					L1Cooking.newEatCooking(pc, skillid, remaining_time);
 					continue;
 				}
@@ -2290,7 +2290,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					}
 					continue;
 
-				case L1SkillId.STATUS_시원한얼음조각:
+				case L1SkillId.STATUS_COOL_ICE_SCULPTURE:
 					icon[18] = (remaining_time + 8) / 16;
 					icon[19] = 0x4C;
 					pc.addDmgup(2);
@@ -2328,7 +2328,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.sendPackets(new S_SPMR(pc), true);
 					break;
 
-				case STATUS_커츠투사:
+				case STATUS_KURTZ_FIGHTER:
 					icon[18] = (remaining_time + 8) / 16;
 					icon[19] = 111;
 					pc.addDmgup(3);
@@ -2336,7 +2336,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.addDamageReductionByArmor(3);
 					break;
 
-				case STATUS_커츠현자:
+				case STATUS_KURTZ_SAGE:
 					icon[18] = (remaining_time + 8) / 16;
 					icon[19] = 111;
 					pc.addSuccMagic(5);
@@ -2345,7 +2345,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.sendPackets(new S_SPMR(pc), true);
 					break;
 
-				case STATUS_커츠명궁:
+				case STATUS_KURTZ_BOWMASTER:
 					icon[18] = (remaining_time + 8) / 16;
 					icon[19] = 111;
 					pc.addBowDmgup(3);
@@ -2435,7 +2435,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.getAC().addAc(-1);
 					break;
 
-				case L1SkillId.레벨업보너스://
+				case L1SkillId.STATUS_LEVEL_UP_BONUS://
 					pc.sendPackets(new S_PacketBox(remaining_time, true, true), true);
 					break;
 
@@ -2444,7 +2444,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.sendPackets(new S_Strup(pc, 5, remaining_time), true);
 					break;
 
-				case L1SkillId.드래곤의성장버프:
+				case L1SkillId.DRAGON_GROWTH_BUFF:
 					pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.신스킬, 6072), true);
 					pc.sendPackets(new S_ACTION_UI(6072, remaining_time, 8382, 5087), true);
 					break;

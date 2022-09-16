@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1World;
@@ -43,11 +44,11 @@ public class CharcterRevengeTable {
 		}
 		return _instance;
 	}
-	
+
 
 	public CharcterRevengeTable() {
 	}
-	
+
 
 
 	public void StoreRevengeResult(int CharobjId, int TargetobjId, String TargetName, String TargetClanName, int TargetClanId, int TargetClass, int result, int resultcounter, int BreakTime, int remaintime, int remaincounter, int chasertime) {
@@ -76,7 +77,7 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public int TargetConnection(int tarobjt) {
 		int result = 0;
 		L1Object target = L1World.getInstance().findObject(tarobjt);
@@ -90,7 +91,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public String TarObjFind(String name) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -113,7 +114,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public boolean doesChaserTimeExist(int pcid) {
 		boolean result = true;
 		java.sql.Connection con = null;
@@ -134,7 +135,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public void StoreChaserTime(int pcid, int targetobj, int time) {
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -152,7 +153,7 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public int LoadChaserTarGet(int pcid) {
 		int result = 0;
 		java.sql.Connection con = null;
@@ -175,7 +176,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public static void TarResultReset(int pcid, int targetobj) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -198,7 +199,7 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public static void AtkerResultReset(int pcid, int targetobj) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -221,7 +222,7 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public void UpdateRemainCount(int pcid, int targetobj) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -239,7 +240,7 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public void UpdateRemainCount(int pcid, String tarname) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -257,8 +258,8 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public int RemainCounter(int pcid, int targetobj) { /**°á°ú Á¶È¸*/
+
+	public int RemainCounter(int pcid, int targetobj) { /** çµæœã®ç…§ä¼š */
 		int result  = 0;
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -281,7 +282,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public static void UpdateResultCount(int pcid, int targetobj) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -299,8 +300,8 @@ public class CharcterRevengeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	public static int Resultcounter(int pcid, int targetobj) { /**°á°ú Á¶È¸*/
+
+	public static int Resultcounter(int pcid, int targetobj) { /** çµæœã®ç…§ä¼š */
 		int result  = 0;
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -323,10 +324,10 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
-	
-	
-	public int ResultCheck(int pcid, int targetobj) { /**°á°ú Á¶È¸*/
+
+
+
+	public int ResultCheck(int pcid, int targetobj) { /** çµæœã®ç…§ä¼š */
 		int result  = 0;
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -349,7 +350,7 @@ public class CharcterRevengeTable {
 		}
 		return result;
 	}
-	
+
 	public boolean doesTargetExist(int pcid, int targetid) {
 		boolean result = true;
 		java.sql.Connection con = null;
@@ -373,7 +374,7 @@ public class CharcterRevengeTable {
 	}
 
 
-	public ArrayList<Integer> GetRevengeObj(int pcid) { /**º¹¼ö ¹ß»ı½Ã°£À» ºÒ·¯¿È*/
+	public ArrayList<Integer> GetRevengeObj(int pcid) { /** è¤‡æ•°ç™ºç”Ÿæ™‚é–“ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform  = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -401,8 +402,8 @@ public class CharcterRevengeTable {
 		}
 		return inform;
 	}
-	
-	public ArrayList<Integer> GettargetObj(int pcid) { /**º¹¼ö ¹ß»ı½Ã°£À» ºÒ·¯¿È*/
+
+	public ArrayList<Integer> GettargetObj(int pcid) { /** è¤‡æ•°ç™ºç”Ÿæ™‚é–“ã‚’å‘¼ã³å‡ºã™ */
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -431,7 +432,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> BreakTime(int pcid) { /**º¹¼ö ¹ß»ı½Ã°£À» ºÒ·¯¿È*/
+	public ArrayList<Integer> BreakTime(int pcid) { /** è¤‡æ•°ç™ºç”Ÿæ™‚é–“ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -460,7 +461,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> Remaintime(int pcid) { /**º¹¼ö ³²Àº ½Ã°£À» ºÒ·¯¿È*/
+	public ArrayList<Integer> Remaintime(int pcid) { /** è¤‡æ•°ã®æ®‹ã‚Šæ™‚é–“ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -489,7 +490,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> CPRemainCount(int pcid) {  /**ÃßÀûÀÌ³ª µµ¹ß È½¼ö¸¦ ºÒ·¯¿È*/
+	public ArrayList<Integer> CPRemainCount(int pcid) {  /** è¿½è·¡ã¾ãŸã¯æŒ‘ç™ºã®å›æ•°ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -518,7 +519,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> WLCount(int pcid) {  /**°á°úÀÇ Ä«¿îÅÍ¸¦ ºÒ·¯¿È*/
+	public ArrayList<Integer> WLCount(int pcid) {  /** çµæœã®ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -546,8 +547,8 @@ public class CharcterRevengeTable {
 		}
 		return inform;
 	}
-	
-	public ArrayList<Integer> ChaserTimelist(int pcid) {  /**Ã¼ÀÌ¼­Å¸ÀÓÀ»ºÒ·¯¿È*/
+
+	public ArrayList<Integer> ChaserTimelist(int pcid) {  /** ãƒã‚§ã‚¤ã‚µãƒ¼ã‚¿ã‚¤ãƒ ã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -576,7 +577,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> isWin(int pcid) {  /**ÆĞ¹èÀÎÁö ½Â¸®ÀÎÁöÀÇ °á°ú¸¦ ºÒ·¯¿È*/
+	public ArrayList<Integer> isWin(int pcid) {  /** æ•—åŒ—ã‹å‹åˆ©ã‹ã®çµæœã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<Integer> inform = new ArrayList<Integer>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
@@ -605,7 +606,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<Integer> TargetClass(int pcid) {  /**´ë»óÀÇ Å¬·¡½º¸¦ ºÒ·¯¿È*/
+	public ArrayList<Integer> TargetClass(int pcid) {  /** å¯¾è±¡ã‚¯ãƒ©ã‚¹ã‚’å‘¼ã³å‡ºã™ */
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -635,7 +636,7 @@ public class CharcterRevengeTable {
 	}
 
 
-	public ArrayList<Integer> TargetClanId(int pcid) { /**´ë»óÀÇ Å¬·£¾ÆÀÌµğ¸¦ ºÒ·¯¿È*/
+	public ArrayList<Integer> TargetClanId(int pcid) { /**å¯¾è±¡ã®ã‚¯ãƒ©ãƒ³IDã‚’å‘¼ã³å‡ºã™*/
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -665,7 +666,7 @@ public class CharcterRevengeTable {
 	}
 
 
-	public ArrayList<String> TargetName(int pcid) {  /**´ë»óÀÇ ÀÌ¸§À» ºÒ·¯¿È*/
+	public ArrayList<String> TargetName(int pcid) {  /** ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®åå‰ã‚’å‘¼ã³å‡ºã™ */
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -694,7 +695,7 @@ public class CharcterRevengeTable {
 		return inform;
 	}
 
-	public ArrayList<String> TargetClanName(int pcid) {  /**´ë»óÀÇ Å¬·£ÀÌ¸§À» ºÒ·¯¿È*/
+	public ArrayList<String> TargetClanName(int pcid) {  /** å¯¾è±¡ã®ã‚¯ãƒ©ãƒ³åã‚’å‘¼ã³å‡ºã™ */
 		ArrayList<String> inform = new ArrayList<String>();
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;

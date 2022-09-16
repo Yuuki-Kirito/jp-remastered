@@ -23,10 +23,10 @@ import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
 import static l1j.server.server.model.skill.L1SkillId.ARMOR_BREAK;
 import static l1j.server.server.model.skill.L1SkillId.BLESS_WEAPON;
 import static l1j.server.server.model.skill.L1SkillId.BRAVE_AURA;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_한우;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
 import static l1j.server.server.model.skill.L1SkillId.DRAGON_SKIN;
 import static l1j.server.server.model.skill.L1SkillId.FEATHER_BUFF_A;
 import static l1j.server.server.model.skill.L1SkillId.FEATHER_BUFF_B;
@@ -47,8 +47,8 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_YAHEE;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성스프;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성요리;
 import static l1j.server.server.model.skill.L1SkillId.메티스축복주문서;
-import static l1j.server.server.model.skill.L1SkillId.싸이매콤한라면;
-import static l1j.server.server.model.skill.L1SkillId.싸이시원한음료;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_NOODLE_DISHES;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE;
 import static l1j.server.server.model.skill.L1SkillId.크레이;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7563,19 +7563,19 @@ public class C_NPCAction extends ClientBasePacket {
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EARTH_BLESS)) {
 						dmg -= 2;
 					}
-					if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_닭고기)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_연어)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_칠면조)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_한우)
+					if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_ORDEAL_CHICKEN_SOUP)
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_QUICK_BOILED_SALMON)
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_CLEVER_TURKEY_ROAST)
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_POWERFUL_WAGYU_STEAK)
 							|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.miso2)) {
 						dmg -= 2;
 					}
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성스프)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(싸이시원한음료)) {
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_PORTABLE_BEVERAGE)) {
 						dmg -= 5;
 					}
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(싸이매콤한라면)) {
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_NOODLE_DISHES)) {
 						dmg -= 5;
 					}
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서)

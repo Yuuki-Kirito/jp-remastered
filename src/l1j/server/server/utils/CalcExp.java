@@ -19,14 +19,14 @@
 
 package l1j.server.server.utils;
 
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_한우;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐한우;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
 import static l1j.server.server.model.skill.L1SkillId.miso3;
 
 import java.util.ArrayList;
@@ -517,27 +517,27 @@ public class CalcExp {
 		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.COOKING_1_23_N)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.COOKING_1_23_S)) {
 			foodBonus = 1.03;
-		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_연어)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_칠면조)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_한우)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐연어)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐칠면조)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐한우)) {
+		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_QUICK_BOILED_SALMON)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_CLEVER_TURKEY_ROAST)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_POWERFUL_WAGYU_STEAK)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_QUICK_BOILED_SALMON)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_CLEVER_TURKEY_ROAST)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK)) {
 			foodBonus = 1.02;
-		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_닭고기) 
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐닭고기)) {
+		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_ORDEAL_CHICKEN_SOUP) 
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP)) {
 			foodBonus = 1.04;
 		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.메티스정성스프)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.싸이시원한음료)) {
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE)) {
 			foodBonus = 1.05;
-		} else if (pc.getDessertId() == L1SkillId.천하장사버프) {
+		} else if (pc.getDessertId() == L1SkillId.TENKACHOUJI_BUFF) {
 			foodBonus = 1.2;
 		} else if (pc.getSkillEffectTimerSet().hasSkillEffect(miso3)) {
 			foodBonus += 1.1;
 		}
 		
 		
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.드래곤의성장버프) && Config.드래곤성장의물약이벤트 == true){
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF) && Config.드래곤성장의물약이벤트 == true){
 			if(pc.getLevel() <= 79) {
 				dragonexp += 1.3;
 			} else if(pc.getLevel() >= 80 && pc.getLevel() <= 81) {
@@ -961,7 +961,7 @@ public class CalcExp {
 			신규지원 = 1.50;
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.레벨업보너스)) {
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS)) {
 			levelupBonus = 2.0;
 		}
 

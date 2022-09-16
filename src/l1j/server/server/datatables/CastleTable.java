@@ -23,7 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat; //## A1 war_time ¿À·ù ¼öÁ¤ À§ÇØ ÀÓÆ÷Æ® Ãß°¡ 
+import java.text.SimpleDateFormat; //## A1 war_time ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß°ï¿½
 import java.util.Calendar;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -51,7 +51,7 @@ public class CastleTable {
 		}
 		return _instance;
 	}
-	
+
 	public static void reload() {
 		CastleTable oldInstance = _instance;
 		_instance = new CastleTable();
@@ -141,7 +141,7 @@ public class CastleTable {
 			pstm.setString(1, castle.getName());
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			String fm = sdf.format(castle.getWarTime().getTime());
-			// String fm = DateFormat.getDateTimeInstance().format( //## A1 ¿øº»
+			// String fm = DateFormat.getDateTimeInstance().format( //## A1 ã‚ªãƒªã‚¸ãƒŠãƒ«
 			// castle.getWarTime().getTime()); //#
 			pstm.setString(2, fm);
 			pstm.setInt(3, castle.getTaxRate());

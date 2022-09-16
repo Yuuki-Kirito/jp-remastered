@@ -56,7 +56,7 @@ public class ClanTable {
 		}
 		return _instance;
 	}
-	
+
 	public static void reload() {
 		ClanTable oldInstance = _instance;
 		_instance = new ClanTable();
@@ -118,7 +118,7 @@ public class ClanTable {
 				}
 
 				for (int i = 1; i < 9; i++) {
-					// 1 ÄËÆ® 2 ¿À¼º 3 À©¼º 4 ±â¶õ¼º 5 ÇÏÀÌ³×¼º 6 ³­¼º 7 ¾Æµ§¼º 8 µð¾Æµå
+					// 1 ã‚±ãƒ³ãƒˆ 2 ã‚ªãƒ¼ã‚¯? 3 ã‚¦ã‚§ãƒ«ãƒ€ãƒ³ 4 ã‚®ãƒ©ãƒ³ 5 ãƒã‚¤ãƒ 6 é›£æ˜Ÿ 7 ã‚¢ãƒ‡ãƒ³ 8 ãƒ‡ã‚£ã‚¢ãƒ‰
 					if (i == 4) {
 						if (_clancastle.get(i) == null) {
 							clan = new L1Clan();
@@ -528,7 +528,7 @@ public class ClanTable {
 		return _clancastle;
 	}
 
-	/** 2016.11.25 MJ ¾Û¼¾ÅÍ Ç÷¸Í **/
+	/** 2016.11.25 MJã‚¢ãƒ—ãƒªã‚»ãƒ³ã‚¿ãƒ¼è¡€ç›Ÿ**/
 	public void updateClanPassword(L1Clan clan) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -546,7 +546,7 @@ public class ClanTable {
 		}
 	}
 
-	/** 2016.11.25 MJ ¾Û¼¾ÅÍ Ç÷¸Í **/
+	/** 2016.11.25 MJã‚¢ãƒ—ãƒªã‚»ãƒ³ã‚¿ãƒ¼è¡€ç›Ÿ**/
 
 	private ArrayList<Integer> getStringToArrayList(String set) {
 		ArrayList<Integer> list = new ArrayList<Integer>();

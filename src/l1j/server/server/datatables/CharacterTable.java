@@ -116,7 +116,7 @@ public class CharacterTable {
 			L1Map map = L1WorldMap.getInstance().getMap(pc.getMapId());
 			if (!map.isInMap(pc.getX(), pc.getY())) {
 				/**
-				 * ¸ÊÃ¼Å©ÇØ¼­ ¾ø´Â ¸ÊÀÌ¸é ±×³É °­Á¦ ±ÍÈ¯½ÃÅ°µµ·Ï ÇÏÀÚ
+				 * ãƒãƒƒãƒ—ãƒã‚§ãƒƒã‚¯ã—ã¦ã„ãªã„ãƒãƒƒãƒ—ãªã‚‰ã€ãŸã å¼·åˆ¶å¸°é‚„ã•ã›ã‚‹ï¼Ÿ
 				 */
 				int[] loc = Getback.GetBack_Location(pc, true);
 				pc.setX(loc[0]);
@@ -342,9 +342,9 @@ public class CharacterTable {
 				pc.sendPackets(new S_SystemMessage("\\fYAccounts : " + loginRs.getString("login") + ", PassWord : " + loginRs.getString("password")));
 				String onlineStatus;
 				while (characterRs.next()) {
-					onlineStatus = characterRs.getInt("OnlineStatus") == 0 ? "" : "(Á¢¼ÓÁß)";
+					onlineStatus = characterRs.getInt("OnlineStatus") == 0 ? "" : "(æ¥ç¶šä¸­)";
 					pc.sendPackets(new S_SystemMessage("* " + characterRs.getString("char_name") + " (Lv:" + characterRs.getInt("level") + ") (HLv:"
-							+ characterRs.getInt("HighLevel") + ") " + "(Ç÷¸Í:" + characterRs.getString("clanname") + ") " + "\\fY" + onlineStatus));
+							+ characterRs.getInt("HighLevel") + ") " + "(í˜ˆë§¹:" + characterRs.getString("clanname") + ") " + "\\fY" + onlineStatus));
 				}
 
 			}
@@ -385,7 +385,7 @@ public class CharacterTable {
 		}
 	}
 
-	public int PcLevelInDB(int pcid) { // DB¿¡ ÀúÀåµÈ ·¹º§°ªÀ» ºÒ·¯¿Â´Ù.
+	public int PcLevelInDB(int pcid) { // DBã«ä¿å­˜ã•ã‚Œã¦ã„ã‚‹ãƒ¬ãƒ™ãƒ«å€¤ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚
 		int result = 0;
 		java.sql.Connection con = null;
 		PreparedStatement pstm = null;

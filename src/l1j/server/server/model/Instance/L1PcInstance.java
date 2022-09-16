@@ -2053,10 +2053,10 @@ public class L1PcInstance extends L1Character {
 			int percent = ExpTable.getExpPercentage(char_level, getExp());
 			if (char_level >= 60 && char_level <= 64) {
 				if (percent >= 10)
-					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 			} else if (char_level >= 65) {
 				if (percent >= 5) {
-					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 				}
 			}
 			// sendPackets(new S_Exp(this));
@@ -2066,12 +2066,12 @@ public class L1PcInstance extends L1Character {
 		if (gap > 0) {
 			levelUp(gap);
 			if (getLevel() >= 60) {
-				getSkillEffectTimerSet().setSkillEffect(L1SkillId.레벨업보너스, 10800000);
+				getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS, 10800000);
 				sendPackets(new S_PacketBox(10800, true, true), true);
 			}
 		} else if (gap < 0) {
 			levelDown(gap);
-			getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+			getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 		}
 	}
 
@@ -4317,17 +4317,17 @@ public class L1PcInstance extends L1Character {
 					if (getSkillEffectTimerSet().hasSkillEffect(skillNum))
 						getSkillEffectTimerSet().removeSkillEffect(skillNum);
 				}
-				for (int i = L1SkillId.COOKING_NEW_한우; i <= L1SkillId.COOKING_NEW_닭고기; i++) {
+				for (int i = L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK; i <= L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP; i++) {
 					if (getSkillEffectTimerSet().hasSkillEffect(i))
 						getSkillEffectTimerSet().removeSkillEffect(i);
 				}
 
-				for (int i = L1SkillId.COOKING_NEW_탐한우; i <= L1SkillId.COOKING_NEW_탐닭고기; i++) {
+				for (int i = L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK; i <= L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP; i++) {
 					if (getSkillEffectTimerSet().hasSkillEffect(i))
 						getSkillEffectTimerSet().removeSkillEffect(i);
 				}
 
-				for (int i = L1SkillId.싸이매콤한라면; i <= L1SkillId.싸이시원한음료; i++) {
+				for (int i = L1SkillId.COOKING_SMALL_NOODLE_DISHES; i <= L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE; i++) {
 					if (getSkillEffectTimerSet().hasSkillEffect(i))
 						getSkillEffectTimerSet().removeSkillEffect(i);
 				}
@@ -7250,10 +7250,10 @@ public class L1PcInstance extends L1Character {
 			int percent = ExpTable.getExpPercentage(char_level, getExp());
 			if (char_level >= 60 && char_level <= 64) {
 				if (percent >= 10)
-					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 			} else if (char_level >= 65) {
 				if (percent >= 5) {
-					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+					getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 				}
 			}
 			return;
@@ -7263,12 +7263,12 @@ public class L1PcInstance extends L1Character {
 		if (gap > 0) {
 			levelUp(gap);
 			if (getLevel() >= 60) {
-				getSkillEffectTimerSet().setSkillEffect(L1SkillId.레벨업보너스, 10800000);
+				getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS, 10800000);
 				sendPackets(new S_PacketBox(10800, true, true), true);
 			}
 		} else if (gap < 0) {
 			levelDown(gap);
-			getSkillEffectTimerSet().removeSkillEffect(L1SkillId.레벨업보너스);
+			getSkillEffectTimerSet().removeSkillEffect(L1SkillId.STATUS_LEVEL_UP_BONUS);
 		}
 	}
 

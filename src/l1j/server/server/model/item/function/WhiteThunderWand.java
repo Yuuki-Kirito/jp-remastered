@@ -20,14 +20,14 @@
 package l1j.server.server.model.item.function;
 
 import static l1j.server.server.model.skill.L1SkillId.ABSOLUTE_BARRIER;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_한우;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐한우;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
 import static l1j.server.server.model.skill.L1SkillId.COUNTER_MAGIC;
 import static l1j.server.server.model.skill.L1SkillId.EARTH_BIND;
 import static l1j.server.server.model.skill.L1SkillId.ERASE_MAGIC;
@@ -43,8 +43,8 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_FREEZE;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성스프;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성요리;
 import static l1j.server.server.model.skill.L1SkillId.메티스축복주문서;
-import static l1j.server.server.model.skill.L1SkillId.싸이매콤한라면;
-import static l1j.server.server.model.skill.L1SkillId.싸이시원한음료;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_NOODLE_DISHES;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE;
 import static l1j.server.server.model.skill.L1SkillId.마제스티;
 
 import java.util.Random;
@@ -281,22 +281,22 @@ public class WhiteThunderWand extends L1ItemInstance {
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(SPECIAL_COOKING2)) {
 			리덕 += 5;
 		}
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_닭고기)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_연어)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_칠면조)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_한우)) {
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_ORDEAL_CHICKEN_SOUP)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_QUICK_BOILED_SALMON)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_CLEVER_TURKEY_ROAST)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_POWERFUL_WAGYU_STEAK)) {
 			리덕 += 2;
 		}
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐닭고기)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐연어)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐칠면조)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_탐한우)
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_QUICK_BOILED_SALMON)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_CLEVER_TURKEY_ROAST)
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.miso2)) {
 			리덕 += 2;
 		}
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성스프) || pc.getSkillEffectTimerSet().hasSkillEffect(싸이시원한음료))
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성스프) || pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_PORTABLE_BEVERAGE))
 			리덕 += 5;
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리) || pc.getSkillEffectTimerSet().hasSkillEffect(싸이매콤한라면))
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리) || pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_NOODLE_DISHES))
 			리덕 += 5;
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운))

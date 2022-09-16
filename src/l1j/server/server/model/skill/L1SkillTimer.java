@@ -92,7 +92,7 @@ class L1SkillStop {
 	
 	public static void stopSkill(L1Character cha, int skillId) {
 		switch (skillId) {
-			case 천하장사버프: {
+			case TENKACHOUJI_BUFF: {
 				L1PcInstance pc = (L1PcInstance) cha;
 				pc.addDamageReductionByArmor(-5);
 				pc.sendPackets(new S_PacketBox(S_PacketBox.ICON_COOKING, 187, 0));
@@ -125,7 +125,7 @@ class L1SkillStop {
 			}
 				break;
 	
-			case 그레이스아바타:{
+			case GRACE:{
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 임팩트의 대한 적중 효과 삭제 */
@@ -370,7 +370,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case STATUS_시원한얼음조각:
+			case STATUS_COOL_ICE_SCULPTURE:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addDmgup(-2);
@@ -438,7 +438,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case L1SkillId.레벨업보너스:
+			case L1SkillId.STATUS_LEVEL_UP_BONUS:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.sendPackets(new S_PacketBox(0, true, true), true);
@@ -749,7 +749,7 @@ class L1SkillStop {
 				cha.setSleeped(false);
 				break;
 				
-			case 싸이매콤한라면:
+			case COOKING_SMALL_NOODLE_DISHES:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addHitup(-2);
@@ -766,11 +766,11 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 싸이시원한음료:
-			case COOKING_NEW_닭고기:
+			case COOKING_SMALL_PORTABLE_BEVERAGE:
+			case COOKING_NEW_ORDEAL_CHICKEN_SOUP:
 				break;
 				
-			case COOKING_NEW_연어:
+			case COOKING_NEW_QUICK_BOILED_SALMON:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addBowHitup(-1);
@@ -784,7 +784,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_칠면조:
+			case COOKING_NEW_CLEVER_TURKEY_ROAST:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addHpr(-2);
@@ -797,7 +797,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_한우:
+			case COOKING_NEW_POWERFUL_WAGYU_STEAK:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addHitup(-1);
@@ -811,7 +811,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_탐연어:
+			case COOKING_NEW_TAM_QUICK_BOILED_SALMON:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addBowHitup(-1);
@@ -829,7 +829,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_탐칠면조:
+			case COOKING_NEW_TAM_CLEVER_TURKEY_ROAST:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addHpr(-2);
@@ -846,7 +846,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_탐닭고기:
+			case COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addTechniqueTolerance(-2);
@@ -856,7 +856,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case COOKING_NEW_탐한우:
+			case COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addHitup(-1);
@@ -2098,7 +2098,7 @@ class L1SkillStop {
 				}
 				break;
 	
-			case 임팩트: {
+			case IMPACT: {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 임팩트의 대한 적중 효과 삭제 */
@@ -2568,28 +2568,28 @@ class L1SkillStop {
 				}
 				break;
 				
-			case STATUS_커츠투사:
+			case STATUS_KURTZ_FIGHTER:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addDmgup(-3);
 					pc.addHitup(-5);
 					pc.addDamageReductionByArmor(-3);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_커츠투사, false, 1800));
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_FIGHTER, false, 1800));
 				}
 				break;
 				
-			case STATUS_커츠현자:
+			case STATUS_KURTZ_SAGE:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addSuccMagic(-5);
 					pc.addDamageReductionByArmor(-3);
 					pc.getAbility().addSp(-3);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_커츠현자, false, 1800));
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_SAGE, false, 1800));
 					pc.sendPackets(new S_SPMR(pc), true);
 				}
 				break;
 				
-			case STATUS_커츠명궁:
+			case STATUS_KURTZ_BOWMASTER:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addBowDmgup(-3);

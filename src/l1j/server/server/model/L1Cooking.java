@@ -66,21 +66,21 @@ import static l1j.server.server.model.skill.L1SkillId.COOKING_1_8_N;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_8_S;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_9_N;
 import static l1j.server.server.model.skill.L1SkillId.COOKING_1_9_S;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_한우;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐닭고기;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐연어;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐칠면조;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_탐한우;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_QUICK_BOILED_SALMON;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_CLEVER_TURKEY_ROAST;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
 import static l1j.server.server.model.skill.L1SkillId.SPECIAL_COOKING;
 import static l1j.server.server.model.skill.L1SkillId.SPECIAL_COOKING2;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성스프;
 import static l1j.server.server.model.skill.L1SkillId.메티스정성요리;
-import static l1j.server.server.model.skill.L1SkillId.싸이매콤한라면;
-import static l1j.server.server.model.skill.L1SkillId.싸이시원한음료;
-import static l1j.server.server.model.skill.L1SkillId.천하장사버프;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_NOODLE_DISHES;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE;
+import static l1j.server.server.model.skill.L1SkillId.TENKACHOUJI_BUFF;
 
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
@@ -109,37 +109,37 @@ public class L1Cooking {
 		switch (itemId) {
 		case 60075:// 버섯스프 // 닭고기 스프
 		case 60729:
-			cookingId = COOKING_NEW_닭고기;
+			cookingId = COOKING_NEW_ORDEAL_CHICKEN_SOUP;
 			break;
 		case 60073:// 키위패롯구이 // 날샌 연어 찜
 		case 60727:
-			cookingId = COOKING_NEW_연어;
+			cookingId = COOKING_NEW_QUICK_BOILED_SALMON;
 			break;
 		case 60074:// 거미다리꼬치구이 // 영리한 칠면조 구이
 		case 60728:
-			cookingId = COOKING_NEW_칠면조;
+			cookingId = COOKING_NEW_CLEVER_TURKEY_ROAST;
 			break;
 		case 60072:// 코카스테이크 // 한우 스테이크
 		case 60726:
-			cookingId = COOKING_NEW_한우;
+			cookingId = COOKING_NEW_POWERFUL_WAGYU_STEAK;
 			break;
 		case 60259:
-			cookingId = 싸이매콤한라면;
+			cookingId = COOKING_SMALL_NOODLE_DISHES;
 			break;
 		case 60260:
-			cookingId = 싸이시원한음료;
+			cookingId = COOKING_SMALL_PORTABLE_BEVERAGE;
 			break;
 		case 600353:// 버섯스프 // 닭고기 스프
-			cookingId = COOKING_NEW_탐닭고기;
+			cookingId = COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
 			break;
 		case 600351:// 키위패롯구이 // 날샌 연어 찜
-			cookingId = COOKING_NEW_탐연어;
+			cookingId = COOKING_NEW_TAM_QUICK_BOILED_SALMON;
 			break;
 		case 600352:// 거미다리꼬치구이 // 영리한 칠면조 구이
-			cookingId = COOKING_NEW_탐칠면조;
+			cookingId = COOKING_NEW_TAM_CLEVER_TURKEY_ROAST;
 			break;
 		case 600350:// 코카스테이크 // 한우 스테이크
-			cookingId = COOKING_NEW_탐한우;
+			cookingId = COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
 			break;
 		/*
 		 * case 11111://메티스의 정성스런 요리 cookingId = 메티스정성요리; break; case 111112://메티스의 정성스런
@@ -148,13 +148,13 @@ public class L1Cooking {
 		default:
 			return;
 		}
-		if (cookingId == 메티스정성요리 || cookingId == 싸이매콤한라면 || cookingId == 싸이시원한음료)
+		if (cookingId == 메티스정성요리 || cookingId == COOKING_SMALL_NOODLE_DISHES || cookingId == COOKING_SMALL_PORTABLE_BEVERAGE)
 			newEatCooking(pc, cookingId, 920);
 		else if (cookingId == 메티스정성스프)
 			newEatCooking(pc, cookingId, 900);
 		else
 			newEatCooking(pc, cookingId, 1800);
-		if (cookingId != 싸이매콤한라면 && cookingId != 싸이시원한음료)
+		if (cookingId != COOKING_SMALL_NOODLE_DISHES && cookingId != COOKING_SMALL_PORTABLE_BEVERAGE)
 			pc.sendPackets(new S_ServerMessage(76, item.getNumberedName(1)));
 		pc.getInventory().removeItem(item, 1);
 		pc.sendPackets(new S_EffectLocation(pc.getX(), pc.getY(), 6392));
@@ -163,7 +163,7 @@ public class L1Cooking {
 	public static void newEatCooking(L1PcInstance pc, int cookingId, int time) {
 		int cookingType = 0;
 		switch (cookingId) {
-		case 싸이매콤한라면:
+		case COOKING_SMALL_NOODLE_DISHES:
 			cookingType = 161;
 			pc.addHitup(2);
 			pc.addDmgup(2);
@@ -177,17 +177,17 @@ public class L1Cooking {
 			pc.getResistance().addAllNaturalResistance(10);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 			break;
-		case 싸이시원한음료:
+		case COOKING_SMALL_PORTABLE_BEVERAGE:
 			cookingType = 162;
 			break;
-		case COOKING_NEW_닭고기:
+		case COOKING_NEW_ORDEAL_CHICKEN_SOUP:
 			cookingType = 160;
 
 			break;
 		case 메티스정성스프:
 			cookingType = 162;
 			break;
-		case COOKING_NEW_연어:// 키위패롯구이 // 날샌 연어 찜
+		case COOKING_NEW_QUICK_BOILED_SALMON:// 키위패롯구이 // 날샌 연어 찜
 			cookingType = 158;
 			pc.addBowHitup(1);
 			pc.addBowDmgup(2);
@@ -199,7 +199,7 @@ public class L1Cooking {
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 
 			break;
-		case COOKING_NEW_칠면조:
+		case COOKING_NEW_CLEVER_TURKEY_ROAST:
 			cookingType = 159;
 			pc.addHpr(2);
 			pc.addMpr(3);
@@ -210,7 +210,7 @@ public class L1Cooking {
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 
 			break;
-		case COOKING_NEW_한우:
+		case COOKING_NEW_POWERFUL_WAGYU_STEAK:
 			cookingType = 157;
 			pc.addHitup(1);
 			pc.addDmgup(2);
@@ -222,7 +222,7 @@ public class L1Cooking {
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 
 			break;
-		case COOKING_NEW_탐한우:
+		case COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK:
 			cookingType = 215;
 			pc.addHitup(1);
 			pc.addDmgup(2);
@@ -238,7 +238,7 @@ public class L1Cooking {
 			pc.addFearHit(3);
 
 			break;
-		case COOKING_NEW_탐연어:// 키위패롯구이 // 날샌 연어 찜
+		case COOKING_NEW_TAM_QUICK_BOILED_SALMON:// 키위패롯구이 // 날샌 연어 찜
 			cookingType = 216;
 			pc.addBowHitup(1);
 			pc.addBowDmgup(2);
@@ -254,7 +254,7 @@ public class L1Cooking {
 			pc.addFearHit(3);
 
 			break;
-		case COOKING_NEW_탐칠면조:
+		case COOKING_NEW_TAM_CLEVER_TURKEY_ROAST:
 			cookingType = 217;
 			pc.addHpr(2);
 			pc.addMpr(3);
@@ -269,7 +269,7 @@ public class L1Cooking {
 			pc.addFearHit(3);
 
 			break;
-		case COOKING_NEW_탐닭고기:
+		case COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP:
 			cookingType = 218;
 			pc.addTechniqueTolerance(2);
 			pc.addSpiritTolerance(2);
@@ -291,7 +291,7 @@ public class L1Cooking {
 			pc.getResistance().addAllNaturalResistance(10);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 			break;
-		case 천하장사버프:
+		case TENKACHOUJI_BUFF:
 			cookingType = 187;
 			pc.addDamageReductionByArmor(5);
 			break;
@@ -300,7 +300,7 @@ public class L1Cooking {
 		}
 
 		int cookingId2 = 0;
-		if (cookingId == COOKING_NEW_닭고기 || cookingId == 메티스정성스프 || cookingId == 싸이시원한음료 || cookingId == 천하장사버프 || cookingId == COOKING_NEW_탐닭고기)
+		if (cookingId == COOKING_NEW_ORDEAL_CHICKEN_SOUP || cookingId == 메티스정성스프 || cookingId == COOKING_SMALL_PORTABLE_BEVERAGE || cookingId == TENKACHOUJI_BUFF || cookingId == COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP)
 			cookingId2 = pc.getDessertId();
 		else
 			cookingId2 = pc.getCookingId();
@@ -310,7 +310,7 @@ public class L1Cooking {
 
 		pc.sendPackets(new S_PacketBox(S_PacketBox.ICON_COOKING, pc, cookingType, time));
 		pc.getSkillEffectTimerSet().setSkillEffect(cookingId, time * 1000);
-		if (cookingId == COOKING_NEW_닭고기 || cookingId == 메티스정성스프 || cookingId == 싸이시원한음료 || cookingId == 천하장사버프 || cookingId == COOKING_NEW_탐닭고기)
+		if (cookingId == COOKING_NEW_ORDEAL_CHICKEN_SOUP || cookingId == 메티스정성스프 || cookingId == COOKING_SMALL_PORTABLE_BEVERAGE || cookingId == TENKACHOUJI_BUFF || cookingId == COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP)
 			pc.setDessertId(cookingId);
 		else
 			pc.setCookingId(cookingId);

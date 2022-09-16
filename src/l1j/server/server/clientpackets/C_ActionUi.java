@@ -2501,16 +2501,16 @@ public class C_ActionUi extends ClientBasePacket {
 			case 1:
 				pc.addExp(50000);
 				pc.getInventory().storeItem(60765, 10);
-				L1Cooking.newEatCooking(pc, L1SkillId.천하장사버프, 1800);
+				L1Cooking.newEatCooking(pc, L1SkillId.TENKACHOUJI_BUFF, 1800);
 				break;
 			case 2:
 				pc.getInventory().storeItem(60765, 20);
-				L1Cooking.newEatCooking(pc, L1SkillId.천하장사버프, 1800);
+				L1Cooking.newEatCooking(pc, L1SkillId.TENKACHOUJI_BUFF, 1800);
 				pc.addExp(500000);
 				break;
 			case 3:
 				pc.getInventory().storeItem(60765, 30);
-				L1Cooking.newEatCooking(pc, L1SkillId.천하장사버프, 1800);
+				L1Cooking.newEatCooking(pc, L1SkillId.TENKACHOUJI_BUFF, 1800);
 				pc.addExp(5000000);
 				break;
 			}

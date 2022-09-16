@@ -61,8 +61,8 @@ public class CharacterQuestTable {
 	}
 
 	/**
-	 * ·Î±×ÀÎ½Ã ¸ó½ºÅÍ Á¤º¸¸¦ ÄÉ¸¯ÅÍ¿¡ ¾÷·ÎµåÇÑ´Ù.
-	 * 
+	 * ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æƒ…å ±ã‚’ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ï¼Ÿ
+	 *
 	 * @param pc
 	 */
 	public void LoginQuestInfo(L1PcInstance pc) {
@@ -71,7 +71,7 @@ public class CharacterQuestTable {
 				StringTokenizer s = new StringTokenizer(quest.text, "\r\n");
 				String temp = null;
 				L1QuestInfo info = null;
-				while (s.hasMoreElements()) { // ¿£ÅÍ±âÁØ
+				while (s.hasMoreElements()) { // ã‚¨ãƒ³ã‚¿ãƒ¼ãƒ™ãƒ¼ã‚¹
 					temp = s.nextToken();
 					StringTokenizer mdata = new StringTokenizer(temp, ":");
 					info = new L1QuestInfo();
@@ -94,8 +94,8 @@ public class CharacterQuestTable {
 	}
 
 	/**
-	 * ·Î±×¾Æ¿ô Á¤º¸¾÷·Îµå
-	 * 
+	 * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæƒ…å ±ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰
+	 *
 	 * @param pc
 	 */
 	public void LogOutQuest(L1PcInstance pc) {
@@ -164,7 +164,7 @@ public class CharacterQuestTable {
 	}
 
 	/**
-	 * ¼­¹ö Á¾·á½Ã ÀüÃ¼ Á¤º¸ ¾÷µ¥ÀÌÆ®
+	 * ã‚µãƒ¼ãƒãƒ¼ã®ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³æ™‚ã®å®Œå…¨ãªæƒ…å ±ã®æ›´æ–°
 	 */
 	public void updateAll() {
 		Connection con = null;
@@ -187,8 +187,8 @@ public class CharacterQuestTable {
 	}
 
 	/**
-	 * ÄÉ¸¯ ·Î±×ÀÎ½Ã µ¥ÀÌÅÍ º£ÀÌ½º¿¡ »ı¼º
-	 * 
+	 * ã‚­ãƒ£ãƒ©ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä½œæˆ
+	 *
 	 * @param mon
 	 */
 	public void createQuest(QuestTemp mon) {
