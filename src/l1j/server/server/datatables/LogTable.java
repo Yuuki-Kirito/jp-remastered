@@ -31,25 +31,25 @@ public class LogTable {
 	public LogTable() {
 	}
 
-	private static Timestamp start»ç³ÉT;
-	private static Timestamp start»óÁ¡T;
-	public static boolean »ç³É¾Æµ§ = false;
-	public static boolean »óÁ¡¾Æµ§ = false;
-	public static FastTable<adenLog> »ç³É¾Æµ§¸®½ºÆ® = new FastTable<adenLog>();
-	public static FastTable<adenLog> »óÁ¡¾Æµ§¸®½ºÆ® = new FastTable<adenLog>();
+	private static Timestamp startì‚¬ëƒ¥T;
+	private static Timestamp startìƒì T;
+	public static boolean ì‚¬ëƒ¥ì•„ë´ = false;
+	public static boolean ìƒì ì•„ë´ = false;
+	public static FastTable<adenLog> ì‚¬ëƒ¥ì•„ë´ë¦¬ìŠ¤íŠ¸ = new FastTable<adenLog>();
+	public static FastTable<adenLog> ìƒì ì•„ë´ë¦¬ìŠ¤íŠ¸ = new FastTable<adenLog>();
 
-	public static void »ç³É¾Æµ§½ÃÀÛ() {
-		»ç³É¾Æµ§¸®½ºÆ®.clear();
-		»ç³É¾Æµ§ = true;
-		start»ç³ÉT = new Timestamp(System.currentTimeMillis());
+	public static void ì‚¬ëƒ¥ì•„ë´ì‹œì‘() {
+		ì‚¬ëƒ¥ì•„ë´ë¦¬ìŠ¤íŠ¸.clear();
+		ì‚¬ëƒ¥ì•„ë´ = true;
+		startì‚¬ëƒ¥T = new Timestamp(System.currentTimeMillis());
 	}
 
-	public static void »ç³É¾Æµ§(L1PcInstance pc, int count) {
-		if (»ç³É¾Æµ§) {
+	public static void ì‚¬ëƒ¥ì•„ë´(L1PcInstance pc, int count) {
+		if (ì‚¬ëƒ¥ì•„ë´) {
 			if (pc.getNetConnection() == null)
 				return;
 			adenLog log = null;
-			for (adenLog aL : »ç³É¾Æµ§¸®½ºÆ®) {
+			for (adenLog aL : ì‚¬ëƒ¥ì•„ë´ë¦¬ìŠ¤íŠ¸) {
 				if (aL.name.equalsIgnoreCase(pc.getName())) {
 					log = aL;
 					break;
@@ -62,29 +62,29 @@ public class LogTable {
 				log.accounts = pc.getAccountName();
 				log.name = pc.getName();
 				log.count += count;
-				»ç³É¾Æµ§¸®½ºÆ®.add(log);
+				ì‚¬ëƒ¥ì•„ë´ë¦¬ìŠ¤íŠ¸.add(log);
 			}
 		}
 	}
 
-	public static void »ç³É¾Æµ§Á¾·á() {
-		»ç³É¾Æµ§ = false;
+	public static void ì‚¬ëƒ¥ì•„ë´ì¢…ë£Œ() {
+		ì‚¬ëƒ¥ì•„ë´ = false;
 		GeneralThreadPool.getInstance().schedule(
-				new saveThread(»ç³É¾Æµ§¸®½ºÆ®, start»ç³ÉT, false), 1);
+				new saveThread(ì‚¬ëƒ¥ì•„ë´ë¦¬ìŠ¤íŠ¸, startì‚¬ëƒ¥T, false), 1);
 	}
 
-	public static void »óÁ¡¾Æµ§½ÃÀÛ() {
-		»óÁ¡¾Æµ§¸®½ºÆ®.clear();
-		»óÁ¡¾Æµ§ = true;
-		start»óÁ¡T = new Timestamp(System.currentTimeMillis());
+	public static void ìƒì ì•„ë´ì‹œì‘() {
+		ìƒì ì•„ë´ë¦¬ìŠ¤íŠ¸.clear();
+		ìƒì ì•„ë´ = true;
+		startìƒì T = new Timestamp(System.currentTimeMillis());
 	}
 
-	public static void »óÁ¡¾Æµ§(L1PcInstance pc, int count) {
-		if (»óÁ¡¾Æµ§) {
+	public static void ìƒì ì•„ë´(L1PcInstance pc, int count) {
+		if (ìƒì ì•„ë´) {
 			if (pc.getNetConnection() == null)
 				return;
 			adenLog log = null;
-			for (adenLog aL : »óÁ¡¾Æµ§¸®½ºÆ®) {
+			for (adenLog aL : ìƒì ì•„ë´ë¦¬ìŠ¤íŠ¸) {
 				if (aL.name.equalsIgnoreCase(pc.getName())) {
 					log = aL;
 					break;
@@ -97,15 +97,15 @@ public class LogTable {
 				log.accounts = pc.getAccountName();
 				log.name = pc.getName();
 				log.count += count;
-				»óÁ¡¾Æµ§¸®½ºÆ®.add(log);
+				ìƒì ì•„ë´ë¦¬ìŠ¤íŠ¸.add(log);
 			}
 		}
 	}
 
-	public static void »óÁ¡¾Æµ§Á¾·á() {
-		»óÁ¡¾Æµ§ = false;
+	public static void ìƒì ì•„ë´ì¢…ë£Œ() {
+		ìƒì ì•„ë´ = false;
 		GeneralThreadPool.getInstance().schedule(
-				new saveThread(»óÁ¡¾Æµ§¸®½ºÆ®, start»óÁ¡T, true), 1);
+				new saveThread(ìƒì ì•„ë´ë¦¬ìŠ¤íŠ¸, startìƒì T, true), 1);
 	}
 
 	static class adenLog {
@@ -198,7 +198,7 @@ public class LogTable {
 	 * L1DatabaseFactory.getInstance().getConnection(); p = c.prepareStatement(
 	 * "INSERT INTO log_adena_monster SET accounts=?, id=?, name=?, old_count=?, new_count=?, time=SYSDATE()"
 	 * );
-	 * 
+	 *
 	 * p.setTimestamp(1, pc.getAccountName()); p.setInt(2, pc.getId());
 	 * p.setString(3, pc.getName()); p.setInt(4, old_count); p.setInt(5,
 	 * new_count); p.executeUpdate(); bool = true; }catch(Exception e){
@@ -249,7 +249,7 @@ public class LogTable {
 			p.setInt(6, item.getEnchant());
 			p.setInt(7, count);
 			p.setInt(8, item.getBuyPrice() * count);
-			p.setString(9, "¼º°ø");
+			p.setString(9, "æˆåŠŸ");
 			p.executeUpdate();
 			bool = true;
 		} catch (Exception e) {
@@ -278,7 +278,7 @@ public class LogTable {
 			p.setInt(6, item.getEnchantLevel());
 			p.setInt(7, count);
 			p.setInt(8, 0);
-			p.setString(9, "Ãë¼Ò");
+			p.setString(9, "ã‚­ãƒ£ãƒ³ã‚»ãƒ«");
 			p.executeUpdate();
 			bool = true;
 		} catch (Exception e) {
@@ -300,7 +300,7 @@ public class LogTable {
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_act SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, char_x=?, char_y=?, char_mapid=?"
 	 * );
-	 * 
+	 *
 	 * p.setString(1, sTemp); p.setString(2, pc.getAccountName()); p.setInt(3,
 	 * pc.getId()); p.setString(4, pc.getName()); p.setInt(5, pc.getX());
 	 * p.setInt(6, pc.getY()); p.setInt(7, pc.getMapId()); p.executeUpdate();
@@ -308,15 +308,15 @@ public class LogTable {
 	 * SQLUtil.close(p); SQLUtil.close(c); } return bool; }
 	 */
 	/**
-	 * µğºñ·Î »èÁ¦ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ë””ë¹„ë¡œ ì‚­ì œ ë¡œê·¸ë¥¼ ê¸°ë¡
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
 	 *            Log type 0=Drop 1=PickUp 2=Delete
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 * @return ì„±ê³µ true ì‹¤íŒ¨ false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 	/*
@@ -325,15 +325,15 @@ public class LogTable {
 	 * null; PreparedStatement p = null; try{ switch(type){ case 0://DROP_LOG //
 	 * x, y, map, itme_name drop // sTemp = "DROP " + pc.getX() + " " +
 	 * pc.getY() + " " + pc.getMap().getId() + " " + item.getName(); sTemp =
-	 * "[µå¶ø]"; break; case 1://PICKUP_LOG sTemp = "[ÇÈ¾÷]"; break; case 2://
-	 * Delete_Log sTemp = "[»èÁ¦] "; break; case 3: sTemp = "[¿ëÇØ]"; break; } c =
+	 * "[ë“œë]"; break; case 1://PICKUP_LOG sTemp = "[í”½ì—…]"; break; case 2://
+	 * Delete_Log sTemp = "[ì‚­ì œ] "; break; case 3: sTemp = "[ìš©í•´]"; break; } c =
 	 * L1DatabaseFactory.getInstance().getConnection(); // data -> date // p =
 	 * c.prepareStatement(
 	 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_del SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x=?, char_y=?, char_mapid=?"
 	 * );
-	 * 
+	 *
 	 * p.setString(1, sTemp); p.setString(2, pc.getAccountName()); p.setInt(3,
 	 * pc.getId()); p.setString(4, pc.getName()); p.setInt(5, item.getId());
 	 * p.setInt(6, item.getItemId()); p.setString(7, item.getName());
@@ -344,15 +344,15 @@ public class LogTable {
 	 */
 
 	/**
-	 * µğºñ·Î µå¶ø ÇÈ¾÷ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ë””ë¹„ë¡œ ë“œë í”½ì—… ë¡œê·¸ë¥¼ ê¸°ë¡
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
 	 *            Log type 0=Drop 1=PickUp 2=Delete
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 * @return ì„±ê³µ true ì‹¤íŒ¨ false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -364,17 +364,17 @@ public class LogTable {
 		 * Connection c = null; PreparedStatement p = null; try{ switch(type){
 		 * case 0://DROP_LOG // x, y, map, itme_name drop // sTemp = "DROP " +
 		 * pc.getX() + " " + pc.getY() + " " + pc.getMap().getId() + " " +
-		 * item.getName(); if(!GMCommands.·Î±×_µå¶ø) return false; sTemp = "[µå¶ø]";
-		 * break; case 1://PICKUP_LOG if(!GMCommands.·Î±×_ÇÈ¾÷) return false; sTemp
-		 * = "[ÇÈ¾÷]"; break; case 2:// Delete_Log sTemp = "[»èÁ¦] "; break; case 3:
-		 * if(!GMCommands.·Î±×_¿ëÇØ) return false; sTemp = "[¿ëÇØ]"; break; } c =
+		 * item.getName(); if(!GMCommands.ë¡œê·¸_ë“œë) return false; sTemp = "[ë“œë]";
+		 * break; case 1://PICKUP_LOG if(!GMCommands.ë¡œê·¸_í”½ì—…) return false; sTemp
+		 * = "[í”½ì—…]"; break; case 2:// Delete_Log sTemp = "[ì‚­ì œ] "; break; case 3:
+		 * if(!GMCommands.ë¡œê·¸_ìš©í•´) return false; sTemp = "[ìš©í•´]"; break; } c =
 		 * L1DatabaseFactory.getInstance().getConnection(); // data -> date // p
 		 * = c.prepareStatement(
 		 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
 		 * ); p = c.prepareStatement(
 		 * "INSERT INTO log_item SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x=?, char_y=?, char_mapid=?"
 		 * );
-		 * 
+		 *
 		 * p.setString(1, sTemp); p.setString(2, pc.getAccountName());
 		 * p.setInt(3, pc.getId()); p.setString(4, pc.getName()); p.setInt(5,
 		 * item.getId()); p.setInt(6, item.getItemId()); p.setString(7,
@@ -388,15 +388,15 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î Ã¢°í ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ë””ë¹„ë¡œ ì°½ê³  ë¡œê·¸ë¥¼ ê¸°ë¡
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            Log type 0=°³ÀÎ³Ö±â 1=°³ÀÎÃ£±â 2=¿äÁ¤³Ö±â 3= ¿äÁ¤Ã£±â 4=À¥Ã¢°í
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 *            Log type 0=ê°œì¸ë„£ê¸° 1=ê°œì¸ì°¾ê¸° 2=ìš”ì •ë„£ê¸° 3= ìš”ì •ì°¾ê¸° 4=ì›¹ì°½ê³ 
+	 * @return ì„±ê³µ true ì‹¤íŒ¨ false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -409,19 +409,19 @@ public class LogTable {
 		try {
 			switch (type) {
 			case 0:
-				sTemp = "°³ÀÎ³Ö±â";
+				sTemp = "ê°œì¸ë„£ê¸°";
 				break;
 			case 1:
-				sTemp = "°³ÀÎÃ£±â";
+				sTemp = "ê°œì¸ì°¾ê¸°";
 				break;
 			case 2:
-				sTemp = "¿äÁ¤³Ö±â";
+				sTemp = "ìš”ì •ë„£ê¸°";
 				break;
 			case 3:
-				sTemp = "¿äÁ¤Ã£±â";
+				sTemp = "ìš”ì •ì°¾ê¸°";
 				break;
 			case 4:
-				sTemp = "À¥Ã¢°í";
+				sTemp = "ì›¹ì°½ê³ ";
 				break;
 			}
 			c = L1DatabaseFactory.getInstance().getConnection();
@@ -447,16 +447,16 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î Å¬·£ Ã¢°í ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ë””ë¹„ë¡œ í´ëœ ì°½ê³  ë¡œê·¸ë¥¼ ê¸°ë¡
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            Log type 0=³Ö±â 1=Ã£±â
+	 *            Log type 0=ë„£ê¸° 1=ì°¾ê¸°
 	 * @return
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 * @return ì„±ê³µ true ì‹¤íŒ¨ false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -469,10 +469,10 @@ public class LogTable {
 		try {
 			switch (type) {
 			case 0:
-				sTemp = "³Ö±â";
+				sTemp = "ë„£ê¸°";
 				break;
 			case 1:
-				sTemp = "Ã£±â";
+				sTemp = "ì°¾ê¸°";
 				break;
 			}
 			c = L1DatabaseFactory.getInstance().getConnection();
@@ -502,7 +502,7 @@ public class LogTable {
 	public static boolean logAdentrade(L1PcInstance player,
 			L1PcInstance trading_partner, L1ItemInstance item) {
 		// String sTemp = "";
-		if (!GMCommands.·Î±×_±³È¯)
+		if (!GMCommands._isTradeLog)
 			return false;
 		boolean bool = false;
 		Connection c = null;
@@ -529,21 +529,22 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î ±³È¯ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * äº¤æ›ãƒ­ã‚°ã‚’æ›¸ãè¾¼ã‚€
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 * @return ì„±ê³µ true ì‹¤íŒ¨ false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
 	public static boolean logtrade(L1PcInstance player,
 			L1PcInstance trading_partner, L1ItemInstance item) {
 		// String sTemp = "";
-		if (!GMCommands.·Î±×_±³È¯)
+		if (!GMCommands._isTradeLog) {
 			return false;
+		}
 		boolean bool = false;
 		Connection c = null;
 		PreparedStatement p = null;
@@ -574,21 +575,21 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î °³ÀÎ»óÁ¡ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * å€‹äººå•†åº—ãƒ­ã‚°ã‚’æ›¸ãè¾¼ã‚€
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            0=±¸ÀÔ 1=ÆÇ¸Å
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 *            0=è³¼å…¥ 1=è²©å£²
+	 * @return æˆåŠŸ true å¤±æ•— false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
 	public static boolean logshop(L1PcInstance pc, L1PcInstance targetPc,
 			L1ItemInstance item, int price, int count, int type) {
-		if (!GMCommands.·Î±×_°³ÀÎ»óÁ¡)
+		if (!GMCommands._isPersonalStoreLog)
 			return false;
 
 		String sTemp = "";
@@ -600,10 +601,10 @@ public class LogTable {
 
 			switch (type) {
 			case 0:
-				sTemp = "°³ÀÎ»óÁ¡ - ±¸¸Å";
+				sTemp = "å€‹äººå•†åº— - è³¼å…¥";
 				break;
 			case 1:
-				sTemp = "°³ÀÎ»óÁ¡ - ÆÇ¸Å";
+				sTemp = "å€‹äººå•†åº— - è²©å£²";
 				break;
 			}
 
@@ -611,12 +612,12 @@ public class LogTable {
 			p = c.prepareStatement("INSERT INTO log_private_shop SET time=SYSDATE(), type=?, shop_account=?, shop_id=?, shop_name=?, user_account=?, user_id=?, user_name=?, item_id=?, item_name=?, item_enchantlvl=?, price=?, item_count=?, total_price=?");
 
 			p.setString(1, sTemp);
-			p.setString(2, targetPc.getAccountName());// »óÁ¡ °èÁ¤
-			p.setInt(3, targetPc.getId());// »óÁ¡ ¾ÆÀÌµğ
-			p.setString(4, targetPc.getName());// »óÁ¡ ³×ÀÓ
-			p.setString(5, pc.getAccountName());// ÁÖÃ¼ÀÚ °èÁ¤
-			p.setInt(6, pc.getId());// ÁÖÃ¼ÀÚ ¾ÆÀÌµğ
-			p.setString(7, pc.getName());// ÁÖÃ¼ÀÚ ÀÌ¸§
+			p.setString(2, targetPc.getAccountName());
+			p.setInt(3, targetPc.getId());
+			p.setString(4, targetPc.getName());
+			p.setString(5, pc.getAccountName());
+			p.setInt(6, pc.getId());
+			p.setString(7, pc.getName());
 			p.setInt(8, item.getId());
 			p.setString(9, item.getName());
 			p.setInt(10, item.getEnchantLevel());
@@ -635,22 +636,23 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î »óÁ¡ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ã‚¹ãƒˆã‚¢ãƒ­ã‚°ã‚’æ›¸ãè¾¼ã‚€
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            0=±¸ÀÔ 1=ÆÇ¸Å
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 *            0=è³¼å…¥ 1=è²©å£²
+	 * @return æˆåŠŸ true å¤±æ•— false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
 	public static boolean lognpcshop(L1PcInstance pc, int npcid,
 			L1ItemInstance item, int price, int count, int type) {
-		if (!GMCommands.·Î±×_»óÁ¡)
+		if (!GMCommands._isStoreLog) {
 			return false;
+		}
 
 		String sTemp = "";
 		boolean bool = false;
@@ -661,10 +663,10 @@ public class LogTable {
 
 			switch (type) {
 			case 0:
-				sTemp = "»óÁ¡ - ±¸¸Å";
+				sTemp = "ã‚¹ãƒˆã‚¢ - è³¼å…¥";
 				break;
 			case 1:
-				sTemp = "»óÁ¡ - ÆÇ¸Å";
+				sTemp = "ã‚¹ãƒˆã‚¢ - è²©å£²";
 				break;
 			}
 
@@ -672,10 +674,10 @@ public class LogTable {
 			p = c.prepareStatement("INSERT INTO log_shop SET time=SYSDATE(), type=?, npc_id=?, user_account=?, user_id=?, user_name=?, item_id=?, item_name=?, item_enchantlvl=?, price=?, item_count=?, total_price=?");
 
 			p.setString(1, sTemp);
-			p.setInt(2, npcid);// »óÁ¡ °èÁ¤
-			p.setString(3, pc.getAccountName());// ÁÖÃ¼ÀÚ °èÁ¤
-			p.setInt(4, pc.getId());// ÁÖÃ¼ÀÚ ¾ÆÀÌµğ
-			p.setString(5, pc.getName());// ÁÖÃ¼ÀÚ ÀÌ¸§
+			p.setInt(2, npcid);// npcid
+			p.setString(3, pc.getAccountName());
+			p.setInt(4, pc.getId());
+			p.setString(5, pc.getName());
 			p.setInt(6, item.getId());
 			p.setString(7, item.getName());
 			p.setInt(8, item.getEnchantLevel());
@@ -694,37 +696,38 @@ public class LogTable {
 	}
 
 	/**
-	 * µğºñ·Î ÀÎÃ¦ ·Î±×¸¦ ±â·Ï
-	 * 
+	 * ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆãƒ­ã‚°ã‚’æ›¸ãè¾¼ã‚€
+	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            0=¼º°ø 1=½ÇÆĞ
-	 * @return ¼º°ø true ½ÇÆĞ false used : if(LogTable.getInstance().insert(pc,
+	 *            0=æˆåŠŸ 1=å¤±æ•—
+	 * @return æˆåŠŸ true å¤±æ•— false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
 	public static boolean logEnchant(L1PcInstance pc, L1ItemInstance item,
 			int old_enchantlvl, int new_enchantlvl, int type) {
 
-		if (!GMCommands.·Î±×_ÀÎÃ¾)
+		if (!GMCommands._isLoginLog) {
 			return false;
+		}
 
 		String sTemp = "";
 		boolean bool = false;
 		/**
 		 * Connection c = null; PreparedStatement p = null; try{
-		 * 
-		 * switch(type){ case 0: sTemp = "¼º°ø"; break; case 1: sTemp = "½ÇÆĞ";
+		 *
+		 * switch(type){ case 0: sTemp = "ì„±ê³µ"; break; case 1: sTemp = "ì‹¤íŒ¨";
 		 * break; }
-		 * 
+		 *
 		 * c = L1DatabaseFactory.getInstance().getConnection(); p =
 		 * c.prepareStatement(
 		 * "INSERT INTO log_enchant SET type=?, char_account=?, char_id=?, char_name=?, item_id=?, item_name=?, old_enchantlvl=?, new_enchantlvl=?, datetime=SYSDATE()"
 		 * );
-		 * 
+		 *
 		 * p.setString(1, sTemp); p.setString(2, pc.getAccountName());
 		 * p.setInt(3, pc.getId()); p.setString(4, pc.getName()); p.setInt(5,
 		 * item.getId()); p.setString(6, item.getName()); p.setInt(7,
@@ -743,30 +746,30 @@ public class LogTable {
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_loc SET time=SYSDATE(), char_x=?, char_y=?, char_mapid=?, tile=?"
 	 * );
-	 * 
+	 *
 	 * p.setInt(1, x); p.setInt(2, y); p.setInt(3, mapid); p.setInt(4, tile);
 	 * p.executeUpdate(); bool = true; }catch(Exception e){ e.printStackTrace();
 	 * }finally{ SQLUtil.close(p); SQLUtil.close(c); } return bool; }
-	 * 
+	 *
 	 * /* public static boolean autolog(L1PcInstance pc){ String map = "";
 	 * boolean bool = false; Connection c = null; PreparedStatement p = null;
 	 * try{ // int mapid = pc.getMapId(); // switch(mapid){ // case 9: map =
-	 * "º»´ø 3Ãş"; break; // case 10: map = "º»´ø 4Ãş"; break; // case 11: map =
-	 * "º»´ø 5Ãş"; break; // case 12: map = "º»´ø 6Ãş"; break; // case 13: map =
-	 * "º»´ø 7Ãş"; break; // case 26: map = "»ç´ø 2Ãş"; break; // case 27: map =
-	 * "»ç´ø 3Ãş"; break; // case 28: map = "»ç´ø 4Ãş"; break; // case 307: map =
-	 * "Ä§°ø·Î 1Ãş"; break; // case 308: map = "Ä§°ø·Î 2Ãş"; break; // case 309: map =
-	 * "Ä§°ø·Î 3Ãş"; break; // default: break; // }
-	 * 
+	 * "ë³¸ë˜ 3ì¸µ"; break; // case 10: map = "ë³¸ë˜ 4ì¸µ"; break; // case 11: map =
+	 * "ë³¸ë˜ 5ì¸µ"; break; // case 12: map = "ë³¸ë˜ 6ì¸µ"; break; // case 13: map =
+	 * "ë³¸ë˜ 7ì¸µ"; break; // case 26: map = "ì‚¬ë˜ 2ì¸µ"; break; // case 27: map =
+	 * "ì‚¬ë˜ 3ì¸µ"; break; // case 28: map = "ì‚¬ë˜ 4ì¸µ"; break; // case 307: map =
+	 * "ì¹¨ê³µë¡œ 1ì¸µ"; break; // case 308: map = "ì¹¨ê³µë¡œ 2ì¸µ"; break; // case 309: map =
+	 * "ì¹¨ê³µë¡œ 3ì¸µ"; break; // default: break; // }
+	 *
 	 * map = MapsTable.getInstance().getMapName(pc.getMapId());
-	 * 
+	 *
 	 * c = L1DatabaseFactory.getInstance().getConnection(); // data -> date // p
 	 * = c.prepareStatement(
 	 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_auto SET time=SYSDATE(), account=?, char_id=?, char_name=?, char_level=?, char_x=?, char_y=?, char_mapid=?, mapName=?"
 	 * );
-	 * 
+	 *
 	 * p.setString(1, pc.getAccountName()); p.setInt(2, pc.getId());
 	 * p.setString(3, pc.getName()); p.setInt(4, pc.getLevel()); p.setInt(5,
 	 * pc.getX()); p.setInt(6, pc.getY()); p.setInt(7, pc.getMapId());
@@ -776,7 +779,7 @@ public class LogTable {
 	 */
 
 	/**
-	 * 
+	 *
 	 * @param pc
 	 * @param reason
 	 * @return
@@ -784,14 +787,14 @@ public class LogTable {
 	/*
 	 * public static boolean logbug(L1PcInstance pc, String reason){ boolean
 	 * bool = false; Connection c = null; PreparedStatement p = null; try{
-	 * 
+	 *
 	 * c = L1DatabaseFactory.getInstance().getConnection(); // data -> date // p
 	 * = c.prepareStatement(
 	 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_bug SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, char_x=?, char_y=?, char_mapid=?"
 	 * );
-	 * 
+	 *
 	 * p.setString(1, reason); p.setString(2, pc.getAccountName()); p.setInt(3,
 	 * pc.getId()); p.setString(4, pc.getName()); p.setInt(5, pc.getX());
 	 * p.setInt(6, pc.getY()); p.setInt(7, pc.getMapId()); p.executeUpdate();
@@ -830,7 +833,7 @@ public class LogTable {
 	// }
 	//
 	/**
-	 * 
+	 *
 	 * @param pc
 	 * @param reason
 	 * @return
@@ -839,14 +842,14 @@ public class LogTable {
 	 * public static boolean logdelay(L1PcInstance pc, String reason, long
 	 * delaytime){ boolean bool = true; Connection c = null; PreparedStatement p
 	 * = null; try{
-	 * 
+	 *
 	 * c = L1DatabaseFactory.getInstance().getConnection(); // data -> date // p
 	 * = c.prepareStatement(
 	 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
 	 * ); p = c.prepareStatement(
 	 * "INSERT INTO log_delay SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, char_x=?, char_y=?, char_mapid=?, delaytime=?"
 	 * );
-	 * 
+	 *
 	 * p.setString(1, reason); p.setString(2, pc.getAccountName()); p.setInt(3,
 	 * pc.getId()); p.setString(4, pc.getName()); p.setInt(5, pc.getX());
 	 * p.setInt(6, pc.getY()); p.setInt(7, pc.getMapId()); p.setLong(8,

@@ -1,31 +1,34 @@
 package l1j.server.server.templates;
 
 public class L1Racer {
-	private int num;
-	private int ½Â¸®È½¼ö;
-	private int ÆÐÈ½¼ö;
+
+	private int _num;
 
 	public int getNum() {
-		return num;
+		return _num;
 	}
 
 	public void setNum(int num) {
-		this.num = num;
+		this._num = num;
 	}
 
-	public int get_½Â¸®È½¼ö() {
-		return ½Â¸®È½¼ö;
+	private int _winCount;
+
+	public int getWinCount() {
+		return _winCount;
 	}
 
-	public void set_½Â¸®È½¼ö(int ½Â¸®È½¼ö) {
-		this.½Â¸®È½¼ö = ½Â¸®È½¼ö;
+	public void setWinCount(int i) {
+		this._winCount = i;
 	}
 
-	public int get_ÆÐÈ½¼ö() {
-		return ÆÐÈ½¼ö;
+	private int _loseCount;
+
+	public int getLoseCount() {
+		return _loseCount;
 	}
 
-	public void set_ÆÐÈ½¼ö(int ÆÐÈ½¼ö) {
-		this.ÆÐÈ½¼ö = ÆÐÈ½¼ö;
+	public void setLoseCount(int i) {
+		this._loseCount = i;
 	}
 }

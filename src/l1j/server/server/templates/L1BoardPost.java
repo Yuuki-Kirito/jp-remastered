@@ -15,15 +15,15 @@ import l1j.server.server.utils.SQLUtil;
 
 public class L1BoardPost {
 	private static final String LFCBOARD		= "board_mjlfc";
-	private static final String FREEBOARD		= "board_sm_freeboard";	
+	private static final String FREEBOARD		= "board_sm_freeboard";
 	private static final String APPCENTER_BOARD	= "board_mjnotice";
-	
+
 	private final int 		_id;
 	private final String 	_name;
 	private final String 	_date;
 	private final String 	_title;
 	private final String 	_content;
-	
+
 	public int getId() {
 		return _id;
 	}
@@ -42,7 +42,7 @@ public class L1BoardPost {
 	public String getContent() {
 		return _content;
 	}
-	
+
 	private String today(String timeZoneID) {
 		TimeZone tz = TimeZone.getTimeZone(timeZoneID);
 		Calendar cal = Calendar.getInstance(tz);
@@ -67,10 +67,10 @@ public class L1BoardPost {
 		_title = rs.getString("title");
 		_content = rs.getString("content");
 	}
-	
-	
-	
-	/** 2016.11.26 MJ æ€ºæ≈Õ LFC **/
+
+
+
+	/** 2016.11.26 MJ „Ç¢„Éó„É™„Çª„É≥„Çø„Éº LFC **/
 	private synchronized static L1BoardPost create(String name, String title, String content, String table){
 		Connection con 			= null;
 		PreparedStatement pstm1 = null;
@@ -83,7 +83,7 @@ public class L1BoardPost {
 			pstm1 = con.prepareStatement(sbQry.toString());
 			rs = pstm1.executeQuery();
 			rs.next();
-			
+
 			int id = rs.getInt("newid");
 			L1BoardPost topic = new L1BoardPost(id, name, title, content);
 			sbQry = new StringBuilder();
@@ -106,7 +106,7 @@ public class L1BoardPost {
 		}
 		return null;
 	}
-	
+
 	private static void delData(String name, String table){
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -124,7 +124,7 @@ public class L1BoardPost {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public static void delData(int id, String table){
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -142,7 +142,7 @@ public class L1BoardPost {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	private static L1BoardPost findById(int id, String table){
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -164,7 +164,7 @@ public class L1BoardPost {
 		}
 		return null;
 	}
-	
+
 	public static List<L1BoardPost> index(int id, int limit, String table){
 		List<L1BoardPost> result = new ArrayList<L1BoardPost>();
 		Connection con = null;
@@ -185,7 +185,7 @@ public class L1BoardPost {
 		}
 		return null;
 	}
-	
+
 	private static PreparedStatement makeIndexStatement(Connection con, int id, int limit, String table) throws SQLException{
 		PreparedStatement result = null;
 		int offset = 1;
@@ -203,57 +203,57 @@ public class L1BoardPost {
 		result.setInt(offset, limit);
 		return result;
 	}
-	
+
 	public static L1BoardPost createLfc(String name, String title, String content){
 		return create(name, title, content, LFCBOARD);
 	}
-	
+
 	public static L1BoardPost createAppCenterNotice(String name, String title, String content){
 		return create(name, title, content, APPCENTER_BOARD);
 	}
-	
+
 	public static L1BoardPost createFREEBOARD(String name, String title, String content){
 		return create(name, title, content, FREEBOARD);
 	}
-	
+
 	public static void delLfc(String name){
 		delData(name, LFCBOARD);
 	}
 	public static void delLfc(int id){
 		delData(id, LFCBOARD);
 	}
-	
+
 	public static L1BoardPost findByIdLfc(int id){
 		return findById(id, LFCBOARD);
 	}
-	
+
 	public static L1BoardPost findByIdAppCenterNotice(int id){
 		return findById(id, APPCENTER_BOARD);
 	}
-	
+
 	public static List<L1BoardPost> indexLfc(int id, int limit){
-		return index(id, limit, LFCBOARD);	
+		return index(id, limit, LFCBOARD);
 	}
-	
+
 	public static List<L1BoardPost> indexAppCenterNotice(int id, int limit){
-		return index(id, limit, APPCENTER_BOARD);	
+		return index(id, limit, APPCENTER_BOARD);
 	}
-	/** 2016.11.26 MJ æ€ºæ≈Õ LFC **/
-	
-	
-	/**¿⁄¿Ø∞‘Ω√∆«∞¸∑√*/
+	/** 2016.11.26 MJ „Ç¢„Éó„É™„Çª„É≥„Çø„Éº LFC **/
+
+
+	/** Ëá™Áî±Êé≤Á§∫ÊùøÈñ¢ÈÄ£ */
 	public static void delFREEBOARD(String name){
 		delData(name, FREEBOARD);
 	}
 	public static void delFREEBOARD(int id){
 		delData(id, FREEBOARD);
 	}
-	
+
 	public static L1BoardPost findByIdFREEBOARD(int id){
 		return findById(id, FREEBOARD);
 	}
 	public static List<L1BoardPost> indexFREEBOARD(int id, int limit){
-		return index(id, limit, FREEBOARD);	
+		return index(id, limit, FREEBOARD);
 	}
-	/**¿⁄¿Ø∞‘Ω√∆«∞¸∑√*/
+	/** Ëá™Áî±Êé≤Á§∫ÊùøÈñ¢ÈÄ£ */
 }

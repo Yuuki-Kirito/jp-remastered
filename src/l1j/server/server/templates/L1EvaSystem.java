@@ -1,6 +1,6 @@
 /*
-	È¤½Ã ¾ÕÀ¸·Î Ãß°¡µÉ ½Ã½ºÅÛ¿¡ ´ëÇÑ ½Ã°£ °ªÀÌ³ª 
-	±âÅ¸ °°ÀÌ ¹­À»¼ö ÀÖ´Â °æ¿ì ³ÖÀ»¼ö ÀÖµµ·Ï...
+	í˜¹ì‹œ ì•ìœ¼ë¡œ ì¶”ê°€ë  ì‹œìŠ¤í…œì— ëŒ€í•œ ì‹œê°„ ê°’ì´ë‚˜
+	ê¸°íƒ€ ê°™ì´ ë¬¶ì„ìˆ˜ ìˆëŠ” ê²½ìš° ë„£ì„ìˆ˜ ìˆë„ë¡...
  */
 
 package l1j.server.server.templates;
@@ -26,7 +26,6 @@ public class L1EvaSystem {
 	public long bossTime = 0;
 	public long bosscheck = 0;
 
-	/** ½ÃÀÛµî Ä¶¸°´õ °ªÀ» °¡Á®¿Â´Ù */
 	public Calendar getEvaTime() {
 		return _time;
 	}
@@ -36,8 +35,8 @@ public class L1EvaSystem {
 	}
 
 	/**
-	 * ½Ã°£ÀÇ ±Õ¿­ ¿­¸° Àå¼Ò°ªÀ» °¡Á® ¿Â´Ù
-	 * 
+	 * æ¬¡å…ƒã®è£‚ã‘ç›®ã®é–‹ã„ãŸå ´æ‰€
+	 *
 	 * @return 0~7
 	 */
 	public int getOpenLocation() {
@@ -49,9 +48,9 @@ public class L1EvaSystem {
 	}
 
 	/**
-	 * ½Ã°£ÀÇ ±Õ¿­ ÀÌµ¿ Àå¼Ò¸¦ °¡Á® ¿Â´Ù
-	 * 
-	 * @return 0: default 1: Å×º£ 2: Æ¼Ä®
+	 * æ¬¡å…ƒã®è£‚ã‘ç›®ã®ç§»å‹•å…ˆ
+	 *
+	 * @return 0: default 1:ãƒ†ãƒ¼ãƒ™ 2:ãƒ†ã‚£ã‚«ãƒ«
 	 */
 	public int getMoveLocation() {
 		return _moveLocation;
@@ -62,9 +61,9 @@ public class L1EvaSystem {
 	}
 
 	/**
-	 * º¸½º°¡ Á×¾î¼­ ½Ã°£ÀÌ ¿¬ÀåµÈ »óÅÂ
-	 * 
-	 * @return 0: default 1: ¿¬Àå
+	 * æ™‚é–“ãŒä¼¸ã³ã¦ã„ã‚‹ã‹ï¼Ÿ
+	 *
+	 * @return 0: default 1: å»¶é•·
 	 */
 	public int getOpenContinuation() {
 		return _openContinuation;

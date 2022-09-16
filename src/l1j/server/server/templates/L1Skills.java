@@ -72,7 +72,7 @@ public class L1Skills {
 	private int _reuseDelay;
 	private int _ScrollreuseDelay;
 	private int _buffDuration;
-	private int _targetTo; // ´ë»ó 0:ÀÚ½Å 1:PC 2:NPC 4:Ç÷¸Í 8:ÆÄÆ¼ 16:Æê 32:Àå¼Ò
+	private int _targetTo; // 0:è‡ªåˆ† 1:PC 2:NPC 4:è¡€ç›Ÿ 8:ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ 16:ãƒšãƒƒãƒˆ 32:å ´æ‰€
 
 	public int getSkillId() {
 		return _skillId;

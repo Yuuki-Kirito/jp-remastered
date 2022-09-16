@@ -47,8 +47,8 @@ public class RaceTable {
 		while (Data.next()) {
 			name = new L1Racer();
 			name.setNum(Data.getInt(1));
-			name.set_½Â¸®È½¼ö(Data.getInt(2));
-			name.set_ÆÐÈ½¼ö(Data.getInt(3));
+			name.setWinCount(Data.getInt(2));
+			name.setLoseCount(Data.getInt(3));
 
 			_namelist.put(name.getNum(), name);
 		}

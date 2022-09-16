@@ -27,7 +27,7 @@ public abstract class L1Item implements Serializable {
 	public L1Item() {
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1EtcItem, L1Weapon, L1Armor ¿¡ °øÅëµÇ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1EtcItem,L1Weapon,L1Armor ã«å…±é€šã™ã‚‹é …ç›® â– â– â– â– â– â– 
 
 	private int _type2; // 0=L1EtcItem, 1=L1Weapon, 2=L1Armor
 
@@ -95,8 +95,8 @@ public abstract class L1Item implements Serializable {
 	private int _type;
 
 	/**
-	 * ¾ÆÀÌÅÛÀÇ Á¾·ù¸¦ µ¹·ÁÁØ´Ù.<br>
-	 * 
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡ã‚’è¿”ã™ã€‚<br>
+	 *
 	 * @return <p>
 	 *         [etcitem]<br>
 	 *         0:arrow, 1:wand, 2:light, 3:gem, 4:totem, 5:firecracker,
@@ -114,7 +114,7 @@ public abstract class L1Item implements Serializable {
 	 *         [armor]<br>
 	 *         1:helm, 2:armor, 3:T, 4:cloak, 5:glove, 6:boots, 7:shield,
 	 *         8:amulet, 9:ring, 10:belt, 11:ring2, 12:earring, 13:garder,
-	 *         14:ron[·éÃß°¡] , 15:°¢¹İ
+	 *         14:ron[rune] , 15:pants
 	 */
 	public int getType() {
 		return _type;
@@ -127,8 +127,8 @@ public abstract class L1Item implements Serializable {
 	private int _type1;
 
 	/**
-	 * ¾ÆÀÌÅÛÀÇ Á¾·ù¸¦ µ¹·ÁÁØ´Ù.<br>
-	 * 
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡ã‚’è¿”ã™ã€‚<br>
+	 *
 	 * @return <p>
 	 *         [weapon]<br>
 	 *         sword:4, dagger:46, tohandsword:50, bow:20, blunt:11, spear:24,
@@ -148,11 +148,11 @@ public abstract class L1Item implements Serializable {
 	private int _material;
 
 	/**
-	 * ¾ÆÀÌÅÛÀÇ ¼ÒÀç¸¦ µ¹·ÁÁØ´Ù
-	 * 
-	 * @return 0:none 1:¾×Ã¼ 2:web 3:½Ä¹°¼º 4:µ¿¹°¼º 5:Áö 6:Æ÷ 7:ÇÇ 8:¸ñ 9:°ñ 10:·æÀÇ ¸° 11:Ã¶
-	 *         12:°­Ã¶ 13:µ¿ 14:Àº 15:±İ 16:ÇÃ¶óÆ¼³ª 17:¹Ì½º¸± 18:ºê¶ôÅ©¹Ì½º¸± 19:À¯¸® 20:º¸¼® 21:±¤¹°
-	 *         22:¿À¸®ÇÏ¸£ÄÜ
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®ç´ æã‚’è¿”ã™
+	 *
+	 * @return 0:none 1:æ¶²ä½“ 2:web 3:æ¤ç‰©æ€§ 4:å‹•ç‰©æ€§ 5:ç´™ 6:å¸ƒ 7:çš® 8:æœ¨ 9:éª¨ 10:ç«œã®é±— 11:é‰„
+	 *         12:é‹¼é‰„ 13:éŠ… 14:éŠ€ 15:é‡‘ 16:ãƒ—ãƒ©ãƒãƒŠ 17:ãƒŸã‚¹ãƒªãƒ« 18:ãƒ–ãƒ©ãƒƒã‚¯ãƒŸã‚¹ãƒªãƒ« 19:ã‚¬ãƒ©ã‚¹ 20:å®çŸ³
+	 *         21:é‰±ç‰© 22:ã‚ªãƒªãƒãƒ«ã‚³ãƒ³
 	 */
 	public int getMaterial() {
 		return _material;
@@ -237,7 +237,7 @@ public abstract class L1Item implements Serializable {
 	private int _itemDescId;
 
 	/**
-	 * °¨Á¤½Ã¿¡ Ç¥½ÃµÇ´Â ItemDesc.tblÀÇ ¸Ş¼¼Áö ID¸¦ µ¹·ÁÁØ´Ù.
+	 * é‘‘å®šæ™‚ã«è¡¨ç¤ºã•ã‚Œã‚‹ItemDesc.tblã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¿”ã™ã€‚
 	 */
 	public int getItemDescId() {
 		return _itemDescId;
@@ -298,7 +298,7 @@ public abstract class L1Item implements Serializable {
 	private boolean _save_at_once;
 
 	/**
-	 * ¾ÆÀÌÅÛÀÇ °³¼ö°¡ º¯È­ÇßÀ» ¶§¿¡ °ğ¹Ù·Î DB¿¡ ±âÀÔÇØ¾ßÇÒ °ÍÀÎ°¡¸¦ µ¹·ÁÁØ´Ù.
+	 * ã‚¢ã‚¤ãƒ†ãƒ ã®å€‹æ•°ãŒå¤‰åŒ–ã—ãŸéš›ã«ã™ãã«DBã«æ›¸ãè¾¼ã‚€ã¹ãã‹ã‚’è¿”ã™ã€‚
 	 */
 	public boolean isToBeSavedAtOnce() {
 		return _save_at_once;
@@ -308,7 +308,7 @@ public abstract class L1Item implements Serializable {
 		_save_at_once = flag;
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1EtcItem, L1Weapon ¿¡ °øÅëµÇ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1EtcItem,L1Weapon ã«å…±é€šã™ã‚‹é …ç›® â– â– â– â– â– â– 
 
 	private int _dmgSmall = 0;
 
@@ -330,9 +330,9 @@ public abstract class L1Item implements Serializable {
 		_dmgLarge = dmgLarge;
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1EtcItem, L1Armor ¿¡ °øÅëµÇ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1EtcItem,L1Armor ã«å…±é€šã™ã‚‹é …ç›® â– â– â– â– â– â– 
 
-	// ¡á¡á¡á¡á¡á¡á L1Weapon, L1Armor ¿¡ °øÅëµÇ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1Weapon,L1Armor ã«å…±é€šã™ã‚‹é …ç›® â– â– â– â– â– â– 
 
 	private int _safeEnchant = 0;
 
@@ -373,8 +373,8 @@ public abstract class L1Item implements Serializable {
 	public void setUseWarrior(boolean flag) {
 		_useWarrior = flag;
 	}
-	
-	/**°Ë»çÃß°¡*/
+
+	/**ê²€ì‚¬ì¶”ê°€*/
 	private boolean _useFencer = false;
 
 	public boolean isUseFencer() {
@@ -384,7 +384,7 @@ public abstract class L1Item implements Serializable {
 	public void setUseFencer(boolean flag) {
 		_useFencer = flag;
 	}
-	/**°Ë»çÃß°¡*/
+	/**ê²€ì‚¬ì¶”ê°€*/
 
 	private boolean _useElf = false;
 
@@ -589,7 +589,7 @@ public abstract class L1Item implements Serializable {
 	private int _useType;
 
 	/**
-	 * »ç¿ëÇßÀ» ¶§ÀÇ ¸®¾×¼ÇÀ» °áÁ¤ÇÏ´Â Å¸ÀÔÀ» µ¹·ÁÁØ´Ù.
+	 * ä½¿ç”¨ã—ãŸã¨ãã®ãƒªã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ±ºå®šã™ã‚‹ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™ã€‚
 	 */
 	public int getUseType() {
 		return _useType;
@@ -602,7 +602,7 @@ public abstract class L1Item implements Serializable {
 	private int _foodVolume;
 
 	/**
-	 * °í±âµîÀÇ ¾ÆÀÌÅÛÀ¸·Î ¼³Á¤µÇ¾î ÀÖ´Â ¸¸º¹µµ¸¦ µ¹·ÁÁØ´Ù.
+	 * è‚‰ãªã©ã®ã‚¢ã‚¤ãƒ†ãƒ ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹æº€è…¹åº¦ã‚’è¿”ã™ã€‚
 	 */
 	public int getFoodVolume() {
 		return _foodVolume;
@@ -613,7 +613,7 @@ public abstract class L1Item implements Serializable {
 	}
 
 	/**
-	 * ·¥ÇÁµîÀÇ ¾ÆÀÌÅÛÀ¸·Î ¼³Á¤µÇ¾î ÀÖ´Â ¹àÀ½À» µ¹·ÁÁØ´Ù.
+	 * ãƒ©ãƒ³ãƒ—ãªã©ã®ã‚¢ã‚¤ãƒ†ãƒ ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹æ˜ã‚‹ã•ã‚’è¿”ã™ã€‚
 	 */
 	public int getLightRange() {
 		if (_itemId == 40001) {
@@ -647,7 +647,8 @@ public abstract class L1Item implements Serializable {
 		}
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1EtcItem ·Î ¿À¹ö¶óÀÌµå(override) ÇÏ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1EtcItem ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹é …ç›® â– â– â– â– â– â– 
+
 	public boolean isStackable() {
 		return false;
 	}
@@ -722,7 +723,8 @@ public abstract class L1Item implements Serializable {
 		return false;
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1Weapon ·Î ¿À¹ö¶óÀÌµå(override) ÇÏ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1Weapon ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹é …ç›® â– â– â– â– â– â– 
+
 	public int getRange() {
 		return 0;
 	}
@@ -742,7 +744,7 @@ public abstract class L1Item implements Serializable {
 	public int getaddDmg() {
 		  return 0;
 		 }
-	
+
 	public int getMagicDmgModifier() {
 		return 0;
 	}
@@ -755,7 +757,8 @@ public abstract class L1Item implements Serializable {
 		return false;
 	}
 
-	// ¡á¡á¡á¡á¡á¡á L1Armor ·Î ¿À¹ö¶óÀÌµå(override) ÇÏ´Â Ç×¸ñ ¡á¡á¡á¡á¡á¡á
+	// â– â– â– â– â– â–  L1Armor ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹é …ç›® â– â– â– â– â– â– 
+
 	public int get_ac() {
 		return 0;
 	}
@@ -798,30 +801,30 @@ public abstract class L1Item implements Serializable {
 	public int get_magic_critical() {
 		return 0;
 	}
-	
+
 	public int get_defense_wind() {
 		return 0;
 	}
 
-	private int _grade = -1; // ¡Ü Àå½Å±¸ ´Ü°è
+	private int _grade = -1; // â— ã‚°ãƒ¬ãƒ¼ãƒ‰ï¼Ÿ
 
 	public int getGrade() {
 		return _grade;
 	}
-	/**PVPµ¥¹ÌÁö°¨¼Ò**/
-	  public int get_regist_calcPcDefense() {
-	    return 0;
-	  }
 
-	  /**PVPÃß°¡µ¥¹ÌÁö**/
-	  public int get_regist_PVPweaponTotalDamage() {
-	    return 0;
-	  }
+	public int get_regist_calcPcDefense() {
+		return 0;
+	}
+
+	public int get_regist_PVPweaponTotalDamage() {
+		return 0;
+	}
+
 	public void setGrade(int grade) {
 		_grade = grade;
 	}
 
-	private int _price; // ¡Ü °¡°İ
+	private int _price; // â— ä¾¡æ ¼
 
 	public int get_price() {
 		return _price;
@@ -831,7 +834,7 @@ public abstract class L1Item implements Serializable {
 		_price = price;
 	}
 
-	/* ¹ö±×º£¾î °æÁÖ °ü·Ã Ç×¸ñ */
+	/* ãƒã‚°ãƒ™ã‚¢ãƒ¬ãƒ¼ã‚¹é–¢é€£ */
 	private String _BugName;
 
 	// private double _Rate;
@@ -857,7 +860,7 @@ public abstract class L1Item implements Serializable {
 	 * public void set_Rate(double _Rate){ this._Rate = _Rate; } public double
 	 * get_Rate(){ return _Rate; }
 	 */
-	
+
 	private int _regist_stun = 0;
 	private int _regist_soul = 0;
 	private int _regist_dragon = 0;
@@ -871,7 +874,7 @@ public abstract class L1Item implements Serializable {
 	public void set_regist_stun(int i) {
 		_regist_stun = i;
 	}
-	
+
 	public int get_regist_all() {
 		return this._regist_all;
 	}
@@ -879,7 +882,7 @@ public abstract class L1Item implements Serializable {
 	public void set_regist_all(int i) {
 		_regist_all = i;
 	}
-	
+
 	public int get_regist_soul() {
 		return this._regist_soul;
 	}
@@ -887,7 +890,7 @@ public abstract class L1Item implements Serializable {
 	public void set_regist_soul(int i) {
 		_regist_soul = i;
 	}
-	
+
 	public int get_regist_horror() {
 		return this._regist_horror;
 	}
@@ -895,21 +898,21 @@ public abstract class L1Item implements Serializable {
 	public void set_regist_horror(int i) {
 		_regist_horror = i;
 	}
-	
+
 	public int get_regist_dragon() {
 		return this._regist_dragon;
 	}
-	
+
 	public void set_regist_dragon(int i) {
 		_regist_dragon = i;
 	}
-	
+
 	private int _techniquehit;
 	private int _spirithit;
 	private int _dragonlanghit;
 	private int _fearhit;
 	private int _allhit;
-	
+
 	public int getTechniqueHit() {
 		return _techniquehit;
 	}
@@ -941,22 +944,21 @@ public abstract class L1Item implements Serializable {
 	public void setFearHit(int i) {
 		_fearhit = i;
 	}
-	
+
 	public int getAllHit() {
 		return _allhit;
 	}
-	
+
 	public void setAllHit(int i) {
 		_allhit = i;
 	}
-	
-	/** ÀÎÇü Å¸ÀÔÀÎÁö Ã¼Å©ÇØ¼­ ±×°Å¸¸ È®ÀÎ ÇÒ¼öÀÕ°Ô ¼¼ÆÃ*/
+
+	/** äººå½¢ã‚¿ã‚¤ãƒ—ãªã®ã‹ãƒã‚§ãƒƒã‚¯ã—ã¦ãã‚Œã ã‘ç¢ºèªã§ãã‚‹ã‚ˆã†ã«ã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚° */
 	public boolean isMagicDoll() {
-		if(getUseType() == 73) return true;	
-		return false;
+		return getUseType() == 73;
 	}
-	
-	/** Ã¢°í ÀúÀå **/
+
+	/** å€‰åº«ï¼Ÿ **/
 	private boolean _retrieve;
 
 	public boolean isRetrieve() {

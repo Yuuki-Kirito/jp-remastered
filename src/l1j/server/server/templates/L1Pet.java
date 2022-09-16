@@ -1,6 +1,6 @@
 package l1j.server.server.templates;
 
-/** Æê °ü·Ã Á¤º¸ ÀúÀå ½Ã½ºÅÛ */
+/** ãƒšãƒƒãƒˆé–¢é€£æƒ…å ±ä¿å­˜ã‚·ã‚¹ãƒ†ãƒ  */
 public class L1Pet {
 	public L1Pet() {}
 
@@ -33,8 +33,8 @@ public class L1Pet {
 	public void setNpcId(int i) {
 		_NpcId = i;
 	}
-	
-	/** Æê °ü·Ã ÀÌ¹ÌÁö ³Ñ¹ö ÀúÀå */
+
+	/** ãƒšãƒƒãƒˆé–¢é€£ã®ç”»åƒç•ªå·ã‚’ä¿å­˜ */
 	private int _PetInfo;
 
 	public int getPetInfo() {
@@ -64,7 +64,7 @@ public class L1Pet {
 	public void setLevel(int i) {
 		_Level = i;
 	}
-	
+
 	private int _Exp;
 
 	public int getExp() {
@@ -95,7 +95,7 @@ public class L1Pet {
 	public void setCurrentHp(int i) {
 		_CurrentHp = i;
 	}
-	
+
 	private int _Hunt;
 
 	public int getHunt() {
@@ -115,7 +115,7 @@ public class L1Pet {
 	public void setSurvival(int i) {
 		_Survival = i;
 	}
-	
+
 	private int _Sacred;
 
 	public int getSacred() {
@@ -135,7 +135,7 @@ public class L1Pet {
 	public void setBonusPoint(int i) {
 		_BonusPoint = i;
 	}
-	
+
 	private int _Elixir;
 
 	public int getElixir() {
@@ -145,8 +145,8 @@ public class L1Pet {
 	public void setElixir(int i) {
 		_Elixir = i;
 	}
-	
-	/** Æê °ü·Â ¸Ş¼Òµåµé */
+
+	/** ãƒšãƒƒãƒˆè¦³åŠ›ãƒ¡ã‚½ãƒƒãƒ‰ */
 	private int _ElixirHunt;
 
 	public int getElixirHunt() {
@@ -166,7 +166,7 @@ public class L1Pet {
 	public void setElixirSurvival(int i) {
 		_ElixirSurvival = i;
 	}
-	
+
 	private int _ElixirSacred;
 
 	public int getElixirSacred() {
@@ -176,8 +176,8 @@ public class L1Pet {
 	public void setElixirSacred(int i) {
 		_ElixirSacred = i;
 	}
-	
-	/** ¿ìÁ¤ Æ÷ÀÎÆ® */
+
+	/** å‹æƒ…ãƒã‚¤ãƒ³ãƒˆ */
 	private int _Friendship;
 
 	public int getFriendship() {
@@ -187,8 +187,8 @@ public class L1Pet {
 	public void setFriendship(int i) {
 		_Friendship = i;
 	}
-	
-	/** ÅõÁö Æ÷ÀÎÆ® */
+
+	/** é—˜å¿—ãƒã‚¤ãƒ³ãƒˆ */
 	private int _Fighting;
 
 	public int getFighting() {
@@ -198,10 +198,10 @@ public class L1Pet {
 	public void setFighting(int i) {
 		_Fighting = i;
 	}
-	
-	/** ÆêÀÌ ´ÙÀÌ »óÅÂÀÌ¸é ¸®½ºÇÏ°í Á¢¼ÓÇØµµ ÆÖ Á¤º¸¿¡ Á×À½ È¿°ú Ç¥±â */
+
+	/** ãƒšãƒƒãƒˆãŒãƒ€ã‚¤çŠ¶æ…‹ã§ã‚ã‚Œã°ãƒªãƒ¼ã‚¹ã—ã¦æ¥ç¶šã—ã¦ã‚‚ãƒ‘ãƒƒãƒˆæƒ…å ±ã«æ­»åŠ¹æœè¡¨è¨˜ */
 	private boolean _PetDead;
-	
+
 	public boolean isPetDead() {
 		return _PetDead;
 	}
@@ -209,10 +209,10 @@ public class L1Pet {
 	public void setPetDead(boolean flag) {
 		_PetDead = flag;
 	}
-	
-	/** ÆêÀÌ ´ÙÀÌ »óÅÂÀÌ¸é ¸®½ºÇÏ°í Á¢¼ÓÇØµµ ÆÖ Á¤º¸¿¡ Á×À½ È¿°ú Ç¥±â */
+
+	/** ãƒšãƒƒãƒˆãŒãƒ€ã‚¤çŠ¶æ…‹ã§ã‚ã‚Œã°ãƒªãƒ¼ã‚¹ã—ã¦æ¥ç¶šã—ã¦ã‚‚ãƒ‘ãƒƒãƒˆæƒ…å ±ã«æ­»åŠ¹æœè¡¨è¨˜ */
 	private boolean _PetDeadExp;
-	
+
 	public boolean isPetDeadExp() {
 		return _PetDeadExp;
 	}
@@ -220,10 +220,10 @@ public class L1Pet {
 	public void setPetDeadExp(boolean flag) {
 		_PetDeadExp = flag;
 	}
-	
-	/** ¸Á°¢ ºÎºĞ °Å·¡ °¡´ÉÇÏµµ·Ï ¼¼ÆÃ ÇÏ´Â°Å */
+
+	/** å¿˜å´éƒ¨åˆ†ã‚’å–å¼•å¯èƒ½ã«è¨­å®šã™ã‚‹ */
 	private boolean _Product;
-	
+
 	public boolean isProduct() {
 		return _Product;
 	}

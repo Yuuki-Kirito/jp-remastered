@@ -1,5 +1,5 @@
 /**
- * Å¸ÀÌ¸Ó °ü·Ã ¸Ê °´Ã¼
+ * ã‚¿ã‚¤ãƒãƒ¼é–¢é€£ãƒãƒƒãƒ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
  * 2008. 12. 04
  */
 
@@ -7,67 +7,63 @@ package l1j.server.server.templates;
 
 public class L1TimeMap {
 
-	private int id;
-	private int time;
-	private int DoorId;
+	private int _mapId;
+	private int _time;
+	private int _doorId;
 
 	/**
-	 * ±âº» »ı¼ºÀÚ
-	 * 
-	 * @param (int) id ¸Ê ¾ÆÀÌµğ
-	 * @param (int) time ¼³Á¤µÈ ½Ã°£(s)
+	 * @param (int) id MAPID
+	 * @param (int) time (s)
 	 */
 	public L1TimeMap(int id, int time) {
-		this.id = id;
-		this.time = time;
+		this._mapId = id;
+		this._time = time;
 	}
 
 	/**
-	 * ±âº» »ı¼ºÀÚ
-	 * 
-	 * @param (int) id ¸Ê ¾ÆÀÌµğ
-	 * @param (int) time ¼³Á¤µÈ ½Ã°£(s)
-	 * @param (int) DoorId ¼³Á¤µÈ ¹® ¾ÆÀÌµğ
+	 * @param (int) id mapId
+	 * @param (int) time (s)
+	 * @param (int) DoorId
 	 */
 	public L1TimeMap(int id, int time, int DoorId) {
-		this.id = id;
-		this.time = time;
-		this.DoorId = DoorId;
+		this._mapId = id;
+		this._time = time;
+		this._doorId = DoorId;
 	}
 
 	/**
-	 * ¸Ê ¾ÆÀÌµğ ¸®ÅÏ
-	 * 
-	 * @return (int) ¸Ê ¾ÆÀÌµğ
+	 * ãƒãƒƒãƒ—IDã‚’è¿”ã™
+	 *
+	 * @return MapID
 	 */
-	public int getId() {
-		return id;
+	public int getMapId() {
+		return _mapId;
 	}
 
 	/**
-	 * ¼³Á¤ ½Ã°£ ¸®ÅÏ
-	 * 
-	 * @return (int) ¼³Á¤½Ã°£
+	 * æ™‚é–“ã‚’è¿”ã™
+	 *
+	 * @return æ™‚é–“(s)
 	 */
 	public int getTime() {
-		return time;
+		return _time;
 	}
 
 	/**
-	 * ¼³Á¤µÈ ¹® ¾ÆÀÌµğ ¸®ÅÏ
-	 * 
-	 * @return (int) ¹® ¾ÆÀÌµğ
+	 * ãƒ‰ã‚¢ã®IDã‚’è¿”ã™
+	 *
+	 * @return doorId
 	 */
 	public int getDoor() {
-		return DoorId;
+		return _doorId;
 	}
 
 	/**
-	 * ³²Àº½Ã°£ °è»ê
-	 * 
-	 * @return (boolean) ½Ã°£ÀÌ Á¾·áµÇ¾úÀ¸¸é true, ³²¾ÆÀÖ´Ù¸é false
+	 * æ®‹ã‚Šæ™‚é–“ãŒã‚ã‚‹ã‹ã‚’è¿”ã™ã€‚
+	 *
+	 * @return æ™‚é–“ãŒçµ‚äº†ã—ãŸå ´åˆã¯trueã€æ®‹ã£ã¦ã„ã‚‹å ´åˆã¯false
 	 */
 	public boolean count() {
-		return time-- <= 0;
+		return _time-- <= 0;
 	}
 }

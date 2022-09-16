@@ -20,7 +20,7 @@ package l1j.server.server.templates;
 
 public class L1Armor extends L1Item {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -30,10 +30,10 @@ public class L1Armor extends L1Item {
 	private int _ac = 0;
 	private int _damageReduction = 0;
 	private int _weightReduction = 0;
-	private int _Hitup = 0; // ¡Ü ±ÙÁ¢¹«±â ¸íÁß·ü
-	private int _Dmgup = 0; // ¡Ü ±ÙÁ¢¹«±â ÃßÅ¸À²
-	private int _bowHitup = 0; // ¡Ü È°ÀÇ ¸íÁßÀ²
-	private int _bowDmgup = 0; // ¡Ü È°ÀÇ ÃßÅ¸À²
+	private int _Hitup = 0; // â— è¿‘æŽ¥æ­¦å™¨å‘½ä¸­
+	private int _Dmgup = 0; // â— è¿‘æŽ¥æ­¦å™¨è¿½åŠ ãƒ€ãƒ¡ãƒ¼ã‚¸
+	private int _bowHitup = 0; // â— é è·é›¢æ­¦å™¨å‘½ä¸­
+	private int _bowDmgup = 0; // â— é è·é›¢è¿½åŠ ãƒ€ãƒ¡ãƒ¼ã‚¸
 
 	private int _defense_water = 0;
 	private int _defense_wind = 0;
@@ -142,7 +142,7 @@ public class L1Armor extends L1Item {
 		_defense_earth = i;
 	}
 
-	/** ÀØ¼¶¾ÆÀÌÅÛ ¸®´º¾ó PVPµ¥¹ÌÁö¸®´ö¼Ç **/
+	/** XXX PvPãƒ€ãƒ¡ãƒ¼ã‚¸è»½æ¸› **/
 	@Override
 	public int get_regist_calcPcDefense() {
 		return this._regist_calcPcDefense;
@@ -152,7 +152,7 @@ public class L1Armor extends L1Item {
 		_regist_calcPcDefense = i;
 	}
 
-	/** ÀØ¼¶¾ÆÀÌÅÛ ¸®´º¾ó PVPÃß°¡µ¥¹ÌÁö **/
+	/** XXX PvPè¿½åŠ ãƒ€ãƒ¡ãƒ¼ã‚¸ **/
 	@Override
 	public int get_regist_PVPweaponTotalDamage() {
 		return this._regist_PVPweaponTotalDamage;
@@ -164,9 +164,6 @@ public class L1Armor extends L1Item {
 
 	@Override
 	public boolean isStackable() {
-		boolean ck = false;
-		if (getItemId() >= 427123 && getItemId() <= 427140) // ºÀÀÎ À¯¹°, ·é °ãÄ¡°Ô
-			ck = true;
-		return ck;
+		return getItemId() >= 427123 && getItemId() <= 427140; // å°å°ã•ã‚ŒãŸâ—â—ãƒ«ãƒ¼ãƒ³
 	}
 }
