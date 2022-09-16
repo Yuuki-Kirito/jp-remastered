@@ -549,7 +549,7 @@ public class C_Rank extends ClientBasePacket {
 				time = 7200 - pc.getivorytime();
 				time = time > 0 ? time / 60 : 0;
 				pc.sendPackets(new S_ServerMessage(2535, "상아탑:발록 진영", time + ""), true);
-				time = 10800 - pc.getpc용둥time();
+				time = 10800 - pc.getpctime3();
 				time = time > 0 ? time / 60 : 0;
 				pc.sendPackets(new S_ServerMessage(2535, "용의 둥지", time + ""), true);
 				time = 3600 - pc.get수상한천상계곡time();

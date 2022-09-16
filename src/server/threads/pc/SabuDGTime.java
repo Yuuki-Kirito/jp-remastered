@@ -231,9 +231,9 @@ public class SabuDGTime implements Runnable {
 	private void 根级(L1PcInstance player) {
 		player.addchecktime();
 		player.set根级time(player.get根级time() + 1);
-		player.setpc根级time(player.getpc根级time() + 1);
+		player.setpc根级time(player.getpctime1() + 1);
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
-		if (player.getpc根级day() == null || player.get根级day() == null) {
+		if (player.getpcday1() == null || player.get根级day() == null) {
 			player.sendPackets(sm);
 			L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 		} else {
@@ -278,8 +278,8 @@ public class SabuDGTime implements Runnable {
 
 			try {
 				int outtime = 60 * 60;
-				int usetime = player.getpc根级time();
-				String s = isPC涝厘啊瓷咯何(player.getpc根级day(), outtime, usetime);
+				int usetime = player.getpctime1();
+				String s = isPC涝厘啊瓷咯何(player.getpcday1(), outtime, usetime);
 				if (s.equals("涝厘啊瓷")) {// 涝厘啊瓷
 				} else if (s.equals("阂啊瓷")) {// 涝厘阂啊瓷
 					player.sendPackets(new S_ServerMessage(1522, "30"));// 盒巢疽促
@@ -287,7 +287,7 @@ public class SabuDGTime implements Runnable {
 					return;
 				} else if (s.equals("檬扁拳")) {// 檬扁拳
 					player.setpc根级time(1);
-					player.setpc根级day(nowday);
+					player.setpcday1(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(player, S_PacketBox.DG_TIME_RESTART), true);
 					player.sendPackets(new S_PacketBox(S_PacketBox.TIME_COUNT, outtime - 1), true);

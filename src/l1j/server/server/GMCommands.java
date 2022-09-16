@@ -2177,7 +2177,7 @@ public class GMCommands {
 				player.set용둥time(1);
 				player.set용둥day(nowday);
 				player.setpc용둥time(1);
-				player.setpc용둥day(nowday);
+				player.setpcday3(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else
 

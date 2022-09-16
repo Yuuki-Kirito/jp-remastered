@@ -396,9 +396,9 @@ public class Teleportation {
 				} else if (pc.getMapId() == 820) {
 					int outtime = 60 * 40;
 					time = outtime - pc.get贾肺鸥款time();
-				} else if (pc.getMapId() == 1931) {
+				} else if (pc.getMapId() == 1931) { // XXX 遇？
 					int outtime = 60 * 30;
-					time = outtime - pc.getpc根级time();
+					time = outtime - pc.getpctime1();
 				} else if (pc.getMapId() == 624 || pc.getMapId() == 430) {
 					int outtime = 60 * 60 * 2;
 					time = outtime - pc.get绊公time();

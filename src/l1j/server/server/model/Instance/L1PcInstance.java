@@ -1,34 +1,6 @@
 package l1j.server.server.model.Instance;
 
-import static l1j.server.server.model.skill.L1SkillId.ABSOLUTE_BARRIER;
-import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
-import static l1j.server.server.model.skill.L1SkillId.BLESS_WEAPON;
-import static l1j.server.server.model.skill.L1SkillId.BONE_BREAK;
-import static l1j.server.server.model.skill.L1SkillId.CURSE_PARALYZE;
-import static l1j.server.server.model.skill.L1SkillId.CURSE_PARALYZE2;
-import static l1j.server.server.model.skill.L1SkillId.DEMOLITION;
-import static l1j.server.server.model.skill.L1SkillId.EARTH_BIND;
-import static l1j.server.server.model.skill.L1SkillId.ETERNITY;
-import static l1j.server.server.model.skill.L1SkillId.FOG_OF_SLEEPING;
-import static l1j.server.server.model.skill.L1SkillId.FORCE_STUN;
-import static l1j.server.server.model.skill.L1SkillId.FREEZING_BREATH;
-import static l1j.server.server.model.skill.L1SkillId.ICE_LANCE;
-import static l1j.server.server.model.skill.L1SkillId.IRON_SKIN;
-import static l1j.server.server.model.skill.L1SkillId.MOB_BASILL;
-import static l1j.server.server.model.skill.L1SkillId.MOB_COCA;
-import static l1j.server.server.model.skill.L1SkillId.MOB_RANGESTUN_18;
-import static l1j.server.server.model.skill.L1SkillId.MOB_RANGESTUN_19;
-import static l1j.server.server.model.skill.L1SkillId.MOB_SHOCKSTUN_30;
-import static l1j.server.server.model.skill.L1SkillId.NATURES_TOUCH;
-import static l1j.server.server.model.skill.L1SkillId.PANTERA;
-import static l1j.server.server.model.skill.L1SkillId.쉐도우스탭;
-import static l1j.server.server.model.skill.L1SkillId.PHANTASM;
-import static l1j.server.server.model.skill.L1SkillId.PHYSICAL_ENCHANT_DEX;
-import static l1j.server.server.model.skill.L1SkillId.PHYSICAL_ENCHANT_STR;
-import static l1j.server.server.model.skill.L1SkillId.SHOCK_STUN;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_COMA_5;
-import static l1j.server.server.model.skill.L1SkillId.뫼비우스;
-import static l1j.server.server.model.skill.L1SkillId.엠파이어;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.awt.Robot;
 import java.sql.Connection;
@@ -194,7 +166,6 @@ import l1j.server.server.types.Point;
 import l1j.server.server.utils.CalcStat;
 import l1j.server.server.utils.SQLUtil;
 import l1j.server.server.utils.Teleportation;
-import manager.LinAllManager;
 import server.LineageClient;
 
 public class L1PcInstance extends L1Character {
@@ -920,8 +891,8 @@ public class L1PcInstance extends L1Character {
 			LastINDay = get고무day();
 		} else if (s.equals("용던")) {
 			maxtime = 10800;
-			time = getpc용둥time();
-			LastINDay = getpc용둥day();
+			time = getpctime3();
+			LastINDay = getpcday3();
 		} else if (s.equals("버땅")) {
 			maxtime = 60 * 60 * 2;
 			time = get버땅time();
@@ -1047,11 +1018,11 @@ public class L1PcInstance extends L1Character {
 
 	/*
 	 * private int _autoct; //by사부 오토인증추가
-	 * 
+	 *
 	 * private int _autogo; //by사부 오토인증추가
-	 * 
+	 *
 	 * private String _autocode; //by사부 오토인증추가
-	 * 
+	 *
 	 * private int _autook; //by사부 오토인증추가
 	 */
 
@@ -1262,11 +1233,11 @@ public class L1PcInstance extends L1Character {
 	/*
 	 * public void 폰인증시작(){ _폰인증쓰레드 = new 폰인증(); Timer timer = new Timer();
 	 * timer.schedule(_폰인증쓰레드, 1*15*1000);//30초안에 로그인없으면 절단 }
-	 * 
+	 *
 	 * private int 폰인증카운트 = 0; private 폰인증 _폰인증쓰레드 = new 폰인증();
-	 * 
+	 *
 	 * public class 폰인증 extends TimerTask { public 폰인증() {}
-	 * 
+	 *
 	 * @Override public void run() {
 	 * if(PhoneCheck.폰등록완료(L1PcInstance.this.getAccountName()) == 1){ 폰인증카운트 = 0;
 	 * cancel(); return; } 폰인증카운트++; if(폰인증카운트>2){ 폰인증카운트 = 0;
@@ -1524,9 +1495,9 @@ public class L1PcInstance extends L1Character {
 	 */
 	/*
 	 * if(_현제아덴수량 > _이전아덴수량){ int 차이값 = _현제아덴수량 - _이전아덴수량;
-	 * 
+	 *
 	 * if(차이값 ==_이전아덴수량 ){ if(_현제아덴수량 > 50000000){
-	 * 
+	 *
 	 * } } _이전아덴수량 = _현제아덴수량;
 	 */
 	// /봉인?
@@ -1760,7 +1731,7 @@ public class L1PcInstance extends L1Character {
 	// 캐릭터 교환
 	/*
 	 * public int getElixirStats() { return _elixirStats; }
-	 * 
+	 *
 	 * public void setElixirStats(int i) { _elixirStats = i; } //캐릭터 교환
 	 */
 
@@ -1879,7 +1850,7 @@ public class L1PcInstance extends L1Character {
 
 	/*
 	 * public void startHpRegeneration() { final int INTERVAL = 1000;
-	 * 
+	 *
 	 * if (!_hpRegenActive) { _hpRegen = new HpRegeneration(this);
 	 * _regenTimer.scheduleAtFixedRate(_hpRegen, INTERVAL, INTERVAL); _hpRegenActive
 	 * = true; } }
@@ -1949,7 +1920,7 @@ public class L1PcInstance extends L1Character {
 
 	/*
 	 * public void startMpRegeneration() { final int INTERVAL = 1000;
-	 * 
+	 *
 	 * if (!_mpRegenActive) { _mpRegen = new MpRegeneration(this);
 	 * _regenTimer.scheduleAtFixedRate(_mpRegen, INTERVAL, INTERVAL); _mpRegenActive
 	 * = true; } }
@@ -4013,9 +3984,9 @@ public class L1PcInstance extends L1Character {
 						 * if (bot.텔사냥 && bot.getMap().isTeleportable()) bot.랜덤텔(); else { if
 						 * (!bot.타격귀환무시) { if (bot.사냥봇_위치.startsWith("오만")) bot.ディレイ(60000 + _random
 						 * .nextInt(60000)); bot.귀환(); } } } } else
-						 * 
-						 * 
-						 * 
+						 *
+						 *
+						 *
 						 * if (attacker instanceof L1MonsterInstance) { if (attacker.getMaxHp() >= 6000)
 						 * bot.귀환(); }
 						 */
@@ -4445,10 +4416,10 @@ public class L1PcInstance extends L1Character {
 				 * drop가호(getInventory().findItemId(222501)); return; } if
 				 * (getInventory().checkEquipped(47123)) if ((getMapId() >= 0 && getMapId() <=
 				 * 25088)) {// 계약 // drop계약(getInventory().findItemId(47123));
-				 * 
+				 *
 				 * return; } if (getInventory().checkEquipped(471255)) if ((getMapId() >= 0 &&
 				 * getMapId() <= 25088)) {// 계약 // drop퀸계약(getInventory().findItemId(471255));
-				 * 
+				 *
 				 * return; }
 				 */
 				if (Config.아놀드이벤트) {
@@ -4979,10 +4950,10 @@ public class L1PcInstance extends L1Character {
 	 * random.nextInt(8) + 1; } else if (isElf()) { lostskilll = random.nextInt(48)
 	 * + 1; } else if (isDarkelf()) { lostskilll = random.nextInt(23) + 1; } else if
 	 * (isWizard()) { lostskilll = random.nextInt(80) + 1; }
-	 * 
+	 *
 	 * if (!SkillsTable.getInstance().spellCheck(getId(), lostskilll)) { random =
 	 * null; return; }
-	 * 
+	 *
 	 * L1Skills l1skills = null; l1skills =
 	 * SkillsTable.getInstance().getTemplate(lostskilll); if
 	 * (l1skills.getSkillLevel() == 1) {lv1 |= l1skills.getId();} if
@@ -4995,7 +4966,7 @@ public class L1PcInstance extends L1Character {
 	 * (l1skills.getSkillLevel() == 8) {lv8 |= l1skills.getId();} if
 	 * (l1skills.getSkillLevel() == 9) {lv9 |= l1skills.getId();} if
 	 * (l1skills.getSkillLevel() == 10) {lv10 |= l1skills.getId();}
-	 * 
+	 *
 	 * SkillsTable.getInstance().spellLost(getId(), lostskilll); l = lv1 + lv2 + lv3
 	 * + lv4 + lv5 + lv6 + lv7 + lv8 + lv9 + lv10; } if (l > 0) { S_DelSkill ds =
 	 * new S_DelSkill(lv1, lv2, lv3, lv4, lv5, lv6, lv7, lv8, lv9, lv10, 0, 0, 0, 0,
@@ -5458,28 +5429,28 @@ public class L1PcInstance extends L1Character {
 		getNetConnection().getAccount().솔로타운time = t;
 	}
 
-	public int getpc몽섬time() {
-		return 몽섬time;
+	public int getpctime1() {
+		return _time1;
 	}
 
 	public void setpc몽섬time(int t) {
-		몽섬time = t;
+		_time1 = t;
 	}
 
-	public int getpc고무time() {
-		return 고무time;
+	public int getpctime2() {
+		return _time2;
 	}
 
-	public void setpc고무time(int t) {
-		고무time = t;
+	public void setpctime2(int t) {
+		_time2 = t;
 	}
 
-	public int getpc용둥time() {
-		return 용둥time;
+	public int getpctime3() {
+		return _time3;
 	}
 
 	public void setpc용둥time(int t) {
-		용둥time = t;
+		_time3 = t;
 	}
 
 	public int get용둥time() {
@@ -5742,28 +5713,28 @@ public class L1PcInstance extends L1Character {
 		getNetConnection().getAccount().솔로타운day = t;
 	}
 
-	public Timestamp getpc몽섬day() {
-		return 몽섬day;
+	public Timestamp getpcday1() {
+		return _day1;
 	}
 
-	public void setpc몽섬day(Timestamp t) {
-		몽섬day = t;
+	public void setpcday1(Timestamp t) {
+		_day1 = t;
 	}
 
-	public Timestamp getpc고무day() {
-		return 고무day;
+	public Timestamp getpcday2() {
+		return _day2;
 	}
 
-	public void setpc고무day(Timestamp t) {
-		고무day = t;
+	public void setpcday2(Timestamp t) {
+		_day2 = t;
 	}
 
-	public Timestamp getpc용둥day() {
-		return 용둥day;
+	public Timestamp getpcday3() {
+		return _day3;
 	}
 
-	public void setpc용둥day(Timestamp t) {
-		용둥day = t;
+	public void setpcday3(Timestamp t) {
+		_day3 = t;
 	}
 	// 잊섬
 
@@ -7053,7 +7024,7 @@ public class L1PcInstance extends L1Character {
 	 * newBaseStatBowDmgup = CalcStat.원거리대미지(getAbility().getTotalDex()); if
 	 * (isWarrior() || isKnight() || isDarkelf() || isDragonknight()) { newBaseDmgup
 	 * = getLevel() / 10; newBaseBowDmgup = 0;
-	 * 
+	 *
 	 * } else if (isElf()) { newBaseDmgup = 0; newBaseBowDmgup = getLevel() / 10; }
 	 * addDmgup(newBaseStatDmgup); addBowDmgup(newBaseStatBowDmgup); _baseDmgup =
 	 * newBaseStatDmgup; _baseBowDmgup = newBaseStatBowDmgup; }
@@ -7063,7 +7034,7 @@ public class L1PcInstance extends L1Character {
 	 * public void resetBaseHitup() { int newBaseStatHitup =
 	 * CalcStat.근거리명중(getAbility().getTotalStr()); int newBaseStatBowHitup =
 	 * CalcStat.원거리명중(getAbility().getTotalDex());
-	 * 
+	 *
 	 * if (isCrown()) { newBaseHitup = getLevel() / 5; newBaseBowHitup = getLevel()
 	 * / 5; } else if (isKnight()||isWarrior()) { newBaseHitup = getLevel() / 3;
 	 * newBaseBowHitup = getLevel() / 3; } else if (isElf()) { newBaseHitup =
@@ -7973,14 +7944,14 @@ public class L1PcInstance extends L1Character {
 		_logoutTime = new Timestamp(System.currentTimeMillis());
 	}
 
-	public Timestamp 몽섬day;
-	public int 몽섬time;
+	public Timestamp _day1;
+	public int _time1;
 
-	public Timestamp 고무day;
-	public int 고무time;
+	public Timestamp _day2;
+	public int _time2;
 
-	public Timestamp 용둥day;
-	public int 용둥time;
+	public Timestamp _day3;
+	public int _time3;
 
 	/** 아인하사드 데일리 포인트 충전관련 */
 
@@ -9559,7 +9530,7 @@ public class L1PcInstance extends L1Character {
 	 * private static final int[] repeatedSkills = { L1SkillId.SCALES_EARTH_DRAGON,
 	 * L1SkillId.SCALES_WATER_DRAGON, L1SkillId.SCALES_FIRE_DRAGON,
 	 * L1SkillId.SCALES_Lind_DRAGON };
-	 * 
+	 *
 	 *//** 각성 스킬 패시부에 대한 정보 처리 *//*
 									 * //아우라키아 형님이해준 public void getWakeUpSkll() { ArrayList<WakeUpSkll> _Skill =
 									 * new ArrayList<WakeUpSkll>(); for (int Skills : repeatedSkills) { if
@@ -9571,9 +9542,9 @@ public class L1PcInstance extends L1Character {
 									 * getSkillEffectTimerSet().removeSkillEffect(Skill._Skill); } }else{ for
 									 * (WakeUpSkll Temp : _Skill)
 									 * getSkillEffectTimerSet().removeSkillEffect(Temp._Skill); } _Skill.clear(); }
-									 * 
+									 *
 									 * public class WakeUpSkll { public int _Skill; public int _SkillTime;
-									 * 
+									 *
 									 * public WakeUpSkll(int skillid, int skillEffectTimeSec) { _Skill = skillid;
 									 * _SkillTime = skillEffectTimeSec; } }
 									 */

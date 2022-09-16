@@ -2588,7 +2588,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							pc.set용둥time(1);
 							pc.setpc용둥time(1);
 							pc.set용둥day(nowday);
-							pc.setpc용둥day(nowday);
+							pc.setpcday3(nowday);
 							chat = "용의둥지 이용시간이 초기화되었습니다.";
 						} else if (itemId == 500038) {// 기감
 							pc.setravatime(1);
@@ -2600,9 +2600,9 @@ public class C_ItemUSe extends ClientBasePacket {
 							chat = "상아탑:발록진영 이용시간이 초기화되었습니다.";
 						} else if (itemId == 500037) {// 고무
 							pc.set고무time(1);
-							pc.setpc고무time(1);
+							pc.setpctime2(1);
 							pc.set고무day(nowday);
-							pc.setpc고무day(nowday);
+							pc.setpcday2(nowday);
 							chat = "고대거인의무덤(정무) 이용시간이 초기회되었습니다.";
 						}
 

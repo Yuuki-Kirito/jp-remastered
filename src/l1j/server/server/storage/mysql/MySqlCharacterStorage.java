@@ -48,7 +48,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			rs = pstm.executeQuery();
 
 			if (!rs.next()) {
-				// SELECT°¡ °á°ú¸¦ µ¹·ÁÁÖÁö ¾Ê¾Ò´Ù.
+				// SELECTãŒçµæœã‚’è¿”ã•ãªã‹ã£ãŸã€‚
 				return null;
 			}
 
@@ -135,7 +135,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pc.setHellTime(rs.getInt("HellTime"));
 			pc.setBanned(rs.getBoolean("Banned"));
 			pc.setKarma(rs.getInt("Karma"));
-			pc.setAge(rs.getInt("Age"));// Á·º¸ by ¸ğÄ«
+			pc.setAge(rs.getInt("Age"));
 			pc.setLastPk(rs.getTimestamp("LastPk"));
 			pc.setDeleteTime(rs.getTimestamp("DeleteTime"));
 			pc.setReturnStat(rs.getInt("ReturnStat"));
@@ -147,11 +147,8 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pc.setReasonToHunt(rs.getString("HuntText"));
 			pc.setSealScrollTime(rs.getInt("sealScrollTime"));
 			pc.setSealScrollCount(rs.getInt("sealScrollCount"));
-
-			/* Kill & Death ½Ã½ºÅÛ? -by Ãµ±¹- */
 			pc.setKills(rs.getInt("PC_Kill"));
 			pc.setDeaths(rs.getInt("PC_Death"));
-			/* Kill & Death ½Ã½ºÅÛ? -by Ãµ±¹- */
 			pc.setAnTime(rs.getTimestamp("bloodtime"));
 			pc.setpaTime(rs.getTimestamp("bloodtime2"));
 			pc.setDETime(rs.getTimestamp("DragonEMETime"));
@@ -164,8 +161,8 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pc.setClanJoinDate(rs.getTimestamp("Clan_Join_Date"));
 			pc.setEarringSlotLevel(rs.getInt("EarringAddSlot"));
 
-			pc.setpc¸ù¼¶time(rs.getInt("MSTime"));
-			pc.setpc¸ù¼¶day(rs.getTimestamp("MSDay"));
+			pc.setpcëª½ì„¬time(rs.getInt("MSTime"));
+			pc.setpcday1(rs.getTimestamp("MSDay"));
 
 			pc.setFirstBlood(rs.getBoolean("FirstBlood"));
 
@@ -173,18 +170,18 @@ public class MySqlCharacterStorage implements CharacterStorage {
 
 			pc.setTamTime(rs.getTimestamp("TamEndTime"));
 
-			pc.setpc°í¹«time(rs.getInt("GOTime"));
-			pc.setpc°í¹«day(rs.getTimestamp("GODay"));
+			pc.setpctime2(rs.getInt("GOTime"));
+			pc.setpcday2(rs.getTimestamp("GODay"));
 
-			pc.setpc¿ëµÕtime(rs.getInt("DCTime"));
-			pc.setpc¿ëµÕday(rs.getTimestamp("DCDay"));
+			pc.setpcìš©ë‘¥time(rs.getInt("DCTime"));
+			pc.setpcday3(rs.getTimestamp("DCDay"));
 
 			pc.setElfAttrResetCount(rs.getInt("ElfAttrResetCount"));
 
 			pc.setEmblem_Slot(rs.getInt("QUEST_70"));
 			pc.setShoulder_Slot(rs.getInt("QUEST_83"));
 			pc.set_halpas_armor_faith_delay(rs.getTimestamp("HPSWITTime"));
-			
+
 			pc.refresh();
 			pc.getMoveState().setMoveSpeed(0);
 			pc.getMoveState().setBraveSpeed(0);
@@ -267,7 +264,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pstm.setInt(++i, pc.getHellTime());
 			pstm.setBoolean(++i, pc.isBanned());
 			pstm.setInt(++i, pc.getKarma());
-			pstm.setInt(++i, pc.getAge());// Á·º¸ by ¸ğÄ«
+			pstm.setInt(++i, pc.getAge());
 			pstm.setTimestamp(++i, pc.getLastPk());
 			pstm.setTimestamp(++i, pc.getDeleteTime());
 			pstm.setInt(++i, pc.getReturnStat());
@@ -285,22 +282,22 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pstm.setTimestamp(++i, pc.getPUPLETime());
 			pstm.setInt(++i, pc.getEarringSlotLevel());
 
-			pstm.setInt(++i, pc.getpc¸ù¼¶time());
-			pstm.setTimestamp(++i, pc.getpc¸ù¼¶day());
+			pstm.setInt(++i, pc.getpctime1());
+			pstm.setTimestamp(++i, pc.getpcday1());
 			pstm.setBoolean(++i, pc.isFirstBlood());
 
 			pstm.setTimestamp(++i, pc.getTOPAZTime());
 
 			pstm.setTimestamp(++i, pc.getTamTime());
 
-			pstm.setInt(++i, pc.getpc°í¹«time());
-			pstm.setTimestamp(++i, pc.getpc°í¹«day());
+			pstm.setInt(++i, pc.getpctime2());
+			pstm.setTimestamp(++i, pc.getpcday2());
 
-			pstm.setInt(++i, pc.getpc¿ëµÕtime());
-			pstm.setTimestamp(++i, pc.getpc¿ëµÕday());
+			pstm.setInt(++i, pc.getpctime3());
+			pstm.setTimestamp(++i, pc.getpcday3());
 			pstm.setInt(++i, pc.getEmblem_Slot());
 			pstm.setInt(++i, pc.getShoulder_Slot());
-			
+
 			pstm.setTimestamp(++i, pc.get_halpas_armor_faith_delay());
 
 			pstm.executeUpdate();
@@ -328,8 +325,8 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			int objid = 0;
 			if (!rs.next()) {
 				/*
-				 * SELECT°¡ °ªÀ» µ¹·ÁÁÖÁö ¾Ê¾Ò´Ù Á¸ÀçÇÏÁö ¾Ê´ÂÁö, È¤Àº ´Ù¸¥ ¾îÄ«¿îÆ®°¡ ¼ÒÀ¯ÇÏ°í ÀÖ´Â Ä³¸¯ÅÍ¸íÀÌ
-				 * ÁöÁ¤µÇ¾ú´Ù°í ÇÏ´Â °ÍÀÌ µÈ´Ù.
+				 * SELECTãŒå€¤ã‚’è¿”ã•ãªã‹ã£ãŸå­˜åœ¨ã—ãªã„ã‹ã€ã‚ã‚‹ã„ã¯ä»–ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæ‰€æœ‰ã—ã¦ã„ã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åãŒ
+				 * æŒ‡å®šã•ã‚ŒãŸã¨ã„ã†ã“ã¨ã«ãªã‚‹ã€‚
 				 */
 				_log.warning("invalid delete char request: account=" + accountName + " char=" + charName);
 				throw new RuntimeException("could not delete character");
@@ -483,7 +480,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pstm.setInt(++i, pc.getHellTime());
 			pstm.setBoolean(++i, pc.isBanned());
 			pstm.setInt(++i, pc.getKarma());
-			pstm.setInt(++i, pc.getAge());// Á·º¸ by ¸ğÄ«
+			pstm.setInt(++i, pc.getAge());
 			pstm.setTimestamp(++i, pc.getLastPk());
 			pstm.setTimestamp(++i, pc.getDeleteTime());
 			pstm.setInt(++i, pc.getReturnStat());
@@ -495,7 +492,6 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pstm.setString(++i, pc.getReasonToHunt());
 			pstm.setInt(++i, pc.getSealScrollTime());
 		    pstm.setInt(++i, pc.getSealScrollCount());
-			/* Kill & Death ½Ã½ºÅÛ? -by Ãµ±¹- */
 			pstm.setInt(++i, pc.getKills());
 			pstm.setInt(++i, pc.getDeaths());
 
@@ -507,23 +503,22 @@ public class MySqlCharacterStorage implements CharacterStorage {
 
 			pstm.setTimestamp(++i, pc.getlindTime());
 			pstm.setInt(++i, pc.getRingSlotLevel());
-			/* Kill & Death ½Ã½ºÅÛ? -by Ãµ±¹- */
 			pstm.setString(++i, pc.getMemo());
 			pstm.setTimestamp(++i, pc.getPUPLETime());
 			pstm.setInt(++i, pc.getBookmarkMax());
 			pstm.setTimestamp(++i, pc.getClanJoinDate());
 			pstm.setInt(++i, pc.getEarringSlotLevel());
-			pstm.setInt(++i, pc.getpc¸ù¼¶time());
-			pstm.setTimestamp(++i, pc.getpc¸ù¼¶day());
+			pstm.setInt(++i, pc.getpctime1());
+			pstm.setTimestamp(++i, pc.getpcday1());
 			pstm.setBoolean(++i, pc.isFirstBlood());
 			pstm.setTimestamp(++i, pc.getTOPAZTime());
 			pstm.setTimestamp(++i, pc.getTamTime());
 
-			pstm.setInt(++i, pc.getpc°í¹«time());
-			pstm.setTimestamp(++i, pc.getpc°í¹«day());
+			pstm.setInt(++i, pc.getpctime2());
+			pstm.setTimestamp(++i, pc.getpcday2());
 
-			pstm.setInt(++i, pc.getpc¿ëµÕtime());
-			pstm.setTimestamp(++i, pc.getpc¿ëµÕday());
+			pstm.setInt(++i, pc.getpctime3());
+			pstm.setTimestamp(++i, pc.getpcday3());
 
 			pstm.setInt(++i, pc.getElfAttrResetCount());
 			pstm.setInt(++i, pc.getEmblem_Slot());

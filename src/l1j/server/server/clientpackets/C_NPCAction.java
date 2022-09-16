@@ -10854,8 +10854,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 				try {
 					int outtime = Config.PC_용의둥지_시간;
-					int usetime = pc.getpc용둥time();
-					String s1 = isPC입장가능여부(pc.getpc용둥day(), outtime, usetime);
+					int usetime = pc.getpctime3();
+					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -10886,7 +10886,7 @@ public class C_NPCAction extends ClientBasePacket {
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
 						pc.setpc용둥time(1);
-						pc.setpc용둥day(nowday);
+						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
 						pc.sendPackets(new S_ServerMessage(1526, "3"));   // 시간 남았다.
@@ -10954,8 +10954,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 				try {
 					int outtime = Config.PC_용의둥지_시간;
-					int usetime = pc.getpc용둥time();
-					String s1 = isPC입장가능여부(pc.getpc용둥day(), outtime, usetime);
+					int usetime = pc.getpctime3();
+					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -10986,7 +10986,7 @@ public class C_NPCAction extends ClientBasePacket {
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
 						pc.setpc용둥time(1);
-						pc.setpc용둥day(nowday);
+						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
 						pc.sendPackets(new S_ServerMessage(1526, "3"));   // 시간  남았다.
@@ -11143,8 +11143,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 				try {
 					int outtime = Config.PC_용의둥지_시간;
-					int usetime = pc.getpc용둥time();
-					String s1 = isPC입장가능여부(pc.getpc용둥day(), outtime, usetime);
+					int usetime = pc.getpctime3();
+					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -11174,7 +11174,7 @@ public class C_NPCAction extends ClientBasePacket {
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
 						pc.setpc용둥time(1);
-						pc.setpc용둥day(nowday);
+						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
 						pc.sendPackets(new S_ServerMessage(1526, "3"));  // 시간  남았다.
@@ -11235,8 +11235,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 				try {
 					int outtime = Config.PC_용의둥지_시간;
-					int usetime = pc.getpc용둥time();
-					String s1 = isPC입장가능여부(pc.getpc용둥day(), outtime, usetime);
+					int usetime = pc.getpctime3();
+					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -11265,7 +11265,7 @@ public class C_NPCAction extends ClientBasePacket {
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
 						pc.setpc용둥time(1);
-						pc.setpc용둥day(nowday);
+						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
 						pc.sendPackets(new S_ServerMessage(1526, "3"));  // 시간  남았다.
