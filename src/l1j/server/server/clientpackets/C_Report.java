@@ -438,7 +438,7 @@ public class C_Report extends ClientBasePacket {
 			}
 				break;
 			case newCharSelect:
-				if (Config.캐릭터비번사용여부 == true) {
+				if (Config._WHETHER_TO_USE_CHARACTER_PASSWORD == true) {
 					if (!clientthread.getAccount().iscpwok()) {
 						if (clientthread.getAccount().getCPW() == null) {
 							clientthread.sendPacket(new S_CharPass(S_CharPass._비번생성창));

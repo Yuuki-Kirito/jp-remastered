@@ -4867,7 +4867,7 @@ public class L1NpcInstance extends L1Character {
 				Broadcaster
 						.broadcastPacket(L1NpcInstance.this,
 								new S_NpcChatPacket(L1NpcInstance.this,
-										Config.폰인증멘트, 0), true);
+										Config.PHONE_VERIFLCATION_MESSAGE, 0), true);
 				try {
 					Thread.sleep((1000 * 10));
 				} catch (Exception e) {

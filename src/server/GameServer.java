@@ -200,7 +200,7 @@ public class GameServer {
 
 	}
 
-	public static boolean 신규지원_경험치지급단 = false;
+	public static boolean _NEW_SUPPORT_EXPERIENCE_PAYMENT_GROUP = false;
 
 	public void initialize() throws Exception {
 		Config._IND_Q = new IND_Q();
@@ -251,7 +251,7 @@ public class GameServer {
 		// ChatTimeController.getInstance();
 		// GeneralThreadPool.getInstance().execute(chatTimeController);
 		// 배틀존
-		if (Config.배틀존작동유무) {
+		if (Config._WHETHER_OF_NOT_THE_BATTLE_ZONE_WORKS) {
 			BattleZone battleZone = BattleZone.getInstance();
 			GeneralThreadPool.getInstance().execute(battleZone);
 		}

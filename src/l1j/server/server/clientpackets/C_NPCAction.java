@@ -10822,7 +10822,7 @@ public class C_NPCAction extends ClientBasePacket {
 			if (pc.getLevel() >= level && pc.getLevel() <= 69) {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
-					int outtime = Config.계정_용의둥지_시간;
+					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
 					int usetime = pc.get용둥time();
 
 					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
@@ -10853,7 +10853,7 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 
 				try {
-					int outtime = Config.PC_용의둥지_시간;
+					int outtime = Config.PC_DRAGONS_NEST_TIME;
 					int usetime = pc.getpctime3();
 					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
@@ -10920,7 +10920,7 @@ public class C_NPCAction extends ClientBasePacket {
 			if (pc.getLevel() >= level && pc.getLevel() <= 59) {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
-					int outtime = Config.계정_용의둥지_시간;
+					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
 					int usetime = pc.get용둥time();
 
 					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
@@ -10953,7 +10953,7 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 
 				try {
-					int outtime = Config.PC_용의둥지_시간;
+					int outtime = Config.PC_DRAGONS_NEST_TIME;
 					int usetime = pc.getpctime3();
 					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
@@ -11109,7 +11109,7 @@ public class C_NPCAction extends ClientBasePacket {
 			if (pc.getLevel() >= level && pc.getLevel() <= 69) {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
-					int outtime = Config.계정_용의둥지_시간;
+					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
 					int usetime = pc.get용둥time();
 
 					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
@@ -11142,7 +11142,7 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 
 				try {
-					int outtime = Config.PC_용의둥지_시간;
+					int outtime = Config.PC_DRAGONS_NEST_TIME;
 					int usetime = pc.getpctime3();
 					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
@@ -11198,10 +11198,10 @@ public class C_NPCAction extends ClientBasePacket {
 		if (s.equalsIgnoreCase("1")) {
 			int level = 55;
 
-			if (pc.getLevel() >= level && pc.getLevel() < Config.MAX_후오스_DUNGEON_LEVEL) {
+			if (pc.getLevel() >= level && pc.getLevel() < Config.MAX_HUOS_DUNGEON_LEVEL) {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
-					int outtime = Config.계정_용의둥지_시간;
+					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
 					int usetime = pc.get용둥time();
 
 					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
@@ -11234,7 +11234,7 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 
 				try {
-					int outtime = Config.PC_용의둥지_시간;
+					int outtime = Config.PC_DRAGONS_NEST_TIME;
 					int usetime = pc.getpctime3();
 					String s1 = isPC입장가능여부(pc.getpcday3(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
@@ -13349,7 +13349,7 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_SystemMessage("당신은 이미 마빈의 주머니를 소지하고 계십니다."), true);
 						HtmlId = "";
 					} else {
-						if (pc.getLevel() > 1 && pc.getLevel() <= Config.클라우디아레벨) {
+						if (pc.getLevel() > 1 && pc.getLevel() <= Config.CLAUDIA_LEVEL) {
 							L1QuestInfo info = pc.getQuestList(367);
 							if (info != null && info.end_time == 0) {
 								info.ck[0] = 1;

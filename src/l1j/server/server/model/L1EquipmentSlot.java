@@ -96,7 +96,7 @@ public class L1EquipmentSlot {
 			_owner.addMpr(weapon.getEnchantLevel());
 		}
 		/** 클라우디아 은장검 은도끼 퀘스트 완료 부분 */
-		if ((weapon.getItemId() == 29 || weapon.getItemId() == 142) && _owner.getLevel() > 1 && _owner.getLevel() <= Config.클라우디아레벨) {
+		if ((weapon.getItemId() == 29 || weapon.getItemId() == 142) && _owner.getLevel() > 1 && _owner.getLevel() <= Config.CLAUDIA_LEVEL) {
 			L1QuestInfo info = _owner.getQuestList(277);
 			if (info != null && info.end_time == 0) {
 				info.ck[0] = 1;

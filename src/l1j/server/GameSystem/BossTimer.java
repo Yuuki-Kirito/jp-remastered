@@ -124,7 +124,7 @@ public class BossTimer implements Runnable {
 				BossTimerCheck check = new BossTimerCheck(this);
 				check.begin();
 
-				if (rh == Config.출석초기화시간) {
+				if (rh == Config.ATTENDANCE_RESET_TIME) {
 					L1SpawnUtil.spawn6(33174, 33001, (short) 4, 203048, 0, _4시간주기, 0);// 어둠의 군주
 					WeekQuestDateCalculator.getInstance().reloadTime();
 					L1World.getInstance().broadcastServerMessage("\\aD출석 리스트 및 주간퀘스트 재 갱신(매일 오전 9시)");

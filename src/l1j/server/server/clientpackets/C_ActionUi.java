@@ -921,7 +921,7 @@ public class C_ActionUi extends ClientBasePacket {
 			if (SupportMapTable.getInstance().isSupportMap(pc.getMapId())) {
 				L1SupportMap SM = SupportMapTable.getInstance().getSupportMap(pc.getMapId());
 				if (SM != null) {
-					if (pc.getLevel() > 1 && pc.getLevel() <= Config.클라우디아레벨) {
+					if (pc.getLevel() > 1 && pc.getLevel() <= Config.CLAUDIA_LEVEL) {
 						L1QuestInfo info = pc.getQuestList(368);
 						if (info != null && info.end_time == 0) {
 							info.ck[0] = 1;
@@ -1563,10 +1563,10 @@ public class C_ActionUi extends ClientBasePacket {
 				dollids[i] = item.getItemId();
 				pc.getInventory().removeItem(item);
 			}
-			int chance2 = ((total * Config.인형확률2)); // 인형합성 확률 설정
-			int chance3 = ((total * Config.인형확률3)); // 인형합성 확률 설정
-			int chance4 = ((total * Config.인형확률4)); // 인형합성 확률 설정
-			int chance5 = ((total * Config.인형확률5)); // 인형합성 확률 설정
+			int chance2 = ((total * Config.DOLL_PROBABILITY_2)); // 인형합성 확률 설정
+			int chance3 = ((total * Config.DOLL_PROBABILITY_3)); // 인형합성 확률 설정
+			int chance4 = ((total * Config.DOLL_PROBABILITY_4)); // 인형합성 확률 설정
+			int chance5 = ((total * Config.DOLL_PROBABILITY_5)); // 인형합성 확률 설정
 			switch (step) {
 			case 1:
 				if (CommonUtil.random(100) + 1 <= chance2) {

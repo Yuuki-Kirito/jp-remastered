@@ -1250,7 +1250,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 //			}
 //			client.setletteron(false);
 
-			if (pc.getLevel() <= Config.클라우디아레벨) {
+			if (pc.getLevel() <= Config.CLAUDIA_LEVEL) {
 				CharacterQuestTable.getInstance().LoginQuestInfo(pc); // 퀘스트 정보로딩
 				pc.sendPackets(new S_QuestTalkIsland(pc));
 				pc.sendPackets(new S_QuestTalkIsland(14, 257));

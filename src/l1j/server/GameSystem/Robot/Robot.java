@@ -63,60 +63,60 @@ public class Robot {
 			if (bot.isElf() && bot.getCurrentWeapon() == 20) {
 				int f = _random.nextInt(5);
 				if (f == 1) {
-					bot.getGfxId().setTempCharGfx(Config.로봇요정활1); //요정 남
-					bot.setCurrentSprite(Config.로봇요정활1);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_1); //요정 남
+					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_1);
 				} else if (f == 2) {
-					bot.getGfxId().setTempCharGfx(Config.로봇요정활2); //포노스궁수
-					bot.setCurrentSprite(Config.로봇요정활2);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_2); //포노스궁수
+					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_2);
 				} else if (f == 3) {
-					bot.getGfxId().setTempCharGfx(Config.로봇요정활3); // 불타는궁수
-					bot.setCurrentSprite(Config.로봇요정활3);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_3); // 불타는궁수
+					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_3);
 				} else if (f == 4) {
-					bot.getGfxId().setTempCharGfx(Config.로봇요정활4); // 불타는궁수
-					bot.setCurrentSprite(Config.로봇요정활4);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_4); // 불타는궁수
+					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_4);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇요정활5); // 불타는궁수
-					bot.setCurrentSprite(Config.로봇요정활5);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_5); // 불타는궁수
+					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_5);
 				}
 			} else if (bot.getCurrentWeapon() == 50 || bot.getCurrentWeapon() == 4 || bot.getCurrentWeapon() == 88 || bot.getCurrentWeapon() == 58){
 				int f1 = _random.nextInt(3);
 				if (f1 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼1); // 샤르나75 기사 남
-					bot.setCurrentSprite(Config.로봇칼1);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // 샤르나75 기사 남
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_1);
 				} else if(f1 == 2) {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼2); // 샤르나 75 요정 남
-					bot.setCurrentSprite(Config.로봇칼2);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // 샤르나 75 요정 남
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_2);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼3); // 샤르나 75 요정 남
-					bot.setCurrentSprite(Config.로봇칼3);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_3); // 샤르나 75 요정 남
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_3);
 				}
 			} else if (bot.getCurrentWeapon() == 54){
 				int f2 = _random.nextInt(2);
 				if (f2 == 1) { 
-					bot.getGfxId().setTempCharGfx(Config.로봇칼4); // 샤르나 75 용기사여
-					bot.setCurrentSprite(Config.로봇칼4);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_4); // 샤르나 75 용기사여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_4);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼5); // 샤르나 75 환술 남
-					bot.setCurrentSprite(Config.로봇칼5);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_5); // 샤르나 75 환술 남
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_5);
 				}
 
 			}else if(bot.getCurrentWeapon() == 24) {
 				int f3 = _random.nextInt(2);
 				if (f3 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼6); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼6);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_6); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_6);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼7); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼7);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_7); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_7);
 				}
 			}else if(bot.getCurrentWeapon() == 40) {
 				int f4 = _random.nextInt(2);
 				if(f4 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼8); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼8);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_8); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_8);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼9); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼9);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_9); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_9);
 				}
 			}
 		} else {
@@ -152,11 +152,11 @@ public class Robot {
 			if(bot.isWizard()) {
 				int f4 = _random.nextInt(2);
 				if(f4 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼1); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼1);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_1);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.로봇칼2); // 샤르나 75 환술 여
-					bot.setCurrentSprite(Config.로봇칼2);
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // 샤르나 75 환술 여
+					bot.setCurrentSprite(Config.ROBOT_KNIFE_2);
 				}
 			}
 		}
@@ -568,7 +568,7 @@ public class Robot {
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.IMMUNE_TO_HARM) && !bot.isPinkName()) {
 				new L1SkillUse().handleCommands(bot, L1SkillId.IMMUNE_TO_HARM,bot.getId(), bot.getX(), bot.getY(), null, 60, L1SkillUse.TYPE_NORMAL);
 				bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.SHAPE_CHANGE, 1800 * 1000);
-				bot.getGfxId().setTempCharGfx(Config.로봇칼8);
+				bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_8);
 				Broadcaster.broadcastPacket(bot, new S_ChangeShape(bot.getId(), bot.getGfxId().getTempCharGfx()));
 				Broadcaster.broadcastPacket(bot, new S_CharVisualUpdate(bot, bot.getCurrentWeapon()));
 				bot.setCurrentMp(bot.getMaxMp());
@@ -878,39 +878,39 @@ public class Robot {
 				int dollType = 0;
 				int dollTime = 0;
 					if (bot.getCurrentWeapon() == 20) {
-						npcId = Config.인형타입활엔피씨아이디;
+						npcId = Config.DOLL_TYPE_BOW_NPC_ID;
 						//npcId = 1600242;
-						dollType = Config.인형타입활;
+						dollType = Config.DOLL_TYPE_BOW;
 					} else {
 					if (bot.isKnight() || bot.isCrown()) {
-						npcId = Config.인형타입칼엔피씨아이디1; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_1; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼1;
+						dollType = Config.DOLL_TYPE_KNIFE_1;
 				    } else if (bot.isWarrior()) {
-						npcId = Config.인형타입칼엔피씨아이디2; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_2; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼2;
+						dollType = Config.DOLL_TYPE_KNIFE_2;
 					} else if (bot.isDarkelf()) {
-						npcId = Config.인형타입칼엔피씨아이디3; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_3; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼3;
+						dollType = Config.DOLL_TYPE_KNIFE_3;
 					} else if (bot.isDragonknight()) {
-						npcId = Config.인형타입칼엔피씨아이디4; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_4; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼4;
+						dollType = Config.DOLL_TYPE_KNIFE_4;
 					} else if (bot.getCurrentWeapon() != 20 && bot.isElf()) {
-						npcId = Config.인형타입칼엔피씨아이디5; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_5; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼5;
+						dollType = Config.DOLL_TYPE_KNIFE_5;
 					} else if (bot.isWizard() || bot.isIllusionist()) {
-						npcId = Config.인형타입칼엔피씨아이디6; //스파토이
+						npcId = Config.DOLL_TYPE_KALNPC_ID_6; //스파토이
 						//npcId = 1600247; //데나
-						dollType = Config.인형타입칼6;
+						dollType = Config.DOLL_TYPE_KNIFE_6;
 					}
 					if (_random.nextInt(3) == 0) {
-						npcId = Config.경험치인형엔피씨아이디;
+						npcId = Config.EXPERIENCE_DOLL_NPC_ID;
 						//npcId = 1500204;
-						dollType = Config.인형타입경험치;
+						dollType = Config.DOLL_TYPE_EXPERIENCE;
 					}
 				 }
 					dollTime = 1800;

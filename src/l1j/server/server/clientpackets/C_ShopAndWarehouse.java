@@ -152,8 +152,8 @@ public class C_ShopAndWarehouse extends ClientBasePacket {
 						}
 					}
 					
-					if (pc.getClan() == null && pc.getLevel() >= Config.무혈상점) {
-						pc.sendPackets(new S_SystemMessage(Config.무혈상점 + "레벨 이상은 혈맹이 없으면 상점을 이용할 수 없습니다."));
+					if (pc.getClan() == null && pc.getLevel() >= Config.BLOODLESS_SHOP) {
+						pc.sendPackets(new S_SystemMessage(Config.BLOODLESS_SHOP + "레벨 이상은 혈맹이 없으면 상점을 이용할 수 없습니다."));
 						if (pc.isGm()) {
 						//	pc.sendPackets(new S_SystemMessage("하지만 운영자는 됨ㅋㅋ"));
 						} else {

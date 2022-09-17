@@ -105,7 +105,7 @@ public class C_Restart extends ClientBasePacket {
 			client.CharReStart(true);
 			S_PacketBox pb = new S_PacketBox(S_PacketBox.LOGOUT);
 			client.sendPacket(pb, true);
-			if(Config.캐릭터비번사용여부){
+			if(Config._WHETHER_TO_USE_CHARACTER_PASSWORD){
 				try {
 					if (client.getAccount().iscpwok()) {
 						client.sendPacket(new S_CharPass(S_CharPass._케릭선택창진입), true);

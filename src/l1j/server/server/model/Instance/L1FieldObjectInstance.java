@@ -85,7 +85,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 			AntarasRaid ar = AntarasRaidSystem.getInstance().getAR(
 					pc.dragonmapid);
 			int count1 = ar.countLairUser();
-			if (pc.getLevel() <= Config.용레이드레벨) {
+			if (pc.getLevel() <= Config.DRAGON_RAID_LEVEL) {
 				pc.sendPackets(new S_SystemMessage(
 						"드래곤 레이드 레벨 제한으로인해 드래곤 포탈에 입장 할 수 없습니다."));
 				return;
@@ -147,7 +147,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 			int trcount = 0;
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(pc.dragonmapid);
 			int count1 = ar.countLairUser();
-			if (pc.getLevel() <= Config.용레이드레벨) {
+			if (pc.getLevel() <= Config.DRAGON_RAID_LEVEL) {
 				pc.sendPackets(new S_SystemMessage(
 						"드래곤 레이드 레벨 제한으로인해 드래곤 포탈에 입장 할 수 없습니다."));
 				return;
@@ -218,7 +218,7 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 			// pc.sendPackets(new S_Message_YN(622,
 			// "린드비오르 드래곤 포탈에 진입 하시겠습니까?(Y/N)"), true);
 			pc.system = -1;// 초기화
-			if (pc.getLevel() <= Config.용레이드레벨) {
+			if (pc.getLevel() <= Config.DRAGON_RAID_LEVEL) {
 				pc.sendPackets(new S_SystemMessage(
 						"드래곤 레이드 레벨 제한으로인해 드래곤 포탈에 입장 할 수 없습니다."));
 				return;
@@ -253,8 +253,8 @@ public class L1FieldObjectInstance extends L1NpcInstance {
 		case 910008:  // 드래곤 포탈 (발라)
 			pc.dragonmapid = (short) moveMapId;
 			pc.system = -1;// 초기화
-			if(pc.getLevel() < Config.용레이드레벨){
-				pc.sendPackets(new S_SystemMessage("입장 불가: "+Config.용레이드레벨+"레벨 이상 입장가능"), true);
+			if(pc.getLevel() < Config.DRAGON_RAID_LEVEL){
+				pc.sendPackets(new S_SystemMessage("입장 불가: "+Config.DRAGON_RAID_LEVEL+"레벨 이상 입장가능"), true);
 				return;
 			}
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DRAGONRAID_BUFF)) {

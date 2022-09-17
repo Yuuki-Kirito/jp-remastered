@@ -400,7 +400,7 @@ public class Robot_Hunt {
 				newPc.setAccountName("");
 				newPc.setName(rs.getString("name"));
 				// rs.getInt("step");
-				int level = _random.nextInt(20) + Config.봇시작레벨;
+				int level = _random.nextInt(20) + Config.BOT_START_LEVEL;
 				newPc.setHighLevel(level);
 				newPc.setLevel(level);
 				newPc.setExp(ExpTable.getExpByLevel(level)
@@ -430,9 +430,9 @@ public class Robot_Hunt {
 					newPc.setCurrentWeapon(50);
 					newPc.setType(1);
 				} else if (newPc.isElf()) {
-					if (newPc.getGfxId().getTempCharGfx() != Config.로봇요정활1
-							&& newPc.getGfxId().getTempCharGfx() != Config.로봇요정활2 && newPc.getGfxId().getTempCharGfx() != Config.로봇요정활3 && newPc.getGfxId().getTempCharGfx() != Config.로봇요정활4
-									 && newPc.getGfxId().getTempCharGfx() != Config.로봇요정활5
+					if (newPc.getGfxId().getTempCharGfx() != Config.ROBOT_FAIRY_BOW_1
+							&& newPc.getGfxId().getTempCharGfx() != Config.ROBOT_FAIRY_BOW_2 && newPc.getGfxId().getTempCharGfx() != Config.ROBOT_FAIRY_BOW_3 && newPc.getGfxId().getTempCharGfx() != Config.ROBOT_FAIRY_BOW_4
+									 && newPc.getGfxId().getTempCharGfx() != Config.ROBOT_FAIRY_BOW_5
 							&& ran < 20)
 						newPc.setCurrentWeapon(4);
 					else
@@ -528,14 +528,14 @@ public class Robot_Hunt {
 			bot.getAbility().setInt(8);
 			bot.getAbility().setBaseWis(9);
 			bot.getAbility().setWis(9);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		} else if (bot.isElf()) {
 			if (bot.getCurrentWeapon() != 20) {
 				bot.getAbility().setBaseStr(18);
@@ -558,14 +558,14 @@ public class Robot_Hunt {
 			bot.getAbility().setInt(12);
 			bot.getAbility().setBaseWis(12);
 			bot.getAbility().setWis(12);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		} else if (bot.isWizard()) {
 			bot.getAbility().setBaseStr(8);
 			bot.getAbility().setStr(8);
@@ -580,14 +580,14 @@ public class Robot_Hunt {
 			bot.getAbility().setBaseWis(18);
 			bot.getAbility().setWis(bot.getLevel());
 			bot.getAbility().addSp(45);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		} else if (bot.isDarkelf()) {
 			bot.getAbility().setBaseStr(18);
 			bot.getAbility().setStr(bot.getLevel());
@@ -601,14 +601,14 @@ public class Robot_Hunt {
 			bot.getAbility().setInt(11);
 			bot.getAbility().setBaseWis(10);
 			bot.getAbility().setWis(10);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		} else if (bot.isDragonknight()) {
 			bot.getAbility().setBaseStr(18);
 			bot.getAbility().setStr(bot.getLevel());
@@ -622,14 +622,14 @@ public class Robot_Hunt {
 			bot.getAbility().setInt(11);
 			bot.getAbility().setBaseWis(12);
 			bot.getAbility().setWis(12);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		} else if (bot.isIllusionist()) {
 			bot.getAbility().setBaseStr(11);
 			bot.getAbility().setStr(11);
@@ -644,14 +644,14 @@ public class Robot_Hunt {
 			bot.getAbility().setBaseWis(12);
 			bot.getAbility().setWis(12);
 			bot.getAbility().addSp(40);
-			bot.addTechniqueHit(Config.봇기술적중);
-			bot.addSpiritHit(Config.봇정령적중);
-			bot.addDragonLangHit(Config.봇용언적중);
-			bot.addFearHit(Config.봇공포적중);
-			bot.addTechniqueTolerance(Config.봇기술내성);
-			bot.addSpiritTolerance(Config.봇정령내성);
-			bot.addDragonLangTolerance(Config.봇용언내성);
-			bot.addFearTolerance(Config.봇공포내성);
+			bot.addTechniqueHit(Config.BOT_SKILLS);
+			bot.addSpiritHit(Config.BOT_SPIRIT_HIT);
+			bot.addDragonLangHit(Config.BOT_VERD_HIT);
+			bot.addFearHit(Config.BOT_HORROR_HIT);
+			bot.addTechniqueTolerance(Config.BOT_TECHNOLOGY_RESISTANCE);
+			bot.addSpiritTolerance(Config.BOT_SPIRIT_RESISTANCE);
+			bot.addDragonLangTolerance(Config.BOT_TOLERANCE);
+			bot.addFearTolerance(Config.BOT_FEAR_RESISTANCE);
 		}
 	}
 

@@ -182,7 +182,7 @@ public class LineageClient implements PacketOutput {
 					_threadPool.execute(ServerPacket);
 				}
 
-				if (Config.서버패킷출력) {
+				if (Config._SERVER_PACKET_OUTPUT) {
 					System.out.printf("[Server] opcode:%d, type:%d, size:%d\r\n%s\r\n", content[0] & 0xff, content[1] & 0xff, content.length,
 							DataToPacket(content, content.length));
 				}
@@ -814,7 +814,7 @@ public class LineageClient implements PacketOutput {
 			synchronized (activeCharInstance) {
 				setActiveChar(null);
 			}
-			if (Config.새로운패킷구조) {
+			if (Config._NEW_PACKET_STRUCTURE) {
 				this.chnnel.close();
 			} else {
 				this.chnnel.close();
@@ -829,7 +829,7 @@ public class LineageClient implements PacketOutput {
 			return;
 		}
 		try {
-			if (Config.새로운패킷구조) {
+			if (Config._NEW_PACKET_STRUCTURE) {
 				packetHandler.handlePacket(bb, activeCharInstance);
 			} else {
 				packetHandler.handlePacket(bb, activeCharInstance);

@@ -185,7 +185,7 @@ public class C_MoveChar extends ClientBasePacket {
 				return;
 			}
 
-			if (Config.뚫어방어사용 && pc.getMapId() != 2100 && pc.getMapId() != 2699) {
+			if (Config._USE_OF_PIERCING_DEFENSE && pc.getMapId() != 2100 && pc.getMapId() != 2699) {
 				if (!World.isThroughObject(pc.getX(), pc.getY(), pc.getMapId(),
 						heading)) {
 					if (GMCommands.길팅체크) {
@@ -212,7 +212,7 @@ public class C_MoveChar extends ClientBasePacket {
 			locx += HEADING_TABLE_X[heading];
 			locy += HEADING_TABLE_Y[heading];
 
-			if (Config.유체이탈방어사용) {
+			if (Config.__USE_OF_FLUID_ESCAPE_PROTECTION) {
 				if (pc.tempx != 0 && pc.tempy != 0) {
 					int calcx = (int) pc.tempx - locx;
 					int calcy = (int) pc.tempy - locy;

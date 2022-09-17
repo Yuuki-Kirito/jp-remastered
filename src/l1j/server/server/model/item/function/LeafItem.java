@@ -380,7 +380,7 @@ public class LeafItem {
 				boolean chance = false;
 				for (int i = 0; i < item.length; i++) {
 					if (l1iteminstance.getItemId() == item[i]) {
-						if (_random.nextInt(99) + 1 <= Config.»ý¸íÀÇ³ª¹µÀÙ) {
+						if (_random.nextInt(99) + 1 <= Config.LEAF_OF_LIFE) {
 							chance = true;
 							// Áö±Þ Ã³¸®.
 							createNewItem2(pc, temp[i], 1,
@@ -392,7 +392,7 @@ public class LeafItem {
 						}
 						if (pc.isGm()) {
 							pc.sendPackets(new S_SystemMessage("³ª¹µÀÙÈ®·ü >> "
-									+ Config.»ý¸íÀÇ³ª¹µÀÙ));
+									+ Config.LEAF_OF_LIFE));
 						}
 					}
 				}

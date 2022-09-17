@@ -489,7 +489,7 @@ public class PaPooRaidSystem {
 									L1SkillId.DRAGONRAID_BUFF,
 									(86400 * 1) * 1000);
 							Timestamp deleteTime = new Timestamp(
-									System.currentTimeMillis() + (86400000 * Config.레이드시간));// 3일
+									System.currentTimeMillis() + (86400000 * Config.RAID_TIME));// 3일
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.드래곤레이드버프, 86400 * 1), true);
 							pc.getNetConnection().getAccount()

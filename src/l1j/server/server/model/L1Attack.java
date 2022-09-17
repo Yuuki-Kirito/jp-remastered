@@ -18,62 +18,7 @@
  */
 package l1j.server.server.model;
 
-import static l1j.server.server.model.skill.L1SkillId.ABSOLUTE_BARRIER;
-import static l1j.server.server.model.skill.L1SkillId.ARMOR_BREAK;
-import static l1j.server.server.model.skill.L1SkillId.BRAVE_AURA;
-import static l1j.server.server.model.skill.L1SkillId.BURNING_SPIRIT;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_ORDEAL_CHICKEN_SOUP;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_QUICK_BOILED_SALMON;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_CLEVER_TURKEY_ROAST;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_ORDEAL_CHICKEN_SOUP;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_QUICK_BOILED_SALMON;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_CLEVER_TURKEY_ROAST;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_NEW_POWERFUL_WAGYU_STEAK;
-import static l1j.server.server.model.skill.L1SkillId.COUNTER_MAGIC;
-import static l1j.server.server.model.skill.L1SkillId.CUBE_BALANCE;
-import static l1j.server.server.model.skill.L1SkillId.DOUBLE_BRAKE;
-import static l1j.server.server.model.skill.L1SkillId.EARTH_BIND;
-import static l1j.server.server.model.skill.L1SkillId.ELEMENTAL_FIRE;
-import static l1j.server.server.model.skill.L1SkillId.ENCHANT_VENOM;
-import static l1j.server.server.model.skill.L1SkillId.ENTANGLE;
-import static l1j.server.server.model.skill.L1SkillId.FEAR;
-import static l1j.server.server.model.skill.L1SkillId.FEATHER_BUFF_A;
-import static l1j.server.server.model.skill.L1SkillId.FEATHER_BUFF_B;
-import static l1j.server.server.model.skill.L1SkillId.FREEZING_BREATH;
-import static l1j.server.server.model.skill.L1SkillId.HEUKSA;
-import static l1j.server.server.model.skill.L1SkillId.ICE_LANCE;
-import static l1j.server.server.model.skill.L1SkillId.IMMUNE_TO_HARM;
-import static l1j.server.server.model.skill.L1SkillId.IllUSION_AVATAR;
-import static l1j.server.server.model.skill.L1SkillId.LIFE_MAAN;
-import static l1j.server.server.model.skill.L1SkillId.MIRROR_IMAGE;
-import static l1j.server.server.model.skill.L1SkillId.MOB_BASILL;
-import static l1j.server.server.model.skill.L1SkillId.MOB_COCA;
-import static l1j.server.server.model.skill.L1SkillId.PATIENCE;
-import static l1j.server.server.model.skill.L1SkillId.REDUCTION_ARMOR;
-import static l1j.server.server.model.skill.L1SkillId.SCALES_Lind_DRAGON;
-import static l1j.server.server.model.skill.L1SkillId.SOUL_OF_FLAME;
-import static l1j.server.server.model.skill.L1SkillId.SPECIAL_COOKING;
-import static l1j.server.server.model.skill.L1SkillId.SPECIAL_COOKING2;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_BARLOG;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_YAHEE;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_MITHRIL_POWDER;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_HOLY_WATER_OF_EVA;
-import static l1j.server.server.model.skill.L1SkillId.STRIKER_GALE;
-import static l1j.server.server.model.skill.L1SkillId.UNCANNY_DODGE;
-import static l1j.server.server.model.skill.L1SkillId.VALA_MAAN;
-import static l1j.server.server.model.skill.L1SkillId.cyclone;
-import static l1j.server.server.model.skill.L1SkillId.루시퍼;
-import static l1j.server.server.model.skill.L1SkillId.마제스티;
-import static l1j.server.server.model.skill.L1SkillId.메티스정성스프;
-import static l1j.server.server.model.skill.L1SkillId.메티스정성요리;
-import static l1j.server.server.model.skill.L1SkillId.메티스축복주문서;
-import static l1j.server.server.model.skill.L1SkillId.뫼비우스;
-import static l1j.server.server.model.skill.L1SkillId.블로우어택;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_NOODLE_DISHES;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_SMALL_PORTABLE_BEVERAGE;
-import static l1j.server.server.model.skill.L1SkillId.포커스웨이브;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.util.Random;
 
@@ -813,9 +758,9 @@ public class L1Attack {
 				defenderDice += (_targetPc.getAC().getAc() * -1); // 원래 10
 			} else {
 				if (_targetPc.isDragonknight() || _targetPc.isIllusionist()) {
-					defenderDice += (_targetPc.get_PlusEr() * (Config.활명중)) + (_targetPc.getAC().getAc() * -2); // 원래 10
+					defenderDice += (_targetPc.get_PlusEr() * (Config.WHAL_MYUNG_JUNG)) + (_targetPc.getAC().getAc() * -2); // 원래 10
 				} else {
-					defenderDice += (_targetPc.get_PlusEr() * (Config.활명중)) + (_targetPc.getAC().getAc() * -2.5); // 원래 10
+					defenderDice += (_targetPc.get_PlusEr() * (Config.WHAL_MYUNG_JUNG)) + (_targetPc.getAC().getAc() * -2.5); // 원래 10
 				}
 			}
 		}
@@ -1506,17 +1451,17 @@ public class L1Attack {
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (Config.봇요정싸이클론 == true) {
+					if (Config._BOT_FAIRY_CYCLONE == true) {
 						if ((_random.nextInt(100) + 1) <= 5) {
 							_pc.sendPackets(new S_SkillSound(_targetPc.getId(), 17557), true);
 							Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetPc.getId(), 17557), true);
 							dmg *= 1.4;
 						}
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치PC) + Config.요정활기본타격치PC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_PC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_PC;
 				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) { // 활
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
@@ -1547,10 +1492,10 @@ public class L1Attack {
 							}
 						}
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치PC) + Config.요정활기본타격치PC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_PC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_PC;
 				} else {
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
@@ -1558,10 +1503,10 @@ public class L1Attack {
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치PC) + Config.요정활기본타격치PC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_PC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_PC;
 				}
 			} else if (_pc.getCurrentWeapon() == 54) { // 이도류
 				int rnd = _random.nextInt(100);
@@ -1575,14 +1520,14 @@ public class L1Attack {
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetPc.getId(), 6532), true);
 					dmg *= 1.5;
 				}
-				dmg += _random.nextInt(Config.다엘랜덤타격치PC) + Config.다엘기본타격치PC;
+				dmg += _random.nextInt(Config.DAEL_RANDOM_HIT_PC) + Config.DAELS_BASIC_HIT_VALUE_PC;
 			} else if (_pc.getCurrentWeapon() == 50) { // 이도류
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetPc.getId(), 50));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetPc.getId(), 50));
 				}
-				dmg += _random.nextInt(Config.기사랜덤타격치PC) + Config.기사기본타격치PC;
+				dmg += _random.nextInt(Config.KNIGHT_RANDOM_HIT_POINT_PC) + Config.KNIGHTS_BASIC_STRIKE_VALUE_PC;
 			} else if (_pc.getCurrentWeapon() == 4) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -1594,7 +1539,7 @@ public class L1Attack {
 					burning = true;
 				}
 				dmg += WeaponSkill.getbotKurtSwordDamage(_pc, _target, _weaponEnchant);
-				dmg += _random.nextInt(Config.군검요랜덤타격치PC) + Config.군검요기본타격치PC;
+				dmg += _random.nextInt(Config.MILITARY_SWORD_RANDOM_HIT_POINT_PC) + Config.MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_PC;
 			} else if (_pc.getCurrentWeapon() == 88) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -1611,17 +1556,17 @@ public class L1Attack {
 					_pc.sendPackets(new S_SkillSound(_targetPc.getId(), gfx));// 12489
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetPc.getId(), gfx));
 				}
-				if (Config.봇전사태풍 == true) {
+				if (Config._BOT_WARFARE == true) {
 					dmg += WeaponSkill.getTyphoonDmg(this._pc, this._target);
 				}
-				dmg += _random.nextInt(Config.전사랜덤타격치PC) + Config.전사기본타격치PC;
+				dmg += _random.nextInt(Config.WARRIOR_RANDOM_HIT_POINT_PC) + Config.WARRIOR_BASIC_STRIKE_VALUE_PC;
 			} else if (_pc.getCurrentWeapon() == 24) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetPc.getId(), 24));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetPc.getId(), 24));
 				}
-				dmg += _random.nextInt(Config.용기사랜덤타격치PC) + Config.용기사기본타격치PC;
+				dmg += _random.nextInt(Config.DRAGON_KNIGHT_RANDOM_HIT_POINT_PC) + Config.DRAGON_KNIGHT_BASIC_STRIKE_VALUE_PC;
 			} else if (_pc.getCurrentWeapon() == 40) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -1639,10 +1584,10 @@ public class L1Attack {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetPc.getId(), 89));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetPc.getId(), 89));
 				}
-				if (_pc.getGfxId().getTempCharGfx() == Config.로봇칼1) {
+				if (_pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_1) {
 					dmg += WeaponSkill.boksalkiPc(_pc, _target, _weaponEnchant);
 				}
-				if (_pc.getGfxId().getTempCharGfx() == Config.로봇칼2 || _pc.getGfxId().getTempCharGfx() == Config.로봇칼3) {
+				if (_pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_2 || _pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_3) {
 					dmg += WeaponSkill.botIcekiringpc(_pc, _target, _weaponEnchant);
 				}
 				dmg += _random.nextInt(50) + 10;
@@ -2781,7 +2726,7 @@ public class L1Attack {
 		dmg += 룸티스검귀추가데미지();
 
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(IMMUNE_TO_HARM)) {
-			dmg -= (dmg * Config.뮨데미지);
+			dmg -= (dmg * Config.MUME_DAMAGE);
 
 		}
 
@@ -3173,16 +3118,16 @@ public class L1Attack {
 
 		if (_targetPc.getInventory().checkEquipped(21104) || _targetPc.getInventory().checkEquipped(21111)) {
 			// dmg += dmg*0.2;
-			if (Config.수련자갑옷밸런스수치 != 0) {
-				double balance = Config.수련자갑옷밸런스수치 * 0.01;
+			if (Config.TRAINEES_ARMOR_BALANCE_VALUE != 0) {
+				double balance = Config.TRAINEES_ARMOR_BALANCE_VALUE * 0.01;
 				dmg += dmg * balance;// 수련자 무기 35%하향
 			}
 		}
 
 		if (_weaponId == 7 || _weaponId == 35 || _weaponId == 48 || _weaponId == 73 || _weaponId == 105 || _weaponId == 120 || _weaponId == 147
 				|| _weaponId == 156 || _weaponId == 174 || _weaponId == 175 || _weaponId == 224 || _weaponId == 7232) {
-			if (Config.수련자무기밸런스수치 != 0) {
-				double balance = Config.수련자무기밸런스수치 * 0.01;
+			if (Config.TRAINEE_WEAPON_BALANCE != 0) {
+				double balance = Config.TRAINEE_WEAPON_BALANCE * 0.01;
 				dmg -= dmg * balance;// 수련자 무기 35%하향
 			}
 		}
@@ -3583,17 +3528,17 @@ public class L1Attack {
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (Config.봇요정싸이클론 == true) {
+					if (Config._BOT_FAIRY_CYCLONE == true) {
 						if ((_random.nextInt(100) + 1) <= 9) {
 							_pc.sendPackets(new S_SkillSound(_targetNpc.getId(), 17557), true);
 							Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetNpc.getId(), 17557), true);
 							dmg *= 1.4;
 						}
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치NPC) + Config.요정활기본타격치NPC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_NPC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_NPC;
 				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) { // 활
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
@@ -3624,10 +3569,10 @@ public class L1Attack {
 							}
 						}
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치NPC) + Config.요정활기본타격치NPC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_NPC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_NPC;
 				} else {
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
@@ -3635,10 +3580,10 @@ public class L1Attack {
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (Config.봇요정악장 == true) {
+					if (Config._BOT_FAIRY_MOVEMENT == true) {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
-					dmg += _random.nextInt(Config.요정활랜덤타격치NPC) + Config.요정활기본타격치NPC;
+					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_NPC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_NPC;
 				}
 			} else if (_pc.getCurrentWeapon() == 54) { // 이도류
 				int rnd = _random.nextInt(100);
@@ -3652,14 +3597,14 @@ public class L1Attack {
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetNpc.getId(), 6532), true);
 					dmg *= 1.5;
 				}
-				dmg += _random.nextInt(Config.다엘랜덤타격치NPC) + Config.다엘기본타격치NPC;
+				dmg += _random.nextInt(Config.DAEL_RANDOM_HIT_POINT_NPC) + Config.DAEL_BASIC_HIT_POINT_NPC;
 			} else if (_pc.getCurrentWeapon() == 50) { // 이도류
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetNpc.getId(), 50));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetNpc.getId(), 50));
 				}
-				dmg += _random.nextInt(Config.기사랜덤타격치NPC) + Config.기사기본타격치NPC;
+				dmg += _random.nextInt(Config.KNIGHT_RANDOM_HIT_POINT_NPC) + Config.KNIGHTS_BASIC_HIT_POINT_NPC;
 			} else if (_pc.getCurrentWeapon() == 4) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -3671,7 +3616,7 @@ public class L1Attack {
 					burning = true;
 				}
 				dmg += WeaponSkill.getbotKurtSwordDamage(_pc, _target, _weaponEnchant);
-				dmg += _random.nextInt(Config.군검요랜덤타격치NPC) + Config.군검요기본타격치NPC;
+				dmg += _random.nextInt(Config.MILITARY_SWORD_RANDOM_HIT_POINT_NPC) + Config.MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_NPC;
 			} else if (_pc.getCurrentWeapon() == 88) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -3688,17 +3633,17 @@ public class L1Attack {
 					_pc.sendPackets(new S_SkillSound(_targetNpc.getId(), gfx));// 12489
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetNpc.getId(), gfx));
 				}
-				if (Config.봇전사태풍 == true) {
+				if (Config._BOT_WARFARE == true) {
 					dmg += WeaponSkill.getTyphoonDmg(this._pc, this._target);
 				}
-				dmg += _random.nextInt(Config.전사랜덤타격치NPC) + Config.전사기본타격치NPC;
+				dmg += _random.nextInt(Config.WARRIOR_RANDOM_HIT_POINT_NPC) + Config.WARRIOR_BASIC_STRIKE_VALUE_NPC;
 			} else if (_pc.getCurrentWeapon() == 24) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetNpc.getId(), 24));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetNpc.getId(), 24));
 				}
-				dmg += _random.nextInt(Config.용기사랜덤타격치NPC) + Config.용기사기본타격치NPC;
+				dmg += _random.nextInt(Config.DRAGON_KNIGHT_RANDOM_HIT_POINT_NPC) + Config.DRAGON_KNIGHT_BASIC_STRIKE_VALUE_NPC;
 			} else if (_pc.getCurrentWeapon() == 40) {
 				int rnd = _random.nextInt(100);
 				if (rnd < 9) {
@@ -3716,10 +3661,10 @@ public class L1Attack {
 					_pc.sendPackets(new S_AttackCritical(_pc, _targetNpc.getId(), 89));
 					Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetNpc.getId(), 89));
 				}
-				if (_pc.getGfxId().getTempCharGfx() == Config.로봇칼1) {
+				if (_pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_1) {
 					dmg += WeaponSkill.boksalkiNPc(_pc, _target, _weaponEnchant);
 				}
-				if (_pc.getGfxId().getTempCharGfx() == Config.로봇칼2 || _pc.getGfxId().getTempCharGfx() == Config.로봇칼3) {
+				if (_pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_2 || _pc.getGfxId().getTempCharGfx() == Config.ROBOT_KNIFE_3) {
 					dmg += WeaponSkill.botIcekiringNpc(_pc, _target, _weaponEnchant);
 				}
 				dmg += _random.nextInt(50) + 10;
@@ -4961,8 +4906,8 @@ public class L1Attack {
 
 		if (_weaponId == 7 || _weaponId == 35 || _weaponId == 48 || _weaponId == 73 || _weaponId == 105 || _weaponId == 120 || _weaponId == 147
 				|| _weaponId == 156 || _weaponId == 174 || _weaponId == 175 || _weaponId == 224 || _weaponId == 7232) {
-			if (Config.수련자무기밸런스수치 != 0) {
-				double balance = Config.수련자무기밸런스수치 * 0.01;
+			if (Config.TRAINEE_WEAPON_BALANCE != 0) {
+				double balance = Config.TRAINEE_WEAPON_BALANCE * 0.01;
 				dmg -= dmg * balance;// 수련자 무기 35%하향
 			}
 		}
@@ -5455,8 +5400,8 @@ public class L1Attack {
 
 		if (_targetPc.getInventory().checkEquipped(21104) || _targetPc.getInventory().checkEquipped(21111)) {
 			// dmg += dmg*0.2;
-			if (Config.수련자갑옷밸런스수치 != 0) {
-				double balance = Config.수련자갑옷밸런스수치 * 0.01;
+			if (Config.TRAINEES_ARMOR_BALANCE_VALUE != 0) {
+				double balance = Config.TRAINEES_ARMOR_BALANCE_VALUE * 0.01;
 				dmg += dmg * balance;// 수련자 무기 35%하향
 			}
 		}

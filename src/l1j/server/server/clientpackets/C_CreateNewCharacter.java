@@ -411,7 +411,7 @@ public class C_CreateNewCharacter extends ClientBasePacket {
 		 * if(GameServer.신규지원_경험치지급단){ Beginner.getInstance().신규경험치지급단GiveItem(pc);
 		 * }else{ Beginner.getInstance().GiveItem(pc); }
 		 */
-		if (GameServer.신규지원_경험치지급단) {
+		if (GameServer._NEW_SUPPORT_EXPERIENCE_PAYMENT_GROUP) {
 			L1ItemInstance item = ItemTable.getInstance().createItem(60291);
 			item.setCount(30);
 			Beginner.getInstance().GiveItem(pc, item, false);

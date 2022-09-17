@@ -96,8 +96,8 @@ public class C_DropItem extends ClientBasePacket {
 						return;
 					}
 
-					if (!pc.isGm() && pc.getLevel() < Config.드랍레벨) {
-						pc.sendPackets(new S_SystemMessage("레벨 " + Config.드랍레벨 + "부터 버릴 수 있습니다."));
+					if (!pc.isGm() && pc.getLevel() < Config.DROP_LEVEL) {
+						pc.sendPackets(new S_SystemMessage("레벨 " + Config.DROP_LEVEL + "부터 버릴 수 있습니다."));
 						return;
 					}
 					if (!pc.isGm() && (item.getItemId() == 40308 || (item.getItemId() >= 40033 && item.getItemId() <= 40038))) {

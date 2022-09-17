@@ -177,10 +177,10 @@ public class L1MerchantInstance extends L1NpcInstance {
         }
 
         if (npcid == 7000096) {
-            if (player.getLevel() >= Config.배틀존입장레벨) {
+            if (player.getLevel() >= Config.BATTLE_ZONE_ENTRY_LEVEL) {
                 DuelZone(player);
             } else {
-                player.sendPackets(new S_SystemMessage("\\aG[!] : 레벨 " + Config.배틀존입장레벨 + " 이상만 입장할수 있습니다."));
+                player.sendPackets(new S_SystemMessage("\\aG[!] : 레벨 " + Config.BATTLE_ZONE_ENTRY_LEVEL + " 이상만 입장할수 있습니다."));
             }
             return;
         }

@@ -242,7 +242,7 @@ public class PacketHandler {
 
 		try {
 			i = abyte0[0] & 0xff;
-			if (Config.클라패킷출력) {
+			if (Config._CLAPPET_OUTPUT) {
 				System.out.println("c opcode : " + i);
 				System.out.println("[C opocde] = " + i + "[Length] = " + abyte0.length);// 본섭옵코추출
 				System.out.println(DataToPacket(abyte0, abyte0.length));
@@ -273,7 +273,7 @@ public class PacketHandler {
 			switch (i) {
 			case C_EXTENDED_PROTOBUF: // 종합패킷
 				new C_ActionUi(abyte0, _client);
-				if (object != null && object.getLevel() <= Config.클라우디아레벨) {
+				if (object != null && object.getLevel() <= Config.CLAUDIA_LEVEL) {
 					new C_TalkIslandQuest(abyte0, _client);
 				}
 				break;
@@ -394,7 +394,7 @@ public class PacketHandler {
 				break;
 
 			case C_DELETE_CHARACTER:
-				if (Config.캐릭터비번사용여부 == true) {
+				if (Config._WHETHER_TO_USE_CHARACTER_PASSWORD == true) {
 					if (!_client.getAccount().iscpwok()) {
 						if (_client.getAccount().getCPW() == null) {
 							_client.sendPacket(new S_CharPass(S_CharPass._비번생성창));
@@ -414,7 +414,7 @@ public class PacketHandler {
 				break;
 
 			case C_CREATE_CUSTOM_CHARACTER:
-				if (Config.캐릭터비번사용여부 == true) {
+				if (Config._WHETHER_TO_USE_CHARACTER_PASSWORD == true) {
 					if (!_client.getAccount().iscpwok()) {
 						if (_client.getAccount().getCPW() == null) {
 							_client.sendPacket(new S_CharPass(S_CharPass._비번생성창));
@@ -596,7 +596,7 @@ public class PacketHandler {
 				break;
 
 			case C_ENTER_WORLD:
-				if (Config.캐릭터비번사용여부 == true) {
+				if (Config._WHETHER_TO_USE_CHARACTER_PASSWORD == true) {
 					if (!_client.getAccount().iscpwok()) {
 						if (_client.getAccount().getCPW() == null) {
 							_client.sendPacket(new S_CharPass(S_CharPass._비번생성창));

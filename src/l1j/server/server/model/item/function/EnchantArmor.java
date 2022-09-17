@@ -299,16 +299,16 @@ public class EnchantArmor extends Enchant {
 			if (itemId == 5000500 || itemId == 60776) {
 				if (((armorId >= 500007 && armorId <= 500010)
 						|| (armorId >= 502007 && armorId <= 502010)) && itemId == 5000500) {
-					if (enchant_level >= Config.룸티스최대인챈) {
+					if (enchant_level >= Config.ROOMTIS_MAXIMUM_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 귀걸이는 "
-								+ Config.룸티스최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.ROOMTIS_MAXIMUM_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (((armorId >= 500007 && armorId <= 500010)
 						|| (armorId >= 502007 && armorId <= 502010)) && itemId == 60776) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -321,15 +321,15 @@ public class EnchantArmor extends Enchant {
 			if ((armorId >= 500007 && armorId <= 500010)
 					|| (armorId >= 502007 && armorId <= 502010)) {
 				if (itemId == 5000500) {
-					if (enchant_level >= Config.룸티스최대인챈) {
+					if (enchant_level >= Config.ROOMTIS_MAXIMUM_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 귀걸이는 "
-								+ Config.룸티스최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.ROOMTIS_MAXIMUM_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (itemId == 60776) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -343,9 +343,9 @@ public class EnchantArmor extends Enchant {
 			/** 룸티스의 팬던트강화 주문서 **/
 			if (itemId == 60768) {
 				if ((armorId >= 30034 && armorId <= 30037)) {
-					if (enchant_level >= Config.룸티스최대인챈) {
+					if (enchant_level >= Config.ROOMTIS_MAXIMUM_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 귀걸이는 "
-								+ Config.룸티스최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.ROOMTIS_MAXIMUM_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -357,9 +357,9 @@ public class EnchantArmor extends Enchant {
 			}
 			if ((armorId >= 30034 && armorId <= 30037)) {
 				if (itemId == 60768) {
-					if (enchant_level >= Config.룸티스최대인챈) {
+					if (enchant_level >= Config.ROOMTIS_MAXIMUM_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW룸티스 귀걸이는 "
-								+ Config.룸티스최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.ROOMTIS_MAXIMUM_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -393,15 +393,15 @@ public class EnchantArmor extends Enchant {
 			/** 스냅퍼의 반지 강화 주문서 */
 			if (itemId == 60417 || itemId == 60774) {
 				if (armorId >= 21246 && armorId <= 21253 && itemId == 60417) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW스냅퍼반지는 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (armorId >= 21246 && armorId <= 21253 && itemId == 60774) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW스냅퍼의 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -412,15 +412,15 @@ public class EnchantArmor extends Enchant {
 			}
 			if (armorId >= 21246 && armorId <= 21253) {
 				if (itemId == 60417) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW스냅퍼반지는 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (itemId == 60774) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW스냅퍼반지의 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -433,15 +433,15 @@ public class EnchantArmor extends Enchant {
 			/** 휘장 강화 주문서*/
 			if (itemId == 5000552 || itemId == 60778) {
 				if (armorId >= 231003 && armorId <= 231009 && itemId == 5000552) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW휘장은 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (armorId >= 231003 && armorId <= 231009 && itemId == 60778) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW휘장 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -452,15 +452,15 @@ public class EnchantArmor extends Enchant {
 			}
 			if (armorId >= 231003 && armorId <= 231009) {
 				if (itemId == 5000552) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW휘장은 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (itemId == 60778) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW휘장 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -473,9 +473,9 @@ public class EnchantArmor extends Enchant {
 			/** 조이의 유물 강화주문서*/
 			if (itemId == 600406) {
 				if (armorId >= 421220 && armorId <= 421221) {
-					if (enchant_level >= Config.조이의유물) {
+					if (enchant_level >= Config.JOYS_RELIC) {
 						pc.sendPackets(new S_SystemMessage("\\fW조이의유물은 "
-								+ Config.조이의유물 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.JOYS_RELIC + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -486,9 +486,9 @@ public class EnchantArmor extends Enchant {
 			}
 			if (armorId >= 421220 && armorId <= 421221) {
 				if (itemId == 600406) {
-					if (enchant_level >= Config.조이의유물) {
+					if (enchant_level >= Config.JOYS_RELIC) {
 						pc.sendPackets(new S_SystemMessage("\\fW조이의유물은 "
-								+ Config.조이의유물 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.JOYS_RELIC + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -501,15 +501,15 @@ public class EnchantArmor extends Enchant {
 			/** 문장 강화삭*/
 			if (itemId == 4900211  || itemId == 60780) {
 				if (armorId >= 30019 && armorId <= 30025 && itemId == 4900211) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW문장은 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (armorId >= 30019 && armorId <= 30025 && itemId == 60780) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW문장 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -520,15 +520,15 @@ public class EnchantArmor extends Enchant {
 			}
 			if (armorId >= 30019 && armorId <= 30025) {
 				if (itemId == 4900211) {
-					if (enchant_level >= Config.스냅퍼최대인챈) {
+					if (enchant_level >= Config.SNAPPER_MAX_ENCHANTMENT) {
 						pc.sendPackets(new S_SystemMessage("\\fW문장은 "
-								+ Config.스냅퍼최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.SNAPPER_MAX_ENCHANTMENT + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else if (itemId == 60780) {
-					if (enchant_level >= Config.보호주문서최대인챈) {
+					if (enchant_level >= Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL) {
 						pc.sendPackets(new S_SystemMessage("\\fW문장 보호 주문서는 "
-								+ Config.보호주문서최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+								+ Config.MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL + "이상은 인챈트 할 수 없습니다."), true);
 						return;
 					}
 				} else {
@@ -628,10 +628,10 @@ public class EnchantArmor extends Enchant {
 			}*/
 			
 			/** 티셔츠 전용 강화 주문서 */
-			if (enchant_level >= Config.장신구최대인챈) {
+			if (enchant_level >= Config.MAXIMUM_ENCHANTMENTOF_ACCESSORIES) {
 				if (armortype >= 8 && armortype <= 12) { // 강도 : 특
 					pc.sendPackets(new S_SystemMessage("\\fW장신구는 "
-							+ Config.장신구최대인챈 + "이상은 인챈트 할 수 없습니다."), true);
+							+ Config.MAXIMUM_ENCHANTMENTOF_ACCESSORIES + "이상은 인챈트 할 수 없습니다."), true);
 					return;
 				}
 			}
@@ -783,19 +783,19 @@ public class EnchantArmor extends Enchant {
 				
 				if (itemId == 60774 || itemId == 60776 || itemId == 60778 || itemId == 60780) {
 					if(enchant_level == 0) {
-						chance = (chance*10) - Config.보호주문서확률0;
+						chance = (chance*10) - Config.PROTECTION_SCROLL_PROBABILITY_0;
 					} else if(enchant_level == 1) {
-						chance = (chance*10) - Config.보호주문서확률1;
+						chance = (chance*10) - Config.PROTECTION_ORDER_CHANCE_1;
 					} else if (enchant_level == 2) {
-						chance = (chance*10) - Config.보호주문서확률2;
+						chance = (chance*10) - Config.PROTECTION_SPELL_PROBABILITY_2;
 					} else if (enchant_level == 3) {
-						chance = (chance*10) - Config.보호주문서확률3;
+						chance = (chance*10) - Config.PROTECTION_SPELL_PROBABILITY_3;
 					} else if (enchant_level == 4) {
-						chance = (chance*10) - Config.보호주문서확률4;
+						chance = (chance*10) - Config.PROTECTION_SCROLL_PROBABILITY_4;
 					} else if (enchant_level == 5) {
-						chance = (chance*10) - Config.보호주문서확률5;
+						chance = (chance*10) - Config.PROTECTION_SPELL_PROBABILITY_5;
 					} else if (enchant_level == 6) {
-						chance = (chance*10) - Config.보호주문서확률6;
+						chance = (chance*10) - Config.PROTECTION_SPELL_PROBABILITY_6;
 					}
 				}
 				

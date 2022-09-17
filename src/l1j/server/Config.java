@@ -49,23 +49,23 @@ public final class Config {
 	public static boolean mainenc = false;
 	public static boolean STANDBY_SERVER = false;
 	public static int test222 = 3;
-	public static boolean »õ·Î¿îÆĞÅ¶±¸Á¶ = false;
-	public static boolean ¼­¹öÆĞÅ¶Ãâ·Â = false;
-	public static boolean Å¬¶óÆĞÅ¶Ãâ·Â = false;
-	private static final String servername = "Å×½ºÆ®";
+	public static boolean _NEW_PACKET_STRUCTURE = false;
+	public static boolean _SERVER_PACKET_OUTPUT = false;
+	public static boolean _CLAPPET_OUTPUT = false;
+	private static final String servername = "í…ŒìŠ¤íŠ¸";
 
 	public static ArrayList<L1PrivateShopSellList> sellList = new ArrayList<L1PrivateShopSellList>();
 
 	public static ArrayList<L1PrivateShopBuyList> buyList = new ArrayList<L1PrivateShopBuyList>();
 
 	public static byte[] FIRST_PACKET = { (byte) 0x0b, (byte) 0x00, // size
-			/** 190512 ¸®¸¶ by feel. **/
+			/** 190512 ë¦¬ë§ˆ by feel. **/
 			(byte) 0xeb, (byte) 0xd6, (byte) 0x45, (byte) 0x9d, (byte) 0x02, (byte) 0xfe, (byte) 0xb0, (byte) 0xc8, (byte) 0x0a };
 
 //	S_INITPACKET : 235 [0xeb] / Length : 11   (07:16)
 //	eb f0 7c ab 50 d2 8a b3 	7a
 
-	public static long SeedVal = 0x029d45d6L; // ¸®¸¶
+	public static long SeedVal = 0x029d45d6L; // ë¦¬ë§ˆ
 
 	public static void addSellList(L1PrivateShopSellList sellitem) {
 		sellList.add(sellitem);
@@ -87,26 +87,26 @@ public final class Config {
 				buyList.remove(blist);
 	}
 
-	public static int ÀÌ¸§È®ÀÎ(char[] _values) {
+	public static int ì´ë¦„í™•ì¸(char[] _values) {
 		for (char value : _values) {
 			if ((value >= 'A' && value <= 'z') || (value >= 'a' && value <= 'z')) {
-				// System.out.println("¿µ¾î : "+value);
+				// System.out.println("ì˜ì–´ : "+value);
 			} else if (value >= '0' && value <= '9') {
-				// System.out.println("¼ıÀÚ : "+value);
+				// System.out.println("ìˆ«ì : "+value);
 			} else if (value >= '\uAC00' && value <= '\uD7A3') {
-				// System.out.println("ÇÑ±Û : "+value);
+				// System.out.println("í•œê¸€ : "+value);
 			} else {
 				return -1;
 			}
 		}
 		return 0;
-		// .... ÀÌÇÏ »ı·«
+		// .... ì´í•˜ ìƒëµ
 	}
 
 	public static ArrayList<Integer> spractionerr = new ArrayList<Integer>();
 
 	public static int teste = 8700;
-	public static boolean ÆùÀÎÁõ = false;
+	public static boolean í°ì¸ì¦ = false;
 	public static int test = 0;
 	public static int aaaaa = 0;
 
@@ -122,45 +122,45 @@ public final class Config {
 
 	/** Debug/release mode */
 	public static final boolean DEBUG = false;
-	// public static boolean ÆĞÅ¶·Î±× = true;//·Î±×
+	// public static boolean íŒ¨í‚·ë¡œê·¸ = true;//ë¡œê·¸
 
-	public static final int office_hours = 60 * 90;
-	public static final int PCÁ¤¹«½Ã°£ = 60 * 60 * 2;
+	public static final int OFFICE_HOURS = 60 * 90;
+	public static final int PC_TIME = 60 * 60 * 2;
 
-	public static final int °èÁ¤_¿ëÀÇµÕÁö_½Ã°£ = 60 * 60 * 3;
-	public static final int °ËÀºÀüÇÔ = 60 * 60 * 2;
-	public static final int PC_¿ëÀÇµÕÁö_½Ã°£ = 60 * 60 * 3;
+	public static final int ACCOUNT_DRAGONS_NEST_TIME = 60 * 60 * 3;
+	public static final int BLACK_BATTLESHIP = 60 * 60 * 2;
+	public static final int PC_DRAGONS_NEST_TIME = 60 * 60 * 3;
 
-	public static int ±â¶õ°¨¿Á´øÀü½Ã°£ = 7200;
-	public static int »ó¾ÆÅ¾¹ß·ÏÁø¿µ½Ã°£ = 7200;
-	public static int »ó¾ÆÅ¾¾ßÈ÷Áø¿µ½Ã°£ = 3600;
-	public static int ¾óÀ½¼öÁ¤µ¿±¼½Ã°£ = 3600;
-	public static int ¼ö»óÇÑÃµ»óÀÇ°è°î½Ã°£ = 3600;
-	public static int ¸»¼¶´øÀü½Ã°£ = 3600;
-	public static int ¸ùÈ¯ÀÇ¼¶½Ã°£ = 3600;
-	public static int ¶ó½ºÅ¸¹Ùµå´øÀü½Ã°£ = 3600;
+	public static int GIRAN_PRISON_DUNGEON_TIME = 7200;
+	public static int IVORY_TOWER_BALROG_CAMP_TIME = 7200;
+	public static int IVORY_TOWER_YAHI_JINYOUNG_TIME = 3600;
+	public static int ICE_CRYSTAL_CAVE = 3600;
+	public static int SUSPICIOUS_AGAR_VALLEY_TIME = 3600;
+	public static int TALKING_DUNGEON_TIME = 3600;
+	public static int DREAM_ISLAND_TIME = 3600;
+	public static int RASTABAD_DUNGEON_TIME = 3600;
 	public static int PROTECT_CLAN_ID;
 	public static int AUTO_REMOVECLAN;
-	public static boolean ½Å±ÔÇ÷¸Íº¸È£Ã³¸®;
+	public static boolean _IS_NEW_CLAN_PROTECTION_TREATMENT;
 	public static boolean CLAN_BLESS_ALL_USE;
-	public static int ½Å±Ô·¹º§;
-	public static int ÀÎÇüÈ®·ü2;
-	public static int ÀÎÇüÈ®·ü3;
-	public static int ÀÎÇüÈ®·ü4;
-	public static int ÀÎÇüÈ®·ü5;
-	/** º¸È£ ÁÖ¹®¼­ È®·ü Â÷°¨ */
-	public static int º¸È£ÁÖ¹®¼­È®·ü0;
-	public static int º¸È£ÁÖ¹®¼­È®·ü1;
-	public static int º¸È£ÁÖ¹®¼­È®·ü2;
-	public static int º¸È£ÁÖ¹®¼­È®·ü3;
-	public static int º¸È£ÁÖ¹®¼­È®·ü4;
-	public static int º¸È£ÁÖ¹®¼­È®·ü5;
-	public static int º¸È£ÁÖ¹®¼­È®·ü6;
+	public static int NEW_LEVEL;
+	public static int DOLL_PROBABILITY_2;
+	public static int DOLL_PROBABILITY_3;
+	public static int DOLL_PROBABILITY_4;
+	public static int DOLL_PROBABILITY_5;
+	/** ë³´í˜¸ ì£¼ë¬¸ì„œ í™•ë¥  ì°¨ê° */
+	public static int PROTECTION_SCROLL_PROBABILITY_0;
+	public static int PROTECTION_ORDER_CHANCE_1;
+	public static int PROTECTION_SPELL_PROBABILITY_2;
+	public static int PROTECTION_SPELL_PROBABILITY_3;
+	public static int PROTECTION_SCROLL_PROBABILITY_4;
+	public static int PROTECTION_SPELL_PROBABILITY_5;
+	public static int PROTECTION_SPELL_PROBABILITY_6;
 
-	public static int Ãâ¼®ÃÊ±âÈ­½Ã°£;
+	public static int ATTENDANCE_RESET_TIME;
 	public static int AINHASADDPRESETTIME;
 
-	// Á¦ÀÛÅ×ÀÌºí
+	// ì œì‘í…Œì´ë¸”
 	public static int CRAFT_TABLE_ONE;
 	public static int CRAFT_TABLE_TWO;
 	public static int CRAFT_TABLE_THREE;
@@ -173,233 +173,233 @@ public final class Config {
 	public static int CRAFT_TABLE_TEN;
 	public static int CRAFT_TABLE;
 
-	protected static ArrayList<L1PcInstance> Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
-	protected static ArrayList<L1PcInstance> ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
-	protected static ArrayList<L1PcInstance> ±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
-	protected static ArrayList<L1PcInstance> ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
-	protected static ArrayList<L1PcInstance> »èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
-	protected static ArrayList<L1PcInstance> Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitorClanChatList = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_PartyChatList = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_WisperChatList = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_EnchatList = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_DeleteList = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_ConnectList = new ArrayList<L1PcInstance>();
 
-	protected static ArrayList<L1PcInstance> ¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ = new ArrayList<L1PcInstance>();
+	protected static ArrayList<L1PcInstance> _monitor_BugList = new ArrayList<L1PcInstance>();
 
-	public static int Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ() {
-		return Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int í˜ˆë§¹ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitorClanChatList.size();
 	}
 
-	public static int ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int íŒŒí‹°ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_PartyChatList.size();
 	}
 
-	public static int ±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int ê·“ë§ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_WisperChatList.size();
 	}
 
-	public static int ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int ì¸ì²¸ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_EnchatList.size();
 	}
 
-	public static int »èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return »èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int ì‚­ì œì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_DeleteList.size();
 	}
 
-	public static int Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ() {
-		return Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int ì ‘ì†ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_ConnectList.size();
 	}
 
-	public static int ¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.size();
+	public static int ë²„ê·¸ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_BugList.size();
 	}
 
-	public static L1PcInstance[] toArrayÇ÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ() {
-		return Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayí˜ˆë§¹ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitorClanChatList.toArray(new L1PcInstance[_monitorClanChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArrayÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayíŒŒí‹°ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_PartyChatList.toArray(new L1PcInstance[_monitor_PartyChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayê·“ë§ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_WisperChatList.toArray(new L1PcInstance[_monitor_WisperChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArrayÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayì¸ì²¸ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_EnchatList.toArray(new L1PcInstance[_monitor_EnchatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return »èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayì‚­ì œì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_DeleteList.toArray(new L1PcInstance[_monitor_DeleteList.size()]);
 	}
 
-	public static L1PcInstance[] toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ() {
-		return Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayì ‘ì†ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_ConnectList.toArray(new L1PcInstance[_monitor_ConnectList.size()]);
 	}
 
-	public static L1PcInstance[] toArray¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ() {
-		return ¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.toArray(new L1PcInstance[¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.size()]);
+	public static L1PcInstance[] toArrayë²„ê·¸ì±„íŒ…ëª¨ë‹ˆí„°() {
+		return _monitor_BugList.toArray(new L1PcInstance[_monitor_BugList.size()]);
 	}
 
-	public static void addÀüÃ¼(L1PcInstance pc) {
-		if (!Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+	public static void addì „ì²´(L1PcInstance pc) {
+		if (!_monitorClanChatList.contains(pc)) {
+			_monitorClanChatList.add(pc);
 			;
 		}
-		if (!ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (!_monitor_PartyChatList.contains(pc)) {
+			_monitor_PartyChatList.add(pc);
 			;
 		}
-		if (!±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (!_monitor_WisperChatList.contains(pc)) {
+			_monitor_WisperChatList.add(pc);
 			;
 		}
-		if (!ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (!_monitor_EnchatList.contains(pc)) {
+			_monitor_EnchatList.add(pc);
 			;
 		}
-		if (!»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (!_monitor_DeleteList.contains(pc)) {
+			_monitor_DeleteList.add(pc);
 			;
 		}
-		if (!Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (!_monitor_ConnectList.contains(pc)) {
+			_monitor_ConnectList.add(pc);
 			;
 		}
-		if (!¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
-			;
-		}
-	}
-
-	public static void removeÀüÃ¼(L1PcInstance pc) {
-		if (Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
-			;
-		}
-		if (¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		if (!_monitor_BugList.contains(pc)) {
+			_monitor_BugList.add(pc);
 			;
 		}
 	}
 
-	public static void addÇ÷¸Í(L1PcInstance pc) {
-		if (Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
-			return;
+	public static void removeì „ì²´(L1PcInstance pc) {
+		if (_monitorClanChatList.contains(pc)) {
+			_monitorClanChatList.remove(pc);
+			;
 		}
-		Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		if (_monitor_PartyChatList.contains(pc)) {
+			_monitor_PartyChatList.remove(pc);
+			;
+		}
+		if (_monitor_WisperChatList.contains(pc)) {
+			_monitor_WisperChatList.remove(pc);
+			;
+		}
+		if (_monitor_EnchatList.contains(pc)) {
+			_monitor_EnchatList.remove(pc);
+			;
+		}
+		if (_monitor_DeleteList.contains(pc)) {
+			_monitor_DeleteList.remove(pc);
+			;
+		}
+		if (_monitor_ConnectList.contains(pc)) {
+			_monitor_ConnectList.remove(pc);
+			;
+		}
+		if (_monitor_BugList.contains(pc)) {
+			_monitor_BugList.remove(pc);
+			;
+		}
 	}
 
-	public static void removeÇ÷¸Í(L1PcInstance pc) {
-		if (!Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addí˜ˆë§¹(L1PcInstance pc) {
+		if (_monitorClanChatList.contains(pc)) {
 			return;
 		}
-		Ç÷¸ÍÃ¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitorClanChatList.add(pc);
 	}
 
-	public static void addÆÄÆ¼(L1PcInstance pc) {
-		if (ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeí˜ˆë§¹(L1PcInstance pc) {
+		if (!_monitorClanChatList.contains(pc)) {
 			return;
 		}
-		ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitorClanChatList.remove(pc);
 	}
 
-	public static void removeÆÄÆ¼(L1PcInstance pc) {
-		if (!ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addíŒŒí‹°(L1PcInstance pc) {
+		if (_monitor_PartyChatList.contains(pc)) {
 			return;
 		}
-		ÆÄÆ¼Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_PartyChatList.add(pc);
 	}
 
-	public static void add±Ó¸»(L1PcInstance pc) {
-		if (±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeíŒŒí‹°(L1PcInstance pc) {
+		if (!_monitor_PartyChatList.contains(pc)) {
 			return;
 		}
-		±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitor_PartyChatList.remove(pc);
 	}
 
-	public static void remove±Ó¸»(L1PcInstance pc) {
-		if (!±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addê·“ë§(L1PcInstance pc) {
+		if (_monitor_WisperChatList.contains(pc)) {
 			return;
 		}
-		±Ó¸»Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_WisperChatList.add(pc);
 	}
 
-	public static void addÀÎÃ¾(L1PcInstance pc) {
-		if (ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeê·“ë§(L1PcInstance pc) {
+		if (!_monitor_WisperChatList.contains(pc)) {
 			return;
 		}
-		ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitor_WisperChatList.remove(pc);
 	}
 
-	public static void removeÀÎÃ¾(L1PcInstance pc) {
-		if (!ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addì¸ì²¸(L1PcInstance pc) {
+		if (_monitor_EnchatList.contains(pc)) {
 			return;
 		}
-		ÀÎÃ¾Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_EnchatList.add(pc);
 	}
 
-	public static void add»èÁ¦(L1PcInstance pc) {
-		if (»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeì¸ì²¸(L1PcInstance pc) {
+		if (!_monitor_EnchatList.contains(pc)) {
 			return;
 		}
-		»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitor_EnchatList.remove(pc);
 	}
 
-	public static void remove»èÁ¦(L1PcInstance pc) {
-		if (!»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addì‚­ì œ(L1PcInstance pc) {
+		if (_monitor_DeleteList.contains(pc)) {
 			return;
 		}
-		»èÁ¦Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_DeleteList.add(pc);
 	}
 
-	public static void addÁ¢¼Ó(L1PcInstance pc) {
-		if (Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeì‚­ì œ(L1PcInstance pc) {
+		if (!_monitor_DeleteList.contains(pc)) {
 			return;
 		}
-		Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitor_DeleteList.remove(pc);
 	}
 
-	public static void removeÁ¢¼Ó(L1PcInstance pc) {
-		if (!Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addì ‘ì†(L1PcInstance pc) {
+		if (_monitor_ConnectList.contains(pc)) {
 			return;
 		}
-		Á¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_ConnectList.add(pc);
 	}
 
-	public static void add¹ö±×(L1PcInstance pc) {
-		if (¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void removeì ‘ì†(L1PcInstance pc) {
+		if (!_monitor_ConnectList.contains(pc)) {
 			return;
 		}
-		¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.add(pc);
+		_monitor_ConnectList.remove(pc);
 	}
 
-	public static void remove¹ö±×(L1PcInstance pc) {
-		if (!¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.contains(pc)) {
+	public static void addë²„ê·¸(L1PcInstance pc) {
+		if (_monitor_BugList.contains(pc)) {
 			return;
 		}
-		¹ö±×Ã¤ÆÃ¸ğ´ÏÅÍ.remove(pc);
+		_monitor_BugList.add(pc);
 	}
 
-	public static boolean ¶Õ¾î¹æ¾î»ç¿ë;
-	public static boolean À¯Ã¼ÀÌÅ»¹æ¾î»ç¿ë;
+	public static void removeë²„ê·¸(L1PcInstance pc) {
+		if (!_monitor_BugList.contains(pc)) {
+			return;
+		}
+		_monitor_BugList.remove(pc);
+	}
+
+	public static boolean _USE_OF_PIERCING_DEFENSE;
+	public static boolean __USE_OF_FLUID_ESCAPE_PROTECTION;
 
 	/** Thread pools size */
 	public static int THREAD_P_EFFECTS;
@@ -443,22 +443,22 @@ public final class Config {
 	public static boolean LOGGING_CHAT_COMBINED;
 	public static boolean LOGGING_CHAT_CHAT_PARTY;
 	public static int ENCHANT_CHANCE_ACCESSORY;
-	public static int È°¸íÁß;
-	public static int ¶ó´ø¼öÇ¥;
+	public static int WHAL_MYUNG_JUNG;
+	public static int RADEN_CHECK;
 
-	public static boolean ¹èÆ²Á¸ÀÛµ¿À¯¹«;
-	public static int ¹èÆ²Á¸ÀÔÀå·¹º§;
-	public static String ¹èÆ²Á¸¾ÆÀÌÅÛ;
-	public static String ¹èÆ²Á¸¾ÆÀÌÅÛ°¹¼ö;
+	public static boolean _WHETHER_OF_NOT_THE_BATTLE_ZONE_WORKS;
+	public static int BATTLE_ZONE_ENTRY_LEVEL;
+	public static String BATTLE_ZONE_ITEMS;
+	public static String NUMBER_OF_BATTLE_ZONE_ITEMS;
 
-	public static String µµ°¨1´Ü¾ÆÀÌÅÛ;
-	public static String µµ°¨1´Ü¾ÆÀÌÅÛ°¹¼ö;
+	public static String BOOK_1_ITEM;
+	public static String NUMBER_OF_ITEMS_IN_THE_FIRST_STAGE_OF_THEILLUSTRATED_BOOK;
 
-	public static String µµ°¨2´Ü¾ÆÀÌÅÛ;
-	public static String µµ°¨2´Ü¾ÆÀÌÅÛ°¹¼ö;
+	public static String BOOK_2_ITEM;
+	public static String NUMBER_OF_ENCYCLOPEDIA_2ND_STEP_ITEMS;
 
-	public static String µµ°¨3´Ü¾ÆÀÌÅÛ;
-	public static String µµ°¨3´Ü¾ÆÀÌÅÛ°¹¼ö;
+	public static String ILLUSTRATED_BOOK_3_ITEM;
+	public static String NUMBER_OF_THREE_TIER_ITEMS_IN_THE_ILLUSTRATED_BOOK;
 
 	public static boolean Tam_Ok;
 	public static int Tam_Time;
@@ -485,19 +485,19 @@ public final class Config {
 	public static boolean WAR_TIME_AUTO_SETTING;
 
 	/** Rate control */
-	public static int ½º³ÀÆÛÃÖ´ëÀÎÃ¦;
-	public static int º¸È£ÁÖ¹®¼­ÃÖ´ëÀÎÃ¦;
-	public static int Á¶ÀÌÀÇÀ¯¹°;
-	public static int ¾ÆÀÎÇÏ»çµåµ¥ÀÏ¸®Æ÷ÀÎÆ®;
-	public static int ·ëÆ¼½ºÃÖ´ëÀÎÃ¦;
-	public static int Àå½Å±¸ÃÖ´ëÀÎÃ¦;
+	public static int SNAPPER_MAX_ENCHANTMENT;
+	public static int MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL;
+	public static int JOYS_RELIC;
+	public static int EINHASAD_DAILY_POINT;
+	public static int ROOMTIS_MAXIMUM_ENCHANTMENT;
+	public static int MAXIMUM_ENCHANTMENTOF_ACCESSORIES;
 	public static double RATE_XP;
 	public static double fishrate;
 	public static double RATE_LAWFUL;
 	public static double RATE_KARMA;
 	public static double RATE_DROP_ADENA;
 	public static double RATE_DROP_ITEMS;
-	public static int RATE_ROBOT_TIME; // ¹«ÀÎPC(Äí¿ì)
+	public static int RATE_ROBOT_TIME; // ë¬´ì¸PC(ì¿ ìš°)
 	public static int ENCHANT_CHANCE_WEAPON;
 	public static int ENCHANT_CHANCE_WEAPON7;
 	public static int ENCHANT_CHANCE_WEAPON8;
@@ -508,7 +508,7 @@ public final class Config {
 	public static double RATE_WEIGHT_LIMIT_PET;
 	public static double RATE_SHOP_SELLING_PRICE;
 	public static double RATE_SHOP_PURCHASING_PRICE;
-	public static int RATE_DREAM; // ¸¸¿ùÀÇÁ¤±â ÀÌº¥Æ®µå¶ø
+	public static int RATE_DREAM; // ë§Œì›”ì˜ì •ê¸° ì´ë²¤íŠ¸ë“œë
 	public static int CREATE_CHANCE_DIARY;
 	public static int CREATE_CHANCE_RECOLLECTION;
 	public static int CREATE_CHANCE_MYSTERIOUS;
@@ -519,15 +519,15 @@ public final class Config {
 	public static int CREATE_CHANCE_HISTORY_BOOK;
 	public static int MAX_WEAPON;
 	public static int MAX_ARMOR;
-	public static int MAX_WEAPON1; // ¸¶Á·¹«±â ÀÎÃ¾Á¦ÇÑ
-	public static int MAX_LEVEL; // ½Å±Ôº¸È£·¾Á¦
+	public static int MAX_WEAPON1; // ë§ˆì¡±ë¬´ê¸° ì¸ì²¸ì œí•œ
+	public static int MAX_LEVEL; // ì‹ ê·œë³´í˜¸ë ™ì œ
 	public static int FEATHER_TIME;
 	public static int FEATHER_NUMBER;
 	public static int CLAN_NUMBER;
 	public static int CASTLE_NUMBER;
 	public static double RATE_CLAN_XP;
 	public static double RATE_CASTLE_XP;
-	public static double RATE_7_DMG_RATE;// ÀÎÃ¾ÃßÅ¸ ¿ÜºÎÈ­
+	public static double RATE_7_DMG_RATE;// ì¸ì²¸ì¶”íƒ€ ì™¸ë¶€í™”
 	public static int RATE_7_DMG_PER;
 	public static double RATE_8_DMG_RATE;
 	public static int RATE_8_DMG_PER;
@@ -569,7 +569,7 @@ public final class Config {
 	public static int AC_20;
 	public static int AC_10;
 
-	//// ÀÚµ¿°øÁö
+	//// ìë™ê³µì§€
 	public static int systime;
 	public static String sys1;
 	public static String sys2;
@@ -611,126 +611,126 @@ public final class Config {
 
 	public static int EVENT_DRAGON_DIAMOND_CHANCE2;
 
-	public static int µå»óµå¶ø_µå·¹ÀÌÅ©_Âù½º;
-	public static int µå»óµå¶ø_¾Æ¸£Ä«_Âù½º;
-	public static int µå»óµå¶ø_ÇÒ·ÎÀ©_Âù½º;
-	public static int ÄÉÇÃ¸®»şµå¶ø_Âù½º;
+	public static int DROP_DRAKE_CHANCE;
+	public static int DROP_ARCA_CHANCE;
+	public static int DROP_HALLOWEEN_CHANCE;
+	public static int KEPLISHA_DROP_CHANCE;
 
-	public static int ¸®ÆÛµå¶ø_Âù½º;
-	public static int °¢¹İµå¶ø_Âù½º;
-	public static int ·ëÆ¼½ºµå¶ø_Âù½º;
-	public static int °­È­»óÀÚµå¶ø_Âù½º;
-	public static int ¼¼¹îµ·µå¶ø_Âù½º;
+	public static int REFER_DROP_CHANCE;
+	public static int GAIT_CLASS_DORP_CHANCE;
+	public static int ROOMTIS_DROP_CHANCE;
+	public static int ENCANCEMENT_BOX_DORP_CHANCE;
+	public static int NEW_YEARS_MONEY_DORP_CHANCE;
 
-	public static int ¸®ÆÛ2µå¶ø_Âù½º;
+	public static int REAPER_2_DORP_CHANCE;
 
-	public static int ¼ö·ÃÀÚ¹«±â¹ë·±½º¼öÄ¡;
-	public static int ¼ö·ÃÀÚ°©¿Ê¹ë·±½º¼öÄ¡;
+	public static int TRAINEE_WEAPON_BALANCE;
+	public static int TRAINEES_ARMOR_BALANCE_VALUE;
 	public static int warmember;
-	public static int ÃÊÆÄµå¶ø_±×·½¸°_Âù½º;
+	public static int CHOPA_DROP_GREMLIN_CHANCE;
 
-	public static int EVENT_°¢ÀÎÇØÁ¦ÀÎÀå_Âù½º;
-	public static int EVENT_·çÇÇÁÖ¸ÔÁÖ¸Ó´Ï_Âù½º;
+	public static int EVENT_UNENGRAVED_SEAL_CHANCE;
+	public static int EVENT_LUFFY_FIST_POCKET_CHANCE;
 
-	public static L1NpcInstance ¾Æ³îµå»óÁ¡ = null;
+	public static L1NpcInstance ARNOLD_SHOP = null;
 
 	public static int EVENT_SEHO_BOOMB_CHANCE;
 
-	public static boolean DRAGON_2DAY_EVENT;
-	public static boolean DANTES_2DAY_EVENT;
+	public static boolean _DRAGON_2DAY_EVENT;
+	public static boolean _DANTES_2DAY_EVENT;
 
-	public static boolean RuphyBrave_3DAY_EVENT;
+	public static boolean _RuphyBrave_3DAY_EVENT;
 
-	public static boolean Orim_EVENT;
+	public static boolean _Orim_EVENT;
 
-	public static boolean Dragon_3DAY_Event;
+	public static boolean _Dragon_3DAY_Event;
 
-	public static boolean Dragon_1DAY_Event;
+	public static boolean _Dragon_1DAY_Event;
 
-	public static boolean ÄÉÇÃ¸®»ş_Event;
-	public static boolean ¸®ÆÛ_Event;
-	public static boolean ¾Æ¸£Ä«_Event;
-	public static boolean ¼¼¹îµ·_Event;
+	public static boolean _KEOLISHA_EVENT;
+	public static boolean _REAPER_EVENT;
+	public static boolean _ARCA_EVENT;
+	public static boolean _NEW_YEARS_EVE_EVENT;
 
-	public static boolean °¢¹İ_Event;
-	public static boolean ·ëÆ¼½º_Event;
-	public static boolean ¸®ÆÛ¼±¹°_Event;
+	public static boolean _GAITERS_EVENT;
+	public static boolean _ROOMTIS_EVENT;
+	public static boolean _REAPER_GIFT_EVENT;
 
-	public static boolean °­È­»óÀÚ_Event;
-	public static boolean ¾Æ³îµåÀÌº¥Æ®;
+	public static boolean _ENHANCEMENT_BOX_EVENT;
+	public static boolean _ARNOLD_EVENT;
 
-	public static int ¿µ»ıÀÇºû;
-	public static int »ı¸íÀÇ³ª¹µÀÙ;
-	public static int ÀÎÇüÈ®·ü;
-	public static int ÀåÀÎÈ®·ü;
-	public static int ¹«Ç÷»óÁ¡;
-	public static int ÀÌ·¹¸ÅÁ÷È®·ü;
-	public static int µ¥ÆäÈ®·ü;
-	public static int º»ºê·¹ÀÌÅ©;
-	public static int ±×¸³È®·ü;
-	public static int ½ºÅÏÈ®·ü;
-	public static int Æ÷½º½ºÅÏÈ®·ü;
-	public static int Å¬¶ó¿ìµğ¾Æ·¹º§;
-	public static int ÀÌÅÍ³ÊÆ¼È®·ü;
-	public static int ¾îº¥ÀúÈ®·ü;
-	public static int DEMOLITIONÈ®·ü;
-	public static int ÆÇÅ×¶óÈ®·ü;
-	public static int ½¦µµ¿ì½ºÅÇÈ®·ü;
-	public static int ÀúÁö¸ÕÆ®È®·ü;
-	public static int ÆÒÅÒÈ®·ü;
-	public static int ¿¥ÆÄÀÌ¾î;
-	public static int °Ë½ºÅÏÈ®·ü;
-	public static int ¾î¹ÙÈ®·ü;
-	public static double ¹Ãµ¥¹ÌÁö;
-	public static int µå¶ø·¹º§;
+	public static int LIAGHT_OF_ETERNAL_LIFE;
+	public static int LEAF_OF_LIFE;
+	public static int DOLL_PROBABILITY;
+	public static int CRAFTSMAN_PROBABILITY;
+	public static int BLOODLESS_SHOP;
+	public static int SEVEN_MAGIC_PROBABILITY;
+	public static int DEFE_PROBABILITY;
+	public static int BONE_BREAK;
+	public static int GRIP_PROBABILITY;
+	public static int STUN_CHANCE;
+	public static int POSTSTONE_PROBABILITY;
+	public static int CLAUDIA_LEVEL;
+	public static int ETERNITY_PROBABILITY;
+	public static int AVENGER_PROBABILITY;
+	public static int DEMOLITION_PROBABILITY;
+	public static int PANTERA_PROBABILITY;
+	public static int SHADOW_TAP_PROBABILITY;
+	public static int JUDGMENT_PROBABILITY;
+	public static int PHANTOM_PROBABILITY;
+	public static int EMPIRE;
+	public static int GUMSTON_PROBABILITY;
+	public static int URBAN_PROBABILITY;
+	public static double MUME_DAMAGE;
+	public static int DROP_LEVEL;
 
-	public static boolean Dragon_14_12_12_Event;
+	public static boolean _Dragon_14_12_12_Event;
 
-	public static boolean Chopa_Event;
+	public static boolean _Chopa_Event;
 
-	public static boolean µå´Ù1212µå¶øÁøÇàÁß;
-	public static boolean ÇÒ·ÎÀ©_Event;
+	public static boolean _DEDA_1212_DROP_IN_PROGRESS;
+	public static boolean _HALLOWEEN_EVENT;
 
-	public static boolean µå´Ùµå¶øÁøÇàÁß;
-	public static boolean µå´Ùµå¶øÁøÇàÁß1;
-	public static boolean ÄÉÇÃ¸®»şµå¶øÁøÇàÁß;
-	public static boolean ¸®ÆÛµå¶øÁøÇàÁß;
-	public static boolean ¾Æ¸£Ä«µå¶øÁøÇàÁß;
-	public static boolean ¼¼¹îµ·µå¶øÁøÇàÁß;
+	public static boolean _DROP_IN_PROGRESS;
+	public static boolean _DROP_IN_PROGRESS_1;
+	public static boolean _KEPLISHA_DORP_IN_PROGRESS;
+	public static boolean _REFUND_DROP_IN_PROGRESS;
+	public static boolean _ARACADE_IN_PROGRESS;
+	public static boolean _NEW_YEARS_MONEY_DORP_IN_PROGRESS;
 
-	public static boolean ·ëÆ¼½ºµå¶øÁøÇàÁß;
-	public static boolean °­È­»óÀÚµå¶øÁøÇàÁß;
-	public static boolean °¢¹İµå¶øÁøÇàÁß;
+	public static boolean _ROOMTIS_DORP_IN_PROGRESS;
+	public static boolean _REINFORCEMENT_BOX_DROP_IN_PROGRESS;
+	public static boolean _DORP_IN_PROGRESS;
 
-	public static boolean ¸®ÆÛ2µå¶øÁøÇàÁß;
+	public static boolean _REAPER_2_DROP_IN_PROGRESS;
 
-	public static boolean ÃÊÆÄµå¶øÁøÇàÁß;
+	public static boolean _SUPER_DROP_IN_PROGRESS;
 
-	public static boolean ÇÒ·ÎÀ©ÁøÇàÁß;
+	public static boolean _HALLOWEEN_IN_PROGRESS;
 
-	public static L1NpcInstance µå´Ù¿£ÇÇ¾¾;
-	public static L1NpcInstance ÄÉÇÃ¸®»ş¿£ÇÇ¾¾;
+	public static L1NpcInstance DDANP;
+	public static L1NpcInstance KEPRISIA_NPC;
 
-	public static L1NpcInstance ¸®ÆÛ¿£ÇÇ¾¾;
+	public static L1NpcInstance RIPPER_NPC;
 
-	public static L1NpcInstance ¾Æ¸£Ä«¿£ÇÇ¾¾;
+	public static L1NpcInstance ARCANP;
 
-	public static L1NpcInstance µå´Ù1212¿£ÇÇ¾¾;
+	public static L1NpcInstance DEDA_1212_NP;
 
-	public static L1NpcInstance ÃİÆÄ¿£ÇÇ¾¾;
+	public static L1NpcInstance CHOPPER_NPC;
 
-	public static L1NpcInstance ÇÒ·ÎÀ©¾Æ·ç¿£ÇÇ¾¾;
-	public static L1NpcInstance ÇÒ·ÎÀ©¹Ù·ç¿£ÇÇ¾¾;
+	public static L1NpcInstance HALLOWEEN_ARU_PC;
+	public static L1NpcInstance HALLOWEEN_BARU_NPC;
 
-	/****** ÀÌº¥Æ® ******/
-	public static boolean ALT_HALLOWEENEVENT; // ÇÒ·ÎÀ©
-	public static boolean ALT_HALLOWEENEVENT2009; // ÇÒ·ÎÀ©(2009³â)
-	public static boolean ALT_FANTASYEVENT; // È¯»ó
-	public static boolean ALT_CHUSEOKEVENT; // Ãß¼®(09.09.24)
-	public static boolean Big_Praseant; // Ãß¼®(09.09.24)
-	public static boolean Robot_Gaho; // Ãß¼®(09.09.24)
+	/****** ì´ë²¤íŠ¸ ******/
+	public static boolean ALT_HALLOWEENEVENT; // í• ë¡œìœˆ
+	public static boolean ALT_HALLOWEENEVENT2009; // í• ë¡œìœˆ(2009ë…„)
+	public static boolean ALT_FANTASYEVENT; // í™˜ìƒ
+	public static boolean ALT_CHUSEOKEVENT; // ì¶”ì„(09.09.24)
+	public static boolean Big_Praseant; // ì¶”ì„(09.09.24)
+	public static boolean Robot_Gaho; // ì¶”ì„(09.09.24)
 	public static boolean ALT_FEATURE;
-	public static boolean µå·¡°ï¼ºÀåÀÇ¹°¾àÀÌº¥Æ®; // Ãß¼®(09.09.24)
+	public static boolean _DRAGON_GROWTH_POTION_EVENT; // ì¶”ì„(09.09.24)
 
 	public static boolean ALT_WHO_COMMAND;
 	public static boolean ALT_REVIVAL_POTION;
@@ -755,100 +755,100 @@ public final class Config {
 	public static int GMCODE;
 	public static int DELETE_DB_DAYS;
 
-	public static int ·Îº¿¿äÁ¤È°1;
-	public static int ·Îº¿¿äÁ¤È°2;
-	public static int ·Îº¿¿äÁ¤È°3;
-	public static int ·Îº¿¿äÁ¤È°4;
-	public static int ·Îº¿¿äÁ¤È°5;
-	public static int ·Îº¿Ä®1;
-	public static int ·Îº¿Ä®2;
-	public static int ·Îº¿Ä®3;
-	public static int ·Îº¿Ä®4;
-	public static int ·Îº¿Ä®5;
-	public static int ·Îº¿Ä®6;
-	public static int ·Îº¿Ä®7;
-	public static int ·Îº¿Ä®8;
-	public static int ·Îº¿Ä®9;
-	public static int ÀÎÇüÅ¸ÀÔÈ°;
-	public static int ÀÎÇüÅ¸ÀÔÄ®1;
-	public static int ÀÎÇüÅ¸ÀÔÄ®2;
-	public static int ÀÎÇüÅ¸ÀÔÄ®3;
-	public static int ÀÎÇüÅ¸ÀÔÄ®4;
-	public static int ÀÎÇüÅ¸ÀÔÄ®5;
-	public static int ÀÎÇüÅ¸ÀÔÄ®6;
-	public static int ÀÎÇüÅ¸ÀÔ°æÇèÄ¡;
-	public static int ÀÎÇüÅ¸ÀÔÈ°¿£ÇÇ¾¾¾ÆÀÌµğ;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ1;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ2;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ3;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ4;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ5;
-	public static int ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ6;
-	public static int °æÇèÄ¡ÀÎÇü¿£ÇÇ¾¾¾ÆÀÌµğ;
-	public static int º¿½ÃÀÛ·¹º§;
-	public static int º¿±â¼úÀûÁß;
-	public static int º¿Á¤·ÉÀûÁß;
-	public static int º¿¿ë¾ğÀûÁß;
-	public static int º¿°øÆ÷ÀûÁß;
-	public static int º¿±â¼ú³»¼º;
-	public static int º¿Á¤·É³»¼º;
-	public static int º¿¿ë¾ğ³»¼º;
-	public static int º¿°øÆ÷³»¼º;
-	public static int ¿äÁ¤È°±âº»Å¸°İÄ¡PC;
-	public static int ¿äÁ¤È°·£´ıÅ¸°İÄ¡PC;
-	public static int ±â»ç±âº»Å¸°İÄ¡PC;
-	public static int ±â»ç·£´ıÅ¸°İÄ¡PC;
-	public static int Àü»ç±âº»Å¸°İÄ¡PC;
-	public static int Àü»ç·£´ıÅ¸°İÄ¡PC;
-	public static int ´Ù¿¤±âº»Å¸°İÄ¡PC;
-	public static int ´Ù¿¤·£´ıÅ¸°İÄ¡PC;
-	public static int ¿ë±â»ç±âº»Å¸°İÄ¡PC;
-	public static int ¿ë±â»ç·£´ıÅ¸°İÄ¡PC;
-	public static int ±º°Ë¿ä±âº»Å¸°İÄ¡PC;
-	public static int ±º°Ë¿ä·£´ıÅ¸°İÄ¡PC;
-	public static int ¿äÁ¤È°±âº»Å¸°İÄ¡NPC;
-	public static int ¿äÁ¤È°·£´ıÅ¸°İÄ¡NPC;
-	public static int ±â»ç±âº»Å¸°İÄ¡NPC;
-	public static int ±â»ç·£´ıÅ¸°İÄ¡NPC;
-	public static int Àü»ç±âº»Å¸°İÄ¡NPC;
-	public static int Àü»ç·£´ıÅ¸°İÄ¡NPC;
-	public static int ´Ù¿¤±âº»Å¸°İÄ¡NPC;
-	public static int ´Ù¿¤·£´ıÅ¸°İÄ¡NPC;
-	public static int ¿ë±â»ç±âº»Å¸°İÄ¡NPC;
-	public static int ¿ë±â»ç·£´ıÅ¸°İÄ¡NPC;
-	public static int ±º°Ë¿ä±âº»Å¸°İÄ¡NPC;
-	public static int ±º°Ë¿ä·£´ıÅ¸°İÄ¡NPC;
-	public static int º¿¹°¾à±âº»È¸º¹·®;
-	public static int º¿¹°¾à·£´ıÈ¸º¹·®;
-	public static boolean º¿¿äÁ¤½ÎÀÌÅ¬·Ğ;
-	public static boolean º¿¿äÁ¤¾ÇÀå;
-	public static boolean º¿Àü»çÅÂÇ³;
-	public static boolean º¿±ºÁÖ¿¥ÆÄ;
-	public static boolean º¿°ÔÀÏ;
-	public static boolean º¿¶Ë¹°;
-	public static boolean ·Îº¿¸·ÇÇ;
+	public static int ROBOT_FAIRY_BOW_1;
+	public static int ROBOT_FAIRY_BOW_2;
+	public static int ROBOT_FAIRY_BOW_3;
+	public static int ROBOT_FAIRY_BOW_4;
+	public static int ROBOT_FAIRY_BOW_5;
+	public static int ROBOT_KNIFE_1;
+	public static int ROBOT_KNIFE_2;
+	public static int ROBOT_KNIFE_3;
+	public static int ROBOT_KNIFE_4;
+	public static int ROBOT_KNIFE_5;
+	public static int ROBOT_KNIFE_6;
+	public static int ROBOT_KNIFE_7;
+	public static int ROBOT_KNIFE_8;
+	public static int ROBOT_KNIFE_9;
+	public static int DOLL_TYPE_BOW;
+	public static int DOLL_TYPE_KNIFE_1;
+	public static int DOLL_TYPE_KNIFE_2;
+	public static int DOLL_TYPE_KNIFE_3;
+	public static int DOLL_TYPE_KNIFE_4;
+	public static int DOLL_TYPE_KNIFE_5;
+	public static int DOLL_TYPE_KNIFE_6;
+	public static int DOLL_TYPE_EXPERIENCE;
+	public static int DOLL_TYPE_BOW_NPC_ID;
+	public static int DOLL_TYPE_KALNPC_ID_1;
+	public static int DOLL_TYPE_KALNPC_ID_2;
+	public static int DOLL_TYPE_KALNPC_ID_3;
+	public static int DOLL_TYPE_KALNPC_ID_4;
+	public static int DOLL_TYPE_KALNPC_ID_5;
+	public static int DOLL_TYPE_KALNPC_ID_6;
+	public static int EXPERIENCE_DOLL_NPC_ID;
+	public static int BOT_START_LEVEL;
+	public static int BOT_SKILLS;
+	public static int BOT_SPIRIT_HIT;
+	public static int BOT_VERD_HIT;
+	public static int BOT_HORROR_HIT;
+	public static int BOT_TECHNOLOGY_RESISTANCE;
+	public static int BOT_SPIRIT_RESISTANCE;
+	public static int BOT_TOLERANCE;
+	public static int BOT_FEAR_RESISTANCE;
+	public static int FAIRY_BOW_BASIC_STRIKE_VALUE_PC;
+	public static int FAIRY_BOW_RANDOM_HIT_POINT_PC;
+	public static int KNIGHTS_BASIC_STRIKE_VALUE_PC;
+	public static int KNIGHT_RANDOM_HIT_POINT_PC;
+	public static int WARRIOR_BASIC_STRIKE_VALUE_PC;
+	public static int WARRIOR_RANDOM_HIT_POINT_PC;
+	public static int DAELS_BASIC_HIT_VALUE_PC;
+	public static int DAEL_RANDOM_HIT_PC;
+	public static int DRAGON_KNIGHT_BASIC_STRIKE_VALUE_PC;
+	public static int DRAGON_KNIGHT_RANDOM_HIT_POINT_PC;
+	public static int MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_PC;
+	public static int MILITARY_SWORD_RANDOM_HIT_POINT_PC;
+	public static int FAIRY_BOW_BASIC_STRIKE_VALUE_NPC;
+	public static int FAIRY_BOW_RANDOM_HIT_POINT_NPC;
+	public static int KNIGHTS_BASIC_HIT_POINT_NPC;
+	public static int KNIGHT_RANDOM_HIT_POINT_NPC;
+	public static int WARRIOR_BASIC_STRIKE_VALUE_NPC;
+	public static int WARRIOR_RANDOM_HIT_POINT_NPC;
+	public static int DAEL_BASIC_HIT_POINT_NPC;
+	public static int DAEL_RANDOM_HIT_POINT_NPC;
+	public static int DRAGON_KNIGHT_BASIC_STRIKE_VALUE_NPC;
+	public static int DRAGON_KNIGHT_RANDOM_HIT_POINT_NPC;
+	public static int MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_NPC;
+	public static int MILITARY_SWORD_RANDOM_HIT_POINT_NPC;
+	public static int BOT_POTION_BASIC_RECOVERY_AMOUNT;
+	public static int BOT_POTION_RANDOM_RECOVERY_AMOUNT;
+	public static boolean _BOT_FAIRY_CYCLONE;
+	public static boolean _BOT_FAIRY_MOVEMENT;
+	public static boolean _BOT_WARFARE;
+	public static boolean _BOT_LORD_EMPA;
+	public static boolean _BOTGALE;
+	public static boolean _DUNG_WATER;
+	public static boolean _ROBOT_SKIN;
 
-	public static boolean isGmchat = true; // byÆÇµµ¶ó ¿µÀÚÃ¤ÆÃ ³ì»öÆĞÅ¶
-	public static byte MAX_¹ö¸ğ½º_DUNGEON_LEVEL;
+	public static boolean isGmchat = true; // byíŒë„ë¼ ì˜ìì±„íŒ… ë…¹ìƒ‰íŒ¨í‚·
+	public static byte MAX_VERMOS_DUNGEON_LEVEL;
 
-	public static byte MAX_ÈÄ¿À½º_DUNGEON_LEVEL;
+	public static byte MAX_HUOS_DUNGEON_LEVEL;
 
-	public static byte ¿ë·¹ÀÌµå·¹º§;
+	public static byte DRAGON_RAID_LEVEL;
 
-	public static byte ¹ß¶óÄ«½º·¹ÀÌµå·¹º§;
+	public static byte BALACAS_RAID_LEVEL;
 
-	public static byte MIN_»ó¾ÆÅ¾_DUNGEON_LEVEL;
-	public static String ÀÚµ¿¹æÁö_ÄûÁî;
+	public static byte MIN_LVORY_TOWER_DUNGEON_LEVEL;
+	public static String AUTOMATIC_PREVENTION_QUIZ;
 
-	public static boolean Ä³¸¯ÅÍºñ¹ø»ç¿ë¿©ºÎ = true;
+	public static boolean _WHETHER_TO_USE_CHARACTER_PASSWORD = true;
 
-	public static String ÆùÀÎÁõÃ¼Å©ÄûÁî;
+	public static String PHONE_VERIFLCATION_CHECK_QUIZ;
 
-	public static String ÆùÀÎÁõ¸àÆ®;
+	public static String PHONE_VERIFLCATION_MESSAGE;
 
-	public static String ÀÚµ¿¹æÁö_´ä;
+	public static String AUTOMATIC_PREVENTION_ANSWER;
 
-	public static boolean ACCOUNT_PASSWORD;// ÆĞ½º¿öµå ¾ÏÈ£È­ »èÁ¦ ¼Ò½º 0813 Ãß°¡
+	public static boolean ACCOUNT_PASSWORD;// íŒ¨ìŠ¤ì›Œë“œ ì•”í˜¸í™” ì‚­ì œ ì†ŒìŠ¤ 0813 ì¶”ê°€
 
 	/** CharSettings control */
 	public static int PRINCE_MAX_HP;
@@ -921,10 +921,10 @@ public final class Config {
 	public static int LV99_EXP;
 	public static int EXP_GIVE;
 
-	public static int ·¹ÀÌµå½Ã°£;
-	public static int ¾Æ³îµåÀÌº¥Æ®½Ã°£;
+	public static int RAID_TIME;
+	public static int ARNOLD_EVENT_TIME;
 
-	/** µ¥ÀÌÅÍº£ÀÌ½º Ç® °ü·Ã */
+	/** ë°ì´í„°ë² ì´ìŠ¤ í’€ ê´€ë ¨ */
 	public static int min;
 	public static int max;
 	public static boolean run;
@@ -937,16 +937,16 @@ public final class Config {
 	public static final String CHAR_SETTINGS_CONFIG_FILE = "./config/charsettings.properties";
 	public static final String CHOLONG_SETTINGS_CONFIG_FILE = "./config/Eventlink.properties";
 	public static boolean shutdown = false;
-	// ·Î±× Ç¥ÇöÇÒ°ÍÀÎÁö
+	// ë¡œê·¸ í‘œí˜„í• ê²ƒì¸ì§€
 	public static boolean LOGGER = true;
-	// ÆĞÅ¶ Ç¥Çö ÇÒ°ÍÀÎÁö
+	// íŒ¨í‚· í‘œí˜„ í• ê²ƒì¸ì§€
 	public static boolean PACKET = false;
-	/** ±× ¿ÜÀÇ ¼³Á¤ */
+	/** ê·¸ ì™¸ì˜ ì„¤ì • */
 
-	// NPC·ÎºÎÅÍ µéÀÌ¸¶½Ç ¼ö ÀÖ´Â MPÇÑ°è
+	// NPCë¡œë¶€í„° ë“¤ì´ë§ˆì‹¤ ìˆ˜ ìˆëŠ” MPí•œê³„
 	public static final int MANA_DRAIN_LIMIT_PER_NPC = 40;
 
-	// 1È¸ÀÇ °ø°İÀ¸·Î µéÀÌ¸¶½Ç ¼ö ÀÖ´Â MPÇÑ°è(SOM, °­Ã¶ SOM)
+	// 1íšŒì˜ ê³µê²©ìœ¼ë¡œ ë“¤ì´ë§ˆì‹¤ ìˆ˜ ìˆëŠ” MPí•œê³„(SOM, ê°•ì²  SOM)
 	public static final int MANA_DRAIN_LIMIT_PER_SOM_ATTACK = 9;
 	public static String _name = ".clftjdtkdlek";
 
@@ -959,12 +959,12 @@ public final class Config {
 			serverSettings.load(is);
 			is.close();
 
-			/** µ¥ÀÌÅÍ º£ÀÌ½º Ç® */
+			/** ë°ì´í„° ë² ì´ìŠ¤ í’€ */
 			min = Integer.parseInt(serverSettings.getProperty("min"));
 			max = Integer.parseInt(serverSettings.getProperty("max"));
 			run = Boolean.parseBoolean(serverSettings.getProperty("run"));
 
-			Ä³¸¯ÅÍºñ¹ø»ç¿ë¿©ºÎ = Boolean.parseBoolean(serverSettings.getProperty("Charpass"));
+			_WHETHER_TO_USE_CHARACTER_PASSWORD = Boolean.parseBoolean(serverSettings.getProperty("Charpass"));
 
 			GAME_SERVER_TYPE = Integer.parseInt(serverSettings.getProperty("ServerType", "0"));
 
@@ -992,8 +992,8 @@ public final class Config {
 
 			HOSTNAME_LOOKUPS = Boolean.parseBoolean(serverSettings.getProperty("HostnameLookups", "false"));
 
-			¶Õ¾î¹æ¾î»ç¿ë = Boolean.parseBoolean(serverSettings.getProperty("dduldef", "true"));
-			À¯Ã¼ÀÌÅ»¹æ¾î»ç¿ë = Boolean.parseBoolean(serverSettings.getProperty("ucedef", "true"));
+			_USE_OF_PIERCING_DEFENSE = Boolean.parseBoolean(serverSettings.getProperty("dduldef", "true"));
+			__USE_OF_FLUID_ESCAPE_PROTECTION = Boolean.parseBoolean(serverSettings.getProperty("ucedef", "true"));
 
 			AUTOMATIC_KICK = Integer.parseInt(serverSettings.getProperty("AutomaticKick", "10"));
 
@@ -1017,7 +1017,7 @@ public final class Config {
 
 			CHECK_STRICTNESS = Integer.parseInt(serverSettings.getProperty("CheckStrictness", "102"));
 
-			ACCOUNT_PASSWORD = Boolean.parseBoolean(serverSettings.getProperty("AccountPassword", "false"));// ÆĞ½º¿öµå ¾ÏÈ£È­ »èÁ¦ ¼Ò½º 0813 Ãß°¡
+			ACCOUNT_PASSWORD = Boolean.parseBoolean(serverSettings.getProperty("AccountPassword", "false"));// íŒ¨ìŠ¤ì›Œë“œ ì•”í˜¸í™” ì‚­ì œ ì†ŒìŠ¤ 0813 ì¶”ê°€
 
 			LOGGING_WEAPON_ENCHANT = Byte.parseByte(serverSettings.getProperty("LoggingWeaponEnchant", "0"));
 
@@ -1069,7 +1069,7 @@ public final class Config {
 
 			WAR_TIME_AUTO_SETTING = Boolean.parseBoolean(serverSettings.getProperty("WarTimeAutoSetting", "false"));
 
-			GameServer.½Å±ÔÁö¿ø_°æÇèÄ¡Áö±Ş´Ü = Boolean.parseBoolean(serverSettings.getProperty("NewvieBonus", "false"));
+			GameServer._NEW_SUPPORT_EXPERIENCE_PAYMENT_GROUP = Boolean.parseBoolean(serverSettings.getProperty("NewvieBonus", "false"));
 			// DETECT_DB_RESOURCE_LEAKS =
 			// Boolean.parseBoolean(serverSettings.getProperty("EnableDatabaseResourceLeaksDetection",
 			// "false"));
@@ -1136,7 +1136,7 @@ public final class Config {
 
 			RATE_DROP_ITEMS = Double.parseDouble(rateSettings.getProperty("RateDropItems", "1.0"));
 
-			RATE_ROBOT_TIME = Integer.parseInt(rateSettings.getProperty("RateRobotTime", "12")); // ¹«ÀÎPC(Äí¿ì)
+			RATE_ROBOT_TIME = Integer.parseInt(rateSettings.getProperty("RateRobotTime", "12")); // ë¬´ì¸PC(ì¿ ìš°)
 
 			ENCHANT_CHANCE_WEAPON = Integer.parseInt(rateSettings.getProperty("EnchantChanceWeapon", "1"));
 			ENCHANT_CHANCE_WEAPON7 = Integer.parseInt(rateSettings.getProperty("EnchantChanceWeapon7", "1"));
@@ -1147,8 +1147,8 @@ public final class Config {
 			ENCHANT_CHANCE_ARMOR = Integer.parseInt(rateSettings.getProperty("EnchantChanceArmor", "1"));
 
 			ENCHANT_CHANCE_ACCESSORY = Integer.parseInt(rateSettings.getProperty("EnchantChanceAccessory", "5"));
-			È°¸íÁß = Integer.parseInt(rateSettings.getProperty("Bowhit", "6"));
-			¶ó´ø¼öÇ¥ = Integer.parseInt(rateSettings.getProperty("cash", "10"));
+			WHAL_MYUNG_JUNG = Integer.parseInt(rateSettings.getProperty("Bowhit", "6"));
+			RADEN_CHECK = Integer.parseInt(rateSettings.getProperty("cash", "10"));
 
 			RATE_WEIGHT_LIMIT = Double.parseDouble(rateSettings.getProperty("RateWeightLimit", "1"));
 
@@ -1158,7 +1158,7 @@ public final class Config {
 
 			RATE_SHOP_PURCHASING_PRICE = Double.parseDouble(rateSettings.getProperty("RateShopPurchasingPrice", "1.0"));
 
-			RATE_DREAM = Integer.parseInt(rateSettings.getProperty("Ratedream", "1")); // ¸¸¿ùÀÇÁ¤±âÀÌº¥Æ®
+			RATE_DREAM = Integer.parseInt(rateSettings.getProperty("Ratedream", "1")); // ë§Œì›”ì˜ì •ê¸°ì´ë²¤íŠ¸
 
 			CREATE_CHANCE_DIARY = Integer.parseInt(rateSettings.getProperty("CreateChanceDiary", "33"));
 
@@ -1180,22 +1180,22 @@ public final class Config {
 
 			MAX_ARMOR = Integer.parseInt(rateSettings.getProperty("MaxArmor", "10"));
 
-			MAX_WEAPON1 = Integer.parseInt(rateSettings.getProperty("MaxWeapon1", "12"));// ¸¶Á·
+			MAX_WEAPON1 = Integer.parseInt(rateSettings.getProperty("MaxWeapon1", "12"));// ë§ˆì¡±
 
-			MAX_LEVEL = Integer.parseInt(rateSettings.getProperty("Maxlevel", "12"));// ½Å±Ôº¸È£·¾Á¦
-			¹èÆ²Á¸ÀÔÀå·¹º§ = Integer.parseInt(rateSettings.getProperty("BattleLevel", "55"));
-			¹èÆ²Á¸ÀÛµ¿À¯¹« = Boolean.parseBoolean(rateSettings.getProperty("BattleZone", "true"));
-			¹èÆ²Á¸¾ÆÀÌÅÛ = rateSettings.getProperty("BattleItem", "");
-			¹èÆ²Á¸¾ÆÀÌÅÛ°¹¼ö = rateSettings.getProperty("BattleCount", "");
+			MAX_LEVEL = Integer.parseInt(rateSettings.getProperty("Maxlevel", "12"));// ì‹ ê·œë³´í˜¸ë ™ì œ
+			BATTLE_ZONE_ENTRY_LEVEL = Integer.parseInt(rateSettings.getProperty("BattleLevel", "55"));
+			_WHETHER_OF_NOT_THE_BATTLE_ZONE_WORKS = Boolean.parseBoolean(rateSettings.getProperty("BattleZone", "true"));
+			BATTLE_ZONE_ITEMS = rateSettings.getProperty("BattleItem", "");
+			NUMBER_OF_BATTLE_ZONE_ITEMS = rateSettings.getProperty("BattleCount", "");
 
-			µµ°¨1´Ü¾ÆÀÌÅÛ = rateSettings.getProperty("Dogamone", "");
-			µµ°¨1´Ü¾ÆÀÌÅÛ°¹¼ö = rateSettings.getProperty("DogamoneCount", "");
+			BOOK_1_ITEM = rateSettings.getProperty("Dogamone", "");
+			NUMBER_OF_ITEMS_IN_THE_FIRST_STAGE_OF_THEILLUSTRATED_BOOK = rateSettings.getProperty("DogamoneCount", "");
 
-			µµ°¨2´Ü¾ÆÀÌÅÛ = rateSettings.getProperty("Dogamto", "");
-			µµ°¨2´Ü¾ÆÀÌÅÛ°¹¼ö = rateSettings.getProperty("DogamtoCount", "");
+			BOOK_2_ITEM = rateSettings.getProperty("Dogamto", "");
+			NUMBER_OF_ENCYCLOPEDIA_2ND_STEP_ITEMS = rateSettings.getProperty("DogamtoCount", "");
 
-			µµ°¨3´Ü¾ÆÀÌÅÛ = rateSettings.getProperty("Dogamthr", "");
-			µµ°¨3´Ü¾ÆÀÌÅÛ°¹¼ö = rateSettings.getProperty("DogamthrCount", "");
+			ILLUSTRATED_BOOK_3_ITEM = rateSettings.getProperty("Dogamthr", "");
+			NUMBER_OF_THREE_TIER_ITEMS_IN_THE_ILLUSTRATED_BOOK = rateSettings.getProperty("DogamthrCount", "");
 
 			FEATHER_TIME = Integer.parseInt(rateSettings.getProperty("FeatherTime", "10"));
 
@@ -1205,13 +1205,13 @@ public final class Config {
 
 			CASTLE_NUMBER = Integer.parseInt(rateSettings.getProperty("CastleNumber", "50"));
 
-			½º³ÀÆÛÃÖ´ëÀÎÃ¦ = Integer.parseInt(rateSettings.getProperty("SnapperMaxEnchant", "8"));
-			·ëÆ¼½ºÃÖ´ëÀÎÃ¦ = Integer.parseInt(rateSettings.getProperty("RoomteeceMaxEnchant", "8"));
-			Àå½Å±¸ÃÖ´ëÀÎÃ¦ = Integer.parseInt(rateSettings.getProperty("acaccessoryMaxEnchant", "9"));
-			º¸È£ÁÖ¹®¼­ÃÖ´ëÀÎÃ¦ = Integer.parseInt(rateSettings.getProperty("Maximumboji", "7"));
-			¾Æ³îµåÀÌº¥Æ®½Ã°£ = Integer.parseInt(rateSettings.getProperty("AnoldeTime", "2"));
-			»ı¸íÀÇ³ª¹µÀÙ = Integer.parseInt(rateSettings.getProperty("Leafitem", "100"));
-			¿µ»ıÀÇºû = Integer.parseInt(rateSettings.getProperty("Eternalitem", "100"));
+			SNAPPER_MAX_ENCHANTMENT = Integer.parseInt(rateSettings.getProperty("SnapperMaxEnchant", "8"));
+			ROOMTIS_MAXIMUM_ENCHANTMENT = Integer.parseInt(rateSettings.getProperty("RoomteeceMaxEnchant", "8"));
+			MAXIMUM_ENCHANTMENTOF_ACCESSORIES = Integer.parseInt(rateSettings.getProperty("acaccessoryMaxEnchant", "9"));
+			MAXIMUM_ENCHANTMENT_OF_PROTECTIVE_SCROLL = Integer.parseInt(rateSettings.getProperty("Maximumboji", "7"));
+			ARNOLD_EVENT_TIME = Integer.parseInt(rateSettings.getProperty("AnoldeTime", "2"));
+			LEAF_OF_LIFE = Integer.parseInt(rateSettings.getProperty("Leafitem", "100"));
+			LIAGHT_OF_ETERNAL_LIFE = Integer.parseInt(rateSettings.getProperty("Eternalitem", "100"));
 
 			// RATE_CLAN_XP =
 			// Double.parseDouble(rateSettings.getProperty("RateClanXp",
@@ -1247,7 +1247,7 @@ public final class Config {
 			RATE_17_DMG_PER = Integer.parseInt(rateSettings.getProperty("Rate_17_Dmg_Per", "90"));
 			RATE_18_DMG_PER = Integer.parseInt(rateSettings.getProperty("Rate_18_Dmg_Per", "100"));
 
-			¹Ãµ¥¹ÌÁö = Double.parseDouble(rateSettings.getProperty("Immune_to", "0.5"));
+			MUME_DAMAGE = Double.parseDouble(rateSettings.getProperty("Immune_to", "0.5"));
 
 			AC_170 = Integer.parseInt(rateSettings.getProperty("AC_170", "0"));
 			AC_160 = Integer.parseInt(rateSettings.getProperty("AC_160", "0"));
@@ -1267,21 +1267,21 @@ public final class Config {
 			AC_20 = Integer.parseInt(rateSettings.getProperty("AC_20", "0"));
 			AC_10 = Integer.parseInt(rateSettings.getProperty("AC_10", "0"));
 
-			·¹ÀÌµå½Ã°£ = Integer.parseInt(rateSettings.getProperty("Raidtime", "1"));
+			RAID_TIME = Integer.parseInt(rateSettings.getProperty("Raidtime", "1"));
 
-			ÀÎÇüÈ®·ü2 = Integer.parseInt(rateSettings.getProperty("dollchance2", "1"));
-			ÀÎÇüÈ®·ü3 = Integer.parseInt(rateSettings.getProperty("dollchance3", "1"));
-			ÀÎÇüÈ®·ü4 = Integer.parseInt(rateSettings.getProperty("dollchance4", "1"));
-			ÀÎÇüÈ®·ü5 = Integer.parseInt(rateSettings.getProperty("dollchance5", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü0 = Integer.parseInt(rateSettings.getProperty("bojiscroll0", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü1 = Integer.parseInt(rateSettings.getProperty("bojiscroll1", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü2 = Integer.parseInt(rateSettings.getProperty("bojiscroll2", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü3 = Integer.parseInt(rateSettings.getProperty("bojiscroll3", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü4 = Integer.parseInt(rateSettings.getProperty("bojiscroll4", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü5 = Integer.parseInt(rateSettings.getProperty("bojiscroll5", "1"));
-			º¸È£ÁÖ¹®¼­È®·ü6 = Integer.parseInt(rateSettings.getProperty("bojiscroll6", "1"));
-			ÀåÀÎÈ®·ü = Integer.parseInt(rateSettings.getProperty("janginchance", "1"));
-			Ãâ¼®ÃÊ±âÈ­½Ã°£ = Integer.parseInt(rateSettings.getProperty("chutime", "9"));
+			DOLL_PROBABILITY_2 = Integer.parseInt(rateSettings.getProperty("dollchance2", "1"));
+			DOLL_PROBABILITY_3 = Integer.parseInt(rateSettings.getProperty("dollchance3", "1"));
+			DOLL_PROBABILITY_4 = Integer.parseInt(rateSettings.getProperty("dollchance4", "1"));
+			DOLL_PROBABILITY_5 = Integer.parseInt(rateSettings.getProperty("dollchance5", "1"));
+			PROTECTION_SCROLL_PROBABILITY_0 = Integer.parseInt(rateSettings.getProperty("bojiscroll0", "1"));
+			PROTECTION_ORDER_CHANCE_1 = Integer.parseInt(rateSettings.getProperty("bojiscroll1", "1"));
+			PROTECTION_SPELL_PROBABILITY_2 = Integer.parseInt(rateSettings.getProperty("bojiscroll2", "1"));
+			PROTECTION_SPELL_PROBABILITY_3 = Integer.parseInt(rateSettings.getProperty("bojiscroll3", "1"));
+			PROTECTION_SCROLL_PROBABILITY_4 = Integer.parseInt(rateSettings.getProperty("bojiscroll4", "1"));
+			PROTECTION_SPELL_PROBABILITY_5 = Integer.parseInt(rateSettings.getProperty("bojiscroll5", "1"));
+			PROTECTION_SPELL_PROBABILITY_6 = Integer.parseInt(rateSettings.getProperty("bojiscroll6", "1"));
+			CRAFTSMAN_PROBABILITY = Integer.parseInt(rateSettings.getProperty("janginchance", "1"));
+			ATTENDANCE_RESET_TIME = Integer.parseInt(rateSettings.getProperty("chutime", "9"));
 			AINHASADDPRESETTIME = Integer.parseInt(rateSettings.getProperty("ainhasaddpresettime", "18"));
 
 		} catch (Exception e) {
@@ -1296,11 +1296,11 @@ public final class Config {
 			altSettings.load(is);
 			is.close();
 
-			½Å±Ô·¹º§ = Short.parseShort(altSettings.getProperty("biginnerlev", "56"));
+			NEW_LEVEL = Short.parseShort(altSettings.getProperty("biginnerlev", "56"));
 
-			Á¶ÀÌÀÇÀ¯¹° = Integer.parseInt(altSettings.getProperty("joyrune", "8"));
+			JOYS_RELIC = Integer.parseInt(altSettings.getProperty("joyrune", "8"));
 
-			¾ÆÀÎÇÏ»çµåµ¥ÀÏ¸®Æ÷ÀÎÆ® = Integer.parseInt(altSettings.getProperty("ainhasadDP", "10000000"));
+			EINHASAD_DAILY_POINT = Integer.parseInt(altSettings.getProperty("ainhasadDP", "10000000"));
 
 			GLOBAL_CHAT_LEVEL = Short.parseShort(altSettings.getProperty("GlobalChatLevel", "30"));
 
@@ -1348,7 +1348,7 @@ public final class Config {
 
 			Big_Praseant = Boolean.parseBoolean(altSettings.getProperty("Bigprasenat", "false"));
 
-			µå·¡°ï¼ºÀåÀÇ¹°¾àÀÌº¥Æ® = Boolean.parseBoolean(altSettings.getProperty("dragonpotion", "false"));
+			_DRAGON_GROWTH_POTION_EVENT = Boolean.parseBoolean(altSettings.getProperty("dragonpotion", "false"));
 
 			ALT_FEATURE = Boolean.parseBoolean(altSettings.getProperty("FeatureEvent", "true"));
 
@@ -1411,24 +1411,24 @@ public final class Config {
 
 			DELETE_DB_DAYS = Integer.parseInt(altSettings.getProperty("DeleteDBDAY", "14"));
 
-			MAX_¹ö¸ğ½º_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MaxEarthDragonDungeon", "99"));
+			MAX_VERMOS_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MaxEarthDragonDungeon", "99"));
 
-			MAX_ÈÄ¿À½º_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MaxWaterDragonDungeon", "99"));
+			MAX_HUOS_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MaxWaterDragonDungeon", "99"));
 
-			¿ë·¹ÀÌµå·¹º§ = Byte.parseByte(altSettings.getProperty("Dragonraid", "80"));
+			DRAGON_RAID_LEVEL = Byte.parseByte(altSettings.getProperty("Dragonraid", "80"));
 
-			¹ß¶óÄ«½º·¹ÀÌµå·¹º§ = Byte.parseByte(altSettings.getProperty("DragonraidVala", "85"));
+			BALACAS_RAID_LEVEL = Byte.parseByte(altSettings.getProperty("DragonraidVala", "85"));
 
-			MIN_»ó¾ÆÅ¾_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MinIvoryTowerDungeon", "99"));
+			MIN_LVORY_TOWER_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MinIvoryTowerDungeon", "99"));
 
-			ÀÚµ¿¹æÁö_ÄûÁî = toKor(altSettings.getProperty("Anti_Auto_Quiz", "ÀÌ¹øÂ÷¿¡µµ°¨»çÇÕ´Ï´ÙÇöÀç´ÂÀÚµ¿Ã¼Å©ÁßÀÌ´ÏºÒÆíÇÏ½Ã´õ¶óµµÀÚµ¿¾Æ´ÔÀ»ÀÔ·ÂÇØÁÖ¼¼¿ä"));
-			// System.out.println("ÀÚµ¿¹æÁö ÄûÁî : "+ÀÚµ¿¹æÁö_ÄûÁî);
-			ÆùÀÎÁõÃ¼Å©ÄûÁî = toKor(altSettings.getProperty("Phone_Auto_Quiz", "¿ÀÅä ÆÇº°À»À§ÇØ ÇÚµåÆù ÀÎÁõÀ» ÇØÁÖ¼¼¿ä."));
+			AUTOMATIC_PREVENTION_QUIZ = toKor(altSettings.getProperty("Anti_Auto_Quiz", "ä»Šå›ã‚‚ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚"));
+			// System.out.println("ìë™ë°©ì§€ í€´ì¦ˆ : "+ìë™ë°©ì§€_í€´ì¦ˆ);
+			PHONE_VERIFLCATION_CHECK_QUIZ = toKor(altSettings.getProperty("Phone_Auto_Quiz", "ã‚ªãƒ¼ãƒˆåˆ¤åˆ¥ã®ãŸã‚ã«æºå¸¯é›»è©±èªè¨¼ã‚’ã—ã¦ãã ã•ã„."));
 
-			ÆùÀÎÁõ¸àÆ® = toKor(altSettings.getProperty("Phone_Ment", "º»ÀÎÇÚµåÆùÀ» ÀÌ¿ëÇØ 010-1234-5678 ·Î ÀüÈ­ÁÖ½Ã¸é ÀÎÁõÀ» µµ¿Í µå¸³´Ï´Ù."));
+			PHONE_VERIFLCATION_MESSAGE = toKor(altSettings.getProperty("Phone_Ment", "æœ¬äººã®æºå¸¯é›»è©±ã‚’åˆ©ç”¨ã—ã¦010-1234-5678ã«é›»è©±ã—ã¦ã„ãŸã ã‘ã‚Œã°èªè¨¼ã‚’ãŠæ‰‹ä¼ã„ã—ã¾ã™."));
 
-			ÀÚµ¿¹æÁö_´ä = toKor(altSettings.getProperty("Anti_Auto_Answer", "ÀÚµ¿¾Æ´Ô"));
-			// System.out.println("ÀÚµ¿¹æÁö ´ä : "+ÀÚµ¿¹æÁö_´ä);
+			AUTOMATIC_PREVENTION_ANSWER = toKor(altSettings.getProperty("Anti_Auto_Answer", "è‡ªå‹•ã§ã¯ãªã„"));
+			// System.out.println("ìë™ë°©ì§€ ë‹µ : "+ìë™ë°©ì§€_ë‹µ);
 
 			Event_Box = Boolean.parseBoolean(altSettings.getProperty("Event_box_ok", "false"));
 
@@ -1437,100 +1437,100 @@ public final class Config {
 			EVENT_DRAGON_DIAMOND_CHANCE = Integer.parseInt(altSettings.getProperty("DragonDiamondChance", "0"));
 			EVENT_DRAGON_DIAMOND_CHANCE2 = Integer.parseInt(altSettings.getProperty("DragonDiamondChance2", "0"));
 
-			µå»óµå¶ø_µå·¹ÀÌÅ©_Âù½º = Integer.parseInt(altSettings.getProperty("DragonDiamondChance3", "0"));
+			DROP_DRAKE_CHANCE = Integer.parseInt(altSettings.getProperty("DragonDiamondChance3", "0"));
 
-			¾Æ¸£Ä«_Event = Boolean.parseBoolean(altSettings.getProperty("150409Event", "false"));
-			µå»óµå¶ø_¾Æ¸£Ä«_Âù½º = Integer.parseInt(altSettings.getProperty("150409ARKADropChance", "0"));
-			µå»óµå¶ø_ÇÒ·ÎÀ©_Âù½º = Integer.parseInt(altSettings.getProperty("HWDropChance", "0"));
-			ÄÉÇÃ¸®»şµå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("1219EventDropChance", "0"));
-			ÄÉÇÃ¸®»ş_Event = Boolean.parseBoolean(altSettings.getProperty("1219Event", "false"));
+			_ARCA_EVENT = Boolean.parseBoolean(altSettings.getProperty("150409Event", "false"));
+			DROP_ARCA_CHANCE = Integer.parseInt(altSettings.getProperty("150409ARKADropChance", "0"));
+			DROP_HALLOWEEN_CHANCE = Integer.parseInt(altSettings.getProperty("HWDropChance", "0"));
+			KEPLISHA_DROP_CHANCE = Integer.parseInt(altSettings.getProperty("1219EventDropChance", "0"));
+			_KEOLISHA_EVENT = Boolean.parseBoolean(altSettings.getProperty("1219Event", "false"));
 
-			ÀÌ·¹¸ÅÁ÷È®·ü = Integer.parseInt(altSettings.getProperty("EraseMagic", "40"));
+			SEVEN_MAGIC_PROBABILITY = Integer.parseInt(altSettings.getProperty("EraseMagic", "40"));
 
-			µ¥ÆäÈ®·ü = Integer.parseInt(altSettings.getProperty("Desperado", "60"));
+			DEFE_PROBABILITY = Integer.parseInt(altSettings.getProperty("Desperado", "60"));
 
-			º»ºê·¹ÀÌÅ© = Integer.parseInt(altSettings.getProperty("BoneB", "40"));
+			BONE_BREAK = Integer.parseInt(altSettings.getProperty("BoneB", "40"));
 
-			±×¸³È®·ü = Integer.parseInt(altSettings.getProperty("PowerRip", "40"));
+			GRIP_PROBABILITY = Integer.parseInt(altSettings.getProperty("PowerRip", "40"));
 
-			½ºÅÏÈ®·ü = Integer.parseInt(altSettings.getProperty("Shock_Stun", "60"));
+			STUN_CHANCE = Integer.parseInt(altSettings.getProperty("Shock_Stun", "60"));
 
-			¾îº¥ÀúÈ®·ü = Integer.parseInt(altSettings.getProperty("avenger", "60"));
+			AVENGER_PROBABILITY = Integer.parseInt(altSettings.getProperty("avenger", "60"));
 
-			Æ÷½º½ºÅÏÈ®·ü = Integer.parseInt(altSettings.getProperty("force_Stun", "60"));
+			POSTSTONE_PROBABILITY = Integer.parseInt(altSettings.getProperty("force_Stun", "60"));
 
-			ÀÌÅÍ³ÊÆ¼È®·ü = Integer.parseInt(altSettings.getProperty("ETERNITY", "60"));
+			ETERNITY_PROBABILITY = Integer.parseInt(altSettings.getProperty("ETERNITY", "60"));
 
-			DEMOLITIONÈ®·ü = Integer.parseInt(altSettings.getProperty("demolition", "60"));
+			DEMOLITION_PROBABILITY = Integer.parseInt(altSettings.getProperty("demolition", "60"));
 
-			ÆÇÅ×¶óÈ®·ü = Integer.parseInt(altSettings.getProperty("PANTERA", "60"));
+			PANTERA_PROBABILITY = Integer.parseInt(altSettings.getProperty("PANTERA", "60"));
 
-			½¦µµ¿ì½ºÅÇÈ®·ü = Integer.parseInt(altSettings.getProperty("Shadow_Step", "60"));
+			SHADOW_TAP_PROBABILITY = Integer.parseInt(altSettings.getProperty("Shadow_Step", "60"));
 
-			ÀúÁö¸ÕÆ®È®·ü = Integer.parseInt(altSettings.getProperty("JUDGEMENT", "60"));
+			JUDGMENT_PROBABILITY = Integer.parseInt(altSettings.getProperty("JUDGEMENT", "60"));
 
-			ÆÒÅÒÈ®·ü = Integer.parseInt(altSettings.getProperty("PHANTOM", "60"));
+			PHANTOM_PROBABILITY = Integer.parseInt(altSettings.getProperty("PHANTOM", "60"));
 
-			Å¬¶ó¿ìµğ¾Æ·¹º§ = Integer.parseInt(altSettings.getProperty("claudialevel", "70"));
+			CLAUDIA_LEVEL = Integer.parseInt(altSettings.getProperty("claudialevel", "70"));
 
-			¿¥ÆÄÀÌ¾î = Integer.parseInt(altSettings.getProperty("¿¥ÆÄÀÌ¾î", "60"));
+			EMPIRE = Integer.parseInt(altSettings.getProperty("ì— íŒŒì´ì–´", "60"));
 
-			¾î¹ÙÈ®·ü = Integer.parseInt(altSettings.getProperty("Earth_Bind", "40"));
+			URBAN_PROBABILITY = Integer.parseInt(altSettings.getProperty("Earth_Bind", "40"));
 
-			°Ë½ºÅÏÈ®·ü = Integer.parseInt(altSettings.getProperty("weaponShock_Stun", "5"));
+			GUMSTON_PROBABILITY = Integer.parseInt(altSettings.getProperty("weaponShock_Stun", "5"));
 
-			°¢¹İµå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("150101EventDropChance", "0"));
-			°¢¹İ_Event = Boolean.parseBoolean(altSettings.getProperty("150101Event", "false"));
+			GAIT_CLASS_DORP_CHANCE = Integer.parseInt(altSettings.getProperty("150101EventDropChance", "0"));
+			_GAITERS_EVENT = Boolean.parseBoolean(altSettings.getProperty("150101Event", "false"));
 
-			·ëÆ¼½ºµå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("150310EventDropChance", "0"));
-			·ëÆ¼½º_Event = Boolean.parseBoolean(altSettings.getProperty("150310Event", "false"));
+			ROOMTIS_DROP_CHANCE = Integer.parseInt(altSettings.getProperty("150310EventDropChance", "0"));
+			_ROOMTIS_EVENT = Boolean.parseBoolean(altSettings.getProperty("150310Event", "false"));
 
-			°­È­»óÀÚµå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("150319EventDropChance", "0"));
-			°­È­»óÀÚ_Event = Boolean.parseBoolean(altSettings.getProperty("150319Event", "false"));
+			ENCANCEMENT_BOX_DORP_CHANCE = Integer.parseInt(altSettings.getProperty("150319EventDropChance", "0"));
+			_ENHANCEMENT_BOX_EVENT = Boolean.parseBoolean(altSettings.getProperty("150319Event", "false"));
 
-			¼¼¹îµ·µå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("150216EventDropChance", "0"));
-			¼¼¹îµ·_Event = Boolean.parseBoolean(altSettings.getProperty("150216Event", "false"));
+			NEW_YEARS_MONEY_DORP_CHANCE = Integer.parseInt(altSettings.getProperty("150216EventDropChance", "0"));
+			_NEW_YEARS_EVE_EVENT = Boolean.parseBoolean(altSettings.getProperty("150216Event", "false"));
 
-			¸®ÆÛ¼±¹°_Event = Boolean.parseBoolean(altSettings.getProperty("150108Event", "false"));
-			¸®ÆÛ2µå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("150108EventDropChance", "0"));
+			_REAPER_GIFT_EVENT = Boolean.parseBoolean(altSettings.getProperty("150108Event", "false"));
+			REAPER_2_DORP_CHANCE = Integer.parseInt(altSettings.getProperty("150108EventDropChance", "0"));
 
-			¼ö·ÃÀÚ¹«±â¹ë·±½º¼öÄ¡ = Integer.parseInt(altSettings.getProperty("aWeaponBalance", "0"));
-			¼ö·ÃÀÚ°©¿Ê¹ë·±½º¼öÄ¡ = Integer.parseInt(altSettings.getProperty("aArmorBalance", "0"));
+			TRAINEE_WEAPON_BALANCE = Integer.parseInt(altSettings.getProperty("aWeaponBalance", "0"));
+			TRAINEES_ARMOR_BALANCE_VALUE = Integer.parseInt(altSettings.getProperty("aArmorBalance", "0"));
 			warmember = Integer.parseInt(altSettings.getProperty("warmember", "0"));
 
-			¸®ÆÛµå¶ø_Âù½º = Integer.parseInt(altSettings.getProperty("1225EventDropChance", "0"));
-			¸®ÆÛ_Event = Boolean.parseBoolean(altSettings.getProperty("1225Event", "false"));
-			Dragon_3DAY_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon3DayEvent", "false"));
+			REFER_DROP_CHANCE = Integer.parseInt(altSettings.getProperty("1225EventDropChance", "0"));
+			_REAPER_EVENT = Boolean.parseBoolean(altSettings.getProperty("1225Event", "false"));
+			_Dragon_3DAY_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon3DayEvent", "false"));
 
-			Dragon_1DAY_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon1DayEvent", "false"));
+			_Dragon_1DAY_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon1DayEvent", "false"));
 
-			ÃÊÆÄµå¶ø_±×·½¸°_Âù½º = Integer.parseInt(altSettings.getProperty("ChopaChance", "0"));
-			Chopa_Event = Boolean.parseBoolean(altSettings.getProperty("ChopaEvent", "false"));
+			CHOPA_DROP_GREMLIN_CHANCE = Integer.parseInt(altSettings.getProperty("ChopaChance", "0"));
+			_Chopa_Event = Boolean.parseBoolean(altSettings.getProperty("ChopaEvent", "false"));
 
-			Dragon_14_12_12_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon141212event", "false"));
+			_Dragon_14_12_12_Event = Boolean.parseBoolean(altSettings.getProperty("Dragon141212event", "false"));
 
-			ÇÒ·ÎÀ©_Event = Boolean.parseBoolean(altSettings.getProperty("HW_Event", "false"));
+			_HALLOWEEN_EVENT = Boolean.parseBoolean(altSettings.getProperty("HW_Event", "false"));
 
-			EVENT_°¢ÀÎÇØÁ¦ÀÎÀå_Âù½º = Integer.parseInt(altSettings.getProperty("GakinEventChance", "0"));
+			EVENT_UNENGRAVED_SEAL_CHANCE = Integer.parseInt(altSettings.getProperty("GakinEventChance", "0"));
 
-			EVENT_·çÇÇÁÖ¸ÔÁÖ¸Ó´Ï_Âù½º = Integer.parseInt(altSettings.getProperty("RuphyBraveEventChance", "0"));
+			EVENT_LUFFY_FIST_POCKET_CHANCE = Integer.parseInt(altSettings.getProperty("RuphyBraveEventChance", "0"));
 
 			EVENT_SEHO_BOOMB_CHANCE = Integer.parseInt(altSettings.getProperty("Event_box_chance", "0"));
 
-			DRAGON_2DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("Dragon2DayEvent", "false"));
+			_DRAGON_2DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("Dragon2DayEvent", "false"));
 
-			DANTES_2DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("Dantes2DayEvent", "false"));
+			_DANTES_2DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("Dantes2DayEvent", "false"));
 
-			Orim_EVENT = Boolean.parseBoolean(altSettings.getProperty("OrimEvent", "false"));
+			_Orim_EVENT = Boolean.parseBoolean(altSettings.getProperty("OrimEvent", "false"));
 
-			RuphyBrave_3DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("RuphyBrave3DayEvent", "false"));
+			_RuphyBrave_3DAY_EVENT = Boolean.parseBoolean(altSettings.getProperty("RuphyBrave3DayEvent", "false"));
 
 			Tam_Ok = Boolean.parseBoolean(altSettings.getProperty("TamOK", "false"));
 			Tam_Time = Integer.parseInt(altSettings.getProperty("TamTime", "15"));
 			Tam_Count = Integer.parseInt(altSettings.getProperty("TamCount", "600"));
 
-			¹«Ç÷»óÁ¡ = Integer.parseInt(altSettings.getProperty("ShopLevel", "5"));
-			µå¶ø·¹º§ = Integer.parseInt(altSettings.getProperty("DropLevel", "5"));
+			BLOODLESS_SHOP = Integer.parseInt(altSettings.getProperty("ShopLevel", "5"));
+			DROP_LEVEL = Integer.parseInt(altSettings.getProperty("DropLevel", "5"));
 
 			D_Reset_Time = Integer.parseInt(altSettings.getProperty("DungeonResetTime", "9"));
 
@@ -1545,78 +1545,78 @@ public final class Config {
 			botSettings.load(is);
 			is.close();
 			Robot_Gaho = Boolean.parseBoolean(botSettings.getProperty("Robotgaho", "false"));
-			·Îº¿¿äÁ¤È°1 = Integer.parseInt(botSettings.getProperty("robotbow1", "12314"));
-			·Îº¿¿äÁ¤È°2 = Integer.parseInt(botSettings.getProperty("robotbow2", "12314"));
-			·Îº¿¿äÁ¤È°3 = Integer.parseInt(botSettings.getProperty("robotbow3", "12314"));
-			·Îº¿¿äÁ¤È°4 = Integer.parseInt(botSettings.getProperty("robotbow4", "12314"));
-			·Îº¿¿äÁ¤È°5 = Integer.parseInt(botSettings.getProperty("robotbow5", "12314"));
-			·Îº¿Ä®1 = Integer.parseInt(botSettings.getProperty("robotsowrd1", "12283"));
-			·Îº¿Ä®2 = Integer.parseInt(botSettings.getProperty("robotsowrd2", "12283"));
-			·Îº¿Ä®3 = Integer.parseInt(botSettings.getProperty("robotsowrd3", "12283"));
-			·Îº¿Ä®4 = Integer.parseInt(botSettings.getProperty("robotsowrd4", "12283"));
-			·Îº¿Ä®5 = Integer.parseInt(botSettings.getProperty("robotsowrd5", "12283"));
-			·Îº¿Ä®6 = Integer.parseInt(botSettings.getProperty("robotsowrd6", "12283"));
-			·Îº¿Ä®7 = Integer.parseInt(botSettings.getProperty("robotsowrd7", "12283"));
-			·Îº¿Ä®8 = Integer.parseInt(botSettings.getProperty("robotsowrd8", "12283"));
-			·Îº¿Ä®9 = Integer.parseInt(botSettings.getProperty("robotsowrd9", "12283"));
-			ÀÎÇüÅ¸ÀÔÈ° = Integer.parseInt(botSettings.getProperty("robotdollbowtype", "22"));
-			ÀÎÇüÅ¸ÀÔÄ®1 = Integer.parseInt(botSettings.getProperty("robotdollswordtype1", "21"));
-			ÀÎÇüÅ¸ÀÔÄ®2 = Integer.parseInt(botSettings.getProperty("robotdollswordtype2", "26"));
-			ÀÎÇüÅ¸ÀÔÄ®3 = Integer.parseInt(botSettings.getProperty("robotdollswordtype3", "26"));
-			ÀÎÇüÅ¸ÀÔÄ®4 = Integer.parseInt(botSettings.getProperty("robotdollswordtype4", "26"));
-			ÀÎÇüÅ¸ÀÔÄ®5 = Integer.parseInt(botSettings.getProperty("robotdollswordtype5", "26"));
-			ÀÎÇüÅ¸ÀÔÄ®6 = Integer.parseInt(botSettings.getProperty("robotdollswordtype6", "26"));
-			ÀÎÇüÅ¸ÀÔ°æÇèÄ¡ = Integer.parseInt(botSettings.getProperty("robotdolltypeexp", "26"));
-			ÀÎÇüÅ¸ÀÔÈ°¿£ÇÇ¾¾¾ÆÀÌµğ = Integer.parseInt(botSettings.getProperty("robotdollbownpcid", "41915"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ1 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid1", "4500161"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ2 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid2", "45000161"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ3 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid3", "4500161"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ4 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid4", "4500161"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ5 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid5", "4500161"));
-			ÀÎÇüÅ¸ÀÔÄ®¿£ÇÇ¾¾¾ÆÀÌµğ6 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid6", "4500161"));
-			°æÇèÄ¡ÀÎÇü¿£ÇÇ¾¾¾ÆÀÌµğ = Integer.parseInt(botSettings.getProperty("robotdollexpnpcid", "4500161"));
-			º¿½ÃÀÛ·¹º§ = Integer.parseInt(botSettings.getProperty("botstartLev", "56"));
-			º¿±â¼úÀûÁß = Integer.parseInt(botSettings.getProperty("bottechnichit", "5"));
-			º¿Á¤·ÉÀûÁß = Integer.parseInt(botSettings.getProperty("botspirithit", "0"));
-			º¿¿ë¾ğÀûÁß = Integer.parseInt(botSettings.getProperty("botdragonhit", "0"));
-			º¿°øÆ÷ÀûÁß = Integer.parseInt(botSettings.getProperty("botfearhit", "0"));
-			º¿±â¼ú³»¼º = Integer.parseInt(botSettings.getProperty("bottechnictollance", "30"));
-			º¿Á¤·É³»¼º = Integer.parseInt(botSettings.getProperty("botspirittollance", "10"));
-			º¿¿ë¾ğ³»¼º = Integer.parseInt(botSettings.getProperty("botdragontollance", "10"));
-			º¿°øÆ÷³»¼º = Integer.parseInt(botSettings.getProperty("botfeartollance", "10"));
-			¿äÁ¤È°±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("bowbasepc", "10"));
-			¿äÁ¤È°·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("bowrndpc", "10"));
-			±â»ç±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("knightbasepc", "10"));
-			±â»ç·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("knightrndpc", "10"));
-			Àü»ç±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("warriorbasepc", "10"));
-			Àü»ç·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("warriorrndpc", "10"));
-			´Ù¿¤±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("darkelfbasepc", "10"));
-			´Ù¿¤·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("darkelfrndpc", "10"));
-			¿ë±â»ç±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("dragonebasepc", "10"));
-			¿ë±â»ç·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("dragonerndpc", "10"));
-			±º°Ë¿ä±âº»Å¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("crownbasepc", "10"));
-			±º°Ë¿ä·£´ıÅ¸°İÄ¡PC = Integer.parseInt(botSettings.getProperty("crownrndpc", "10"));
-			¿äÁ¤È°±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("bowbasenpc", "10"));
-			¿äÁ¤È°·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("bowrndnpc", "10"));
-			±â»ç±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("knightbasenpc", "10"));
-			±â»ç·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("knightrndnpc", "10"));
-			Àü»ç±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("warriorbasenpc", "10"));
-			Àü»ç·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("warriorrndnpc", "10"));
-			´Ù¿¤±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("darkelfbasenpc", "10"));
-			´Ù¿¤·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("darkelfrndnpc", "10"));
-			¿ë±â»ç±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("dragonebasenpc", "10"));
-			¿ë±â»ç·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("dragonerndnpc", "10"));
-			±º°Ë¿ä±âº»Å¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("crownbasenpc", "10"));
-			±º°Ë¿ä·£´ıÅ¸°İÄ¡NPC = Integer.parseInt(botSettings.getProperty("crownrndnpc", "10"));
-			º¿¹°¾à±âº»È¸º¹·® = Integer.parseInt(botSettings.getProperty("botposionbase", "45"));
-			º¿¹°¾à·£´ıÈ¸º¹·® = Integer.parseInt(botSettings.getProperty("botposionrnd", "65"));
-			º¿¿äÁ¤½ÎÀÌÅ¬·Ğ = Boolean.parseBoolean(botSettings.getProperty("botelfcyclone", "false"));
-			º¿¿äÁ¤¾ÇÀå = Boolean.parseBoolean(botSettings.getProperty("botnightmare", "false"));
-			º¿Àü»çÅÂÇ³ = Boolean.parseBoolean(botSettings.getProperty("bottypoon", "false"));
-			º¿±ºÁÖ¿¥ÆÄ = Boolean.parseBoolean(botSettings.getProperty("botcrownempire", "false"));
-			º¿°ÔÀÏ = Boolean.parseBoolean(botSettings.getProperty("botgalse", "false"));
-			º¿¶Ë¹° = Boolean.parseBoolean(botSettings.getProperty("botpolute", "false"));
-			·Îº¿¸·ÇÇ = Boolean.parseBoolean(botSettings.getProperty("botattckpc", "false"));
+			ROBOT_FAIRY_BOW_1 = Integer.parseInt(botSettings.getProperty("robotbow1", "12314"));
+			ROBOT_FAIRY_BOW_2 = Integer.parseInt(botSettings.getProperty("robotbow2", "12314"));
+			ROBOT_FAIRY_BOW_3 = Integer.parseInt(botSettings.getProperty("robotbow3", "12314"));
+			ROBOT_FAIRY_BOW_4 = Integer.parseInt(botSettings.getProperty("robotbow4", "12314"));
+			ROBOT_FAIRY_BOW_5 = Integer.parseInt(botSettings.getProperty("robotbow5", "12314"));
+			ROBOT_KNIFE_1 = Integer.parseInt(botSettings.getProperty("robotsowrd1", "12283"));
+			ROBOT_KNIFE_2 = Integer.parseInt(botSettings.getProperty("robotsowrd2", "12283"));
+			ROBOT_KNIFE_3 = Integer.parseInt(botSettings.getProperty("robotsowrd3", "12283"));
+			ROBOT_KNIFE_4 = Integer.parseInt(botSettings.getProperty("robotsowrd4", "12283"));
+			ROBOT_KNIFE_5 = Integer.parseInt(botSettings.getProperty("robotsowrd5", "12283"));
+			ROBOT_KNIFE_6 = Integer.parseInt(botSettings.getProperty("robotsowrd6", "12283"));
+			ROBOT_KNIFE_7 = Integer.parseInt(botSettings.getProperty("robotsowrd7", "12283"));
+			ROBOT_KNIFE_8 = Integer.parseInt(botSettings.getProperty("robotsowrd8", "12283"));
+			ROBOT_KNIFE_9 = Integer.parseInt(botSettings.getProperty("robotsowrd9", "12283"));
+			DOLL_TYPE_BOW = Integer.parseInt(botSettings.getProperty("robotdollbowtype", "22"));
+			DOLL_TYPE_KNIFE_1 = Integer.parseInt(botSettings.getProperty("robotdollswordtype1", "21"));
+			DOLL_TYPE_KNIFE_2 = Integer.parseInt(botSettings.getProperty("robotdollswordtype2", "26"));
+			DOLL_TYPE_KNIFE_3 = Integer.parseInt(botSettings.getProperty("robotdollswordtype3", "26"));
+			DOLL_TYPE_KNIFE_4 = Integer.parseInt(botSettings.getProperty("robotdollswordtype4", "26"));
+			DOLL_TYPE_KNIFE_5 = Integer.parseInt(botSettings.getProperty("robotdollswordtype5", "26"));
+			DOLL_TYPE_KNIFE_6 = Integer.parseInt(botSettings.getProperty("robotdollswordtype6", "26"));
+			DOLL_TYPE_EXPERIENCE = Integer.parseInt(botSettings.getProperty("robotdolltypeexp", "26"));
+			DOLL_TYPE_BOW_NPC_ID = Integer.parseInt(botSettings.getProperty("robotdollbownpcid", "41915"));
+			DOLL_TYPE_KALNPC_ID_1 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid1", "4500161"));
+			DOLL_TYPE_KALNPC_ID_2 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid2", "45000161"));
+			DOLL_TYPE_KALNPC_ID_3 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid3", "4500161"));
+			DOLL_TYPE_KALNPC_ID_4 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid4", "4500161"));
+			DOLL_TYPE_KALNPC_ID_5 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid5", "4500161"));
+			DOLL_TYPE_KALNPC_ID_6 = Integer.parseInt(botSettings.getProperty("robotdollswordnpcid6", "4500161"));
+			EXPERIENCE_DOLL_NPC_ID = Integer.parseInt(botSettings.getProperty("robotdollexpnpcid", "4500161"));
+			BOT_START_LEVEL = Integer.parseInt(botSettings.getProperty("botstartLev", "56"));
+			BOT_SKILLS = Integer.parseInt(botSettings.getProperty("bottechnichit", "5"));
+			BOT_SPIRIT_HIT = Integer.parseInt(botSettings.getProperty("botspirithit", "0"));
+			BOT_VERD_HIT = Integer.parseInt(botSettings.getProperty("botdragonhit", "0"));
+			BOT_HORROR_HIT = Integer.parseInt(botSettings.getProperty("botfearhit", "0"));
+			BOT_TECHNOLOGY_RESISTANCE = Integer.parseInt(botSettings.getProperty("bottechnictollance", "30"));
+			BOT_SPIRIT_RESISTANCE = Integer.parseInt(botSettings.getProperty("botspirittollance", "10"));
+			BOT_TOLERANCE = Integer.parseInt(botSettings.getProperty("botdragontollance", "10"));
+			BOT_FEAR_RESISTANCE = Integer.parseInt(botSettings.getProperty("botfeartollance", "10"));
+			FAIRY_BOW_BASIC_STRIKE_VALUE_PC = Integer.parseInt(botSettings.getProperty("bowbasepc", "10"));
+			FAIRY_BOW_RANDOM_HIT_POINT_PC = Integer.parseInt(botSettings.getProperty("bowrndpc", "10"));
+			KNIGHTS_BASIC_STRIKE_VALUE_PC = Integer.parseInt(botSettings.getProperty("knightbasepc", "10"));
+			KNIGHT_RANDOM_HIT_POINT_PC = Integer.parseInt(botSettings.getProperty("knightrndpc", "10"));
+			WARRIOR_BASIC_STRIKE_VALUE_PC = Integer.parseInt(botSettings.getProperty("warriorbasepc", "10"));
+			WARRIOR_RANDOM_HIT_POINT_PC = Integer.parseInt(botSettings.getProperty("warriorrndpc", "10"));
+			DAELS_BASIC_HIT_VALUE_PC = Integer.parseInt(botSettings.getProperty("darkelfbasepc", "10"));
+			DAEL_RANDOM_HIT_PC = Integer.parseInt(botSettings.getProperty("darkelfrndpc", "10"));
+			DRAGON_KNIGHT_BASIC_STRIKE_VALUE_PC = Integer.parseInt(botSettings.getProperty("dragonebasepc", "10"));
+			DRAGON_KNIGHT_RANDOM_HIT_POINT_PC = Integer.parseInt(botSettings.getProperty("dragonerndpc", "10"));
+			MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_PC = Integer.parseInt(botSettings.getProperty("crownbasepc", "10"));
+			MILITARY_SWORD_RANDOM_HIT_POINT_PC = Integer.parseInt(botSettings.getProperty("crownrndpc", "10"));
+			FAIRY_BOW_BASIC_STRIKE_VALUE_NPC = Integer.parseInt(botSettings.getProperty("bowbasenpc", "10"));
+			FAIRY_BOW_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("bowrndnpc", "10"));
+			KNIGHTS_BASIC_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("knightbasenpc", "10"));
+			KNIGHT_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("knightrndnpc", "10"));
+			WARRIOR_BASIC_STRIKE_VALUE_NPC = Integer.parseInt(botSettings.getProperty("warriorbasenpc", "10"));
+			WARRIOR_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("warriorrndnpc", "10"));
+			DAEL_BASIC_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("darkelfbasenpc", "10"));
+			DAEL_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("darkelfrndnpc", "10"));
+			DRAGON_KNIGHT_BASIC_STRIKE_VALUE_NPC = Integer.parseInt(botSettings.getProperty("dragonebasenpc", "10"));
+			DRAGON_KNIGHT_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("dragonerndnpc", "10"));
+			MILITARY_SWORDSMAN_BASIC_STRIKE_VALUE_NPC = Integer.parseInt(botSettings.getProperty("crownbasenpc", "10"));
+			MILITARY_SWORD_RANDOM_HIT_POINT_NPC = Integer.parseInt(botSettings.getProperty("crownrndnpc", "10"));
+			BOT_POTION_BASIC_RECOVERY_AMOUNT = Integer.parseInt(botSettings.getProperty("botposionbase", "45"));
+			BOT_POTION_RANDOM_RECOVERY_AMOUNT = Integer.parseInt(botSettings.getProperty("botposionrnd", "65"));
+			_BOT_FAIRY_CYCLONE = Boolean.parseBoolean(botSettings.getProperty("botelfcyclone", "false"));
+			_BOT_FAIRY_MOVEMENT = Boolean.parseBoolean(botSettings.getProperty("botnightmare", "false"));
+			_BOT_WARFARE = Boolean.parseBoolean(botSettings.getProperty("bottypoon", "false"));
+			_BOT_LORD_EMPA = Boolean.parseBoolean(botSettings.getProperty("botcrownempire", "false"));
+			_BOTGALE = Boolean.parseBoolean(botSettings.getProperty("botgalse", "false"));
+			_DUNG_WATER = Boolean.parseBoolean(botSettings.getProperty("botpolute", "false"));
+			_ROBOT_SKIN = Boolean.parseBoolean(botSettings.getProperty("botattckpc", "false"));
 
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
@@ -1771,23 +1771,23 @@ public final class Config {
 			Eventlink.load(is);
 			is.close();
 
-			/** ÀÌº¥Æ®¶óÀÎ ¼ÂÆÃÆÄÀÏ **/
-			/** ÀÌº¥Æ®¿ë **/
-			CRAFT_TABLE_ONE = Integer.parseInt(Eventlink.getProperty("one", "0")); // Àå±º;
-			CRAFT_TABLE_TWO = Integer.parseInt(Eventlink.getProperty("two", "0")); // Àå±º;;
-			CRAFT_TABLE_THREE = Integer.parseInt(Eventlink.getProperty("three", "0")); // Àå±º;;
-			CRAFT_TABLE_FOUR = Integer.parseInt(Eventlink.getProperty("four", "0")); // Àå±º;;
-			CRAFT_TABLE_FIVE = Integer.parseInt(Eventlink.getProperty("five", "0")); // Àå±º;;
-			CRAFT_TABLE_SIX = Integer.parseInt(Eventlink.getProperty("six", "0")); // Àå±º;;
-			CRAFT_TABLE_SEVEN = Integer.parseInt(Eventlink.getProperty("seven", "0")); // Àå±º;;
-			CRAFT_TABLE_EIGHT = Integer.parseInt(Eventlink.getProperty("eight", "0")); // Àå±º;;
-			CRAFT_TABLE_NINE = Integer.parseInt(Eventlink.getProperty("nine", "0")); // Àå±º;
-			CRAFT_TABLE_TEN = Integer.parseInt(Eventlink.getProperty("ten", "0")); // Àå±º;;
-			CRAFT_TABLE = Integer.parseInt(Eventlink.getProperty("zero", "1")); // Àå±º;;
-			ÀÎÇüÈ®·ü = Integer.parseInt(Eventlink.getProperty("dollchance", "1"));
+			/** ì´ë²¤íŠ¸ë¼ì¸ ì…‹íŒ…íŒŒì¼ **/
+			/** ì´ë²¤íŠ¸ìš© **/
+			CRAFT_TABLE_ONE = Integer.parseInt(Eventlink.getProperty("one", "0")); // ì¥êµ°;
+			CRAFT_TABLE_TWO = Integer.parseInt(Eventlink.getProperty("two", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_THREE = Integer.parseInt(Eventlink.getProperty("three", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_FOUR = Integer.parseInt(Eventlink.getProperty("four", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_FIVE = Integer.parseInt(Eventlink.getProperty("five", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_SIX = Integer.parseInt(Eventlink.getProperty("six", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_SEVEN = Integer.parseInt(Eventlink.getProperty("seven", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_EIGHT = Integer.parseInt(Eventlink.getProperty("eight", "0")); // ì¥êµ°;;
+			CRAFT_TABLE_NINE = Integer.parseInt(Eventlink.getProperty("nine", "0")); // ì¥êµ°;
+			CRAFT_TABLE_TEN = Integer.parseInt(Eventlink.getProperty("ten", "0")); // ì¥êµ°;;
+			CRAFT_TABLE = Integer.parseInt(Eventlink.getProperty("zero", "1")); // ì¥êµ°;;
+			DOLL_PROBABILITY = Integer.parseInt(Eventlink.getProperty("dollchance", "1"));
 			CLAN_BLESS_ALL_USE = Boolean.parseBoolean(Eventlink.getProperty("ClanBlessAllUse", "false"));
 		} catch (Exception e) {
-			_log.log(Level.SEVERE, "Config.¿¡¼­ ¿¡·¯°¡ ¹ß»ıÇß½À´Ï´Ù.", e);
+			_log.log(Level.SEVERE, "Config.ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ.", e);
 			throw new Error("Failed to Load " + CHOLONG_SETTINGS_CONFIG_FILE + " File.");
 		}
 		validate();
@@ -1828,11 +1828,11 @@ public final class Config {
 
 	private static void validate() {
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_RANGE, 0, 5)) {
-			throw new IllegalStateException("ItemDeletionRangeÀÇ °ªÀÌ ¼³Á¤ °¡´É ¹üÀ§¿ÜÀÔ´Ï´Ù. ");
+			throw new IllegalStateException("ItemDeletionRangeã®å€¤ãŒè¨­å®šå¯èƒ½ç¯„å›²å¤–ã§ã™. ");
 		}
 
 		if (!IntRange.includes(Config.ALT_ITEM_DELETION_TIME, 1, 35791)) {
-			throw new IllegalStateException("ItemDeletionTimeÀÇ °ªÀÌ ¼³Á¤ °¡´É ¹üÀ§¿ÜÀÔ´Ï´Ù. ");
+			throw new IllegalStateException("ItemDeletionTimeã®å€¤ãŒè¨­å®šå¯èƒ½ç¯„å›²å¤–ã§ã™. ");
 		}
 	}
 
@@ -1872,13 +1872,13 @@ public final class Config {
 		} else if (pName.equalsIgnoreCase("CharacterConfigInServerSide")) {
 			CHARACTER_CONFIG_IN_SERVER_SIDE = Boolean.parseBoolean(pValue);
 		} else if (pName.equalsIgnoreCase("Charpass")) {
-			Ä³¸¯ÅÍºñ¹ø»ç¿ë¿©ºÎ = Boolean.parseBoolean(pValue);
+			_WHETHER_TO_USE_CHARACTER_PASSWORD = Boolean.parseBoolean(pValue);
 		} else if (pName.equalsIgnoreCase("Allow2PC")) {
 			ALLOW_2PC = Boolean.parseBoolean(pValue);
 		} else if (pName.equalsIgnoreCase("LevelDownRange")) {
 			LEVEL_DOWN_RANGE = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("AccountPassword")) {
-			ACCOUNT_PASSWORD = Boolean.parseBoolean(pValue);// ÆĞ½º¿öµå ¾ÏÈ£È­ »èÁ¦ ¼Ò½º 0813 Ãß°¡
+			ACCOUNT_PASSWORD = Boolean.parseBoolean(pValue);// íŒ¨ìŠ¤ì›Œë“œ ì•”í˜¸í™” ì‚­ì œ ì†ŒìŠ¤ 0813 ì¶”ê°€
 		} else if (pName.equalsIgnoreCase("SendPacketBeforeTeleport")) {
 			SEND_PACKET_BEFORE_TELEPORT = Boolean.parseBoolean(pValue);
 		}
@@ -1908,9 +1908,9 @@ public final class Config {
 		} else if (pName.equalsIgnoreCase("FeatherNumber")) {
 			FEATHER_NUMBER = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("BattleZone")) {
-			¹èÆ²Á¸ÀÛµ¿À¯¹« = Boolean.valueOf(pValue);
+			_WHETHER_OF_NOT_THE_BATTLE_ZONE_WORKS = Boolean.valueOf(pValue);
 		} else if (pName.equalsIgnoreCase("BattleLevel")) {
-			¹èÆ²Á¸ÀÔÀå·¹º§ = Integer.parseInt(pValue);
+			BATTLE_ZONE_ENTRY_LEVEL = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("ClanNumber")) {
 			CLAN_NUMBER = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("CastleNumber")) {
@@ -2119,15 +2119,15 @@ public final class Config {
 		} else if (pName.equalsIgnoreCase("Lv99Exp")) {
 			LV99_EXP = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("Raidtime")) {
-			·¹ÀÌµå½Ã°£ = Integer.parseInt(pValue);
+			RAID_TIME = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("SnapperMaxEnchant")) {
-			½º³ÀÆÛÃÖ´ëÀÎÃ¦ = Integer.parseInt(pValue);
+			SNAPPER_MAX_ENCHANTMENT = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("RoomteeceMaxEnchant")) {
-			·ëÆ¼½ºÃÖ´ëÀÎÃ¦ = Integer.parseInt(pValue);
+			ROOMTIS_MAXIMUM_ENCHANTMENT = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("acaccessoryMaxEnchant")) {
-			Àå½Å±¸ÃÖ´ëÀÎÃ¦ = Integer.parseInt(pValue);
+			MAXIMUM_ENCHANTMENTOF_ACCESSORIES = Integer.parseInt(pValue);
 		} else if (pName.equalsIgnoreCase("AnoldeTime")) {
-			¾Æ³îµåÀÌº¥Æ®½Ã°£ = Integer.parseInt(pValue);
+			ARNOLD_EVENT_TIME = Integer.parseInt(pValue);
 			// Eventlink set file
 		} else if (pName.equalsIgnoreCase("one")) {
 			CRAFT_TABLE_ONE = Integer.parseInt(pValue);
@@ -2183,11 +2183,11 @@ public final class Config {
 	}
 
 	/*
-	 * public static synchronized String YearMonthDate2(){ try{ int ³â = Year();
-	 * String ³â2; if(³â < 10){ ³â2 = "0"+³â; }else{ ³â2 = Integer.toString(³â); } int ¿ù =
-	 * Month(); String ¿ù2=null; if(¿ù < 10){ ¿ù2 = "0"+¿ù; }else{ ¿ù2 =
-	 * Integer.toString(¿ù); } int ÀÏ = Date(); String ÀÏ2 = null; if(ÀÏ < 10){ ÀÏ2 =
-	 * "0"+ÀÏ; }else{ ÀÏ2 = Integer.toString(ÀÏ); } return ³â2+¿ù2+ÀÏ2; }catch (Exception
+	 * public static synchronized String YearMonthDate2(){ try{ int ë…„ = Year();
+	 * String ë…„2; if(ë…„ < 10){ ë…„2 = "0"+ë…„; }else{ ë…„2 = Integer.toString(ë…„); } int ì›” =
+	 * Month(); String ì›”2=null; if(ì›” < 10){ ì›”2 = "0"+ì›”; }else{ ì›”2 =
+	 * Integer.toString(ì›”); } int ì¼ = Date(); String ì¼2 = null; if(ì¼ < 10){ ì¼2 =
+	 * "0"+ì¼; }else{ ì¼2 = Integer.toString(ì¼); } return ë…„2+ì›”2+ì¼2; }catch (Exception
 	 * e){}
 	 *
 	 * return "000000"; }
@@ -2196,28 +2196,28 @@ public final class Config {
 		try {
 
 			Date day = new Date(System.currentTimeMillis());
-			int ³â = day.getYear() - 100;
-			String ³â2;
-			if (³â < 10) {
-				³â2 = "0" + ³â;
+			int ë…„ = day.getYear() - 100;
+			String ë…„2;
+			if (ë…„ < 10) {
+				ë…„2 = "0" + ë…„;
 			} else {
-				³â2 = Integer.toString(³â);
+				ë…„2 = Integer.toString(ë…„);
 			}
-			int ¿ù = (day.getMonth() + 1);
-			String ¿ù2 = null;
-			if (¿ù < 10) {
-				¿ù2 = "0" + ¿ù;
+			int ì›” = (day.getMonth() + 1);
+			String ì›”2 = null;
+			if (ì›” < 10) {
+				ì›”2 = "0" + ì›”;
 			} else {
-				¿ù2 = Integer.toString(¿ù);
+				ì›”2 = Integer.toString(ì›”);
 			}
-			int ÀÏ = day.getDate();
-			String ÀÏ2 = null;
-			if (ÀÏ < 10) {
-				ÀÏ2 = "0" + ÀÏ;
+			int ì¼ = day.getDate();
+			String ì¼2 = null;
+			if (ì¼ < 10) {
+				ì¼2 = "0" + ì¼;
 			} else {
-				ÀÏ2 = Integer.toString(ÀÏ);
+				ì¼2 = Integer.toString(ì¼);
 			}
-			return ³â2 + ¿ù2 + ÀÏ2;
+			return ë…„2 + ì›”2 + ì¼2;
 		} catch (Exception e) {
 		}
 

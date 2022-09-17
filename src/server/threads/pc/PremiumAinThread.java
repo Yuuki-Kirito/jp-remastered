@@ -153,7 +153,7 @@ public class PremiumAinThread extends Thread {
 								}
 							}
 
-							if (Config.Chopa_Event && Config.초파드랍진행중) {
+							if (Config._Chopa_Event && Config._SUPER_DROP_IN_PROGRESS) {
 								if (ctc >= 60) {
 									_client.set쵸파카운트(0);// 6(분)에서 + 1분을 더해준다.
 									_client.getInventory().storeItem(50757, 1); // 드상
@@ -164,7 +164,7 @@ public class PremiumAinThread extends Thread {
 								}
 							}
 
-							if (Config.Dragon_14_12_12_Event && Config.드다1212드랍진행중) {
+							if (Config._Dragon_14_12_12_Event && Config._DEDA_1212_DROP_IN_PROGRESS) {
 								if (dtc >= 60) {
 									_client.setdtimecount(0);
 									_client.getInventory().storeItem(437010, 1); // 드상
@@ -174,7 +174,7 @@ public class PremiumAinThread extends Thread {
 								}
 							}
 
-							if (Config.Dragon_3DAY_Event && Config.드다드랍진행중) {
+							if (Config._Dragon_3DAY_Event && Config._DROP_IN_PROGRESS) {
 								if (dtc >= 300) {
 									_client.setdtimecount(0);// 6(분)에서 + 1분을
 																// 더해준다.
@@ -193,7 +193,7 @@ public class PremiumAinThread extends Thread {
 							}
 							/// 깃털 지급 주석
 
-							if (Config.할로윈_Event && Config.할로윈진행중) {
+							if (Config._HALLOWEEN_EVENT && Config._HALLOWEEN_IN_PROGRESS) {
 								if (_client.getInventory().checkEquipped(21123)) { // 할로윈
 																					// 축제
 																					// 모자

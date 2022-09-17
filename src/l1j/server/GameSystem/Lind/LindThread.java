@@ -314,7 +314,7 @@ public class LindThread extends Thread {
 			pc.getSkillEffectTimerSet().setSkillEffect(
 					L1SkillId.DRAGONRAID_BUFF, (86400 * 2) * 1000);
 			Timestamp deleteTime = new Timestamp(System.currentTimeMillis()
-					+ (86400000 * Config.레이드시간));// 7일
+					+ (86400000 * Config.RAID_TIME));// 7일
 			pc.getNetConnection().getAccount().setDragonRaid(deleteTime);
 			pc.getNetConnection().getAccount().updateDragonRaidBuff();
 			pc.sendPackets(new S_PacketBox(S_PacketBox.드래곤레이드버프, 86400 * 2),

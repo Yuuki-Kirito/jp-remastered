@@ -4422,7 +4422,7 @@ public class L1PcInstance extends L1Character {
 				 *
 				 * return; }
 				 */
-				if (Config.아놀드이벤트) {
+				if (Config._ARNOLD_EVENT) {
 					if (lastAttacker instanceof L1PcInstance) {
 						if (getInventory().checkEquipped(21276)) { // 착용한 아이템
 							drop();
@@ -6530,7 +6530,7 @@ public class L1PcInstance extends L1Character {
 		byte old = (byte) getLevel();
 		resetLevel();
 
-		if (getLevel() <= Config.클라우디아레벨) {
+		if (getLevel() <= Config.CLAUDIA_LEVEL) {
 			quest_level(getLevel());
 		}
 
@@ -6636,11 +6636,11 @@ public class L1PcInstance extends L1Character {
 				혈맹버프 = false;
 			}
 		}
-		if (getLevel() >= Config.MAX_버모스_DUNGEON_LEVEL) {
+		if (getLevel() >= Config.MAX_VERMOS_DUNGEON_LEVEL) {
 			if (getMapId() >= 30 && getMapId() <= 37)
 				L1Teleport.teleport(this, 33444, 32798, (short) 4, 5, true);
 		}
-		if (getLevel() >= Config.MAX_후오스_DUNGEON_LEVEL) {
+		if (getLevel() >= Config.MAX_HUOS_DUNGEON_LEVEL) {
 			if (getMapId() == 814) {
 				L1Teleport.teleport(this, 33611, 33243, (short) 4, 5, true);
 			}
@@ -9778,7 +9778,7 @@ public class L1PcInstance extends L1Character {
 
 	public void quest_level(int lv) {
 		try {
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(257);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9789,7 +9789,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(369);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9800,7 +9800,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(279);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9811,7 +9811,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(283);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9822,7 +9822,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(287);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9833,7 +9833,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(291);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9844,7 +9844,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(294);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9855,7 +9855,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(297);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9866,7 +9866,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(300);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9877,7 +9877,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(302);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;
@@ -9888,7 +9888,7 @@ public class L1PcInstance extends L1Character {
 				}
 			}
 
-			if (lv > 1 && lv <= Config.클라우디아레벨) {
+			if (lv > 1 && lv <= Config.CLAUDIA_LEVEL) {
 				L1QuestInfo info = getQuestList(361);
 				if (info != null && info.end_time == 0) {
 					info.ck[0] = lv;

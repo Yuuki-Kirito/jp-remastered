@@ -3288,10 +3288,10 @@ public class GMCommands {
 
 	private void 아놀드상점(L1PcInstance gm, String param) {
 		if (param.equalsIgnoreCase("켬")) {
-			if (Config.아놀드상점 == null) {
+			if (Config.ARNOLD_SHOP == null) {
 				L1NpcInstance npc = L1SpawnUtil.spawn4(33435, 32804, (short) 4, 0, 100880, 0, 0, 0);
 				if (npc != null) {
-					Config.아놀드상점 = npc;
+					Config.ARNOLD_SHOP = npc;
 				}
 
 				gm.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "아놀드 상점을 스폰 합니다."), true);
@@ -3299,9 +3299,9 @@ public class GMCommands {
 				gm.sendPackets(new S_SystemMessage("아놀드 상점이 이미 스폰중 입니다."), true);
 			}
 		} else if (param.equalsIgnoreCase("끔")) {
-			if (Config.아놀드상점 != null) {
-				Config.아놀드상점.deleteMe();
-				Config.아놀드상점 = null;
+			if (Config.ARNOLD_SHOP != null) {
+				Config.ARNOLD_SHOP.deleteMe();
+				Config.ARNOLD_SHOP = null;
 				gm.sendPackets(new S_SystemMessage("아놀드 상점을 삭제 합니다."), true);
 			} else {
 				gm.sendPackets(new S_SystemMessage("아놀드 상점을 찾을 수 없습니다."), true);

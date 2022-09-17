@@ -264,7 +264,7 @@ public class ValaRaid implements Runnable {
 				case StageSix:
 					for (L1PcInstance pc : PcStageCK()){ // 드래곤 버프
 						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DRAGONRAID_BUFF, (86400 * 2) * 1000);
-						Timestamp deleteTime = new Timestamp(System.currentTimeMillis()+ (86400000 * Config.레이드시간));// 7일
+						Timestamp deleteTime = new Timestamp(System.currentTimeMillis()+ (86400000 * Config.RAID_TIME));// 7일
 						pc.sendPackets(new S_PacketBox(S_PacketBox.드래곤레이드버프, 86400 * 2),true);
 						pc.sendPackets(new S_SkillSound(pc.getId(), 7783));
 						Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(), 7783));

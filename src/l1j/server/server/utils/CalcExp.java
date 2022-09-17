@@ -537,7 +537,7 @@ public class CalcExp {
 		}
 		
 		
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF) && Config.드래곤성장의물약이벤트 == true){
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DRAGON_GROWTH_BUFF) && Config._DRAGON_GROWTH_POTION_EVENT == true){
 			if(pc.getLevel() <= 79) {
 				dragonexp += 1.3;
 			} else if(pc.getLevel() >= 80 && pc.getLevel() <= 81) {
@@ -957,7 +957,7 @@ public class CalcExp {
 	    	  etcBonus += 0.15D;
 	      }
 
-		if (GameServer.신규지원_경험치지급단 && pc.getLevel() <= 70) {
+		if (GameServer._NEW_SUPPORT_EXPERIENCE_PAYMENT_GROUP && pc.getLevel() <= 70) {
 			신규지원 = 1.50;
 		}
 
@@ -1036,8 +1036,8 @@ public class CalcExp {
 		 * <= 77){ settingEXP /= 35; }else{ settingEXP /= ((pclevel - 51) *
 		 * 2.5); }
 		 */
-		if (Config.룸티스_Event) {
-			if (Config.룸티스드랍진행중) {
+		if (Config._ROOMTIS_EVENT) {
+			if (Config._ROOMTIS_DORP_IN_PROGRESS) {
 				if (dragoneme != 1) {
 					dragoneme *= 2;
 				}

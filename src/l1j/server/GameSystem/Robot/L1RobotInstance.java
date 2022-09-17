@@ -1083,7 +1083,7 @@ public class L1RobotInstance extends L1PcInstance {
 	
 		if(percent < 95){
 			gfxid = 197; //»¡°»ÀÌ 189
-			healHp = Config.º¿¹°¾à±âº»È¸º¹·® + _random.nextInt(Config.º¿¹°¾à·£´ýÈ¸º¹·®);
+			healHp = Config.BOT_POTION_BASIC_RECOVERY_AMOUNT + _random.nextInt(Config.BOT_POTION_RANDOM_RECOVERY_AMOUNT);
 			delay = 500;
 			¸»°»ÀÌ--;
 		}
@@ -1313,7 +1313,7 @@ public class L1RobotInstance extends L1PcInstance {
 							continue;
 						}
 												
-						if (!saram.isPinkName() && Config.·Îº¿¸·ÇÇ == false && (!(getMapId() >= 43 && getMapId() <= 50))){ 
+						if (!saram.isPinkName() && Config._ROBOT_SKIN == false && (!(getMapId() >= 43 && getMapId() <= 50))){ 
 							continue; 
 						}
 						

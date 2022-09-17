@@ -3789,7 +3789,7 @@ public class C_ItemUSe extends ClientBasePacket {
 					if (itemId == 3000051) {
 						int øµ»•¿ª¿“¿∫¿Â∫Ò = l1iteminstance1.getItem().getItemId();
 						if (øµ»•¿ª¿“¿∫¿Â∫Ò >= 30070 && 30078 >= øµ»•¿ª¿“¿∫¿Â∫Ò) {
-							if ((_random.nextInt(99) + 1) <= Config.øµª˝¿«∫˚) {
+							if ((_random.nextInt(99) + 1) <= Config.LIAGHT_OF_ETERNAL_LIFE) {
 								createNewItem(pc, øµ»•¿ª¿“¿∫¿Â∫Ò + 10, 1);
 								L1World.getInstance().broadcastPacketToAll(
 										new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æÓ¥¿ æ∆µß øÎªÁ∞° øµ»•¿ª ¿“¿∫ π´±‚ø° øµ»•¿ª ∫“æÓ≥÷¥¬µ• º∫∞¯«œø© ¡˝«‡ π´±‚∏¶ »πµÊ «œºÃΩ¿¥œ¥Ÿ."));

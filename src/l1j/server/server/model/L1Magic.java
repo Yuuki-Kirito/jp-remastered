@@ -581,9 +581,9 @@ public class L1Magic {
 		switch (skillId) {
 		case ERASE_MAGIC:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3)  + Config.ÀÌ·¹¸ÅÁ÷È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3)  + Config.SEVEN_MAGIC_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÀÌ·¹¸ÅÁ÷È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.SEVEN_MAGIC_PROBABILITY;
 			}
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
 				if (_pc instanceof L1PcInstance) {
@@ -634,9 +634,9 @@ public class L1Magic {
 
 		case µ¥½ºÆä¶óµµ:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.µ¥ÆäÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEFE_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.µ¥ÆäÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEFE_PROBABILITY;
 			}
 			
 			if (_calcType == PC_PC && skillId != AREA_OF_SILENCE) {
@@ -656,9 +656,9 @@ public class L1Magic {
 			
 		case DEMOLITION:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEMOLITIONÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEMOLITION_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEMOLITIONÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEMOLITION_PROBABILITY;
 			}
 			
 			if (_calcType == PC_PC && skillId != AREA_OF_SILENCE) {
@@ -678,9 +678,9 @@ public class L1Magic {
 
 		case ½¦µµ¿ì½ºÅÇ:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.½¦µµ¿ì½ºÅÇÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.SHADOW_TAP_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.½¦µµ¿ì½ºÅÇÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.SHADOW_TAP_PROBABILITY;
 			}
 			
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
@@ -708,9 +708,9 @@ public class L1Magic {
 		
 		case ÆÄ¿ö±×¸³:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.±×¸³È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.GRIP_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.±×¸³È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.GRIP_PROBABILITY;
 			}
 			
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
@@ -737,9 +737,9 @@ public class L1Magic {
 			break;
 		case SHOCK_STUN:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.½ºÅÏÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.STUN_CHANCE;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.½ºÅÏÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.STUN_CHANCE;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -766,9 +766,9 @@ public class L1Magic {
 			break;
 		case JUDGEMENT:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÀúÁö¸ÕÆ®È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.JUDGMENT_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÀúÁö¸ÕÆ®È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.JUDGMENT_PROBABILITY;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -795,9 +795,9 @@ public class L1Magic {
 			break;
 		case PANTERA:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÆÇÅ×¶óÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.PANTERA_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÆÇÅ×¶óÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.PANTERA_PROBABILITY;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -824,9 +824,9 @@ public class L1Magic {
 			break;
 		case PHANTOM:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÆÒÅÒÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.PHANTOM_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÆÒÅÒÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.PHANTOM_PROBABILITY;
 			}
 			
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
@@ -853,9 +853,9 @@ public class L1Magic {
 			break;
 		case FORCE_STUN:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.Æ÷½º½ºÅÏÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.POSTSTONE_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.Æ÷½º½ºÅÏÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.POSTSTONE_PROBABILITY;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -885,9 +885,9 @@ public class L1Magic {
 			break;
 		case ETERNITY:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÀÌÅÍ³ÊÆ¼È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ETERNITY_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ÀÌÅÍ³ÊÆ¼È®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.ETERNITY_PROBABILITY;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -914,9 +914,9 @@ public class L1Magic {
 			break;
 		case AVENGER:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¾îº¥ÀúÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.AVENGER_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¾îº¥ÀúÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.AVENGER_PROBABILITY;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -944,9 +944,9 @@ public class L1Magic {
 			
 		case ¿¥ÆÄÀÌ¾î:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¿¥ÆÄÀÌ¾î;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.EMPIRE;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¿¥ÆÄÀÌ¾î;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.EMPIRE;
 			}
 
 			if (_calcType == PC_PC || _calcType == PC_NPC) {
@@ -974,9 +974,9 @@ public class L1Magic {
 			
 		case EARTH_BIND:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¾î¹ÙÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.URBAN_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.¾î¹ÙÈ®·ü;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.URBAN_PROBABILITY;
 			}
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
 				if (_pc instanceof L1PcInstance) {
@@ -1395,9 +1395,9 @@ public class L1Magic {
 			break;*/
 		case BONE_BREAK:
 			if (attackLevel >= defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.º»ºê·¹ÀÌÅ©;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.BONE_BREAK;
 			} else if (attackLevel < defenseLevel) {
-				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.º»ºê·¹ÀÌÅ©;
+				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.BONE_BREAK;
 			}
 			if ((_calcType == PC_PC || _calcType == PC_NPC) && skillId != AREA_OF_SILENCE) {
 				if (_pc instanceof L1PcInstance) {
@@ -1910,7 +1910,7 @@ public class L1Magic {
 			}
 		}
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(IMMUNE_TO_HARM)) {
-			dmg -= (dmg*Config.¹Ãµ¥¹ÌÁö);
+			dmg -= (dmg*Config.MUME_DAMAGE);
 		}
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(·ç½ÃÆÛ)) {
 			dmg -= dmg / 10;

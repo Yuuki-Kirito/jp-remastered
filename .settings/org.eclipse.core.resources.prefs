@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/l1j/server/Config.java=UTF-8
 encoding//src/l1j/server/GameSystem/Advertisement/BadukiChatController.java=UTF-8
 encoding//src/l1j/server/GameSystem/Advertisement/ItemBayChatController.java=UTF-8
 encoding//src/l1j/server/server/GMCommands.java=UTF-8

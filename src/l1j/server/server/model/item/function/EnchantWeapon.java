@@ -317,7 +317,7 @@ public class EnchantWeapon extends Enchant {
 						chance = 100;
 						pc.장인축복 = false;
 					}
-					if (_random.nextInt(100) < Config.장인확률 + chance) {
+					if (_random.nextInt(100) < Config.CRAFTSMAN_PROBABILITY + chance) {
 						SuccessEnchant(pc, l1iteminstance1, 1);
 					} else
 						pc.sendPackets(new S_ServerMessage(160, l1iteminstance1.getLogName(), "$245", "$248"), true);

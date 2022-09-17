@@ -10,21 +10,21 @@ public class S_CharMapTime extends ServerBasePacket {
 	private byte[] _byte = null;
 	private static final int RESTART_MAPUI = 803;
 	private static int[] 고정값 = new int[] { 1, 2, 6, 7, 15, 17, 18, 23, 99, 100 };
-	private static int[] totaltime = new int[] { Config.기란감옥던전시간,
-			Config.상아탑발록진영시간, 7200, 10800,
-			7200, 7200, Config.PC정무시간, Config.PC정무시간, Config.PC정무시간, 7200, Config.PC정무시간 };
+	private static int[] totaltime = new int[] { Config.GIRAN_PRISON_DUNGEON_TIME,
+			Config.IVORY_TOWER_BALROG_CAMP_TIME, 7200, 10800,
+			7200, 7200, Config.PC_TIME, Config.PC_TIME, Config.PC_TIME, 7200, Config.PC_TIME };
 
 	public S_CharMapTime(L1PcInstance pc) {
-		int[] usetime = new int[] { Config.기란감옥던전시간 - pc.getgirantime(),
-				Config.상아탑발록진영시간 - pc.getivorytime(),
+		int[] usetime = new int[] { Config.GIRAN_PRISON_DUNGEON_TIME - pc.getgirantime(),
+				Config.IVORY_TOWER_BALROG_CAMP_TIME - pc.getivorytime(),
 				7200 - pc.get버땅time(), 10800 - pc.get아투바time(),
 				7200 - pc.get에바time(), //더미
 				7200- pc.get고무time(),
-				Config.PC정무시간 - pc.get고무time() //미소피아의 숨겨진마을
-				,Config.PC정무시간 - pc.get고무time() //미소피아의 숨겨진마을pc
-				,Config.PC정무시간 - pc.get고무time() //불타는여정 이벤트맵
+				Config.PC_TIME - pc.get고무time() //미소피아의 숨겨진마을
+				,Config.PC_TIME - pc.get고무time() //미소피아의 숨겨진마을pc
+				,Config.PC_TIME - pc.get고무time() //불타는여정 이벤트맵
 				,7200 - pc.get검은전함time()
-				,Config.PC정무시간 - pc.get고무time()};//말섬던전
+				,Config.PC_TIME - pc.get고무time()};//말섬던전
 		String[] name = new String[] { "$12125", "$6081", "$30247", "$14667",
 			"$30983", "$19375", "$30733", "$30734", "$28760", "$27281", "$23478" };
 		writeC(Opcodes.S_EXTENDED_PROTOBUF);

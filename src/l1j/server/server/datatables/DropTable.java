@@ -379,7 +379,7 @@ public class DropTable {
 			short mapid = npc.getMapId();
 			int itemRandom = random.nextInt(1000) + 1;
 		if (mapid == 479) {
-			if (itemRandom <= Config.라던수표) {
+			if (itemRandom <= Config.RADEN_CHECK) {
 				Citem = ItemTable.getInstance().createItem(600368);
 				inventory.storeItem(Citem);
 			}

@@ -384,7 +384,7 @@ public class WeaponSkill {
 		if (isFreeze(cha)) {
 			return;
 		}
-		if (Config.°Ë½ºÅÏÈ®·ü >= chance) {
+		if (Config.GUMSTON_PROBABILITY >= chance) {
 			L1EffectSpawn.getInstance().spawnEffect(81145, _shockStunDuration,
 					cha.getX(), cha.getY(), cha.getMapId());
 			if (cha instanceof L1PcInstance) {
