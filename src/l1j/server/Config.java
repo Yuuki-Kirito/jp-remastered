@@ -124,7 +124,7 @@ public final class Config {
 	public static final boolean DEBUG = false;
 	// public static boolean 패킷로그 = true;//로그
 
-	public static final int 정무시간 = 60 * 90;
+	public static final int office_hours = 60 * 90;
 	public static final int PC정무시간 = 60 * 60 * 2;
 
 	public static final int 계정_용의둥지_시간 = 60 * 60 * 3;
@@ -1464,7 +1464,7 @@ public final class Config {
 			DEMOLITION확률 = Integer.parseInt(altSettings.getProperty("demolition", "60"));
 
 			판테라확률 = Integer.parseInt(altSettings.getProperty("PANTERA", "60"));
-			
+
 			쉐도우스탭확률 = Integer.parseInt(altSettings.getProperty("Shadow_Step", "60"));
 
 			저지먼트확률 = Integer.parseInt(altSettings.getProperty("JUDGEMENT", "60"));
