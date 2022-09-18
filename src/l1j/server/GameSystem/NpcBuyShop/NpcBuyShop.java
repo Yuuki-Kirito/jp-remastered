@@ -62,7 +62,7 @@ public class NpcBuyShop {
 				if (npc == null) {
 					continue;
 				}
-				NpcBuyShop.getInstance().상점아이템삭제(npcid);
+				NpcBuyShop.getInstance().deleteNpcShip(npcid);
 				// shop = NpcShopTable.getInstance().get(npcid);
 				// if(shop )
 				if (shop.getSellingItems().size() > 0) {
@@ -296,7 +296,7 @@ public class NpcBuyShop {
 		}
 	}
 
-	public void 상점아이템삭제(int npcid) {
+	public void deleteNpcShip(int npcid) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {

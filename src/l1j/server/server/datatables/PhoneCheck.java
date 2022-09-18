@@ -28,7 +28,7 @@ public class PhoneCheck {
 	private static FastTable<String> Phonecheck_accountlist = new FastTable<String>();
 	private static FastTable<String> PhoneNOcheck_accountlist = new FastTable<String>();
 
-	public synchronized static void 폰인증확인(L1PcInstance gm, String phno) {
+	public synchronized static void phoneAC(L1PcInstance gm, String phno) {
 		String result = "";
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -43,8 +43,8 @@ public class PhoneCheck {
 			while (rs.next()) {
 				result = rs.getString("account");
 				i++;
-				gm.sendPackets(new S_SystemMessage("[" + result + "] 번호에 등록된 "
-						+ i + "번째 계정 : " + result));
+				gm.sendPackets(new S_SystemMessage("[" + result + "] Register "
+						+ i + "first account : " + result));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public class PhoneCheck {
 		}
 	}
 
-	public synchronized static int 폰인증완료(String accountname) {
+	public synchronized static int phoneACOK(String accountname) {
 		int result = 0;
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -79,7 +79,7 @@ public class PhoneCheck {
 		return result;
 	}
 
-	public synchronized static int 폰등록갯수(String pn) {
+	public synchronized static int phoneRegistCount(String pn) {
 		int result = 0;
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -103,7 +103,7 @@ public class PhoneCheck {
 		return result;
 	}
 
-	public synchronized static int 폰등록완료(String accountname) {
+	public synchronized static int phoneACOK2(String accountname) {
 		int result = 0;
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -127,7 +127,7 @@ public class PhoneCheck {
 		return result;
 	}
 
-	public static void 폰등록(String phn, String accountname, String name, int ii) {
+	public static void phoneRegist(String phn, String accountname, String name, int ii) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -149,20 +149,23 @@ public class PhoneCheck {
 	}
 
 	public static boolean getnocheck(String n) {
-		if (PhoneNOcheck_accountlist.contains(n))
+		if (PhoneNOcheck_accountlist.contains(n)) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 
 	public static void addnocheck(String n) {
-		if (!PhoneNOcheck_accountlist.contains(n))
+		if (!PhoneNOcheck_accountlist.contains(n)) {
 			PhoneNOcheck_accountlist.add(n);
+		}
 	}
 
 	public static void removenocheck(String n) {
-		if (PhoneNOcheck_accountlist.contains(n))
+		if (PhoneNOcheck_accountlist.contains(n)) {
 			PhoneNOcheck_accountlist.remove(n);
+		}
 	}
 
 	public static void clearnocheck() {
@@ -171,24 +174,27 @@ public class PhoneCheck {
 
 	public static boolean get(String n) {
 		synchronized (Phonecheck_accountlist) {
-			if (Phonecheck_accountlist.contains(n))
+			if (Phonecheck_accountlist.contains(n)) {
 				return true;
-			else
+			} else {
 				return false;
+			}
 		}
 	}
 
 	public static void add(String n) {
 		synchronized (Phonecheck_accountlist) {
-			if (!Phonecheck_accountlist.contains(n))
+			if (!Phonecheck_accountlist.contains(n)) {
 				Phonecheck_accountlist.add(n);
+			}
 		}
 	}
 
 	public static void remove(String n) {
 		synchronized (Phonecheck_accountlist) {
-			if (Phonecheck_accountlist.contains(n))
+			if (Phonecheck_accountlist.contains(n)) {
 				Phonecheck_accountlist.remove(n);
+			}
 		}
 	}
 

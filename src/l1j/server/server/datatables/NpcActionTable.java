@@ -96,7 +96,7 @@ public class NpcActionTable {
 			_instance = new NpcActionTable();
 			System.out.println("OK! " + timer.get() + "ms");
 		} catch (Exception e) {
-			_log.log(Level.SEVERE, "NpcAction를 읽어들일 수 없었습니다", e);
+			_log.log(Level.SEVERE, "NpcAction is can't loaded", e);
 			System.exit(0);
 		}
 	}

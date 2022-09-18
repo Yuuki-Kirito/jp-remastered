@@ -115,17 +115,15 @@ public class NpcSpawnTable {
 					l1spawn.setMapId(rs.getShort("mapid"));
 					l1spawn.setMovementDistance(rs.getInt("movement_distance"));
 					l1spawn.setName(l1npc.get_name());
-					
-					// by psjump
-					// : init«‘ºˆ »£√‚µ«∏Èº≠ ø°∑Ø≥≤.
+
 					try {
-						l1spawn.init();
+						l1spawn.init(); // init„Åß„Ç®„É©„Éº„ÅåÂëº„Å≥Âá∫„Åï„Çå„Çã„Åì„Å®„Åå„ÅÇ„Å£„ÅüÔºü
 					} catch (Exception e) {
 						System.out.println( rs.getInt("id") );
 					}
-					
-					
-					
+
+
+
 					spawnCount += l1spawn.getAmount();
 //
 					_spawntable.put(new Integer(l1spawn.getId()), l1spawn);
@@ -152,8 +150,8 @@ public class NpcSpawnTable {
 			out.write(s);
 			out.close();
 		} catch(Exception e) {}
-		_log.config("NPC πËƒ° ∏ÆΩ∫∆Æ " + _spawntable.size() + "∞« ∑ŒµÂ");
-		_log.fine("√—NPCºˆ " + spawnCount + "∞«");
+		_log.config("NPC SpawnTable " + _spawntable.size() + " is loaded.");
+		_log.fine("Total NPC :  " + spawnCount);
 	}
 
 	public void ReloadSpawnTable(String name) {
@@ -260,7 +258,7 @@ public class NpcSpawnTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public void removeSpawn(L1NpcInstance paramL1NpcInstance)
 	  {
 	    Connection con = null;

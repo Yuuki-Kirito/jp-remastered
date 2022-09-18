@@ -83,7 +83,7 @@ public class MobGroupTable {
 				mobGroup.setMinion7Count(rs.getInt("minion7_count"));
 				_mobGroupIndex.put(mobGroupId, mobGroup);
 			}
-			_log.config("MOB 그룹 리스트 " + _mobGroupIndex.size() + "건 로드");
+			_log.config("MOB Group List " + _mobGroupIndex.size() + " loaded.");
 		} catch (SQLException e) {
 			_log.log(Level.SEVERE, "error while creating mobgroup table", e);
 		} finally {

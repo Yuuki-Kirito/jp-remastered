@@ -116,7 +116,7 @@ public class MobSkillTable {
 						try {
 							mobskill.setMsg(actNo, rs2.getString("Msg"));
 						} catch (Exception e) {
-							System.out.println(":: 몹스킬 테이블이 구버전임 얼렁 바꾸셈");
+							System.out.println(":: mobskill table is olded.");
 						}
 					}
 

@@ -118,7 +118,7 @@ public class ModelSpawnTable {
 			break;
 		}
 		int floor = pc.getMapId() - 100;
-		String note = "¿À¸¸(" + floor + "Ãş) È¶ºÒ";
+		String note = "ã‚ªãƒãƒ¼ãƒ³ (" + floor + "éš) ãƒˆãƒ¼ãƒ";
 
 		try {
 

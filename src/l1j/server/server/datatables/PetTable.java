@@ -141,8 +141,8 @@ public class PetTable {
 
 		}
 	}
-	
-	/** Æê Á¤º¸ ¾÷µ¥ÀÌÆ®¿ë ÀüÃ¼ ¾÷µ¥ÀÌÆ® */
+
+	/** ãƒšãƒƒãƒˆæƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ãŸã‚ã®ãƒ•ãƒ«ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ */
 	public static void UpDatePet(L1PetInstance Pet) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -172,8 +172,8 @@ public class PetTable {
 			pstm.setString(21, Pet.isProduct() ? "true" : "false");
 			pstm.setInt(22, Pet.getItemObjId());
 			pstm.executeUpdate();
-			
-			/** Æê Á¤º¸µµ °»½Å ÇØÁà¾ßÇÔ */
+
+			/** ãƒšãƒƒãƒˆæƒ…å ±ã‚‚æ›´æ–°ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ */
 			L1Pet UpDatePet = getTemplate(Pet.getItemObjId());
 			UpDatePet.setObjid(Pet.getId());
 			UpDatePet.setNpcId(Pet.getNpcId());
@@ -203,14 +203,14 @@ public class PetTable {
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	/**
-	 * Pets Å×ÀÌºí¿¡ ÀÌ¹Ì ÀÌ¸§ÀÌ Á¸ÀçÇÒ±î¸¦ µ¹·ÁÁØ´Ù.
-	 * 
-	 * @param nameCaseInsensitive
-	 *            Á¶»çÇÏ´Â ¾Ö¿Ïµ¿¹°ÀÇ ÀÌ¸§. ´ë¹®ÀÚ ¼Ò¹®ÀÚÀÇ Â÷ÀÌ´Â ¹«½ÃµÈ´Ù.
-	 * @return ÀÌ¹Ì ÀÌ¸§ÀÌ Á¸ÀçÇÏ¸é true
-	 */
+	* Pets ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ—¢ã«åå‰ãŒå­˜åœ¨ã™ã‚‹ã‹ã‚’è¿”ã™ã€‚
+	*
+	* @param nameCaseInsensitive
+	*èª¿æŸ»ã™ã‚‹ãƒšãƒƒãƒˆã®åå‰ã€‚ å¤§æ–‡å­—å°æ–‡å­—ã®é•ã„ã¯ç„¡è¦–ã•ã‚Œã¾ã™ã€‚
+	* @return ã™ã§ã«åå‰ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ true
+	*/
 	public static boolean isNameExists(String nameCaseInsensitive) {
 		String nameLower = nameCaseInsensitive.toLowerCase();
 		Connection con = null;
@@ -254,7 +254,7 @@ public class PetTable {
 	public static L1Pet getTemplate(int itemobjid) {
 		return _pets.get(new Integer(itemobjid));
 	}
-	
+
 	public L1Pet[] getPetTableList() {
 		return _pets.values().toArray(new L1Pet[_pets.size()]);
 	}

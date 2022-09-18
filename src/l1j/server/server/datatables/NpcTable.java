@@ -112,16 +112,18 @@ public class NpcTable {
 				npc.set_agrocoi(rs.getBoolean("agrocoi"));
 				Integer family = _familyTypes.get(rs.getString("family"));
 
-				if (family == null)
+				if (family == null) {
 					npc.set_family(0);
-				else
+				} else {
 					npc.set_family(family.intValue());
+				}
 
 				int agrofamily = rs.getInt("agrofamily");
-				if (npc.get_family() == 0 && agrofamily == 1)
+				if (npc.get_family() == 0 && agrofamily == 1) {
 					npc.set_agrofamily(0);
-				else
+				} else {
 					npc.set_agrofamily(agrofamily);
+				}
 
 				npc.set_agrogfxid1(rs.getInt("agrogfxid1"));
 				npc.set_agrogfxid2(rs.getInt("agrogfxid2"));
@@ -293,16 +295,18 @@ public class NpcTable {
 				npc.set_agrocoi(rs.getBoolean("agrocoi"));
 				Integer family = _familyTypes.get(rs.getString("family"));
 
-				if (family == null)
+				if (family == null) {
 					npc.set_family(0);
-				else
+				} else {
 					npc.set_family(family.intValue());
+				}
 
 				int agrofamily = rs.getInt("agrofamily");
-				if (npc.get_family() == 0 && agrofamily == 1)
+				if (npc.get_family() == 0 && agrofamily == 1) {
 					npc.set_agrofamily(0);
-				else
+				} else {
 					npc.set_agrofamily(agrofamily);
+				}
 
 				npc.set_agrogfxid1(rs.getInt("agrogfxid1"));
 				npc.set_agrogfxid2(rs.getInt("agrogfxid2"));
@@ -357,8 +361,9 @@ public class NpcTable {
 			rs = pstm.executeQuery();
 			L1Npc npc = null;
 			while (rs.next()) {
-				if (_npcs.get(rs.getInt("npcid")) != null)
+				if (_npcs.get(rs.getInt("npcid")) != null) {
 					continue;
+				}
 				npc = new L1Npc();
 				int npcId = rs.getInt("npcid");
 				npc.set_npcId(npcId);
@@ -394,16 +399,18 @@ public class NpcTable {
 				npc.set_agrocoi(rs.getBoolean("agrocoi"));
 				Integer family = _familyTypes.get(rs.getString("family"));
 
-				if (family == null)
+				if (family == null) {
 					npc.set_family(0);
-				else
+				} else {
 					npc.set_family(family.intValue());
+				}
 
 				int agrofamily = rs.getInt("agrofamily");
-				if (npc.get_family() == 0 && agrofamily == 1)
+				if (npc.get_family() == 0 && agrofamily == 1) {
 					npc.set_agrofamily(0);
-				else
+				} else {
 					npc.set_agrofamily(agrofamily);
+				}
 
 				npc.set_agrogfxid1(rs.getInt("agrogfxid1"));
 				npc.set_agrogfxid2(rs.getInt("agrogfxid2"));
@@ -447,5 +454,5 @@ public class NpcTable {
 		}
 	}
 
-	
+
 }

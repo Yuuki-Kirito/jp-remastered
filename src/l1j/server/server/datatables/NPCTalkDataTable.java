@@ -78,7 +78,7 @@ public class NPCTalkDataTable {
 				_datatable.put(new Integer(l1npctalkdata.getNpcID()),
 						l1npctalkdata);
 			}
-			_log.config("NPC 액션 리스트 " + _datatable.size() + "건 로드");
+			_log.config("NPC ActionList " + _datatable.size() + " is loaded.");
 		} catch (SQLException e) {
 			_log.warning("error while creating npc action table " + e);
 		} finally {

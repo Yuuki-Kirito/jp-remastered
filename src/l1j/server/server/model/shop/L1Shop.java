@@ -442,7 +442,7 @@ public class L1Shop {
 						_sellingItems.clear();
 					if (_sellingItems.size() <= 0) {
 						NpcShopTable.getInstance().loadSellShops(_npcId);
-						NpcBuyShop.getInstance().상점아이템삭제(_npcId);
+						NpcBuyShop.getInstance().deleteNpcShip(_npcId);
 						ss = NpcShopTable.getInstance().get(_npcId);
 						for (L1ShopItem shopitem : ss.getSellingItems()) {
 							NpcBuyShop.getInstance().SaveShop(npc, shopitem, shopitem.getPrice(), shopitem.getCount());

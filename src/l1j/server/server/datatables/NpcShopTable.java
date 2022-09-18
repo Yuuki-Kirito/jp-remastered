@@ -45,7 +45,7 @@ public class NpcShopTable {
 				if (npc == null) {
 					continue;
 				}
-				NpcBuyShop.getInstance().상점아이템삭제(npcId);
+				NpcBuyShop.getInstance().deleteNpcShip(npcId);
 				shop = NpcShopTable.getInstance().get(npcId);
 				for (L1ShopItem shopitem : shop.getSellingItems()) {
 					NpcBuyShop.getInstance().SaveShop(npc, shopitem,
