@@ -129,7 +129,7 @@ public class WebClient {
 					pc.dy = targetpc.getY() + rnd.nextInt(3) - 1;
 					pc.dm = (short) targetpc.getMapId();
 					pc.dh = calcheading(pc.dx, pc.dy, targetpc.getX(), targetpc.getY());
-					pc.상인찾기Objid = targetpc.getId();
+					pc.find_a_merchant_objid = targetpc.getId();
 					pc.setTelType(7);
 					pc.sendPackets(new S_SabuTell(pc), true);
 				} else if (targetNpc != null) {
@@ -137,7 +137,7 @@ public class WebClient {
 					pc.dy = targetNpc.getY() + rnd.nextInt(3) - 1;
 					pc.dm = (short) targetNpc.getMapId();
 					pc.dh = calcheading(pc.dx, pc.dy, targetNpc.getX(), targetNpc.getY());
-					pc.상인찾기Objid = targetNpc.getId();
+					pc.find_a_merchant_objid = targetNpc.getId();
 					pc.setTelType(7);
 					pc.sendPackets(new S_SabuTell(pc), true);
 				}

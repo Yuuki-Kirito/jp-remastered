@@ -134,7 +134,7 @@ public class AttackSkill {
 		}
 		if (_target instanceof L1PcInstance) {
 			L1PcInstance tpc = (L1PcInstance) _target;
-			if (_skillId == L1SkillId.데스페라도 || _skillId == L1SkillId.SHOCK_STUN || _skillId == L1SkillId.FORCE_STUN || _skillId == L1SkillId.엠파이어
+			if (_skillId == L1SkillId.데스페라도 || _skillId == L1SkillId.SHOCK_STUN || _skillId == L1SkillId.FORCE_STUN || _skillId == L1SkillId.EMPIRE
 					|| _skillId == L1SkillId.PHANTOM) {
 				if (tpc.speed_time_temp > System.currentTimeMillis()) {
 					if (_player.getLocation().getTileLineDistance(_target.getLocation()) > 2) {

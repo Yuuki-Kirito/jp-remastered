@@ -881,10 +881,10 @@ public class L1MobSkillUse {
 						break;
 					}
 					Broadcaster.broadcastPacket(_npc, new S_PacketBox(
-							S_PacketBox.이미지스폰, _npc.getId(), 12750, true));
+							S_PacketBox.IMAGE_SPAWN, _npc.getId(), 12750, true));
 					Thread.sleep(5000);
 					Broadcaster.broadcastPacket(_npc, new S_PacketBox(
-							S_PacketBox.이미지스폰, _npc.getId(), 12750, false));
+							S_PacketBox.IMAGE_SPAWN, _npc.getId(), 12750, false));
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(_npc, 10)) {
 						if (obj instanceof L1PcInstance) {

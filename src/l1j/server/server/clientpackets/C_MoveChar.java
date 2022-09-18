@@ -180,7 +180,7 @@ public class C_MoveChar extends ClientBasePacket {
 			if (heading < 0 || heading > 7)
 				return;
 
-			if (pc.텔대기()) {
+			if (pc._TELL_WAIT()) {
 				// System.out.println("55555");
 				return;
 			}
@@ -968,16 +968,16 @@ public class C_MoveChar extends ClientBasePacket {
 					|| pc.getMapId()== 495 || pc.getMapId()== 452 || pc.getMapId()== 453 || pc.getMapId()== 479
 					|| pc.getMapId()== 461 || pc.getMapId()== 462 || pc.getMapId()== 471 || pc.getMapId()== 462
 					|| pc.getMapId()== 475)) {
-				     if(!pc.순간이동지배) {
-				    	pc.순간이동지배 = true;
+				     if(!pc._INSTANTANEOUS_DOMINATION) {
+				    	pc._INSTANTANEOUS_DOMINATION = true;
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.순간이동지배, true, (long)-1));
 				     }
 		    }else if((!pc.getInventory().checkItem(5001130, 1)) || (pc.getMapId()!= 15410 || pc.getMapId()!= 15420 || pc.getMapId()!= 15430 || pc.getMapId()!= 154140
 					|| pc.getMapId()!= 495 || pc.getMapId()!= 452 || pc.getMapId()!= 453 || pc.getMapId()!= 479
 					|| pc.getMapId()!= 461 || pc.getMapId()!= 462 || pc.getMapId()!= 471 || pc.getMapId()!= 462
 					|| pc.getMapId()!= 475)) {
-		    	if(pc.순간이동지배) {
-			    	pc.순간이동지배 = false;
+		    	if(pc._INSTANTANEOUS_DOMINATION) {
+			    	pc._INSTANTANEOUS_DOMINATION = false;
 					pc.sendPackets(new S_NewSkillIcons(L1SkillId.순간이동지배, false, (long)-1));
 		    	}
 			}

@@ -104,11 +104,11 @@ public class BossSpawnThread implements Runnable {
 	//		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,"보스가 스폰되었습니다 " + npc.getName()), true);
 			
 			try {
-				if (Config.접속채팅모니터() > 0) {
+				if (Config._connection_chat_monitor() > 0) {
 					S_SystemMessage sm = new S_SystemMessage("보스스폰 "
 							+ npc.getName() + " X " + npc.getX() + " / y "
 							+ npc.getY() + " / id " + npc.getMapId());
-					for (L1PcInstance gm : Config.toArray접속채팅모니터()) {
+					for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {
 						L1PcInstance ck = L1World.getInstance().getPlayer(
 								gm.getName());
 						if (ck == null) {

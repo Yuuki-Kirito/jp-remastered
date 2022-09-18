@@ -71,7 +71,7 @@ public class L1单隔府记 extends TimerTask {
 		if (_cha != null) {
 			if (_cha instanceof L1PcInstance) {
 				L1PcInstance target = (L1PcInstance) _cha;
-				target.单隔府记th = null;
+				target.demolition_th = null;
 			} else if (_cha instanceof L1NpcInstance) {
 				L1NpcInstance npc = (L1NpcInstance) _cha;
 				npc.单隔府记th = null;

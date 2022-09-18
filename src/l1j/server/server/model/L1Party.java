@@ -109,7 +109,7 @@ public class L1Party {
 		if (!_membersList.contains(pc)) {
 			return;
 		}
-		pc.set표식(0);
+		pc.setmarker(0);
 		// pc.stopRP();
 		for (L1PcInstance member : pc.getParty().getMembers()) {
 			member.sendPackets(new S_Party(0x6b, pc));
@@ -123,7 +123,7 @@ public class L1Party {
 		if (pc == null) throw new NullPointerException();
 		if (!_membersList.contains(pc)) return;
 		
-		pc.set표식(0);
+		pc.setmarker(0);
 		for (L1PcInstance member : pc.getParty().getMembers()) {
 			member.sendPackets(new S_ServerVersion(S_ServerVersion.Death, pc), true);
 		}

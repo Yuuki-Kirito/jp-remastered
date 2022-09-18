@@ -27,7 +27,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javolution.util.FastMap;
-
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.templates.L1EnchantArmorChance;
 import l1j.server.server.utils.SQLUtil;
@@ -47,10 +46,10 @@ public class EnchantArmorChance {//enchant_armor_chance
 	}
 
 	private EnchantArmorChance() {
-		System.out.print("■ 방어구인첸 데이터 .......................... ");		
+		System.out.print("ArmorListData .......................... ");
 		load();
-		System.out.println("■ 로딩 정상 완료");	
-		
+		System.out.println("Load Completed.");
+
 	}
 
 	private void load() {
@@ -70,7 +69,7 @@ public class EnchantArmorChance {//enchant_armor_chance
 			SQLUtil.close(con);
 		}
 	}
-	
+
 	public static void reload() {
 		EnchantArmorChance oldInstance = _instance;
 		_instance = new EnchantArmorChance();
@@ -99,16 +98,16 @@ public class EnchantArmorChance {//enchant_armor_chance
 			int e12 = rs.getInt("e12");
 			int e13 = rs.getInt("e13");
 			int e14 = rs.getInt("e14");
-			
+
 			ed = new L1EnchantArmorChance(armorId, armorname, e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14);
-			
+
 			_armorName.put(armorname, ed);
 			_armorIdList.put(armorId, ed);
 		}
-		_log.config("방어구인첸트 리스트 " + _armorName.size() + "건 로드");
+		_log.config("ArmorEnchantList " + _armorName.size() + "Load");
 		SQLUtil.close(rs);
 	}
-	
+
 	public L1EnchantArmorChance getTemplate(String name) {
 		return _armorName.get(name);
 	}

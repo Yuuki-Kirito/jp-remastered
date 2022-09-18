@@ -93,10 +93,10 @@ public class S_UserStatus extends ServerBasePacket {
 			girans = 0;
 		}
 
-		if (pc.get수상한감옥day() != null
-				&& pc.get수상한감옥day().getDate() == nowstamp.getDate()
-				&& pc.get수상한감옥time() != 0) {
-			수상time = pc.get수상한감옥time();
+		if (pc.getsuspiciousprisonday() != null
+				&& pc.getsuspiciousprisonday().getDate() == nowstamp.getDate()
+				&& pc.getsuspiciousprisontime() != 0) {
+			수상time = pc.getsuspiciousprisontime();
 			수상s = (수상temp - 수상time) % 60;
 			수상m = (수상temp - 수상time) / 60 % 60;
 			수상h = (수상temp - 수상time) / 60 / 60;// 시간

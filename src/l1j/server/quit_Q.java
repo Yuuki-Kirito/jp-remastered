@@ -61,7 +61,7 @@ public class quit_Q implements Runnable {
 					}
 					
 					if (pc.isPrivateShop()) {
-						pc.상점아이템삭제(pc.getId());
+						pc.delete_shop_item(pc.getId());
 					}
 					
 
@@ -70,8 +70,8 @@ public class quit_Q implements Runnable {
 					// System.out.println("123 :" +pc.getName());
 
 					try {
-						if (Config.접속채팅모니터() > 0) {
-							for (L1PcInstance gm : Config.toArray접속채팅모니터()) {
+						if (Config._connection_chat_monitor() > 0) {
+							for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {
 								if (gm.getNetConnection() == null) {
 									Config.remove접속(gm);
 									continue;

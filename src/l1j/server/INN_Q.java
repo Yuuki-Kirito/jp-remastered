@@ -39,15 +39,15 @@ public class INN_Q implements Runnable {
 						continue;
 					}
 
-					if (player.인던입장중) {
+					if (player._ENTERING_LNDIA) {
 						_queue.remove();
 						continue;
 					}
 
-					player.인던입장중 = true;
+					player._ENTERING_LNDIA = true;
 					GeneralThreadPool.getInstance().schedule(new Runnable() {
 						public void run() {
-							player.인던입장중 = false;
+							player._ENTERING_LNDIA = false;
 							;
 						}
 					}, 3000);

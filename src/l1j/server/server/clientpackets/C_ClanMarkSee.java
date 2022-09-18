@@ -53,9 +53,9 @@ public class C_ClanMarkSee extends ClientBasePacket {
 			}
 			switch (type) {
 			case 0: // 추가
-				pc.set주시아이디(target_clanMaster.getClanid()); // 상대의 오브젝트 ID를 보존해
+				pc.setjuicyid(target_clanMaster.getClanid()); // 상대의 오브젝트 ID를 보존해
 															// 둔다
-				target_clanMaster.set주시아이디(pc.getClanid());
+				target_clanMaster.setjuicyid(pc.getClanid());
 				S_Message_YN yn = new S_Message_YN(3348, pc.getClanname());
 				target_clanMaster.sendPackets(yn, true);
 				// target_clan 에 수락 메시지 보내기

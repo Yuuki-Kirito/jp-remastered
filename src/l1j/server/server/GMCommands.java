@@ -163,7 +163,7 @@ public class GMCommands {
 	public static boolean 케릭인증영자방 = false;
 	public static boolean 트리플포우스핵 = false;
 	public static boolean 용해로그 = false;
-	public static boolean 접속이름체크 = false;
+	public static boolean _CONNECTION_NAME_CHECK = false;
 	public static boolean 아덴교환체크 = false;
 	public static boolean 엔진체크 = true;
 	public static boolean 제작체크 = true;
@@ -1013,8 +1013,8 @@ public class GMCommands {
 			} catch (Exception e) {
 			}
 		} else if (cmd.equalsIgnoreCase("접속이름체크")) {
-			접속이름체크 = !접속이름체크;
-			gm.sendPackets(new S_SystemMessage("접속이름체크 : " + 접속이름체크), true);
+			_CONNECTION_NAME_CHECK = !_CONNECTION_NAME_CHECK;
+			gm.sendPackets(new S_SystemMessage("접속이름체크 : " + _CONNECTION_NAME_CHECK), true);
 		} else if (cmd.equalsIgnoreCase("접속이름체크리셋")) {
 			connectCharNameReset();
 		} else if (cmd.equalsIgnoreCase("아덴교환체크")) {
@@ -1084,10 +1084,10 @@ public class GMCommands {
 
 	public void killment(L1PcInstance pc, String param) { // by사부 멘트
 		if (param.equalsIgnoreCase("끔")) {
-			pc.킬멘트 = false;
+			pc._KILMENT = false;
 			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시하지 않습니다."));
 		} else if (param.equalsIgnoreCase("켬")) {
-			pc.킬멘트 = true;
+			pc._KILMENT = true;
 			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시 합니다."));
 
 		} else {
@@ -1331,18 +1331,18 @@ public class GMCommands {
 			StringTokenizer st = new StringTokenizer(param);
 			String 이름 = st.nextToken();
 			if (이름.equalsIgnoreCase("켬")) {
-				if (LogTable.사냥아덴) {
+				if (LogTable._isAden) {
 					gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 이미 실행중입니다."), true);
 					return;
 				}
-				LogTable.사냥아덴시작();
+				LogTable.startAdenLog();
 				gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 실행 되었습니다."), true);
 			} else if (이름.equalsIgnoreCase("끔")) {
-				if (!LogTable.사냥아덴) {
+				if (!LogTable._isAden) {
 					gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 이미 종료중입니다."), true);
 					return;
 				}
-				LogTable.사냥아덴종료();
+				LogTable.stopAdenLog();
 				gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 종료 되었습니다."), true);
 			}
 		} catch (Exception e) {
@@ -1354,18 +1354,18 @@ public class GMCommands {
 			StringTokenizer st = new StringTokenizer(param);
 			String 이름 = st.nextToken();
 			if (이름.equalsIgnoreCase("켬")) {
-				if (LogTable.상점아덴) {
+				if (LogTable._isStore) {
 					gm.sendPackets(new S_SystemMessage("상점아덴 로그가 이미 실행중입니다."), true);
 					return;
 				}
-				LogTable.상점아덴시작();
+				LogTable.startStoreLog();
 				gm.sendPackets(new S_SystemMessage("상점아덴 로그가 실행 되었습니다."), true);
 			} else if (이름.equalsIgnoreCase("끔")) {
-				if (!LogTable.상점아덴) {
+				if (!LogTable._isStore) {
 					gm.sendPackets(new S_SystemMessage("상점아덴 로그가 이미 종료중입니다."), true);
 					return;
 				}
-				LogTable.상점아덴종료();
+				LogTable.stopStoreLog();
 				gm.sendPackets(new S_SystemMessage("상점아덴 로그가 종료 되었습니다."), true);
 			}
 		} catch (Exception e) {
@@ -2154,11 +2154,11 @@ public class GMCommands {
 			Timestamp nowday = new Timestamp(System.currentTimeMillis());
 
 			if (dun.equalsIgnoreCase("수상한감옥")) {
-				player.set수상한감옥time(1);
+				player.setsuspiciousprisontime(1);
 				player.set수상한감옥day(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else if (dun.equalsIgnoreCase("수상한천상계곡")) {
-				player.set수상한천상계곡time(1);
+				player.setwateragarvalleytime(1);
 				player.set수상한천상계곡day(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else if (dun.equalsIgnoreCase("상아탑발록")) {
@@ -2174,20 +2174,20 @@ public class GMCommands {
 				player.setgiranday(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else if (dun.equalsIgnoreCase("용던") || dun.equalsIgnoreCase("수던")) {
-				player.set용둥time(1);
-				player.set용둥day(nowday);
-				player.setpc용둥time(1);
+				player.setdragontime(1);
+				player.setdragonday(nowday);
+				player.setpcdragontime(1);
 				player.setpcday3(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else
 
 			if (dun.equalsIgnoreCase("몽섬")) {
-				player.set몽섬time(1);
+				player.setmongesomtime(1);
 				player.set몽섬day(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else if (dun.equalsIgnoreCase("고무") || dun.equalsIgnoreCase("정무")) {
-				player.set고무time(1);
-				player.set고무day(nowday);
+				player.setrubbertime(1);
+				player.setrubberday(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 			} else if (dun.equalsIgnoreCase("라던")) {
 				player.setravatime(1);
@@ -2913,7 +2913,7 @@ public class GMCommands {
 	private void standBy82(L1PcInstance gm) {
 		try {
 			for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
-				if (pc.샌드백) {
+				if (pc._PUNCHUNG_BAG) {
 					L1World.getInstance().removeObject(pc);
 					L1World.getInstance().removeVisibleObject(pc);
 					List<L1PcInstance> players = L1World.getInstance().getRecognizePlayer(pc);
@@ -2991,7 +2991,7 @@ public class GMCommands {
 				pc.addBaseMaxHp((short) 32767);
 				pc.setCurrentHp(32767);
 
-				pc.샌드백 = true;
+				pc._PUNCHUNG_BAG = true;
 
 				L1World.getInstance().storeObject(pc);
 				L1World.getInstance().addVisibleObject(pc);
@@ -3030,7 +3030,7 @@ public class GMCommands {
 			pc.addBaseMaxHp((short) 32767);
 			pc.setCurrentHp(32767);
 
-			pc.샌드백 = true;
+			pc._PUNCHUNG_BAG = true;
 
 			L1World.getInstance().storeObject(pc);
 			L1World.getInstance().addVisibleObject(pc);
@@ -3256,7 +3256,7 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("전체")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add전체(gm);
+					Config.addall(gm);
 					gm.sendPackets(new S_SystemMessage(".모든 채팅을 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
 					Config.remove전체(gm);
@@ -4119,13 +4119,13 @@ public class GMCommands {
 	private void 데스구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600247);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 데몬구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600246);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 데스크(L1PcInstance gm, String param) { // 데스
@@ -4140,97 +4140,97 @@ public class GMCommands {
 	private void 바란카구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(142922);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 바포구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(753);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 얼녀구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(754);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 커츠구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(755);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 타락구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(752);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 린드구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600261);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 발라구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600262);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 안타구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600259);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 파푸구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600260);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축데스구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600322);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축데몬구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600321);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축바란카구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600323);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축바포구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600325);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축얼녀구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600326);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축커츠구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600327);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 축타락구라(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600324);
-		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
 	private void 데스작업(L1PcInstance gm) { // 데스
@@ -4432,12 +4432,12 @@ public class GMCommands {
 
 	private void 패킷13(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.라이징, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.RISING, true, 128));
 	}
 
 	private void 패킷14(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.소울배리어, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.SOUL_BARRIER, true, 128));
 	}
 
 	private void 패킷15(L1PcInstance gm) { // 데스

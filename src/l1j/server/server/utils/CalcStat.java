@@ -2811,7 +2811,7 @@ public class CalcStat {
 			-10, -10, -11, -11, -11, -12, -12, -12, -13, -13,// 31~40
 			-13, -14, -14, -14, -15 };// 41~45
 
-	public static int 원거리회피(int dex) {
+	public static int long_distance_evasion(int dex) {
 		try {
 			if (dex < 0)
 				return 3;

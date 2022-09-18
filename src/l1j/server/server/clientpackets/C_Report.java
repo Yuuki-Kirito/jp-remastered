@@ -105,7 +105,7 @@ public class C_Report extends ClientBasePacket {
 				byte[] data = null;
 				int type2 = 0;
 				try {
-					data = pc.페어리정보;
+					data = pc.fairt_information;
 					type2 = readH();
 					if (data[type2] == 1) {
 						return;
@@ -788,7 +788,7 @@ public class C_Report extends ClientBasePacket {
 							pc.dy = pn.getY() + rnd.nextInt(3) - 1;
 							pc.dm = (short) pn.getMapId();
 							pc.dh = calcheading(pc.dx, pc.dy, pn.getX(), pn.getY());
-							pc.상인찾기Objid = pn.getId();
+							pc.find_a_merchant_objid = pn.getId();
 							pc.setTelType(7);
 							pc.sendPackets(new S_SabuTell(pc), true);
 						} else {
@@ -798,7 +798,7 @@ public class C_Report extends ClientBasePacket {
 								pc.dy = nn.getY() + rnd.nextInt(3) - 1;
 								pc.dm = (short) nn.getMapId();
 								pc.dh = calcheading(pc.dx, pc.dy, nn.getX(), nn.getY());
-								pc.상인찾기Objid = nn.getId();
+								pc.find_a_merchant_objid = nn.getId();
 								pc.setTelType(7);
 								pc.sendPackets(new S_SabuTell(pc), true);
 							} else {

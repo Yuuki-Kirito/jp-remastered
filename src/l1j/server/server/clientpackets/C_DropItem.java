@@ -198,7 +198,7 @@ public class C_DropItem extends ClientBasePacket {
 				continue;
 			if (target.noPlayerCK)
 				continue;
-			if (target.»÷µå¹é)
+			if (target._PUNCHUNG_BAG)
 				continue;
 			//
 			if (c.getId() != target.getId() && !target.isPrivateShop()) {

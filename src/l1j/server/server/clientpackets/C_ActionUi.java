@@ -451,7 +451,7 @@ public class C_ActionUi extends ClientBasePacket {
 				for (L1PcInstance player : pc.getParty().getMembers()) {
 					// System.out.println(player.encobjid);
 					if (s.equals(player.encobjid)) {
-						player.set표식(subtype[0]);
+						player.setmarker(subtype[0]);
 						표식pc = player;
 					}
 				}
@@ -509,7 +509,7 @@ public class C_ActionUi extends ClientBasePacket {
 		}
 			break;
 		case TELEPORT_SKY_GARDEN: {
-			if (!pc.PC방_버프) {
+			if (!pc._PC_ROOM_BUFF) {
 				pc.sendPackets(new S_SystemMessage("PC방 이용권을 사용중에만 사용 가능한 행동입니다."), true);
 				return;
 			}
@@ -1051,7 +1051,7 @@ public class C_ActionUi extends ClientBasePacket {
 				client.setInterServerType(Player.getNetConnection().getInterServerType());
 				client.setInterServerName(Player.getName());
 				client.setInterServerParty(Player.getParty());
-				client.setInterServerNotice(Player.get표식());
+				client.setInterServerNotice(Player.getmarker());
 
 				client.setAccount(Player.getNetConnection().getAccount());
 				LoginController.getInstance().login(client, client.getAccount());
@@ -1279,7 +1279,7 @@ public class C_ActionUi extends ClientBasePacket {
 						sellitem = pc.getInventory().getItem(pss.getItemObjectId());
 						if (sellitem == null)
 							continue;
-						pc.임시SaveShop(pc, sellitem, sellp, sellc, 1);
+						pc.temporary_saveshop(pc, sellitem, sellp, sellc, 1);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -1292,7 +1292,7 @@ public class C_ActionUi extends ClientBasePacket {
 						buyitem = pc.getInventory().getItem(psb.getItemObjectId());
 						if (buyitem == null)
 							continue;
-						pc.임시SaveShop(pc, buyitem, buyp, buyc, 0);
+						pc.temporary_saveshop(pc, buyitem, buyp, buyc, 0);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -1336,7 +1336,7 @@ public class C_ActionUi extends ClientBasePacket {
 					pc.sendPackets(new S_PacketBox(S_PacketBox.상점개설횟수, pc.getNetConnection().getAccount().Shop_open_count), true);
 					pc.sendPackets(new S_ChatPacket(pc, "\\aH알림: .무인상점 입력시 무인상점 진행 ."));
 				} catch (Exception e) {
-					pc.상점아이템삭제(pc.getId());
+					pc.delete_shop_item(pc.getId());
 					sellList.clear();
 					buyList.clear();
 					pc.setPrivateShop(false);
@@ -1356,7 +1356,7 @@ public class C_ActionUi extends ClientBasePacket {
 				pc.broadcastPacket(new S_DoActionGFX(pc.getId(), ActionCodes.ACTION_Idle));
 				L1PolyMorph.undoPoly(pc);
 				try {
-					pc.상점아이템삭제(pc.getId());
+					pc.delete_shop_item(pc.getId());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -1467,7 +1467,7 @@ public class C_ActionUi extends ClientBasePacket {
 				pc.getParty().passLeader(Player);
 			} else if (Type == 6) {
 				readC();
-				Player.set표식(readC());
+				Player.setmarker(readC());
 				for (L1PcInstance player : pc.getParty().getMembers()) {
 					player.sendPackets(new S_Party(0x6e, Player));
 				}
@@ -1583,7 +1583,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1610,7 +1610,7 @@ public class C_ActionUi extends ClientBasePacket {
 							Thread.sleep(10000);
 							// L1World.getInstance().broadcastPacketToAll(new S_ServerMessage(4433,
 							// item.getItem().getNameId(), pc.getName()));
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1636,7 +1636,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1677,7 +1677,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1724,7 +1724,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1778,7 +1778,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1825,7 +1825,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1844,7 +1844,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -3203,7 +3203,7 @@ public class C_ActionUi extends ClientBasePacket {
 							if (_Random.nextInt(100) < 100) { // 10% 확률로 대성공아이템.
 								createItem = pcIv.storeItem2(item.getItemId(), ci.makeCount * createItemCount, ci.enchant, ci.bless, ci.attr);
 								createItem.setBless(0);
-								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 3599, createItem), true);
+								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 3599, createItem), true);
 								commit("대성공 아이템 제작^금속테이블 : " + item.getName(), "", 1);
 								pc.sendPackets(new S_SkillSound(pc.getId(), 7976));
 								pc.broadcastPacket(new S_SkillSound(pc.getId(), 7976));
@@ -3807,7 +3807,7 @@ public class C_ActionUi extends ClientBasePacket {
 			account.updateAttendanceTime();
 			account.storeAttendCheck();
 			updateAttendanceTime();
-			pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, account, pc.PC방_버프));
+			pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, account, pc._PC_ROOM_BUFF));
 		}
 	}
 
@@ -3831,7 +3831,7 @@ public class C_ActionUi extends ClientBasePacket {
 	}
 
 	private void getAttendancePCRoom(L1PcInstance pc, Account account) {
-		if (!pc.PC방_버프)
+		if (!pc._PC_ROOM_BUFF)
 			return;
 		if (account.isAttendancePcHome())
 			return;

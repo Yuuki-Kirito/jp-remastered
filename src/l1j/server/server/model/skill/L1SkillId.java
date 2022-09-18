@@ -154,7 +154,7 @@ public class L1SkillId {
 	public static final int DRESS_EVASION = 565;
 	public static final int ARMOR_BREAK = 112;
 	public static final int 루시퍼 = 234;
-	public static final int 어쌔신 = 233;
+	public static final int ASSASSIN = 233;
 	
 	public static final int 출석체크 = 6000;
 	public static final int 출석체크ディレイ = 5000;
@@ -184,7 +184,7 @@ public class L1SkillId {
 	public static final int TRUE_TARGET = 113;
 	public static final int GLOWING_AURA = 114;
 	public static final int SHINING_AURA = 115;
-	public static final int 샤이닝아머 = 116; // E: CALL_PLEDGE_MEMBER
+	public static final int SHINING_ARMOR = 116; // E: CALL_PLEDGE_MEMBER
 	public static final int BRAVE_AURA = 117;
 	public static final int 마제스티 = 118;
 
@@ -237,9 +237,9 @@ public class L1SkillId {
 	public static final int STRIKER_GALE = 174;
 	public static final int SOUL_OF_FLAME = 175;
 	public static final int ADDITIONAL_FIRE = 176;
-	public static final int 허리케인 = 178;
+	public static final int HURRICANE = 178;
 	public static final int 포커스웨이브 = 177;
-	public static final int 샌드스톰 = 179;
+	public static final int SAND_STORM = 179;
 	
 
 	// 용기사
@@ -632,14 +632,14 @@ public class L1SkillId {
 	public static final int 데스힐 = 73;
 	public static final int 앱솔루트블레이드 = 92;
 	public static final int GRACE = 122;
-	public static final int 엠파이어 = 123;
-	public static final int 소울배리어 = 135;
-	public static final int 인페르노 = 136;
+	public static final int EMPIRE = 123;
+	public static final int SOUL_BARRIER = 135;
+	public static final int INFERNO = 136;
 	//public static final int 디스트로이 = 196;
 	public static final int IMPACT = 222;
 	public static final int 포커스스피릿츠 = 223;
 	public static final int 뫼비우스 = 224;
-	public static final int 라이징 = 231;
+	public static final int RISING = 231;
 	public static final int 프라이드 = 93;
 	public static final int 블로우어택 = 94;
 	public static final int 아머브레이크데스티니= 510;
@@ -654,7 +654,7 @@ public class L1SkillId {
 	public static final int 루시퍼데스티니 = 567;
 	public static final int 리덕션아머베테랑 = 568;
 	public static final int 레이징포스 = 569;
-	public static final int 쉐도우스탭 = 199;
+	public static final int SHADOW_TAB = 199;
 	// SAFE POLY앤 dodo팩
 	public static final int POLY_SAFE = 15846;
 	public static final int TENKACHOUJI_BUFF = 15410;

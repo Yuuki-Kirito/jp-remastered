@@ -236,9 +236,9 @@ public class L1MerchantInstance extends L1NpcInstance {
                     }
                     break;
                 case 100691:// ¹ÎÆ¼½º
-                    if (player.get¼Ö·ÎÅ¸¿îday() == null) {
-                        player.set¼Ö·ÎÅ¸¿îtime(1);
-                        player.set¼Ö·ÎÅ¸¿îday(new Timestamp(System.currentTimeMillis()));
+                    if (player.getsolotownday() == null) {
+                        player.setsolotowntime(1);
+                        player.setsolotownday(new Timestamp(System.currentTimeMillis()));
                         if (!player.getInventory().checkItem(60444)
                                 && !player.getInventory().checkItem(60445)
                                 && !player.getInventory().checkItem(60446))
@@ -285,7 +285,7 @@ public class L1MerchantInstance extends L1NpcInstance {
                     }
                     break;
                 case 101042:
-                    if (player.PC¹æ_¹öÇÁ) {
+                    if (player._PC_ROOM_BUFF) {
                         htmlid = "pc_tell1";
                     }
                     break;
@@ -403,7 +403,7 @@ public class L1MerchantInstance extends L1NpcInstance {
                 case 100385:
                 case 4203000: // Á¨µµ¸£
                 case 100434:
-                    player._Á¨µµ¸£ºóÁÜ°¹¼ö = 0;
+                    player._Zendor_empty_zoom = 0;
                     break;
                 case 100371: // °¨½ÃÀÚÀÇ ´«
                     if (player.isGhost())

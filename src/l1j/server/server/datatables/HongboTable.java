@@ -33,18 +33,18 @@ public class HongboTable {
 			r = p.executeQuery();
 			if (r.next()) {
 				if (r.getInt(1) == 1) {
-					pc.sendPackets(new S_SystemMessage("[È«º¸ÀÎÁõ] È«º¸±â°¡ ÀÎÁõµÇ¾ú½À´Ï´Ù."));
+					pc.sendPackets(new S_SystemMessage("[ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³èªè¨¼]ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãŒèªè¨¼ã•ã‚Œã¾ã—ãŸã€‚"));
 					pc.setadFeature(2);
 				} else {
 					pc.sendPackets(new S_SystemMessage(
-							"[È«º¸ÀÎÁõ] È«º¸±â¸¦ Á¤»óµ¿ÀÛ ÇØÁÖ½Ê½Ã¿ä!"));
+							"[åºƒå ±èªè¨¼]åºƒå ±ã‚’æ­£å¸¸å‹•ä½œã—ã¦ãã ã•ã„ï¼"));
 				}
 
 			} else {
-				pc.sendPackets(new S_SystemMessage("[È«º¸ÀÎÁõ] È«º¸±â¸¦ Á¤»óµ¿ÀÛ ÇØÁÖ½Ê½Ã¿ä!"));
+				pc.sendPackets(new S_SystemMessage("[åºƒå ±èªè¨¼]åºƒå ±ã‚’æ­£å¸¸å‹•ä½œã—ã¦ãã ã•ã„ï¼"));
 			}
 		} catch (Exception e) {
-			pc.sendPackets(new S_SystemMessage("[È«º¸ÀÎÁõ] È«º¸±â¸¦ Á¤»óµ¿ÀÛ ÇØÁÖ½Ê½Ã¿ä!"));
+			pc.sendPackets(new S_SystemMessage("[åºƒå ±èªè¨¼]åºƒå ±ã‚’æ­£å¸¸å‹•ä½œã—ã¦ãã ã•ã„ï¼"));
 		} finally {
 			SQLUtil.close(r);
 			SQLUtil.close(p);

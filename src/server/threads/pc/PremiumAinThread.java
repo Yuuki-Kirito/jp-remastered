@@ -112,11 +112,11 @@ public class PremiumAinThread extends Thread {
 					} else {
 						try {
 
-							if (_client.혈맹버프 && _client.getLevel() < 99) {
+							if (_client._CLAN_BUFF && _client.getLevel() < 99) {
 								_client.sendPackets(new S_PacketBox(S_PacketBox.혈맹버프, 1), true);
-							} else if (_client.혈맹버프) {
+							} else if (_client._CLAN_BUFF) {
 								_client.sendPackets(new S_PacketBox(S_PacketBox.혈맹버프, 0), true);
-								_client.혈맹버프 = false;
+								_client._CLAN_BUFF = false;
 							}
 
 							int deadtime = _client.getDeadTimeCount();
@@ -262,27 +262,27 @@ public class PremiumAinThread extends Thread {
 									 * _client.마법인형_남자여자_Count++; }
 									 */
 									if (doll.getDollType() == L1DollInstance.DOLLTYPE_HW_HUSUABI) {
-										if (_client.마법인형_할로윈허수아_Count >= 60) {
+										if (_client.magic_doll_halloween_scarecrow_count >= 60) {
 											_client.getInventory().storeItem(140722, 1); // 바루의 선물상자
 											_client.sendPackets(new S_SystemMessage("할로윈 허수아비 마법인형 소환 보상 : 바루의 선물 상자 획득."));
 											// _client.sendPackets(new
 											// S_ServerMessage(403,
 											// "그렘린의 선물 상자"), true);
-											_client.마법인형_할로윈허수아_Count = 0;
+											_client.magic_doll_halloween_scarecrow_count = 0;
 										} else
-											_client.마법인형_할로윈허수아_Count++;
+											_client.magic_doll_halloween_scarecrow_count++;
 									}
 
 									if (doll.getDollType() == L1DollInstance.DOLLTYPE_그렘린) {
-										if (_client.마법인형_그렘린_Count >= 15) {
+										if (_client.magic_doll_gremlin_count >= 15) {
 											_client.getInventory().storeItem(9057, 1); // 할로윈 호박씨 지급
 											_client.sendPackets(new S_SystemMessage("붉은코카트리스 마법인형 소환 보상 : 붉은코카트리스 선물 상자 획득."));
 											// _client.sendPackets(new
 											// S_ServerMessage(403,
 											// "그렘린의 선물 상자"), true);
-											_client.마법인형_그렘린_Count = 0;
+											_client.magic_doll_gremlin_count = 0;
 										} else
-											_client.마법인형_그렘린_Count++;
+											_client.magic_doll_gremlin_count++;
 									}
 								}
 							}
@@ -326,7 +326,7 @@ public class PremiumAinThread extends Thread {
 						}
 					}
 
-					if (_client.PC방_버프삭제중) {
+					if (_client._PCROOM_BUFF_IS_BEING_REMOVED) {
 						_client.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "[PC방 상품 종료 안내] PC방 이용 시간이 종료됩니다. "));
 						_client.sendPackets(new S_SystemMessage("[PC방 상품 종료 안내] 리스타트를 진행하지 않아도 혜택은 받을수 없습니다."));
 						/*
@@ -335,7 +335,7 @@ public class PremiumAinThread extends Thread {
 					}
 
 					long sysTime = System.currentTimeMillis();
-					if (_client.PC방_버프) {
+					if (_client._PC_ROOM_BUFF) {
 						if (_client.getNetConnection().getAccount().getBuff_PC방() != null) {
 							if (sysTime <= _client.getNetConnection().getAccount().getBuff_PC방().getTime()) {
 								long 피씨타임 = _client.getNetConnection().getAccount().getBuff_PC방().getTime() - sysTime;
@@ -367,15 +367,15 @@ public class PremiumAinThread extends Thread {
 									}
 								}
 							} else {
-								_client.PC방_버프 = false;
-								_client.PC방_버프삭제중 = true;
+								_client._PC_ROOM_BUFF = false;
+								_client._PCROOM_BUFF_IS_BEING_REMOVED = true;
 								_client.sendPackets(new S_NewSkillIcons(L1SkillId.PC방, false, -1));
 								String s = "08 00 e7 6d";// 피씨방..
 								_client.sendPackets(new S_NewCreateItem(126, s));
 								/* _client.sendPackets(new S_Restart(_client.getId(), 1), true); */
 								_client.getAccount().setAttendancePcHomeTime(0);
 								_client.getAccount().saveAttendanceTime(_client.getAccount());
-								_client.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, _client.getAccount(), _client.PC방_버프));
+								_client.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, _client.getAccount(), _client._PC_ROOM_BUFF));
 							}
 						}
 					}
@@ -492,61 +492,61 @@ public class PremiumAinThread extends Thread {
 	private void 상자이벤트(L1PcInstance pc) {
 		if (pc instanceof L1RobotInstance)
 			return;
-		if (pc.감자상자Time >= 60) {
+		if (pc.protato_box_time >= 60) {
 			pc.getInventory().storeItem(60517, 1); // 벚꽃상자 지급
 			pc.sendPackets(new S_ServerMessage(403, "1시간타임 선물 지급"), true);
-			pc.감자상자Time = 0;
+			pc.protato_box_time = 0;
 		} else
-			pc.감자상자Time++;
+			pc.protato_box_time++;
 	}
 
 	private void 루피주먹이벤트(L1PcInstance pc) {
 		if (pc instanceof L1RobotInstance)
 			return;
-		if (pc.루피주먹이벤트Time >= 60) {
+		if (pc.luffy_fist_event_time >= 60) {
 			pc.getInventory().storeItem(9096, 1); // 용기의주먹
 			pc.sendPackets(new S_SystemMessage("용기의 주먹 이벤트 접속 보상 : 루피의 용기의 주먹 주머니 획득."));
 			// pc.sendPackets(new S_ServerMessage(403, "그렘린의 선물 상자"), true);
-			pc.루피주먹이벤트Time = 0;
+			pc.luffy_fist_event_time = 0;
 		} else
-			pc.루피주먹이벤트Time++;
+			pc.luffy_fist_event_time++;
 	}
 
 	private void 그렘린이벤트(L1PcInstance pc) {
 		if (pc instanceof L1RobotInstance)
 			return;
-		if (pc.그렘린이벤트Time >= 60) {
+		if (pc.gremlin_event_time >= 60) {
 			pc.getInventory().storeItem(9057, 1); // 그렘린의 선물상자
 			pc.sendPackets(new S_SystemMessage("그렘린 이벤트 접속 보상 : 그렘린의 선물 상자 획득."));
 			// pc.sendPackets(new S_ServerMessage(403, "그렘린의 선물 상자"), true);
-			pc.그렘린이벤트Time = 0;
+			pc.gremlin_event_time = 0;
 		} else
-			pc.그렘린이벤트Time++;
+			pc.gremlin_event_time++;
 	}
 
 	private void 벚꽃이벤트(L1PcInstance pc) {
 		if (pc instanceof L1RobotInstance)
 			return;
-		if (pc.벚꽃이벤트Time >= 60) {
+		if (pc.cherry_blossom_event_time >= 60) {
 			pc.getInventory().storeItem(60517, 1); // 벚꽃상자 지급
 			pc.sendPackets(new S_ServerMessage(403, "배세호의 도시락 폭탄"), true);
-			pc.벚꽃이벤트Time = 0;
+			pc.cherry_blossom_event_time = 0;
 		} else
-			pc.벚꽃이벤트Time++;
+			pc.cherry_blossom_event_time++;
 	}
 
 	private void 할로윈축제(L1PcInstance pc) {
 		if (pc instanceof L1RobotInstance) {
 			return;
 		}
-		if (pc.할로윈호박씨Time >= 15) {
+		if (pc.halloween_pumpkin_seed_time >= 15) {
 			pc.getInventory().storeItem(160423, 1); // 할로윈 호박씨 지급
 			pc.sendPackets(new S_ServerMessage(403, "호박석"), true);
 			// pc.getInventory().storeItem(60198, 1); // 할로윈 호박씨 지급
 			// pc.sendPackets(new S_ServerMessage(403, "할로윈 호박씨"), true);
-			pc.할로윈호박씨Time = 0;
+			pc.halloween_pumpkin_seed_time = 0;
 		} else
-			pc.할로윈호박씨Time++;
+			pc.halloween_pumpkin_seed_time++;
 	}
 
 	private void DragonEME(L1PcInstance pc) {

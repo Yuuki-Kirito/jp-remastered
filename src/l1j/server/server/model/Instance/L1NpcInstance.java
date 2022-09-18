@@ -1339,7 +1339,7 @@ public class L1NpcInstance extends L1Character {
 							TitanRatio += 5;
 						}
 						}
-						if (_targetpc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.¶óÀÌÂ¡)){
+						if (_targetpc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.RISING)){
 							if(_targetpc.getLevel() > 80){
 								¶óÀÌÂ¡ += _targetpc.getLevel() - 80;
 							}
@@ -1363,7 +1363,7 @@ public class L1NpcInstance extends L1Character {
 								|| _targetpc.getSkillEffectTimerSet()
 										.hasSkillEffect(L1SkillId.EARTH_BIND)
 										|| _targetpc.getSkillEffectTimerSet()
-										.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+										.hasSkillEffect(L1SkillId.EMPIRE)
 										|| _targetpc.getSkillEffectTimerSet()
 										.hasSkillEffect(L1SkillId.FORCE_STUN)
 										|| _targetpc.getSkillEffectTimerSet()
@@ -1402,7 +1402,7 @@ public class L1NpcInstance extends L1Character {
 								|| _targetpc.getSkillEffectTimerSet()
 										.hasSkillEffect(L1SkillId.EARTH_BIND)
 										|| _targetpc.getSkillEffectTimerSet()
-										.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+										.hasSkillEffect(L1SkillId.EMPIRE)
 										|| _targetpc.getSkillEffectTimerSet()
 										.hasSkillEffect(L1SkillId.FORCE_STUN)
 										|| _targetpc.getSkillEffectTimerSet()
@@ -1429,7 +1429,7 @@ public class L1NpcInstance extends L1Character {
 						|| target.getSkillEffectTimerSet().hasSkillEffect(
 								L1SkillId.EARTH_BIND)
 						|| target.getSkillEffectTimerSet()
-						.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+						.hasSkillEffect(L1SkillId.EMPIRE)
 						|| target.getSkillEffectTimerSet()
 						.hasSkillEffect(L1SkillId.FORCE_STUN)
 						|| target.getSkillEffectTimerSet()
@@ -1452,7 +1452,7 @@ public class L1NpcInstance extends L1Character {
 						|| target.getSkillEffectTimerSet().hasSkillEffect(
 								L1SkillId.EARTH_BIND)
 						|| target.getSkillEffectTimerSet()
-						.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+						.hasSkillEffect(L1SkillId.EMPIRE)
 						|| target.getSkillEffectTimerSet()
 						.hasSkillEffect(L1SkillId.FORCE_STUN)
 						|| target.getSkillEffectTimerSet()
@@ -1475,7 +1475,7 @@ public class L1NpcInstance extends L1Character {
 						|| target.getSkillEffectTimerSet().hasSkillEffect(
 								L1SkillId.EARTH_BIND)
 						|| target.getSkillEffectTimerSet()
-						.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+						.hasSkillEffect(L1SkillId.EMPIRE)
 						|| target.getSkillEffectTimerSet()
 						.hasSkillEffect(L1SkillId.FORCE_STUN)
 						|| target.getSkillEffectTimerSet()
@@ -1486,7 +1486,7 @@ public class L1NpcInstance extends L1Character {
 				if (isProbability /* && isShortDistance */) {
 					isMortalBody = true;
 				}
-			} else if (target.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ÀÎÆä¸£³ë)) {
+			} else if (target.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.INFERNO)) {
 				int chan = random.nextInt(100) + 1;
 				boolean isProbability = false;
 				if (25 > chan) {
@@ -1497,7 +1497,7 @@ public class L1NpcInstance extends L1Character {
 						|| target.getSkillEffectTimerSet().hasSkillEffect(
 								L1SkillId.EARTH_BIND)
 						|| target.getSkillEffectTimerSet()
-						.hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+						.hasSkillEffect(L1SkillId.EMPIRE)
 						|| target.getSkillEffectTimerSet()
 						.hasSkillEffect(L1SkillId.FORCE_STUN)
 						|| target.getSkillEffectTimerSet()
@@ -2744,7 +2744,7 @@ public class L1NpcInstance extends L1Character {
 				if (tt_clanid == perceivedFrom.getClanid()
 						|| tt_partyid == perceivedFrom.getPartyID()) {
 					perceivedFrom.sendPackets(new S_PacketBox(
-							S_PacketBox.ÀÌ¹ÌÁö½ºÆù, getId(), 12299, true));
+							S_PacketBox.IMAGE_SPAWN, getId(), 12299, true));
 				}
 			}
 		} catch (Exception e) {
@@ -2936,7 +2936,7 @@ public class L1NpcInstance extends L1Character {
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ÆÄ¿ö±×¸³)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
-					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.½¦µµ¿ì½ºÅÇ)
+					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHADOW_TAB)
 					|| isPhantomRippered() || isPhantomDeathed()) {
 				return;
 			}

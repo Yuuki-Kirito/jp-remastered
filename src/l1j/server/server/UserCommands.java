@@ -331,10 +331,10 @@ public class UserCommands {
 
 	public void killment(L1PcInstance pc, String cmd, String param) { // by사부 멘트
 		if (param.equalsIgnoreCase("끔")) {
-			pc.킬멘트 = false;
+			pc._KILMENT = false;
 			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시하지 않습니다."));
 		} else if (param.equalsIgnoreCase("켬")) {
-			pc.킬멘트 = true;
+			pc._KILMENT = true;
 			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시 합니다."));
 		} else {
 			pc.sendPackets(new S_SystemMessage(".킬멘트 [켬/끔] 으로 입력해 주세요. "));
@@ -500,7 +500,7 @@ public class UserCommands {
 				Timestamp deleteTime = null;
 				deleteTime = new Timestamp(sysTime + (3600000 * 24 * (long) 1) + 10000);// 7일
 				pc.sendPackets(new S_NewSkillIcons(L1SkillId.PC방, true, -1));
-				pc.PC방_버프 = true;
+				pc._PC_ROOM_BUFF = true;
 				String s = "08 01 f1 d5";// 피씨방..
 				pc.sendPackets(new S_NewCreateItem(126, s));
 				pc.getNetConnection().getAccount().setBuff_PC방(deleteTime);

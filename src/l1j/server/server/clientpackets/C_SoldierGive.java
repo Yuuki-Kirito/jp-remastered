@@ -46,7 +46,7 @@ public class C_SoldierGive extends ClientBasePacket {
 			int type = readH(); // 선택
 
 			L1PcInstance pc = clientthread.getActiveChar();
-			pc.용병타입 = 1;
+			pc.mercenary_type = 1;
 			int castle_id = pc.getClan().getCastleId();
 			L1Soldier soldier = SoldierTable.getInstance().getSoldierTable(
 					castle_id);
@@ -148,7 +148,7 @@ public class C_SoldierGive extends ClientBasePacket {
 		S_SystemMessage sm = new S_SystemMessage(target.getName()
 				+ "님은 배치 되어 있는 용병이 " + a + "명 있습니다.");
 		pc.sendPackets(sm, true);
-		pc.용병타입 = type;
+		pc.mercenary_type = type;
 		S_SoldierGive sg = new S_SoldierGive(target, objid, type, count,
 				iscount);
 		pc.sendPackets(sg, true);

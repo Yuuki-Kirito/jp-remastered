@@ -359,49 +359,49 @@ public class Teleportation {
 //					time = outtime - pc.get라던time();
 				} else if (pc.getMapId() == 10 || pc.getMapId() == 11 || pc.getMapId() == 12) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get검은전함time();
+					time = outtime - pc.getblackbattleshiptime();
 				} else if (pc.getMapId() == 1700 || pc.getMapId() == 1703) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get잊섬time();
+					time = outtime - pc.getforgetislandtime();
 					/** 리마스터 던전 */
 				} else if (pc.getMapId() == 491 || pc.getMapId() == 492 || pc.getMapId() == 493) {
 					int outtime = 60 * 60 * 3;
-					time = outtime - pc.get아투바time();
+					time = outtime - pc.getatubatime();
 				} else if (pc.getMapId() == 777) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get버땅time();
+					time = outtime - pc.gettime();
 				} else if (pc.getMapId() == 59 || pc.getMapId() == 60 || pc.getMapId() == 61 || pc.getMapId() == 63) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get에바time();
+					time = outtime - pc.getevatime();
 					/** 리마스터 던전 */
 				} else if (pc.getMapId() == 10101) {
 					int outtime = 60 * 60 * 1;
-					time = outtime - pc.get수련time();
+					time = outtime - pc.gettrainingtime();
 					/*
 					 * } else if (pc.getMapId() == 5490) { int outtime = 60 * 60 * 8; time = outtime
 					 * - pc.get낚시time();
 					 */
 				} else if (pc.getMapId() == 785 || pc.getMapId() == 788 || pc.getMapId() == 789) {
 					int outtime = 60 * 60 * 1;
-					time = outtime - pc.get수렵이벤트time();
+					time = outtime - pc.gethuntingeventtime();
 				} else if (pc.getMapId() >= 653 && pc.getMapId() <= 656) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get수상한감옥time();
+					time = outtime - pc.getsuspiciousprisontime();
 				} else if (pc.getMapId() >= 1911 && pc.getMapId() <= 1913) {
 					int outtime = 60 * 60;
-					time = outtime - pc.get수상한천상계곡time();
+					time = outtime - pc.getsuspiciousagarvalleytime();
 				} else if (pc.getMapId() == 5501) {
 					int outtime = 60 * 60;
-					time = outtime - pc.get할로윈time();
+					time = outtime - pc.gethalloweentime();
 				} else if (pc.getMapId() == 820) {
 					int outtime = 60 * 40;
-					time = outtime - pc.get솔로타운time();
+					time = outtime - pc.getsolotowntime();
 				} else if (pc.getMapId() == 1931) { // XXX モンファンの島？
 					int outtime = 60 * 30;
 					time = outtime - pc.getpctime1();
 				} else if (pc.getMapId() == 624 || pc.getMapId() == 430) {
 					int outtime = 60 * 60 * 2;
-					time = outtime - pc.get고무time();
+					time = outtime - pc.getrubbertime();
 				}
 
 				if (time > 0)
@@ -440,17 +440,17 @@ public class Teleportation {
 
 			}
 
-			if (pc.상인찾기Objid != 0) {
-				pc.sendPackets(new S_NPCTalkReturn(pc.상인찾기Objid, "usershop"), true);
-				pc.상인찾기Objid = 0;
+			if (pc.find_a_merchant_objid != 0) {
+				pc.sendPackets(new S_NPCTalkReturn(pc.find_a_merchant_objid, "usershop"), true);
+				pc.find_a_merchant_objid = 0;
 			}
 			if (pc.TownMapTeleporting) {
 				pc.sendPackets(new S_PacketBox(S_PacketBox.지도위치보정), true);
 				pc.TownMapTeleporting = false;
 			}
 
-			if (pc.아인_시선_존) {
-				pc.아인_시선_존 = false;
+			if (pc._AIN_GAZE_JOHN) {
+				pc._AIN_GAZE_JOHN = false;
 				pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.AINHASAD, pc));
 			}
 

@@ -564,7 +564,7 @@ public class CalcExp {
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EXP_POTION)) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EXP_POTION_cash)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EXP_POTION)) {
-				if (pc.PC¹æ_¹öÇÁ) {
+				if (pc._PC_ROOM_BUFF) {
 					expposion = 1.3;
 				} else {
 					expposion = 1.2;
@@ -978,7 +978,7 @@ public class CalcExp {
 				gereng += 1;
 			}
 
-			if (pc.PC¹æ_¹öÇÁ) {
+			if (pc._PC_ROOM_BUFF) {
 				gereng += 0.10;
 				pc.calAinHasad(-exp);
 			}
@@ -1010,7 +1010,7 @@ public class CalcExp {
 			if (clan.getCastleId() != 0) { // ¼ºÇ÷ÀÏ½Ã 
 			    castleBonus = 1.05;
 			}
-			if (pc.Ç÷¸Í¹öÇÁ) {
+			if (pc._CLAN_BUFF) {
 				double l = 0.05;
 				clan20Bonus = 1.01;
 				if (pc.getLevel() > 45) {

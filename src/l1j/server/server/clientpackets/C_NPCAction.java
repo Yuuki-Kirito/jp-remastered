@@ -254,8 +254,8 @@ public class C_NPCAction extends ClientBasePacket {
 			}
 		//	System.out.println("Entered !!" + s);
 			if (s.equalsIgnoreCase("sea harphy morph") || s.equalsIgnoreCase("kelenis girl2")) { // 픽시아이템 변신
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					if (item != null && item.getItemId() == 60167) {// 픽시아이템일경우
 						int time = polyLawfulTime(pc.getLawful(), 1200, 400);
 						L1PolyMorph poly = PolyTable.getInstance().getTemplate(s);
@@ -276,44 +276,44 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_NPCTalkReturn(objid, "", htmldata));
 				return;
 			} else if(s.equalsIgnoreCase("event jin death knight")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17273, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if(s.equalsIgnoreCase("event jin assassin")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17274, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if(s.equalsIgnoreCase("event jin baphomet master")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17277, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if(s.equalsIgnoreCase("event jin lance master")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17275, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if(s.equalsIgnoreCase("event owen")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17276, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if(s.equalsIgnoreCase("event guard spear red")){
-				if (pc.픽시아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.픽시아이템사용id);
+				if (pc.pixie_item_usage_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.pixie_item_usage_id);
 					L1PolyMorph.doPoly(pc, 17272, 1800, L1PolyMorph.MORPH_BY_ITEMMAGIC);
 					pc.sendPackets(new S_CloseList(pc.getId()), true);
 				}
 			} else if (s.equalsIgnoreCase("dinos hitter") || s.equalsIgnoreCase("dinos pitcher")) { // 선수  변신
-				if (pc.선수아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem( pc.선수아이템사용id);
+				if (pc.player_item_use_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem( pc.player_item_use_id);
 					if (item != null && item.getItemId() == 60308) {// 픽시아이템일경우
 						int time = 1800;
 						L1PolyMorph poly = PolyTable.getInstance().getTemplate(s);
@@ -342,8 +342,8 @@ public class C_NPCAction extends ClientBasePacket {
 					|| s.equalsIgnoreCase("death 80a")
 					|| s.equalsIgnoreCase("spearm 80a")
 					|| s.equalsIgnoreCase("darkelf 80a")) { // 영웅 80 변신
-				if (pc.영웅80변신아이템사용id != 0) {
-					L1ItemInstance item = pc.getInventory().getItem(pc.영웅80변신아이템사용id);
+				if (pc.hero_80_transformation_item_use_id != 0) {
+					L1ItemInstance item = pc.getInventory().getItem(pc.hero_80_transformation_item_use_id);
 					if (item != null && item.getItemId() == 60325) {// 픽시아이템일경우
 						int time = 1800;
 						L1PolyMorph poly = PolyTable.getInstance().getTemplate(s);
@@ -1071,7 +1071,7 @@ public class C_NPCAction extends ClientBasePacket {
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.군터의조언)) {
 						pc.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.군터의조언);
 					}
-					pc.크레이 = true;
+					pc._CRAY = true;
 					pc.getAC().addAc(-8);
 					pc.getResistance().addMr(20);
 					pc.addMaxHp(200);
@@ -4832,7 +4832,7 @@ public class C_NPCAction extends ClientBasePacket {
 					|| ((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 100399
 					|| ((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 170017
 					|| ((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 100434) { // //젠도르 npc 번호
-				if (pc._젠도르빈줌갯수 > 0) {
+				if (pc._Zendor_empty_zoom > 0) {
 					int itemid = 0;
 					int aden = 50;
 					int emptyScroll = 40090;
@@ -4928,17 +4928,17 @@ public class C_NPCAction extends ClientBasePacket {
 						emptyScroll = 40094;
 					}
 
-					if (!pc.getInventory().checkItem(40308, aden * pc._젠도르빈줌갯수)) // 아덴 체크
+					if (!pc.getInventory().checkItem(40308, aden * pc._Zendor_empty_zoom)) // 아덴 체크
 						htmlid = "bs_m6";
-					else if (!pc.getInventory().checkItem(emptyScroll, pc._젠도르빈줌갯수)) // 빈줌 체크
+					else if (!pc.getInventory().checkItem(emptyScroll, pc._Zendor_empty_zoom)) // 빈줌 체크
 						htmlid = "bs_m2";
-					else if ((itemid == 40887 || itemid == 40889) && !pc.getInventory().consumeItem(40318, pc._젠도르빈줌갯수)) // 마돌 체크
+					else if ((itemid == 40887 || itemid == 40889) && !pc.getInventory().consumeItem(40318, pc._Zendor_empty_zoom)) // 마돌 체크
 						htmlid = "bs_m2";
 					else if (itemid != 0) {
-						pc.getInventory().consumeItem(40308, aden * pc._젠도르빈줌갯수);
-						pc.getInventory().consumeItem(emptyScroll, pc._젠도르빈줌갯수);
-						L1ItemInstance item = pc.getInventory().storeItem(itemid, pc._젠도르빈줌갯수);
-						pc.sendPackets(new S_ServerMessage(143, ((L1NpcInstance) obj).getName(), item.getName() + " (" + pc._젠도르빈줌갯수 + ")"), true);
+						pc.getInventory().consumeItem(40308, aden * pc._Zendor_empty_zoom);
+						pc.getInventory().consumeItem(emptyScroll, pc._Zendor_empty_zoom);
+						L1ItemInstance item = pc.getInventory().storeItem(itemid, pc._Zendor_empty_zoom);
+						pc.sendPackets(new S_ServerMessage(143, ((L1NpcInstance) obj).getName(), item.getName() + " (" + pc._Zendor_empty_zoom + ")"), true);
 						// true);
 						htmlid = "bs_m1";
 					}
@@ -4969,28 +4969,28 @@ public class C_NPCAction extends ClientBasePacket {
 					} else if (s.equalsIgnoreCase("1")) {// 빈줌 1개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "50", "100", "100", "200", "200", "1" };
-						pc._젠도르빈줌갯수 = 1;
+						pc._Zendor_empty_zoom = 1;
 					} else if (s.equalsIgnoreCase("2")) {// 빈줌 5개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "250", "500", "500", "1000", "1000", "5" };
-						pc._젠도르빈줌갯수 = 5;
+						pc._Zendor_empty_zoom = 5;
 					} else if (s.equalsIgnoreCase("3")) {// 빈줌 10개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "500", "1000", "1000", "2000", "2000", "10" };
-						pc._젠도르빈줌갯수 = 10;
+						pc._Zendor_empty_zoom = 10;
 					} else if (s.equalsIgnoreCase("4")) {// 빈줌 100개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "5000", "10000", "10000", "20000", "20000", "100" };
-						pc._젠도르빈줌갯수 = 100;
+						pc._Zendor_empty_zoom = 100;
 					} else if (s.equalsIgnoreCase("5")) {// 빈줌 500개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "25000", "50000", "50000", "50000", "50000", "500" };
-						pc._젠도르빈줌갯수 = 500;
+						pc._Zendor_empty_zoom = 500;
 					}
 				}
 				/** 성혈전용 (버프사) **/
 			} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 7000065) { // npc 번호
-				if (pc._젠도르빈줌갯수 > 0) {
+				if (pc._Zendor_empty_zoom > 0) {
 					int itemid = 0;
 					int aden = 50;
 					int emptyScroll = 40090;
@@ -5086,17 +5086,17 @@ public class C_NPCAction extends ClientBasePacket {
 						emptyScroll = 40094;
 					}
 
-					if (!pc.getInventory().checkItem(40308, aden * pc._젠도르빈줌갯수)) // 아덴 체크
+					if (!pc.getInventory().checkItem(40308, aden * pc._Zendor_empty_zoom)) // 아덴 체크
 						htmlid = "bs_m6";
-					else if (!pc.getInventory().checkItem(emptyScroll, pc._젠도르빈줌갯수)) // 빈줌 체크
+					else if (!pc.getInventory().checkItem(emptyScroll, pc._Zendor_empty_zoom)) // 빈줌 체크
 						htmlid = "bs_m2";
-					else if ((itemid == 40887 || itemid == 40889) && !pc.getInventory().consumeItem(40318, pc._젠도르빈줌갯수)) // 마돌 체크
+					else if ((itemid == 40887 || itemid == 40889) && !pc.getInventory().consumeItem(40318, pc._Zendor_empty_zoom)) // 마돌 체크
 						htmlid = "bs_m2";
 					else if (itemid != 0) {
-						pc.getInventory().consumeItem(40308, aden * pc._젠도르빈줌갯수);
-						pc.getInventory().consumeItem(emptyScroll, pc._젠도르빈줌갯수);
-						L1ItemInstance item = pc.getInventory().storeItem(itemid, pc._젠도르빈줌갯수);
-						pc.sendPackets(new S_ServerMessage(143, ((L1NpcInstance) obj).getName(), item.getName() + " (" + pc._젠도르빈줌갯수 + ")"), true);
+						pc.getInventory().consumeItem(40308, aden * pc._Zendor_empty_zoom);
+						pc.getInventory().consumeItem(emptyScroll, pc._Zendor_empty_zoom);
+						L1ItemInstance item = pc.getInventory().storeItem(itemid, pc._Zendor_empty_zoom);
+						pc.sendPackets(new S_ServerMessage(143, ((L1NpcInstance) obj).getName(), item.getName() + " (" + pc._Zendor_empty_zoom + ")"), true);
 						htmlid = "bs_m1";
 					}
 				} else {
@@ -5132,23 +5132,23 @@ public class C_NPCAction extends ClientBasePacket {
 					} else if (s.equalsIgnoreCase("1")) {// 빈줌 1개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "50", "100", "100", "200", "200", "1" };
-						pc._젠도르빈줌갯수 = 1;
+						pc._Zendor_empty_zoom = 1;
 					} else if (s.equalsIgnoreCase("2")) {// 빈줌 5개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "250", "500", "500", "1000", "1000", "5" };
-						pc._젠도르빈줌갯수 = 5;
+						pc._Zendor_empty_zoom = 5;
 					} else if (s.equalsIgnoreCase("3")) {// 빈줌 10개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "500", "1000", "1000", "2000", "2000", "10" };
-						pc._젠도르빈줌갯수 = 10;
+						pc._Zendor_empty_zoom = 10;
 					} else if (s.equalsIgnoreCase("4")) {// 빈줌 100개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "5000", "10000", "10000", "20000", "20000", "100" };
-						pc._젠도르빈줌갯수 = 100;
+						pc._Zendor_empty_zoom = 100;
 					} else if (s.equalsIgnoreCase("5")) {// 빈줌 500개
 						htmlid = "bs_m4";
 						htmldata = new String[] { "25000", "50000", "50000", "50000", "50000", "500" };
-						pc._젠도르빈줌갯수 = 500;
+						pc._Zendor_empty_zoom = 500;
 					}
 				}
 
@@ -5980,7 +5980,7 @@ public class C_NPCAction extends ClientBasePacket {
 		try {
 			if (s.equalsIgnoreCase("pet island")) {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
-				if (pc.get수련day() == null) pc.set수련day(nowday);
+				if (pc.getwaterlilyday() == null) pc.settrainingday(nowday);
 
 				try {
 					if(!pc.getInventory().consumeItem(40308, 1000)){
@@ -5988,8 +5988,8 @@ public class C_NPCAction extends ClientBasePacket {
 					}
 
 					int outtime = 60 * 60 * 1;
-					int usetime = pc.get수련time();
-					String Check = isPC입장가능여부(pc.get수련day(), outtime, usetime);
+					int usetime = pc.gettrainingtime();
+					String Check = isPC입장가능여부(pc.getwaterlilyday(), outtime, usetime);
 					L1Location loc = new L1Location(32820, 32901, (short)10101).randomLocation(4,true);
 					if (Check.equals("입장가능")) {
 						int h = (outtime - usetime) / 60 / 60;
@@ -6009,8 +6009,8 @@ public class C_NPCAction extends ClientBasePacket {
 					} else if (Check.equals("불가능")) {// 입장불가능
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 2시간을 모두 사용"), true);
 					} else if (Check.equals("초기화")) {// 초기화
-						pc.set수련time(0);
-						pc.set수련day(nowday);
+						pc.settrainingtime(0);
+						pc.settrainingday(nowday);
 						pc.getNetConnection().getAccount().updateDGTime();
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 1시간이 남았습니다."), true);;
 						L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short)loc.getMapId(), 6, true);
@@ -6381,11 +6381,11 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 				if (mapid != 0) {
 					try {
-						int usetime = pc.get고무time();
+						int usetime = pc.getrubbertime();
 						int outtime = 60 * 60 * 2;
 						Timestamp nowday = new Timestamp(System.currentTimeMillis());
 						L1Location loc = new L1Location(x, y, mapid).randomLocation(1, true);
-						String s1 = isPC입장가능여부(pc.get고무day(), outtime, usetime);
+						String s1 = isPC입장가능여부(pc.getrubberday(), outtime, usetime);
 						if (s1.equals("입장가능")) {// 입장가능
 							int h = (outtime - usetime) / 60 / 60;
 							if (h < 0) {
@@ -6405,8 +6405,8 @@ public class C_NPCAction extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(1522, "2"));// 5시간 모두사용했다.
 							return "";
 						} else if (s1.equals("초기화")) {// 초기화
-							pc.set고무time(1);
-							pc.set고무day(nowday);
+							pc.setrubbertime(1);
+							pc.setrubberday(nowday);
 							pc.save();
 							pc.sendPackets(new S_ServerMessage(1526, "2"));// 시간남았다.
 							L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc.getMapId(), 5, true, true, 5000);
@@ -6835,7 +6835,7 @@ public class C_NPCAction extends ClientBasePacket {
 					htmlid = "lupinf";
 				}
 				if (mapid != 0) {
-					int usetime = pc.get버땅time();
+					int usetime = pc.gettime();
 					int outtime = 0;
 
 					outtime = 60 * 60 * 2;
@@ -6843,7 +6843,7 @@ public class C_NPCAction extends ClientBasePacket {
 					Timestamp nowday = new Timestamp(System.currentTimeMillis());
 					L1Location loc = new L1Location(x, y, mapid).randomLocation(1, true);
 					try {
-						String s1 = isPC입장가능여부(pc.get버땅day(), outtime, usetime);
+						String s1 = isPC입장가능여부(pc.getbudangday(), outtime, usetime);
 						if (s1.equals("입장가능")) {// 입장가능
 							int h = (outtime - usetime) / 60 / 60;
 							if (h < 0) {
@@ -6865,8 +6865,8 @@ public class C_NPCAction extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(1522, "2"));// 모두사용했다.
 							return "";
 						} else if (s1.equals("초기화")) { // 초기화
-							pc.set버땅time(1);
-							pc.set버땅day(nowday);
+							pc.set_time(1);
+							pc.set_day(nowday);
 							pc.save();
 							pc.sendPackets(new S_ServerMessage(1526, "2"));// 시간남았다.
 							L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc.getMapId(), 5, true);
@@ -7083,7 +7083,7 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			}
 			if (mapid != 0) {
-				int usetime = pc.get아투바time();
+				int usetime = pc.getatubatime();
 				int outtime = 0;
 
 				outtime = 60 * 60 * 3;
@@ -7091,7 +7091,7 @@ public class C_NPCAction extends ClientBasePacket {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				L1Location loc = new L1Location(x, y, mapid).randomLocation(1, true);
 				try {
-					String s1 = isPC입장가능여부(pc.get아투바day(), outtime, usetime);
+					String s1 = isPC입장가능여부(pc.getatubaday(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -7114,8 +7114,8 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(1522, "3"));// 모두사용했다.
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.set아투바time(1);
-						pc.set아투바day(nowday);
+						pc.setatubatime(1);
+						pc.setatoubaday(nowday);
 						pc.save();
 						pc.sendPackets(new S_ServerMessage(1526, "3"));// 시간남았다.
 						L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc.getMapId(), 5, true);
@@ -7188,15 +7188,15 @@ public class C_NPCAction extends ClientBasePacket {
 					int outtime = 60 * 40;
 					Timestamp nowday = new Timestamp(System.currentTimeMillis());
 					random = null;
-					if (pc.get솔로타운day() == null) {
-						pc.set솔로타운time(1);
-						pc.set솔로타운day(nowday);
+					if (pc.getsolotownday() == null) {
+						pc.setsolotowntime(1);
+						pc.setsolotownday(nowday);
 						pc.sendPackets(new S_ServerMessage(1527, "40"));// 분 남았다
 						L1Teleport.teleport(pc, 32833 + gn1, 32958 + gn1, (short) 5501, 5, true, true, 5000);
 					} else {
-						time = pc.get솔로타운time();
-						if (pc.get솔로타운day().getDate() != nowday.getDate()) {
-							pc.set솔로타운time(1);
+						time = pc.getsolotowntime();
+						if (pc.getsolotownday().getDate() != nowday.getDate()) {
+							pc.setsolotowntime(1);
 							pc.sendPackets(new S_ServerMessage(1527, "40"));	// 분 남았다
 							L1Teleport.teleport(pc, 32608 + gn1, 32875 + gn1, (short) 820, 5, true, true, 5000);
 						} else if (outtime > time) {
@@ -7241,17 +7241,17 @@ public class C_NPCAction extends ClientBasePacket {
 
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = pc.get에바time();
+			int usetime = pc.getevatime();
 
-			String s = isAccount입장가능여부(pc.get에바day(), outtime, usetime);
+			String s = isAccount입장가능여부(pc.getevaday(), outtime, usetime);
 			if (s.equals("입장가능")) {	// 입장가능
 				L1Teleport.teleport(pc, x, y, map, 6, true);
 			} else if (s.equals("불가능")) {	// 입장불가능
 				pc.sendPackets(new S_SystemMessage("입장 시간 :모두 사용 하였습니다."), true);
 				return "";
 			} else if (s.equals("초기화")) {// 초기화
-				pc.set에바time(1);
-				pc.set에바day(nowday);
+				pc.setevatime(1);
+				pc.setevaday(nowday);
 				pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간이 아직 남아있습니다."), true);
 			}
 		} catch (Exception e) {
@@ -7334,15 +7334,15 @@ public class C_NPCAction extends ClientBasePacket {
 				int outtime = 60 * 60;
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				random = null;
-				if (pc.get할로윈day() == null) {
-					pc.set할로윈time(1);
-					pc.set할로윈day(nowday);
+				if (pc.gethalloweenday() == null) {
+					pc.sethalloweentime(1);
+					pc.sethalloweenday(nowday);
 					pc.sendPackets(new S_ServerMessage(1526, "1"));// 시간 남았다.
 					L1Teleport.teleport(pc, 32833 + gn1, 32958 + gn1, (short) 5501, 5, true, true, 5000);
 				} else {
-					time = pc.get할로윈time();
-					if (pc.get할로윈day().getDate() != nowday.getDate()) {
-						pc.set할로윈time(1);
+					time = pc.gethalloweentime();
+					if (pc.gethalloweenday().getDate() != nowday.getDate()) {
+						pc.sethalloweentime(1);
 						pc.sendPackets(new S_ServerMessage(1526, "1"));// 시간 남았다.
 						L1Teleport.teleport(pc, 32833 + gn1, 32958 + gn1, (short) 5501, 5, true, true, 5000);
 					} else if (outtime > time) {
@@ -8183,7 +8183,7 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.군터의조언);
 			}
 			
-			pc.군터 = true;
+			pc._GUNTHER = true;
 			pc.addBowDmgup(5);
 			pc.addBowHitup(7);
 			pc.addHpr(10);
@@ -8273,54 +8273,54 @@ public class C_NPCAction extends ClientBasePacket {
 		}
 
 		if (!htmlid.equalsIgnoreCase("")) {
-			pc.란달대화창 = htmlid;
+			pc.randall_dialog = htmlid;
 		}
 		
 		try {
 			int i = Integer.parseInt(s, 16) - 9;
-			if (pc.란달대화창.equalsIgnoreCase("randal1")) { // 농축 용기
+			if (pc.randall_dialog.equalsIgnoreCase("randal1")) { // 농축 용기
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40014, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40014, 3 * i);
 					pc.getInventory().storeItem(550001, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal2")) { // 농축 집중
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal2")) { // 농축 집중
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40068, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40068, 3 * i);
 					pc.getInventory().storeItem(550002, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal3")) { // 농축 지혜
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal3")) { // 농축 지혜
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40016, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40016, 3 * i);
 					pc.getInventory().storeItem(550003, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal4")) { // 농축 마력
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal4")) { // 농축 마력
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40015, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40015, 3 * i);
 					pc.getInventory().storeItem(550004, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal5")) { // 농축 속도
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal5")) { // 농축 속도
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40013, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40013, 3 * i);
 					pc.getInventory().storeItem(550000, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal6")) { // 농축 호흡
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal6")) { // 농축 호흡
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40032, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40032, 3 * i);
 					pc.getInventory().storeItem(550005, i);
 				} else
 					htmlid = "randal8";
-			} else if (pc.란달대화창.equalsIgnoreCase("randal7")) { // 농축 변신
+			} else if (pc.randall_dialog.equalsIgnoreCase("randal7")) { // 농축 변신
 				if (pc.getInventory().checkItem(40308, 1000 * i) && pc.getInventory().checkItem(40088, 3 * i)) {
 					pc.getInventory().consumeItem(40308, 1000 * i);
 					pc.getInventory().consumeItem(40088, 3 * i);
@@ -8329,7 +8329,7 @@ public class C_NPCAction extends ClientBasePacket {
 					htmlid = "randal8";
 			}
 			
-			pc.란달대화창 = "";
+			pc.randall_dialog = "";
 		} catch (Exception e) {
 		}
 		
@@ -8953,8 +8953,8 @@ public class C_NPCAction extends ClientBasePacket {
 				int gn1 = random.nextInt(3);
 				try {
 					int outtime = 60 * 60;
-					int usetime = pc.get수상한천상계곡time();
-					String s1 = isPC입장가능여부(pc.get수상한천상계곡day(), outtime, usetime);
+					int usetime = pc.getsuspiciousagarvalleytime();
+					String s1 = isPC입장가능여부(pc.getsuspiciousagarvalleyday(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -8980,7 +8980,7 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(1522, "1"));   // 5시간 모두 사용했다.
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.set수상한천상계곡time(1);
+						pc.setwateragarvalleytime(1);
 						pc.set수상한천상계곡day(nowday);
 						pc.save();
 						pc.sendPackets(new S_ServerMessage(1526, "1"));   // 시간  남았다.
@@ -8996,8 +8996,8 @@ public class C_NPCAction extends ClientBasePacket {
 				
 				try {
 					int outtime = 60 * 60;
-					int usetime = pc.get수상한천상계곡time();
-					String s1 = isPC입장가능여부(pc.get수상한천상계곡day(), outtime, usetime);
+					int usetime = pc.getsuspiciousagarvalleytime();
+					String s1 = isPC입장가능여부(pc.getsuspiciousagarvalleyday(), outtime, usetime);
 					
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
@@ -9022,7 +9022,7 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(1522, "1"));  // 5시간 모두 사용했다.
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.set수상한천상계곡time(1);
+						pc.setwateragarvalleytime(1);
 						pc.set수상한천상계곡day(nowday);
 						pc.save();
 						pc.sendPackets(new S_ServerMessage(1526, "1"));  // 시간 남았다.
@@ -9039,8 +9039,8 @@ public class C_NPCAction extends ClientBasePacket {
 				
 				try {
 					int outtime = 60 * 60;
-					int usetime = pc.get수상한천상계곡time();
-					String s1 = isPC입장가능여부(pc.get수상한천상계곡day(), outtime, usetime);
+					int usetime = pc.getsuspiciousagarvalleytime();
+					String s1 = isPC입장가능여부(pc.getsuspiciousagarvalleyday(), outtime, usetime);
 					
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
@@ -9065,7 +9065,7 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(1522, "1"));  // 5시간 모두 사용했다.
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.set수상한천상계곡time(1);
+						pc.setwateragarvalleytime(1);
 						pc.set수상한천상계곡day(nowday);
 						pc.save();
 						pc.sendPackets(new S_ServerMessage(1526, "1"));// 시간 남았다
@@ -9268,7 +9268,7 @@ public class C_NPCAction extends ClientBasePacket {
 					pc.dy = pn.getY() + rnd.nextInt(3) - 1;
 					pc.dm = (short) pn.getMapId();
 					pc.dh = calcheading(pc.dx, pc.dy, pn.getX(), pn.getY());
-					pc.상인찾기Objid = pn.getId();
+					pc.find_a_merchant_objid = pn.getId();
 					pc.setTelType(7);
 					pc.sendPackets(new S_SabuTell(pc), true);
 				} else {
@@ -9278,7 +9278,7 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.dy = nn.getY() + rnd.nextInt(3) - 1;
 						pc.dm = (short) nn.getMapId();
 						pc.dh = calcheading(pc.dx, pc.dy, nn.getX(), nn.getY());
-						pc.상인찾기Objid = nn.getId();
+						pc.find_a_merchant_objid = nn.getId();
 						pc.setTelType(7);
 						pc.sendPackets(new S_SabuTell(pc), true);
 					} else {
@@ -10564,13 +10564,13 @@ public class C_NPCAction extends ClientBasePacket {
 		if (pc.getInventory().checkItem(60177, 1)) {
 			
 			try {
-				int usetime = pc.get수렵이벤트time();
+				int usetime = pc.gethuntingeventtime();
 				int outtime = 60 * 60 * 1;
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				if (s.equalsIgnoreCase("A")) {
 					
 					try {
-						String s1 = isPC입장가능여부(pc.get수렵이벤트day(), outtime, usetime);
+						String s1 = isPC입장가능여부(pc.gethuntigeventday(), outtime, usetime);
 						if (s1.equals("입장가능")) {// 입장가능
 							int h = (outtime - usetime) / 60 / 60;
 							if (h < 0) {
@@ -10599,8 +10599,8 @@ public class C_NPCAction extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(1522, "1"));// 5시간 모두 사용했다
 							return "";
 						} else if (s1.equals("초기화")) {// 초기화
-							pc.set수렵이벤트time(1);
-							pc.set수렵이벤트day(nowday);
+							pc.sethuntingeventtime(1);
+							pc.sethuntingeventday(nowday);
 							pc.save();
 							// pc.sendPackets(new S_SystemMessage(pc,
 							// "던전 체류 시간이 1시간 남았습니다."), true);
@@ -10612,7 +10612,7 @@ public class C_NPCAction extends ClientBasePacket {
 					}
 				} else if (s.equalsIgnoreCase("B")) {
 					try {
-						String s1 = isPC입장가능여부(pc.get수렵이벤트day(), outtime, usetime);
+						String s1 = isPC입장가능여부(pc.gethuntigeventday(), outtime, usetime);
 						if (s1.equals("입장가능")) {// 입장가능
 							int h = (outtime - usetime) / 60 / 60;
 							if (h < 0) {
@@ -10639,8 +10639,8 @@ public class C_NPCAction extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(1522, "1"));   // 5시간 모두 사용했다
 							return "";
 						} else if (s1.equals("초기화")) {// 초기화
-							pc.set수렵이벤트time(1);
-							pc.set수렵이벤트day(nowday);
+							pc.sethuntingeventtime(1);
+							pc.sethuntingeventday(nowday);
 							pc.save();
 							pc.sendPackets(new S_ServerMessage(1526, "1"));  // 시간 남았다.
 							L1Teleport.teleport(pc, 32791, 32738, (short) 788, 5, true);
@@ -10651,7 +10651,7 @@ public class C_NPCAction extends ClientBasePacket {
 
 				} else if (s.equalsIgnoreCase("C")) {
 					try {
-						String s1 = isPC입장가능여부(pc.get수렵이벤트day(), outtime, usetime);
+						String s1 = isPC입장가능여부(pc.gethuntigeventday(), outtime, usetime);
 						if (s1.equals("입장가능")) {// 입장가능
 							int h = (outtime - usetime) / 60 / 60;
 							if (h < 0) {
@@ -10675,8 +10675,8 @@ public class C_NPCAction extends ClientBasePacket {
 							pc.sendPackets(new S_ServerMessage(1522, "1"));  // 5시간 모두 사용했다
 							return "";
 						} else if (s1.equals("초기화")) {// 초기화
-							pc.set수렵이벤트time(1);
-							pc.set수렵이벤트day(nowday);
+							pc.sethuntingeventtime(1);
+							pc.sethuntingeventday(nowday);
 							pc.save();
 							pc.sendPackets(new S_ServerMessage(1526, "1"));   // 시간 남았다.
 							L1Teleport.teleport(pc, 32791, 32738, (short) 789, 5, true);
@@ -10771,7 +10771,7 @@ public class C_NPCAction extends ClientBasePacket {
 
 		String htmlid = "";
 		if (s.equalsIgnoreCase("a")) { // 근거리 버프
-			if (!pc.PC방_버프) {
+			if (!pc._PC_ROOM_BUFF) {
 				pc.sendPackets(new S_SystemMessage("PC방 코인 상품을 사용 중인 유저만 입장 가능합니다."));
 				return "";
 			}
@@ -10823,9 +10823,9 @@ public class C_NPCAction extends ClientBasePacket {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
 					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
-					int usetime = pc.get용둥time();
+					int usetime = pc.getdragontime();
 
-					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
+					String s2 = isAccount입장가능여부(pc.getdragonday(), outtime, usetime);
 					if (s2.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -10844,8 +10844,8 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 모두 사용"), true);
 						return "";
 					} else if (s2.equals("초기화")) {// 초기화
-						pc.set용둥time(1);
-						pc.set용둥day(nowday);
+						pc.setdragontime(1);
+						pc.setdragonday(nowday);
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 남음"), true);
 					}
 				} catch (Exception e) {
@@ -10885,7 +10885,7 @@ public class C_NPCAction extends ClientBasePacket {
 						// "던전 체류 가능 시간 2시간을 모두 사용하셨습니다."), true);
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.setpc용둥time(1);
+						pc.setpcdragontime(1);
 						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
@@ -10921,9 +10921,9 @@ public class C_NPCAction extends ClientBasePacket {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
 					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
-					int usetime = pc.get용둥time();
+					int usetime = pc.getdragontime();
 
-					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
+					String s2 = isAccount입장가능여부(pc.getdragonday(), outtime, usetime);
 					if (s2.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -10944,8 +10944,8 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 모두 사용"), true);
 						return "";
 					} else if (s2.equals("초기화")) {// 초기화
-						pc.set용둥time(1);
-						pc.set용둥day(nowday);
+						pc.setdragontime(1);
+						pc.setdragonday(nowday);
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 남음"), true);
 					}
 				} catch (Exception e) {
@@ -10985,7 +10985,7 @@ public class C_NPCAction extends ClientBasePacket {
 						// "던전 체류 가능 시간 2시간을 모두 사용하셨습니다."), true);
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.setpc용둥time(1);
+						pc.setpcdragontime(1);
 						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
@@ -11023,11 +11023,11 @@ public class C_NPCAction extends ClientBasePacket {
 			if (mapid != 0) {
 				try {
 					if (pc.getLevel() <= 89){
-					int usetime = pc.get검은전함time();
+					int usetime = pc.getblackbattleshiptime();
 					int outtime = 60 * 60 * 2;
 					Timestamp nowday = new Timestamp(System.currentTimeMillis());
 					L1Location loc = new L1Location(x, y, mapid).randomLocation(1, true);
-					String s1 = isPC입장가능여부(pc.get검은전함day(), outtime, usetime);
+					String s1 = isPC입장가능여부(pc.getblackbattleshipday(), outtime, usetime);
 					if (s1.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -11049,18 +11049,18 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_ServerMessage(1522, "2"));  // 5시간 모두사용했다.
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.set검은전함time(1);
-						pc.set검은전함day(nowday);
+						pc.setblackbattleshiptime(1);
+						pc.setblackbattleshipday(nowday);
 						pc.save();
 						pc.sendPackets(new S_ServerMessage(1526, "2"));  // 시간남았다.
 						L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc.getMapId(), 5, true, true, 5000);
 					}
 				  } else if (pc.getLevel() >= 90) {
-					  int usetime = pc.get검은전함time();
+					  int usetime = pc.getblackbattleshiptime();
 					  int outtime = 60 * 60 * 3;
 					  Timestamp nowday = new Timestamp(System.currentTimeMillis());
 					  L1Location loc = new L1Location(x, y, mapid).randomLocation(1, true);
-					  String s1 = isPC입장가능여부(pc.get검은전함day(), outtime, usetime);
+					  String s1 = isPC입장가능여부(pc.getblackbattleshipday(), outtime, usetime);
 					  if (s1.equals("입장가능")) {// 입장가능
 						  int h = (outtime - usetime) / 60 / 60;
 						  if (h < 0) {
@@ -11080,8 +11080,8 @@ public class C_NPCAction extends ClientBasePacket {
 						  pc.sendPackets(new S_ServerMessage(1522, "3"));  // 5시간 모두사용했다.
 						  return "";
 					  } else if (s1.equals("초기화")) {// 초기화
-						  pc.set검은전함time(1);
-						  pc.set검은전함day(nowday);
+						  pc.setblackbattleshiptime(1);
+						  pc.setblackbattleshipday(nowday);
 						  pc.save();
 						  pc.sendPackets(new S_ServerMessage(1526, "3"));  // 시간남았다.
 						  L1Teleport.teleport(pc, loc.getX(), loc.getY(), (short) loc.getMapId(), 5, true, true, 5000);
@@ -11110,9 +11110,9 @@ public class C_NPCAction extends ClientBasePacket {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
 					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
-					int usetime = pc.get용둥time();
+					int usetime = pc.getdragontime();
 
-					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
+					String s2 = isAccount입장가능여부(pc.getdragonday(), outtime, usetime);
 					if (s2.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -11133,8 +11133,8 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 모두 사용"), true);
 						return "";
 					} else if (s2.equals("초기화")) {// 초기화
-						pc.set용둥time(1);
-						pc.set용둥day(nowday);
+						pc.setdragontime(1);
+						pc.setdragonday(nowday);
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 남음"), true);
 					}
 				} catch (Exception e) {
@@ -11173,7 +11173,7 @@ public class C_NPCAction extends ClientBasePacket {
 						// "던전 체류 가능 시간 2시간을 모두 사용하셨습니다."), true);
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.setpc용둥time(1);
+						pc.setpcdragontime(1);
 						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
@@ -11202,9 +11202,9 @@ public class C_NPCAction extends ClientBasePacket {
 				Timestamp nowday = new Timestamp(System.currentTimeMillis());
 				try {
 					int outtime = Config.ACCOUNT_DRAGONS_NEST_TIME;
-					int usetime = pc.get용둥time();
+					int usetime = pc.getdragontime();
 
-					String s2 = isAccount입장가능여부(pc.get용둥day(), outtime, usetime);
+					String s2 = isAccount입장가능여부(pc.getdragonday(), outtime, usetime);
 					if (s2.equals("입장가능")) {// 입장가능
 						int h = (outtime - usetime) / 60 / 60;
 						if (h < 0) {
@@ -11225,8 +11225,8 @@ public class C_NPCAction extends ClientBasePacket {
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 모두 사용"), true);
 						return "";
 					} else if (s2.equals("초기화")) {// 초기화
-						pc.set용둥time(1);
-						pc.set용둥day(nowday);
+						pc.setdragontime(1);
+						pc.setdragonday(nowday);
 						pc.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 6시간 남음"), true);
 					}
 				} catch (Exception e) {
@@ -11264,7 +11264,7 @@ public class C_NPCAction extends ClientBasePacket {
 						// "던전 체류 가능 시간 2시간을 모두 사용하셨습니다."), true);
 						return "";
 					} else if (s1.equals("초기화")) {// 초기화
-						pc.setpc용둥time(1);
+						pc.setpcdragontime(1);
 						pc.setpcday3(nowday);
 						// pc.sendPackets(new S_SystemMessage(pc,
 						// "던전 체류 시간이 2시간 남았습니다."), true);
@@ -12904,7 +12904,7 @@ public class C_NPCAction extends ClientBasePacket {
 				continue;
 			}
 			
-			if (target.샌드백) {
+			if (target._PUNCHUNG_BAG) {
 				continue;
 			}
 			
@@ -13676,7 +13676,7 @@ public class C_NPCAction extends ClientBasePacket {
 			
 			if (pc.getInventory().checkItem(6022)) {
 				if (pc.getLevel() >= 얼던인던입장) {
-					if (pc.인던입장중) {
+					if (pc._ENTERING_LNDIA) {
 						pc.sendPackets(new S_SystemMessage("입장 대기중입니다. 잠시후 다시 클릭해주세요."), true);
 						return "";
 					}

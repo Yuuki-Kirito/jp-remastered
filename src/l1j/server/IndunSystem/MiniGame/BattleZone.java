@@ -95,21 +95,21 @@ public class BattleZone implements Runnable {
 
 	private boolean Close;
 
-	protected ArrayList<L1PcInstance> 배틀존유저 = new ArrayList<L1PcInstance>();
+	protected ArrayList<L1PcInstance> _battle_zone_user = new ArrayList<L1PcInstance>();
 	public void add배틀존유저(L1PcInstance pc) 	{
-		배틀존유저.add(pc);
+		_battle_zone_user.add(pc);
 	}
 	public void remove배틀존유저(L1PcInstance pc) 	{
-		배틀존유저.remove(pc);
+		_battle_zone_user.remove(pc);
 	}
 	public void clear배틀존유저() 					{
-		배틀존유저.clear();
+		_battle_zone_user.clear();
 	}
 	public boolean is배틀존유저(L1PcInstance pc) 	{
-		return 배틀존유저.contains(pc);
+		return _battle_zone_user.contains(pc);
 	}
 	public int get배틀존유저Count(){
-		return 배틀존유저.size();
+		return _battle_zone_user.size();
 	}
 
 	private boolean GmStart = false;
@@ -117,8 +117,8 @@ public class BattleZone implements Runnable {
 	public boolean getGmStart(){	return GmStart;	}
 
 
-	public L1PcInstance[] toArray배틀존유저() {
-		return 배틀존유저.toArray(new L1PcInstance[배틀존유저.size()]);
+	public L1PcInstance[] toArray_battlezone_user() {
+		return _battle_zone_user.toArray(new L1PcInstance[_battle_zone_user.size()]);
 	}
 	public static BattleZone getInstance() {
 		if (_instance == null) {
@@ -150,7 +150,7 @@ public class BattleZone implements Runnable {
 	}
 
 	private void 유저체크() {
-		L1PcInstance[] pc = toArray배틀존유저();
+		L1PcInstance[] pc = toArray_battlezone_user();
 		for (int i = 0; i < pc.length; i++) {
 			if (pc[i] == null)
 				continue;
@@ -192,7 +192,7 @@ public class BattleZone implements Runnable {
 					입장3분대기();
 				}
 				if (배틀존진행() == true)	{
-					L1PcInstance[] c = toArray배틀존유저();
+					L1PcInstance[] c = toArray_battlezone_user();
 					for (int i = 0; i < c.length; i++) {
 						if(c[i].getMapId() == 5001){
 							if(!c[i].isDead()){
@@ -208,7 +208,7 @@ public class BattleZone implements Runnable {
 			}else{
 				//종료시간이거나 강제종료라면//
 				if(nowdueltime >= enddueltime || Close == true){
-					L1PcInstance[] c1 = toArray배틀존유저();
+					L1PcInstance[] c1 = toArray_battlezone_user();
 					for (int i = 0; i < c1.length; i++) {
 						if(c1[i].getMapId() == 5153){
 							if(!c1[i].isDead()){
@@ -238,7 +238,7 @@ public class BattleZone implements Runnable {
 						L1World.getInstance().broadcastServerMessage("\\fW* 배틀존 종료! '다크' 라인과 '실버'라인이 동점입니다 *");
 					}
 
-					L1PcInstance[] c2 = toArray배틀존유저();
+					L1PcInstance[] c2 = toArray_battlezone_user();
 					for (int i = 0; i < c2.length; i++) {
 						if(c2[i] == null) continue;
 						if(c2[i].get_DuelLine() != 0){
@@ -305,14 +305,14 @@ public class BattleZone implements Runnable {
 					setDuelStart(false);
 					//	DuelCount = 0;
 					Close = false;
-					배틀존유저.clear();
+					_battle_zone_user.clear();
 					setGmStart(false);
 				}else{
 					//입장이 마감되었다면//
 					if(!getDuelOpen()){
 						int count3 = 0;
 						int count4 = 0;
-						L1PcInstance[] c3 = toArray배틀존유저();
+						L1PcInstance[] c3 = toArray_battlezone_user();
 						for (int i = 0; i < c3.length; i++) {
 							if(c3[i] == null) continue;
 							//배틀존이라면//
@@ -343,7 +343,7 @@ public class BattleZone implements Runnable {
 
 	private void createMiniHp(L1PcInstance pc) {
 		// 배틀시, 서로 HP를 표시시킨다//
-		for (L1PcInstance member : BattleZone.getInstance().toArray배틀존유저()) {
+		for (L1PcInstance member : BattleZone.getInstance().toArray_battlezone_user()) {
 			// 같은라인에게 hp표시//
 			if (member != null) {
 				if (pc.get_DuelLine() == member.get_DuelLine()) {

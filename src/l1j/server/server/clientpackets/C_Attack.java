@@ -100,10 +100,10 @@ public class C_Attack extends ClientBasePacket {
 
 			if (pc.isInvisble()) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BLIND_HIDING)) {
-					if (!pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.¾î½Ø½Å)) {
+					if (!pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ASSASSIN)) {
 						return;
 					} else {
-						pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.¾î½Ø½Å);
+						pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.ASSASSIN);
 						pc.¾î½Ø½Å = true;//
 					}
 				} else {

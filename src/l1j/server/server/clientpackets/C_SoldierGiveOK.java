@@ -52,7 +52,7 @@ public class C_SoldierGiveOK extends ClientBasePacket {
 
 			L1PcInstance pc = clientthread.getActiveChar();
 
-			index = pc.용병타입 + 1;
+			index = pc.mercenary_type + 1;
 
 			L1Object obj = L1World.getInstance().findObject(t_obj);
 			L1PcInstance target = (L1PcInstance) obj;

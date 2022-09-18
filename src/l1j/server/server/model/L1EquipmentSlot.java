@@ -4734,14 +4734,14 @@ public class L1EquipmentSlot {
 		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.HALPHAS)) {
 			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.HALPHAS);
 
-		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.인페르노)) {
-			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.인페르노);
-		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.샌드스톰)) {
-			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.샌드스톰);
+		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.INFERNO)) {
+			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.INFERNO);
+		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SAND_STORM)) {
+			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.SAND_STORM);
 		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) {
 			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.포커스웨이브);
-		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.허리케인)) {
-			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.허리케인);
+		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.HURRICANE)) {
+			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.HURRICANE);
 		}
 
 		if (weapon.getItem().getType2() == 1 && weapon.getItem().getType() != 7 && weapon.getItem().getType() != 17 && weapon.getStepEnchantLevel() != 0) {

@@ -116,10 +116,10 @@ class L1SkillStop {
 			}
 				break;
 			
-			case 라이징: {
+			case RISING: {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.라이징, false, -1), true);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.RISING, false, -1), true);
 					pc.sendPackets(new S_SystemMessage("타이탄 라이징 효과가 사라집니다."), true);	
 				}
 			}
@@ -152,11 +152,11 @@ class L1SkillStop {
 				}
 			}
 				break;
-			case 소울배리어: {
+			case SOUL_BARRIER: {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.removeSkillEffect(소울배리어);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.소울배리어, false, -1), true);	
+					pc.removeSkillEffect(SOUL_BARRIER);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.SOUL_BARRIER, false, -1), true);	
 				}
 			}
 				break;
@@ -384,7 +384,7 @@ class L1SkillStop {
 			case 군터의조언:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					if (pc.군터) {
+					if (pc._GUNTHER) {
 						pc.addBowDmgup(-5);
 						pc.addBowHitup(-7);
 						pc.addHpr(-10);
@@ -397,7 +397,7 @@ class L1SkillStop {
 						pc.sendPackets(new S_OwnCharStatus(pc));
 						pc.sendPackets(new S_SPMR(pc), true);
 						pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.get_PlusEr()), true);
-						pc.군터 = false;
+						pc._GUNTHER = false;
 					}
 				}
 				break;
@@ -915,7 +915,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case L1SkillId.쉐도우스탭:
+			case L1SkillId.SHADOW_TAB:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, false), true);
@@ -962,7 +962,7 @@ class L1SkillStop {
 			case 크레이: // 크레이 버프
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					if (pc.크레이) {
+					if (pc._CRAY) {
 						pc.getAC().addAc(8);
 						pc.getResistance().addMr(-20);
 						pc.addMaxHp(-200);
@@ -978,7 +978,7 @@ class L1SkillStop {
 						pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()), true);
 						pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()), true);
 						pc.sendPackets(new S_SPMR(pc), true);
-						pc.크레이 = false;
+						pc._CRAY = false;
 					}
 				}
 				break;
@@ -1182,13 +1182,13 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 샤이닝아머:
+			case SHINING_ARMOR:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.sendPackets(new S_OwnCharStatus2(pc));
 					pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.get_PlusEr()), true);
 					pc.sendPackets(new S_CharVisualUpdate(pc));
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.샤이닝아머, false, -1), true);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.SHINING_ARMOR, false, -1), true);
 				}
 				break;
 				
@@ -1456,7 +1456,7 @@ class L1SkillStop {
 				
 			case PANTERA :
 			case SHOCK_STUN:
-			case 엠파이어:
+			case EMPIRE:
 			case MOB_SHOCKSTUN_30:
 			case MOB_RANGESTUN_19:
 			case MOB_RANGESTUN_18:
@@ -1965,7 +1965,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 샌드스톰:
+			case SAND_STORM:
 				cha.getMoveState().setBraveSpeed(0);
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
@@ -1974,7 +1974,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 허리케인:
+			case HURRICANE:
 				cha.getMoveState().setBraveSpeed(0);
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;

@@ -74,7 +74,7 @@ public class L1토마호크 extends TimerTask {
 				L1PcInstance target = (L1PcInstance) _cha;
 				target.sendPackets(new S_NewCreateItem(S_NewCreateItem.버프창,
 						false), true);
-				target.토마호크th = null;
+				target.tomahawk_th = null;
 				// System.out.println("패킷쏨.");
 			} else if (_cha instanceof L1NpcInstance) {
 				L1NpcInstance npc = (L1NpcInstance) _cha;

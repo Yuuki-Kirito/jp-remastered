@@ -92,12 +92,12 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 						}
 					}
 				}
-				if (Config.삭제채팅모니터() > 0) {
+				if (Config._delete_chat_monitor() > 0) {
 					S_SystemMessage sm = new S_SystemMessage("[" + pc.getName()
 							+ "] " + item.getName() + "(" + item.getCount()
 							+ ")개 [삭제]");
 					;
-					for (L1PcInstance gm : Config.toArray삭제채팅모니터()) {
+					for (L1PcInstance gm : Config.toArray_delete_chat_monitor()) {
 						if (gm.getNetConnection() == null) {
 							Config.remove삭제(gm);
 							continue;

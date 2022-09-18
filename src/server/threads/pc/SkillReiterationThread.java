@@ -44,8 +44,8 @@ public class SkillReiterationThread implements Runnable {
 				}
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.크레이)) {
 					if (!(pc.getMapId() >= 1005 && pc.getMapId() <= 1010)) {
-						if (pc.크레이) {
-							pc.크레이 = false;
+						if (pc._CRAY) {
+							pc._CRAY = false;
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.DRAGON_EME, 45, false));
 							pc.getAC().addAc(8);
@@ -70,8 +70,8 @@ public class SkillReiterationThread implements Runnable {
 							pc.sendPackets(new S_SPMR(pc), true);
 						}
 					} else {
-						if (!pc.크레이) {
-							pc.크레이 = true;
+						if (!pc._CRAY) {
+							pc._CRAY = true;
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.DRAGON_EME, 45, true));
 							pc.getAC().addAc(-8);
@@ -98,8 +98,8 @@ public class SkillReiterationThread implements Runnable {
 
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.군터의조언)) {
 					if (!(pc.getMapId() >= 10000 && pc.getMapId() <= 10005)) {
-						if (pc.군터) {
-							pc.군터 = false;
+						if (pc._GUNTHER) {
+							pc._GUNTHER = false;
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.DRAGON_EME, 74, false));
 							pc.addBowDmgup(-5);
@@ -119,8 +119,8 @@ public class SkillReiterationThread implements Runnable {
 									pc.get_PlusEr()), true);
 						}
 					} else {
-						if (!pc.군터) {
-							pc.군터 = true;
+						if (!pc._GUNTHER) {
+							pc._GUNTHER = true;
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.DRAGON_EME, 74, true));
 							pc.addBowDmgup(5);
@@ -149,7 +149,7 @@ public class SkillReiterationThread implements Runnable {
 					// }
 					if (!GameServer.getInstance().checkac(pc.getName())) {
 					//	pc.방어체크();
-						pc.스탯체크();
+						pc.stat_check();
 					}
 					pc.버그체크시간 = 0;
 				}

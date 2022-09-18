@@ -185,7 +185,7 @@ public class EnchantWeapon extends Enchant {
 
 			if (weaponId == 7 || weaponId == 35 || weaponId == 48 || weaponId == 73 || weaponId == 105 || weaponId == 120 || weaponId == 147 || weaponId == 156
 					|| weaponId == 174 || weaponId == 175 || weaponId == 224 || weaponId == 7232 || weaponId == 1013) {
-				if (itemId == L1ItemId.여행무기주문서 || itemId == 60142) {
+				if (itemId == L1ItemId.SCROLL_OF_ENCHANT_WEAPON_FOR_TRAVELER || itemId == 60142) {
 					int enchant_level = l1iteminstance1.getEnchantLevel();
 					if (enchant_level >= 6) {
 						pc.sendPackets(new S_SystemMessage("아무일도 일어나지 않았습니다."), true);
@@ -196,7 +196,7 @@ public class EnchantWeapon extends Enchant {
 					return;
 				}
 			}
-			if (itemId == L1ItemId.여행무기주문서 || itemId == 60142) {
+			if (itemId == L1ItemId.SCROLL_OF_ENCHANT_WEAPON_FOR_TRAVELER || itemId == 60142) {
 				if (weaponId == 7 || weaponId == 35 || weaponId == 48 || weaponId == 73 || weaponId == 105 || weaponId == 120 || weaponId == 147
 						|| weaponId == 156 || weaponId == 174 || weaponId == 175 || weaponId == 7232 || weaponId == 224 || weaponId == 1013) {
 					int enchant_level = l1iteminstance1.getEnchantLevel();

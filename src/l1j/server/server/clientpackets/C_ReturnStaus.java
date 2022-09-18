@@ -234,7 +234,7 @@ public class C_ReturnStaus extends ClientBasePacket {
 								.getMaxHp()));
 						pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc
 								.getMaxMp()));
-						if (pc.Ç÷¸Í¹öÇÁ) {
+						if (pc._CLAN_BUFF) {
 							pc.sendPackets(
 									new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
 						}
@@ -298,7 +298,7 @@ public class C_ReturnStaus extends ClientBasePacket {
 				pc.setCurrentMp(pc.getMaxHp());
 				pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
 				pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
-				if (pc.Ç÷¸Í¹öÇÁ) {
+				if (pc._CLAN_BUFF) {
 					pc.sendPackets(new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
 				}
 				hasadbuff(pc);

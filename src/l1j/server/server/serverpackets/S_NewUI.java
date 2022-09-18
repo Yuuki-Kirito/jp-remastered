@@ -704,7 +704,7 @@ public class S_NewUI extends ServerBasePacket {
 			writeC(0x08);
 			byteWrite(pc.getId());
 			writeC(0x10);// 모름
-			writeC(pc.get표식());// 모름
+			writeC(pc.getmarker());// 모름
 			writeH(0);// 모름
 			break;
 	/*	case 종료:

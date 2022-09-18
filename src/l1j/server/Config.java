@@ -52,7 +52,7 @@ public final class Config {
 	public static boolean _NEW_PACKET_STRUCTURE = false;
 	public static boolean _SERVER_PACKET_OUTPUT = false;
 	public static boolean _CLAPPET_OUTPUT = false;
-	private static final String servername = "테스트";
+	private static final String servername = "test";
 
 	public static ArrayList<L1PrivateShopSellList> sellList = new ArrayList<L1PrivateShopSellList>();
 
@@ -122,7 +122,7 @@ public final class Config {
 
 	/** Debug/release mode */
 	public static final boolean DEBUG = false;
-	// public static boolean 패킷로그 = true;//로그
+	// public static boolean packet log = true; // log
 
 	public static final int OFFICE_HOURS = 60 * 90;
 	public static final int PC_TIME = 60 * 60 * 2;
@@ -160,7 +160,7 @@ public final class Config {
 	public static int ATTENDANCE_RESET_TIME;
 	public static int AINHASADDPRESETTIME;
 
-	// 제작테이블
+	// 製作テーブル
 	public static int CRAFT_TABLE_ONE;
 	public static int CRAFT_TABLE_TWO;
 	public static int CRAFT_TABLE_THREE;
@@ -182,63 +182,63 @@ public final class Config {
 
 	protected static ArrayList<L1PcInstance> _monitor_BugList = new ArrayList<L1PcInstance>();
 
-	public static int 혈맹채팅모니터() {
+	public static int _clan_chat_monitor() {
 		return _monitorClanChatList.size();
 	}
 
-	public static int 파티채팅모니터() {
+	public static int _party_chat_monitor() {
 		return _monitor_PartyChatList.size();
 	}
 
-	public static int 귓말채팅모니터() {
+	public static int _ear_chat_monitor() {
 		return _monitor_WisperChatList.size();
 	}
 
-	public static int 인첸채팅모니터() {
+	public static int _enchant_chat_monitor() {
 		return _monitor_EnchatList.size();
 	}
 
-	public static int 삭제채팅모니터() {
+	public static int _delete_chat_monitor() {
 		return _monitor_DeleteList.size();
 	}
 
-	public static int 접속채팅모니터() {
+	public static int _connection_chat_monitor() {
 		return _monitor_ConnectList.size();
 	}
 
-	public static int 버그채팅모니터() {
+	public static int _bug_chat_monitor() {
 		return _monitor_BugList.size();
 	}
 
-	public static L1PcInstance[] toArray혈맹채팅모니터() {
+	public static L1PcInstance[] toArray_clan_chat_monitor() {
 		return _monitorClanChatList.toArray(new L1PcInstance[_monitorClanChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray파티채팅모니터() {
+	public static L1PcInstance[] toArray_party_chat_monitor() {
 		return _monitor_PartyChatList.toArray(new L1PcInstance[_monitor_PartyChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray귓말채팅모니터() {
+	public static L1PcInstance[] toArray_whisper_chat_monitor() {
 		return _monitor_WisperChatList.toArray(new L1PcInstance[_monitor_WisperChatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray인첸채팅모니터() {
+	public static L1PcInstance[] toArray_enchanted_chat_monitor() {
 		return _monitor_EnchatList.toArray(new L1PcInstance[_monitor_EnchatList.size()]);
 	}
 
-	public static L1PcInstance[] toArray삭제채팅모니터() {
+	public static L1PcInstance[] toArray_delete_chat_monitor() {
 		return _monitor_DeleteList.toArray(new L1PcInstance[_monitor_DeleteList.size()]);
 	}
 
-	public static L1PcInstance[] toArray접속채팅모니터() {
+	public static L1PcInstance[] toArray_connection_chat_monitor() {
 		return _monitor_ConnectList.toArray(new L1PcInstance[_monitor_ConnectList.size()]);
 	}
 
-	public static L1PcInstance[] toArray버그채팅모니터() {
+	public static L1PcInstance[] toArray_bug_chat_monitor() {
 		return _monitor_BugList.toArray(new L1PcInstance[_monitor_BugList.size()]);
 	}
 
-	public static void add전체(L1PcInstance pc) {
+	public static void addall(L1PcInstance pc) {
 		if (!_monitorClanChatList.contains(pc)) {
 			_monitorClanChatList.add(pc);
 			;

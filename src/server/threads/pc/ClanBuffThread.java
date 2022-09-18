@@ -46,22 +46,22 @@ public class ClanBuffThread implements Runnable {
 							pc.getClanname());
 					if (clan != null) {
 						if (clan.getOnlinePrivateShopXMemberCount() >= 3) {
-							if (!pc.ว๗ธอน๖วม && pc.getLevel() < 99) {
-								pc.ว๗ธอน๖วม = true;
+							if (!pc._CLAN_BUFF && pc.getLevel() < 99) {
+								pc._CLAN_BUFF = true;
 								pc.sendPackets(new S_PacketBox(
 										S_PacketBox.ว๗ธอน๖วม, 1), true);
 							}
 						} else {
-							if (pc.ว๗ธอน๖วม) {
+							if (pc._CLAN_BUFF) {
 								pc.sendPackets(new S_PacketBox(
 										S_PacketBox.ว๗ธอน๖วม, 0), true);
-								pc.ว๗ธอน๖วม = false;
+								pc._CLAN_BUFF = false;
 							}
 						}
 					}
-				} else if (pc.ว๗ธอน๖วม) {
+				} else if (pc._CLAN_BUFF) {
 					pc.sendPackets(new S_PacketBox(S_PacketBox.ว๗ธอน๖วม, 0), true);
-					pc.ว๗ธอน๖วม = false;
+					pc._CLAN_BUFF = false;
 				}
 				if (!pc.getMap().isTakePets()) {
 					try {

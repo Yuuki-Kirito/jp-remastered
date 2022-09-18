@@ -334,7 +334,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 				return;
 			}
 
-			if (GMCommands.접속이름체크) {
+			if (GMCommands._CONNECTION_NAME_CHECK) {
 				if (nameList.contains(charName)) {
 					if (L1World.getInstance().getPlayer(charName) == null) {
 						GeneralThreadPool.getInstance().schedule(new Runnable() {
@@ -364,7 +364,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 				pc.zombie = false;
 			}
 
-			if (GMCommands.접속이름체크) {
+			if (GMCommands._CONNECTION_NAME_CHECK) {
 				if (nameINOUTList.contains(charName)) {
 					if (L1World.getInstance().getPlayer(charName) == null) {
 						GeneralThreadPool.getInstance().schedule(new Runnable() {
@@ -408,7 +408,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 				return;
 			}
 			for (L1PcInstance _client2 : L1World.getInstance().getAllPlayers()) {
-				if (_client2 == null || _client2.zombie || _client2.샌드백 || _client2.getAIprivateShop()) {
+				if (_client2 == null || _client2.zombie || _client2._PUNCHUNG_BAG || _client2.getAIprivateShop()) {
 					continue;
 				}
 				if (client.getAccountName().equalsIgnoreCase(_client2.getAccountName())) {
@@ -1188,7 +1188,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 				}
 			}
 
-			if (pc.PC방_버프) {
+			if (pc._PC_ROOM_BUFF) {
 				String s = "08 01 10 01 f1 d5";// 피씨방..
 				// pc.sendPackets(new S_NewCreateItem(s ));
 				pc.sendPackets(new S_NewCreateItem(126, s));
@@ -1416,7 +1416,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 				if (client.getInterServerParty() != null) {
 					pc.setParty(client.getInterServerParty());
 					pc.getParty().isMembers(pc);
-					pc.set표식(client.getInterServerNotice());
+					pc.setmarker(client.getInterServerNotice());
 					pc.sendPackets(new S_Party(0x68, pc), true);
 
 					client.setInterServerParty(null);
@@ -1468,7 +1468,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 	private void PC버프(L1PcInstance pc) {
 
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.PC방, true, -1));
-		pc.PC방_버프 = true;
+		pc._PC_ROOM_BUFF = true;
 	}
 
 	class earthCheck implements Runnable {
@@ -1705,7 +1705,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					}
 					if (l1skills != null && pc.isIllusionist() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 516) {
 						pc.sendPackets(new S_CreateItem(145, 17, 0));
-						pc.다크호스 = true;
+						pc._DARK_HORSE = true;
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 517) {
 						pc.sendPackets(new S_CreateItem(145, 18, 0));
@@ -2608,7 +2608,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_START));
 		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_ITEM, 0));
 		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_ITEM, 1));
-		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, pc.getAccount(), pc.PC방_버프));
+		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, pc.getAccount(), pc._PC_ROOM_BUFF));
 	}
 
 	// 편지리스트 출력을위한 메소드

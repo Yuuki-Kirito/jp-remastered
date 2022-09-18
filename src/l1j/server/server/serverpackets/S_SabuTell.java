@@ -11,7 +11,7 @@ public class S_SabuTell extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	public S_SabuTell(L1PcInstance pc) {
-		if (pc.텔대기() || pc.isTeleport() || pc.isDead() || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)
+		if (pc._TELL_WAIT() || pc.isTeleport() || pc.isDead() || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION) || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PHANTOM)) {
 			return;
@@ -20,7 +20,7 @@ public class S_SabuTell extends ServerBasePacket {
 			pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.ABSOLUTE_BARRIER, 500);
 			pc.setTeleport(true);
 		}
-		pc.텔대기(true);
+		pc._TELL_WAIT(true);
 		// if(pc.getTelType() == 1 || pc.getTelType() == 4 || pc.getTelType() ==
 		// 10){
 		if (pc.getTelType() == 1) {
@@ -35,14 +35,14 @@ public class S_SabuTell extends ServerBasePacket {
 	}
 
 	public S_SabuTell(L1PcInstance pc, int time) {
-		if (pc.텔대기() || pc.isTeleport() || pc.isDead()) {
+		if (pc._TELL_WAIT() || pc.isTeleport() || pc.isDead()) {
 			return;
 		}
 		if (pc.getTelType() != 4) { // 빽스텝
 			pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_안전모드, time);
 			pc.setTeleport(true);
 		}
-		pc.텔대기(true);
+		pc._TELL_WAIT(true);
 		// if(pc.getTelType() == 1 || pc.getTelType() == 4 || pc.getTelType() ==
 		// 10){
 		if (pc.getTelType() == 1) {
@@ -58,14 +58,14 @@ public class S_SabuTell extends ServerBasePacket {
 
 	// 순줌 관련 텔
 	public S_SabuTell(L1PcInstance pc, boolean ck) {
-		if (pc.텔대기() || pc.isTeleport() || pc.isDead()) {
+		if (pc._TELL_WAIT() || pc.isTeleport() || pc.isDead()) {
 			return;
 		}
 		if (pc.getTelType() != 4) { // 빽스텝
 			pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_안전모드, 500);
 			pc.setTeleport(true);
 		}
-		pc.텔대기(true);
+		pc._TELL_WAIT(true);
 		if (pc.getTelType() == 1) {
 			writeC(Opcodes.S_REQUEST_SUMMON);
 			writeH(0x00);

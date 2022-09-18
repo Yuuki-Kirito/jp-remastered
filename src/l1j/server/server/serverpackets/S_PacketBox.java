@@ -330,14 +330,14 @@ public class S_PacketBox extends ServerBasePacket {
 	public static final int 지도위치보정 = 176;
 	public static final int 드래곤레이드버프 = 179;
 	public static final int 낚시_베리 = 182;
-	public static final int 배틀샷 = 181;
+	public static final int BATTLE_SHOT = 181;
 	public static final int NONE_TIME_ICON = 180;
 	public static final int WORLDMAP_UNKNOWN1 = 184;
 	public static final int ACTION_GUIDE_1 = 188;
 	public static final int ACTION_GUIDE_2 = 189;
 	public static final int 상점개설횟수 = 198;
 	public static final int 유저빽스탭 = 193;
-	public static final int 이미지스폰 = 194;//
+	public static final int IMAGE_SPAWN = 194;//
 
 	/** 추가패킷 10.20opcodes **/
 	public static final int MINI_MAP_SEND = 111;
@@ -555,7 +555,7 @@ public class S_PacketBox extends ServerBasePacket {
 			writeC(0);
 			writeC(0);
 			break;
-		case 이미지스폰:
+		case IMAGE_SPAWN:
 
 			/*
 			 * 12750 = 화룡안식처 스킬
@@ -738,7 +738,7 @@ public class S_PacketBox extends ServerBasePacket {
 			writeD(value);
 			writeH(0x00);
 			break;
-		case 배틀샷:
+		case BATTLE_SHOT:
 			writeD(value);
 			break;
 		case 드래곤레이드버프:

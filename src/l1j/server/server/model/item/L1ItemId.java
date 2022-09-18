@@ -57,8 +57,8 @@ public class L1ItemId {
 	public static final int Inadril_T_ScrollD = 5000098;
 	public static final int DRAGON_TSHIRTS_Scroll = 430042;
 	public static final int UNICORN_ARMOR_Scroll = 740074;
-	public static final int 여행무기주문서 = 5000501;
-	public static final int 여행방어주문서 = 5000502;
+	public static final int SCROLL_OF_ENCHANT_WEAPON_FOR_TRAVELER = 5000501;
+	public static final int SCROLL_OF_ENCHANT_ARMOR_FOR_TRAVELER = 5000502;
 	public static final int 고대의서 = 500300;
 
 	public static final int B_POTION_OF_HEALING = 140010;

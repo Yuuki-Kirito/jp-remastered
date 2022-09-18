@@ -54,9 +54,9 @@ public class HealingPotion extends L1ItemInstance {
 
 			if (cha.getSkillEffectTimerSet().hasSkillEffect(EARTH_BIND) || cha.getSkillEffectTimerSet().hasSkillEffect(ICE_LANCE)
 					|| cha.getSkillEffectTimerSet().hasSkillEffect(FREEZING_BREATH) || cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.CURSE_PARALYZE)
-					|| cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHOCK_STUN) || cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.¿¥ÆÄÀÌ¾î)
+					|| cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHOCK_STUN) || cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EMPIRE)
 					|| cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FORCE_STUN) || cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PANTERA)
-					|| cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.½¦µµ¿ì½ºÅÇ)) {
+					|| cha.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHADOW_TAB)) {
 				return;
 			}
 

@@ -129,7 +129,7 @@ public class C_PickUpItem extends ClientBasePacket {
 						pc.sendPackets(sm, true);
 						return;
 					}
-					LogTable.사냥아덴(pc, pickupCount);
+					LogTable.adenLog(pc, pickupCount);
 				}
 
 				pc.플레이어상태 = pc.공격_상태;
@@ -269,7 +269,7 @@ public class C_PickUpItem extends ClientBasePacket {
 					continue;
 				if (target.noPlayerCK)
 					continue;
-				if (target.샌드백)
+				if (target._PUNCHUNG_BAG)
 					continue;
 				//
 				if (c.getId() != target.getId() && !target.isPrivateShop()) {

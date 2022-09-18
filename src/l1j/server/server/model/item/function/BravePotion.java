@@ -106,7 +106,7 @@ public class BravePotion extends L1ItemInstance {
 			time = 1800;
 			break;
 		}
-		  if (!pc.다크호스) {
+		  if (!pc._DARK_HORSE) {
 		     if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_BRAVE)){
 			     pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_BRAVE);
 			     pc.sendPackets(new S_SkillBrave(pc.getId(), 4, time)); // 0 => 4
@@ -118,7 +118,7 @@ public class BravePotion extends L1ItemInstance {
 		         pc.sendPackets(new S_SkillBrave(pc.getId(), 4, time)); // 0 => 4
 		         pc.getMoveState().setBraveSpeed(4);
 		         pc.getSkillEffectTimerSet().setSkillEffect(MOVING_ACCELERATION, time * 1000);
-		   } else  if (pc.다크호스) {
+		   } else  if (pc._DARK_HORSE) {
 			  if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_BRAVE)){
 				  pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_BRAVE);
 				  pc.sendPackets(new S_SkillBrave(pc.getId(), 3, time), true);

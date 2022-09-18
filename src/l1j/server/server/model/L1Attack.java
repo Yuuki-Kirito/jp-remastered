@@ -1809,13 +1809,13 @@ public class L1Attack {
 				int rnd = _random.nextInt(100);
 				if (rnd < 7) {
 					if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FLAME)) {
-						if (_targetPc.플레임th != null) {
-							_targetPc.플레임th.stop();
+						if (_targetPc.flame_th != null) {
+							_targetPc.flame_th.stop();
 						}
 					}
 					L1플레임 FLAME = new L1플레임(_pc, _targetPc);
 					FLAME.begin();
-					_targetPc.플레임th = FLAME;
+					_targetPc.flame_th = FLAME;
 					_targetPc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.FLAME, 3 * 1000);
 					_targetPc.sendPackets(new S_NewSkillIcons(L1SkillId.FLAME, true, -1));
 				}
@@ -6086,19 +6086,19 @@ public class L1Attack {
 		if (_isHit) {
 			if (_target instanceof L1PcInstance) {
 				L1PcInstance target = (L1PcInstance) _target;
-				if (target.샌드백) {
-					target.타격++;
-					target.누적++;
+				if (target._PUNCHUNG_BAG) {
+					target.damage_1++;
+					target.accumulate++;
 				}
 			}
 		} else {
 			if (_target instanceof L1PcInstance) {
 				L1PcInstance target = (L1PcInstance) _target;
-				if (target.샌드백) {
-					target.미스++;
-					target.누적++;
+				if (target._PUNCHUNG_BAG) {
+					target.miss++;
+					target.accumulate++;
 					S_ChatPacket s_chatpacket = new S_ChatPacket(target,
-							"[H:" + target.타격 + " M:" + target.미스 + " T:" + target.누적 + "] TotalDMG : " + target.토탈데미지, Opcodes.S_SAY, 0);
+							"[H:" + target.damage_1 + " M:" + target.miss + " T:" + target.accumulate + "] TotalDMG : " + target.total_damage, Opcodes.S_SAY, 0);
 					Broadcaster.broadcastPacket(target, s_chatpacket, true);
 					int heading = target.getMoveState().getHeading();
 					if (heading < 7) {

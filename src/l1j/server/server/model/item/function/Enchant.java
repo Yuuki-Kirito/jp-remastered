@@ -217,17 +217,17 @@ public class Enchant extends L1ItemInstance {
 
 		/** 무기 9이상 인첸시 메세지 출력 **/ // by.초작살미남
 		if (item.getItem().getType2() == 1 && newEnchantLvl >= 10) {
-			L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4444, item), true);
+			L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4444, item), true);
 		}
 		/** 악세 7이상 인첸시 메세지 출력 **/ // by.초작살미남
 		if (item.getItem().getType2() == 2) {
 			if (item.getItem().getType() >= 8 && item.getItem().getType() <= 12) {
 				if (newEnchantLvl >= 7) {
-					L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4445, item), true);
+					L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4445, item), true);
 				}
 			} /** 방어구 8이상 인첸시 메세지 출력 **/ // by.초작살미남
 			else if (newEnchantLvl >= 9) {
-				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4444, item), true);
+				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4444, item), true);
 			}
 		}
 
@@ -275,8 +275,8 @@ public class Enchant extends L1ItemInstance {
 		}
 
 		if (newEnchantLvl > safe_enchant) {
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;
@@ -377,8 +377,8 @@ public class Enchant extends L1ItemInstance {
 			pc.getInventory().updateItem(item, L1PcInventory.COL_ENCHANTLVL);
 			pc.saveInventory();
 
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;
@@ -407,8 +407,8 @@ public class Enchant extends L1ItemInstance {
 			pc.getInventory().updateItem(item, L1PcInventory.COL_ENCHANTLVL);
 			pc.saveInventory();
 
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;
@@ -428,8 +428,8 @@ public class Enchant extends L1ItemInstance {
 			item.setEnchantLevel(0);
 			pc.getInventory().updateItem(item, L1PcInventory.COL_ENCHANTLVL);
 			pc.saveInventory();
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;
@@ -456,8 +456,8 @@ public class Enchant extends L1ItemInstance {
 			pc.getInventory().updateItem(item, L1PcInventory.COL_ENCHANTLVL + L1PcInventory.COL_DEMONBONGIN);
 			pc.getInventory().saveItem(item, L1PcInventory.COL_ENCHANTLVL + L1PcInventory.COL_DEMONBONGIN);
 			pc.saveInventory();
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;
@@ -486,8 +486,8 @@ public class Enchant extends L1ItemInstance {
 			pc.sendPackets(new S_ServerMessage(164, s, sa), true);
 			pc.getInventory().removeItem(item, item.getCount());
 			pc.saveInventory();
-			if (Config.인첸채팅모니터() > 0) {
-				for (L1PcInstance gm : Config.toArray인첸채팅모니터()) {
+			if (Config._enchant_chat_monitor() > 0) {
+				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove인첸(gm);
 						continue;

@@ -44,7 +44,7 @@ public class C_AuthLogin extends ClientBasePacket {
 			String password = readS();
 			String ip = client.getIp();
 			String host = client.getHostname();
-			if (GMCommands.접속이름체크) {
+			if (GMCommands._CONNECTION_NAME_CHECK) {
 				if (nameList.contains(accountName)) {
 					GameServer.DuplicationLoginCheck("(계정) " + accountName, "계정 중복 로그인");
 					client.kick();

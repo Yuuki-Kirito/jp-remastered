@@ -22,6 +22,7 @@ import l1j.server.server.utils.SQLUtil;
 // Referenced classes of package l1j.server.server:
 // IdFactory
 
+// XXX æ”¹è‰¯ãŒå¿…è¦ã‹ã‚‚ï¼Ÿ
 public class EvaSystemTable {
 
 	private static Logger _log = Logger.getLogger(EvaSystemTable.class
@@ -118,10 +119,10 @@ public class EvaSystemTable {
 	}
 
 	/**
-	 * ½Ã½ºÅÛ °ªÀ» °¡Á® ¿Â´Ù
-	 * 
+	 * æ™‚é–“ã«ã‚ˆã£ã¦é–‹ãã‚·ã‚¹ãƒ†ãƒ 
+	 *
 	 * @param id
-	 *            1: ±Õ¿­
+	 *            1: æ¬¡å…ƒã®è£‚ã‘ç›®
 	 * @return
 	 */
 	public L1EvaSystem getSystem(int id) {

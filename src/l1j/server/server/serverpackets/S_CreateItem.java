@@ -306,13 +306,13 @@ public class S_CreateItem extends ServerBasePacket {
 			p[1] = 14984;
 			p[2] = 9471;
 			break;
-		case L1SkillId.소울배리어:
+		case L1SkillId.SOUL_BARRIER:
 			// 391 240 14989 9600
 			p[0] = 391;
 			p[1] = 14987;
 			p[2] = 9600;
 			break;
-		case L1SkillId.라이징:
+		case L1SkillId.RISING:
 			// 487 4832 15012 9604
 			p[0] = 487;
 			p[1] = 15012;

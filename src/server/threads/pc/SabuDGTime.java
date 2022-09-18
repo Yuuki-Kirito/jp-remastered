@@ -170,12 +170,12 @@ public class SabuDGTime implements Runnable {
 
 	private void 할로윈(L1PcInstance player) {
 		player.addchecktime();
-		player.set할로윈time(player.get할로윈time() + 1);
-		int usetime = player.get할로윈time();
+		player.sethalloweentime(player.gethalloweentime() + 1);
+		int usetime = player.gethalloweentime();
 		int outtime = 60 * 60 * 1;
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
-			String s1 = isPC입장가능여부(player.get할로윈day(), outtime, usetime);
+			String s1 = isPC입장가능여부(player.gethalloweenday(), outtime, usetime);
 			if (s1.equals("입장가능")) {// 입장가능
 			} else if (s1.equals("불가능")) {// 입장불가능
 				player.sendPackets(new S_ServerMessage(1522, "3"));// 5시간 모두
@@ -183,8 +183,8 @@ public class SabuDGTime implements Runnable {
 				L1Teleport.teleport(player, 33443, 32798, (short) 4, 5, true);
 				return;
 			} else if (s1.equals("초기화")) {// 초기화
-				player.set할로윈time(1);
-				player.set할로윈day(nowday);
+				player.sethalloweentime(1);
+				player.sethalloweenday(nowday);
 				player.getNetConnection().getAccount().updateDGTime();
 				player.sendPackets(new S_PacketBox(S_PacketBox.TIME_COUNT, outtime - 1), true);
 
@@ -198,13 +198,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 고무(L1PcInstance player) {
 		player.addchecktime();
-		player.set고무time(player.get고무time() + 1);
+		player.setrubbertime(player.getrubbertime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = player.get고무time();
-			String s = isPC입장가능여부(player.get고무day(), outtime, usetime);
+			int usetime = player.getrubbertime();
+			String s = isPC입장가능여부(player.getrubberday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -215,8 +215,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set고무time(1);
-					player.set고무day(nowday);
+					player.setrubbertime(1);
+					player.setrubberday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -230,10 +230,10 @@ public class SabuDGTime implements Runnable {
 
 	private void 몽섬(L1PcInstance player) {
 		player.addchecktime();
-		player.set몽섬time(player.get몽섬time() + 1);
+		player.setmongesomtime(player.getmongseomtime() + 1);
 		player.setpc몽섬time(player.getpctime1() + 1);
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
-		if (player.getpcday1() == null || player.get몽섬day() == null) {
+		if (player.getpcday1() == null || player.getmongseonday() == null) {
 			player.sendPackets(sm);
 			L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 		} else {
@@ -259,15 +259,15 @@ public class SabuDGTime implements Runnable {
 
 			try {
 				int outtime = 60 * 60;
-				int usetime = player.get몽섬time();
-				String s = isAccount입장가능여부(player.get몽섬day(), outtime, usetime);
+				int usetime = player.getmongseomtime();
+				String s = isAccount입장가능여부(player.getmongseonday(), outtime, usetime);
 				if (s.equals("입장가능")) {// 입장가능
 				} else if (s.equals("불가능")) {// 입장불가능
 					player.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 3시간 30분 모두 사용"), true);
 					L1Teleport.teleport(player, 33443, 32798, (short) 4, 5, true);
 					return;
 				} else if (s.equals("초기화")) {// 초기화
-					player.set몽섬time(1);
+					player.setmongesomtime(1);
 					player.set몽섬day(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_SystemMessage("입장 시간 : 계정 입장 시간 3시간 30분 남음"), true);
@@ -302,24 +302,24 @@ public class SabuDGTime implements Runnable {
 
 	private void 솔로타운(L1PcInstance player) {
 		player.addchecktime();
-		player.set솔로타운time(player.get솔로타운time() + 1);
-		if (player.get솔로타운day() == null) {
+		player.setsolotowntime(player.getsolotowntime() + 1);
+		if (player.getsolotownday() == null) {
 			L1Teleport.teleport(player, 33443, 32798, (short) 4, 5, true);
 			return;
 		} else {
 			Timestamp nowday = new Timestamp(System.currentTimeMillis());
 			try {
 				int outtime = 60 * 40;
-				int usetime = player.get솔로타운time();
-				String s = isPC입장가능여부(player.get솔로타운day(), outtime, usetime);
+				int usetime = player.getsolotowntime();
+				String s = isPC입장가능여부(player.getsolotownday(), outtime, usetime);
 				if (s.equals("입장가능")) {// 입장가능
 				} else if (s.equals("불가능")) {// 입장불가능
 					player.sendPackets(new S_ServerMessage(1527, "40"));// 분남았다
 					L1Teleport.teleport(player, 33443, 32798, (short) 4, 5, true);
 					return;
 				} else if (s.equals("초기화")) {// 초기화
-					player.set솔로타운time(1);
-					player.set솔로타운day(nowday);
+					player.setsolotowntime(1);
+					player.setsolotownday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(player, S_PacketBox.DG_TIME_RESTART), true);
 					player.sendPackets(new S_PacketBox(S_PacketBox.TIME_COUNT, outtime - 1), true);
@@ -489,17 +489,17 @@ public class SabuDGTime implements Runnable {
 
 	private void 수상한천상계곡TimeCheck(L1PcInstance player) {
 		player.addchecktime();
-		player.set수상한천상계곡time(player.get수상한천상계곡time() + 1);
+		player.setwateragarvalleytime(player.getsuspiciousagarvalleytime() + 1);
 
-		if (player.get수상한천상계곡day() == null) {
+		if (player.getsuspiciousagarvalleyday() == null) {
 			player.sendPackets(sm);
 			L1Teleport.teleport(player, 32779, 32832, (short) 622, 5, true);
 		} else {
 			Timestamp nowday = new Timestamp(System.currentTimeMillis());
 			try {
 				int outtime = 60 * 60;
-				int usetime = player.get수상한천상계곡time();
-				String s = isPC입장가능여부(player.get수상한천상계곡day(), outtime, usetime);
+				int usetime = player.getsuspiciousagarvalleytime();
+				String s = isPC입장가능여부(player.getsuspiciousagarvalleyday(), outtime, usetime);
 				if (s.equals("입장가능")) {// 입장가능
 				} else if (s.equals("불가능")) {// 입장불가능
 					// player.sendPackets(new S_SystemMessage(player,
@@ -509,7 +509,7 @@ public class SabuDGTime implements Runnable {
 					L1Teleport.teleport(player, 32779, 32832, (short) 622, 5, true);
 					return;
 				} else if (s.equals("초기화")) {// 초기화
-					player.set수상한천상계곡time(1);
+					player.setwateragarvalleytime(1);
 					player.set수상한천상계곡day(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(player, S_PacketBox.DG_TIME_RESTART), true);
@@ -529,17 +529,17 @@ public class SabuDGTime implements Runnable {
 
 	private void 수렵이벤트TimeCheck(L1PcInstance player) {
 		player.addchecktime();
-		player.set수렵이벤트time(player.get수렵이벤트time() + 1);
+		player.sethuntingeventtime(player.gethuntingeventtime() + 1);
 
-		if (player.get수렵이벤트day() == null) {
+		if (player.gethuntigeventday() == null) {
 			player.sendPackets(sm);
 			L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 		} else {
 			Timestamp nowday = new Timestamp(System.currentTimeMillis());
 			try {
 				int outtime = 60 * 60;
-				int usetime = player.get수렵이벤트time();
-				String s = isPC입장가능여부(player.get수렵이벤트day(), outtime, usetime);
+				int usetime = player.gethuntingeventtime();
+				String s = isPC입장가능여부(player.gethuntigeventday(), outtime, usetime);
 				if (s.equals("입장가능")) {// 입장가능
 				} else if (s.equals("불가능")) {// 입장불가능
 					player.sendPackets(new S_ServerMessage(1522, "1"));// 5시간 모두
@@ -547,8 +547,8 @@ public class SabuDGTime implements Runnable {
 					L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 					return;
 				} else if (s.equals("초기화")) {// 초기화
-					player.set수렵이벤트time(1);
-					player.set수렵이벤트day(nowday);
+					player.sethuntingeventtime(1);
+					player.sethuntingeventday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(player, S_PacketBox.DG_TIME_RESTART), true);
 					player.sendPackets(new S_PacketBox(S_PacketBox.TIME_COUNT, outtime - 1), true);
@@ -564,17 +564,17 @@ public class SabuDGTime implements Runnable {
 
 	private void 수상한감옥TimeCheck(L1PcInstance player) {
 		player.addchecktime();
-		player.set수상한감옥time(player.get수상한감옥time() + 1);
+		player.setsuspiciousprisontime(player.getsuspiciousprisontime() + 1);
 
-		if (player.get수상한감옥day() == null) {
+		if (player.getsuspiciousprisonday() == null) {
 			player.sendPackets(sm);
 			L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 		} else {
 			Timestamp nowday = new Timestamp(System.currentTimeMillis());
 			try {
 				int outtime = 60 * 60 * 2;
-				int usetime = player.get수상한감옥time();
-				String s = isPC입장가능여부(player.get수상한감옥day(), outtime, usetime);
+				int usetime = player.getsuspiciousprisontime();
+				String s = isPC입장가능여부(player.getsuspiciousprisonday(), outtime, usetime);
 				if (s.equals("입장가능")) {// 입장가능
 				} else if (s.equals("불가능")) {// 입장불가능
 					player.sendPackets(new S_ServerMessage(1522, "2"));// 5시간 모두
@@ -582,7 +582,7 @@ public class SabuDGTime implements Runnable {
 					L1Teleport.teleport(player, 33432, 32796, (short) 4, 5, true);
 					return;
 				} else if (s.equals("초기화")) {// 초기화
-					player.set수상한감옥time(1);
+					player.setsuspiciousprisontime(1);
 					player.set수상한감옥day(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(player, S_PacketBox.DG_TIME_RESTART), true);
@@ -630,13 +630,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 잊섬(L1PcInstance player) {
 		player.addchecktime();
-		player.set잊섬time(player.get잊섬time() + 1);
+		player.setforgetmetime(player.getforgetislandtime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = player.get잊섬time();
-			String s = isPC입장가능여부(player.get잊섬day(), outtime, usetime);
+			int usetime = player.getforgetislandtime();
+			String s = isPC입장가능여부(player.getforgetislanday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -647,8 +647,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set잊섬time(1);
-					player.set잊섬day(nowday);
+					player.setforgetmetime(1);
+					player.setforgetislandday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -662,13 +662,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 수련(L1PcInstance player) {
 		player.addchecktime();
-		player.set수련time(player.get수련time() + 1);
+		player.settrainingtime(player.gettrainingtime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 1;
-			int usetime = player.get수련time();
-			String s = isPC입장가능여부(player.get수련day(), outtime, usetime);
+			int usetime = player.gettrainingtime();
+			String s = isPC입장가능여부(player.getwaterlilyday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -679,8 +679,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set수련time(1);
-					player.set수련day(nowday);
+					player.settrainingtime(1);
+					player.settrainingday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -714,13 +714,13 @@ public class SabuDGTime implements Runnable {
 	 */
 	private void 아투바오크(L1PcInstance player) {
 		player.addchecktime();
-		player.set아투바time(player.get아투바time() + 1);
+		player.setatubatime(player.getatubatime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 3;
-			int usetime = player.get아투바time();
-			String s = isPC입장가능여부(player.get아투바day(), outtime, usetime);
+			int usetime = player.getatubatime();
+			String s = isPC입장가능여부(player.getatubaday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -731,8 +731,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set아투바time(1);
-					player.set아투바day(nowday);
+					player.setatubatime(1);
+					player.setatoubaday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -746,13 +746,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 버땅(L1PcInstance player) {
 		player.addchecktime();
-		player.set버땅time(player.get버땅time() + 1);
+		player.set_time(player.gettime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = player.get버땅time();
-			String s = isPC입장가능여부(player.get버땅day(), outtime, usetime);
+			int usetime = player.gettime();
+			String s = isPC입장가능여부(player.getbudangday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -763,8 +763,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set버땅time(1);
-					player.set버땅day(nowday);
+					player.set_time(1);
+					player.set_day(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -778,13 +778,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 에바(L1PcInstance player) {
 		player.addchecktime();
-		player.set에바time(player.get에바time() + 1);
+		player.setevatime(player.getevatime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = player.get에바time();
-			String s = isPC입장가능여부(player.get에바day(), outtime, usetime);
+			int usetime = player.getevatime();
+			String s = isPC입장가능여부(player.getevaday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -795,8 +795,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set에바time(1);
-					player.set에바day(nowday);
+					player.setevatime(1);
+					player.setevaday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 
@@ -810,13 +810,13 @@ public class SabuDGTime implements Runnable {
 
 	private void 검은전함(L1PcInstance player) {
 		player.addchecktime();
-		player.set검은전함time(player.get검은전함time() + 1);
+		player.setblackbattleshiptime(player.getblackbattleshiptime() + 1);
 
 		Timestamp nowday = new Timestamp(System.currentTimeMillis());
 		try {
 			int outtime = 60 * 60 * 2;
-			int usetime = player.get검은전함time();
-			String s = isPC입장가능여부(player.get검은전함day(), outtime, usetime);
+			int usetime = player.getblackbattleshiptime();
+			String s = isPC입장가능여부(player.getblackbattleshipday(), outtime, usetime);
 
 			if (!s.equals("입장가능")) {
 				if (s.equals("불가능")) {
@@ -827,8 +827,8 @@ public class SabuDGTime implements Runnable {
 					return;
 				}
 				if (s.equals("초기화")) {
-					player.set검은전함time(1);
-					player.set검은전함day(nowday);
+					player.setblackbattleshiptime(1);
+					player.setblackbattleshipday(nowday);
 					player.getNetConnection().getAccount().updateDGTime();
 					player.sendPackets(new S_PacketBox(153, outtime - 1), true);
 

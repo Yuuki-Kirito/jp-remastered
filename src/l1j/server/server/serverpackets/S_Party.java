@@ -202,7 +202,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SHOCK_STUN:  
 						writeBit(1626);
 						break;
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						writeBit(1626);
 						break;
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -285,7 +285,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.µ¥½ºÈú:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.STRIKER_GALE:  
@@ -348,7 +348,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						writeBit(timeSec * 300);
 						break;
 					}
@@ -358,9 +358,9 @@ public class S_Party extends ServerBasePacket {
 			//writeC(pc.getÇ¥½Ä());
 
 			/** Â¡Ç¥ ÆÐÅ¶ */
-			if (pc.getÇ¥½Ä() != 0) {
+			if (pc.getmarker() != 0) {
 				writeC(0x40);
-				writeC(pc.getÇ¥½Ä());
+				writeC(pc.getmarker());
 			}
 			break;
 		}
@@ -399,7 +399,7 @@ public class S_Party extends ServerBasePacket {
 			os.writeBit(member.getX(), member.getY());
 
 			os.writeC(0x50);
-			os.writeC(member.getÇ¥½Ä());
+			os.writeC(member.getmarker());
 
 			os.writeC(0x60);
 			os.writeC(0x64);
@@ -458,7 +458,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SHOCK_STUN:  
 						os.writeBit(1626);
 						break;
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(1626);
 						break;
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -541,7 +541,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.µ¥½ºÈú:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.STRIKER_GALE:  
@@ -604,7 +604,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.SHOCK_STUN:   
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(timeSec * 300);
 						break;
 					}
@@ -658,7 +658,7 @@ public class S_Party extends ServerBasePacket {
 			os.writeBit(member.getX(), member.getY());
 
 			os.writeC(0x50);
-			os.writeC(member.getÇ¥½Ä());
+			os.writeC(member.getmarker());
 
 			os.writeC(0x60);
 			os.writeC(0x64);
@@ -717,7 +717,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SHOCK_STUN:  
 						os.writeBit(1626);
 						break;
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(1626);
 						break;
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -800,7 +800,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.µ¥½ºÈú:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.STRIKER_GALE:  
@@ -863,7 +863,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(timeSec * 300);
 						break;
 					}
@@ -951,7 +951,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SHOCK_STUN:  
 						os.writeBit(1626);
 						break;
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(1626);
 						break;
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -1035,7 +1035,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.µ¥½ºÈú:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.STRIKER_GALE:  
@@ -1098,7 +1098,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
 					case L1SkillId.SHOCK_STUN:  
-					case L1SkillId.¿¥ÆÄÀÌ¾î:  
+					case L1SkillId.EMPIRE:  
 						os.writeBit(timeSec * 300);
 						break;
 					}

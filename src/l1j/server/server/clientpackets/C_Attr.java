@@ -204,7 +204,7 @@ public class C_Attr extends ClientBasePacket {
 			case 3348:// 희미한 기억구슬
 				L1Clan target_clan = L1World.getInstance().getClan(
 						pc.getClanid());
-				L1Clan use_clan = L1World.getInstance().getClan(pc.get주시아이디());
+				L1Clan use_clan = L1World.getInstance().getClan(pc.getjujuid());
 				L1PcInstance target_clanMaster = L1World.getInstance()
 						.getPlayer(target_clan.getLeaderName());
 				L1PcInstance use_clanMaster = L1World.getInstance().getPlayer(
@@ -215,8 +215,8 @@ public class C_Attr extends ClientBasePacket {
 							"혈맹 주시 : 혈맹 주시 신청을 거절함."));
 					use_clanMaster.sendPackets(new S_SystemMessage(
 							"혈맹 주시 : 혈맹 주시 신청이 거절됨."));
-					use_clanMaster.set주시아이디(0);
-					target_clanMaster.set주시아이디(0);
+					use_clanMaster.setjuicyid(0);
+					target_clanMaster.setjuicyid(0);
 				} else if (c == 1) {
 					target_clan.addMarkSeeList(use_clan.getClanName());
 					use_clan.addMarkSeeList(target_clan.getClanName());
@@ -238,8 +238,8 @@ public class C_Attr extends ClientBasePacket {
 								new S_ServerMessage(3360, target_clan
 										.getClanName()), true);
 					}
-					use_clanMaster.set주시아이디(0);
-					target_clanMaster.set주시아이디(0);
+					use_clanMaster.setjuicyid(0);
+					target_clanMaster.setjuicyid(0);
 				}
 
 			case 2936:// 희미한 기억구슬
@@ -247,30 +247,30 @@ public class C_Attr extends ClientBasePacket {
 				if (c == 0) {
 				} else if (c == 1) {
 					int size = pc.getBookMarkSize();
-					L1ItemInstance item = pc.getInventory().getItem(pc.구슬아이템);
+					L1ItemInstance item = pc.getInventory().getItem(pc.bead_item);
 					if (item.getItemId() == 60084) {
-						int itemsize = L1BookMark.ItemBookmarkChehck(pc.구슬아이템);
+						int itemsize = L1BookMark.ItemBookmarkChehck(pc.bead_item);
 						if (size + itemsize > pc.getBookmarkMax()) {
 							pc.sendPackets(new S_ServerMessage(2961, ""
 									+ (size - pc.getBookmarkMax() + itemsize)),
 									true);
-							pc.구슬아이템 = 0;
+							pc.bead_item = 0;
 							return;
 						}
-						if (L1BookMark.ItemBookmarkLoad(pc, pc.구슬아이템))
+						if (L1BookMark.ItemBookmarkLoad(pc, pc.bead_item))
 							pc.getInventory().removeItem(item, 1);
 					} else {
 						if (size + 29 > pc.getBookmarkMax()) {
 							pc.sendPackets(new S_ServerMessage(2961, ""
 									+ (size - pc.getBookmarkMax() + 30)), true);
-							pc.구슬아이템 = 0;
+							pc.bead_item = 0;
 							return;
 						}
 						if (L1BookMark.아이템기억(pc, 29))
 							pc.getInventory().removeItem(item, 1);
 					}
 				}
-				pc.구슬아이템 = 0;
+				pc.bead_item = 0;
 				break;
 			case 3016: // 신비한 기억구슬
 				c = readC();
@@ -282,11 +282,11 @@ public class C_Attr extends ClientBasePacket {
 								+ (size2 - pc.getBookmarkMax() + 8)), true);
 						return;
 					}
-					L1ItemInstance item2 = pc.getInventory().getItem(pc.구슬아이템);
+					L1ItemInstance item2 = pc.getInventory().getItem(pc.bead_item);
 					if (L1BookMark.아이템기억(pc, 8))
 						pc.getInventory().removeItem(item2, 1);
 				}
-				pc.구슬아이템 = 0;
+				pc.bead_item = 0;
 				break;
 			/*
 			 * case 2935: //케플리샤 기억저장구슬 c = readC(); if(c == 0){ }else if(c ==
@@ -312,7 +312,7 @@ public class C_Attr extends ClientBasePacket {
 				} else if (c == 1) {
 					if (checkdragonkey(pc)) {
 						L1ItemInstance dragonkey = pc.getInventory().getItem(
-								pc.드키등록체크id);
+								pc.dekey_registration_check_id);
 						// L1ItemInstance dragonkey =
 						// pc.getInventory().findItemId(L1ItemId.DRAGON_KEY);
 						BoardTable.getInstance().writeDragonKey(pc, dragonkey,
@@ -323,7 +323,7 @@ public class C_Attr extends ClientBasePacket {
 										"강철 길드 난쟁이: 마법사 게렝님께서 방금 아덴 대륙에 드래곤 키가 나타났다고 하십니다. 선택 받은 드래곤 슬레이어에게 영광과 축복을!");
 					}
 				}
-				pc.드키등록체크id = 0;
+				pc.dekey_registration_check_id = 0;
 				break;
 			case 1906: // 혈맹 혈전 중 탈퇴 리뉴얼
 				c = readC();
@@ -2008,7 +2008,7 @@ public class C_Attr extends ClientBasePacket {
 	 * 키 있어야 해 sm = null; return false; } }
 	 */
 	private boolean checkdragonkey(L1PcInstance pc) {
-		int keyid = pc.드키등록체크id;
+		int keyid = pc.dekey_registration_check_id;
 		if (keyid == 0)
 			return false;
 		L1ItemInstance item = pc.getInventory().getItem(keyid);

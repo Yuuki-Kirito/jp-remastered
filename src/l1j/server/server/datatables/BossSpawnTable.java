@@ -92,9 +92,9 @@ public class BossSpawnTable {
 							} else if (npc.getNpcTemplate().get_npcId() == npcId
 									&& npc.getMapId() != 666
 									&& npc.getMapId() == rs.getInt("mapid")) {
-								if (Config.접속채팅모니터() > 0) {
+								if (Config._connection_chat_monitor() > 0) {
 									for (L1PcInstance gm : Config
-											.toArray접속채팅모니터()) {
+											.toArray_connection_chat_monitor()) {
 										if (gm.getNetConnection() == null) {
 											Config.remove접속(gm);
 											continue;

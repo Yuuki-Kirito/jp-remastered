@@ -255,49 +255,49 @@ public class Account {
 			account.ivoryday = (rs.getTimestamp("IDGDay"));
 			account.ravatime = (rs.getInt("RDGTime"));
 			account.ravaday = (rs.getTimestamp("RDGDay"));
-			account.용둥time = (rs.getInt("DDGTime"));
-			account.용둥day = (rs.getTimestamp("DDGDay"));
+			account.dragontime = (rs.getInt("DDGTime"));
+			account.yongdongday = (rs.getTimestamp("DDGDay"));
 
-			account.수상한감옥time = (rs.getInt("SDGTime"));
-			account.수상한감옥day = (rs.getTimestamp("SDGDay"));
-			account.수렵이벤트time = (rs.getInt("SETime"));
-			account.수렵이벤트day = (rs.getTimestamp("SEDay"));
+			account.suspiciousprisontime = (rs.getInt("SDGTime"));
+			account.suspiciousprisonday = (rs.getTimestamp("SDGDay"));
+			account.huntingeventtime = (rs.getInt("SETime"));
+			account.huntingeventday = (rs.getTimestamp("SEDay"));
 			account.ivoryyaheetime = (rs.getInt("IYDGTime"));
 			account.ivoryyaheeday = (rs.getTimestamp("IYDGDay"));
-			account.수상한천상계곡time = (rs.getInt("CDGTime"));
-			account.수상한천상계곡day = (rs.getTimestamp("CDGDay"));
+			account.suspiciousagarvalleytime = (rs.getInt("CDGTime"));
+			account.suspiciousagarvalleyday = (rs.getTimestamp("CDGDay"));
 			account.tam_point = (rs.getInt("Tam_Point"));
 			account._dragon_raid_buff = (rs.getTimestamp("DragonRaid_Buff"));
 			account.RedKnightEventItem = rs.getInt("RedKnight_event") == 0 ? false : true;
-			account.할로윈time = (rs.getInt("HWTime"));
-			account.할로윈day = (rs.getTimestamp("HWDay"));
-			account.솔로타운time = (rs.getInt("STTime"));
-			account.솔로타운day = (rs.getTimestamp("STDay"));
+			account.halloweentime = (rs.getInt("HWTime"));
+			account.hallowindday = (rs.getTimestamp("HWDay"));
+			account.solotowntime = (rs.getInt("STTime"));
+			account.solotownday = (rs.getTimestamp("STDay"));
 			account.Shop_open_count = (rs.getInt("Shop_open_count"));
 
-			account.몽섬time = (rs.getInt("MSTime"));
-			account.몽섬day = (rs.getTimestamp("MSDay"));
+			account.mongseomtime = (rs.getInt("MSTime"));
+			account.mongseonday = (rs.getTimestamp("MSDay"));
 
-			account.고무time = (rs.getInt("GOTime"));
-			account.고무day = (rs.getTimestamp("GODay"));
-			account.라던time = (rs.getInt("RBTime"));
-			account.라던day = (rs.getTimestamp("RBDay"));
-			account.낚시time = (rs.getInt("FSTime"));
-			account.낚시day = (rs.getTimestamp("FSDay"));
-			account.잊섬time = (rs.getInt("ISTime"));
-			account.잊섬day = (rs.getTimestamp("ISDay"));
-			account.검은전함time = (rs.getInt("BSTime"));
-			account.검은전함day = (rs.getTimestamp("BSDay"));
-			account.수련time = (rs.getInt("SRTime"));
-			account.수련day = (rs.getTimestamp("SRDay"));
-			account.고무피씨time = (rs.getInt("GPTime"));
-			account.고무피씨day = (rs.getTimestamp("GPDay"));
-			account.버땅time = (rs.getInt("BLTime"));
-			account.버땅day = (rs.getTimestamp("BLDay"));
-			account.아투바time = (rs.getInt("AOTime"));
-			account.아투바day = (rs.getTimestamp("AODay"));
-			account.에바time = (rs.getInt("EKTime"));
-			account.에바day = (rs.getTimestamp("EKDay"));
+			account.rubbertime = (rs.getInt("GOTime"));
+			account.rubberday = (rs.getTimestamp("GODay"));
+			account.randomtime = (rs.getInt("RBTime"));
+			account.ladenday = (rs.getTimestamp("RBDay"));
+			account.fishingtime = (rs.getInt("FSTime"));
+			account.fishingday = (rs.getTimestamp("FSDay"));
+			account.forgetislandtime = (rs.getInt("ISTime"));
+			account.forgetislandday = (rs.getTimestamp("ISDay"));
+			account.blaclbattleshiptime = (rs.getInt("BSTime"));
+			account.blackbattleshipday = (rs.getTimestamp("BSDay"));
+			account.trainingtime = (rs.getInt("SRTime"));
+			account.waterlilyday = (rs.getTimestamp("SRDay"));
+			account.rubberpctime = (rs.getInt("GPTime"));
+			account.rubberpcday = (rs.getTimestamp("GPDay"));
+			account.time = (rs.getInt("BLTime"));
+			account.budangday = (rs.getTimestamp("BLDay"));
+			account.atubatime = (rs.getInt("AOTime"));
+			account.atoubaday = (rs.getTimestamp("AODay"));
+			account.evatime = (rs.getInt("EKTime"));
+			account.evaday = (rs.getTimestamp("EKDay"));
 
 			// account.ainhasad = (rs.getInt("Ainhasad"));
 
@@ -1041,53 +1041,53 @@ public class Account {
 			pstm.setTimestamp(4, ivoryday);
 			pstm.setInt(5, ravatime);
 			pstm.setTimestamp(6, ravaday);
-			pstm.setInt(7, 용둥time);
-			pstm.setTimestamp(8, 용둥day);
-			pstm.setInt(9, 수상한감옥time);
-			pstm.setTimestamp(10, 수상한감옥day);
-			pstm.setInt(11, 수렵이벤트time);
-			pstm.setTimestamp(12, 수렵이벤트day);
+			pstm.setInt(7, dragontime);
+			pstm.setTimestamp(8, yongdongday);
+			pstm.setInt(9, suspiciousprisontime);
+			pstm.setTimestamp(10, suspiciousprisonday);
+			pstm.setInt(11, huntingeventtime);
+			pstm.setTimestamp(12, huntingeventday);
 			pstm.setInt(13, ivoryyaheetime);
 			pstm.setTimestamp(14, ivoryyaheeday);
-			pstm.setInt(15, 수상한천상계곡time);
-			pstm.setTimestamp(16, 수상한천상계곡day);
-			pstm.setInt(17, 할로윈time);
-			pstm.setTimestamp(18, 할로윈day);
-			pstm.setInt(19, 솔로타운time);
-			pstm.setTimestamp(20, 솔로타운day);
+			pstm.setInt(15, suspiciousagarvalleytime);
+			pstm.setTimestamp(16, suspiciousagarvalleyday);
+			pstm.setInt(17, halloweentime);
+			pstm.setTimestamp(18, hallowindday);
+			pstm.setInt(19, solotowntime);
+			pstm.setTimestamp(20, solotownday);
 
-			pstm.setInt(21, 몽섬time);
-			pstm.setTimestamp(22, 몽섬day);
+			pstm.setInt(21, mongseomtime);
+			pstm.setTimestamp(22, mongseonday);
 
-			pstm.setInt(23, 고무time);
-			pstm.setTimestamp(24, 고무day);
+			pstm.setInt(23, rubbertime);
+			pstm.setTimestamp(24, rubberday);
 
-			pstm.setInt(25, 라던time);
-			pstm.setTimestamp(26, 라던day);
+			pstm.setInt(25, randomtime);
+			pstm.setTimestamp(26, ladenday);
 
-			pstm.setInt(27, 낚시time);
-			pstm.setTimestamp(28, 낚시day);
+			pstm.setInt(27, fishingtime);
+			pstm.setTimestamp(28, fishingday);
 
-			pstm.setInt(29, 잊섬time);
-			pstm.setTimestamp(30, 잊섬day);
+			pstm.setInt(29, forgetislandtime);
+			pstm.setTimestamp(30, forgetislandday);
 
-			pstm.setInt(31, 검은전함time);
-			pstm.setTimestamp(32, 검은전함day);
+			pstm.setInt(31, blaclbattleshiptime);
+			pstm.setTimestamp(32, blackbattleshipday);
 			
-			pstm.setInt(33, 수련time);
-			pstm.setTimestamp(34, 수련day);
+			pstm.setInt(33, trainingtime);
+			pstm.setTimestamp(34, waterlilyday);
 			
-			pstm.setInt(35, 고무피씨time);
-			pstm.setTimestamp(36, 고무피씨day);
+			pstm.setInt(35, rubberpctime);
+			pstm.setTimestamp(36, rubberpcday);
 			
-			pstm.setInt(37, 버땅time);
-			pstm.setTimestamp(38, 버땅day);
+			pstm.setInt(37, time);
+			pstm.setTimestamp(38, budangday);
 			
-			pstm.setInt(39, 아투바time);
-			pstm.setTimestamp(40, 아투바day);
+			pstm.setInt(39, atubatime);
+			pstm.setTimestamp(40, atoubaday);
 			
-			pstm.setInt(41, 에바time);
-			pstm.setTimestamp(42, 에바day);
+			pstm.setInt(41, evatime);
+			pstm.setTimestamp(42, evaday);
 
 			pstm.setString(43, _name);
 			pstm.executeUpdate();
@@ -1284,48 +1284,48 @@ public class Account {
 	public int ivoryyaheetime;
 	public int ravatime;
 	public int dctime;
-	public int 수상한감옥time;
-	public int 수렵이벤트time;
-	public int 수상한천상계곡time;
-	public int 할로윈time;
-	public int 솔로타운time;
-	public int 몽섬time;
-	public int 고무time;
-	public int 용둥time;
-	public int 라던time;
-	public int 낚시time;
-	public int 잊섬time;
-	public int 수련time;
-	public int 검은전함time;
-	public int 고무피씨time;
+	public int suspiciousprisontime;
+	public int huntingeventtime;
+	public int suspiciousagarvalleytime;
+	public int halloweentime;
+	public int solotowntime;
+	public int mongseomtime;
+	public int rubbertime;
+	public int dragontime;
+	public int randomtime;
+	public int fishingtime;
+	public int forgetislandtime;
+	public int trainingtime;
+	public int blaclbattleshiptime;
+	public int rubberpctime;
 
 	public Timestamp giranday;
 	public Timestamp ivoryday;
 	public Timestamp ivoryyaheeday;
 	public Timestamp ravaday;
 	public Timestamp dcday;
-	public Timestamp 수상한감옥day;
-	public Timestamp 수렵이벤트day;
-	public Timestamp 수상한천상계곡day;
-	public Timestamp 할로윈day;
-	public Timestamp 솔로타운day;
-	public Timestamp 고무day;
-	public Timestamp 용둥day;
+	public Timestamp suspiciousprisonday;
+	public Timestamp huntingeventday;
+	public Timestamp suspiciousagarvalleyday;
+	public Timestamp hallowindday;
+	public Timestamp solotownday;
+	public Timestamp rubberday;
+	public Timestamp yongdongday;
 
-	public Timestamp 몽섬day;
-	public Timestamp 라던day;
-	public Timestamp 낚시day;
-	public Timestamp 잊섬day;
-	public Timestamp 수련day;
-	public Timestamp 검은전함day;
-	public Timestamp 고무피씨day;
+	public Timestamp mongseonday;
+	public Timestamp ladenday;
+	public Timestamp fishingday;
+	public Timestamp forgetislandday;
+	public Timestamp waterlilyday;
+	public Timestamp blackbattleshipday;
+	public Timestamp rubberpcday;
 	/**리마스터 던전시간 추가부분*/
-	public int 버땅time;
-	public Timestamp 버땅day;
-	public int 에바time;
-	public Timestamp 에바day;
-	public int 아투바time;
-	public Timestamp 아투바day;
+	public int time;
+	public Timestamp budangday;
+	public int evatime;
+	public Timestamp evaday;
+	public int atubatime;
+	public Timestamp atoubaday;
 	/**리마스터 던전시간 추가부분*/
 
 	// public int ainhasad;

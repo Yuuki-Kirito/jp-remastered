@@ -453,8 +453,8 @@ public class Robot {
 				new L1SkillUse().handleCommands(bot, L1SkillId.PRIME, bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
 				return true;
 			}
-			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.»þÀÌ´×¾Æ¸Ó)) {
-				new L1SkillUse().handleCommands(bot, L1SkillId.»þÀÌ´×¾Æ¸Ó, bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
+			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHINING_ARMOR)) {
+				new L1SkillUse().handleCommands(bot, L1SkillId.SHINING_ARMOR, bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
 				return true;
 			}
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHINING_AURA)) {

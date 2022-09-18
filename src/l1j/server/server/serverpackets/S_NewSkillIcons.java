@@ -67,9 +67,9 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(4503);
 			} else if (skillId == L1SkillId.IMMUNE_TO_HARM) {// 소울 배리어
 				byteWrite(1562);
-			} else if (skillId == L1SkillId.라이징) {// 타이탄: 라이징
+			} else if (skillId == L1SkillId.RISING) {// 타이탄: 라이징
 				byteWrite(7460);
-			} else if (skillId == L1SkillId.소울배리어) {// 소울 배리어
+			} else if (skillId == L1SkillId.SOUL_BARRIER) {// 소울 배리어
 				byteWrite(7435);
 			} else if (skillId == L1SkillId.IllUSION_OGRE) {// 일루션 오우거
 				byteWrite(3117);
@@ -99,7 +99,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(2357);
 			} else if (skillId == L1SkillId.마제스티) {// 
 				byteWrite(9518);
-			} else if (skillId == L1SkillId.샤이닝아머) {// 
+			} else if (skillId == L1SkillId.SHINING_ARMOR) {// 
 				byteWrite(9483);
 			} else if (skillId == L1SkillId.뫼비우스) {// 
 				byteWrite(9443);
@@ -226,9 +226,9 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5268;
 			else if (skillId == L1SkillId.IMMUNE_TO_HARM)// 임팩트
 				msgNum = 314;
-			else if(skillId == L1SkillId.라이징)
+			else if(skillId == L1SkillId.RISING)
 				msgNum = 4740;
-			else if (skillId == L1SkillId.소울배리어)// 소울 배리어
+			else if (skillId == L1SkillId.SOUL_BARRIER)// 소울 배리어
 				msgNum = 4736;
 			else if (skillId == L1SkillId.IllUSION_OGRE)
 				msgNum = 1340;
@@ -256,7 +256,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5446;
 			else if (skillId == L1SkillId.STRIKER_GALE)// 싸이클론
 				msgNum = 1084;
-			else if (skillId == L1SkillId.샤이닝아머)// 
+			else if (skillId == L1SkillId.SHINING_ARMOR)// 
 				msgNum = 5892;
 			else if (skillId == L1SkillId.마제스티)// 
 				msgNum = 5893;

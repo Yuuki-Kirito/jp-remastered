@@ -173,7 +173,7 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			pc.setpctime2(rs.getInt("GOTime"));
 			pc.setpcday2(rs.getTimestamp("GODay"));
 
-			pc.setpc용둥time(rs.getInt("DCTime"));
+			pc.setpcdragontime(rs.getInt("DCTime"));
 			pc.setpcday3(rs.getTimestamp("DCDay"));
 
 			pc.setElfAttrResetCount(rs.getInt("ElfAttrResetCount"));

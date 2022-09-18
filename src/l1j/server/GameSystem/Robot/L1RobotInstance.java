@@ -1532,7 +1532,7 @@ public class L1RobotInstance extends L1PcInstance {
 		{
 			if (isFirstAttackSkill)
 			{
-				skillId = L1SkillId.엠파이어;
+				skillId = L1SkillId.EMPIRE;
 				skill_range = 1;
 			}
 			else if(rand < 20)
@@ -1914,7 +1914,7 @@ public class L1RobotInstance extends L1PcInstance {
 				if (isProbability /* && isShortDistance */) {
 					isMortalBody = true;
 				}
-			} else if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.인페르노)) {
+			} else if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.INFERNO)) {
 				int chan = random.nextInt(100) + 1;
 				boolean isProbability = false;
 				if (25 > chan) {

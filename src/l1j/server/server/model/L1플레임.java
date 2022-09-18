@@ -74,7 +74,7 @@ public class L1플레임 extends TimerTask {
 			if (_cha instanceof L1PcInstance) {
 				L1PcInstance target = (L1PcInstance) _cha;
 				target.sendPackets(new S_NewSkillIcons(L1SkillId.FLAME, false, -1));
-				target.플레임th = null;
+				target.flame_th = null;
 			} else if (_cha instanceof L1NpcInstance) {
 				L1NpcInstance npc = (L1NpcInstance) _cha;
 				npc.플레임th = null;

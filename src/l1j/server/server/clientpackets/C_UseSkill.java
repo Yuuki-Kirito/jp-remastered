@@ -38,7 +38,7 @@ import static l1j.server.server.model.skill.L1SkillId.MOB_COCA;
 import static l1j.server.server.model.skill.L1SkillId.MOB_RANGESTUN_18;
 import static l1j.server.server.model.skill.L1SkillId.MOB_RANGESTUN_19;
 import static l1j.server.server.model.skill.L1SkillId.MOB_SHOCKSTUN_30;
-import static l1j.server.server.model.skill.L1SkillId.쉐도우스탭;
+import static l1j.server.server.model.skill.L1SkillId.SHADOW_TAB;
 import static l1j.server.server.model.skill.L1SkillId.PANTERA;
 import static l1j.server.server.model.skill.L1SkillId.PHANTASM;
 import static l1j.server.server.model.skill.L1SkillId.SCALES_EARTH_DRAGON;
@@ -49,7 +49,7 @@ import static l1j.server.server.model.skill.L1SkillId.SHOCK_STUN;
 import static l1j.server.server.model.skill.L1SkillId.TELEPORT;
 import static l1j.server.server.model.skill.L1SkillId.TRUE_TARGET;
 import static l1j.server.server.model.skill.L1SkillId.뫼비우스;
-import static l1j.server.server.model.skill.L1SkillId.엠파이어;
+import static l1j.server.server.model.skill.L1SkillId.EMPIRE;
 
 import l1j.server.Config;
 import l1j.server.MJ3SEx.EActionCodes;
@@ -141,7 +141,7 @@ public class C_UseSkill extends ClientBasePacket {
 
 			/** 제어 스킬 중에 임의로 아이템 사용 못하게 **/
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(SHOCK_STUN)
-					|| pc.getSkillEffectTimerSet().hasSkillEffect(엠파이어)
+					|| pc.getSkillEffectTimerSet().hasSkillEffect(EMPIRE)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(PANTERA)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(FORCE_STUN)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(MOB_SHOCKSTUN_30)

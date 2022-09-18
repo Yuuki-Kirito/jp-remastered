@@ -34,7 +34,7 @@ public class C_SabuTeleport extends ClientBasePacket {
 			 * S_Paralysis(S_Paralysis.TYPE_TELEPORT_UNLOCK, false), true); }
 			 */
 
-			if (!pc.텔대기()) {
+			if (!pc._TELL_WAIT()) {
 				return;
 			}
 
@@ -350,7 +350,7 @@ public class C_SabuTeleport extends ClientBasePacket {
 			e.printStackTrace();
 		} finally {
 			// GeneralThreadPool.getInstance().schedule(new tell(pc), 100);
-			pc.텔대기(false);
+			pc._TELL_WAIT(false);
 			// pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_TELEPORT_UNLOCK,
 			// false), true);
 			clear();
@@ -368,7 +368,7 @@ public class C_SabuTeleport extends ClientBasePacket {
 		@Override
 		public void run() {
 			try {
-				pc.텔대기(false);
+				pc._TELL_WAIT(false);
 				pc.sendPackets(new S_Paralysis(
 						S_Paralysis.TYPE_TELEPORT_UNLOCK, false), true);
 			} catch (Exception e) {

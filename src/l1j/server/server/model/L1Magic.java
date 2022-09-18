@@ -256,7 +256,7 @@ public class L1Magic {
 					|| skillId == FOG_OF_SLEEPING || skillId == ICE_LANCE
 					|| skillId == POLLUTE_WATER || skillId == RETURN_TO_NATURE
 					|| skillId == THUNDER_GRAB || skillId == 파워그립
-					|| skillId == 쉐도우스탭) {
+					|| skillId == SHADOW_TAB) {
 				return false;
 			}
 		}
@@ -529,9 +529,9 @@ public class L1Magic {
 						/*|| skillId == DISEASE*/ || skillId == DECAY_POTION
 						/*|| skillId == MASS_SLOW*/ /*|| skillId == ENTANGLE*/
 						|| skillId == ERASE_MAGIC || skillId == EARTH_BIND
-						|| skillId == AREA_OF_SILENCE || skillId == 쉐도우스탭
+						|| skillId == AREA_OF_SILENCE || skillId == SHADOW_TAB
 						|| skillId == WIND_SHACKLE || skillId == STRIKER_GALE
-						|| skillId == SHOCK_STUN || skillId == 엠파이어  || skillId == 파워그립 || skillId == JUDGEMENT
+						|| skillId == SHOCK_STUN || skillId == EMPIRE  || skillId == 파워그립 || skillId == JUDGEMENT
 						|| skillId == 데스페라도 || skillId == FOG_OF_SLEEPING || skillId == PANTERA || skillId == BLADE || skillId == PHANTOM
 						|| skillId == ICE_LANCE || skillId == HORROR_OF_DEATH
 						|| skillId == POLLUTE_WATER || skillId == FEAR
@@ -676,7 +676,7 @@ public class L1Magic {
 				probability = 10;
 			break;
 
-		case 쉐도우스탭:
+		case SHADOW_TAB:
 			if (attackLevel >= defenseLevel) {
 				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.SHADOW_TAP_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
@@ -942,7 +942,7 @@ public class L1Magic {
 			
 			break;
 			
-		case 엠파이어:
+		case EMPIRE:
 			if (attackLevel >= defenseLevel) {
 				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.EMPIRE;
 			} else if (attackLevel < defenseLevel) {
@@ -1074,7 +1074,7 @@ public class L1Magic {
 		case HALPHAS:
 			probability = 25;
 			break;
-		case 인페르노:
+		case INFERNO:
 			probability = 25;
 			break;
 		case MORTAL_BODY:
@@ -1967,7 +1967,7 @@ public class L1Magic {
 					|| _targetPc.getWeapon().getItemId() == 222208 || _targetPc.getWeapon().getItemId() == 30092){
 				TitanRatio += 5;
 			}
-			if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.라이징)){
+			if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.RISING)){
 				if(_targetPc.getLevel() > 80){
 					라이징 += _targetPc.getLevel() - 80;
 				}
@@ -1996,12 +1996,12 @@ public class L1Magic {
 						|| _targetPc.getSkillEffectTimerSet().hasSkillEffect(
 								L1SkillId.EARTH_BIND)
 						|| _targetPc.getSkillEffectTimerSet().hasSkillEffect(
-								L1SkillId.엠파이어)) {
+								L1SkillId.EMPIRE)) {
 					isProbability = false;
 				}
 
 				if (skillId == SHOCK_STUN || skillId == FOU_SLAYER
-						|| skillId == TRIPLE_ARROW || skillId == 엠파이어) {
+						|| skillId == TRIPLE_ARROW || skillId == EMPIRE) {
 					isProbability = false;
 				}
 

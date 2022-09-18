@@ -969,13 +969,13 @@ public class C_ShopAndWarehouse extends ClientBasePacket {
 							if (psbl.getBuyCount() == psbl.getBuyTotalCount()) { // 살 예정의 개수를 샀다
 								isRemoveFromList[order] = true;
 								try {
-									pc.상점아이템매입삭제(targetPc.getId(), item.getItemId(), 0);
+									pc.delete_shop_item_purchase(targetPc.getId(), item.getItemId(), 0);
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
 							} else {
 								try {
-									pc.상점아이템매입업데이트(targetPc.getId(), item.getItemId(), 0, psbl.getBuyTotalCount() - psbl.getBuyCount());
+									pc.store_item_purchase_update(targetPc.getId(), item.getItemId(), 0, psbl.getBuyTotalCount() - psbl.getBuyCount());
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
@@ -1268,7 +1268,7 @@ public class C_ShopAndWarehouse extends ClientBasePacket {
 							}
 							
 							try {
-								pc.상점아이템삭제(targetPc.getId(), item.getId(), 1);
+								pc.delete_shop_item(targetPc.getId(), item.getId(), 1);
 								pc.saveInventory();
 								targetPc.saveInventory();
 							} catch (Exception e) {
@@ -1392,7 +1392,7 @@ public class C_ShopAndWarehouse extends ClientBasePacket {
 				continue;
 			}
 			
-			if (target.샌드백) {
+			if (target._PUNCHUNG_BAG) {
 				continue;
 			}
 			

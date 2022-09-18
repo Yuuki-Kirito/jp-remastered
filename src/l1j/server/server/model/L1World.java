@@ -1197,7 +1197,7 @@ public class L1World {
 		pclist = getAllPlayers();
 		_log.finest("players to notify : " + pclist.size());
 		for (L1PcInstance pc : pclist) {
-			if (pc != null && pc.≈≥∏‡∆Æ) {
+			if (pc != null && pc._KILMENT) {
 				pc.sendPackets(packet);
 			}
 		}

@@ -185,13 +185,13 @@ public class L1SkillUse {
 	private static final int[] CAST_WITH_INVIS = { 1, 2, 3, 5, 8, 9, 12, 13, 14, 19, 21, 26, 31, 32, 35, 37, 42, 43, 44, 48, 49, 52, 54, 55, 57, 60, 61, 63, 67,
 			68, 69, 72, 73, 75, 78, 79, REDUCTION_ARMOR, 마제스티, BOUNCE_ATTACK, SOLID_CARRIAGE, COUNTER_BARRIER, 97, 98, 99, 100, 101, 102, 104, 105, 106, 107,
 			109, 110, 111, 113, 114, 115, 116, 117, 118, 129, 130, 131, 133, 134, 137, 138, 146, 147, 148, 149, 150, 151, 155, 156, 158, 159, 163, 164, 165,
-			166, 168, 169, 170, 171, 181, SOUL_OF_FLAME, ADDITIONAL_FIRE, IllUSION_OGRE, PATIENCE, IllUSION_DIAMONDGOLEM, IllUSION_LICH, IllUSION_AVATAR, 인페르노,
+			166, 168, 169, 170, 171, 181, SOUL_OF_FLAME, ADDITIONAL_FIRE, IllUSION_OGRE, PATIENCE, IllUSION_DIAMONDGOLEM, IllUSION_LICH, IllUSION_AVATAR, INFERNO,
 			HALPHAS };
 
 	// 카운터 매직으로 방어할수 없는 마법
 	private static final int[] EXCEPT_COUNTER_MAGIC = { 1, 2, 3, 5, 8, 9, 12, 13, 14, 19, 21, 26, 31, 32, 35, 37, 42, 43, 44, 48, 49, 52, 54, 55, 57, 60, 61,
-			63, 67, 68, 69, 72, 73, 75, 78, 79, FORCE_STUN, ETERNITY, AVENGER, DEMOLITION, SHOCK_STUN, 엠파이어, 파워그립, 데스페라도, PANTERA, 쉐도우스탭, PHANTOM, BLADE,
-			REDUCTION_ARMOR, BOUNCE_ATTACK, SOLID_CARRIAGE, 마제스티, COUNTER_BARRIER, HALPHAS, 인페르노, 97, 98, 99, 100, 101, 102, 104, 105, 106, 107, 109, 110, 111,
+			63, 67, 68, 69, 72, 73, 75, 78, 79, FORCE_STUN, ETERNITY, AVENGER, DEMOLITION, SHOCK_STUN, EMPIRE, 파워그립, 데스페라도, PANTERA, SHADOW_TAB, PHANTOM, BLADE,
+			REDUCTION_ARMOR, BOUNCE_ATTACK, SOLID_CARRIAGE, 마제스티, COUNTER_BARRIER, HALPHAS, INFERNO, 97, 98, 99, 100, 101, 102, 104, 105, 106, 107, 109, 110, 111,
 			ARMOR_BREAK, 113, 114, 115, 116, 117, 118, 129, 130, 131, 132, 134, 137, 138, 146, 147, 148, 149, 150, 151, 155, 156, 158, 159, 161, 163, 164, 165,
 			166, 168, 169, 170, 171, 181, SOUL_OF_FLAME, ADDITIONAL_FIRE, FOU_SLAYER, SCALES_EARTH_DRAGON, SCALES_FIRE_DRAGON, SCALES_WATER_DRAGON,
 			MIRROR_IMAGE, IllUSION_OGRE, PATIENCE, IllUSION_DIAMONDGOLEM, IllUSION_LICH, IllUSION_AVATAR, INSIGHT, 10026, 10027, 10028, 10029, 30060, 30000,
@@ -270,7 +270,7 @@ public class L1SkillUse {
 			}
 		}
 
-		if (skillid == L1SkillId.FIRE_BLESS || skillid == L1SkillId.샌드스톰) {// 댄싱블레이즈 검착용 체
+		if (skillid == L1SkillId.FIRE_BLESS || skillid == L1SkillId.SAND_STORM) {// 댄싱블레이즈 검착용 체
 			if (player.getWeapon() == null) {
 				player.sendPackets(new S_SystemMessage("마법 사용: 실패(성공하지 못함), 검 무기 착용 필요"));
 				return false;
@@ -309,7 +309,7 @@ public class L1SkillUse {
 			}
 		}
 
-		if (skillid == L1SkillId.인페르노) {// 인페르노 검착용 체
+		if (skillid == L1SkillId.INFERNO) {// 인페르노 검착용 체
 			if (player.getWeapon() == null) {
 				player.sendPackets(new S_SystemMessage("마법 사용: 실패(성공하지 못함), 한손장검 무기 착용 필요 단검 사용 불가"));
 				return false;
@@ -400,7 +400,7 @@ public class L1SkillUse {
 
 		if (l1object instanceof L1PcInstance) {
 			L1PcInstance pc = (L1PcInstance) l1object;
-			if (pc.isTeleport() || pc.텔대기()) {
+			if (pc.isTeleport() || pc._TELL_WAIT()) {
 				return false;
 			}
 		}
@@ -585,7 +585,7 @@ public class L1SkillUse {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(SILENCE) || pc.getSkillEffectTimerSet().hasSkillEffect(AREA_OF_SILENCE)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_POISON_SILENCE) || pc.getSkillEffectTimerSet().hasSkillEffect(CONFUSION)) {
 				if (!(_skillId >= SHOCK_STUN && _skillId <= COUNTER_BARRIER) && !(_skillId >= 226 && _skillId <= 230) && !(_skillId == PRIME)
-						&& !(_skillId == FORCE_STUN) && !(_skillId == DEMOLITION) && !(_skillId == 엠파이어) && !(_skillId == HALPHAS) && !(_skillId == AVENGER)
+						&& !(_skillId == FORCE_STUN) && !(_skillId == DEMOLITION) && !(_skillId == EMPIRE) && !(_skillId == HALPHAS) && !(_skillId == AVENGER)
 						&& !(_skillId >= 235 && _skillId <= 239)) {
 					pc.sendPackets(new S_ServerMessage(285), true);
 					return false;
@@ -1010,8 +1010,8 @@ public class L1SkillUse {
 		}
 
 		if ((cha.getSkillEffectTimerSet().hasSkillEffect(ICE_LANCE))
-				&& (_skillId == ICE_LANCE || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == 엠파이어 || _skillId == 파워그립 || _skillId == FORCE_STUN
-						|| _skillId == ETERNITY || _skillId == DEMOLITION || _skillId == AVENGER || _skillId == PANTERA || _skillId == 쉐도우스탭 || _skillId == PHANTOM)) {
+				&& (_skillId == ICE_LANCE || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == EMPIRE || _skillId == 파워그립 || _skillId == FORCE_STUN
+						|| _skillId == ETERNITY || _skillId == DEMOLITION || _skillId == AVENGER || _skillId == PANTERA || _skillId == SHADOW_TAB || _skillId == PHANTOM)) {
 			return false;
 		}
 
@@ -1113,7 +1113,7 @@ public class L1SkillUse {
 						|| _skillId == L1SkillId.CURSE_BLIND || _skillId == L1SkillId.WEAPON_BREAK || _skillId == L1SkillId.CURSE_PARALYZE
 						|| _skillId == L1SkillId.MANA_DRAIN || _skillId == L1SkillId.DARKNESS || _skillId == L1SkillId.WEAKNESS || _skillId == L1SkillId.SILENCE
 						|| _skillId == L1SkillId.FOG_OF_SLEEPING || _skillId == L1SkillId.DECAY_POTION || _skillId == L1SkillId.EARTH_BIND
-						|| _skillId == L1SkillId.WIND_SHACKLE || _skillId == L1SkillId.쉐도우스탭 || _skillId == L1SkillId.PANTERA || _skillId == L1SkillId.BLADE
+						|| _skillId == L1SkillId.WIND_SHACKLE || _skillId == L1SkillId.SHADOW_TAB || _skillId == L1SkillId.PANTERA || _skillId == L1SkillId.BLADE
 						|| _skillId == L1SkillId.PHANTOM || _skillId == L1SkillId.ELEMENTAL_FALL_DOWN)
 					_flg = false;
 			}
@@ -1309,25 +1309,25 @@ public class L1SkillUse {
 			return true;
 		}
 
-		if (!_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰 && magicattr != 0)
+		if (!_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM && magicattr != 0)
 				&& (magicattr != _player.getElfAttr() && !_player.isGm())) {
 			return false;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 2)) && (_player.getElfAttr() == 21)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 4)) && (_player.getElfAttr() == 24)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 8)) && (_player.getElfAttr() == 28)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 4)) && (_player.getElfAttr() == 41)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 4 || magicattr == 8)) && (_player.getElfAttr() == 48)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= 샌드스톰
+		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 8)) && (_player.getElfAttr() == 81)) {
 			return true;
 		}
@@ -1543,8 +1543,8 @@ public class L1SkillUse {
 			_getBuffDuration = _skillTime * 1000;
 		}
 
-		if (_skillId == 데스힐 || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == 파워그립 || _skillId == 엠파이어 || _skillId == DEMOLITION
-				|| _skillId == FORCE_STUN || _skillId == ETERNITY || _skillId == L1SkillId.쉐도우스탭 || _skillId == PANTERA || _skillId == PHANTOM || _skillId == THUNDER_GRAB) {
+		if (_skillId == 데스힐 || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == 파워그립 || _skillId == EMPIRE || _skillId == DEMOLITION
+				|| _skillId == FORCE_STUN || _skillId == ETERNITY || _skillId == L1SkillId.SHADOW_TAB || _skillId == PANTERA || _skillId == PHANTOM || _skillId == THUNDER_GRAB) {
 			_getBuffDuration = _shockStunDuration;
 		}
 
@@ -1842,8 +1842,8 @@ public class L1SkillUse {
 		}
 			break;
 
-		case 소울배리어: {
-			pc.sendPackets(new S_NewSkillIcons(L1SkillId.소울배리어, true, 600));
+		case SOUL_BARRIER: {
+			pc.sendPackets(new S_NewSkillIcons(L1SkillId.SOUL_BARRIER, true, 600));
 		}
 			break;
 
@@ -1902,8 +1902,8 @@ public class L1SkillUse {
 			pc.sendPackets(new S_SystemMessage("마제스티: 대미지 감소+2(80레벨 후 2레벨 당 1씩 증가)."));
 			break;
 
-		case 샤이닝아머:
-			pc.sendPackets(new S_NewSkillIcons(L1SkillId.샤이닝아머, true, 300));
+		case SHINING_ARMOR:
+			pc.sendPackets(new S_NewSkillIcons(L1SkillId.SHINING_ARMOR, true, 300));
 			break;
 
 		case 포커스스피릿츠:
@@ -1916,12 +1916,12 @@ public class L1SkillUse {
 			Broadcaster.broadcastPacket(pc, new S_SkillBrave(pc.getId(), 12, 0), true);
 			break;
 
-		case 샌드스톰:
+		case SAND_STORM:
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 1, _getBuffIconDuration), true);
 			Broadcaster.broadcastPacket(pc, new S_SkillBrave(pc.getId(), 1, 0), true);
 			break;
 
-		case 허리케인:
+		case HURRICANE:
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 9, _getBuffIconDuration), true);
 			Broadcaster.broadcastPacket(pc, new S_SkillBrave(pc.getId(), 9, 0), true);
 			break;
@@ -2130,7 +2130,7 @@ public class L1SkillUse {
 				}
 			}
 
-			if (_skillId == SHOCK_STUN || _skillId == MOB_SHOCKSTUN_30 || _skillId == MOB_RANGESTUN_19 || _skillId == MOB_RANGESTUN_18 || _skillId == 엠파이어) {
+			if (_skillId == SHOCK_STUN || _skillId == MOB_SHOCKSTUN_30 || _skillId == MOB_RANGESTUN_19 || _skillId == MOB_RANGESTUN_18 || _skillId == EMPIRE) {
 				if (_targetList.size() == 0) {
 					if (_target instanceof L1PcInstance) { // Gn.89
 						L1PcInstance pc = (L1PcInstance) _target;
@@ -2287,7 +2287,7 @@ public class L1SkillUse {
 				}
 				_player.sendPackets(new S_RangeSkill(_player, _target, cha, castgfx, actionId, S_RangeSkill.TYPE_NODIR), true);
 				Broadcaster.broadcastPacket(_player, new S_RangeSkill(_player, _target, cha, castgfx, actionId, S_RangeSkill.TYPE_NODIR), true);
-			} else if (_skill.getTarget().equals("buff") && _skillId == 쉐도우스탭) {
+			} else if (_skill.getTarget().equals("buff") && _skillId == SHADOW_TAB) {
 				_player.setHeading(_player.targetDirection(_targetX, _targetY)); // 방향세트
 				_player.sendPackets(new S_AttackCritical(_player, targetid, _targetX, _targetY, 104, true));
 				Broadcaster.broadcastPacket(_player, new S_AttackCritical(_player, targetid, _targetX, _targetY, 104, true));// 쉐도우스텝
@@ -2696,7 +2696,7 @@ public class L1SkillUse {
 	}
 
 	private static final int[][] repeatedSkills = { { FIRE_WEAPON, WIND_SHOT, STORM_EYE, BURNING_WEAPON, STORM_SHOT, 블로우어택 }, { SHIELD, IRON_SKIN },
-			{ HOLY_WALK, BLOOD_LUST, MOVING_ACCELERATION, 샌드스톰, 허리케인, STATUS_FRUIT, STATUS_BRAVE, STATUS_ELFBRAVE, FIRE_BLESS, 포커스웨이브 },
+			{ HOLY_WALK, BLOOD_LUST, MOVING_ACCELERATION, SAND_STORM, HURRICANE, STATUS_FRUIT, STATUS_BRAVE, STATUS_ELFBRAVE, FIRE_BLESS, 포커스웨이브 },
 			{ HASTE, GREATER_HASTE, STATUS_HASTE }, { 프라이드, 기간틱, ADVANCE_SPIRIT }, { PHYSICAL_ENCHANT_DEX, DRESS_DEXTERITY },
 			{ PHYSICAL_ENCHANT_STR, DRESS_MIGHTY }, { FEATHER_BUFF_A, FEATHER_BUFF_B, FEATHER_BUFF_C, FEATHER_BUFF_D },
 			{ FAFU_MAAN, ANTA_MAAN, LIND_MAAN, VALA_MAAN, LIFE_MAAN, BIRTH_MAAN, SHAPE_MAAN, HALPAS_MAAN, NEVER_MAAN } };
@@ -2767,7 +2767,7 @@ public class L1SkillUse {
 			}
 		}
 
-		if (_skillId == 엠파이어 || _skillId == SHOCK_STUN || _skillId == FORCE_STUN /** || _skillId == BONE_BREAK || _skillId == AM_BREAK || _skillId == SMASH */
+		if (_skillId == EMPIRE || _skillId == SHOCK_STUN || _skillId == FORCE_STUN /** || _skillId == BONE_BREAK || _skillId == AM_BREAK || _skillId == SMASH */
 				&& _user instanceof L1PcInstance) {
 			if (_target != _user) {
 				_target.onAction(_player);
@@ -2918,7 +2918,7 @@ public class L1SkillUse {
 							}
 						}
 						
-						if (_skillId == 쉐도우스탭) {
+						if (_skillId == SHADOW_TAB) {
 								_player.setHeading(_player.targetDirection(_targetX, _targetY)); // 방향세트
 								_player.sendPackets(new S_AttackCritical(_player, _target.getId(), _targetX, _targetY, 104, true));
 								Broadcaster.broadcastPacket(_player, new S_AttackCritical(_player, _target.getId(), _targetX, _targetY, 104, true));// 새로만듬
@@ -2968,8 +2968,8 @@ public class L1SkillUse {
 				try {
 					if (cha.getSkillEffectTimerSet().hasSkillEffect(_skillId) && _skillId != 토마호크 && _skillId != BONE_BREAK && _skillId != 파워그립
 							&& _skillId != 데스페라도 && _skillId != SHOCK_STUN && _skillId != THUNDER_GRAB && _skillId != 데스힐 && _skillId != 앱솔루트블레이드
-							&& _skillId != 소울배리어 && _skillId != 라이징 && _skillId != 엠파이어 && _skillId != IMPACT && _skillId != FORCE_STUN
-							&& _skillId != DEMOLITION && _skillId != ETERNITY && _skillId != 쉐도우스탭 && _skillId != PANTERA && _skillId != PHANTOM) {
+							&& _skillId != SOUL_BARRIER && _skillId != RISING && _skillId != EMPIRE && _skillId != IMPACT && _skillId != FORCE_STUN
+							&& _skillId != DEMOLITION && _skillId != ETERNITY && _skillId != SHADOW_TAB && _skillId != PANTERA && _skillId != PHANTOM) {
 
 						addMagicList(cha, true);
 
@@ -4458,23 +4458,23 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 라이징: {
+				case RISING: {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						if (pc.hasSkillEffect(L1SkillId.라이징)) {
-							cha.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.라이징);
+						if (pc.hasSkillEffect(L1SkillId.RISING)) {
+							cha.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.RISING);
 						}
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.라이징, true, 2400));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.RISING, true, 2400));
 						pc.sendPackets(new S_SystemMessage("타이탄 라이징: 타이탄 계열 기술 발동 구간 5%상승."));
 					}
 				}
 					break;
 
-				case 소울배리어: {
+				case SOUL_BARRIER: {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.소울배리어, 600 * 1000);
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.소울배리어, true, 600));
+						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.SOUL_BARRIER, 600 * 1000);
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.SOUL_BARRIER, true, 600));
 					}
 				}
 					break;
@@ -4860,8 +4860,8 @@ public class L1SkillUse {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance target = (L1PcInstance) cha;
 						if (target.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.토마호크)) {
-							if (target.토마호크th != null) {
-								target.토마호크th.stop();
+							if (target.tomahawk_th != null) {
+								target.tomahawk_th.stop();
 							}
 						}
 					} else if (cha instanceof L1NpcInstance) {
@@ -4878,7 +4878,7 @@ public class L1SkillUse {
 
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance target = (L1PcInstance) cha;
-						target.토마호크th = 토마;
+						target.tomahawk_th = 토마;
 						target.sendPackets(new S_NewCreateItem(S_NewCreateItem.버프창, true), true);
 					} else if (cha instanceof L1NpcInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
@@ -5210,8 +5210,8 @@ public class L1SkillUse {
 						L1PcInstance pc = (L1PcInstance) cha;
 						targetLevel = pc.getLevel();
 						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)) {
-							if (pc.데몰리션th != null) {
-								pc.데몰리션th.stop();
+							if (pc.demolition_th != null) {
+								pc.demolition_th.stop();
 							}
 						}
 
@@ -5266,7 +5266,7 @@ public class L1SkillUse {
 						pc.데스페라도공격자레벨 = _user.getLevel();
 						pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_DEATH_PERADO, true), true);
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.DEMOLITION, true, -1));
-						pc.데몰리션th = 데몰리션;
+						pc.demolition_th = 데몰리션;
 					} else if (cha instanceof L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof L1PetInstance
 							|| cha instanceof L1DwarfInstance || cha instanceof L1TeleporterInstance || cha instanceof L1MerchantInstance
 							|| cha instanceof L1ScarecrowInstance || cha instanceof L1PeopleInstance) {
@@ -5277,7 +5277,7 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 엠파이어: {
+				case EMPIRE: {
 					try {
 						int targetLevel = 0;
 						int diffLevel = 0;
@@ -5630,7 +5630,7 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 쉐도우스탭: {
+				case SHADOW_TAB: {
 					try {
 						int targetLevel = 0;
 						int diffLevel = 0;
@@ -5703,13 +5703,13 @@ public class L1SkillUse {
 
 						if (cha instanceof L1PcInstance) {
 							L1PcInstance pc = (L1PcInstance) cha;
-							pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.쉐도우스탭, _shockStunDuration);
+							pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.SHADOW_TAB, _shockStunDuration);
 							pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, true));
 						} else if (cha instanceof L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof L1PetInstance) {
 							L1NpcInstance npc = (L1NpcInstance) cha;
 							npc.setParalyzed(true);
 							npc.setParalysisTime(_shockStunDuration);
-							npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.쉐도우스탭, _shockStunDuration);
+							npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.SHADOW_TAB, _shockStunDuration);
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -7175,13 +7175,13 @@ public class L1SkillUse {
 					}
 						break;
 
-					case 샤이닝아머:
+					case SHINING_ARMOR:
 						if (cha instanceof L1PcInstance) {
 							L1PcInstance pc = (L1PcInstance) cha;
 							pc.sendPackets(new S_OwnCharStatus2(pc));
 							pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.get_PlusEr()), true);
 							pc.sendPackets(new S_CharVisualUpdate(pc));
-							pc.sendPackets(new S_NewSkillIcons(L1SkillId.샤이닝아머, true, 300));
+							pc.sendPackets(new S_NewSkillIcons(L1SkillId.SHINING_ARMOR, true, 300));
 
 						}
 						break;
@@ -7436,7 +7436,7 @@ public class L1SkillUse {
 					}
 						break;
 
-					case 샌드스톰: {
+					case SAND_STORM: {
 						L1PcInstance pc = (L1PcInstance) cha;
 						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_FRUIT)) {
 							pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.STATUS_FRUIT);
@@ -7450,7 +7450,7 @@ public class L1SkillUse {
 					}
 						break;
 
-					case 허리케인: {
+					case HURRICANE: {
 						L1PcInstance pc = (L1PcInstance) cha;
 						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_FRUIT)) {
 							pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.STATUS_FRUIT);
@@ -7916,10 +7916,10 @@ public class L1SkillUse {
 
 	private boolean isNotCancelable(int skillNum) {
 		return skillNum == ENCHANT_WEAPON || skillNum == BLESSED_ARMOR || skillNum == ABSOLUTE_BARRIER || skillNum == ADVANCE_SPIRIT || skillNum == 뫼비우스
-				|| skillNum == SHOCK_STUN || skillNum == 쉐도우스탭 || skillNum == PANTERA || skillNum == 기간틱 || skillNum == FORCE_STUN || skillNum == DEMOLITION || skillNum == ETERNITY
+				|| skillNum == SHOCK_STUN || skillNum == SHADOW_TAB || skillNum == PANTERA || skillNum == 기간틱 || skillNum == FORCE_STUN || skillNum == DEMOLITION || skillNum == ETERNITY
 				|| skillNum == PRIME || skillNum == HALPHAS || skillNum == POTENTIAL || skillNum == PHANTOM || skillNum == 파워그립 || skillNum == 데스페라도
-				|| skillNum == 엠파이어 || skillNum == SCALES_Lind_DRAGON || skillNum == STATUS_UNDERWATER_BREATH || skillNum == 인페르노 || skillNum == SHADOW_FANG
-				|| skillNum == REDUCTION_ARMOR || skillNum == SOLID_CARRIAGE || skillNum == COUNTER_BARRIER || skillNum == 인페르노 || skillNum == SHADOW_ARMOR
+				|| skillNum == EMPIRE || skillNum == SCALES_Lind_DRAGON || skillNum == STATUS_UNDERWATER_BREATH || skillNum == INFERNO || skillNum == SHADOW_FANG
+				|| skillNum == REDUCTION_ARMOR || skillNum == SOLID_CARRIAGE || skillNum == COUNTER_BARRIER || skillNum == INFERNO || skillNum == SHADOW_ARMOR
 				|| skillNum == ARMOR_BREAK || skillNum == DRESS_EVASION || skillNum == UNCANNY_DODGE || skillNum == SCALES_EARTH_DRAGON
 				|| skillNum == SCALES_WATER_DRAGON || skillNum == SCALES_FIRE_DRAGON || skillNum == BOUNCE_ATTACK || skillNum == IllUSION_OGRE
 				|| skillNum == IllUSION_LICH || skillNum == IllUSION_DIAMONDGOLEM || skillNum == IllUSION_AVATAR || skillNum == STATUS_DRAGONPERL

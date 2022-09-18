@@ -1559,7 +1559,7 @@ public class S_NewCreateItem extends ServerBasePacket {
 			int 원거리명중 = CalcStat.원거리명중(stat);
 			int 원거리치명타 = CalcStat.원거리치명타(stat);
 			int 물리방어력 = CalcStat.물리방어력(stat);
-			int 원거리회피 = CalcStat.원거리회피(stat);
+			int 원거리회피 = CalcStat.long_distance_evasion(stat);
 
 			len += 5 + 5;
 

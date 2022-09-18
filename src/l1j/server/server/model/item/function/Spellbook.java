@@ -1665,7 +1665,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.다크호스 = true;
+					pc._DARK_HORSE = true;
 				}
 			}
 			break;

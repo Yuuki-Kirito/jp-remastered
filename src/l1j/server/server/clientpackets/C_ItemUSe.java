@@ -81,7 +81,7 @@ import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit3;
 import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit4;
 import static l1j.server.server.model.skill.L1SkillId.Tam_Fruit5;
 import static l1j.server.server.model.skill.L1SkillId.WIND_SHOT;
-import static l1j.server.server.model.skill.L1SkillId.엠파이어;
+import static l1j.server.server.model.skill.L1SkillId.EMPIRE;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -288,7 +288,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			}
 
 			/** 제어 스킬 중에 임의로 아이템 사용 못하게 **/
-			if (pc.getSkillEffectTimerSet().hasSkillEffect(SHOCK_STUN) || pc.getSkillEffectTimerSet().hasSkillEffect(엠파이어)
+			if (pc.getSkillEffectTimerSet().hasSkillEffect(SHOCK_STUN) || pc.getSkillEffectTimerSet().hasSkillEffect(EMPIRE)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(PANTERA) || pc.getSkillEffectTimerSet().hasSkillEffect(FORCE_STUN)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(MOB_SHOCKSTUN_30) || pc.getSkillEffectTimerSet().hasSkillEffect(MOB_RANGESTUN_19)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(MOB_RANGESTUN_18) || pc.getSkillEffectTimerSet().hasSkillEffect(EARTH_BIND)
@@ -606,7 +606,7 @@ public class C_ItemUSe extends ClientBasePacket {
 						pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "15th_invite"), true);
 					} else if (itemId == 39105) { // 진 데스나이트 반지
 						pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "jindeath2017"), true);
-						pc.픽시아이템사용id = useItem.getId();
+						pc.pixie_item_usage_id = useItem.getId();
 					} else if (itemId == 60424) { // 마녀 마법 코인 (어밴)
 						L1SkillUse su = new L1SkillUse();
 						su.handleCommands(pc, L1SkillId.ADVANCE_SPIRIT, pc.getId(), pc.getX(), pc.getY(), null, 0, L1SkillUse.TYPE_GMBUFF);
@@ -1132,13 +1132,13 @@ public class C_ItemUSe extends ClientBasePacket {
 									i / 60000 + "분 동안(" + cal.getTime().getHours() + ":" + cal.getTime().getMinutes() + " 까지)은 사용할 수 없습니다."), true);
 						}
 					} else if (itemId == 60167) { // 픽시의 변신 막대
-						pc.픽시아이템사용id = useItem.getId();
+						pc.pixie_item_usage_id = useItem.getId();
 						pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "pixies"), true);
 					} else if (itemId == 60308) { // 선수 변신 주문서
-						pc.선수아이템사용id = useItem.getId();
+						pc.player_item_use_id = useItem.getId();
 						pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "dionsevent"), true);
 					} else if (itemId == 60325) { // 영웅 변신 주문서 (80렙변신)
-						pc.영웅80변신아이템사용id = useItem.getId();
+						pc.hero_80_transformation_item_use_id = useItem.getId();
 						pc.sendPackets(new S_NPCTalkReturn(pc.getId(), "hero80"), true);
 					} else if (itemId == 60252) { // 샌드웜의 모래 주머니
 						int itemi = 샌드웜주머니(pc);
@@ -1399,7 +1399,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							return;
 						}
 
-						pc.구슬아이템 = useItem.getId();
+						pc.bead_item = useItem.getId();
 						pc.sendPackets(new S_Message_YN(2936, ""), true);
 					} else if (itemId == 60081) { // 기억의 구슬 상자
 						L1ItemInstance temptem3 = pc.getInventory().storeItem(60082, 1);
@@ -1415,7 +1415,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							return;
 						}
 
-						pc.구슬아이템 = useItem.getId();
+						pc.bead_item = useItem.getId();
 						pc.sendPackets(new S_Message_YN(3016, ""), true);
 					} else if (itemId == 60083) { // 케플리샤의 기억 저장 구슬
 						int size = pc.getBookMarkSize();
@@ -1436,7 +1436,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							return;
 						}
 
-						pc.구슬아이템 = useItem.getId();
+						pc.bead_item = useItem.getId();
 						pc.sendPackets(new S_Message_YN(2936, ""), true);
 					} else if (itemId == 60076) { // 완력의 도시락 바구니
 						int rnd = _random.nextInt(100) + 1;
@@ -2585,9 +2585,9 @@ public class C_ItemUSe extends ClientBasePacket {
 							pc.setgiranday(nowday);
 							chat = "기란감옥/지배자의 결계 이용시간이 초기화되었습니다.";
 						} else if (itemId == 500035) {// 용던
-							pc.set용둥time(1);
-							pc.setpc용둥time(1);
-							pc.set용둥day(nowday);
+							pc.setdragontime(1);
+							pc.setpcdragontime(1);
+							pc.setdragonday(nowday);
 							pc.setpcday3(nowday);
 							chat = "용의둥지 이용시간이 초기화되었습니다.";
 						} else if (itemId == 500038) {// 기감
@@ -2599,9 +2599,9 @@ public class C_ItemUSe extends ClientBasePacket {
 							pc.setivoryday(nowday);
 							chat = "상아탑:발록진영 이용시간이 초기화되었습니다.";
 						} else if (itemId == 500037) {// 고무
-							pc.set고무time(1);
+							pc.setrubbertime(1);
 							pc.setpctime2(1);
-							pc.set고무day(nowday);
+							pc.setrubberday(nowday);
 							pc.setpcday2(nowday);
 							chat = "고대거인의무덤(정무) 이용시간이 초기회되었습니다.";
 						}
@@ -4104,7 +4104,7 @@ public class C_ItemUSe extends ClientBasePacket {
 								pc.getInventory().removeItem(useItem, 1);
 								pc.sendPackets(new S_SystemMessage("" + SuccItem2.getName() + "획득"), true); // 소생 성공시 UI와 함께 멘트 출력
 								pc.sendPackets(new S_SystemMessage("" + SuccItem2.getName() + "은(는) 새 생명이 부여되었습니다."), true);
-								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 5085, l1iteminstance1), true);
+								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 5085, l1iteminstance1), true);
 							} else {
 								pc.getInventory().removeItem(l1iteminstance1, 1);
 								pc.getInventory().removeItem(useItem, 1);
@@ -6337,7 +6337,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		for (int NewitemId : 영웅의찬란한상자월드메시지) {
 			if (item.getItem().getItemId() == NewitemId) {
 				// 상자 개봉시 UI와 함께 멘트 출력 //메세지 코드 수정 못함 에게 를 획득 하였습니다. 라고 뜸
-				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 403, "어느 아덴 용사가 영웅의 찬란한 상자에서 ", item), true);
+				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 403, "어느 아덴 용사가 영웅의 찬란한 상자에서 ", item), true);
 
 			}
 		}
@@ -6758,7 +6758,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		Timestamp deleteTime = null;
 		deleteTime = new Timestamp(sysTime + (86400000 * (long) day) + 10000);// 7일
 		try {
-			if (pc.PC방_버프) {
+			if (pc._PC_ROOM_BUFF) {
 				pc.sendPackets(new S_SystemMessage("이미 PC방 버프 상품이 적용중입니다."));
 				return;
 			}
@@ -6767,7 +6767,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			// (int)86400000*day);
 
 			pc.sendPackets(new S_NewSkillIcons(L1SkillId.PC방, true, -1));
-			pc.PC방_버프 = true;
+			pc._PC_ROOM_BUFF = true;
 			String s = "08 01 f1 d5";// 피씨방..
 			// pc.sendPackets(new S_NewCreateItem(s ));
 			pc.sendPackets(new S_NewCreateItem(126, s));
@@ -6779,7 +6779,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			pc.getNetConnection().getAccount().setBuff_PC방(deleteTime);
 			pc.getNetConnection().getAccount().update피씨방();
 			pc.getInventory().removeItem(useItem, 1);
-			pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, pc.getAccount(), pc.PC방_버프));
+			pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.ATTENDANCE_COMPLETE, pc.getAccount(), pc._PC_ROOM_BUFF));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

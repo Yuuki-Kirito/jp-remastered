@@ -375,7 +375,7 @@ public class FishingTimeController implements Runnable {
 					} else {
 						dragon = 2;
 					}
-					if (pc.PC¹æ_¹öÇÁ) {
+					if (pc._PC_ROOM_BUFF) {
 						dragon += 0.20;
 					}
 

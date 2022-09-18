@@ -136,10 +136,10 @@ public class C_ChatWhisper extends ClientBasePacket {
 					Opcodes.S_TELL, 16);
 			whisperTo.sendPackets(scp3, true);
 			LinAllManager.getInstance().WisperChatAppend(whisperFrom.getName(), whisperTo.getName(), text);
-			if (Config.귓말채팅모니터() > 0) {
+			if (Config._ear_chat_monitor() > 0) {
 				S_SystemMessage sm = new S_SystemMessage(whisperFrom.getName()
 						+ " -> (" + whisperTo.getName() + ") " + text);
-				for (L1PcInstance gm : Config.toArray귓말채팅모니터()) {
+				for (L1PcInstance gm : Config.toArray_whisper_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
 						Config.remove귓말(gm);
 						continue;
