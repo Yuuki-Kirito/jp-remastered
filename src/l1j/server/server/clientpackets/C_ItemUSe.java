@@ -6724,7 +6724,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		int rnd = adencount[_random.nextInt(adencount.length)] * 10000;
 		L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, rnd);
 		pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + rnd + ")"), true);
-		LogTable.사냥아덴(pc, rnd);
+		LogTable.adenLog(pc, rnd);
 	}
 
 	private void 금화주머니(L1PcInstance pc) {
@@ -6734,22 +6734,22 @@ public class C_ItemUSe extends ClientBasePacket {
 			int count = 2500 + _random.nextInt(2000);// 최소 2500~4500 아데나
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else if (rnd < 990) {// 4%
 			int count = 77 + _random.nextInt(20000);// 최소 77~20077 아데나
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else if (rnd < 991) {// 0.1%
 			int count = 77 + _random.nextInt(777700);// 최소 77~77777 아데나 777,777원
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else {// 0.9%
 			int count = 77 + _random.nextInt(77700);// 최소 77~77777 아데나 777,777원
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		}
 	}
 
