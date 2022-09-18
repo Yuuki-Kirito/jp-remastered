@@ -353,17 +353,17 @@ public class ThunderWand extends L1ItemInstance {
 				Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(), 6320));
 			}
 		}
-		if (pc.µå·¡°ï½ºÅ²) {
+		if (pc._DRAGON_SKIN) {
 			¸®´ö += 5;
 		}
-		if(pc.µå·¡°ï½ºÅ² && pc.getLevel() >= 80) {
+		if(pc._DRAGON_SKIN && pc.getLevel() >= 80) {
 			int ddmg = pc.getLevel() - 78;
 			int i = (ddmg / 2) * 1;
 			¸®´ö -= 5 + i;
 		
 	}
 
-		if (pc.±Û·Î¸®¾î½º) {
+		if (pc._GLORIOUS) {
 			if (_random.nextInt(100) < 2 + 8 - 5) {
 				¸®´ö -= 30;
 				pc.sendPackets(new S_SkillSound(pc.getId(), 19318));

@@ -213,7 +213,7 @@ public class C_UseSkill extends ClientBasePacket {
 				}
 			}
 			
-			if (!pc.아우라키아) {
+			if (!pc._AURACHIA) {
 				if (skillId == SCALES_EARTH_DRAGON
 						|| skillId == SCALES_WATER_DRAGON
 						|| skillId == SCALES_FIRE_DRAGON || skillId == SCALES_Lind_DRAGON) {
@@ -230,7 +230,7 @@ public class C_UseSkill extends ClientBasePacket {
 
 					}
 				}
-			} else if(pc.아우라키아) {
+			} else if(pc._AURACHIA) {
 				if (skillId == SCALES_EARTH_DRAGON
 						|| skillId == SCALES_WATER_DRAGON
 						|| skillId == SCALES_FIRE_DRAGON || skillId == SCALES_Lind_DRAGON) {

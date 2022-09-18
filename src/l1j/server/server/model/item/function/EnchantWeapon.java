@@ -313,9 +313,9 @@ public class EnchantWeapon extends Enchant {
 					return;
 				}
 				if (enchant_level == 9) {
-					if (pc.장인축복) {
+					if (pc._ARTISAN_BLESSING) {
 						chance = 100;
-						pc.장인축복 = false;
+						pc._ARTISAN_BLESSING = false;
 					}
 					if (_random.nextInt(100) < Config.CRAFTSMAN_PROBABILITY + chance) {
 						SuccessEnchant(pc, l1iteminstance1, 1);
@@ -372,9 +372,9 @@ public class EnchantWeapon extends Enchant {
 					System.out.println("WeaponEnchantList chance Error");
 				}
 
-				if (pc.인첸축복) {
+				if (pc._ENCHEN_BLESSING) {
 					chance = 100;
-					pc.인첸축복 = false;
+					pc._ENCHEN_BLESSING = false;
 				}
 				if (enchant_level == 7) {
 					enchant_chance_wepon = Config.ENCHANT_CHANCE_WEAPON7 + chance;

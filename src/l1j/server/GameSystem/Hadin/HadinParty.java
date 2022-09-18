@@ -58,7 +58,7 @@ public class HadinParty {
 	public int partybossroomcount() {
 		int count = 0;
 		for (L1PcInstance player : _party.getMembers()) {
-			if (player.«œµÚ∫∏Ω∫∑Î¿‘¿Â) {
+			if (player._HARDIN_BOSS_ROOM_ADMISSION) {
 				count++;
 			}
 		}

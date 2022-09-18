@@ -1904,11 +1904,11 @@ public class L1Attack {
 				} else if (_pc.getLevel() >= 45) {
 					rnd += 1;
 				}
-				if (_pc.더블브레이크데스티니) {
+				if (_pc._DOUBLE_BREAK_DESTINY) {
 					if (_pc.getLevel() > 80)
 						rnd += (_pc.getLevel() - 80);
 				}
-				if (_pc.파이널번) {
+				if (_pc._FINAL_BURN) {
 					if (c > 8) // 최대
 						c = 8;
 					if (c < 3)
@@ -2735,7 +2735,7 @@ public class L1Attack {
 
 		}
 		
-		if (_targetPc.글로리어스) {
+		if (_targetPc._GLORIOUS) {
 			if (_random.nextInt(100) < 2 + 8 - 5) {
 				dmg -= 30;
 				_targetPc.sendPackets(new S_SkillSound(_targetPc.getId(), 19318));
@@ -2852,10 +2852,10 @@ public class L1Attack {
 					dmg *= 1.6;
 				}
 			}
-			if (_targetPc.드래곤스킨) {
+			if (_targetPc._DRAGON_SKIN) {
 				dmg -= 2;
 			}
-			if(_targetPc.드래곤스킨 && _targetPc.getLevel() >= 80) {
+			if(_targetPc._DRAGON_SKIN && _targetPc.getLevel() >= 80) {
 				int ddmg = _targetPc.getLevel() - 78;
 				int i = (ddmg / 2) * 1;
 				dmg -= 2 + i;
@@ -2866,10 +2866,10 @@ public class L1Attack {
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(IllUSION_AVATAR) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(CUBE_BALANCE)) {
 			dmg += dmg / 20;
 		}
-		if (_targetPc.드래곤스킨) {
+		if (_targetPc._DRAGON_SKIN) {
 			dmg -= 3;
 		}
-		if(_targetPc.드래곤스킨 && _targetPc.getLevel() >= 80) {
+		if(_targetPc._DRAGON_SKIN && _targetPc.getLevel() >= 80) {
 			int ddmg = _targetPc.getLevel() - 78;
 			int i = (ddmg / 2) * 1;
 			dmg -= 3 + i;
@@ -3890,11 +3890,11 @@ public class L1Attack {
 			} else if (_pc.getLevel() >= 45) {
 				rnd += 1;
 			}
-			if (_pc.더블브레이크데스티니) {
+			if (_pc._DOUBLE_BREAK_DESTINY) {
 				if (_pc.getLevel() > 80)
 					rnd += (_pc.getLevel() - 80);
 			}
-			if (_pc.파이널번) {
+			if (_pc._FINAL_BURN) {
 				if (c > 8) // 최대
 					c = 8;
 				if (c < 3)
@@ -5202,16 +5202,16 @@ public class L1Attack {
 			dmg -= (targetPcLvl - 80) + 3;
 		}
 
-		if (_targetPc.드래곤스킨) {
+		if (_targetPc._DRAGON_SKIN) {
 			dmg -= 2;
 		}
-		if(_targetPc.드래곤스킨 && _targetPc.getLevel() >= 80) {
+		if(_targetPc._DRAGON_SKIN && _targetPc.getLevel() >= 80) {
 			int ddmg = _targetPc.getLevel() - 78;
 			int i = (ddmg / 2) * 1;
 			dmg -= 2 + i;
 		
 	}
-		if (_targetPc.글로리어스) {
+		if (_targetPc._GLORIOUS) {
 			if (_random.nextInt(100) < 2 + 8 - 5) {
 				dmg -= 30;
 				_targetPc.sendPackets(new S_SkillSound(_targetPc.getId(), 19318));
@@ -5248,16 +5248,16 @@ public class L1Attack {
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(PATIENCE)) {
 			dmg -= 4;
 		}
-		if (_targetPc.드래곤스킨) {
+		if (_targetPc._DRAGON_SKIN) {
 			dmg -= 3;
 		}
-		if(_targetPc.드래곤스킨 && _targetPc.getLevel() >= 80) {
+		if(_targetPc._DRAGON_SKIN && _targetPc.getLevel() >= 80) {
 			int ddmg = _targetPc.getLevel() - 78;
 			int i = (ddmg / 2) * 1;
 			dmg -= 3 + i;
 		
 	}
-		if (_targetPc.글로리어스) {
+		if (_targetPc._GLORIOUS) {
 			if (_random.nextInt(100) < 2 + 8 - 5) {
 				dmg -= 30;
 				_targetPc.sendPackets(new S_SkillSound(_targetPc.getId(), 19318));
@@ -5596,7 +5596,7 @@ public class L1Attack {
 
 	// ●●●● 플레이어의 데미지 강화 마법 ●●●●
 	private double calcBuffDamage(double dmg) {
-		if (_pc.버닝스피릿츠) {
+		if (_pc._BURNING_SPIRITS) {
 			if ((_random.nextInt(100) + 1) <= 33) {
 				if (double_burning) {
 					if (_calcType == PC_PC) {
@@ -6501,7 +6501,7 @@ public class L1Attack {
 	// ■■■■ 카운터 바리어시의 공격 모션 송신 ■■■■
 	public void actionCounterBarrier() {
 		if (_calcType == PC_PC) {
-			if (_targetPc.카운터배리어베테랑) {
+			if (_targetPc._COUNTER_BARRIER_VETERAN) {
 
 				_pc.getMoveState().setHeading(CharPosUtil.targetDirection(_pc, _targetX, _targetY)); // 방향세트
 				_pc.sendPackets(new S_AttackMissPacket(_pc, _targetId), true);
@@ -6510,7 +6510,7 @@ public class L1Attack {
 				Broadcaster.broadcastPacket(_pc, new S_DoActionGFX(_pc.getId(), ActionCodes.ACTION_Damage), true);
 				_pc.sendPackets(new S_SkillSound(_targetId, 17220), true);
 				Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetId, 17220), true);
-			} else if (!_targetPc.카운터배리어베테랑) {
+			} else if (!_targetPc._COUNTER_BARRIER_VETERAN) {
 
 				_pc.getMoveState().setHeading(CharPosUtil.targetDirection(_pc, _targetX, _targetY)); // 방향세트
 				_pc.sendPackets(new S_AttackMissPacket(_pc, _targetId), true);
@@ -6529,7 +6529,7 @@ public class L1Attack {
 			_pc.sendPackets(new S_SkillSound(_targetId, 10710), true);
 			Broadcaster.broadcastPacket(_pc, new S_SkillSound(_targetId, 10710), true);
 		} else if (_calcType == NPC_PC) {
-			if (_targetPc.카운터배리어베테랑) {
+			if (_targetPc._COUNTER_BARRIER_VETERAN) {
 				int actId = 0;
 				_npc.getMoveState().setHeading(CharPosUtil.targetDirection(_npc, _targetX, _targetY)); // 방향세트
 				if (getActId() > 0) {
@@ -6544,7 +6544,7 @@ public class L1Attack {
 				}
 				Broadcaster.broadcastPacket(_npc, new S_DoActionGFX(_npc.getId(), ActionCodes.ACTION_Damage), true);
 				Broadcaster.broadcastPacket(_npc, new S_SkillSound(_targetId, 17220), true);
-			} else if (!_targetPc.카운터배리어베테랑) {
+			} else if (!_targetPc._COUNTER_BARRIER_VETERAN) {
 				int actId = 0;
 				_npc.getMoveState().setHeading(CharPosUtil.targetDirection(_npc, _targetX, _targetY)); // 방향세트
 				if (getActId() > 0) {

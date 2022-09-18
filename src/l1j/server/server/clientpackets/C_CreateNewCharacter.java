@@ -543,7 +543,7 @@ public class C_CreateNewCharacter extends ClientBasePacket {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			return false;
 		}
-		int i = Config.이름확인(name.toCharArray());
+		int i = Config.namecheck(name.toCharArray());
 
 		if (i < 0) {
 			return true;

@@ -377,12 +377,12 @@ public class AttackSkill {
 				}
 
 				L1PcInstance pc = (L1PcInstance) _pc;
-				if (pc.포우슬레이어브레이브) {
+				if (pc._PAWSLAYER_BRAVE) {
 					_player.sendPackets(new S_SkillSound(_player.getId(), 7020), true);
 					_player.sendPackets(new S_SkillSound(_targetID, 17231), true);
 					Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 7020), true);
 					Broadcaster.broadcastPacket(_player, new S_SkillSound(_targetID, 17231), true);
-				} else if (!pc.포우슬레이어브레이브) {
+				} else if (!pc._PAWSLAYER_BRAVE) {
 					_player.sendPackets(new S_SkillSound(_player.getId(), 7020), true);
 					_player.sendPackets(new S_SkillSound(_targetID, 6509), true);
 					Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 7020), true);

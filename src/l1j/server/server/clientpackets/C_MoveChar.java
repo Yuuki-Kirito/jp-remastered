@@ -413,8 +413,8 @@ public class C_MoveChar extends ClientBasePacket {
 						L1SkillId.STATUS_æ»¿¸∏µÂ);
 			}
 
-			if (pc.«œµÚ∫∏Ω∫∑Î¿‘¿Â && pc.getMapId() <= 9001 && pc.getMapId() >= 9100) {
-				pc.«œµÚ∫∏Ω∫∑Î¿‘¿Â = false;
+			if (pc._HARDIN_BOSS_ROOM_ADMISSION && pc.getMapId() <= 9001 && pc.getMapId() >= 9100) {
+				pc._HARDIN_BOSS_ROOM_ADMISSION = false;
 			}
 
 			if (pc.getParty() != null) {
@@ -422,11 +422,11 @@ public class C_MoveChar extends ClientBasePacket {
 						&& pc.getX() == 32723 && pc.getY() == 32848
 						&& (heading == 7 || heading == 6 || heading == 5)) {
 					if (!pc.getParty().isLeader(pc)) {
-						pc.«œµÚ∫∏Ω∫∑Î¿‘¿Â = true;
+						pc._HARDIN_BOSS_ROOM_ADMISSION = true;
 					}
 				}
 			} else {
-				pc.«œµÚ∫∏Ω∫∑Î¿‘¿Â = false;
+				pc._HARDIN_BOSS_ROOM_ADMISSION = false;
 			}
 
 			// πË ≥©±Ë «ˆªÛ¿∏∑Œ ¿Œ«— ≈ª√‚∑Á∆Æ

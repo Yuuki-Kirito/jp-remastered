@@ -504,8 +504,8 @@ public class CalcExp {
 		double levelupBonus = 1;
 		double 신규지원 = 1;
 		double 문장경험치 = 1;
-		if(pc.get문장레벨() > 0) {
-			문장경험치 += pc.get문장레벨() * 0.01;
+		if(pc.getsentencelevel() > 0) {
+			문장경험치 += pc.getsentencelevel() * 0.01;
 		}
 
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.COOKING_1_7_N) 

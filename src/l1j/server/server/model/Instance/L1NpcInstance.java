@@ -1578,10 +1578,10 @@ public class L1NpcInstance extends L1Character {
 			if (agrochange(getNpcId())) {
 				// int rand = _random.nextInt(100)+1;
 
-				if (targetpc._이뮨어그로 != null) {
+				if (targetpc._Immune_aggro != null) {
 					이뮨어그로 = true;
-					_hateList.add(targetpc._이뮨어그로, 0);
-					_target = targetpc._이뮨어그로;
+					_hateList.add(targetpc._Immune_aggro, 0);
+					_target = targetpc._Immune_aggro;
 				}
 
 				if (targetpc._healagro != null) {
@@ -1591,7 +1591,7 @@ public class L1NpcInstance extends L1Character {
 				}
 
 				targetpc._healagro = null;
-				targetpc._이뮨어그로 = null;
+				targetpc._Immune_aggro = null;
 			}
 		}
 	}

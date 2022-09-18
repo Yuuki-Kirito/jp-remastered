@@ -87,20 +87,20 @@ public final class Config {
 				buyList.remove(blist);
 	}
 
-	public static int 이름확인(char[] _values) {
+	public static int namecheck(char[] _values) {
 		for (char value : _values) {
 			if ((value >= 'A' && value <= 'z') || (value >= 'a' && value <= 'z')) {
-				// System.out.println("영어 : "+value);
+				// System.out.println("english : "+value);
 			} else if (value >= '0' && value <= '9') {
-				// System.out.println("숫자 : "+value);
+				// System.out.println("number : "+value);
 			} else if (value >= '\uAC00' && value <= '\uD7A3') {
-				// System.out.println("한글 : "+value);
+				// System.out.println("korean : "+value);
 			} else {
 				return -1;
 			}
 		}
 		return 0;
-		// .... 이하 생략
+		// .... 以下省略
 	}
 
 	public static ArrayList<Integer> spractionerr = new ArrayList<Integer>();
@@ -148,7 +148,7 @@ public final class Config {
 	public static int DOLL_PROBABILITY_3;
 	public static int DOLL_PROBABILITY_4;
 	public static int DOLL_PROBABILITY_5;
-	/** 보호 주문서 확률 차감 */
+	/** 保護注文書の確率差額 */
 	public static int PROTECTION_SCROLL_PROBABILITY_0;
 	public static int PROTECTION_ORDER_CHANCE_1;
 	public static int PROTECTION_SPELL_PROBABILITY_2;
@@ -569,7 +569,7 @@ public final class Config {
 	public static int AC_20;
 	public static int AC_10;
 
-	//// 자동공지
+	//// 自動通知
 	public static int systime;
 	public static String sys1;
 	public static String sys2;
@@ -722,10 +722,10 @@ public final class Config {
 	public static L1NpcInstance HALLOWEEN_ARU_PC;
 	public static L1NpcInstance HALLOWEEN_BARU_NPC;
 
-	/****** 이벤트 ******/
-	public static boolean ALT_HALLOWEENEVENT; // 할로윈
-	public static boolean ALT_HALLOWEENEVENT2009; // 할로윈(2009년)
-	public static boolean ALT_FANTASYEVENT; // 환상
+	/****** イベント ******/
+	public static boolean ALT_HALLOWEENEVENT; // ハロウィン
+	public static boolean ALT_HALLOWEENEVENT2009; // ハロウィン（2009年）
+	public static boolean ALT_FANTASYEVENT; // ファンタジー
 	public static boolean ALT_CHUSEOKEVENT; // 추석(09.09.24)
 	public static boolean Big_Praseant; // 추석(09.09.24)
 	public static boolean Robot_Gaho; // 추석(09.09.24)
@@ -924,7 +924,7 @@ public final class Config {
 	public static int RAID_TIME;
 	public static int ARNOLD_EVENT_TIME;
 
-	/** 데이터베이스 풀 관련 */
+	/** database pool related */
 	public static int min;
 	public static int max;
 	public static boolean run;
@@ -937,16 +937,16 @@ public final class Config {
 	public static final String CHAR_SETTINGS_CONFIG_FILE = "./config/charsettings.properties";
 	public static final String CHOLONG_SETTINGS_CONFIG_FILE = "./config/Eventlink.properties";
 	public static boolean shutdown = false;
-	// 로그 표현할것인지
+	// ログ表現するか
 	public static boolean LOGGER = true;
-	// 패킷 표현 할것인지
+	// パケット表現するか
 	public static boolean PACKET = false;
-	/** 그 외의 설정 */
+	/** その他の設定 */
 
-	// NPC로부터 들이마실 수 있는 MP한계
+	// NPCから飲むことができるMP制限
 	public static final int MANA_DRAIN_LIMIT_PER_NPC = 40;
 
-	// 1회의 공격으로 들이마실 수 있는 MP한계(SOM, 강철 SOM)
+	// 1回の攻撃で吸うことができるMP限界（SOM、鋼鉄SOM）
 	public static final int MANA_DRAIN_LIMIT_PER_SOM_ATTACK = 9;
 	public static String _name = ".clftjdtkdlek";
 
@@ -1158,7 +1158,7 @@ public final class Config {
 
 			RATE_SHOP_PURCHASING_PRICE = Double.parseDouble(rateSettings.getProperty("RateShopPurchasingPrice", "1.0"));
 
-			RATE_DREAM = Integer.parseInt(rateSettings.getProperty("Ratedream", "1")); // 만월의정기이벤트
+			RATE_DREAM = Integer.parseInt(rateSettings.getProperty("Ratedream", "1")); // 満月の定期イベント
 
 			CREATE_CHANCE_DIARY = Integer.parseInt(rateSettings.getProperty("CreateChanceDiary", "33"));
 
@@ -1422,7 +1422,7 @@ public final class Config {
 			MIN_LVORY_TOWER_DUNGEON_LEVEL = Byte.parseByte(altSettings.getProperty("MinIvoryTowerDungeon", "99"));
 
 			AUTOMATIC_PREVENTION_QUIZ = toKor(altSettings.getProperty("Anti_Auto_Quiz", "今回もありがとうございました。"));
-			// System.out.println("자동방지 퀴즈 : "+자동방지_퀴즈);
+			// System.out.println("自動防止クイズ：+自動防止_クイズ);
 			PHONE_VERIFLCATION_CHECK_QUIZ = toKor(altSettings.getProperty("Phone_Auto_Quiz", "オート判別のために携帯電話認証をしてください."));
 
 			PHONE_VERIFLCATION_MESSAGE = toKor(altSettings.getProperty("Phone_Ment", "本人の携帯電話を利用して010-1234-5678に電話していただければ認証をお手伝いします."));
@@ -1771,8 +1771,8 @@ public final class Config {
 			Eventlink.load(is);
 			is.close();
 
-			/** 이벤트라인 셋팅파일 **/
-			/** 이벤트용 **/
+			/** event line setting file **/
+			/** for events **/
 			CRAFT_TABLE_ONE = Integer.parseInt(Eventlink.getProperty("one", "0")); // 장군;
 			CRAFT_TABLE_TWO = Integer.parseInt(Eventlink.getProperty("two", "0")); // 장군;;
 			CRAFT_TABLE_THREE = Integer.parseInt(Eventlink.getProperty("three", "0")); // 장군;;
@@ -2196,28 +2196,28 @@ public final class Config {
 		try {
 
 			Date day = new Date(System.currentTimeMillis());
-			int 년 = day.getYear() - 100;
-			String 년2;
-			if (년 < 10) {
-				년2 = "0" + 년;
+			int year = day.getYear() - 100;
+			String year2;
+			if (year < 10) {
+				year2 = "0" + year;
 			} else {
-				년2 = Integer.toString(년);
+				year2 = Integer.toString(year);
 			}
-			int 월 = (day.getMonth() + 1);
-			String 월2 = null;
-			if (월 < 10) {
-				월2 = "0" + 월;
+			int month = (day.getMonth() + 1);
+			String wol2 = null;
+			if (month < 10) {
+				wol2 = "0" + month;
 			} else {
-				월2 = Integer.toString(월);
+				wol2 = Integer.toString(month);
 			}
-			int 일 = day.getDate();
-			String 일2 = null;
-			if (일 < 10) {
-				일2 = "0" + 일;
+			int il = day.getDate();
+			String il2 = null;
+			if (il < 10) {
+				il2 = "0" + il;
 			} else {
-				일2 = Integer.toString(일);
+				il2 = Integer.toString(il);
 			}
-			return 년2 + 월2 + 일2;
+			return year2 + wol2 + il2;
 		} catch (Exception e) {
 		}
 

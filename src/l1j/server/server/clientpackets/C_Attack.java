@@ -104,7 +104,7 @@ public class C_Attack extends ClientBasePacket {
 						return;
 					} else {
 						pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.ASSASSIN);
-						pc.¾î½Ø½Å = true;//
+						pc._ASSASSIN = true;//
 					}
 				} else {
 					return;

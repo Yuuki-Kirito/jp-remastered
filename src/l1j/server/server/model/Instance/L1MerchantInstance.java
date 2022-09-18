@@ -194,7 +194,7 @@ public class L1MerchantInstance extends L1NpcInstance {
                     if (!player.isElf()) {
                         htmlid = "ellyonne15";
                     } else {
-                        if (player.getElfAttr() == 0 && player.글로리어스) {
+                        if (player.getElfAttr() == 0 && player._GLORIOUS) {
                             htmlid = "ellyonne17";
                         } else if (player.getElfAttr() != 0) {
                             htmlid = "ellyonne11";

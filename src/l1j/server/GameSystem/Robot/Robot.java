@@ -425,8 +425,8 @@ public class Robot {
 				return false;
 		}
 		if (bot.isKnight()) {
-			bot.리덕션아머베테랑 = true;
-			bot.레이징포스 = true;
+			bot._REDUGTION_ARMOR_VETERAN = true;
+			bot._RAGING_FORCE = true;
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.REDUCTION_ARMOR)) {
 				new L1SkillUse().handleCommands(bot, L1SkillId.REDUCTION_ARMOR, bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
 				return true;
@@ -462,7 +462,7 @@ public class Robot {
 				return true;
 			}
 		} else if (bot.isElf()) {
-			bot.글로리어스 = true;
+			bot._GLORIOUS = true;
 			if (bot.getCurrentWeapon() == 20 && bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_ELFBRAVE)) {
 				if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STORM_SHOT)) {
 					new L1SkillUse().handleCommands(bot, L1SkillId.STORM_SHOT,bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
@@ -496,8 +496,8 @@ public class Robot {
 				}
 			}
 		} else if (bot.isDragonknight()) {
-			bot.드래곤스킨 = true;
-			bot.아우라키아 = true;
+			bot._DRAGON_SKIN = true;
+			bot._AURACHIA = true;
 			bot.setSkillMastery(L1SkillId.FEAR);
 			bot.setSkillMastery(L1SkillId.HORROR_OF_DEATH);
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SCALES_FIRE_DRAGON)) {
@@ -540,10 +540,10 @@ public class Robot {
 				return true;
 			}
 		} else if (bot.isDarkelf()) {
-			bot.파이널번 = true;
-			bot.버닝스피릿츠 = true;
-			bot.드레스이베이젼 = true;
-			bot.루시퍼데스티니 = true;
+			bot._FINAL_BURN = true;
+			bot._BURNING_SPIRITS = true;
+			bot._DRESS_EVASION = true;
+			bot._LUCIFER_DESTINY = true;
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHADOW_ARMOR)) {
 				new L1SkillUse().handleCommands(bot, L1SkillId.SHADOW_ARMOR,bot.getId(), bot.getX(), bot.getY(), null, 960, L1SkillUse.TYPE_NORMAL);
 				return true;

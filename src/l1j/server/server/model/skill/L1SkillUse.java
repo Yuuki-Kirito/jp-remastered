@@ -89,7 +89,6 @@ import l1j.server.server.serverpackets.S_DoActionGFX;
 import l1j.server.server.serverpackets.S_DoActionShop;
 import l1j.server.server.serverpackets.S_EffectLocation;
 import l1j.server.server.serverpackets.S_HPUpdate;
-import l1j.server.server.serverpackets.S_InventoryIcon;
 import l1j.server.server.serverpackets.S_Invis;
 import l1j.server.server.serverpackets.S_MPUpdate;
 import l1j.server.server.serverpackets.S_MaanIcons;
@@ -1309,25 +1308,25 @@ public class L1SkillUse {
 			return true;
 		}
 
-		if (!_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM && magicattr != 0)
+		if (!_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM && magicattr != 0)
 				&& (magicattr != _player.getElfAttr() && !_player.isGm())) {
 			return false;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 2)) && (_player.getElfAttr() == 21)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 4)) && (_player.getElfAttr() == 24)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 8)) && (_player.getElfAttr() == 28)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 4)) && (_player.getElfAttr() == 41)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 4 || magicattr == 8)) && (_player.getElfAttr() == 48)) {
 			return true;
-		} else if (_player.글로리어스 && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 8)) && (_player.getElfAttr() == 81)) {
 			return true;
 		}
@@ -1816,7 +1815,7 @@ public class L1SkillUse {
 		case 루시퍼:
 			pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 30));
 			pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
-			if (pc.루시퍼데스티니) {
+			if (pc._LUCIFER_DESTINY) {
 				pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 60));
 				pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
 			}
@@ -1964,8 +1963,8 @@ public class L1SkillUse {
 							member.addBowDmgup(3);
 							member.addBowHitup(3);
 							member.getAbility().addSp(2);
-							member.프라임 = 5;
-							member.addTechniqueHit(pc.프라임);
+							member.prime = 5;
+							member.addTechniqueHit(pc.prime);
 						}
 
 						// 프라임 스킬 버프 효과 갱신
@@ -2006,9 +2005,9 @@ public class L1SkillUse {
 							}
 
 							// 중복 버프 효과 일류션 큐브 확인 중복이라면 삭제
-							paty.그레이스아바타 = c;
+							paty.grace_avatar = c;
 							// 임팩트의 대한 적중 효과 적용
-							paty.addAllTolerance(paty.그레이스아바타);
+							paty.addAllTolerance(paty.grace_avatar);
 						}
 
 						paty.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
@@ -2077,7 +2076,7 @@ public class L1SkillUse {
 			if (_skillId == THUNDER_GRAB) {
 				int ran2 = random.nextInt(60) + 10;
 				L1PcInstance pc = (L1PcInstance) _user;
-				if (!pc.썬더그랩브레이브) {
+				if (!pc._THUNDER_GRAB_BRAVE) {
 					if (_target instanceof L1PcInstance) {
 						L1PcInstance target = (L1PcInstance) _target;
 						target.sendPackets(new S_SkillSound(target.getId(), 4184), true);
@@ -2093,7 +2092,7 @@ public class L1SkillUse {
 						Broadcaster.broadcastPacket(_target, new S_SkillSound(_target.getId(), 4184), true);
 						npc.receiveDamage(_user, ran2);
 					}
-				} else if (pc.썬더그랩브레이브) {
+				} else if (pc._THUNDER_GRAB_BRAVE) {
 					if (_target instanceof L1PcInstance) {
 						L1PcInstance target = (L1PcInstance) _target;
 						target.sendPackets(new S_SkillSound(target.getId(), 17229));
@@ -2117,7 +2116,7 @@ public class L1SkillUse {
 
 			if (_skillId == 데스페라도) { // 데스페라도
 				int gfxid = 12758;
-				if (_player.데스페라도앱솔루트) {
+				if (_player._DESPERADO_ABSOLUTE) {
 					gfxid = 17235;
 				}
 
@@ -2320,24 +2319,24 @@ public class L1SkillUse {
 						return;
 					} else {
 						if (_skillId == COUNTER_BARRIER) {
-							if (_player.카운터배리어베테랑) {
+							if (_player._COUNTER_BARRIER_VETERAN) {
 								castgfx = 18965;
 							}
 						}
 						if (_skillId == REDUCTION_ARMOR) {
-							if (_player.리덕션아머베테랑) {
+							if (_player._REDUGTION_ARMOR_VETERAN) {
 								castgfx = 18966;
 							}
 						}
 
 						if (_skillId == DOUBLE_BRAKE) {
-							if (_player.더블브레이크데스티니) {
+							if (_player._DOUBLE_BREAK_DESTINY) {
 								castgfx = 17224;
 							}
 						}
 
 						if (_skillId == ARMOR_BREAK) {
-							if (_player.아머브레이크데스티니) {
+							if (_player._ARMORBREAK_DESTINY) {
 								castgfx = 17226;
 							}
 						}
@@ -3007,9 +3006,9 @@ public class L1SkillUse {
 								}
 
 								// 중복 버프 효과 일류션 큐브 확인 중복이라면 삭제
-								paty.그레이스아바타 = c;
+								paty.grace_avatar = c;
 								// 임팩트의 대한 적중 효과 적용
-								paty.addAllTolerance(paty.그레이스아바타);
+								paty.addAllTolerance(paty.grace_avatar);
 								paty.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 							}
 						}
@@ -3024,8 +3023,8 @@ public class L1SkillUse {
 						if (c > 10) {
 							c = 10;
 						}
-						pc.그레이스아바타 = c;
-						pc.addAllTolerance(pc.그레이스아바타);
+						pc.grace_avatar = c;
+						pc.addAllTolerance(pc.grace_avatar);
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 60));
 					}
 
@@ -3052,8 +3051,8 @@ public class L1SkillUse {
 								member.addBowDmgup(3);
 								member.addBowHitup(3);
 								member.getAbility().addSp(2);
-								member.프라임 = 5;
-								member.addTechniqueHit(pc.프라임);
+								member.prime = 5;
+								member.addTechniqueHit(pc.prime);
 								// 프라임 스킬 버프 효과 적용
 								member.sendPackets(new S_SPMR(member), true);
 								member.sendPackets(new S_SystemMessage("프라임 : 근거리 대미지/명중 +3, 원거리 대미지/명중 +3, sp+2, 마법명중+2."));
@@ -3069,8 +3068,8 @@ public class L1SkillUse {
 					pc.addBowDmgup(3);
 					pc.addBowHitup(3);
 					pc.getAbility().addSp(2);
-					pc.프라임 = 5;
-					pc.addTechniqueHit(pc.프라임);
+					pc.prime = 5;
+					pc.addTechniqueHit(pc.prime);
 					// 프라임 스킬 버프 효과 적용
 					pc.sendPackets(new S_SPMR(pc), true);
 					pc.sendPackets(new S_SystemMessage("프라임 : 근거리 대미지/명중 +3, 원거리 대미지/명중 +3, sp+2, 마법명중+2."));
@@ -3499,7 +3498,7 @@ public class L1SkillUse {
 							int step = pri.getLevel() / 15;
 							L1PcInstance target = (L1PcInstance) _target;
 							if (step > 0) {
-								target.set트루타켓(step);
+								target.settruetarget(step);
 							}
 						} else if (_target instanceof L1PcInstance) {
 							int step = pri.getLevel() / 15;
@@ -3821,9 +3820,9 @@ public class L1SkillUse {
 								}
 
 								/** 중복 버프 효과 일류션 큐브 확인 중복이라면 삭제 */
-								paty.임팩트 = c;
+								paty.impact = c;
 								/** 임팩트의 대한 적중 효과 적용 */
-								paty.addAllHit(paty.임팩트);
+								paty.addAllHit(paty.impact);
 								paty.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 15));
 								paty.sendPackets(new S_SkillSound(paty.getId(), 14513), true);
 							}
@@ -3845,8 +3844,8 @@ public class L1SkillUse {
 							c = 10;
 						}
 
-						pc.임팩트 = c;
-						pc.addAllHit(pc.임팩트);
+						pc.impact = c;
+						pc.addAllHit(pc.impact);
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 15));
 					}
 				}
@@ -4000,7 +3999,7 @@ public class L1SkillUse {
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMMUNE_TO_HARM, true, _getBuffIconDuration));
 						pc.sendPackets(new S_SystemMessage("이뮨 투함: 받는 대미지가 일정량 감소합니다."));
 						if (pc.isWizard() || pc.isElf()) {
-							pc._이뮨어그로 = _player;
+							pc._Immune_aggro = _player;
 						}
 					}
 				}
@@ -4084,10 +4083,10 @@ public class L1SkillUse {
 						for (int i = 3; i > 0; i--) {
 							_target.onAction(_player);
 						}
-						if (_player.글로리어스) {
+						if (_player._GLORIOUS) {
 						_player.sendPackets(new S_SkillSound(_player.getId(), 19317), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 19317), true);
-						} else if (!_player.글로리어스) {
+						} else if (!_player._GLORIOUS) {
 						_player.sendPackets(new S_SkillSound(_player.getId(), 15103), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 15103), true);	
 						}
@@ -4118,7 +4117,7 @@ public class L1SkillUse {
 						S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 						_player.sendPackets(pb, true);
 						dmg += 80;
-						if (_player.포우슬레이어브레이브) {
+						if (_player._PAWSLAYER_BRAVE) {
 						WeaponSkill.AkdukSword(_player, _target, 60);
 						}
 
@@ -4127,7 +4126,7 @@ public class L1SkillUse {
 						S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 						_player.sendPackets(pb, true);
 						dmg += 60;
-						if (_player.포우슬레이어브레이브) {
+						if (_player._PAWSLAYER_BRAVE) {
 						WeaponSkill.AkdukSword(_player, _target, 60);
 						}
 					} else if (_player.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT2)) {
@@ -4135,7 +4134,7 @@ public class L1SkillUse {
 						S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 						_player.sendPackets(pb, true);
 						dmg += 40;
-						if (_player.포우슬레이어브레이브) {
+						if (_player._PAWSLAYER_BRAVE) {
 						WeaponSkill.AkdukSword(_player, _target, 60);
 						}
 					} else if (_player.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
@@ -4143,7 +4142,7 @@ public class L1SkillUse {
 						S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 						_player.sendPackets(pb, true);
 						dmg += 20;
-						if (_player.포우슬레이어브레이브) {
+						if (_player._PAWSLAYER_BRAVE) {
 						WeaponSkill.AkdukSword(_player, _target, 60);
 						}
 					}
@@ -4161,12 +4160,12 @@ public class L1SkillUse {
 					}
 
 					L1PcInstance pc1 = (L1PcInstance) _user;
-					if (pc1.포우슬레이어브레이브) {
+					if (pc1._PAWSLAYER_BRAVE) {
 						_player.sendPackets(new S_SkillSound(_player.getId(), 7020), true);
 						_player.sendPackets(new S_SkillSound(_targetID, 17231), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 7020), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_targetID, 17231), true);
-					} else if (!pc1.포우슬레이어브레이브) {
+					} else if (!pc1._PAWSLAYER_BRAVE) {
 						_player.sendPackets(new S_SkillSound(_player.getId(), 7020), true);
 						_player.sendPackets(new S_SkillSound(_targetID, 6509), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 7020), true);
@@ -4928,12 +4927,12 @@ public class L1SkillUse {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
 						L1PcInstance pc1 = (L1PcInstance) _user;
-						if (!pc1.썬더그랩브레이브) {
+						if (!pc1._THUNDER_GRAB_BRAVE) {
 							_shockStunDuration = stunTimethunder2[random.nextInt(stunTimethunder2.length)];
 							pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.THUNDER_GRAB, _shockStunDuration);
 							pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, true), true);
 							L1EffectSpawn.getInstance().spawnEffect(81182, _shockStunDuration, cha.getX(), cha.getY(), cha.getMapId());
-						} else if (pc1.썬더그랩브레이브) {
+						} else if (pc1._THUNDER_GRAB_BRAVE) {
 							_shockStunDuration = stunTimethunder[random.nextInt(stunTimethunder.length)];
 							pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.THUNDER_GRAB, _shockStunDuration);
 							pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, true), true);
@@ -4943,11 +4942,11 @@ public class L1SkillUse {
 						L1NpcInstance npc = (L1NpcInstance) cha;
 						L1PcInstance pc1 = (L1PcInstance) _user;
 
-						if (!pc1.썬더그랩브레이브) {
+						if (!pc1._THUNDER_GRAB_BRAVE) {
 							_shockStunDuration = stunTimethunder2[random.nextInt(stunTimethunder2.length)];
 							npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.THUNDER_GRAB, _shockStunDuration);
 							L1EffectSpawn.getInstance().spawnEffect(81182, _shockStunDuration, cha.getX(), cha.getY(), cha.getMapId());
-						} else if (pc1.썬더그랩브레이브) {
+						} else if (pc1._THUNDER_GRAB_BRAVE) {
 							_shockStunDuration = stunTimethunder[random.nextInt(stunTimethunder.length)];
 							npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.THUNDER_GRAB, _shockStunDuration);
 							L1EffectSpawn.getInstance().spawnEffect(81182, _shockStunDuration, cha.getX(), cha.getY(), cha.getMapId());
@@ -4998,7 +4997,7 @@ public class L1SkillUse {
 				case REDUCTION_ARMOR:
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						if (pc.리덕션아머베테랑) {
+						if (pc._REDUGTION_ARMOR_VETERAN) {
 							pc.addFearTolerance(3);
 						}
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.REDUCTION_ARMOR, true, 300));
@@ -5028,7 +5027,7 @@ public class L1SkillUse {
 
 				case 루시퍼: {
 					L1PcInstance pc = (L1PcInstance) cha;
-					if(pc.루시퍼데스티니 && pc.getLevel() >= 85) {
+					if(pc._LUCIFER_DESTINY && pc.getLevel() >= 85) {
 						int pvpre = pc.getLevel() - 83;
 						int i = (pvpre / 2) * 1;
 						
@@ -5041,7 +5040,7 @@ public class L1SkillUse {
 						pc.getResistance().addcalcPcDefense(i);
 						pc.setLucifer(i);
 					}
-					if (pc.루시퍼데스티니) {
+					if (pc._LUCIFER_DESTINY) {
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 60));
 						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.루시퍼, 60 * 1000);
 						pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
@@ -5128,53 +5127,53 @@ public class L1SkillUse {
 
 					diffLevel = _player.getLevel() - targetLevel;
 
-					if (diffLevel <= -10 && !_player.데스페라도앱솔루트) {
+					if (diffLevel <= -10 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= -10 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -10 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= -8 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -8 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= -8 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -8 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= -6 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -6 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= -6 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -6 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= -4 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -4 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= -4 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -4 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= -2 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -2 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= -2 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= -2 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel == 0 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel == 0 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel == 0 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel == 0 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= 2 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 2 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= 2 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 2 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= 4 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 4 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= 4 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 4 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= 6 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 6 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= 6 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 6 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= 8 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 8 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= 8 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 8 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel <= 10 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 10 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel <= 10 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel <= 10 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
-					} else if (diffLevel > 10 && !_player.데스페라도앱솔루트) {
+					} else if (diffLevel > 10 && !_player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(1000) + 2000;
-					} else if (diffLevel > 10 && _player.데스페라도앱솔루트) {
+					} else if (diffLevel > 10 && _player._DESPERADO_ABSOLUTE) {
 						_shockStunDuration = random.nextInt(4000) + 3000;
 					}
 
@@ -5182,7 +5181,7 @@ public class L1SkillUse {
 
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						pc.데스페라도공격자레벨 = _user.getLevel();
+						pc.desperado_attack_level = _user.getLevel();
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.데스페라도, true, -1));
 						pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_DEATH_PERADO, true));
 					} else if (cha instanceof L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof L1PetInstance
@@ -5263,7 +5262,7 @@ public class L1SkillUse {
 
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						pc.데스페라도공격자레벨 = _user.getLevel();
+						pc.desperado_attack_level = _user.getLevel();
 						pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_DEATH_PERADO, true), true);
 						pc.sendPackets(new S_NewSkillIcons(L1SkillId.DEMOLITION, true, -1));
 						pc.demolition_th = 데몰리션;
@@ -5857,8 +5856,8 @@ public class L1SkillUse {
 								c = 25;
 							}
 
-							pc.저지먼트 = c;
-							pc.addAllTolerance(-(pc.저지먼트));
+							pc.judgment = c;
+							pc.addAllTolerance(-(pc.judgment));
 							pc.sendPackets(new S_NewSkillIcons(L1SkillId.JUDGEMENT, true, _getBuffIconDuration));
 							pc.sendPackets(new S_SystemMessage("저지 먼트 : 모든 내성이 감소합니다."));
 						}

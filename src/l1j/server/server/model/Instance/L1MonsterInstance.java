@@ -1111,7 +1111,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					}
 					
 					if (getNpcTemplate().get_npcId() == 101022) {
-						pc.삼단가속();
+						pc.triple_acceleration();
 					}
 					
 					if (getNpcTemplate().get_npcId() == 101017) {// 에이치피회복

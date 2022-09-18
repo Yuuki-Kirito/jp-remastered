@@ -1677,31 +1677,31 @@ public class C_SelectCharacter extends ClientBasePacket {
 					}
 					if (l1skills != null && pc.isWarrior() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 515) {// 데페앱솔
 						pc.sendPackets(new S_CreateItem(145, 13, 0));
-						pc.데스페라도앱솔루트 = true;
+						pc._DESPERADO_ABSOLUTE = true;
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 511) {// 다엘
 						pc.sendPackets(new S_CreateItem(145, 12, 0));
-						pc.더블브레이크데스티니 = true;
+						pc._DOUBLE_BREAK_DESTINY = true;
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 510) {// 다엘
 						pc.sendPackets(new S_CreateItem(145, 11, 0));
-						pc.아머브레이크데스티니 = true;
+						pc._ARMORBREAK_DESTINY = true;
 					}
 					if (l1skills != null && pc.isKnight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 512) {// 기사패시브
 						pc.sendPackets(new S_CreateItem(145, 10, 0));
-						pc.카운터배리어베테랑 = true;
+						pc._COUNTER_BARRIER_VETERAN = true;
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 513) {
 						pc.sendPackets(new S_CreateItem(145, 14, 0));
-						pc.썬더그랩브레이브 = true;
+						pc._THUNDER_GRAB_BRAVE = true;
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 514) {
 						pc.sendPackets(new S_CreateItem(145, 15, 0));
-						pc.포우슬레이어브레이브 = true;
+						pc._PAWSLAYER_BRAVE = true;
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 518) {
 						pc.sendPackets(new S_CreateItem(145, 16, 0));
-						pc.아우라키아 = true;
+						pc._AURACHIA = true;
 					}
 					if (l1skills != null && pc.isIllusionist() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 516) {
 						pc.sendPackets(new S_CreateItem(145, 17, 0));
@@ -1709,43 +1709,43 @@ public class C_SelectCharacter extends ClientBasePacket {
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 517) {
 						pc.sendPackets(new S_CreateItem(145, 18, 0));
-						pc.파이널번 = true;
+						pc._FINAL_BURN = true;
 					}
 					if (l1skills != null && pc.isElf() && l1skills.getSkillLevel() == 18 && l1skills.getSkillId() == 138) {
 						pc.sendPackets(new S_CreateItem(145, 21, 0));
-						pc.레지스트엘리멘트 = true;
+						pc._REGISTER_ELEMENT = true;
 						pc.getResistance().addMr(5);
 						pc.getResistance().addAllNaturalResistance(5);
 					}
 					if (l1skills != null && pc.isElf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 519) {
 						pc.sendPackets(new S_CreateItem(145, 22, 0));
-						pc.글로리어스 = true;
+						pc._GLORIOUS = true;
 					}
 					if (l1skills != null && pc.isElf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 564) {
 						pc.sendPackets(new S_CreateItem(145, 38, 0));
-						pc.블러드투소울 = true;
+						pc._BLOOD_TO_SOUL = true;
 						pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.SPELL_PASSIVE_ONOFF_ACK, 38, false));
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 188) {
 						pc.sendPackets(new S_CreateItem(145, 40, 0));
-						pc.디스트로이피어 = true;
+						pc._DESTROYER_PIER = true;
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 193) {
 						pc.sendPackets(new S_CreateItem(145, 41, 0));
-						pc.디스트로이호러 = true;
+						pc._DESTROY_HORROR = true;
 					}
 					if (l1skills != null && pc.isCrown() && l1skills.getSkillLevel() == 16 && l1skills.getSkillId() == 121) {
 						pc.sendPackets(new S_CreateItem(145, 42, 0));
-						pc.브레이브아바타 = true;
+						pc._BRAVE_AVATAR = true;
 					}
 					if (l1skills != null && pc.isKnight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 568) {// 기사패시브
 						pc.sendPackets(new S_CreateItem(145, 43, 0));
-						pc.리덕션아머베테랑 = true;
+						pc._REDUGTION_ARMOR_VETERAN = true;
 					}
 					if (l1skills != null && pc.isKnight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 569) {// 기사패시브
 						pc.sendPackets(new S_CreateItem(145, 44, 0));
-						pc.레이징포스 = true;
-						if(pc.레이징포스 && pc.getLevel() >= 80) {
+						pc._RAGING_FORCE = true;
+						if(pc._RAGING_FORCE && pc.getLevel() >= 80) {
 							int pvpre = pc.getLevel() - 77;
 							i = (pvpre / 3) * 1;
 							pc.addTechniqueHit(i);
@@ -1753,20 +1753,20 @@ public class C_SelectCharacter extends ClientBasePacket {
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 566) {
 						pc.sendPackets(new S_CreateItem(145, 47, 0));
-						pc.버닝스피릿츠 = true;
+						pc._BURNING_SPIRITS = true;
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 565) {
 						pc.sendPackets(new S_CreateItem(145, 48, 0));
 						pc.Add_Er(18);
-						pc.드레스이베이젼 = true;
+						pc._DRESS_EVASION = true;
 					}
 					if (l1skills != null && pc.isDarkelf() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 567) {
 						pc.sendPackets(new S_CreateItem(145, 49, 0));
-						pc.루시퍼데스티니 = true;
+						pc._LUCIFER_DESTINY = true;
 					}
 					if (l1skills != null && pc.isDragonknight() && l1skills.getSkillLevel() == 51 && l1skills.getSkillId() == 181) {
 						pc.sendPackets(new S_CreateItem(145, 61, 0));
-						pc.드래곤스킨 = true;
+						pc._DRAGON_SKIN = true;
 					}
 
 					if (l1skills != null && pc.isFencer() && l1skills.getSkillLevel() == 55 && (l1skills.getSkillId() >= 550 && l1skills.getSkillId() <= 561)) {
@@ -2473,8 +2473,8 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.addBowDmgup(3);
 					pc.addBowHitup(3);
 					pc.getAbility().addSp(2);
-					pc.프라임 = 5;
-					pc.addTechniqueHit(pc.프라임);
+					pc.prime = 5;
+					pc.addTechniqueHit(pc.prime);
 					// 프라임 증가 효과 적용
 					pc.sendPackets(new S_SPMR(pc), true);
 					// 프라임 아이콘 표시

@@ -3995,18 +3995,18 @@ public class C_ActionUi extends ClientBasePacket {
 
 	private void Chat(L1PcInstance pc, int chatType, int chatcount, byte[] chatdata, String chatText, LineageClient clientthread) {
 		try {
-			if (pc.캐릭명변경) {
+			if (pc._CHARACTER_NAME_CHANGE) {
 				try {
 					String chaName = chatText;
 					if (pc.getClanid() > 0) {
 						pc.sendPackets(new S_SystemMessage("혈맹탈퇴후 캐릭명을 변경할수 있습니다."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (!pc.getInventory().checkItem(467009, 1)) { // 있나 체크
 						pc.sendPackets(new S_SystemMessage("케릭명 변경 비법서를 소지하셔야 가능합니다."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
@@ -4033,7 +4033,7 @@ public class C_ActionUi extends ClientBasePacket {
 								|| chaName.charAt(i) == '씹' || chaName.charAt(i) == '좃' || chaName.charAt(i) == '좆' || chaName.charAt(i) == 'ㅤ') {
 							pc.sendPackets(new S_SystemMessage("사용할수없는 케릭명입니다."));
 							pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-							pc.캐릭명변경 = false;
+							pc._CHARACTER_NAME_CHANGE = false;
 							return;
 						}
 					}
@@ -4041,63 +4041,63 @@ public class C_ActionUi extends ClientBasePacket {
 					if (chaName.getBytes().length > 12) {
 						pc.sendPackets(new S_SystemMessage("이름이 너무 깁니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (chaName.length() == 0) {
 						pc.sendPackets(new S_SystemMessage("변경할 케릭명을 입력하세요."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (BadNamesList.getInstance().isBadName(chaName)) {
 						pc.sendPackets(new S_SystemMessage("사용할 수 없는 케릭명입니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (isInvalidName(chaName)) {
 						pc.sendPackets(new S_SystemMessage("사용할 수 없는 케릭명입니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (CharacterTable.doesCharNameExist(chaName)) {
 						pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (CharacterTable.RobotNameExist(chaName)) {
 						pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (CharacterTable.RobotCrownNameExist(chaName)) {
 						pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (NpcShopSpawnTable.getInstance().getNpc(chaName) || npcshopNameCk(chaName)) {
 						pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 
 					if (CharacterTable.somakname(chaName)) {
 						pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
 						pc.sendPackets(new S_SystemMessage("캐릭명 변경 비법서를 다시 클릭후 이용해 주세요."));
-						pc.캐릭명변경 = false;
+						pc._CHARACTER_NAME_CHANGE = false;
 						return;
 					}
 

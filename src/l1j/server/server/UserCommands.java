@@ -275,14 +275,14 @@ public class UserCommands {
 			return;
 		}
 		int i = 1;
-		if (pc.문장주시) {
+		if (pc._WATCH_THE_SENTENCE) {
 			i = 3;
-			pc.문장주시 = false;
+			pc._WATCH_THE_SENTENCE = false;
 			pc.sendPackets(new S_문장주시(pc.getClan(), i), false);
 			pc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, pc.getClan().getmarkon()), false);
 			pc.sendPackets(new S_NewUI(0x19, pc.getClan().getClanName(), pc), false);
 		} else
-			pc.문장주시 = true;
+			pc._WATCH_THE_SENTENCE = true;
 		for (L1Clan clan : L1World.getInstance().getAllClans()) {
 			if (clan != null) {
 				pc.sendPackets(new S_War(i, pc.getClanname(), clan.getClanName()));

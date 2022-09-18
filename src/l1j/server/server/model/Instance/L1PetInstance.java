@@ -772,7 +772,7 @@ public class L1PetInstance extends L1NpcInstance {
 			return false;
 		}
 		
-		int i = Config.이름확인(name.toCharArray());
+		int i = Config.namecheck(name.toCharArray());
 
 		if (i < 0) return true;
 

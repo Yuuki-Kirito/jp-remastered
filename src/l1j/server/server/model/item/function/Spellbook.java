@@ -1210,7 +1210,7 @@ public class Spellbook extends L1ItemInstance {
 		pc.sendPackets(s_skillSound);
 		Broadcaster.broadcastPacket(pc, s_skillSound, true);
 		SkillsTable.getInstance().spellMastery(k6, j6, s, 0, 0);
-		pc.글로리어스 = true;
+		pc._GLORIOUS = true;
 		pc.getInventory().removeItem(l1iteminstance, 1);
 	}
 	
@@ -1234,7 +1234,7 @@ public class Spellbook extends L1ItemInstance {
 		pc.sendPackets(s_skillSound);
 		Broadcaster.broadcastPacket(pc, s_skillSound, true);
 		SkillsTable.getInstance().spellMastery(k6, j6, s, 0, 0);
-		pc.블러드투소울 = true;
+		pc._BLOOD_TO_SOUL = true;
 		pc.sendPackets(new S_ACTION_UI(S_ACTION_UI.SPELL_PASSIVE_ONOFF_ACK, 38, false));
 		pc.getInventory().removeItem(l1iteminstance, 1);
 	}
@@ -1401,7 +1401,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.디스트로이피어 = true;
+					pc._DESTROYER_PIER = true;
 				}
 			}
 			break;
@@ -1419,7 +1419,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.디스트로이호러 = true;
+					pc._DESTROY_HORROR = true;
 				}
 			}
 			break;
@@ -1437,7 +1437,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.드래곤스킨 = true;
+					pc._DRAGON_SKIN = true;
 				}
 			}
 			break;
@@ -1455,7 +1455,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.아머브레이크데스티니 = true;
+					pc._ARMORBREAK_DESTINY = true;
 				}
 			}
 			break;
@@ -1473,7 +1473,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.더블브레이크데스티니 = true;
+					pc._DOUBLE_BREAK_DESTINY = true;
 				}
 			}
 			break;
@@ -1491,7 +1491,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.카운터배리어베테랑 = true;
+					pc._COUNTER_BARRIER_VETERAN = true;
 				}
 			}
 			break;
@@ -1509,7 +1509,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.썬더그랩브레이브 = true;
+					pc._THUNDER_GRAB_BRAVE = true;
 				}
 			}
 			break;
@@ -1527,7 +1527,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.아우라키아 = true;
+					pc._AURACHIA = true;
 				}
 			}
 			break;
@@ -1545,7 +1545,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.포우슬레이어브레이브 = true;
+					pc._PAWSLAYER_BRAVE = true;
 				}
 			}
 			break;
@@ -1563,7 +1563,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.데스페라도앱솔루트 = true;
+					pc._DESPERADO_ABSOLUTE = true;
 				}
 			}
 			break;
@@ -1679,7 +1679,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.레지스트엘리멘트 = true;
+					pc._REGISTER_ELEMENT = true;
 					pc.getResistance().addMr(5);
 					pc.sendPackets(new S_SPMR(pc), true);
 					pc.getResistance().addAllNaturalResistance(5);
@@ -1702,7 +1702,7 @@ public class Spellbook extends L1ItemInstance {
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
 					pc.sendPackets(new S_OwnCharAttrDef(pc), true);
-					pc.버닝스피릿츠 = true;
+					pc._BURNING_SPIRITS = true;
 				}
 			}
 			break;
@@ -1722,7 +1722,7 @@ public class Spellbook extends L1ItemInstance {
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
 					pc.Add_Er(18);
 					pc.sendPackets(new S_OwnCharAttrDef(pc), true);
-					pc.드레스이베이젼 = true;
+					pc._DRESS_EVASION = true;
 				}
 			}
 			break;
@@ -1740,7 +1740,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.파이널번 = true;
+					pc._FINAL_BURN = true;
 				}
 			}
 			break;
@@ -1758,7 +1758,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.루시퍼데스티니 = true;
+					pc._LUCIFER_DESTINY = true;
 				}
 			}
 			break;
@@ -1776,7 +1776,7 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.리덕션아머베테랑 = true;
+					pc._REDUGTION_ARMOR_VETERAN = true;
 				}
 			}
 			break;
@@ -1794,8 +1794,8 @@ public class Spellbook extends L1ItemInstance {
 					pc.sendPackets(s_skillSound);
 					Broadcaster.broadcastPacket(pc, s_skillSound);
 					SkillsTable.getInstance().spellMastery(pc.getId(), skillId, skill.getName(), 0, 0);
-					pc.레이징포스 = true;
-					if(pc.레이징포스 && pc.getLevel() >= 80) {
+					pc._RAGING_FORCE = true;
+					if(pc._RAGING_FORCE && pc.getLevel() >= 80) {
 						int pvpre = pc.getLevel() - 77;
 						int i = (pvpre / 3) * 1;
 						pc.addTechniqueHit(i);

@@ -129,8 +129,8 @@ class L1SkillStop {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 임팩트의 대한 적중 효과 삭제 */
-					pc.addAllTolerance(-pc.그레이스아바타);
-					pc.그레이스아바타 = 0;
+					pc.addAllTolerance(-pc.grace_avatar);
+					pc.grace_avatar = 0;
 				}
 			}
 				break;
@@ -144,8 +144,8 @@ class L1SkillStop {
 					pc.addBowDmgup(-3);
 					pc.getAbility().addSp(-2);
 					pc.addTechniqueHit(-5);
-					pc.addTechniqueHit(-pc.프라임);
-					pc.프라임 = 0;
+					pc.addTechniqueHit(-pc.prime);
+					pc.prime = 0;
 					pc.sendPackets(new S_SPMR(pc), true);
 					pc.sendPackets(new S_NewSkillIcons(L1SkillId.PRIME, false, -1), true);
 					pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSkillIconAura, 240, 0), true);
@@ -289,8 +289,8 @@ class L1SkillStop {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 임팩트의 대한 적중 효과 삭제 */
-					pc.addAllTolerance(pc.저지먼트);
-					pc.저지먼트 = 0;
+					pc.addAllTolerance(pc.judgment);
+					pc.judgment = 0;
 					pc.sendPackets(new S_NewSkillIcons(L1SkillId.JUDGEMENT, false, -1), true);
 					pc.sendPackets(new S_SystemMessage("저지먼트의 효과가 사라집니다."));
 				}
@@ -310,7 +310,7 @@ class L1SkillStop {
 			case TRUE_TARGET:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.set트루타켓(0);
+					pc.settruetarget(0);
 				} else if (cha instanceof L1NpcInstance) {
 					L1NpcInstance npc = (L1NpcInstance) cha;
 					npc.set트루타켓(0);
@@ -1822,7 +1822,7 @@ class L1SkillStop {
 			case REDUCTION_ARMOR:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					if (pc.리덕션아머베테랑) {
+					if (pc._REDUGTION_ARMOR_VETERAN) {
 						pc.addFearTolerance(-3);
 					}
 					pc.sendPackets(new S_NewSkillIcons(L1SkillId.REDUCTION_ARMOR, false, -1), true);
@@ -2102,8 +2102,8 @@ class L1SkillStop {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					/** 임팩트의 대한 적중 효과 삭제 */
-					pc.addAllHit(-pc.임팩트);
-					pc.임팩트 = 0;
+					pc.addAllHit(-pc.impact);
+					pc.impact = 0;
 				}
 			}
 				break;

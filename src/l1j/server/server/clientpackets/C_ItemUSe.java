@@ -2572,7 +2572,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							}
 						}
 					} else if (itemId == 467009) { // 캐릭명변경주문서
-						pc.캐릭명변경 = true;
+						pc._CHARACTER_NAME_CHANGE = true;
 						pc.sendPackets(new S_SystemMessage("변경할 케릭명을 입력하세요"), true);
 					} else if (itemId == 437008) { // 속죄의 성서 사용법
 						pc.sendPackets(new S_SystemMessage("이아이템은 신녀 유리스에게 가져가면 라우풀은 3천씩 받을수 있습니다.."), true);
@@ -4093,9 +4093,9 @@ public class C_ItemUSe extends ClientBasePacket {
 						int percent = ForceItem.getInstance().getSuccPercent(l1iteminstance1.getItem().getItemId());
 						int SuccItem = ForceItem.getInstance().getSuccItem(l1iteminstance1.getItem().getItemId());
 						int chance = _random.nextInt(100) + 1;
-						if (pc.기운축복) {
+						if (pc._BLESSING) {
 							percent = 100;
-							pc.기운축복 = false;
+							pc._BLESSING = false;
 						}
 						if (l1iteminstance1.getItem().getItemId() >= 4000009 && l1iteminstance1.getItem().getItemId() <= 4900019) {
 							if (percent > chance) {
@@ -10374,7 +10374,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		healHp *= (_random.nextGaussian() / 5.0D) + 1.0D;
 
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)) {
-			int atklv = pc.데스페라도공격자레벨;
+			int atklv = pc.desperado_attack_level;
 			int dflv = pc.getLevel();
 			double 저하률 = 0.65;
 

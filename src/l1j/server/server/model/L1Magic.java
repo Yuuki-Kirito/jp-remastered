@@ -1893,16 +1893,16 @@ public class L1Magic {
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(PATIENCE)) {
 			dmg -= 4;
 		}
-		if (_targetPc.드래곤스킨) {
+		if (_targetPc._DRAGON_SKIN) {
 			dmg -= 3;
 		}
-		if(_targetPc.드래곤스킨 && _targetPc.getLevel() >= 80) {
+		if(_targetPc._DRAGON_SKIN && _targetPc.getLevel() >= 80) {
 			int ddmg = _targetPc.getLevel() - 78;
 			int i = (ddmg / 2) * 1;
 			dmg -= 3 + i;
 		
 		}
-		if (_targetPc.글로리어스) {
+		if (_targetPc._GLORIOUS) {
 			if (_random.nextInt(100) < 2 + 8 - 5) {
 				dmg -= 30;
 				_targetPc.sendPackets(new S_SkillSound(_targetPc.getId(), 19318));

@@ -2532,7 +2532,7 @@ public class WeaponSkill {
 	}
 	public static void 섬멸자의체인소드(L1PcInstance pc) { // 체인소드 대미지.
 		if (_random.nextInt(100) < 18) {
-		  if(pc.포우슬레이어브레이브) {
+		  if(pc._PAWSLAYER_BRAVE) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(
 					L1SkillId.STATUS_SPOT1)) {
 				pc.getSkillEffectTimerSet().killSkillEffectTimer(
@@ -2561,7 +2561,7 @@ public class WeaponSkill {
 						L1SkillId.STATUS_SPOT1, 15 * 1000);
 				pc.sendPackets(new S_PacketBox(S_PacketBox.SPOT, 1));
 			}
-		  }else if(!pc.포우슬레이어브레이브) {
+		  }else if(!pc._PAWSLAYER_BRAVE) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(
 						L1SkillId.STATUS_SPOT1)) {
 					pc.getSkillEffectTimerSet().killSkillEffectTimer(
@@ -3245,7 +3245,7 @@ public class WeaponSkill {
 		}
 
 		if (pc.ChainSwordObjid != cha.getId()) {
-			if(pc.포우슬레이어브레이브) {
+			if(pc._PAWSLAYER_BRAVE) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 				pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
@@ -3263,7 +3263,7 @@ public class WeaponSkill {
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 				pc.sendPackets(pb, true);
 			 }
-			} else if(!pc.포우슬레이어브레이브) {
+			} else if(!pc._PAWSLAYER_BRAVE) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 					pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 					S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
@@ -3281,7 +3281,7 @@ public class WeaponSkill {
 			pc.ChainSwordObjid = cha.getId();
 		}
 		if (chanceweapon >= chance) {
-		  if(pc.포우슬레이어브레이브) {
+		  if(pc._PAWSLAYER_BRAVE) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 				pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 				pc.getSkillEffectTimerSet().setSkillEffect(STATUS_SPOT2,
@@ -3312,7 +3312,7 @@ public class WeaponSkill {
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 1);
 				pc.sendPackets(pb, true);
 			}
-		  }else if(!pc.포우슬레이어브레이브) {
+		  }else if(!pc._PAWSLAYER_BRAVE) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 					pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 					pc.getSkillEffectTimerSet().setSkillEffect(STATUS_SPOT2,
@@ -3361,7 +3361,7 @@ public class WeaponSkill {
 		}
 
 		if (pc.ChainSwordObjid != cha.getId()) {
-			if(pc.포우슬레이어브레이브) {
+			if(pc._PAWSLAYER_BRAVE) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 				pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
@@ -3379,7 +3379,7 @@ public class WeaponSkill {
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
 				pc.sendPackets(pb, true);
 			 }
-			} else if(!pc.포우슬레이어브레이브) {
+			} else if(!pc._PAWSLAYER_BRAVE) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 					pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 					S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 0);
@@ -3397,7 +3397,7 @@ public class WeaponSkill {
 			pc.ChainSwordObjid = cha.getId();
 		}
 		if (chanceweapon >= chance) {
-		  if(pc.포우슬레이어브레이브) {
+		  if(pc._PAWSLAYER_BRAVE) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 				pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 				pc.getSkillEffectTimerSet().setSkillEffect(STATUS_SPOT2,
@@ -3428,7 +3428,7 @@ public class WeaponSkill {
 				S_PacketBox pb = new S_PacketBox(S_PacketBox.SPOT, 1);
 				pc.sendPackets(pb, true);
 			}
-		  }else if(!pc.포우슬레이어브레이브) {
+		  }else if(!pc._PAWSLAYER_BRAVE) {
 				if (pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_SPOT1)) {
 					pc.getSkillEffectTimerSet().killSkillEffectTimer(STATUS_SPOT1);
 					pc.getSkillEffectTimerSet().setSkillEffect(STATUS_SPOT2,

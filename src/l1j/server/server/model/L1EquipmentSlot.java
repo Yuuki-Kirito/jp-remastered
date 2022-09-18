@@ -4661,7 +4661,7 @@ public class L1EquipmentSlot {
 				}
 			}
 		}
-		_owner.set문장레벨(문장레벨(itemId, itemlvl));
+		_owner.setsentencelevel(문장레벨(itemId, itemlvl));
 		armor.startEquipmentTimer(_owner);
 		/*
 		 * if (armor.getSkill() != null && armor.getSkill().getSkillId() != 0) { switch
@@ -9242,7 +9242,7 @@ public class L1EquipmentSlot {
 		}
 		armor.stopEquipmentTimer();
 		// if (itemId == 490020)
-		_owner.set문장레벨(0);
+		_owner.setsentencelevel(0);
 		_armors.remove(armor);
 
 		/*

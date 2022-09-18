@@ -776,9 +776,9 @@ public class EnchantArmor extends Enchant {
 				} catch (Exception e){
 					 System.out.println("Character Enchant Armor Chance Load Error");
 				}
-				if(pc.ภฮรพรเบน){
+				if(pc._ENCHEN_BLESSING){
 					chance = 100;
-					pc.ภฮรพรเบน = false;
+					pc._ENCHEN_BLESSING = false;
 				}
 				
 				if (itemId == 60774 || itemId == 60776 || itemId == 60778 || itemId == 60780) {

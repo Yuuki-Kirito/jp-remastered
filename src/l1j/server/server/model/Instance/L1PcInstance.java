@@ -176,17 +176,17 @@ public class L1PcInstance extends L1Character {
 		return _nameList;
 	}
 
-	public int _트루타켓 = 0;
+	public int _TRUE_TARGET = 0;
 
-	public int get트루타켓() {
-		return _트루타켓;
+	public int gettruetarget() {
+		return _TRUE_TARGET;
 	}
 
-	public void set트루타켓(int i) {
-		_트루타켓 = i;
+	public void settruetarget(int i) {
+		_TRUE_TARGET = i;
 	}
 
-	// 무인pc 관련 flag
+	// 無人pc 関連 flag
 	public boolean noPlayerCK = false;
 
 	//
@@ -208,39 +208,39 @@ public class L1PcInstance extends L1Character {
 		bot = _bot;
 	}
 
-	public boolean 블레이징 = false;
-	public boolean 아머브레이크데스티니 = false;
-	public boolean 더블브레이크데스티니 = false;
-	public boolean 카운터배리어베테랑 = false;
-	public boolean 리덕션아머베테랑 = false;
-	public boolean 레이징포스 = false;
-	public boolean 썬더그랩브레이브 = false;
-	public boolean 포우슬레이어브레이브 = false;
-	public boolean 디스트로이피어 = false;
-	public boolean 디스트로이호러 = false;
-	public boolean 드래곤스킨 = false;
+	public boolean _BLAZING = false;
+	public boolean _ARMORBREAK_DESTINY = false;
+	public boolean _DOUBLE_BREAK_DESTINY = false;
+	public boolean _COUNTER_BARRIER_VETERAN = false;
+	public boolean _REDUGTION_ARMOR_VETERAN = false;
+	public boolean _RAGING_FORCE = false;
+	public boolean _THUNDER_GRAB_BRAVE = false;
+	public boolean _PAWSLAYER_BRAVE = false;
+	public boolean _DESTROYER_PIER = false;
+	public boolean _DESTROY_HORROR = false;
+	public boolean _DRAGON_SKIN = false;
 	public boolean _DARK_HORSE = false;
-	public boolean 파이널번 = false;
-	public boolean 드레스이베이젼 = false;
-	public boolean 버닝스피릿츠 = false;
-	public boolean 아우라키아 = false;
-	public boolean 데스페라도앱솔루트 = false;
-	public boolean 어쌔신 = false;
-	public boolean 브레이브아바타 = false;
-	public boolean 레지스트엘리멘트 = false;
-	public boolean 글로리어스 = false;
-	public boolean 블러드투소울 = false;
-	public boolean 루시퍼데스티니 = false;
-	public boolean 인첸축복 = false;
-	public boolean 장인축복 = false;
-	public boolean 기운축복 = false;
-	public boolean 레터온 = false;
-	public int 임팩트 = 0;
-	public int 프라임 = 0;
-	public int 그레이스아바타 = 0;
-	public int 저지먼트 = 0;
-	private int 문장레벨;
-	/** 배틀존 **/
+	public boolean _FINAL_BURN = false;
+	public boolean _DRESS_EVASION = false;
+	public boolean _BURNING_SPIRITS = false;
+	public boolean _AURACHIA = false;
+	public boolean _DESPERADO_ABSOLUTE = false;
+	public boolean _ASSASSIN = false;
+	public boolean _BRAVE_AVATAR = false;
+	public boolean _REGISTER_ELEMENT = false;
+	public boolean _GLORIOUS = false;
+	public boolean _BLOOD_TO_SOUL = false;
+	public boolean _LUCIFER_DESTINY = false;
+	public boolean _ENCHEN_BLESSING = false;
+	public boolean _ARTISAN_BLESSING = false;
+	public boolean _BLESSING = false;
+	public boolean _LETTERON = false;
+	public int impact = 0;
+	public int prime = 0;
+	public int grace_avatar = 0;
+	public int judgment = 0;
+	private int sentence_level;
+	/** バトルゾーン **/
 	private int _DuelLine;
 
 	public int get_DuelLine() {
@@ -253,12 +253,12 @@ public class L1PcInstance extends L1Character {
 
 	public long lastSpellUseMillis = 0L;
 
-	public int get문장레벨() {
-		return 문장레벨;
+	public int getsentencelevel() {
+		return sentence_level;
 	}
 
-	public void set문장레벨(int i) {
-		문장레벨 = i;
+	public void setsentencelevel(int i) {
+		sentence_level = i;
 	}
 
 	private boolean _isRobot = false;
@@ -281,23 +281,23 @@ public class L1PcInstance extends L1Character {
 		this._chatTarget = _chatTarget;
 	}
 
-	public boolean 감옥 = true;
+	public boolean _PRISON = true;
 
-	public boolean 문장주시 = false;
+	public boolean _WATCH_THE_SENTENCE = false;
 
-	public int 데스페라도공격자레벨 = 0;
+	public int desperado_attack_level = 0;
 
-	public boolean 캐릭명변경 = false;
+	public boolean _CHARACTER_NAME_CHANGE = false;
 
 	public L1PcInstance _healagro = null;
 
-	public L1PcInstance _이뮨어그로 = null;
+	public L1PcInstance _Immune_aggro = null;
 
 	public long window_active_time = -1;
 
 	public int window_noactive_count = 0;
 
-	public boolean 하딘보스룸입장 = false;
+	public boolean _HARDIN_BOSS_ROOM_ADMISSION = false;
 
 	public boolean setValakaseDmgDouble = false;
 
@@ -324,10 +324,10 @@ public class L1PcInstance extends L1Character {
 	public int talkingNpcObjid = 0;
 	public int createItemNpcObjid = 0;
 	public byte[] fairt_information = new byte[512];
-	/** 펜던트 관련 */
+	/** Pendant Related */
 	int _PendentHp = 0;
 	int _PendentMp = 0;
-	/** 펜던트 관련 */
+	/** Pendant Related*/
 	int _giganmp = 0;
 	int _giganhp = 0;
 	int _potentialSP = 0;
@@ -428,7 +428,7 @@ public class L1PcInstance extends L1Character {
 		_giganmp = i;
 	}
 
-	/** 팬던트HP관련 */
+	/** Pendant HP */
 	public int getPendentHp() {
 		return _PendentHp;
 	}
@@ -445,7 +445,7 @@ public class L1PcInstance extends L1Character {
 		_PendentMp = i;
 	}
 
-	/** 팬던트HP관련 */
+	/** Pendant HP */
 
 	private PacketOutput _out = null;
 
@@ -453,7 +453,7 @@ public class L1PcInstance extends L1Character {
 		_out = out;
 	}
 
-	/** 변경 가능한지 검사한다 시작 **/
+	/** 変更可能かどうかを調べる **/
 
 	public boolean skillCritical = false;
 	public boolean skillismiss = false;
@@ -470,7 +470,7 @@ public class L1PcInstance extends L1Character {
 	public int hero_80_transformation_item_use_id = 0;
 	public int halloween_pumpkin_seed_time = 0;
 	public int cherry_blossom_event_time = 0;
-	// 콤보
+	// combo
 	private int comboCount;
 
 	public int gremlin_event_time = 0;
@@ -492,9 +492,9 @@ public class L1PcInstance extends L1Character {
 	public boolean _OMANTEL = false;
 	public boolean _PC_ROOM_BUFF = false;
 	public boolean _PCROOM_BUFF_IS_BEING_REMOVED = false;
-	/** 아인하사드의가호 */
+	/** アインハサードの加護 */
 	public boolean AINHASAD_GAHO = false;
-	/** 아인하사드의가호 */
+	/** アインハサードの加護 */
 	public boolean _BLOCK_LOAD = false;
 	public boolean _BLOCK_LETTER_LOAD = false;
 
@@ -549,7 +549,7 @@ public class L1PcInstance extends L1Character {
 	public boolean isTaitanB = false;
 	public boolean isTaitanM = false;
 
-	/** 신규 클래스 검사 패시브 관련 */
+	/** Related to the new class inspection passive */
 	public boolean infinity_A = false;
 	public boolean infinity_B = false;
 	public boolean infinity_D = false;
@@ -565,9 +565,9 @@ public class L1PcInstance extends L1Character {
 	public boolean survive = false;
 	public boolean Pantera_S = false;
 
-	/** 신규 클래스 검사 패시브 관련 */
+	/** Related to the new class inspection passive */
 
-	/** 무인상점 */
+	/** 無人店 */
 	public boolean getAIprivateShop() {
 		return _AIprivateShop;
 	}
@@ -577,7 +577,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	private boolean _AIprivateShop = false;
-	/** 무인상점 */
+	/** 無人店 */
 
 	public boolean _robot = true;
 
@@ -597,7 +597,7 @@ public class L1PcInstance extends L1Character {
 	private int _exp;
 	private short _accessLevel;
 
-	private int _age; // 족보 by 모카
+	private int _age; // Genealogy by Mocha
 	private int _AddRingSlotLevel;
 
 	public int getRingSlotLevel() {
@@ -621,7 +621,7 @@ public class L1PcInstance extends L1Character {
 	private int Emblem_Slot = 0;
 	private int Shoulder_Slot = 0;
 
-	/** 생일 **/
+	/** birthday **/
 	private int birthday;
 	private boolean _FirstBlood;
 	private int _TelType = 0;
@@ -645,9 +645,9 @@ public class L1PcInstance extends L1Character {
 	public short fdmap = 0;
 	public int dh = 0;
 
-	public void 삼단가속() {// 13283
+	public void triple_acceleration() {// 13283
 		/*
-		 * if (pc.getSkillEffectTimerSet().hasSkillEffect(71) == true) { // 디케이포션 상태
+		 * if (pc.getSkillEffectTimerSet().hasSkillEffect(71) == true) { // Decay Potion Status
 		 * pc.sendPackets(new S_ServerMessage(698), true); return; }
 		 */
 		if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_DRAGONPERL)) {
@@ -658,11 +658,11 @@ public class L1PcInstance extends L1Character {
 			set진주속도(0);
 		}
 
-		cancelAbsoluteBarrier();// 앱솔해제(팩에 이 메소드없으면 무시)
+		cancelAbsoluteBarrier();// Absolut off (ignore if the pack doesn't have this method)
 		int time = 600 * 1000;
 		int stime = (int) (((time / 1000) / 4));
 		getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_DRAGONPERL, time);
-		sendPackets(new S_SkillSound(getId(), 13283), true);// 말갱이 이팩트...
+		sendPackets(new S_SkillSound(getId(), 13283), true);// Horseshoe effect...
 		Broadcaster.broadcastPacket(this, new S_SkillSound(getId(), 13283), true);
 		sendPackets(new S_DRAGONPERL(getId(), 8), true);
 		Broadcaster.broadcastPacket(this, new S_DRAGONPERL(getId(), 8), true);
@@ -672,7 +672,7 @@ public class L1PcInstance extends L1Character {
 
 	}
 
-	public void 초기화() {
+	public void initialization() {
 		tempstr = 0;
 		tempdex = 0;
 		tempcon = 0;
@@ -8507,7 +8507,7 @@ public class L1PcInstance extends L1Character {
 			return false;
 		}
 
-		if (!isGm() && getMapId() == 6202 && 감옥) {
+		if (!isGm() && getMapId() == 6202 && _PRISON) {
 			sendPackets(new S_SystemMessage("텔레포트를 하기 위해서는 운영자의 동의가 필요 합니다."));
 			return false;
 		}
@@ -8759,7 +8759,7 @@ public class L1PcInstance extends L1Character {
 					return;
 				} else {
 					getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.ASSASSIN);
-					어쌔신 = true;//
+					_ASSASSIN = true;//
 				}
 			} else {
 				run = false;

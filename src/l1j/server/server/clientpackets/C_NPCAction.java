@@ -6125,9 +6125,9 @@ public class C_NPCAction extends ClientBasePacket {
 			} else {
 				htmlid = "ellyonne13";
 			}
-	  } else if (s.equalsIgnoreCase("gfw") && pc.글로리어스) { //불물
+	  } else if (s.equalsIgnoreCase("gfw") && pc._GLORIOUS) { //불물
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(24);
@@ -6135,9 +6135,9 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSpiritAttr, 2), true);
 				htmlid = "";
 			}
-		} else if (s.equalsIgnoreCase("gfa") && pc.글로리어스) {//불바람
+		} else if (s.equalsIgnoreCase("gfa") && pc._GLORIOUS) {//불바람
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(28);
@@ -6145,9 +6145,9 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSpiritAttr, 4), true);
 				htmlid = "";
 			}
-		} else if (s.equalsIgnoreCase("gfe") && pc.글로리어스) { //불땅
+		} else if (s.equalsIgnoreCase("gfe") && pc._GLORIOUS) { //불땅
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(21);
@@ -6155,9 +6155,9 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSpiritAttr, 8), true);
 				htmlid = "";
 			}
-		} else if (s.equalsIgnoreCase("gwa") && pc.글로리어스) { //물바람
+		} else if (s.equalsIgnoreCase("gwa") && pc._GLORIOUS) { //물바람
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(48);
@@ -6165,9 +6165,9 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSpiritAttr, 4), true);
 				htmlid = "";
 			}
-		} else if (s.equalsIgnoreCase("gwe") && pc.글로리어스) { //물땅
+		} else if (s.equalsIgnoreCase("gwe") && pc._GLORIOUS) { //물땅
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(41);
@@ -6175,9 +6175,9 @@ public class C_NPCAction extends ClientBasePacket {
 				pc.sendPackets(new S_SMPacketBox(S_SMPacketBox.RMSpiritAttr, 8), true);
 				htmlid = "";
 			}
-		} else if (s.equalsIgnoreCase("gae") && pc.글로리어스) { //바람땅
+		} else if (s.equalsIgnoreCase("gae") && pc._GLORIOUS) { //바람땅
 			if (pc.isElf()) {
-				if (pc.getElfAttr() != 0 || !pc.글로리어스) {
+				if (pc.getElfAttr() != 0 || !pc._GLORIOUS) {
 					return "";
 				}
 				pc.setElfAttr(81);
@@ -7591,16 +7591,16 @@ public class C_NPCAction extends ClientBasePacket {
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(IllUSION_AVATAR)) {
 						dmg += dmg / 5;
 					}
-					if (pc.드래곤스킨) {
+					if (pc._DRAGON_SKIN) {
 						dmg -= 2;
 					}
-					if(pc.드래곤스킨 && pc.getLevel() >= 80) {
+					if(pc._DRAGON_SKIN && pc.getLevel() >= 80) {
 						int ddmg = pc.getLevel() - 78;
 						int i = (ddmg / 2) * 1;
 						dmg -= 2 + i;
 					
 					}
-					if (pc.글로리어스) {
+					if (pc._GLORIOUS) {
 						if (_random.nextInt(100) < 2 + 8 - 5) {
 							dmg -= 30;
 							pc.sendPackets(new S_SkillSound(pc.getId(), 19318));

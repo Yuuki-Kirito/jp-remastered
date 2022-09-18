@@ -1987,7 +1987,7 @@ public class GMCommands {
 					}
 					L1Teleport.ロボットテル(rob, loc[0], loc[1], (short) loc[2], true);
 				} else {
-					user.감옥 = false;
+					user._PRISON = false;
 					L1Teleport.teleport(user, 33437, 32812, (short) 4, 5, true); // /
 																					// 가게될
 																					// 지점
@@ -3341,7 +3341,7 @@ public class GMCommands {
 			target = L1World.getInstance().getPlayer(pcName);
 			if (target != null) { // 타겟
 
-				target.감옥 = true;
+				target._PRISON = true;
 
 				L1Teleport.teleport(target, 32928, 32864, (short) 6202, 5, true); // /
 																					// 가게될
@@ -3749,7 +3749,7 @@ public class GMCommands {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
 			L1PcInstance target = L1World.getInstance().getPlayer(user);
-			target.인첸축복 = true;
+			target._ENCHEN_BLESSING = true;
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".인첸축복 [케릭명]"));
 		}
@@ -3760,7 +3760,7 @@ public class GMCommands {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
 			L1PcInstance target = L1World.getInstance().getPlayer(user);
-			target.장인축복 = true;
+			target._ARTISAN_BLESSING = true;
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".장인축복 [케릭명]"));
 		}
@@ -3771,7 +3771,7 @@ public class GMCommands {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
 			L1PcInstance target = L1World.getInstance().getPlayer(user);
-			target.기운축복 = true;
+			target._BLESSING = true;
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".기운축복 [케릭명]"));
 		}
