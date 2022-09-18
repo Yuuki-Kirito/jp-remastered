@@ -171,7 +171,7 @@ public class EnchantArmor extends Enchant {
 					|| armorId == 21105 || armorId == 21106 || armorId == 21107
 					|| armorId == 21108 || armorId == 21109 || armorId == 21110
 					|| armorId == 21111 || armorId == 21112 || armorId == 10040 || armorId == 21270) {
-				if (itemId == L1ItemId.여행방어주문서 || itemId == 60141) {
+				if (itemId == L1ItemId.SCROLL_OF_ENCHANT_ARMOR_FOR_TRAVELER || itemId == 60141) {
 					int enchant_level = l1iteminstance1.getEnchantLevel();
 					if (enchant_level >= 6) {
 						pc.sendPackets(new S_SystemMessage("아무일도 일어나지 않았습니다."),
@@ -184,7 +184,7 @@ public class EnchantArmor extends Enchant {
 					return;
 				}
 			}
-			if (itemId == L1ItemId.여행방어주문서 || itemId == 60141) {
+			if (itemId == L1ItemId.SCROLL_OF_ENCHANT_ARMOR_FOR_TRAVELER || itemId == 60141) {
 				if (armorId == 21102 || armorId == 21103 || armorId == 21104
 						|| armorId == 21105 || armorId == 21106 || armorId == 21107
 						|| armorId == 21108 || armorId == 21109 || armorId == 21110

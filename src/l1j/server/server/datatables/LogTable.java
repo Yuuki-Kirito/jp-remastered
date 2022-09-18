@@ -31,25 +31,25 @@ public class LogTable {
 	public LogTable() {
 	}
 
-	private static Timestamp start사냥T;
-	private static Timestamp start상점T;
-	public static boolean 사냥아덴 = false;
-	public static boolean 상점아덴 = false;
-	public static FastTable<adenLog> 사냥아덴리스트 = new FastTable<adenLog>();
-	public static FastTable<adenLog> 상점아덴리스트 = new FastTable<adenLog>();
+	private static Timestamp _startAdenT;
+	private static Timestamp _startStoreT;
+	public static boolean _isAden = false;
+	public static boolean _isStore = false;
+	public static FastTable<adenLog> _adenList = new FastTable<adenLog>();
+	public static FastTable<adenLog> _storeList = new FastTable<adenLog>();
 
-	public static void 사냥아덴시작() {
-		사냥아덴리스트.clear();
-		사냥아덴 = true;
-		start사냥T = new Timestamp(System.currentTimeMillis());
+	public static void startAdenLog() {
+		_adenList.clear();
+		_isAden = true;
+		_startAdenT = new Timestamp(System.currentTimeMillis());
 	}
 
-	public static void 사냥아덴(L1PcInstance pc, int count) {
-		if (사냥아덴) {
+	public static void adenLog(L1PcInstance pc, int count) {
+		if (_isAden) {
 			if (pc.getNetConnection() == null)
 				return;
 			adenLog log = null;
-			for (adenLog aL : 사냥아덴리스트) {
+			for (adenLog aL : _adenList) {
 				if (aL.name.equalsIgnoreCase(pc.getName())) {
 					log = aL;
 					break;
@@ -62,29 +62,29 @@ public class LogTable {
 				log.accounts = pc.getAccountName();
 				log.name = pc.getName();
 				log.count += count;
-				사냥아덴리스트.add(log);
+				_adenList.add(log);
 			}
 		}
 	}
 
-	public static void 사냥아덴종료() {
-		사냥아덴 = false;
+	public static void stopAdenLog() {
+		_isAden = false;
 		GeneralThreadPool.getInstance().schedule(
-				new saveThread(사냥아덴리스트, start사냥T, false), 1);
+				new saveThread(_adenList, _startAdenT, false), 1);
 	}
 
-	public static void 상점아덴시작() {
-		상점아덴리스트.clear();
-		상점아덴 = true;
-		start상점T = new Timestamp(System.currentTimeMillis());
+	public static void startStoreLog() {
+		_storeList.clear();
+		_isStore = true;
+		_startStoreT = new Timestamp(System.currentTimeMillis());
 	}
 
-	public static void 상점아덴(L1PcInstance pc, int count) {
-		if (상점아덴) {
+	public static void storeLog(L1PcInstance pc, int count) {
+		if (_isStore) {
 			if (pc.getNetConnection() == null)
 				return;
 			adenLog log = null;
-			for (adenLog aL : 상점아덴리스트) {
+			for (adenLog aL : _storeList) {
 				if (aL.name.equalsIgnoreCase(pc.getName())) {
 					log = aL;
 					break;
@@ -97,15 +97,15 @@ public class LogTable {
 				log.accounts = pc.getAccountName();
 				log.name = pc.getName();
 				log.count += count;
-				상점아덴리스트.add(log);
+				_storeList.add(log);
 			}
 		}
 	}
 
-	public static void 상점아덴종료() {
-		상점아덴 = false;
+	public static void stopStoreLog() {
+		_isStore = false;
 		GeneralThreadPool.getInstance().schedule(
-				new saveThread(상점아덴리스트, start상점T, true), 1);
+				new saveThread(_storeList, _startStoreT, true), 1);
 	}
 
 	static class adenLog {
@@ -308,7 +308,7 @@ public class LogTable {
 	 * SQLUtil.close(p); SQLUtil.close(c); } return bool; }
 	 */
 	/**
-	 * 디비로 삭제 로그를 기록
+	 * Debianで削除ログを記録する
 	 *
 	 * @param pc
 	 *            Pc Instance
@@ -316,35 +316,35 @@ public class LogTable {
 	 *            item Instance
 	 * @param type
 	 *            Log type 0=Drop 1=PickUp 2=Delete
-	 * @return 성공 true 실패 false used : if(LogTable.getInstance().insert(pc,
+	 * @return 成功 true 失敗 false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 	/*
-	 * public static boolean logdel(L1PcInstance pc, L1ItemInstance item, int
-	 * count, int type){ String sTemp = ""; boolean bool = false; Connection c =
-	 * null; PreparedStatement p = null; try{ switch(type){ case 0://DROP_LOG //
-	 * x, y, map, itme_name drop // sTemp = "DROP " + pc.getX() + " " +
-	 * pc.getY() + " " + pc.getMap().getId() + " " + item.getName(); sTemp =
-	 * "[드랍]"; break; case 1://PICKUP_LOG sTemp = "[픽업]"; break; case 2://
-	 * Delete_Log sTemp = "[삭제] "; break; case 3: sTemp = "[용해]"; break; } c =
-	 * L1DatabaseFactory.getInstance().getConnection(); // data -> date // p =
-	 * c.prepareStatement(
-	 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
-	 * ); p = c.prepareStatement(
-	 * "INSERT INTO log_del SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x=?, char_y=?, char_mapid=?"
-	 * );
-	 *
-	 * p.setString(1, sTemp); p.setString(2, pc.getAccountName()); p.setInt(3,
-	 * pc.getId()); p.setString(4, pc.getName()); p.setInt(5, item.getId());
-	 * p.setInt(6, item.getItemId()); p.setString(7, item.getName());
-	 * p.setInt(8, item.getEnchantLevel()); p.setInt(9, count); p.setInt(10,
-	 * pc.getX()); p.setInt(11, pc.getY()); p.setInt(12, pc.getMapId());
-	 * p.executeUpdate(); bool = true; }catch(Exception e){ e.printStackTrace();
-	 * }finally{ SQLUtil.close(p); SQLUtil.close(c); } return bool; }
-	 */
+	* public static boolean logdel(L1PcInstance pc, L1ItemInstance item, int
+	* count、int type）{String sTemp = ""; boolean bool = false; Connection c =
+	* null; PreparedStatement p = null; try{ switch(type){ case 0://DROP_LOG //
+	* x, y, map, itme_name drop // sTemp = "DROP " + pc.getX() + " " +
+	* pc.getY() + " " + pc.getMap().getId() + " " + item.getName(); sTemp =
+	* "[ドロップ]"; break; case 1://PICKUP_LOG sTemp = "[ピックアップ]"; break; case 2://
+	* Delete_Log sTemp = "[削除]"; break; case 3: sTemp = "[溶解]"; break; } c =
+	* L1DatabaseFactory.getInstance().getConnection(); // data - > date // p =
+	* c.prepareStatement(
+	* "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
+	*）; p = c.prepareStatement(
+	* "INSERT INTO log_del SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x= ?, char_y=?, char_mapid=?"
+	*）;
+	*
+	* p.setString(1, sTemp); p.setString(2, pc.getAccountName()); p.setInt(3,
+	* pc.getId()); p.setString(4, pc.getName()); p.setInt(5, item.getId());
+	* p.setInt(6, item.getItemId()); p.setString(7, item.getName());
+	* p.setInt(8, item.getEnchantLevel()); p.setInt(9, count); p.setInt(10,
+	* pc.getX()); p.setInt(11, pc.getY()); p.setInt(12, pc.getMapId());
+	* p.executeUpdate(); bool = true; }catch（Exception e）{ e.printStackTrace（）;
+	* }finally{ SQLUtil.close(p); SQLUtil.close(c); } return bool; }
+	*/
 
 	/**
-	 * 디비로 드랍 픽업 로그를 기록
+	 * Divyでドロップピックアップログを記録する
 	 *
 	 * @param pc
 	 *            Pc Instance
@@ -352,7 +352,7 @@ public class LogTable {
 	 *            item Instance
 	 * @param type
 	 *            Log type 0=Drop 1=PickUp 2=Delete
-	 * @return 성공 true 실패 false used : if(LogTable.getInstance().insert(pc,
+	 * @return 成功 true 失敗 false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -361,42 +361,42 @@ public class LogTable {
 		String sTemp = "";
 		boolean bool = false;
 		/**
-		 * Connection c = null; PreparedStatement p = null; try{ switch(type){
-		 * case 0://DROP_LOG // x, y, map, itme_name drop // sTemp = "DROP " +
-		 * pc.getX() + " " + pc.getY() + " " + pc.getMap().getId() + " " +
-		 * item.getName(); if(!GMCommands.로그_드랍) return false; sTemp = "[드랍]";
-		 * break; case 1://PICKUP_LOG if(!GMCommands.로그_픽업) return false; sTemp
-		 * = "[픽업]"; break; case 2:// Delete_Log sTemp = "[삭제] "; break; case 3:
-		 * if(!GMCommands.로그_용해) return false; sTemp = "[용해]"; break; } c =
-		 * L1DatabaseFactory.getInstance().getConnection(); // data -> date // p
-		 * = c.prepareStatement(
-		 * "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
-		 * ); p = c.prepareStatement(
-		 * "INSERT INTO log_item SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x=?, char_y=?, char_mapid=?"
-		 * );
-		 *
-		 * p.setString(1, sTemp); p.setString(2, pc.getAccountName());
-		 * p.setInt(3, pc.getId()); p.setString(4, pc.getName()); p.setInt(5,
-		 * item.getId()); p.setInt(6, item.getItemId()); p.setString(7,
-		 * item.getName()); p.setInt(8, item.getEnchantLevel()); p.setInt(9,
-		 * count); p.setInt(10, pc.getX()); p.setInt(11, pc.getY());
-		 * p.setInt(12, pc.getMapId()); p.executeUpdate(); bool = true;
-		 * }catch(Exception e){ e.printStackTrace(); }finally{ SQLUtil.close(p);
-		 * SQLUtil.close(c); }
-		 **/
+		* Connection c = null; PreparedStatement p = null; try{ switch(type){
+		* case 0://DROP_LOG // x, y, map, itme_name drop // sTemp = "DROP" +
+		* pc.getX() + " " + pc.getY() + " " + pc.getMap().getId() + " " +
+		* item.getName(); if(!GMCommands.log_drop) return false; sTemp = "[ドロップ]";
+		* break; case 1://PICKUP_LOG if(!GMCommands.log_pickup) return false; sTemp
+		* = "[ピックアップ]"; break; case 2:// Delete_Log sTemp = "[削除]"; break; case 3:
+		* if(!GMCommands.log_溶解) return false; sTemp = "[溶解]"; break; } c =
+		* L1DatabaseFactory.getInstance().getConnection(); // data - > date // p
+		* = c.prepareStatement(
+		* "insert into log_test set type=?, char_name=?, comment=?, data=sysdate()"
+		*）; p = c.prepareStatement(
+		* "INSERT INTO log_item SET time=SYSDATE(), type=?, account=?, char_id=?, char_name=?, item_id=?, item=?, item_name=?, item_enchant=?, item_count=?, char_x= ?, char_y=?, char_mapid=?"
+		*）;
+		*
+		* p.setString(1, sTemp); p.setString(2, pc.getAccountName());
+		* p.setInt(3, pc.getId()); p.setString(4, pc.getName()); p.setInt(5,
+		* item.getId()); p.setInt(6, item.getItemId()); p.setString(7,
+		* item.getName()); p.setInt(8, item.getEnchantLevel()); p.setInt(9,
+		* count); p.setInt(10, pc.getX()); p.setInt(11, pc.getY());
+		* p.setInt(12, pc.getMapId()); p.executeUpdate(); bool = true;
+		*} catch（Exception e）{e.printStackTrace（）; }finally {SQLUtil.close（p）;
+		* SQLUtil.close(c); }
+		**/
 		return bool;
 	}
 
 	/**
-	 * 디비로 창고 로그를 기록
+	 * Divyで倉庫ログを記録する
 	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            Log type 0=개인넣기 1=개인찾기 2=요정넣기 3= 요정찾기 4=웹창고
-	 * @return 성공 true 실패 false used : if(LogTable.getInstance().insert(pc,
+	 *            Log type 0=個人を入れる1=個人を探す2=妖精を入れる3=妖精を探す4=ウェブ倉庫
+	 * @return 成功 true 失敗 false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -409,19 +409,19 @@ public class LogTable {
 		try {
 			switch (type) {
 			case 0:
-				sTemp = "개인넣기";
+				sTemp = "個人を入れる";
 				break;
 			case 1:
-				sTemp = "개인찾기";
+				sTemp = "個人を探す";
 				break;
 			case 2:
-				sTemp = "요정넣기";
+				sTemp = "妖精を入れる";
 				break;
 			case 3:
-				sTemp = "요정찾기";
+				sTemp = "妖精を探す";
 				break;
 			case 4:
-				sTemp = "웹창고";
+				sTemp = "ウェブ倉庫";
 				break;
 			}
 			c = L1DatabaseFactory.getInstance().getConnection();
@@ -447,16 +447,16 @@ public class LogTable {
 	}
 
 	/**
-	 * 디비로 클랜 창고 로그를 기록
+	 * ディビロクラン倉庫ログを記録
 	 *
 	 * @param pc
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
 	 * @param type
-	 *            Log type 0=넣기 1=찾기
+	 *            Log type 0=入れる 1=探す
 	 * @return
-	 * @return 성공 true 실패 false used : if(LogTable.getInstance().insert(pc,
+	 * @return 成功 true 失敗 false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 
@@ -469,10 +469,10 @@ public class LogTable {
 		try {
 			switch (type) {
 			case 0:
-				sTemp = "넣기";
+				sTemp = "入れる";
 				break;
 			case 1:
-				sTemp = "찾기";
+				sTemp = "検索";
 				break;
 			}
 			c = L1DatabaseFactory.getInstance().getConnection();
@@ -535,7 +535,7 @@ public class LogTable {
 	 *            Pc Instance
 	 * @param item
 	 *            item Instance
-	 * @return 성공 true 실패 false used : if(LogTable.getInstance().insert(pc,
+	 * @return 成功 true 失敗 false used : if(LogTable.getInstance().insert(pc,
 	 *         item, LogTable.DROP_LOG)){ System.out.println("Log Write OK,"); }
 	 */
 

@@ -22,7 +22,7 @@ package l1j.server.server.datatables;
 import l1j.server.Config;
 
 /**
- * °æÇèÄ¡ Å×ÀÌºíÀ» Á¦°øÇÏ´Â Å¬·¡½º
+ * çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’æä¾›ã™ã‚‹ã‚¯ãƒ©ã‚¹
  */
 public final class ExpTable {
 	private ExpTable() {
@@ -33,39 +33,38 @@ public final class ExpTable {
 	public static final int MAX_EXP = 0x6ecf16da;
 
 	/**
-	 * ÁöÁ¤µÈ ·¹º§ÀÌ µÇ´Âµ¥ ÇÊ¿äÇÑ ´©Àû °æÇèÄ¡¸¦ ¿ä±¸ÇÑ´Ù.
-	 * 
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ¬ãƒ™ãƒ«ã«ãªã‚‹ã®ã«å¿…è¦ãªç´¯ç©çµŒé¨“å€¤ã‚’æ±‚ã‚ã‚‹ã€‚
+	 *
 	 * @param level
-	 *            ·¹º§
-	 * @return ÇÊ¿äÇÑ ´©Àû °æÇèÄ¡
+	 *            ãƒ¬ãƒ™ãƒ«
+	 * @return å¿…è¦ãªç´¯ç©çµŒé¨“å€¤
 	 */
 	public static int getExpByLevel(int level) {
 		return _expTable[level - 1];
 	}
 
 	/**
-	 * ´ÙÀ½ÀÇ ·¹º§ÀÌ µÇ´Âµ¥ ÇÊ¿äÇÑ °æÇèÄ¡¸¦ ¿ä±¸ÇÑ´Ù.
-	 * 
+	 * æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã«ãªã‚‹ã®ã«å¿…è¦ãªçµŒé¨“å€¤ã‚’æ±‚ã‚ã‚‹ã€‚
+	 *
 	 * @param level
-	 *            ÇöÀçÀÇ ·¹º§
-	 * @return ÇÊ¿äÇÑ °æÇèÄ¡
+	 *            ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
+	 * @return å¿…è¦ãªçµŒé¨“å€¤
 	 */
 	public static int getNeedExpNextLevel(int level) {
 		return getExpByLevel(level + 1) - getExpByLevel(level);
 	}
 
 	/**
-	 * ´©Àû °æÇèÄ¡·ÎºÎÅÍ ·¹º§À» ¿ä±¸ÇÑ´Ù.
-	 * 
+	 * ç´¯ç©çµŒé¨“å€¤ã‹ã‚‰ãƒ¬ãƒ™ãƒ«ã‚’æ±‚ã‚ã‚‹ã€‚
+	 *
 	 * @param exp
-	 *            ´©Àû °æÇèÄ¡
-	 * @return ¿ä±¸µÈ ·¹º§
+	 *            ç´¯ç©çµŒé¨“å€¤
+	 * @return æ±‚ã‚ã‚‰ã‚ŒãŸãƒ¬ãƒ™ãƒ«
 	 */
 	public static int getLevelByExp(int exp) {
-
 		int level;
 		for (level = 1; level < _expTable.length; level++) {
-			// Æ®¸®Å°ÀÏÁöµµ ¸ğ¸¥´Ù¡¤¡¤¡¤
+			// ãƒˆãƒªãƒƒã‚­ãƒ¼ã‹ã‚‚ã—ã‚Œãªã„ãƒ»ãƒ»ãƒ»
 			if (exp < _expTable[level]) {
 				break;
 			}
@@ -77,16 +76,12 @@ public final class ExpTable {
 		return (int) (100.0 * ((double) (exp - getExpByLevel(level)) / (double) getNeedExpNextLevel(level)));
 	}
 
-	public static double À¯ÀúÆÛ¼¾Æ®(int level, int exp) {
-		return (((double) getNeedExpNextLevel(level) - getNeedExpNextLevel(level - 1)) / (double) exp) * 100.0;
-	}
-
 	/**
-	 * ÇöÀçÀÇ ·¹º§·ÎºÎÅÍ, °æÇèÄ¡ÀÇ Æä³ÎÆ¼ ·¹ÀÌÆ®¸¦ ¿ä±¸ÇÑ´Ù
-	 * 
+	 * ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ã‹ã‚‰ã€çµŒé¨“å€¤ã®ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ¼ãƒ¬ãƒ¼ãƒˆã‚’æ±‚ã‚ã‚‹
+	 *
 	 * @param level
-	 *            ÇöÀçÀÇ ·¹º§
-	 * @return ¿ä±¸µÈ °æÇèÄ¡ÀÇ Æä³ÎÆ¼ ·¹ÀÌÆ®
+	 *            ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
+	 * @return æ±‚ã‚ã‚‰ã‚ŒãŸçµŒé¨“å€¤ã®ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ¼ãƒ¬ãƒ¼ãƒˆ
 	 */
 	public static double getPenaltyRate(int level) {
 		if (level < 50) {
@@ -94,12 +89,23 @@ public final class ExpTable {
 		}
 		double expPenalty = 1.0;
 		expPenalty = 1.0 / _expPenalty[level - 50];
-
 		return expPenalty;
 	}
 
 	/**
-	 * °æÇèÄ¡ Å×ÀÌºí(´©ÀûÄ¡) Lv0-100
+	 * ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ã‹ã‚‰ã€çµŒé¨“å€¤ã®ãƒ¬ãƒ¼ãƒˆã‚’æ±‚ã‚ã‚‹
+	 *
+	 * @param level
+	 *            ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
+	 * @return æ±‚ã‚ã‚‰ã‚ŒãŸçµŒé¨“å€¤ã®ãƒ¬ãƒ¼ãƒˆ
+	 */
+	public static int getExpRate(int level) {
+		level = level - 50 < 0 ? 0 : level - 50;
+		return _expPenalty[level];
+	}
+
+	/**
+	 * çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«(ç´¯ç©å€¤) Lv0-100
 	 */
 	private static final int _expTable[] = { 0, 125, 300, 500, 750, 1296, 2401,
 			4096, 6581, 10000, 14661, 20756, 28581, 38436, 50645, 0x10014,
@@ -118,19 +124,25 @@ public final class ExpTable {
 			0x4e9071de, 0x50b6c122, 0x52dd1066, 0x55035faa, 0x5729aeee,
 			0x594ffe32, 0x5b764d76, 0x5d9c9cba, 0x5fc2ebfe, 0x61e93b42,
 			0x640f8a86, 0x6635d9ca, 0x685c290e, 0x6a827852, 0x6ca8c796,
-			0x6ecf16da, };
+			0x6ecf16da
+	};
 
-	public static int _expPenalty[] = { Config.LV50_EXP, Config.LV51_EXP,
-			Config.LV52_EXP, Config.LV53_EXP, Config.LV54_EXP, Config.LV55_EXP,
-			Config.LV56_EXP, Config.LV57_EXP, Config.LV58_EXP, Config.LV59_EXP,
-			Config.LV60_EXP, Config.LV61_EXP, Config.LV62_EXP, Config.LV63_EXP,
-			Config.LV64_EXP, Config.LV65_EXP, Config.LV66_EXP, Config.LV67_EXP,
-			Config.LV68_EXP, Config.LV69_EXP, Config.LV70_EXP, Config.LV71_EXP,
-			Config.LV72_EXP, Config.LV73_EXP, Config.LV74_EXP, Config.LV75_EXP,
-			Config.LV76_EXP, Config.LV77_EXP, Config.LV78_EXP, Config.LV79_EXP,
-			Config.LV80_EXP, Config.LV81_EXP, Config.LV82_EXP, Config.LV83_EXP,
-			Config.LV84_EXP, Config.LV85_EXP, Config.LV86_EXP, Config.LV87_EXP,
-			Config.LV88_EXP, Config.LV89_EXP, Config.LV90_EXP, Config.LV91_EXP,
-			Config.LV92_EXP, Config.LV93_EXP, Config.LV94_EXP, Config.LV95_EXP,
-			Config.LV96_EXP, Config.LV97_EXP, Config.LV98_EXP, Config.LV99_EXP };
+	/**
+	 * æ­»äº¡æ™‚çµŒé¨“å€¤ãƒšãƒŠãƒ«ãƒ†ã‚£ãƒ†ãƒ¼ãƒ–ãƒ«
+	 */
+	public static final int _expPenalty[] = { Config.LV50_EXP,
+			Config.LV51_EXP, Config.LV52_EXP, Config.LV53_EXP, Config.LV54_EXP,
+			Config.LV55_EXP, Config.LV56_EXP, Config.LV57_EXP, Config.LV58_EXP,
+			Config.LV59_EXP, Config.LV60_EXP, Config.LV61_EXP, Config.LV62_EXP,
+			Config.LV63_EXP, Config.LV64_EXP, Config.LV65_EXP, Config.LV66_EXP,
+			Config.LV67_EXP, Config.LV68_EXP, Config.LV69_EXP, Config.LV70_EXP,
+			Config.LV71_EXP, Config.LV72_EXP, Config.LV73_EXP, Config.LV74_EXP,
+			Config.LV75_EXP, Config.LV76_EXP, Config.LV77_EXP, Config.LV78_EXP,
+			Config.LV79_EXP, Config.LV80_EXP, Config.LV81_EXP, Config.LV82_EXP,
+			Config.LV83_EXP, Config.LV84_EXP, Config.LV85_EXP, Config.LV86_EXP,
+			Config.LV87_EXP, Config.LV88_EXP, Config.LV89_EXP, Config.LV90_EXP,
+			Config.LV91_EXP, Config.LV92_EXP, Config.LV93_EXP, Config.LV94_EXP,
+			Config.LV95_EXP, Config.LV96_EXP, Config.LV97_EXP, Config.LV98_EXP,
+			Config.LV99_EXP
+	};
 }

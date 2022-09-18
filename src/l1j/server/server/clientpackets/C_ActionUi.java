@@ -1583,7 +1583,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1610,7 +1610,7 @@ public class C_ActionUi extends ClientBasePacket {
 							Thread.sleep(10000);
 							// L1World.getInstance().broadcastPacketToAll(new S_ServerMessage(4433,
 							// item.getItem().getNameId(), pc.getName()));
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1636,7 +1636,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1677,7 +1677,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1724,7 +1724,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1778,7 +1778,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1825,7 +1825,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -1844,7 +1844,7 @@ public class C_ActionUi extends ClientBasePacket {
 					if (step >= 3) {
 						try {
 							Thread.sleep(10000);
-							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4433, item), true);
+							L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 						} catch (Exception e) {
 						}
 					}
@@ -3203,7 +3203,7 @@ public class C_ActionUi extends ClientBasePacket {
 							if (_Random.nextInt(100) < 100) { // 10% 확률로 대성공아이템.
 								createItem = pcIv.storeItem2(item.getItemId(), ci.makeCount * createItemCount, ci.enchant, ci.bless, ci.attr);
 								createItem.setBless(0);
-								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 3599, createItem), true);
+								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 3599, createItem), true);
 								commit("대성공 아이템 제작^금속테이블 : " + item.getName(), "", 1);
 								pc.sendPackets(new S_SkillSound(pc.getId(), 7976));
 								pc.broadcastPacket(new S_SkillSound(pc.getId(), 7976));

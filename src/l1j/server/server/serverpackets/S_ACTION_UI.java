@@ -47,7 +47,7 @@ public class S_ACTION_UI extends ServerBasePacket {
 	public static final int Elixir = 489;
 	public static final int ATTENDANCE_START = 544;
 	public static final int ATTENDANCE_ITEM = 548;
-	public static final int 리마월드메시지 = 592;
+	public static final int WORLD_MESSAGE_DROP = 592;
 	public static final int BMTYPE_DEL_CHECK_ACK = 605;
 	public static final int ATTENDANCE_COMPLETE = 1004;
 	public static final int ATTENDANCE_TIMEOVER = 1005;
@@ -196,7 +196,7 @@ public class S_ACTION_UI extends ServerBasePacket {
 		writeC(Opcodes.S_EXTENDED_PROTOBUF);
 		writeH(type);
 		switch (type) {
-		case 리마월드메시지:
+		case WORLD_MESSAGE_DROP:
 			String ItemEnchantLV = " +" + Item.getEnchantLevel();
 			String Bleesed = "축복 받은 ";
 			String ItemAttrEnchantLV = null;
@@ -302,7 +302,7 @@ public class S_ACTION_UI extends ServerBasePacket {
 		writeC(Opcodes.S_EXTENDED_PROTOBUF);
 		writeH(type);
 		switch (type) {
-		case 리마월드메시지:
+		case WORLD_MESSAGE_DROP:
 			String ItemEnchantLV = " +" + Item.getEnchantLevel();
 			String Bleesed = "축복 받은 ";
 			String ItemAttrEnchantLV = null;

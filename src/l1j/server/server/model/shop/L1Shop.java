@@ -1716,7 +1716,7 @@ public class L1Shop {
 			inv.storeItem(L1ItemId.ADENA, totalPrice);
 			// 버경 엔피씨 제외
 			if (getNpcId() != 70035 && getNpcId() != 70041 && getNpcId() != 70042)
-				LogTable.상점아덴(orderList.getPc(), totalPrice);
+				LogTable.storeLog(orderList.getPc(), totalPrice);
 		}
 		if (gmList != null && gmList.size() > 0)
 			gmList.clear();

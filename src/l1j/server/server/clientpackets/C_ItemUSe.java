@@ -4104,7 +4104,7 @@ public class C_ItemUSe extends ClientBasePacket {
 								pc.getInventory().removeItem(useItem, 1);
 								pc.sendPackets(new S_SystemMessage("" + SuccItem2.getName() + "획득"), true); // 소생 성공시 UI와 함께 멘트 출력
 								pc.sendPackets(new S_SystemMessage("" + SuccItem2.getName() + "은(는) 새 생명이 부여되었습니다."), true);
-								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 5085, l1iteminstance1), true);
+								L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 5085, l1iteminstance1), true);
 							} else {
 								pc.getInventory().removeItem(l1iteminstance1, 1);
 								pc.getInventory().removeItem(useItem, 1);
@@ -6337,7 +6337,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		for (int NewitemId : 영웅의찬란한상자월드메시지) {
 			if (item.getItem().getItemId() == NewitemId) {
 				// 상자 개봉시 UI와 함께 멘트 출력 //메세지 코드 수정 못함 에게 를 획득 하였습니다. 라고 뜸
-				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 403, "어느 아덴 용사가 영웅의 찬란한 상자에서 ", item), true);
+				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 403, "어느 아덴 용사가 영웅의 찬란한 상자에서 ", item), true);
 
 			}
 		}
@@ -6724,7 +6724,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		int rnd = adencount[_random.nextInt(adencount.length)] * 10000;
 		L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, rnd);
 		pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + rnd + ")"), true);
-		LogTable.사냥아덴(pc, rnd);
+		LogTable.adenLog(pc, rnd);
 	}
 
 	private void 금화주머니(L1PcInstance pc) {
@@ -6734,22 +6734,22 @@ public class C_ItemUSe extends ClientBasePacket {
 			int count = 2500 + _random.nextInt(2000);// 최소 2500~4500 아데나
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else if (rnd < 990) {// 4%
 			int count = 77 + _random.nextInt(20000);// 최소 77~20077 아데나
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else if (rnd < 991) {// 0.1%
 			int count = 77 + _random.nextInt(777700);// 최소 77~77777 아데나 777,777원
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		} else {// 0.9%
 			int count = 77 + _random.nextInt(77700);// 최소 77~77777 아데나 777,777원
 			L1ItemInstance item = pc.getInventory().storeItem(L1ItemId.ADENA, count);
 			pc.sendPackets(new S_ServerMessage(403, item.getName() + " (" + count + ")"), true);
-			LogTable.사냥아덴(pc, count);
+			LogTable.adenLog(pc, count);
 		}
 	}
 

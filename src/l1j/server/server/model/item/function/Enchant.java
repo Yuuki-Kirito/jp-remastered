@@ -217,17 +217,17 @@ public class Enchant extends L1ItemInstance {
 
 		/** 무기 9이상 인첸시 메세지 출력 **/ // by.초작살미남
 		if (item.getItem().getType2() == 1 && newEnchantLvl >= 10) {
-			L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4444, item), true);
+			L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4444, item), true);
 		}
 		/** 악세 7이상 인첸시 메세지 출력 **/ // by.초작살미남
 		if (item.getItem().getType2() == 2) {
 			if (item.getItem().getType() >= 8 && item.getItem().getType() <= 12) {
 				if (newEnchantLvl >= 7) {
-					L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4445, item), true);
+					L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4445, item), true);
 				}
 			} /** 방어구 8이상 인첸시 메세지 출력 **/ // by.초작살미남
 			else if (newEnchantLvl >= 9) {
-				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.리마월드메시지, 4444, item), true);
+				L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4444, item), true);
 			}
 		}
 
