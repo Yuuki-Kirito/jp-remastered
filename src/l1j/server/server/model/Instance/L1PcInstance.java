@@ -88,9 +88,9 @@ import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.L1TownLocation;
 import l1j.server.server.model.L1War;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.L1데몰리션;
-import l1j.server.server.model.L1토마호크;
-import l1j.server.server.model.L1플레임;
+import l1j.server.server.model.L1Demolition;
+import l1j.server.server.model.L1Tomahawk;
+import l1j.server.server.model.L1flame;
 import l1j.server.server.model.LindBlessing;
 import l1j.server.server.model.MpDecreaseByScales;
 import l1j.server.server.model.MpRegenerationByDoll;
@@ -340,9 +340,9 @@ public class L1PcInstance extends L1Character {
 	int _PrimeaddSP = 0;
 
 	public boolean _CHECKING_PHONE_VERIFLCATION = false;
-	public L1토마호크 tomahawk_th = null;
-	public L1데몰리션 demolition_th = null;
-	public L1플레임 flame_th = null;
+	public L1Tomahawk tomahawk_th = null;
+	public L1Demolition demolition_th = null;
+	public L1flame flame_th = null;
 
 	public String EncObjid = "";
 

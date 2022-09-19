@@ -1813,7 +1813,7 @@ public class L1Attack {
 							_targetPc.flame_th.stop();
 						}
 					}
-					L1플레임 FLAME = new L1플레임(_pc, _targetPc);
+					L1flame FLAME = new L1flame(_pc, _targetPc);
 					FLAME.begin();
 					_targetPc.flame_th = FLAME;
 					_targetPc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.FLAME, 3 * 1000);
@@ -3821,13 +3821,13 @@ public class L1Attack {
 			int rnd = _random.nextInt(100);
 			if (rnd < 7) {
 				if (_targetNpc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FLAME)) {
-					if (_targetNpc.플레임th != null) {
-						_targetNpc.플레임th.stop();
+					if (_targetNpc.flame_th != null) {
+						_targetNpc.flame_th.stop();
 					}
 				}
-				L1플레임 FLAME = new L1플레임(_pc, _targetNpc);
+				L1flame FLAME = new L1flame(_pc, _targetNpc);
 				FLAME.begin();
-				_targetNpc.플레임th = FLAME;
+				_targetNpc.flame_th = FLAME;
 				_targetNpc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.FLAME, 3 * 1000);
 			}
 		}

@@ -28,17 +28,15 @@ import l1j.server.server.model.Instance.L1NpcInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.skill.L1SkillId;
 import l1j.server.server.serverpackets.S_DoActionGFX;
-import l1j.server.server.serverpackets.S_NewSkillIcons;
-import l1j.server.server.serverpackets.S_SkillSound;
 
-public class L1플레임 extends TimerTask {
+public class L1Demolition extends TimerTask {
 	private static final Random _random = new Random();
 	private ScheduledFuture<?> _future = null;
 	private int _timeCounter = 0;
 	private final L1PcInstance _pc;
 	private final L1Character _cha;
 
-	public L1플레임(L1PcInstance pc, L1Character cha) {
+	public L1Demolition(L1PcInstance pc, L1Character cha) {
 		_pc = pc;
 		_cha = cha;
 	}
@@ -53,7 +51,7 @@ public class L1플레임 extends TimerTask {
 			_timeCounter++;
 			attack();
 
-			if (_timeCounter >= 3) {
+			if (_cha.getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.DEMOLITION) < 0) {
 				stop();
 				return;
 			}
@@ -73,11 +71,10 @@ public class L1플레임 extends TimerTask {
 		if (_cha != null) {
 			if (_cha instanceof L1PcInstance) {
 				L1PcInstance target = (L1PcInstance) _cha;
-				target.sendPackets(new S_NewSkillIcons(L1SkillId.FLAME, false, -1));
-				target.flame_th = null;
+				target.demolition_th = null;
 			} else if (_cha instanceof L1NpcInstance) {
 				L1NpcInstance npc = (L1NpcInstance) _cha;
-				npc.플레임th = null;
+				npc.demolition_th = null;
 			}
 		}
 		if (_future != null) {
@@ -86,15 +83,13 @@ public class L1플레임 extends TimerTask {
 	}
 
 	public void attack() {
-		int damage = _pc.getAbility().getTotalStr() * 2 + 20;
+		int damage = _random.nextInt(160) + 80;
 		if (_cha instanceof L1PcInstance) {
 			L1PcInstance pc = (L1PcInstance) _cha;
 			pc.sendPackets(new S_DoActionGFX(pc.getId(),
 					ActionCodes.ACTION_Damage));
 			pc.broadcastPacket(new S_DoActionGFX(pc.getId(),
 					ActionCodes.ACTION_Damage));
-			_pc.sendPackets(new S_SkillSound(pc.getId(), 18509));// 12489
-			Broadcaster.broadcastPacket(_pc, new S_SkillSound(pc.getId(), 18509));
 			if (pc.getSkillEffectTimerSet()
 					.hasSkillEffect(L1SkillId.EARTH_BIND)
 					|| pc.getSkillEffectTimerSet().hasSkillEffect(
@@ -110,8 +105,6 @@ public class L1플레임 extends TimerTask {
 			L1NpcInstance npc = (L1NpcInstance) _cha;
 			npc.broadcastPacket(new S_DoActionGFX(npc.getId(),
 					ActionCodes.ACTION_Damage));
-			_pc.sendPackets(new S_SkillSound(npc.getId(), 18509));// 12489
-			Broadcaster.broadcastPacket(_pc, new S_SkillSound(npc.getId(), 18509));
 			if (npc.getSkillEffectTimerSet().hasSkillEffect(
 					L1SkillId.EARTH_BIND)
 					|| npc.getSkillEffectTimerSet().hasSkillEffect(

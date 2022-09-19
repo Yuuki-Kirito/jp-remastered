@@ -40,8 +40,8 @@ import l1j.server.server.model.L1PolyMorph;
 import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.L1War;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.L1데몰리션;
-import l1j.server.server.model.L1토마호크;
+import l1j.server.server.model.L1Demolition;
+import l1j.server.server.model.L1Tomahawk;
 import l1j.server.server.model.WeaponSkill;
 import l1j.server.server.model.Instance.L1ArrowInstance;
 import l1j.server.server.model.Instance.L1AuctionBoardInstance;
@@ -4866,13 +4866,13 @@ public class L1SkillUse {
 					} else if (cha instanceof L1NpcInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
 						if (npc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.토마호크)) {
-							if (npc.토마호크th != null) {
-								npc.토마호크th.stop();
+							if (npc.tomahawk_th != null) {
+								npc.tomahawk_th.stop();
 							}
 						}
 					}
 
-					L1토마호크 토마 = new L1토마호크(_player, cha);
+					L1Tomahawk 토마 = new L1Tomahawk(_player, cha);
 					토마.begin();
 
 					if (cha instanceof L1PcInstance) {
@@ -4881,7 +4881,7 @@ public class L1SkillUse {
 						target.sendPackets(new S_NewCreateItem(S_NewCreateItem.버프창, true), true);
 					} else if (cha instanceof L1NpcInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
-						npc.토마호크th = 토마;
+						npc.tomahawk_th = 토마;
 					}
 				}
 					break;
@@ -5219,15 +5219,15 @@ public class L1SkillUse {
 						L1NpcInstance npc = (L1NpcInstance) cha;
 						targetLevel = npc.getLevel();
 						if (npc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)) {
-							if (npc.데몰리션th != null) {
-								npc.데몰리션th.stop();
+							if (npc.demolition_th != null) {
+								npc.demolition_th.stop();
 							}
 						}
 
 						npc.receiveDamage(_user, _random.nextInt(70) + 80);
 					}
 
-					L1데몰리션 데몰리션 = new L1데몰리션(_player, cha);
+					L1Demolition 데몰리션 = new L1Demolition(_player, cha);
 					데몰리션.begin();
 
 					diffLevel = _player.getLevel() - targetLevel;
@@ -5270,7 +5270,7 @@ public class L1SkillUse {
 							|| cha instanceof L1DwarfInstance || cha instanceof L1TeleporterInstance || cha instanceof L1MerchantInstance
 							|| cha instanceof L1ScarecrowInstance || cha instanceof L1PeopleInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
-						npc.데몰리션th = 데몰리션;
+						npc.demolition_th = 데몰리션;
 						npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DEMOLITION, _shockStunDuration);
 					}
 				}

@@ -69,9 +69,9 @@ import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1Spawn;
 import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.L1데몰리션;
-import l1j.server.server.model.L1토마호크;
-import l1j.server.server.model.L1플레임;
+import l1j.server.server.model.L1Demolition;
+import l1j.server.server.model.L1Tomahawk;
+import l1j.server.server.model.L1flame;
 import l1j.server.server.model.map.L1Map;
 import l1j.server.server.model.map.L1WorldMap;
 import l1j.server.server.model.skill.L1SkillId;
@@ -106,8 +106,8 @@ public class L1NpcInstance extends L1Character {
 	public static final int MOVE_SPEED = 0;
 	public static final int ATTACK_SPEED = 1;
 	public static final int MAGIC_SPEED = 2;
-	public boolean 힐어그로 = false;
-	public boolean 이뮨어그로 = false;
+	public boolean _is_HILL_AGGRO = false;
+	public boolean _is_IMMUNE_AGGRO = false;
 	public boolean _isReoTH = false;
 	public static final int HIDDEN_STATUS_NONE = 0;
 	public static final int HIDDEN_STATUS_SINK = 1;
@@ -127,9 +127,9 @@ public class L1NpcInstance extends L1Character {
 	public int get트루타켓() { return _트루타켓; }
 	public void set트루타켓(int i) { _트루타켓 = i; }
 	public long NpcDeleteTime = 0;
-	public L1토마호크 토마호크th = null;
-	public L1데몰리션 데몰리션th = null;
-	public L1플레임 플레임th = null;
+	public L1Tomahawk tomahawk_th = null;
+	public L1Demolition demolition_th = null;
+	public L1flame flame_th = null;
 	public static final int CHAT_TIMING_APPEARANCE = 0;
 	public static final int CHAT_TIMING_DEAD = 1;
 	public static final int CHAT_TIMING_HIDE = 2;
@@ -1211,11 +1211,11 @@ public class L1NpcInstance extends L1Character {
 			 */
 			_hateList.add(cha, hate);
 			_dropHateList.add(cha, hate);
-			if (!힐어그로) {
+			if (!_is_HILL_AGGRO) {
 				_target = _hateList.getMaxHateCharacter();
 				checkTarget();
 			}
-			if (!이뮨어그로) {
+			if (!_is_IMMUNE_AGGRO) {
 				_target = _hateList.getMaxHateCharacter();
 				checkTarget();
 			}
@@ -1579,13 +1579,13 @@ public class L1NpcInstance extends L1Character {
 				// int rand = _random.nextInt(100)+1;
 
 				if (targetpc._Immune_aggro != null) {
-					이뮨어그로 = true;
+					_is_IMMUNE_AGGRO = true;
 					_hateList.add(targetpc._Immune_aggro, 0);
 					_target = targetpc._Immune_aggro;
 				}
 
 				if (targetpc._healagro != null) {
-					힐어그로 = true;
+					_is_HILL_AGGRO = true;
 					_hateList.add(targetpc._healagro, 0);
 					_target = targetpc._healagro;
 				}
@@ -1941,8 +1941,8 @@ public class L1NpcInstance extends L1Character {
 		_target = null;
 		_targetItemList.clear();
 		_targetItem = null;
-		힐어그로 = false;
-		이뮨어그로 = false;
+		_is_HILL_AGGRO = false;
+		_is_IMMUNE_AGGRO = false;
 	}
 
 	public void setMaster(L1PcInstance cha) {
