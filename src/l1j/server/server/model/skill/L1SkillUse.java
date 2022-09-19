@@ -1891,8 +1891,8 @@ public class L1SkillUse {
 			pc.sendPackets(new S_SystemMessage("인챈트 어큐러시의 효과가 느껴집니다."));
 			break;
 
-		case 뫼비우스:
-			pc.sendPackets(new S_NewSkillIcons(L1SkillId.뫼비우스, true, 5));
+		case MOBIUS:
+			pc.sendPackets(new S_NewSkillIcons(L1SkillId.MOBIUS, true, 5));
 			pc.sendPackets(new S_SystemMessage("뫼비우스: 원거리 보호 결계(행동 제약을 받음)."));
 			break;
 
@@ -4063,7 +4063,7 @@ public class L1SkillUse {
 					break;
 
 				case TRIPLE_ARROW: {
-					if (_target.getSkillEffectTimerSet().hasSkillEffect(뫼비우스)) {
+					if (_target.getSkillEffectTimerSet().hasSkillEffect(MOBIUS)) {
 						return;
 					} else {
 						boolean gfxcheck = false;
@@ -6672,7 +6672,7 @@ public class L1SkillUse {
 											|| pc.getMapId() == 106 || pc.getMapId() == 107 || pc.getMapId() == 108 || pc.getMapId() == 109
 											|| pc.getMapId() == 110 || pc.getMapId() == 12852 || pc.getMapId() == 12853 || pc.getMapId() == 12854
 											|| pc.getMapId() == 12855 || pc.getMapId() == 12856 || pc.getMapId() == 12857 || pc.getMapId() == 12858
-											|| pc.getMapId() == 12859 || pc.getMapId() == 12860 || pc.getMapId() == 12861) && pc.is오만텔())
+											|| pc.getMapId() == 12859 || pc.getMapId() == 12860 || pc.getMapId() == 12861) && pc._is_Omantel())
 									|| ((pc.getMapId() == 15410 || pc.getMapId() == 15420 || pc.getMapId() == 15430 || pc.getMapId() == 15440) && pc.is지배이반텔())
 									|| (!GameTimeClock.getInstance().getGameTime().isNight() && pc.getMapId() == 54)) {
 								L1Location newLocation = pc.getLocation().randomLocation(200, true);
@@ -6870,9 +6870,9 @@ public class L1SkillUse {
 					}
 						break;
 
-					case 뫼비우스: {
+					case MOBIUS: {
 						L1PcInstance pc = (L1PcInstance) cha;
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.뫼비우스, true, 5));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.MOBIUS, true, 5));
 						pc.sendPackets(new S_SystemMessage("뫼비우스: 원거리 보호 결계(행동 제약을 받음)."));
 					}
 						break;
@@ -7914,7 +7914,7 @@ public class L1SkillUse {
 	} // end runSkill()
 
 	private boolean isNotCancelable(int skillNum) {
-		return skillNum == ENCHANT_WEAPON || skillNum == BLESSED_ARMOR || skillNum == ABSOLUTE_BARRIER || skillNum == ADVANCE_SPIRIT || skillNum == 뫼비우스
+		return skillNum == ENCHANT_WEAPON || skillNum == BLESSED_ARMOR || skillNum == ABSOLUTE_BARRIER || skillNum == ADVANCE_SPIRIT || skillNum == MOBIUS
 				|| skillNum == SHOCK_STUN || skillNum == SHADOW_TAB || skillNum == PANTERA || skillNum == 기간틱 || skillNum == FORCE_STUN || skillNum == DEMOLITION || skillNum == ETERNITY
 				|| skillNum == PRIME || skillNum == HALPHAS || skillNum == POTENTIAL || skillNum == PHANTOM || skillNum == 파워그립 || skillNum == 데스페라도
 				|| skillNum == EMPIRE || skillNum == SCALES_Lind_DRAGON || skillNum == STATUS_UNDERWATER_BREATH || skillNum == INFERNO || skillNum == SHADOW_FANG

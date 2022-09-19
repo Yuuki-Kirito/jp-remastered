@@ -160,7 +160,7 @@ public class GMCommands {
 	public static boolean 자동생성방지 = false;
 	public static boolean 주시아이피체크 = false;
 	public static boolean 무인상점구매체크 = true;
-	public static boolean 케릭인증영자방 = false;
+	public static boolean _CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = false;
 	public static boolean 트리플포우스핵 = false;
 	public static boolean 용해로그 = false;
 	public static boolean _CONNECTION_NAME_CHECK = false;
@@ -992,8 +992,8 @@ public class GMCommands {
 			주시아이피체크 = !주시아이피체크;
 			gm.sendPackets(new S_SystemMessage("아이피체크 : " + 주시아이피체크), true);
 		} else if (cmd.equalsIgnoreCase("영자인증")) {
-			케릭인증영자방 = !케릭인증영자방;
-			gm.sendPackets(new S_SystemMessage("영자인증 : " + 케릭인증영자방), true);
+			_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = !_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM;
+			gm.sendPackets(new S_SystemMessage("영자인증 : " + _CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM), true);
 		} else if (cmd.equalsIgnoreCase("트리플스핵")) {
 			트리플포우스핵 = !트리플포우스핵;
 			gm.sendPackets(new S_SystemMessage("트리플스핵 : " + 트리플포우스핵), true);
@@ -2120,7 +2120,7 @@ public class GMCommands {
 
 	private void 폰인증시작(L1PcInstance gm) {
 		try {
-			Config.폰인증 = true;
+			Config._PHONE_AUTHENTICATION = true;
 			gm.sendPackets(new S_SystemMessage("폰인증 시스템 작동. 9레벨이 되면 감옥으로 텔됩니다."));
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".폰인증종료"));
@@ -2129,7 +2129,7 @@ public class GMCommands {
 
 	private void 폰인증종료(L1PcInstance gm) {
 		try {
-			Config.폰인증 = false;
+			Config._PHONE_AUTHENTICATION = false;
 			gm.sendPackets(new S_SystemMessage("폰인증 시스템을 중단합니다. 9레벨이 되어도 정상 이용됩니다."));
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".폰인증종료"));

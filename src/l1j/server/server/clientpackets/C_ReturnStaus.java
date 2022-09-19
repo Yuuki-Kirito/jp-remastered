@@ -236,7 +236,7 @@ public class C_ReturnStaus extends ClientBasePacket {
 								.getMaxMp()));
 						if (pc._CLAN_BUFF) {
 							pc.sendPackets(
-									new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
+									new S_PacketBox(S_PacketBox.CLAN_BUFF, 1), true);
 						}
 						hasadbuff(pc);
 
@@ -299,7 +299,7 @@ public class C_ReturnStaus extends ClientBasePacket {
 				pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
 				pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
 				if (pc._CLAN_BUFF) {
-					pc.sendPackets(new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
+					pc.sendPackets(new S_PacketBox(S_PacketBox.CLAN_BUFF, 1), true);
 				}
 				hasadbuff(pc);
 				L1Teleport.teleport(pc, 32612, 32734, (short) 4, 5, true);
@@ -315,9 +315,9 @@ public class C_ReturnStaus extends ClientBasePacket {
 		int Stathp = 0;
 		int Statmp = 0;
 		sr.setNowLevel(sr.getNowLevel() + 1);
-		Stathp = CalcStat.·¹º§¾÷ÇÇ(pc.getType(), sr.getMaxHp(), (byte) sr.getCon());
+		Stathp = CalcStat._level_up_fee(pc.getType(), sr.getMaxHp(), (byte) sr.getCon());
 		Statmp = CalcStat
-				.·¹º§¾÷¿¥ÇÇ(pc.getType(), sr.getMaxMp(), (byte) sr.getWis());
+				._level_up_mp(pc.getType(), sr.getMaxMp(), (byte) sr.getWis());
 		sr.setAC(CalcStat.¹°¸®¹æ¾î·Â(sr.getDex()));
 
 		sr.setMaxHp(sr.getMaxHp() + Stathp);

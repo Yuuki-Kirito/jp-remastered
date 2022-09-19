@@ -638,7 +638,7 @@ public class L1SkillId {
 	//public static final int 디스트로이 = 196;
 	public static final int IMPACT = 222;
 	public static final int 포커스스피릿츠 = 223;
-	public static final int 뫼비우스 = 224;
+	public static final int MOBIUS = 224;
 	public static final int RISING = 231;
 	public static final int 프라이드 = 93;
 	public static final int 블로우어택 = 94;

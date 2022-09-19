@@ -1166,10 +1166,10 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 뫼비우스:
+			case MOBIUS:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.뫼비우스, false, -1), true);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.MOBIUS, false, -1), true);
 					pc.sendPackets(new S_SystemMessage("뫼비우스의 효과가 사라집니다."));
 				}
 				break;

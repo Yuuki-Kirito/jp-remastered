@@ -320,7 +320,7 @@ public class S_PacketBox extends ServerBasePacket {
 	public static final int ROUND_DEL = 158;
 	public static final int WEAPON_RANGE = 160;
 	public static final int Ä¿½ºÁ¾·ù = 161;// A1
-	public static final int Ç÷¸Í¹öÇÁ = 165;// 173
+	public static final int CLAN_BUFF = 165;// 173
 	/*
 	 * [OPCODE = 239] 0000: ef ac e3 27 ab 11 17 00 00 00 00 00 01 d7 a5 e6
 	 * ...'............ 0010: 19 00 00 00 00 00 00 00 00 07 00 00 00 00 2e 3f
@@ -718,7 +718,7 @@ public class S_PacketBox extends ServerBasePacket {
 			writeC(value);
 			writeC(value);
 			break;
-		case Ç÷¸Í¹öÇÁ:
+		case CLAN_BUFF:
 			writeC(1);
 			if (value == 0)
 				writeC(0);

@@ -113,9 +113,9 @@ public class PremiumAinThread extends Thread {
 						try {
 
 							if (_client._CLAN_BUFF && _client.getLevel() < 99) {
-								_client.sendPackets(new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
+								_client.sendPackets(new S_PacketBox(S_PacketBox.CLAN_BUFF, 1), true);
 							} else if (_client._CLAN_BUFF) {
-								_client.sendPackets(new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 0), true);
+								_client.sendPackets(new S_PacketBox(S_PacketBox.CLAN_BUFF, 0), true);
 								_client._CLAN_BUFF = false;
 							}
 
@@ -318,7 +318,7 @@ public class PremiumAinThread extends Thread {
 					 * (short) 6202, 5, true); } }
 					 */
 
-					if (Config.ÆùÀÎÁõ) {
+					if (Config._PHONE_AUTHENTICATION) {
 						if (PhoneCheck.getnocheck(_client.getAccountName())) {
 							if (_client.getMapId() != 6202) {
 								L1Teleport.teleport(_client, 32928, 32864, (short) 6202, 5, true);

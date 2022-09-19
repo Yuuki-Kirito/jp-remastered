@@ -1158,7 +1158,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					if (getNpcTemplate().get_npcId() == 100849
 							|| getNpcTemplate().get_npcId() == 100850
 							|| getNpcTemplate().get_npcId() == 100851) {
-						((L1PcInstance) attacker)._ез.settime(31);
+						((L1PcInstance) attacker)._tell.settime(31);
 					}
 
 					

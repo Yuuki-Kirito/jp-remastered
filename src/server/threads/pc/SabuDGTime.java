@@ -249,11 +249,11 @@ public class SabuDGTime implements Runnable {
 				maxcount = 50;
 
 			if (maxcount <= ¾¾¾Ñ) {
-				if (player.¸ù¼¶ÅÚ´ë±â½Ã°£ <= 0) {
+				if (player.mongsumtel_waiting_time <= 0) {
 					L1Teleport.teleport(player, 33443, 32798, (short) 4, 5, true);
 					return;
 				} else {
-					player.¸ù¼¶ÅÚ´ë±â½Ã°£--;
+					player.mongsumtel_waiting_time--;
 				}
 			}
 

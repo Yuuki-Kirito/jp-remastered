@@ -48,7 +48,7 @@ import static l1j.server.server.model.skill.L1SkillId.SCALES_WATER_DRAGON;
 import static l1j.server.server.model.skill.L1SkillId.SHOCK_STUN;
 import static l1j.server.server.model.skill.L1SkillId.TELEPORT;
 import static l1j.server.server.model.skill.L1SkillId.TRUE_TARGET;
-import static l1j.server.server.model.skill.L1SkillId.뫼비우스;
+import static l1j.server.server.model.skill.L1SkillId.MOBIUS;
 import static l1j.server.server.model.skill.L1SkillId.EMPIRE;
 
 import l1j.server.Config;
@@ -131,7 +131,7 @@ public class C_UseSkill extends ClientBasePacket {
 			 * return; }
 			 */
 
-			if (Config.폰인증) {
+			if (Config._PHONE_AUTHENTICATION) {
 				if (PhoneCheck.getnocheck(pc.getAccountName())) {
 					pc.sendPackets(new S_SystemMessage(
 							"폰인증을위해 대기중 입니다. 자동으로 텔이 안될경우 운영자에게 문의하십시오."));
@@ -309,8 +309,8 @@ public class C_UseSkill extends ClientBasePacket {
 				pc.startMpRegenerationByDoll();
 			}
 
-			if (skillId != TELEPORT 	&& pc.getSkillEffectTimerSet().hasSkillEffect(뫼비우스)) { // 아브소르트바리아의 해제
-				pc.getSkillEffectTimerSet().killSkillEffectTimer(뫼비우스);
+			if (skillId != TELEPORT 	&& pc.getSkillEffectTimerSet().hasSkillEffect(MOBIUS)) { // 아브소르트바리아의 해제
+				pc.getSkillEffectTimerSet().killSkillEffectTimer(MOBIUS);
 				pc.startHpRegenerationByDoll();
 				pc.startMpRegenerationByDoll();
 			}

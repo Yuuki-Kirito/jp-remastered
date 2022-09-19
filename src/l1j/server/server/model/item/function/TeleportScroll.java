@@ -20,6 +20,7 @@
 package l1j.server.server.model.item.function;
 
 import java.util.Random;
+
 import l1j.server.server.clientpackets.ClientBasePacket;
 import l1j.server.server.model.L1CastleLocation;
 import l1j.server.server.model.L1Character;
@@ -287,7 +288,7 @@ public class TeleportScroll extends L1ItemInstance {
 								|| pc.getMapId() == 105 || pc.getMapId() == 106 || pc.getMapId() == 107 || pc.getMapId() == 108 || pc.getMapId() == 109 
 								|| pc.getMapId() == 110 || pc.getMapId() == 12852 || pc.getMapId() == 12853 || pc.getMapId() == 12854 || pc.getMapId() == 12855
 								|| pc.getMapId() == 12856 || pc.getMapId() == 12857 || pc.getMapId() == 12858 || pc.getMapId() == 12859 || pc.getMapId() == 12860
-								|| pc.getMapId() == 12861) && pc.is오만텔())
+								|| pc.getMapId() == 12861) && pc._is_Omantel())
 								|| ((pc.getMapId() == 15410 || pc.getMapId() == 15420 || pc.getMapId() == 15430 || pc.getMapId() == 15440) && pc.is지배이반텔())
 								|| (!GameTimeClock.getInstance().getGameTime().isNight() &&  pc.getMapId() == 54)) {
 //							 L1Location newLocation = pc.getLocation().saburan(pc.getMap());

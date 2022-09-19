@@ -134,7 +134,7 @@ public class C_Attack extends ClientBasePacket {
 				return;
 			}
 
-			if (Config.폰인증) {
+			if (Config._PHONE_AUTHENTICATION) {
 				if (PhoneCheck.getnocheck(pc.getAccountName())) {
 					pc.sendPackets(new S_SystemMessage("폰인증을위해 대기중 입니다. 자동으로 텔이 안될경우 운영자에게 문의하십시오."));
 					return;
@@ -181,8 +181,8 @@ public class C_Attack extends ClientBasePacket {
 				pc.startMpRegenerationByDoll();
 			}
 
-			if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.뫼비우스)) { // 아브소르트바리아의 해제
-				pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.뫼비우스);
+			if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.MOBIUS)) { // 아브소르트바리아의 해제
+				pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.MOBIUS);
 				// pc.startHpRegeneration();
 				// pc.startMpRegeneration();
 				pc.startHpRegenerationByDoll();

@@ -101,7 +101,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(9518);
 			} else if (skillId == L1SkillId.SHINING_ARMOR) {// 
 				byteWrite(9483);
-			} else if (skillId == L1SkillId.뫼비우스) {// 
+			} else if (skillId == L1SkillId.MOBIUS) {// 
 				byteWrite(9443);
 			} else if (skillId == L1SkillId.SCALES_EARTH_DRAGON) {// 
 				byteWrite(3182);
@@ -260,7 +260,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5892;
 			else if (skillId == L1SkillId.마제스티)// 
 				msgNum = 5893;
-			else if (skillId == L1SkillId.뫼비우스)// 
+			else if (skillId == L1SkillId.MOBIUS)// 
 				msgNum = 5550;
 			else if (skillId == L1SkillId.SCALES_EARTH_DRAGON)// 
 				msgNum = 2267;

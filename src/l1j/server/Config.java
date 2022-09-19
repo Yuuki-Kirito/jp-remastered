@@ -106,7 +106,7 @@ public final class Config {
 	public static ArrayList<Integer> spractionerr = new ArrayList<Integer>();
 
 	public static int teste = 8700;
-	public static boolean 폰인증 = false;
+	public static boolean _PHONE_AUTHENTICATION = false;
 	public static int test = 0;
 	public static int aaaaa = 0;
 

@@ -1619,7 +1619,7 @@ public class S_NewCreateItem extends ServerBasePacket {
 					(byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff,
 					(byte) 0xff, (byte) 0x01 };
 			int 피회복틱 = CalcStat.피회복틱(stat);
-			int 물약회복증가 = CalcStat.물약회복증가(stat);
+			int 물약회복증가 = CalcStat.potion_recovery_increase(stat);
 			int 최대소지무게 = CalcStat.최대소지무게(stat, stat2);
 			int 레벨업피증가량 = CalcStat.레벨업피증가량(classtype, stat);
 

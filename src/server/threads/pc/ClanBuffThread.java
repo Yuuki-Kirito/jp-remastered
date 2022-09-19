@@ -49,18 +49,18 @@ public class ClanBuffThread implements Runnable {
 							if (!pc._CLAN_BUFF && pc.getLevel() < 99) {
 								pc._CLAN_BUFF = true;
 								pc.sendPackets(new S_PacketBox(
-										S_PacketBox.Ç÷¸Í¹öÇÁ, 1), true);
+										S_PacketBox.CLAN_BUFF, 1), true);
 							}
 						} else {
 							if (pc._CLAN_BUFF) {
 								pc.sendPackets(new S_PacketBox(
-										S_PacketBox.Ç÷¸Í¹öÇÁ, 0), true);
+										S_PacketBox.CLAN_BUFF, 0), true);
 								pc._CLAN_BUFF = false;
 							}
 						}
 					}
 				} else if (pc._CLAN_BUFF) {
-					pc.sendPackets(new S_PacketBox(S_PacketBox.Ç÷¸Í¹öÇÁ, 0), true);
+					pc.sendPackets(new S_PacketBox(S_PacketBox.CLAN_BUFF, 0), true);
 					pc._CLAN_BUFF = false;
 				}
 				if (!pc.getMap().isTakePets()) {

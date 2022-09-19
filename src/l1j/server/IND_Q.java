@@ -120,7 +120,7 @@ public class IND_Q implements Runnable {
 								if (蝴单胶 != null) {
 									蝴单胶.Wchat_start(player);
 								}
-								player.牢带辆丰炮();
+								player.indun_endtel();
 							}
 						}
 					} else if (_ind._type == 6) {// 根级

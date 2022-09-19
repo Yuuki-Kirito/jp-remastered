@@ -913,7 +913,7 @@ public class L1Attack {
 		}
 
 		if (최종공격성공확률 > 0 && (_weaponType == 20 || _weaponType == 62)) {
-			if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(뫼비우스)) {
+			if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(MOBIUS)) {
 				최종공격성공확률 = 0;
 			}
 		}
@@ -1295,7 +1295,7 @@ public class L1Attack {
 
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(ABSOLUTE_BARRIER) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_안전모드)) {
 			_hitRate = 0;
-		} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(뫼비우스) && _npc.getNpcTemplate().getBowActId() == 66) {
+		} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(MOBIUS) && _npc.getNpcTemplate().getBowActId() == 66) {
 			_hitRate = 0;
 		} else if (_npc.getNpcId() >= 100584 && _npc.getNpcId() <= 100589) {
 			_hitRate = 100;
@@ -5961,7 +5961,7 @@ public class L1Attack {
 		} else {
 			if (_target.getSkillEffectTimerSet().hasSkillEffect(ABSOLUTE_BARRIER) || _target.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_안전모드)) {
 				_isHit = false;
-			} else if (_target.getSkillEffectTimerSet().hasSkillEffect(뫼비우스) && (_weaponType == 20 || _weaponType == 62)) {
+			} else if (_target.getSkillEffectTimerSet().hasSkillEffect(MOBIUS) && (_weaponType == 20 || _weaponType == 62)) {
 				_isHit = false;
 			}
 			byte motion = ActionCodes.ACTION_Attack;
@@ -6258,7 +6258,7 @@ public class L1Attack {
 				_damage = 0;
 				_drainMana = 0;
 				_drainHp = 0;
-			} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(뫼비우스) && (_weaponType == 20 || _weaponType == 62)) {
+			} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(MOBIUS) && (_weaponType == 20 || _weaponType == 62)) {
 				_damage = 0;
 				_drainMana = 0;
 				_drainHp = 0;
@@ -6302,7 +6302,7 @@ public class L1Attack {
 					|| _targetPc.getSkillEffectTimerSet().hasSkillEffect(MOB_COCA)
 					|| _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_안전모드)) { // 코카얼리기데미지0
 				_damage = 0;
-			} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(뫼비우스) && _npc.getNpcTemplate().getBowActId() >= 1) {
+			} else if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(MOBIUS) && _npc.getNpcTemplate().getBowActId() >= 1) {
 				_damage = 0;
 			}
 			_targetPc.receiveDamage(_npc, _damage, false);

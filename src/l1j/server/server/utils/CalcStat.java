@@ -1278,7 +1278,7 @@ public class CalcStat {
 		return bbb;
 	}
 
-	public static int 레벨업엠피(int charType, int baseMaxMp, int wis) {
+	public static int _level_up_mp(int charType, int baseMaxMp, int wis) {
 		int addmp = 0;
 		switch (charType) {
 		case 0:
@@ -2173,7 +2173,7 @@ public class CalcStat {
 		return returnhp;
 	}
 
-	public static int 레벨업피(int charType, int baseMaxHp, int totalCon) {
+	public static int _level_up_fee(int charType, int baseMaxHp, int totalCon) {
 		int startcon = 0;
 		int starthp = 0;
 		int returnhp = 0;
@@ -2944,7 +2944,7 @@ public class CalcStat {
 			16, 17, 17, 18, 19, 20, 20, 21, 21, 22,// 31~40
 			22, 23, 23, 24, 27 };// 41~45
 
-	public static int 물약회복증가(int con) {
+	public static int potion_recovery_increase(int con) {
 		try {
 			int i = 0;
 			if (con >= 20)
