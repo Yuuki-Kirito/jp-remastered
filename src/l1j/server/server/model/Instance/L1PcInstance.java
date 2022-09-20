@@ -68,6 +68,7 @@ import l1j.server.server.model.L1CastleLocation;
 import l1j.server.server.model.L1Character;
 import l1j.server.server.model.L1ChatParty;
 import l1j.server.server.model.L1Clan;
+import l1j.server.server.model.L1Demolition;
 import l1j.server.server.model.L1EquipmentSlot;
 import l1j.server.server.model.L1ExcludingLetterList;
 import l1j.server.server.model.L1ExcludingList;
@@ -85,11 +86,10 @@ import l1j.server.server.model.L1PolyMorph;
 import l1j.server.server.model.L1Quest;
 import l1j.server.server.model.L1StatReset;
 import l1j.server.server.model.L1Teleport;
+import l1j.server.server.model.L1Tomahawk;
 import l1j.server.server.model.L1TownLocation;
 import l1j.server.server.model.L1War;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.L1Demolition;
-import l1j.server.server.model.L1Tomahawk;
 import l1j.server.server.model.L1flame;
 import l1j.server.server.model.LindBlessing;
 import l1j.server.server.model.MpDecreaseByScales;
@@ -191,8 +191,8 @@ public class L1PcInstance extends L1Character {
 
 	//
 	private String diement = null;
-	private static String[] _diementArray = { "もう死ぬか", "ㅡㅡ", "ダイ", "ㅋㅋㅋㅋㅋㅋ", "", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-			"犬のご飯", "", "何ですか？", "オフにしてください〜ㅋㄷㅋㄷ", "あなたはリネージュしないでください。", "カット〜！ それも걍カットです。", "ㅋㅋㅋㅋㅋㅋ", " ^^",
+	private static String[] _diementArray = { "もう死ぬか", "ㅡㅡ", "ダイ", "wwwww", "", "wwwwwwwwww",
+			"犬のご飯", "", "何ですか？", "オフにしてください〜ㅋㄷㅋㄷ", "あなたはリネージュしないでください。", "カット〜！ それも걍カットです。", "wwwwww", " ^^",
 			"寒くないですか？", "滞在？", "可愛いです", "バハバンヤバラミルタ心境〜", "ㅎㅎ~", "耳よみ", "おかしいとマイン〜", "気にしないで", "ダイｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗ", "消してください〜",
 			"私は消えて〜" };
 	private String die2ment = null;
@@ -8285,7 +8285,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	// ///////////////////////////////////////////////////////////////////////////////////////////////
-	// ////////////////////// 스피드핵 방지
+	// ////////////////////// スピード核防止
 	// //////////////////////////////////////////////////////////
 
 	private int hackTimer = -1;
@@ -8297,7 +8297,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	public void increase_hackTimer() {
-		// System.out.println(getName()+" 핵체크 : "+hackTimer);
+		// System.out.println(getName()+" 核チェック : "+hackTimer);
 		if (hackTimer < 0)
 			return;
 		hackTimer++;
@@ -8305,13 +8305,13 @@ public class L1PcInstance extends L1Character {
 
 	public void init_hackTimer() {
 		hackTimer = 0;
-		// 스피드 핵 관련 쓰레드에 추가
+		// Added to speed hack related thread
 	}
 
 	/*
-	 * public void calc_hackTimer() { //스핵발견2 주 석처리 //
+	 * public void calc_hackTimer() { //Snack discovery 2 Comment processing //
 	 * System.out.println(hackTimer); if (hackTimer < 0) return; else if (hackTimer
-	 * <= 40) { System.out.println("스핵발견1  : " + this.getName());
+	 * <= 40) { System.out.println("Snack discovery1  : " + this.getName());
 	 * _netConnection.close(); this.logout(); } else if (hackTimer <= 55) { if
 	 * (hackCKtime < 0 || hackCKtime < hackTimer - 1 || hackCKtime > hackTimer + 1)
 	 * { hackCKtime = hackTimer; hackCKcount = 1; } else { hackCKcount++; if
