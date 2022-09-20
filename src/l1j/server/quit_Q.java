@@ -51,7 +51,7 @@ public class quit_Q implements Runnable {
 					L1PcInstance pc = _queue.peek();
 					if (_queue.size() > 100) {
 						if (System.currentTimeMillis() > time) {
-							System.out.println("Á¾·á Å¥ 100°³ ÀÌ»ó : " + _queue.size());
+							System.out.println("More than 100 exit queues : " + _queue.size());
 							time = System.currentTimeMillis() + (1000 * 10);
 						}
 					}
@@ -73,7 +73,7 @@ public class quit_Q implements Runnable {
 						if (Config._connection_chat_monitor() > 0) {
 							for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {
 								if (gm.getNetConnection() == null) {
-									Config.removeÁ¢¼Ó(gm);
+									Config.remove_connection(gm);
 									continue;
 								}
 								
@@ -81,19 +81,19 @@ public class quit_Q implements Runnable {
 									continue;
 								}
 								
-								gm.sendPackets(new S_SystemMessage("\\fY[" + pc.getName() + "] (Á¾·á) / °èÁ¤:" + pc.getAccountName()));
+								gm.sendPackets(new S_SystemMessage("\\fY[" + pc.getName() + "] (end) / account:" + pc.getAccountName()));
 							}
 						}
 
-						if (pc.isGm()) Config.removeÀüÃ¼(pc);
+						if (pc.isGm()) Config.removeALL(pc);
 
-						pc.set_delete(true); // Çã°ø¹ö±× ÇÈ½º
+						pc.set_delete(true); // air bug fix
 						pc.setadFeature(1);
 						pc.setDeathMatch(false);
 						pc.setHaunted(false);
 						pc.setPetRacing(false);
 
-						// »ç¸ÁÇÏ°í ÀÖÀ¸¸é(ÀÚ) °Å¸®¿¡ µÇµ¹·Á, °øº¹ »óÅÂ·Î ÇÑ´Ù
+						// æ­»ã‚“ã§ã„ã‚‹ã¨è¡—ã«æˆ»ã‚Šã€ç©ºè…¹çŠ¶æ…‹ã«ã™ã‚‹
 						if (pc.isDead()) {
 							int[] loc = Getback.GetBack_Location(pc, true);
 							pc.setX(loc[0]);
@@ -104,7 +104,7 @@ public class quit_Q implements Runnable {
 							loc = null;
 						}
 						
-						// ÀÚ½ÅÀÇ ¼º ±ÙÃ³¿¡¼­ Á¾·á½Ã ³»¼ºÀ¸·Î À§Ä¡ ¼ÂÆÃ
+						// è‡ªåˆ†ã®åŸã®è¿‘ãã§çµ‚äº†æ™‚ã«è€æ€§ã§ä½ç½®ã‚’è¨­å®š
 						if (pc.getClan() != null && pc.getClan().getCastleId() > 0) {
 							if (L1CastleLocation.checkInWarArea(pc.getClan().getCastleId(), pc)) {
 								int[] loc = L1CastleLocation.getCastleLoc(pc.getClan().getCastleId());
@@ -122,7 +122,7 @@ public class quit_Q implements Runnable {
 							pc.getMoveState().setHeading(pc._ghostSaveHeading);
 						}
 
-						// Ç÷¸ÍÃ¢°í »ç¿ëµµÁß ÆÃ±â°Å³ª Á¾·áÇÒ°æ¿ì Ç÷¸ÍÃ¢°í »ç¿ëÁß ÇØÁ¦(Äí¿ì)
+						// è¡€ç›Ÿå€‰åº«ã®ä½¿ç”¨ä¸­ã«å‹ƒèµ·ã—ãŸã‚Šçµ‚äº†ã™ã‚‹å ´åˆã€è¡€ç›Ÿå€‰åº«ã®ä½¿ç”¨ä¸­è§£é™¤ï¼ˆã‚¯ã‚¦ï¼‰
 						ClanWarehouse clanWarehouse = null;
 						L1Clan clan = L1World.getInstance().getClan(pc.getClanname());
 						if (clan != null) {
@@ -134,13 +134,13 @@ public class quit_Q implements Runnable {
 							clanWarehouse.unlock(pc.getId());
 						}
 
-						// Æ®·¹ÀÌµå¸¦ ÁßÁöÇÑ´Ù
-						if (pc.getTradeID() != 0) { // Æ®·¹ÀÌµåÁß
+						// ãƒˆãƒ¬ãƒ¼ãƒ‰ã‚’åœæ­¢ã™ã‚‹
+						if (pc.getTradeID() != 0) { // ãƒˆãƒ¬ãƒ¼ãƒ‰ä¸­
 							L1Trade trade = new L1Trade();
 							trade.TradeCancel(pc);
 						}
 
-						// °áÅõÁß
+						// æ±ºé—˜ä¸­
 						if (pc.getFightId() != 0) {
 							pc.setFightId(0);
 							L1PcInstance fightPc = (L1PcInstance) L1World.getInstance().findObject(pc.getFightId());
@@ -162,7 +162,7 @@ public class quit_Q implements Runnable {
 							PetRacing.getInstance().removeEnterMember(pc);
 						}
 
-						/** ÆêÀÌ ¼ÒÈ¯ÁßÀÎÁö Ã¼Å©ÇØ¼­ Á¤¸® ÆêÀÌ ¸¸¾à Á×¾ú´Ù¸é ±×³É ³ªµÎµµ·ÏÇÔ */
+						/** ãƒšãƒƒãƒˆãŒå¬å–šã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã€ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ—ãƒšãƒƒãƒˆãŒæ­»ã‚“ã å ´åˆã¯ãã®ã¾ã¾æ”¾ç½®ã—ã¾ã™ã€‚ */
 						if (pc.getPetList() != null && pc.getPetListSize() > 0) {
 							for (Object petObject : pc.getPetList()) {
 								if (petObject == null) continue;
@@ -180,7 +180,7 @@ public class quit_Q implements Runnable {
 							}
 						}
 						
-						// ¸¶¹ı ÀÎÇüÀ» ¿ùµå ¸Ê»óÀ¸·ÎºÎÅÍ Áö¿î´Ù
+						// ãƒã‚¸ãƒƒã‚¯ãƒ‰ãƒ¼ãƒ«ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ä¸Šã‹ã‚‰æ¶ˆã™
 						if (pc.getDollList() != null && pc.getDollListSize() > 0) {
 							for (L1DollInstance doll : pc.getDollList()) {
 								if (doll != null) {
@@ -200,9 +200,9 @@ public class quit_Q implements Runnable {
 							}
 						}
 						
-						// Ä³¸¯ÅÍ Àû¿ë Áß ¹öÇÁ ¸ñ·Ï DB »èÁ¦
+						// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼é©ç”¨ä¸­ã®ãƒãƒ•ãƒªã‚¹ãƒˆDBå‰Šé™¤
 						CharBuffTable.DeleteBuff(pc);
-						// ·Î±×¾Æ¿ô ½Ã ÇöÀç Àû¿ë ÁßÀÎ ¹öÇÁ ¸ñ·Ï DB¿¡ ÀúÀå
+						// ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ™‚ã«ç¾åœ¨é©ç”¨ã•ã‚Œã¦ã„ã‚‹ãƒãƒ•ãƒªã‚¹ãƒˆDBã«ä¿å­˜
 						CharBuffTable.SaveBuff(pc);
 						MonsterBookTable.getInstace().saveMonsterBookList(pc.getId());
 						pc.getSkillEffectTimerSet().clearRemoveSkillEffectTimer();
@@ -216,40 +216,40 @@ public class quit_Q implements Runnable {
 						pc.setLogOutTime();
 						pc.setOnlineStatus(0);
 				
-						/** ÄÉ¸¯ÅÍ Á¤º¸ ÀúÀå */
+						/** ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã®ä¿å­˜ */
 						pc.save();
-						/** ÄÉ¸¯ÅÍ ÀÎº¥ ÀúÀå */
+						/** ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®åœ¨åº«ã‚’ä¿å­˜ */
 						pc.saveInventory();
 						
-						/** ÄÉ¸¯ÅÍ µğºñ Ä¿³Ø¼ÇÀÌ ³îÀÌ ¾Æ´Ï¶ó¸é */
+						/** If character div connection is not a game */
 						if(pc.getNetConnection() != null){
-							/** ÀÎ´ø Á¤º¸°¡ ÀÖ´ÂÁö Ã¼Å©ÇØ¼­ ÀÎ´ø »èÁ¦ ½ÃÅ°µµ·Ï */
+							/** Check if there is indung information and delete the indungeon */
 							DungeonSystem.isDungeonInfoPcCheck(pc);
-							/** ÀÎÅÍ¼­¹ö¿¡¼­ ¸®½º¸¦ Çß´Ù¸é ÀÎÅÍ¼­¹ö¿¡¼­ ºüÁ®³ª¿À°Ô ¼¼ÆÃ */
+							/** If you lease from the interserver, set it to exit from the interserver. */
 							if(!pc.getNetConnection().getInterServer()){
-								if (pc.isInParty()) { // ÆÄÆ¼Áß
+								if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 									pc.getParty().leaveMember(pc);
 								}
 								
-								if (pc.isInChatParty()) {// Ã¤ÆÃÆÄÆ¼Áß
+								if (pc.isInChatParty()) {// ãƒãƒ£ãƒƒãƒˆãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼
 									pc.getChatParty().leaveMember(pc);
 								}
 								
-								/** ÆÃ°Ü¼­ ¼ÒÄÏ¸¸ »ì¾ÆÀÖ´Ù¸é ·Î±×¾Æ¿ôÀ¸·Î ¸¶Áö¸· ·Î±×¾Æ¿ô ½Ã°£ ÀúÀå */
+								/** ã‚½ã‚±ãƒƒãƒˆã ã‘ãŒç”Ÿãã¦ã„ã‚‹å ´åˆã¯ã€ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã§æœ€å¾Œã®ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ™‚é–“ã‚’ä¿å­˜ã—ã¾ã™ã€‚ */
 								LoginController.getInstance().logout(pc.getNetConnection());
 							}
 							
-							/** µğºñ µ¥ÀÌÅ¸ Á¤º¸ ÀúÀå ÇÒ¼öÀÖµµ·Ï µû·Î º¸°ü ¼ÒÄÏÀÌ ¿­·ÁÀÕ¾î¾ß ÀúÀåµÇ´Â°Å±â¶§¹®¿¡ µû·Î º¸°ü */
+							/** DBãƒ‡ãƒ¼ã‚¿æƒ…å ±ã‚’ä¿å­˜ã§ãã‚‹ã‚ˆã†ã«åˆ¥ã«ä¿ç®¡ã‚½ã‚±ãƒƒãƒˆãŒé–‹ã‹ã‚Œãªã‘ã‚Œã°ä¿å­˜ã•ã‚Œã‚‹ãŸã‚ã€åˆ¥ã«ä¿ç®¡ */
 							pc.getNetConnection().getAccount().updateAttendanceTime();
 							pc.getNetConnection().getAccount().updateDGTime();
 							pc.getNetConnection().getAccount().updateTam();
 							pc.getNetConnection().getAccount().updateNcoin();
 							
-							/** ¼ÒÄÏ ´İ±â Ã¼Å©  */
+							/** ã‚½ã‚±ãƒƒãƒˆã‚¯ãƒ­ãƒ¼ã‚ºãƒã‚§ãƒƒã‚¯  */
 							pc.setNetConnection(null);
 						}
 						
-						/** ¿ÀºêÁ§Æ® »èÁ¦ */
+						/** ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‰Šé™¤ */
 						pc.logout();
 					} catch (Exception e) {
 						e.printStackTrace();

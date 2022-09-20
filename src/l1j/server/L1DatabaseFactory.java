@@ -10,25 +10,25 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import l1j.server.server.utils.LeakCheckedConnection;
 
 /**
- * DB¿¡ÀÇ ¾×¼¼½ºÇÏ±â À§ÇÑ °¢Á¾ ÀÎÅÍÆäÀÌ½º¸¦ Á¦°ø
+ * DBã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã®ãŸã‚ã®å„ç¨®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æä¾›
  */
 public class L1DatabaseFactory {
 	private static L1DatabaseFactory _instance = null;
 
-	/** DBÁ¢¼Ó Á¤º¸¸¦ Áı°èÇÑ °Í?  */
+	/** DBæ¥ç¶šæƒ…å ±ã‚’é›†è¨ˆã—ãŸã“ã¨ï¼Ÿ  */
 	private ComboPooledDataSource _source;
 
-	/** ¸Ş¼¼Áö ·Î±×¿ë.  */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ­ã‚°ç”¨.  */
 	private static Logger _log = Logger.getLogger(L1DatabaseFactory.class.getName());
 
-	/* DB ¾×¼¼½º¿¡ ÇÊ¿äÇÑ Á¤º¸µé */
-	/** DBÁ¢¼Ó µå¶óÀÌ¹ö.  */
+	/* DBã‚¢ã‚¯ã‚»ã‚¹ã«å¿…è¦ãªæƒ…å ± */
+	/** DBæ¥ç¶šdriver.  */
 	private static String _driver;
-	/** DB¼­¹öÀÇ URL.  */
+	/** DBã‚µãƒ¼ãƒãƒ¼ã®URL.  */
 	private static String _url;     
-	/** DB¼­¹ö¿¡ Á¢¼ÓÇÏ´Â À¯Àú¸í.  */
+	/** DBã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼å.  */
 	private static String _user;    
-	/** DB¼­¹ö¿¡ Á¢¼ÓÇÏ´Â ÆĞ½º¿öµå.  */
+	/** DBã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰.  */
 	private static String _password;
 
 	/**
@@ -48,16 +48,16 @@ public class L1DatabaseFactory {
 	}
 	
 	/**
-	 * DB¿¡ÀÇ ¾×¼¼½º¿¡ ÇÊ¿äÇÑ Á¤º¸ ¼³Á¤
+	 * DBã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã«å¿…è¦ãªæƒ…å ±ã®è¨­å®š
 	 * 
 	 * @param driver
-	 *            DBÁ¢¼Ó µå¶óÀÌ¹ö
+	 *            DBæ¥ç¶šãƒ‰ãƒ©ã‚¤ãƒ
 	 * @param url
-	 *            DB¼­¹ö URL
+	 *            DBã‚µãƒ¼ãƒãƒ¼URL
 	 * @param user
-	 *            DB¼­¹ö¿¡ Á¢¼ÓÇÏ´Â À¯Àú¸í
+	 *            DBã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼å
 	 * @param password
-	 *            DB¼­¹ö¿¡ Á¢¼ÓÇÏ´Â ÆĞ½º¿öµå
+	 *            DBã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 */
 	public static void setDatabaseSettings(final String driver,
 			final String url, final String user, final String password) {
@@ -69,7 +69,7 @@ public class L1DatabaseFactory {
 
 	private L1DatabaseFactory() throws SQLException {
 		try {
-			// DatabaseFactoryÀ» L2J·ÎºÎÅÍ ÀÏºÎ¸¦ Á¦¿ÜÇØ ¹èÂ÷
+			// DatabaseFactoryã‚’L2Jã‹ã‚‰ä¸€éƒ¨ã‚’é™¤ã„ã¦é…è»Š
 			_source = new ComboPooledDataSource();
 			_source.setDriverClass(_driver);
 			_source.setJdbcUrl(_url);
@@ -112,9 +112,9 @@ public class L1DatabaseFactory {
 	}
 
 	/**
-	 * DBÁ¢¼ÓÀ» ÇØ, connection ¿ÀºêÁ§Æ®¸¦ µ¹·ÁÁØ´Ù.
+	 * DBæ¥ç¶šã‚’ã—ã¦ã€connectionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™.
 	 * 
-	 * @return Connection connection ¿ÀºêÁ§Æ®
+	 * @return Connection connection ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws SQLException
 	 */
 	public Connection getConnection() {

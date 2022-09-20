@@ -38,18 +38,18 @@ import l1j.server.server.utils.FileUtil;
 
 
 /**
- * ÅØ½ºÆ® ¸ÊÀ» Ä³½Ì ÇØ read ½Ã°£À» ´ÜÃàÇÑ´Ù.
+ * ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦èª­ã¿è¾¼ã¿æ™‚é–“ã‚’çŸ­ç¸®ã™ã‚‹.
  */
 public class CachedMapReader extends MapReader {
 
-	/** ÅØ½ºÆ® ¸Ê È¦´õ.  */
+	/** ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ãƒ•ã‚©ãƒ«ãƒ€.  */
 	private static final String MAP_DIR = "./maps/";
 
-	/** Ä³½Ì ÇÏ´Â ¸Ê È¦´õ.  */
+	/** ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ãƒ•ã‚©ãƒ«ãƒ€.  */
 	private static final String CACHE_DIR = "./data/mapcache/";
 
 	/**
-	 * Àü¸Ê IDÀÇ ¸®½ºÆ®¸¦ µ¹·ÁÁØ´Ù.
+	 * å…¨ãƒãƒƒãƒ—IDã®ãƒªã‚¹ãƒˆè¿”ã™.
 	 *
 	 * @return ArraryList
 	 */
@@ -79,10 +79,10 @@ public class CachedMapReader extends MapReader {
 	}
 
 	/**
-	 * ÁöÁ¤ÀÇ ¸Ê ¹øÈ£ÀÇ ÅØ½ºÆ® ¸ÊÀ» Ä³½¬ ¸ÊÀ¸·Î º¯°æÇÑ´Ù.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã«å¤‰æ›.
 	 *
 	 * @param mapId
-	 *            ¸Ê ¹øÈ£
+	 *            ãƒãƒƒãƒ—ç•ªå·
 	 * @return L1V1Map
 	 * @throws IOException
 	 */
@@ -115,10 +115,10 @@ public class CachedMapReader extends MapReader {
 	}
 
 	/**
-	 * ÁöÁ¤ÀÇ ¸Ê ¹øÈ£ÀÇ Ä³½¬ ¸ÊÀ» ÀĞ¾îµéÀÎ´Ù.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã¿.
 	 *
 	 * @param mapId
-	 *            ¸Ê ¹øÈ£
+	 *            ãƒãƒƒãƒ—ç•ªå·
 	 * @return L1Map
 	 * @throws IOException
 	 */
@@ -167,7 +167,7 @@ public class CachedMapReader extends MapReader {
 		throw new FileNotFoundException();
 	}
 	/**
-	 * ¸ğµç ÅØ½ºÆ® ¸ÊÀ» ÀĞ¾îµéÀÎ´Ù.
+	 * å…¨ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã¿.
 	 *
 	 * @return Map
 	 * @throws IOException

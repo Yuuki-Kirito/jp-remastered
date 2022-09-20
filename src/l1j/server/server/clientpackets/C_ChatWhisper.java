@@ -141,7 +141,7 @@ public class C_ChatWhisper extends ClientBasePacket {
 						+ " -> (" + whisperTo.getName() + ") " + text);
 				for (L1PcInstance gm : Config.toArray_whisper_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove±Ó¸»(gm);
+						Config.remove_whisper(gm);
 						continue;
 					}
 					if (gm == whisperFrom || gm == whisperTo) {

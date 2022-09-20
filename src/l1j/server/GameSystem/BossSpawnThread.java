@@ -112,11 +112,11 @@ public class BossSpawnThread implements Runnable {
 						L1PcInstance ck = L1World.getInstance().getPlayer(
 								gm.getName());
 						if (ck == null) {
-							Config.remove立加(gm);
+							Config.remove_connection(gm);
 							continue;
 						}
 						if (gm.getNetConnection() == null) {
-							Config.remove立加(gm);
+							Config.remove_connection(gm);
 							continue;
 						}
 						gm.sendPackets(sm);

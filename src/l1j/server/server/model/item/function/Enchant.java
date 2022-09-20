@@ -278,7 +278,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {
@@ -380,7 +380,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {
@@ -410,7 +410,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {
@@ -431,7 +431,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {
@@ -459,7 +459,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {
@@ -489,7 +489,7 @@ public class Enchant extends L1ItemInstance {
 			if (Config._enchant_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_enchanted_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¿Œ√æ(gm);
+						Config.remove_enchen(gm);
 						continue;
 					}
 					if (gm == pc) {

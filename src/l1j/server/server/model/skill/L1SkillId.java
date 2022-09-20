@@ -572,7 +572,7 @@ public class L1SkillId {
 
 	public static final int 단테스버프 = 10527;
 
-	public static final int 흑사의기운 = 10528;
+	public static final int SPIRIT_OF_BLACK_DEATH = 10528;
 
 	public static final int STATUS_LEVEL_UP_BONUS = 10529;
 

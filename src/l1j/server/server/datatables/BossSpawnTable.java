@@ -96,7 +96,7 @@ public class BossSpawnTable {
 									for (L1PcInstance gm : Config
 											.toArray_connection_chat_monitor()) {
 										if (gm.getNetConnection() == null) {
-											Config.remove접속(gm);
+											Config.remove_connection(gm);
 											continue;
 										}
 										gm.sendPackets(new S_SystemMessage(

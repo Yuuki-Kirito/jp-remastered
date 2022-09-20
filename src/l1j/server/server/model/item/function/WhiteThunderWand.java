@@ -299,7 +299,7 @@ public class WhiteThunderWand extends L1ItemInstance {
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리) || pc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_NOODLE_DISHES))
 			리덕 += 5;
 		if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서)
-				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운))
+				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH))
 			리덕 += 3;
 
 		// 키링크 아닐때만 추가

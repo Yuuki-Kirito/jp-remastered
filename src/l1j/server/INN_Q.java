@@ -25,8 +25,8 @@ public class INN_Q implements Runnable {
 		while (true) {
 			try {
 				Thread.sleep(30L);
-				synchronized (this) // Å¸ÀÌ¹Ö ¹®Á¦·Î 2¹ø ÁøÀÔ °¡´ÉÇÏ´Ù. ¸Å¿ì ³·Àº È®·üÀÌ±ä ÇÏ´Ù¸¸.
-									// ÀÌ·Ğ»ó.-_-
+				synchronized (this) // ã‚¿ã‚¤ãƒŸãƒ³ã‚°å•é¡Œã§2å›é€²å…¥å¯èƒ½ã ã€‚ éå¸¸ã«ä½ã„ç¢ºç‡ã§ã™ãŒã€.
+									// ç†è«–ä¸Š
 				{
 					INN_IND _ind = _queue.peek();
 					if (_ind == null) {
@@ -54,9 +54,9 @@ public class INN_Q implements Runnable {
 					INN.getInstance().INNStart(player, _ind._objid,
 							_ind._npcid, _ind._type, _ind._count);
 					/*
-					 * if(_ind._type == 0 ){//¹æ´ë¿©
+					 * if(_ind._type == 0 ){//è²¸ã—å‡ºã—
 					 * 
-					 * }else if(_ind._type == 1 || _ind._type == 2){//¾ó´øa }
+					 * }else if(_ind._type == 1 || _ind._type == 2){//å‡ã£ãŸ }
 					 */
 
 					_queue.remove();

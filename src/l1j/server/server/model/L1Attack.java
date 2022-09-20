@@ -2798,7 +2798,7 @@ public class L1Attack {
 			dmg -= 5;
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_NOODLE_DISHES))
 			dmg -= 5;
-		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운))
+		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH))
 			dmg -= 3;
 		
 
@@ -5173,7 +5173,7 @@ public class L1Attack {
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스정성요리) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(COOKING_SMALL_NOODLE_DISHES))
 			dmg -= 5;
 
-		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운))
+		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서) || _targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH))
 			dmg -= 3;
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.EARTH_BLESS))
 			dmg -= 2;

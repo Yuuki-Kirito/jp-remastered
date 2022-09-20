@@ -118,7 +118,7 @@ public class Resolvent extends L1ItemInstance {
 			if (Config._connection_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove¡¢º”(gm);
+						Config.remove_connection(gm);
 						continue;
 					}
 					if (gm == pc) {

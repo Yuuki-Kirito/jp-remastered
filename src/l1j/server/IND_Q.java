@@ -58,13 +58,13 @@ public class IND_Q implements Runnable {
 						}
 					}, 3000);
 
-					if (_ind._type == 0) {// «œµÚ
+					if (_ind._type == 0) {// „Éè„Éº„Éá„Ç£„É≥
 						if (player.getMapId() != 9100) {
 							_queue.remove();
 							continue;
 						}
 						Hadin.get().start(player);
-					} else if (_ind._type == 1) {// æÛ¥¯a
+					} else if (_ind._type == 1) {// frozen a
 						if (player.getMapId() != 4) {
 							_queue.remove();
 							continue;
@@ -82,7 +82,7 @@ public class IND_Q implements Runnable {
 								player.sendPackets(new S_SabuTell(player), true);
 							}
 						}
-					/** ±€∑Œµø¿ ¿Œ¥¯øÎ √≥∏Æ */
+					/** Handling for Glodio Dungeons */
 					} else if (_ind._type == 3 || _ind._type == 4) {
 						if (player.getMapId() != 13000) {
 							_queue.remove();
@@ -91,10 +91,10 @@ public class IND_Q implements Runnable {
 						DreamsLaboratory _DL = new DreamsLaboratory();
 						int DTmapid = _DL.Start(player, _ind._type);
 						if (DTmapid != 0){
-							/** ¥Î±‚Ω«¿Œ¡ˆ √º≈© ¥ÎΩ√±Ê¿Ã∂Û∏È ¿Ãµø */
+							/** Check if it is a waiting room */
 							_DL.SystemGo(player, _ind._type, _ind._dungeonInfo);
 						}
-					} else if (_ind._type == 5) {// »≠µ’¿Œ¥¯
+					} else if (_ind._type == 5) {// East Chinatown
 						if (player.getMapId() != 2699) {
 							_queue.remove();
 							continue;
@@ -116,14 +116,14 @@ public class IND_Q implements Runnable {
 								player.setTelType(7);
 								player.sendPackets(new S_SabuTell(player), true);
 
-								L1NpcInstance ∫˚µ•Ω∫ = GameList.getwdeath();
-								if (∫˚µ•Ω∫ != null) {
-									∫˚µ•Ω∫.Wchat_start(player);
+								L1NpcInstance light_death = GameList.getwdeath();
+								if (light_death != null) {
+									light_death.Wchat_start(player);
 								}
 								player.indun_endtel();
 							}
 						}
-					} else if (_ind._type == 6) {// ∏˘º∂
+					} else if (_ind._type == 6) {// Mongseom
 						if (player.getMapId() != 1935) {
 							_queue.remove();
 							continue;

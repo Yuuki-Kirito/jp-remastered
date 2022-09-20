@@ -3179,10 +3179,10 @@ public class GMCommands {
 
 			if (pcName.equalsIgnoreCase("혈맹")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add혈맹(gm);
+					Config.add_blood_pledge(gm);
 					gm.sendPackets(new S_SystemMessage(".혈맹 채팅을 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove혈맹(gm);
+					Config.remove_blood_pledge(gm);
 					gm.sendPackets(new S_SystemMessage(".혈맹 채팅 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3190,10 +3190,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("파티")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add파티(gm);
+					Config.addparty(gm);
 					gm.sendPackets(new S_SystemMessage(".파티 채팅을 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove파티(gm);
+					Config.removeparty(gm);
 					gm.sendPackets(new S_SystemMessage(".파티 채팅 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3201,10 +3201,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("귓말")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add귓말(gm);
+					Config.addwhisper(gm);
 					gm.sendPackets(new S_SystemMessage(".귓말 채팅을 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove귓말(gm);
+					Config.remove_whisper(gm);
 					gm.sendPackets(new S_SystemMessage(".귓말 채팅 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3212,10 +3212,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("인첸")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add인첸(gm);
+					Config.addlnchen(gm);
 					gm.sendPackets(new S_SystemMessage(".인첸 로그를 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove인첸(gm);
+					Config.remove_enchen(gm);
 					gm.sendPackets(new S_SystemMessage(".인첸 로그 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3223,10 +3223,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("삭제")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add삭제(gm);
+					Config.add_delete(gm);
 					gm.sendPackets(new S_SystemMessage(".삭제 로그를 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove삭제(gm);
+					Config.remove_delete(gm);
 					gm.sendPackets(new S_SystemMessage(".삭제 로그 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3234,10 +3234,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("접속")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add접속(gm);
+					Config.add_connect(gm);
 					gm.sendPackets(new S_SystemMessage(".접속 로그를 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove접속(gm);
+					Config.remove_connection(gm);
 					gm.sendPackets(new S_SystemMessage(".접속 로그 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3245,10 +3245,10 @@ public class GMCommands {
 				}
 			} else if (pcName.equalsIgnoreCase("버그")) {
 				if (pcName2.equalsIgnoreCase("켬")) {
-					Config.add버그(gm);
+					Config.addbug(gm);
 					gm.sendPackets(new S_SystemMessage(".버그 로그를 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove버그(gm);
+					Config.removebug(gm);
 					gm.sendPackets(new S_SystemMessage(".버그 로그 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);
@@ -3259,7 +3259,7 @@ public class GMCommands {
 					Config.addall(gm);
 					gm.sendPackets(new S_SystemMessage(".모든 채팅을 모니터 합니다."), true);
 				} else if (pcName2.equalsIgnoreCase("끔")) {
-					Config.remove전체(gm);
+					Config.removeALL(gm);
 					gm.sendPackets(new S_SystemMessage(".모든 채팅 모니터를 중단 합니다."), true);
 				} else {
 					gm.sendPackets(new S_SystemMessage(".채팅 [혈맹/파티/귓말/인첸/삭제/접속/버그/전체] [켬/끔]"), true);

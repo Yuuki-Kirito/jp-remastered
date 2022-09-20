@@ -7579,7 +7579,7 @@ public class C_NPCAction extends ClientBasePacket {
 						dmg -= 5;
 					}
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(메티스축복주문서)
-							|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운)) {
+							|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH)) {
 						dmg -= 3;
 					}
 					if (pc.getSkillEffectTimerSet().hasSkillEffect(IMMUNE_TO_HARM)) {

@@ -2455,7 +2455,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.sendPackets(new S_Dexup(pc, 5, remaining_time), true);
 					break;
 
-				case L1SkillId.흑사의기운:
+				case L1SkillId.SPIRIT_OF_BLACK_DEATH:
 					pc.getAC().addAc(-2);
 					pc.addMaxHp(20);
 					pc.addMaxMp(13);
@@ -2463,7 +2463,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
 					pc.sendPackets(new S_OwnCharStatus(pc));
 					icon[37] = remaining_time / 16;
-					pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.흑사의기운, remaining_time * 1000);
+					pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH, remaining_time * 1000);
 					break;
 
 				// 2020.04.05 로그인 시 프라임 버프 적용 처리 by white

@@ -99,7 +99,7 @@ public class C_DeleteInventoryItem extends ClientBasePacket {
 					;
 					for (L1PcInstance gm : Config.toArray_delete_chat_monitor()) {
 						if (gm.getNetConnection() == null) {
-							Config.removeªË¡¶(gm);
+							Config.remove_delete(gm);
 							continue;
 						}
 						if (gm == pc) {

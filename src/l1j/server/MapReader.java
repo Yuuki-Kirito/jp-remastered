@@ -26,7 +26,7 @@ import l1j.server.server.model.map.L1Map;
 
 public abstract class MapReader {
 	/**
-	 * ¸ğµç ÅØ½ºÆ® ¸ÊÀ» ÀĞ¾îµéÀÎ´Ù(Ãß»ó Å¬·¡½º)
+	 * ã™ã¹ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€(abstract class)
 	 * 
 	 * @return Map
 	 * @throws IOException
@@ -34,17 +34,17 @@ public abstract class MapReader {
 	public abstract Map<Integer, L1Map> read() throws IOException;
 
 	/**
-	 * ÁöÁ¤ÀÇ ¸Ê ¹øÈ£ÀÇ ÅØ½ºÆ® ¸ÊÀ» ÀĞ¾îµéÀÎ´Ù.
+	 * æŒ‡å®šã®ãƒãƒƒãƒ—ç•ªå·ã®ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€.
 	 * 
 	 * @param id
-	 *            ¸Ê ID
+	 *            MAP ID
 	 * @return L1Map
 	 * @throws IOException
 	 */
 	public abstract L1Map read(int id) throws IOException;
 
 	/**
-	 * ÀĞ¾îµéÀÌ´Â ¸Ê ÆÄÀÏÀ» ÆÇ´ÜÇÑ´Ù(ÅØ½ºÆ® ¸Ê or Ä³½¬ ¸Ê or V2ÅØ½ºÆ® ¸Ê).
+	 * èª­ã¿è¾¼ã‚€ãƒãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆ¤æ–­ã™ã‚‹(ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ— or ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ— or V2ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ—).
 	 * 
 	 * @return MapReader
 	 */

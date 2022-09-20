@@ -80,7 +80,7 @@ public class C_Restart extends ClientBasePacket {
 			}
 
 			if (pc.isGm()) {
-				Config.remove전체(pc);
+				Config.removeALL(pc);
 			}
 			try {
 				/** 펫이 소환중인지 체크해서 정리 펫이 만약 죽었다면 그냥 나두도록함 */

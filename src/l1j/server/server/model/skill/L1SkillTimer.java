@@ -652,7 +652,7 @@ class L1SkillStop {
 				}
 				break;
 				
-			case L1SkillId.흑사의기운:
+			case L1SkillId.SPIRIT_OF_BLACK_DEATH:
 				cha.getAC().addAc(2);
 				cha.addMaxHp(-20);
 				cha.addMaxMp(-13);

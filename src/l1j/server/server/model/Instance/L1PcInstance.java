@@ -793,7 +793,7 @@ public class L1PcInstance extends L1Character {
 					sendPackets(new S_SPMR(L1PcInstance.this));
 					getSkillEffectTimerSet().setSkillEffect(7895, 1800 * 1000);
 				} else if (allBuffComaSkill[i] == 10528) {
-					if (!getSkillEffectTimerSet().hasSkillEffect(L1SkillId.흑사의기운)) {
+					if (!getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH)) {
 						getAC().addAc(-2);
 						addMaxHp(20);
 						addMaxMp(13);
@@ -803,7 +803,7 @@ public class L1PcInstance extends L1Character {
 					}
 					L1PcInstance.this.sendPackets(new S_SkillSound(getId(), 4914), true);
 					Broadcaster.broadcastPacket(L1PcInstance.this, new S_SkillSound(getId(), 4914));
-					getSkillEffectTimerSet().setSkillEffect(L1SkillId.흑사의기운, 1800 * 1000);
+					getSkillEffectTimerSet().setSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH, 1800 * 1000);
 				} else {
 					l1skilluse = new L1SkillUse();
 					l1skilluse.handleCommands(L1PcInstance.this, allBuffComaSkill[i], getId(), getX(), getY(), null, 0,
@@ -1414,7 +1414,7 @@ public class L1PcInstance extends L1Character {
 			if (Config._bug_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_bug_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove버그(gm);
+						Config.removebug(gm);
 						continue;
 					}
 					gm.sendPackets(new S_SystemMessage("防具のバグ疑い " + getName() + " AC : " + ac.getAc() + " Tweaked"),
@@ -1426,7 +1426,7 @@ public class L1PcInstance extends L1Character {
 			if (Config._bug_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_bug_chat_monitor()) {
 					if (gm.getNetConnection() == null) {
-						Config.remove버그(gm);
+						Config.removebug(gm);
 						continue;
 					}
 					gm.sendPackets(new S_SystemMessage("防具のバグ疑い " + getName() + " AC : " + ac.getAc()), true);
@@ -1468,7 +1468,7 @@ public class L1PcInstance extends L1Character {
 		if (Config._bug_chat_monitor() > 0) {
 			for (L1PcInstance gm : Config.toArray_bug_chat_monitor()) {
 				if (gm.getNetConnection() == null) {
-					Config.remove버그(gm);
+					Config.removebug(gm);
 					continue;
 				}
 				gm.sendPackets(new S_SystemMessage("ステータスバーグ疑問 " + getName() + " " + type_text + i + " Tweaked"), true);

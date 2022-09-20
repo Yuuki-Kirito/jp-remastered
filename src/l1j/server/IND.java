@@ -12,7 +12,7 @@ public class IND {
 		_type = type;
 	}
 	
-	/** 글로 디오 인던 전용 */
+	/** Glodio Indian only */
 	public IND(String pcname, int type, DungeonInfo DungeonInfo) {
 		_pcname = pcname;
 		_type = type;

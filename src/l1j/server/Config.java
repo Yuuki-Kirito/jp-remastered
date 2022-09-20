@@ -269,7 +269,7 @@ public final class Config {
 		}
 	}
 
-	public static void remove전체(L1PcInstance pc) {
+	public static void removeALL(L1PcInstance pc) {
 		if (_monitorClanChatList.contains(pc)) {
 			_monitorClanChatList.remove(pc);
 			;
@@ -300,98 +300,98 @@ public final class Config {
 		}
 	}
 
-	public static void add혈맹(L1PcInstance pc) {
+	public static void add_blood_pledge(L1PcInstance pc) {
 		if (_monitorClanChatList.contains(pc)) {
 			return;
 		}
 		_monitorClanChatList.add(pc);
 	}
 
-	public static void remove혈맹(L1PcInstance pc) {
+	public static void remove_blood_pledge(L1PcInstance pc) {
 		if (!_monitorClanChatList.contains(pc)) {
 			return;
 		}
 		_monitorClanChatList.remove(pc);
 	}
 
-	public static void add파티(L1PcInstance pc) {
+	public static void addparty(L1PcInstance pc) {
 		if (_monitor_PartyChatList.contains(pc)) {
 			return;
 		}
 		_monitor_PartyChatList.add(pc);
 	}
 
-	public static void remove파티(L1PcInstance pc) {
+	public static void removeparty(L1PcInstance pc) {
 		if (!_monitor_PartyChatList.contains(pc)) {
 			return;
 		}
 		_monitor_PartyChatList.remove(pc);
 	}
 
-	public static void add귓말(L1PcInstance pc) {
+	public static void addwhisper(L1PcInstance pc) {
 		if (_monitor_WisperChatList.contains(pc)) {
 			return;
 		}
 		_monitor_WisperChatList.add(pc);
 	}
 
-	public static void remove귓말(L1PcInstance pc) {
+	public static void remove_whisper(L1PcInstance pc) {
 		if (!_monitor_WisperChatList.contains(pc)) {
 			return;
 		}
 		_monitor_WisperChatList.remove(pc);
 	}
 
-	public static void add인첸(L1PcInstance pc) {
+	public static void addlnchen(L1PcInstance pc) {
 		if (_monitor_EnchatList.contains(pc)) {
 			return;
 		}
 		_monitor_EnchatList.add(pc);
 	}
 
-	public static void remove인첸(L1PcInstance pc) {
+	public static void remove_enchen(L1PcInstance pc) {
 		if (!_monitor_EnchatList.contains(pc)) {
 			return;
 		}
 		_monitor_EnchatList.remove(pc);
 	}
 
-	public static void add삭제(L1PcInstance pc) {
+	public static void add_delete(L1PcInstance pc) {
 		if (_monitor_DeleteList.contains(pc)) {
 			return;
 		}
 		_monitor_DeleteList.add(pc);
 	}
 
-	public static void remove삭제(L1PcInstance pc) {
+	public static void remove_delete(L1PcInstance pc) {
 		if (!_monitor_DeleteList.contains(pc)) {
 			return;
 		}
 		_monitor_DeleteList.remove(pc);
 	}
 
-	public static void add접속(L1PcInstance pc) {
+	public static void add_connect(L1PcInstance pc) {
 		if (_monitor_ConnectList.contains(pc)) {
 			return;
 		}
 		_monitor_ConnectList.add(pc);
 	}
 
-	public static void remove접속(L1PcInstance pc) {
+	public static void remove_connection(L1PcInstance pc) {
 		if (!_monitor_ConnectList.contains(pc)) {
 			return;
 		}
 		_monitor_ConnectList.remove(pc);
 	}
 
-	public static void add버그(L1PcInstance pc) {
+	public static void addbug(L1PcInstance pc) {
 		if (_monitor_BugList.contains(pc)) {
 			return;
 		}
 		_monitor_BugList.add(pc);
 	}
 
-	public static void remove버그(L1PcInstance pc) {
+	public static void removebug(L1PcInstance pc) {
 		if (!_monitor_BugList.contains(pc)) {
 			return;
 		}

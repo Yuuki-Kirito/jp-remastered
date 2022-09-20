@@ -1,13 +1,6 @@
 package l1j.server;
 
-import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
-import static l1j.server.server.model.skill.L1SkillId.BLESS_WEAPON;
-import static l1j.server.server.model.skill.L1SkillId.FIRE_SHIELD;
-import static l1j.server.server.model.skill.L1SkillId.IRON_SKIN;
-import static l1j.server.server.model.skill.L1SkillId.NATURES_TOUCH;
-import static l1j.server.server.model.skill.L1SkillId.PHYSICAL_ENCHANT_DEX;
-import static l1j.server.server.model.skill.L1SkillId.PHYSICAL_ENCHANT_STR;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_COMA_5;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,7 +34,7 @@ enum SpecialEvent {
 	BugRace, AllBuf, InfinityFight, DoNotChatEveryone, DoChatEveryone
 };
 
-// °ÔÀÓ ³», ÀüÃ¼ ÀÌº¥Æ®¿¡ ´ëÇÑ Ã³¸®¸¦ ´ã´ç
+// ã‚²ãƒ¼ãƒ å†…ã€ã‚¤ãƒ™ãƒ³ãƒˆå…¨ä½“ã®å‡¦ç†ã‚’æ‹…å½“
 public class SpecialEventHandler {
 
 	private static volatile SpecialEventHandler uniqueInstance = null;
@@ -134,7 +127,7 @@ public class SpecialEventHandler {
 								pc.getId(), pc.getX(), pc.getY(), null, 0,
 								L1SkillUse.TYPE_GMBUFF);
 						// pc.sendPackets(new
-						// S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+						// S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 					}
 					for (L1NpcShopInstance pc : L1World.getInstance()
 							.getAllNpcShop()) {
@@ -192,7 +185,7 @@ public class SpecialEventHandler {
 				if (pc == null || pc.isPrivateShop()) {
 					continue;
 				}
-				pc.È­¸é¹öÇÁstart();
+				pc.í™”ë©´ë²„í”„start();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -230,7 +223,7 @@ public class SpecialEventHandler {
 										7895, 1800 * 1000);
 							} else if (allBuffComaSkill[i] == 10528) {
 								if (!pc.getSkillEffectTimerSet()
-										.hasSkillEffect(L1SkillId.Èæ»çÀÇ±â¿î)) {
+										.hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH)) {
 									pc.getAC().addAc(-2);
 									pc.addMaxHp(20);
 									pc.addMaxMp(13);
@@ -246,7 +239,7 @@ public class SpecialEventHandler {
 								Broadcaster.broadcastPacket(pc,
 										new S_SkillSound(pc.getId(), 4914));
 								pc.getSkillEffectTimerSet().setSkillEffect(
-										L1SkillId.Èæ»çÀÇ±â¿î, 1800 * 1000);
+										L1SkillId.SPIRIT_OF_BLACK_DEATH, 1800 * 1000);
 							} else {
 								l1skilluse = new L1SkillUse();
 								l1skilluse.handleCommands(pc,
@@ -255,7 +248,7 @@ public class SpecialEventHandler {
 										L1SkillUse.TYPE_GMBUFF);
 							}
 							// pc.sendPackets(new
-							// S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+							// S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 						}
 						for (L1NpcShopInstance pc : L1World.getInstance()
 								.getAllNpcShop()) {
@@ -337,7 +330,7 @@ public class SpecialEventHandler {
 										7895, 1800 * 1000);
 							} else if (allBuffSkill[i] == 10528) {
 								if (!pc.getSkillEffectTimerSet()
-										.hasSkillEffect(L1SkillId.Èæ»çÀÇ±â¿î)) {
+										.hasSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH)) {
 									pc.getAC().addAc(-2);
 									pc.addMaxHp(20);
 									pc.addMaxMp(13);
@@ -352,7 +345,7 @@ public class SpecialEventHandler {
 								Broadcaster.broadcastPacket(pc,
 										new S_SkillSound(pc.getId(), 4914));
 								pc.getSkillEffectTimerSet().setSkillEffect(
-										L1SkillId.Èæ»çÀÇ±â¿î, 1800 * 1000);
+										L1SkillId.SPIRIT_OF_BLACK_DEATH, 1800 * 1000);
 							} else {
 								l1skilluse = new L1SkillUse();
 								l1skilluse.handleCommands(pc, allBuffSkill[i],
@@ -403,7 +396,7 @@ public class SpecialEventHandler {
 						if (pc == null || pc.isPrivateShop()) {
 							continue;
 						}
-						pc.sendPackets(new S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+						pc.sendPackets(new S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -460,7 +453,7 @@ public class SpecialEventHandler {
 						if (pc == null || pc.isPrivateShop()) {
 							continue;
 						}
-						pc.sendPackets(new S_SystemMessage("¿î¿µÀÚ¿¡°Ô ÄÚ¸¶¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù."));
+						pc.sendPackets(new S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ."));
 					}
 				} catch (Exception e) {
 				}
@@ -508,7 +501,7 @@ public class SpecialEventHandler {
 								 * }else if(allBuffComaSkill[i] == 10528){
 								 * if(!pc
 								 * .getSkillEffectTimerSet().hasSkillEffect
-								 * (L1SkillId.Èæ»çÀÇ±â¿î)){ pc.getAC().addAc(-2);
+								 * (L1SkillId.SPIRIT_OF_BLACK_DEATH)){ pc.getAC().addAc(-2);
 								 * pc.addMaxHp(20); pc.addMaxMp(13);
 								 * pc.getResistance().addBlind(10);
 								 * pc.sendPackets(new
@@ -521,7 +514,7 @@ public class SpecialEventHandler {
 								 * Broadcaster.broadcastPacket(pc, new
 								 * S_SkillSound(pc.getId(), 4914));
 								 * pc.getSkillEffectTimerSet
-								 * ().setSkillEffect(L1SkillId.Èæ»çÀÇ±â¿î,
+								 * ().setSkillEffect(L1SkillId.SPIRIT_OF_BLACK_DEATH,
 								 * 1800*1000);
 								 */
 							} else {
@@ -532,7 +525,7 @@ public class SpecialEventHandler {
 										L1SkillUse.TYPE_GMBUFF);
 							}
 							// pc.sendPackets(new
-							// S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+							// S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 						}
 						for (L1NpcShopInstance pc : L1World.getInstance()
 								.getAllNpcShop()) {
@@ -578,7 +571,7 @@ public class SpecialEventHandler {
 						if (pc == null || pc.isPrivateShop()) {
 							continue;
 						}
-						pc.sendPackets(new S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+						pc.sendPackets(new S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 					}
 
 				} catch (Exception e) {
@@ -591,13 +584,13 @@ public class SpecialEventHandler {
 	public void doNotChatEveryone() {
 		L1World.getInstance().set_worldChatElabled(false);
 		L1World.getInstance().broadcastPacketToAll(
-				new S_SystemMessage("[***] ¾È³çÇÏ¼¼¿ä. ¿î¿µÀÚ ÀÔ´Ï´Ù."));
+				new S_SystemMessage("[***] ã“ã‚“ã«ã¡ã¯ã€‚ ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã§ã™."));
 	}
 
 	public void doChatEveryone() {
 		L1World.getInstance().set_worldChatElabled(true);
 		L1World.getInstance().broadcastPacketToAll(
-				new S_SystemMessage("[***] ÁÁÀºÇÏ·çµÇ¼¼¿ä. °¨»çÇÕ´Ï´Ù."));
+				new S_SystemMessage("[***] è‰¯ã„ä¸€æ—¥ã§ã™ã€‚ ã‚ã‚ŠãŒã¨ã†."));
 	}
 
 	public void ReturnStats(L1PcInstance pc) {
@@ -661,7 +654,7 @@ public class SpecialEventHandler {
 			// Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(),
 			// 7895));
 			pc.getSkillEffectTimerSet().setSkillEffect(7895, 1800 * 1000);
-			pc.sendPackets(new S_SystemMessage("¿î¿µÀÚ¿¡°Ô ¹öÇÁ¸¦ ¹Ş¾Ò½À´Ï´Ù. "));
+			pc.sendPackets(new S_SystemMessage("ã‚ªãƒšãƒ¬ãƒ¼ã‚¿ãƒ¼ã‹ã‚‰ãƒãƒ•ã‚’å—ã‘ã¾ã—ãŸ. "));
 		}
 		for (L1NpcShopInstance pc : L1World.getInstance().getAllNpcShop()) {
 			if (pc == null
