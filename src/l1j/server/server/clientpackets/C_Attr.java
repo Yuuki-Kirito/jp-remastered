@@ -1295,7 +1295,7 @@ public class C_Attr extends ClientBasePacket {
 							Broadcaster.broadcastPacket(pc,
 									new S_DRAGONPERL(pc.getId(), 0));
 							pc.sendPackets(new S_DRAGONPERL(pc.getId(), 0));
-							pc.set진주속도(0);
+							pc.set_pearl_speed(0);
 						}
 
 						if (GhostHouse.getInstance().isEnterMember(pc)) {

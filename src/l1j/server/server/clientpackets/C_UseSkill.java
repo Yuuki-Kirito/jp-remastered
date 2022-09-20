@@ -437,8 +437,8 @@ public class C_UseSkill extends ClientBasePacket {
 				 */
 				// if(skillId == L1SkillId.AREA_OF_SILENCE)
 				// GeneralThreadPool.getInstance().execute(new areaSilence(pc));
-				pc.플레이어상태 = pc.공격_상태;
-				pc.상태시간 = System.currentTimeMillis() + 2000;
+				pc.player_status = pc.attack_state;
+				pc.state_time = System.currentTimeMillis() + 2000;
 				pc.sendPackets(new S_NewSkillDealay(), true);
 				L1SkillUse l1skilluse = new L1SkillUse();
 				L1Skills skill = SkillsTable.getInstance().getTemplate(skillId);

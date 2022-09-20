@@ -64,16 +64,16 @@ public class HpMpRegenThread extends Thread {
 									regenHp(pc);
 								}
 
-								if (pc.플레이어상태 != pc.휴식_상태) {
-									if (System.currentTimeMillis() >= pc.상태시간) {
-										pc.플레이어상태 = pc.휴식_상태;
+								if (pc.player_status != pc.rest_state) {
+									if (System.currentTimeMillis() >= pc.state_time) {
+										pc.player_status = pc.rest_state;
 									}
 								}
 
-								if (pc.플레이어상태 == pc.공격_상태) {
+								if (pc.player_status == pc.attack_state) {
 									pc.addMpregenPoint(1);
 									// System.out.println("전투 상태");
-								} else if (pc.플레이어상태 == pc.이동_상태) {
+								} else if (pc.player_status == pc.move_state) {
 									pc.addMpregenPoint(2);
 									// System.out.println("이동 상태");
 								} else {

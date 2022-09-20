@@ -595,7 +595,7 @@ public class PetRacing implements Runnable {
 						S_DRAGONPERL dp = new S_DRAGONPERL(pc.getId(), 0);
 						Broadcaster.broadcastPacket(pc, dp);
 						pc.sendPackets(dp, true);
-						pc.set진주속도(0);
+						pc.set_pearl_speed(0);
 					}
 
 					int[] loc = Getback.GetBack_Location(pc, true);

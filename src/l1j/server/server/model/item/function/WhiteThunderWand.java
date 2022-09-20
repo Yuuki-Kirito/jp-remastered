@@ -119,8 +119,8 @@ public class WhiteThunderWand extends L1ItemInstance {
 				pc.sendPackets(new S_UseAttackSkill(pc, 0, 11736, spellsc_x, spellsc_y, 17), true);
 				Broadcaster.broadcastPacket(pc, new S_UseAttackSkill(pc, 0, 11736, spellsc_x, spellsc_y, 17), true);
 			}
-			pc.플레이어상태 = pc.공격_상태;
-			pc.상태시간 = System.currentTimeMillis() + 2000;
+			pc.player_status = pc.attack_state;
+			pc.state_time = System.currentTimeMillis() + 2000;
 			pc.getInventory().updateItem(useItem, L1PcInventory.COL_COUNT);
 			L1ItemDelay.onItemUse(pc, useItem); // 아이템 지연 개시
 			pc.getInventory().removeItem(useItem, 1);

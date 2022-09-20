@@ -211,7 +211,7 @@ public class Robot {
 						(_random.nextInt(600) + 400) * 1000);
 				Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 				Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-				bot.set柳林加档(1);
+				bot.set_pearl_speed(1);
 				return true;
 			}
 		} else if (bot.isElf()) {
@@ -239,7 +239,7 @@ public class Robot {
 							(_random.nextInt(600) + 400) * 1000);
 					Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 					Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-					bot.set柳林加档(1);
+					bot.set_pearl_speed(1);
 					return true;
 				}
 			} else {
@@ -262,7 +262,7 @@ public class Robot {
 								(_random.nextInt(600) + 400) * 1000);
 						Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 						Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-						bot.set柳林加档(1);
+						bot.set_pearl_speed(1);
 						return true;
 					}
 				} else {
@@ -283,7 +283,7 @@ public class Robot {
 								(_random.nextInt(600) + 400) * 1000);
 						Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 						Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-						bot.set柳林加档(1);
+						bot.set_pearl_speed(1);
 						return true;
 					}
 				}
@@ -314,7 +314,7 @@ public class Robot {
 						(_random.nextInt(600) + 400) * 1000);
 				Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 				Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-				bot.set柳林加档(1);
+				bot.set_pearl_speed(1);
 				return true;
 			}
 		} else if (bot.isDarkelf()) {
@@ -351,7 +351,7 @@ public class Robot {
 						(_random.nextInt(600) + 400) * 1000);
 				Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 				Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-				bot.set柳林加档(1);
+				bot.set_pearl_speed(1);
 				return true;
 			}
 		} else if (bot.isIllusionist()) {
@@ -381,7 +381,7 @@ public class Robot {
 						(_random.nextInt(600) + 400) * 1000);
 				Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 				Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-				bot.set柳林加档(1);
+				bot.set_pearl_speed(1);
 				return true;
 			}
 		} else if (bot.isWizard()) {
@@ -407,7 +407,7 @@ public class Robot {
 						(_random.nextInt(600) + 400) * 1000);
 				Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 197), true);
 				Broadcaster.broadcastPacket(bot, new S_DRAGONPERL(bot.getId(), 8), true);//
-				bot.set柳林加档(1);
+				bot.set_pearl_speed(1);
 				return true;
 			}
 		}

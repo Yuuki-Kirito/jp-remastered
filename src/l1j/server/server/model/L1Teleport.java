@@ -342,7 +342,7 @@ public class L1Teleport {
 					L1SkillId.STATUS_DRAGONPERL)) {
 				Broadcaster.broadcastPacket(rob, new S_DRAGONPERL(rob.getId(),
 						8), true);
-				rob.set진주속도(1);
+				rob.set_pearl_speed(1);
 			}
 		} catch (Exception e) {
 			System.out.println("텔 심각 오류코드 100");
@@ -552,7 +552,7 @@ public class L1Teleport {
 					L1SkillId.STATUS_DRAGONPERL)) {
 				Broadcaster.broadcastPacket(rob, new S_DRAGONPERL(rob.getId(),
 						8), true);
-				rob.set진주속도(1);
+				rob.set_pearl_speed(1);
 			}
 			rob.loc = null;
 		} catch (Exception e) {

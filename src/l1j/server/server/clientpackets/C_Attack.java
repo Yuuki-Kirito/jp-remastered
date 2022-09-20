@@ -221,8 +221,8 @@ public class C_Attack extends ClientBasePacket {
 				}
 			}
 
-			pc.플레이어상태 = pc.공격_상태;
-			pc.상태시간 = System.currentTimeMillis() + 2000;
+			pc.player_status = pc.attack_state;
+			pc.state_time = System.currentTimeMillis() + 2000;
 
 			if (cha != null && target != null && !cha.isDead() && !얼던) {
 				target.onAction(pc);

@@ -132,8 +132,8 @@ public class C_PickUpItem extends ClientBasePacket {
 					LogTable.adenLog(pc, pickupCount);
 				}
 
-				pc.플레이어상태 = pc.공격_상태;
-				pc.상태시간 = System.currentTimeMillis() + 2000;
+				pc.player_status = pc.attack_state;
+				pc.state_time = System.currentTimeMillis() + 2000;
 				// 용량 중량 확인 및 메세지 송신
 				if (pc.getInventory().checkAddItem(item, pickupCount) == L1Inventory.OK) {
 					if (item.getX() != 0 && item.getY() != 0) {

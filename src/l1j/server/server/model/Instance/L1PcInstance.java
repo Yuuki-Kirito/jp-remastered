@@ -655,7 +655,7 @@ public class L1PcInstance extends L1Character {
 			sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 0, 0), true);
 			Broadcaster.broadcastPacket(this, new S_DRAGONPERL(getId(), 0), true);
 			sendPackets(new S_DRAGONPERL(getId(), 0), true);
-			set진주속도(0);
+			set_pearl_speed(0);
 		}
 
 		cancelAbsoluteBarrier();// Absolut off (ignore if the pack doesn't have this method)
@@ -668,7 +668,7 @@ public class L1PcInstance extends L1Character {
 		Broadcaster.broadcastPacket(this, new S_DRAGONPERL(getId(), 8), true);
 
 		sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 8, stime), true);
-		set진주속도(1);
+		set_pearl_speed(1);
 
 	}
 
@@ -7519,16 +7519,16 @@ public class L1PcInstance extends L1Character {
 
 	/* Dragon Pearl from here */
 	public boolean isThirdSpeed() {
-		return (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_DRAGONPERL) || get진주속도() == 1);// ;;;;
+		return (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_DRAGONPERL) || get_pearl_speed() == 1);// ;;;;
 	}
 
 	private int _pearl_speed; // ● Pearl state 0. Normal 1. Blurred Eve
 
-	public int get진주속도() {
+	public int get_pearl_speed() {
 		return _pearl_speed;
 	}
 
-	public void set진주속도(int i) {
+	public void set_pearl_speed(int i) {
 		_pearl_speed = i;
 	}
 
@@ -8268,11 +8268,11 @@ public class L1PcInstance extends L1Character {
 		this._MpregenPoint += num;
 	}
 
-	public final int 휴식_상태 = 0;
-	public final int 이동_상태 = 1;
-	public final int 공격_상태 = 2;
-	public int 플레이어상태 = 0;
-	public long 상태시간 = 0;
+	public final int rest_state = 0;
+	public final int move_state = 1;
+	public final int attack_state = 2;
+	public int player_status = 0;
+	public long state_time = 0;
 
 	private int _MpcurPoint = 4;
 
@@ -8925,8 +8925,8 @@ public class L1PcInstance extends L1Character {
 			getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.MEDITATION);
 		}
 
-		플레이어상태 = 공격_상태;
-		상태시간 = System.currentTimeMillis() + 2000;
+		player_status = attack_state;
+		state_time = System.currentTimeMillis() + 2000;
 
 		delInvis();
 		setRegenState(REGENSTATE_ATTACK);

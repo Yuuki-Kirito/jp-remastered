@@ -1791,7 +1791,7 @@ class L1SkillStop {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.sendPackets(new S_DRAGONPERL(pc.getId(), 0), true);
 					pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 0, 0), true);
-					pc.set진주속도(0);
+					pc.set_pearl_speed(0);
 				}
 				break;
 				

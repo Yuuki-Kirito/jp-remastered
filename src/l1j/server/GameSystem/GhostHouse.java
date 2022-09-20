@@ -424,7 +424,7 @@ public class GhostHouse implements Runnable {
 					S_DRAGONPERL sdp = new S_DRAGONPERL(pc.getId(), 0);
 					Broadcaster.broadcastPacket(pc, sdp);
 					pc.sendPackets(sdp);
-					pc.set진주속도(0);
+					pc.set_pearl_speed(0);
 					sdp = null;
 				}
 				int[] loc = Getback.GetBack_Location(pc, true);

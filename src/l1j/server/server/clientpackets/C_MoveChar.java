@@ -308,7 +308,7 @@ public class C_MoveChar extends ClientBasePacket {
 						pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL,8, (reminingtime / 4) - 2), true);
 						pc.sendPackets(new S_DRAGONPERL(pc.getId(), 8), true);
 						Broadcaster.broadcastPacket(pc,new S_DRAGONPERL(pc.getId(), 8), true);
-						pc.set진주속도(1);
+						pc.set_pearl_speed(1);
 					}
 					// pc.setTelType(4);
 					// pc.sendPackets(new S_SabuTell(pc), true);
@@ -396,8 +396,8 @@ public class C_MoveChar extends ClientBasePacket {
 			}
 			   *//** SPR체크 **/
 
-			pc.플레이어상태 = pc.이동_상태;
-			pc.상태시간 = System.currentTimeMillis() + 2000;
+			pc.player_status = pc.move_state;
+			pc.state_time = System.currentTimeMillis() + 2000;
 
 			pc.getSkillEffectTimerSet().killSkillEffectTimer(
 					L1SkillId.MEDITATION);

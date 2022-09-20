@@ -1997,7 +1997,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					int stime = (remaining_time / 4) - 2;
 					pc.sendPackets(new S_DRAGONPERL(pc.getId(), 8), true);
 					pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 8, stime), true);
-					pc.set진주속도(1);
+					pc.set_pearl_speed(1);
 					break;
 				case L1SkillId.STATUS_WISDOM_POTION:
 					icon[38] = (remaining_time + 8) / 16;

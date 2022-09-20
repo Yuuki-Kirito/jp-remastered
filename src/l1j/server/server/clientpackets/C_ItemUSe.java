@@ -4177,8 +4177,8 @@ public class C_ItemUSe extends ClientBasePacket {
 							GeneralThreadPool.getInstance().schedule(new L1SkillDelay(pc, delay), delay);
 						}
 
-						pc.플레이어상태 = pc.공격_상태;
-						pc.상태시간 = System.currentTimeMillis() + 2000;
+						pc.player_status = pc.attack_state;
+						pc.state_time = System.currentTimeMillis() + 2000;
 						// System.out.println("여기2");
 						L1SkillUse l1skilluse = new L1SkillUse();
 						l1skilluse.handleCommands(client.getActiveChar(), skillid, spellsc_objid, spellsc_x, spellsc_y, null, 0, L1SkillUse.TYPE_SPELLSC);
@@ -10410,7 +10410,7 @@ public class C_ItemUSe extends ClientBasePacket {
 			pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 0, 0), true);
 			Broadcaster.broadcastPacket(pc, new S_DRAGONPERL(pc.getId(), 0), true); // 진주화면오류
 			pc.sendPackets(new S_DRAGONPERL(pc.getId(), 0), true);//
-			pc.set진주속도(0);
+			pc.set_pearl_speed(0);
 		}
 
 		pc.cancelAbsoluteBarrier();// 앱솔해제(팩에 이 메소드없으면 무시)
@@ -10422,7 +10422,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		pc.sendPackets(new S_DRAGONPERL(pc.getId(), 8), true);//
 		Broadcaster.broadcastPacket(pc, new S_DRAGONPERL(pc.getId(), 8), true);//
 		pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGONPERL, 8, stime), true);//
-		pc.set진주속도(1);
+		pc.set_pearl_speed(1);
 
 	}
 
