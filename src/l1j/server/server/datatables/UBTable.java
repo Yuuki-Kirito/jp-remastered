@@ -127,7 +127,7 @@ public class UBTable {
 		} finally {
 			SQLUtil.close(rs, pstm, con);
 		}
-		_log.config("UB¸®½ºÆ® " + _ub.size() + "°Ç ·Îµå");
+		_log.config("UB list " + _ub.size() + " is loaded.");
 	}
 
 	public L1UltimateBattle getUb(int ubId) {
@@ -148,11 +148,11 @@ public class UBTable {
 	}
 
 	/**
-	 * ÁöÁ¤µÈ UBID¿¡ ´ëÇÑ ÆĞÅÏÀÇ ÃÖ´ë¼ö¸¦ µ¹·ÁÁØ´Ù.
-	 * 
+	 * æŒ‡å®šã•ã‚ŒãŸUBIDã«å¯¾ã™ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã‚’è¿”ã™ã€‚
+	 *
 	 * @param ubId
-	 *            Á¶»çÇÏ´Â UBID.
-	 * @return ÆĞÅÏÀÇ ÃÖ´ë¼ö.
+	 *èª¿æŸ»ã™ã‚‹UBIDã€‚
+	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æœ€å¤§æ•°ã€‚
 	 */
 	public int getMaxPattern(int ubId) {
 		int n = 0;
@@ -180,7 +180,7 @@ public class UBTable {
 	}
 
 	/**
-	 * µğºñ¿¡ UBÀÇ ·©Å·µî·Ï
+	 * UBã®ãƒ©ãƒ³ã‚­ãƒ³ã‚°ç™»éŒ²
 	 */
 	public void writeUbScore(int ubId, L1PcInstance pc) {
 		java.sql.Connection con = null;

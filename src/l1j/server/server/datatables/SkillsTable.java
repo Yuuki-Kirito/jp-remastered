@@ -120,7 +120,7 @@ public class SkillsTable {
 
 			_skills.put(new Integer(skill_id), l1skills);
 		}
-		_log.config("스킬 " + _skills.size() + "건 로드");
+		_log.config("Skill  " + _skills.size() + " is loaded.");
 	}
 
 	public void spellMastery(int playerobjid, int skillid, String skillname,
@@ -217,27 +217,27 @@ public class SkillsTable {
 	public L1Skills getTemplate(int i) {
 		return _skills.get(new Integer(i));
 	}
-	
+
 	public L1Skills getTemplateByItem(int itemid) {
 		int skillid = 0;
 		switch (itemid) {
-		case 55594: skillid = L1SkillId.아머브레이크데스티니; break;//
-		case 55595: skillid = L1SkillId.더블브레이크데스티니; break;//
-		case 55596: skillid = L1SkillId.카운터배리어베테랑; break;//
-		case 6002651: skillid = L1SkillId.리덕션아머베테랑; break;//
-		case 6002652: skillid = L1SkillId.레이징포스; break;//
-		case 55597: skillid = L1SkillId.썬더그랩브레이브; break;//
-		case 55598: skillid = L1SkillId.포우슬레이어브레이브; break;//
+		case 55594: skillid = L1SkillId.ARMOR_BREAK_DISTINY; break;//
+		case 55595: skillid = L1SkillId.DOUBLE_BREAK_DISTINY; break;//
+		case 55596: skillid = L1SkillId.COUNTER_BARRIER_OLDHAND; break;//
+		case 6002651: skillid = L1SkillId.REDUCTION_ARMOR_OLDHAND; break;//
+		case 6002652: skillid = L1SkillId.RAGING_FORCE; break;//
+		case 55597: skillid = L1SkillId.THUNDER_GRAP_BRAVE; break;//
+		case 55598: skillid = L1SkillId.FOU_SLAYER_BRAVE; break;//
 		case 439107: skillid = L1SkillId.FEAR; break;//
 		case 439112: skillid = L1SkillId.HORROR_OF_DEATH; break;//
 		case 439100: skillid = L1SkillId.DRAGON_SKIN; break;//
-		case 55599: skillid = L1SkillId.데스페라도앱솔루트; break;
-		case 600358: skillid = L1SkillId.다크호스; break;//
-		case 600360: skillid = L1SkillId.아우라키아; break;//
-		case 600361: skillid = L1SkillId.파이널번; break;//
+		case 55599: skillid = L1SkillId.DEATH_PERADO_ABSOLUTE; break;
+		case 600358: skillid = L1SkillId.DARK_HOSE; break;//
+		case 600360: skillid = L1SkillId.AURA_KIA; break;//
+		case 600361: skillid = L1SkillId.FINAL_BURN_PASSIVE; break;//
 		case 40271: skillid = L1SkillId.BURNING_SPIRIT; break;//
 		case 40279: skillid = L1SkillId.DRESS_EVASION; break;//
-		case 6002650: skillid = L1SkillId.루시퍼데스티니; break;//
+		case 6002650: skillid = L1SkillId.LUCIFER_DISTINY; break;//
 		case 40236: skillid = L1SkillId.RESIST_ELEMENTAL; break;
 		}
 		if (skillid == 0) return null;

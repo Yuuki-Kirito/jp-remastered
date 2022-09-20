@@ -136,12 +136,12 @@ public class ShopTable {
 		return _allShops.get(npcId);
 	}
 
-	/* ¹ö°æ °ü·Ã */
+	/* ãƒãƒªãƒ§ãƒ³é–¢é€£ */
 	public void addShop(int npcId, L1Shop shop) {
 		_allShops.put(npcId, shop);
 	}
 
-	/* ¹ö°æ °ü·Ã */
+	/* ãƒãƒªãƒ§ãƒ³é–¢é€£ */
 	public void delShop(int npcId) {
 		_allShops.remove(npcId);
 	}

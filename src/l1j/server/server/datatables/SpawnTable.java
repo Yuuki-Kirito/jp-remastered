@@ -104,7 +104,7 @@ public class SpawnTable {
 		PerformanceTimer timer = new PerformanceTimer();
 		System.out.print("[SpawnTable] spawning mob...");
 		fillSpawnTable();
-		_log.config("¹èÄ¡ ¸®½ºÆ® " + _spawntable.size() + "°Ç ·Îµå");
+		_log.config("Spawnlist " + _spawntable.size() + " is loaded.");
 		System.out.println("OK! " + timer.get() + " ms");
 	}
 
@@ -179,8 +179,8 @@ public class SpawnTable {
 
 
 					if (count > 1 && spawnDat.getLocX1() == 0) {
-						// º¹¼ö ¶ÇÇÑ °íÁ¤ spawnÀÇ °æ¿ì´Â, °³Ã¼¼ö * 6 ÀÇ ¹üÀ§ spawn·Î ¹Ù²Û´Ù.
-						// ´Ù¸¸ ¹üÀ§°¡ 30À» ³ÑÁö ¾Ê°Ô ÇÑ´Ù
+						// è¤‡æ•°ã‚‚å›ºå®š spawn ã®å ´åˆã¯ã€å€‹ä½“æ•° * 6 ã®ç¯„å›² spawn ã«å¤‰ãˆã‚‹ã€‚
+						//ã¡ã‚‡ã†ã©ç¯„å›²ãŒ30ã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
 						int range = Math.min(count * 6, 30);
 						spawnDat.setLocX1(spawnDat.getLocX() - range);
 						spawnDat.setLocY1(spawnDat.getLocY() - range);
@@ -188,9 +188,9 @@ public class SpawnTable {
 						spawnDat.setLocY2(spawnDat.getLocY() + range);
 					}
 					/*
-					 * if(spawnDat.getMapId() == 2228){
-					 * System.out.println("2228 Å×ÀÌºí¿¡¼­ÀĞÀ½"); }
-					 */
+					* if(spawnDat.getMapId() == 2228){
+					* System.out.println("2228 ãƒ†ãƒ¼ãƒ–ãƒ«ã‹ã‚‰èª­ã¿å–ã‚‹"); }
+					*/
 					// start the spawning
 					spawnDat.init();
 					spawnCount += spawnDat.getAmount();
@@ -212,7 +212,7 @@ public class SpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.fine("ÃÑmonster¼ö " + spawnCount + "¸¶¸®");
+		_log.fine("Total Mob Count  " + spawnCount);
 	}
 
 	public static void SabuSpawn(L1Location loc, L1Npc npc) {

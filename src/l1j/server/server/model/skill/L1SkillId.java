@@ -24,7 +24,7 @@ public class L1SkillId {
 	/*
 	 * Regular Magic Lv1-10
 	 */
-	// 1´Ü°è ÀÏ¹İ¸¶¹ı
+	// 1ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int HEAL = 1; // E: LESSER_HEAL
 	public static final int LIGHT = 2;
 	public static final int SHIELD = 3;
@@ -34,7 +34,7 @@ public class L1SkillId {
 	public static final int WIND_CUTTER = 7; // E: WIND_SHURIKEN
 	public static final int HOLY_WEAPON = 8;
 
-	// 2´Ü°è ÀÏ¹İ¸¶¹ı
+	// 2ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int CURE_POISON = 9;
 	public static final int CHILL_TOUCH = 10;
 	public static final int CURSE_POISON = 11;
@@ -44,7 +44,7 @@ public class L1SkillId {
 	public static final int FIRE_ARROW = 15;
 	public static final int STALAC = 16;
 
-	// 3´Ü°è ÀÏ¹İ¸¶¹ı
+	// 3ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int LIGHTNING = 17;
 	public static final int TURN_UNDEAD = 18;
 	public static final int EXTRA_HEAL = 19; // E: HEAL
@@ -53,7 +53,7 @@ public class L1SkillId {
 	public static final int FROZEN_CLOUD = 22;
 	public static final int WEAK_ELEMENTAL = 23; // E: REVEAL_WEAKNESS
 
-	// 4´Ü°è ÀÏ¹İ¸¶¹ı // none = 24
+	// 4ë‹¨ê³„ ì¼ë°˜ë§ˆë²• // none = 24
 	public static final int FIREBALL = 25;
 	public static final int PHYSICAL_ENCHANT_DEX = 26; // E: ENCHANT_DEXTERITY
 	public static final int WEAPON_BREAK = 27;
@@ -63,7 +63,7 @@ public class L1SkillId {
 	public static final int COUNTER_MAGIC = 31;
 	public static final int MEDITATION = 32;
 
-	// 5´Ü°è ÀÏ¹İ¸¶¹ı
+	// 5ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int CURSE_PARALYZE = 33;
 	public static final int CALL_LIGHTNING = 34;
 	public static final int GREATER_HEAL = 35;
@@ -73,7 +73,7 @@ public class L1SkillId {
 	public static final int MANA_DRAIN = 39;
 	public static final int DARKNESS = 40;
 
-	// 6´Ü°è ÀÏ¹İ¸¶¹ı
+	// 6ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int CREATE_ZOMBIE = 41;
 	public static final int PHYSICAL_ENCHANT_STR = 42; // E: ENCHANT_MIGHTY
 	public static final int HASTE = 43;
@@ -83,7 +83,7 @@ public class L1SkillId {
 	public static final int WEAKNESS = 47;
 	public static final int BLESS_WEAPON = 48;
 
-	// 7´Ü°è ÀÏ¹İ¸¶¹ı
+	// 7ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int HEAL_ALL = 49; // E: HEAL_PLEDGE
 	public static final int Freeze_armor = 50;
 	public static final int SUMMON_MONSTER = 51;
@@ -93,7 +93,7 @@ public class L1SkillId {
 	public static final int BERSERKERS = 55;
 	public static final int DISEASE = 56;
 
-	// 8´Ü°è ÀÏ¹İ¸¶¹ı
+	// 8ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int FULL_HEAL = 57;
 	public static final int FIRE_WALL = 58;
 	public static final int BLIZZARD = 59;
@@ -103,7 +103,7 @@ public class L1SkillId {
 	public static final int LIFE_STREAM = 63;
 	public static final int SILENCE = 64;
 
-	// 9´Ü°è ÀÏ¹İ¸¶¹ı
+	// 9ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	public static final int LIGHTNING_STORM = 65;
 	public static final int FOG_OF_SLEEPING = 66;
 	public static final int SHAPE_CHANGE = 67; // E: POLYMORPH
@@ -113,7 +113,7 @@ public class L1SkillId {
 	public static final int DECAY_POTION = 71;
 	public static final int COUNTER_DETECTION = 72;
 
-	// 10´Ü°è ÀÏ¹İ¸¶¹ı
+	// 10ë‹¨ê³„ ì¼ë°˜ë§ˆë²•
 	//public static final int CREATE_MAGICAL_WEAPON = 73;
 	public static final int METEOR_STRIKE = 74;
 	public static final int GREATER_RESURRECTION = 75;
@@ -153,27 +153,27 @@ public class L1SkillId {
 	public static final int DRESS_DEXTERITY = 110;
 	public static final int DRESS_EVASION = 565;
 	public static final int ARMOR_BREAK = 112;
-	public static final int ·ç½ÃÆÛ = 234;
+	public static final int ë£¨ì‹œí¼ = 234;
 	public static final int ASSASSIN = 233;
-	
-	public static final int Ãâ¼®Ã¼Å© = 6000;
-	public static final int Ãâ¼®Ã¼Å©«Ç«£«ì«¤ = 5000;
-	
-	/** 4´ë¿ë ¸¶¾È ¹öÇÁ */
-	public static final int ANTA_MAAN = 7671; // Áö·æÀÇ ¸¶¾È
-	public static final int FAFU_MAAN = 7672; // ¼ö·æÀÇ ¸¶¾È
-	public static final int VALA_MAAN = 7673; // È­·æÀÇ ¸¶¾È
-	public static final int LIND_MAAN = 7674; // Ç³·æÀÇ ¸¶¾È
-	public static final int BIRTH_MAAN = 7675; // Åº»ıÀÇ ¸¶¾È
-	public static final int SHAPE_MAAN = 7676; // Çü»óÀÇ ¸¶¾È
-	public static final int LIFE_MAAN = 7677; // »ı¸íÀÇ ¸¶¾È
-	public static final int HALPAS_MAAN = 7678; // Èæ·æÀÇ ¸¶¾È
-	public static final int NEVER_MAAN = 7679; // Àı´ëÀÇ ¸¶¾È
-	
-	/** 4´ë¿ë ¸¶¾È ¹öÇÁ */
 
-	/** Ç÷¸Í¹öÇÁ */
-	public static final int CLAN_BUFF1 = 505; //Ç÷¸Í¹öÇÁ
+	public static final int ì¶œì„ì²´í¬ = 6000;
+	public static final int ì¶œì„ì²´í¬ãƒ‡ã‚£ãƒ¬ã‚¤ = 5000;
+
+	/** 4ëŒ€ìš© ë§ˆì•ˆ ë²„í”„ */
+	public static final int ANTA_MAAN = 7671; // ì§€ë£¡ì˜ ë§ˆì•ˆ
+	public static final int FAFU_MAAN = 7672; // ìˆ˜ë£¡ì˜ ë§ˆì•ˆ
+	public static final int VALA_MAAN = 7673; // í™”ë£¡ì˜ ë§ˆì•ˆ
+	public static final int LIND_MAAN = 7674; // í’ë£¡ì˜ ë§ˆì•ˆ
+	public static final int BIRTH_MAAN = 7675; // íƒ„ìƒì˜ ë§ˆì•ˆ
+	public static final int SHAPE_MAAN = 7676; // í˜•ìƒì˜ ë§ˆì•ˆ
+	public static final int LIFE_MAAN = 7677; // ìƒëª…ì˜ ë§ˆì•ˆ
+	public static final int HALPAS_MAAN = 7678; // í‘ë£¡ì˜ ë§ˆì•ˆ
+	public static final int NEVER_MAAN = 7679; // ì ˆëŒ€ì˜ ë§ˆì•ˆ
+
+	/** 4ëŒ€ìš© ë§ˆì•ˆ ë²„í”„ */
+
+	/** í˜ˆë§¹ë²„í”„ */
+	public static final int CLAN_BUFF1 = 505; //í˜ˆë§¹ë²„í”„
 	public static final int CLAN_BUFF2 = 506;
 	public static final int CLAN_BUFF3 = 507;
 	public static final int CLAN_BUFF4 = 508;
@@ -186,7 +186,7 @@ public class L1SkillId {
 	public static final int SHINING_AURA = 115;
 	public static final int SHINING_ARMOR = 116; // E: CALL_PLEDGE_MEMBER
 	public static final int BRAVE_AURA = 117;
-	public static final int ¸¶Á¦½ºÆ¼ = 118;
+	public static final int ë§ˆì œìŠ¤í‹° = 118;
 
 	// unknown = 119 - 120
 	// none = 121 - 128
@@ -212,7 +212,7 @@ public class L1SkillId {
 	public static final int WIND_SHOT = 149;
 	public static final int WIND_WALK = 150;
 	public static final int FIRE_SHIELD = 151;
-	public static final int ENTANGLE = 152; // E:ÄùÀÌÅ© ¸¸µæÀÌ
+	public static final int ENTANGLE = 152; // E:í€˜ì´í¬ ë§Œë“ì´
 	public static final int ERASE_MAGIC = 153;
 	public static final int LESSER_ELEMENTAL = 154; // E:SUMMON_LESSER_ELEMENTAL
 	public static final int FIRE_BLESS = 155; // E: BLESS_OF_FIRE
@@ -238,14 +238,14 @@ public class L1SkillId {
 	public static final int SOUL_OF_FLAME = 175;
 	public static final int ADDITIONAL_FIRE = 176;
 	public static final int HURRICANE = 178;
-	public static final int Æ÷Ä¿½º¿şÀÌºê = 177;
+	public static final int í¬ì»¤ìŠ¤ì›¨ì´ë¸Œ = 177;
 	public static final int SAND_STORM = 179;
-	
 
-	// ¿ë±â»ç
+
+	// ìš©ê¸°ì‚¬
 	public static final int DRAGON_SKIN = 181;
 	public static final int BURNING_SLASH = 182;
-	public static final int µğ½ºÆ®·ÎÀÌ = 183;
+	public static final int ë””ìŠ¤íŠ¸ë¡œì´ = 183;
 	public static final int MAGMA_BREATH = 184;
 	public static final int SCALES_EARTH_DRAGON = 185;
 	public static final int BLOOD_LUST = 186;
@@ -260,7 +260,7 @@ public class L1SkillId {
 	public static final int SCALES_FIRE_DRAGON = 195;
 	public static final int SCALES_Lind_DRAGON = 197;
 
-	// È¯¼ú»ç
+	// í™˜ìˆ ì‚¬
 	public static final int MIRROR_IMAGE = 201;
 	public static final int CONFUSION = 202;
 	public static final int SMASH = 203;
@@ -282,17 +282,17 @@ public class L1SkillId {
 	public static final int IllUSION_AVATAR = 219;
 	public static final int CUBE_BALANCE = 220;
 	public static final int SKILLS_END = 220;
-	
 
-	/**°Ë»ç ¾×Æ¼ºê ½ºÅ³*/
+
+	/**ê²€ì‚¬ ì•¡í‹°ë¸Œ ìŠ¤í‚¬*/
 	public static final int JUDGEMENT = 235;
 	public static final int PHANTOM = 236;
 	public static final int PANTERA = 237;
 	public static final int HELLFIRE = 238;
 	public static final int BLADE = 239;
-	/**°Ë»ç ¾×Æ¼ºê ½ºÅ³*/
+	/**ê²€ì‚¬ ì•¡í‹°ë¸Œ ìŠ¤í‚¬*/
 
-	/**°Ë»ç ÆĞ½Ãºê ½ºÅ³*/
+	/**ê²€ì‚¬ íŒ¨ì‹œë¸Œ ìŠ¤í‚¬*/
 	public static final int INFINITY_A = 550;
 	public static final int INFINITY_B = 551;
 	public static final int INFINITY_D = 552;
@@ -306,7 +306,7 @@ public class L1SkillId {
 	public static final int INFINITY_BL = 560;
 	public static final int SURVIVE = 561;
 	public static final int PANTERA_S = 562;
-	/**°Ë»ç ÆĞ½Ãºê ½ºÅ³*/
+	/**ê²€ì‚¬ íŒ¨ì‹œë¸Œ ìŠ¤í‚¬*/
 
 	/*
 	 * Status
@@ -317,48 +317,48 @@ public class L1SkillId {
 
 	public static final int STATUS_RanKing = 6420;//
 
-	public static final int STATUS_Áø±ÍÇÑ½Ä·® = 1030;
-	public static final int STATUS_¸¶³à¸¶·ÂÈ¸º¹Á¦ = 1031;
-	public static final int STATUS_¾ÈÀü¸ğµå = 1032;
-	public static final int STATUS_Èû¾÷6 = 1033;
-	public static final int STATUS_Èû¾÷7 = 1034;
-	public static final int STATUS_µ¦¾÷6 = 1035;
-	public static final int STATUS_µ¦¾÷7 = 1036;
+	public static final int STATUS_ì§„ê·€í•œì‹ëŸ‰ = 1030;
+	public static final int STATUS_ë§ˆë…€ë§ˆë ¥íšŒë³µì œ = 1031;
+	public static final int STATUS_ì•ˆì „ëª¨ë“œ = 1032;
+	public static final int STATUS_í˜ì—…6 = 1033;
+	public static final int STATUS_í˜ì—…7 = 1034;
+	public static final int STATUS_ë±ì—…6 = 1035;
+	public static final int STATUS_ë±ì—…7 = 1036;
 
-	public static final int STATUS_AUTOROOT = 76261;// by»çºÎ ¿ÀÅä·çÆÃ ¸í·É¾î¸¦À§ÇÑ
-	public static final int STATUS_MENT = 7626; // Ãß°¡ by»çºÎ ¸àÆ®¸í·É¾î
+	public static final int STATUS_AUTOROOT = 76261;// byì‚¬ë¶€ ì˜¤í† ë£¨íŒ… ëª…ë ¹ì–´ë¥¼ìœ„í•œ
+	public static final int STATUS_MENT = 7626; // ì¶”ê°€ byì‚¬ë¶€ ë©˜íŠ¸ëª…ë ¹ì–´
 	public static final int STATUS_HASTE = 1001;
 	public static final int STATUS_BLUE_POTION = 1002;
 	public static final int STATUS_UNDERWATER_BREATH = 1003;
 	public static final int STATUS_WISDOM_POTION = 1004;
-	public static final int »ç¿¤ = 5959; // »ç¿¤¹öÇÁ
-	public static final int Å©·¹ÀÌ = 5858; // »ç¿¤¹öÇÁ
-	public static final int ±ºÅÍÀÇÁ¶¾ğ = 6060;
+	public static final int ì‚¬ì—˜ = 5959; // ì‚¬ì—˜ë²„í”„
+	public static final int í¬ë ˆì´ = 5858; // ì‚¬ì—˜ë²„í”„
+	public static final int êµ°í„°ì˜ì¡°ì–¸ = 6060;
 	public static final int DRAGON_GROWTH_BUFF = 6072;
 	public static final int CLAN_BLESS_BUFF = 6073;
-	public static final int ÇÒÆÄ½º±Ç¼Ó¹öÇÁ = 6062;
+	public static final int í• íŒŒìŠ¤ê¶Œì†ë²„í”„ = 6062;
 
-	/** ¾ÈÅ¸¶ó½º / ÆÄÇª¸®¿Â ¸¶¾È ¹öÇÁ */
+	/** ì•ˆíƒ€ë¼ìŠ¤ / íŒŒí‘¸ë¦¬ì˜¨ ë§ˆì•ˆ ë²„í”„ */
 	public static final int DRAGONBLOOD_A = 55001;
 	public static final int DRAGONBLOOD_P = 55002;
 	public static final int DRAGONBLOOD_L = 55003;
 	public static final int DRAGONRAID_BUFF = 55005;
 
-	public static final int ÇÇ¾¾¹æ_¹öÇÁ = 777888;
+	public static final int í”¼ì”¨ë°©_ë²„í”„ = 777888;
 
-	public static final int °­È­¹öÇÁ_È°·Â = 56000;
-	public static final int °­È­¹öÇÁ_°ø°İ = 56001;
-	public static final int °­È­¹öÇÁ_¹æ¾î = 56002;
-	public static final int °­È­¹öÇÁ_¸¶¹ı = 56003;
-	public static final int °­È­¹öÇÁ_½ºÅÏ = 56004;
-	public static final int °­È­¹öÇÁ_È¦µå = 56005;
-	
-	public static final int °­È­¹öÇÁ_¿Ï·Â = 56006;
-	public static final int °­È­¹öÇÁ_¹ÎÃ¸ = 56007;
-	public static final int °­È­¹öÇÁ_Áö½Ä = 56008;
-	public static final int °­È­¹öÇÁ_ÁöÇı = 56009;
-	
-	
+	public static final int ê°•í™”ë²„í”„_í™œë ¥ = 56000;
+	public static final int ê°•í™”ë²„í”„_ê³µê²© = 56001;
+	public static final int ê°•í™”ë²„í”„_ë°©ì–´ = 56002;
+	public static final int ê°•í™”ë²„í”„_ë§ˆë²• = 56003;
+	public static final int ê°•í™”ë²„í”„_ìŠ¤í„´ = 56004;
+	public static final int ê°•í™”ë²„í”„_í™€ë“œ = 56005;
+
+	public static final int ê°•í™”ë²„í”„_ì™„ë ¥ = 56006;
+	public static final int ê°•í™”ë²„í”„_ë¯¼ì²© = 56007;
+	public static final int ê°•í™”ë²„í”„_ì§€ì‹ = 56008;
+	public static final int ê°•í™”ë²„í”„_ì§€í˜œ = 56009;
+
+
 	public static final int STATUS_POISON = 1006;
 	public static final int STATUS_POISON_SILENCE = 1007;
 	public static final int STATUS_POISON_PARALYZING = 1008;
@@ -392,7 +392,7 @@ public class L1SkillId {
 	public static final int GMSTATUS_END = 2002;
 	public static final int COOKING_NOW = 2999;
 	public static final int COOKING_BEGIN = 3000;
-	/** 1Â÷¿ä¸® È¿°ú (³ë¸Ö) */
+	/** 1ì°¨ìš”ë¦¬ íš¨ê³¼ (ë…¸ë©€) */
 	public static final int COOKING_1_0_N = 3000;
 	public static final int COOKING_1_1_N = 3001;
 	public static final int COOKING_1_2_N = 3002;
@@ -402,7 +402,7 @@ public class L1SkillId {
 	public static final int COOKING_1_6_N = 3006;
 	public static final int COOKING_1_7_N = 3007;
 
-	/** 2Â÷¿ä¸® È¿°ú (³ë¸Ö) */
+	/** 2ì°¨ìš”ë¦¬ íš¨ê³¼ (ë…¸ë©€) */
 	public static final int COOKING_1_8_N = 3008;
 	public static final int COOKING_1_9_N = 3009;
 	public static final int COOKING_1_10_N = 3010;
@@ -412,7 +412,7 @@ public class L1SkillId {
 	public static final int COOKING_1_14_N = 3014;
 	public static final int COOKING_1_15_N = 3015;
 
-	/** 3Â÷¿ä¸® È¿°ú (³ë¸Ö) */
+	/** 3ì°¨ìš”ë¦¬ íš¨ê³¼ (ë…¸ë©€) */
 	public static final int COOKING_1_16_N = 3016;
 	public static final int COOKING_1_17_N = 3017;
 	public static final int COOKING_1_18_N = 3018;
@@ -422,7 +422,7 @@ public class L1SkillId {
 	public static final int COOKING_1_22_N = 3022;
 	public static final int COOKING_1_23_N = 3023;
 
-	/** 1Â÷¿ä¸® È¿°ú (È¯»ó) */
+	/** 1ì°¨ìš”ë¦¬ íš¨ê³¼ (í™˜ìƒ) */
 	public static final int COOKING_1_0_S = 3050;
 	public static final int COOKING_1_1_S = 3051;
 	public static final int COOKING_1_2_S = 3052;
@@ -432,7 +432,7 @@ public class L1SkillId {
 	public static final int COOKING_1_6_S = 3056;
 	public static final int COOKING_1_7_S = 3057;
 
-	/** 2Â÷¿ä¸® È¿°ú (È¯»ó) */
+	/** 2ì°¨ìš”ë¦¬ íš¨ê³¼ (í™˜ìƒ) */
 	public static final int COOKING_1_8_S = 3058;
 	public static final int COOKING_1_9_S = 3059;
 	public static final int COOKING_1_10_S = 3060;
@@ -442,7 +442,7 @@ public class L1SkillId {
 	public static final int COOKING_1_14_S = 3064;
 	public static final int COOKING_1_15_S = 3065;
 
-	/** 3Â÷¿ä¸® È¿°ú (È¯»ó) */
+	/** 3ì°¨ìš”ë¦¬ íš¨ê³¼ (í™˜ìƒ) */
 	public static final int COOKING_1_16_S = 3066;
 	public static final int COOKING_1_17_S = 3067;
 	public static final int COOKING_1_18_S = 3068;
@@ -460,12 +460,12 @@ public class L1SkillId {
 	public static final int COOKING_NEW_QUICK_BOILED_SALMON = 3078;
 	public static final int COOKING_NEW_CLEVER_TURKEY_ROAST = 3079;
 	public static final int COOKING_NEW_ORDEAL_CHICKEN_SOUP = 3080;
-	public static final int ¸ŞÆ¼½ºÃàº¹ÁÖ¹®¼­ = 3081;
-	public static final int ¸ŞÆ¼½ºÁ¤¼º¿ä¸® = 3082;
-	public static final int ¸ŞÆ¼½ºÁ¤¼º½ºÇÁ = 3083;
+	public static final int ë©”í‹°ìŠ¤ì¶•ë³µì£¼ë¬¸ì„œ = 3081;
+	public static final int ë©”í‹°ìŠ¤ì •ì„±ìš”ë¦¬ = 3082;
+	public static final int ë©”í‹°ìŠ¤ì •ì„±ìŠ¤í”„ = 3083;
 	public static final int COOKING_SMALL_NOODLE_DISHES = 3084;
 	public static final int COOKING_SMALL_PORTABLE_BEVERAGE = 3085;
-	public static final int WIND_SHACKLE = 3086; //¸÷¼ÎÅ¬
+	public static final int WIND_SHACKLE = 3086; //ëª¹ì…°í´
 	public static final int COOKING_NEW_TAM_POWERFUL_WAGYU_STEAK = 3087;
 	public static final int COOKING_NEW_TAM_QUICK_BOILED_SALMON = 3088;
 	public static final int COOKING_NEW_TAM_CLEVER_TURKEY_ROAST = 3089;
@@ -483,8 +483,8 @@ public class L1SkillId {
 	public static final int STATUS_QUAKE = 20076;
 	public static final int STATUS_SHOCK = 20077;
 	public static final int STATUS_BALANCE = 20078;
-	public static final int ¸°µå°¡È£«Ç«£«ì«¤ = 8178;
-	public static final int ÇÒÆÄ½º°¡È£lv1 = 100000;
+	public static final int ë¦°ë“œê°€í˜¸ãƒ‡ã‚£ãƒ¬ã‚¤ = 8178;
+	public static final int í• íŒŒìŠ¤ê°€í˜¸lv1 = 100000;
 	public static final int STATUS_FRUIT = 20079;
 	public static final int STATUS_OVERLAP = 20080;
 	public static final int EXP_POTION = 20081;
@@ -513,77 +513,77 @@ public class L1SkillId {
 
 	public static final int STATUS_BLUE_POTION3 = 22004;
 
-	public static final int MOB_SLOW_18 = 30000; // ½½·Î¿ì 18¹ø¸ğ¼Ç
-	public static final int MOB_SLOW_1 = 30001; // ½½·Î¿ì 1¹ø¸ğ¼Ç
-	public static final int MOB_CURSEPARALYZ_19 = 30002; // Ä¿½º 19¹ø¸ğ¼Ç
-	public static final int MOB_COCA = 30003; // ÄÚÄ«Æ®¸®½º ¾ó¸®±â°ø°İ
-	public static final int MOB_BASILL = 30004; // ¹Ù½Ç¸®½ºÅ© ¾ó¸®±â¿¡º¼
-	public static final int MOB_RANGESTUN_19 = 30005; // ¹üÀ§½ºÅÏ 19¹ø¸ğ¼Ç
-	public static final int MOB_RANGESTUN_18 = 30006; // ¹üÀ§½ºÅÏ 18¹ø¸ğ¼Ç
-	public static final int MOB_CURSEPARALYZ_18 = 30007; // Ä¿½º 18¹ø¸ğ¼Ç
-	public static final int MOB_DISEASE_30 = 30008; // µğÁöÁî 30¹ø¸ğ¼Ç
-	public static final int MOB_WEAKNESS_1 = 30009; // À§Å©´Ï½º 1¹ø¸ğ¼Ç
-	public static final int MOB_DISEASE_1 = 30079; // µğÁöÁî 1¹ø¸ğ¼Ç
-	public static final int MOB_SHOCKSTUN_30 = 30081; // ¼îÅ©½ºÅÏ 30¹ø¸ğ¼Ç
-	public static final int MOB_WINDSHACKLE_1 = 30084; // À©µå¼ÎÅ¬ 1¹ø¸ğ¼Ç
+	public static final int MOB_SLOW_18 = 30000; // ìŠ¬ë¡œìš° 18ë²ˆëª¨ì…˜
+	public static final int MOB_SLOW_1 = 30001; // ìŠ¬ë¡œìš° 1ë²ˆëª¨ì…˜
+	public static final int MOB_CURSEPARALYZ_19 = 30002; // ì»¤ìŠ¤ 19ë²ˆëª¨ì…˜
+	public static final int MOB_COCA = 30003; // ì½”ì¹´íŠ¸ë¦¬ìŠ¤ ì–¼ë¦¬ê¸°ê³µê²©
+	public static final int MOB_BASILL = 30004; // ë°”ì‹¤ë¦¬ìŠ¤í¬ ì–¼ë¦¬ê¸°ì—ë³¼
+	public static final int MOB_RANGESTUN_19 = 30005; // ë²”ìœ„ìŠ¤í„´ 19ë²ˆëª¨ì…˜
+	public static final int MOB_RANGESTUN_18 = 30006; // ë²”ìœ„ìŠ¤í„´ 18ë²ˆëª¨ì…˜
+	public static final int MOB_CURSEPARALYZ_18 = 30007; // ì»¤ìŠ¤ 18ë²ˆëª¨ì…˜
+	public static final int MOB_DISEASE_30 = 30008; // ë””ì§€ì¦ˆ 30ë²ˆëª¨ì…˜
+	public static final int MOB_WEAKNESS_1 = 30009; // ìœ„í¬ë‹ˆìŠ¤ 1ë²ˆëª¨ì…˜
+	public static final int MOB_DISEASE_1 = 30079; // ë””ì§€ì¦ˆ 1ë²ˆëª¨ì…˜
+	public static final int MOB_SHOCKSTUN_30 = 30081; // ì‡¼í¬ìŠ¤í„´ 30ë²ˆëª¨ì…˜
+	public static final int MOB_WINDSHACKLE_1 = 30084; // ìœˆë“œì…°í´ 1ë²ˆëª¨ì…˜
 
-	public static final int ANTA_SKILL_1 = 10188; // ¼¼ÀÌ ¸®¶óÇÁ
-	public static final int ANTA_SKILL_2 = 10189; // Æ¼ ¼¼Åä¸£
-	public static final int ANTA_SKILL_3 = 10190; // ¹ÂÁî »ï
-	public static final int ANTA_SKILL_4 = 10191;// ³ÊÃ÷ »ï
-	public static final int ANTA_SKILL_5 = 10192; // Æ¼ÇÁ »ï
+	public static final int ANTA_SKILL_1 = 10188; // ì„¸ì´ ë¦¬ë¼í”„
+	public static final int ANTA_SKILL_2 = 10189; // í‹° ì„¸í† ë¥´
+	public static final int ANTA_SKILL_3 = 10190; // ë®¤ì¦ˆ ì‚¼
+	public static final int ANTA_SKILL_4 = 10191;// ë„ˆì¸  ì‚¼
+	public static final int ANTA_SKILL_5 = 10192; // í‹°í”„ ì‚¼
 
-	public static final int ANTA_SKILL_6 = 10193; // ¸®¶óÇÁ
+	public static final int ANTA_SKILL_6 = 10193; // ë¦¬ë¼í”„
 
-	public static final int ANTA_SKILL_7 = 10194; // ÄË ·Î¿ì
+	public static final int ANTA_SKILL_7 = 10194; // ì¼„ ë¡œìš°
 
-	public static final int ANTA_SKILL_8 = 10195; // Æ¼±â¸£
-	public static final int ANTA_SKILL_9 = 10196; // ÄË Æ¼±â¸£
+	public static final int ANTA_SKILL_8 = 10195; // í‹°ê¸°ë¥´
+	public static final int ANTA_SKILL_9 = 10196; // ì¼„ í‹°ê¸°ë¥´
 
-	public static final int ANTA_SKILL_10 = 10197; // ·ç¿À Å¸
+	public static final int ANTA_SKILL_10 = 10197; // ë£¨ì˜¤ íƒ€
 
-	public static final int ANTA_SKILL_11 = 10198; // ÄÉ ³×½Ã
+	public static final int ANTA_SKILL_11 = 10198; // ì¼€ ë„¤ì‹œ
 
-	public static final int ANTA_SKILL_12 = 10199; // ¹ÂÁî ½É
+	public static final int ANTA_SKILL_12 = 10199; // ë®¤ì¦ˆ ì‹¬
 
-	public static final int ANTA_SKILL_13 = 10200; // ³ÊÃ÷ ½É
+	public static final int ANTA_SKILL_13 = 10200; // ë„ˆì¸  ì‹¬
 
-	public static final int ANTA_SKILL_14 = 10201; // Æ¼ÇÁ ½É
+	public static final int ANTA_SKILL_14 = 10201; // í‹°í”„ ì‹¬
 
-	public static final int PAPOO_SKILL = 10502; // ¸®¿ÀÅ¸! ´©½º°Ç Ä«Çª
-	public static final int PAPOO_SKILL1 = 10507; // ¸®¿ÀÅ¸! ÇÇ·ÎÀÌ³ª
-	public static final int PAPOO_SKILL2 = 10508; // ¸®¿ÀÅ¸! ¶ó³ª ÆùÆù
-	public static final int PAPOO_SKILL3 = 10509; // ¸®¿À³ª! ·¹¿À ÆùÆù
+	public static final int PAPOO_SKILL = 10502; // ë¦¬ì˜¤íƒ€! ëˆ„ìŠ¤ê±´ ì¹´í‘¸
+	public static final int PAPOO_SKILL1 = 10507; // ë¦¬ì˜¤íƒ€! í”¼ë¡œì´ë‚˜
+	public static final int PAPOO_SKILL2 = 10508; // ë¦¬ì˜¤íƒ€! ë¼ë‚˜ í°í°
+	public static final int PAPOO_SKILL3 = 10509; // ë¦¬ì˜¤ë‚˜! ë ˆì˜¤ í°í°
 
-	public static final int PAPOO_SKILL4 = 10510; // ¸®¿ÀÅ¸!Å×³ª ·Ğµğ¸£
-	public static final int PAPOO_SKILL5 = 10512; // ¸®¿ÀÅ¸!³×³ª ·Ğµğ¸£
-	public static final int PAPOO_SKILL6 = 10514; // ¸®¿ÀÅ¸!¶ó³ª ¿ÀÀÌ¹Ç
-	public static final int PAPOO_SKILL7 = 10515; // ¸®¿ÀÅ¸! ·¹Æ÷ ¿ÀÀÌ¹Ç //7870ÇÑÅ×¸¸Àû¿ë
-	public static final int PAPOO_SKILL8 = 10516; // ¸®¿ÀÅ¸! Å×³ª ¿şÀÎ¶óÅ©
-	public static final int PAPOO_SKILL9 = 10519; // ¸®¿ÀÅ¸! ³×³ª ¿ì´©½º
-	public static final int PAPOO_SKILL10 = 10520; // ¸®¿ÀÅ¸! ¿À´ÏÁî ¿şÀÎ¶óÅ©
-	public static final int PAPOO_SKILL11 = 10521; // ¸®¿ÀÅ¸! ¿À´ÏÁî Äí½º¿Â ¿şÀÎ¶óÅ©
+	public static final int PAPOO_SKILL4 = 10510; // ë¦¬ì˜¤íƒ€!í…Œë‚˜ ë¡ ë””ë¥´
+	public static final int PAPOO_SKILL5 = 10512; // ë¦¬ì˜¤íƒ€!ë„¤ë‚˜ ë¡ ë””ë¥´
+	public static final int PAPOO_SKILL6 = 10514; // ë¦¬ì˜¤íƒ€!ë¼ë‚˜ ì˜¤ì´ë¯€
+	public static final int PAPOO_SKILL7 = 10515; // ë¦¬ì˜¤íƒ€! ë ˆí¬ ì˜¤ì´ë¯€ //7870í•œí…Œë§Œì ìš©
+	public static final int PAPOO_SKILL8 = 10516; // ë¦¬ì˜¤íƒ€! í…Œë‚˜ ì›¨ì¸ë¼í¬
+	public static final int PAPOO_SKILL9 = 10519; // ë¦¬ì˜¤íƒ€! ë„¤ë‚˜ ìš°ëˆ„ìŠ¤
+	public static final int PAPOO_SKILL10 = 10520; // ë¦¬ì˜¤íƒ€! ì˜¤ë‹ˆì¦ˆ ì›¨ì¸ë¼í¬
+	public static final int PAPOO_SKILL11 = 10521; // ë¦¬ì˜¤íƒ€! ì˜¤ë‹ˆì¦ˆ ì¿ ìŠ¤ì˜¨ ì›¨ì¸ë¼í¬
 
-	public static final int ÃÊº¸ÀÚµµ¿ì¹ÌÅ¬¸¯«Ç«£«ì«¤ = 10522;
-	public static final int ¾ó³à¼ºÀÎ´ø«Ç«£«ì«¤ = 10523;
-	public static final int ¿Ï·Âºù¼ö = 10524;
-	public static final int ¹ÎÃ¸ºù¼ö = 10525;
-	public static final int Áö½Äºù¼ö = 10526;
+	public static final int ì´ˆë³´ìë„ìš°ë¯¸í´ë¦­ãƒ‡ã‚£ãƒ¬ã‚¤ = 10522;
+	public static final int ì–¼ë…€ì„±ì¸ë˜ãƒ‡ã‚£ãƒ¬ã‚¤ = 10523;
+	public static final int ì™„ë ¥ë¹™ìˆ˜ = 10524;
+	public static final int ë¯¼ì²©ë¹™ìˆ˜ = 10525;
+	public static final int ì§€ì‹ë¹™ìˆ˜ = 10526;
 
-	public static final int ´ÜÅ×½º¹öÇÁ = 10527;
+	public static final int ë‹¨í…ŒìŠ¤ë²„í”„ = 10527;
 
-	public static final int Èæ»çÀÇ±â¿î = 10528;
+	public static final int í‘ì‚¬ì˜ê¸°ìš´ = 10528;
 
 	public static final int STATUS_LEVEL_UP_BONUS = 10529;
 
-	public static final int Á¦·Î½º¸®´ö = 10535;
+	public static final int ì œë¡œìŠ¤ë¦¬ë• = 10535;
 
-	public static final int Åä¸¶È£Å© = 229;
-	public static final int ±â°£Æ½ = 226;
-	public static final int ÆÄ¿ö±×¸³ = 228;
-	public static final int µ¥½ºÆä¶óµµ = 230;
-	public static final int ÇÏ¿ï = 225;
-	
+	public static final int í† ë§ˆí˜¸í¬ = 229;
+	public static final int ê¸°ê°„í‹± = 226;
+	public static final int íŒŒì›Œê·¸ë¦½ = 228;
+	public static final int ë°ìŠ¤í˜ë¼ë„ = 230;
+	public static final int í•˜ìš¸ = 225;
+
 	public static final int PRIME = 241;
 	public static final int FORCE_STUN = 242;
 	public static final int ETERNITY = 243;
@@ -595,17 +595,17 @@ public class L1SkillId {
 
 	public static final int STATUS_WISDOM_POTION2 = 10530;
 	public static final int BRAVE_AVATAR = 10531;
-	public static final int ÁÖ±ºÀÇ¹öÇÁ = 10534;
+	public static final int ì£¼êµ°ì˜ë²„í”„ = 10534;
 
-	public static final int PAPOO_±¸½½_«Ç«£«ì«¤ = 90000;
-	public static final int ¾È½ÄÃ³½ºÅ³ÁØºñ = 4065;
+	public static final int PAPOO_êµ¬ìŠ¬_ãƒ‡ã‚£ãƒ¬ã‚¤ = 90000;
+	public static final int ì•ˆì‹ì²˜ìŠ¤í‚¬ì¤€ë¹„ = 4065;
 
-	public static final int °¡ÀÔ½ÅÃ»«Ç«£«ì«¤ = 76271;
-	public static final int Ã¤ÆÃÆÄÆ¼¹öÇÁ = 76272;
+	public static final int ê°€ì…ì‹ ì²­ãƒ‡ã‚£ãƒ¬ã‚¤ = 76271;
+	public static final int ì±„íŒ…íŒŒí‹°ë²„í”„ = 76272;
 
-	public static final int ½Å°í«Ç«£«ì«¤ = 76273;
-	public static final int ÆÄÆ¼ÃÊ´ë«Ç«£«ì«¤ = 76274;
-	
+	public static final int ì‹ ê³ ãƒ‡ã‚£ãƒ¬ã‚¤ = 76273;
+	public static final int íŒŒí‹°ì´ˆëŒ€ãƒ‡ã‚£ãƒ¬ã‚¤ = 76274;
+
 	public static final int RANKING_BUFF_1 = 80000;
 	public static final int RANKING_BUFF_2 = 80001;
 	public static final int RANKING_BUFF_3 = 80002;
@@ -618,86 +618,86 @@ public class L1SkillId {
 	public static final int RANKING_BUFF_10 = 80012;
 	public static final int RANKING_BUFF_11 = 80013;
 	public static final int SEAL_BUFF = 80014;
-	public static final int µå·¡°ïÀÇÃàº¹1´Ü°è = 80015;
-	public static final int µå·¡°ïÀÇÃàº¹2´Ü°è = 80016;
-	public static final int µå·¡°ïÀÇÃàº¹3´Ü°è = 80017;
-	public static final int KYULJUN_CASHSCROLL1 = 80018; //°áÀüÀÇ ÁÖ¹®
-	public static final int PC¹æ = 80019;
+	public static final int ë“œë˜ê³¤ì˜ì¶•ë³µ1ë‹¨ê³„ = 80015;
+	public static final int ë“œë˜ê³¤ì˜ì¶•ë³µ2ë‹¨ê³„ = 80016;
+	public static final int ë“œë˜ê³¤ì˜ì¶•ë³µ3ë‹¨ê³„ = 80017;
+	public static final int KYULJUN_CASHSCROLL1 = 80018; //ê²°ì „ì˜ ì£¼ë¬¸
+	public static final int PCë°© = 80019;
 	public static final int RevengeTime = 80020;
 	public static final int AINHASAD_GAHO = 80021;
-	
-	public static final int Á¤»óÀÇ°¡È£ = 80004;
-	public static final int COMBO_BUFF = 80006; //ÄŞº¸
-	
-	public static final int µ¥½ºÈú = 73;
-	public static final int ¾Û¼Ö·çÆ®ºí·¹ÀÌµå = 92;
+
+	public static final int ì •ìƒì˜ê°€í˜¸ = 80004;
+	public static final int COMBO_BUFF = 80006; //ì½¤ë³´
+
+	public static final int ë°ìŠ¤í = 73;
+	public static final int ì•±ì†”ë£¨íŠ¸ë¸”ë ˆì´ë“œ = 92;
 	public static final int GRACE = 122;
 	public static final int EMPIRE = 123;
 	public static final int SOUL_BARRIER = 135;
 	public static final int INFERNO = 136;
-	//public static final int µğ½ºÆ®·ÎÀÌ = 196;
+	//public static final int ë””ìŠ¤íŠ¸ë¡œì´ = 196;
 	public static final int IMPACT = 222;
-	public static final int Æ÷Ä¿½º½ºÇÇ¸´Ã÷ = 223;
+	public static final int í¬ì»¤ìŠ¤ìŠ¤í”¼ë¦¿ì¸  = 223;
 	public static final int MOBIUS = 224;
 	public static final int RISING = 231;
-	public static final int ÇÁ¶óÀÌµå = 93;
-	public static final int ºí·Î¿ì¾îÅÃ = 94;
-	public static final int ¾Æ¸Óºê·¹ÀÌÅ©µ¥½ºÆ¼´Ï= 510;
-	public static final int ´õºíºê·¹ÀÌÅ©µ¥½ºÆ¼´Ï = 511;
-	public static final int Ä«¿îÅÍ¹è¸®¾îº£Å×¶û = 512;
-	public static final int ½ã´õ±×·¦ºê·¹ÀÌºê = 513;
-	public static final int Æ÷¿ì½½·¹ÀÌ¾îºê·¹ÀÌºê = 514;
-	public static final int µ¥½ºÆä¶óµµ¾Û¼Ö·çÆ® = 515;
-	public static final int ´ÙÅ©È£½º = 516;
-	public static final int ÆÄÀÌ³Î¹ø = 517;
-	public static final int ¾Æ¿ì¶óÅ°¾Æ = 518;
-	public static final int ·ç½ÃÆÛµ¥½ºÆ¼´Ï = 567;
-	public static final int ¸®´ö¼Ç¾Æ¸Óº£Å×¶û = 568;
-	public static final int ·¹ÀÌÂ¡Æ÷½º = 569;
+	public static final int í”„ë¼ì´ë“œ = 93;
+	public static final int ë¸”ë¡œìš°ì–´íƒ = 94;
+	public static final int ARMOR_BREAK_DISTINY = 510; // ã‚¢ãƒ¼ãƒãƒ¼ãƒ–ãƒ¬ã‚¤ã‚¯ ãƒ‡ã‚¹ãƒ†ã‚£ãƒ‹ãƒ¼
+	public static final int DOUBLE_BREAK_DISTINY = 511;
+	public static final int COUNTER_BARRIER_OLDHAND = 512;
+	public static final int THUNDER_GRAP_BRAVE = 513;
+	public static final int FOU_SLAYER_BRAVE = 514;
+	public static final int DEATH_PERADO_ABSOLUTE = 515;
+	public static final int DARK_HOSE = 516;
+	public static final int FINAL_BURN_PASSIVE = 517;
+	public static final int AURA_KIA = 518;
+	public static final int LUCIFER_DISTINY = 567;
+	public static final int REDUCTION_ARMOR_OLDHAND = 568;
+	public static final int RAGING_FORCE = 569;
 	public static final int SHADOW_TAB = 199;
-	// SAFE POLY¾Ø dodoÆÑ
+	// SAFE POLYì•¤ dodoíŒ©
 	public static final int POLY_SAFE = 15846;
 	public static final int TENKACHOUJI_BUFF = 15410;
-	public static final int ¼ø°£ÀÌµ¿Áö¹è = 15847;
+	public static final int ìˆœê°„ì´ë™ì§€ë°° = 15847;
 	//public static final int POLY_SAFE = 15846;
-	public static final int VALA_BUFF = 50000; // ¹ß¶óÄ«½º Ç÷Èç ¹öÇÁ
+	public static final int VALA_BUFF = 50000; // ë°œë¼ì¹´ìŠ¤ í˜ˆí” ë²„í”„
 	public static final int CHAINSWORD1 = 50002;
 	public static final int CHAINSWORD2 = 50003;
 	public static final int CHAINSWORD3 = 50004;
-	public static final int ±â¶õ°¨¿Á½Ã°£ = 50005;
-	
-	/** Æê °ü·Ã ½ºÅ³ */
+	public static final int ê¸°ë€ê°ì˜¥ì‹œê°„ = 50005;
+
+	/** í« ê´€ë ¨ ìŠ¤í‚¬ */
 	public static final int Fighting = 5000;
-	
-	/** ¼ºÀåÀÇ ³ª¹µÀÙ */
+
+	/** ì„±ì¥ì˜ ë‚˜ë­‡ì */
 	/** 3919 30% 3920 50% 3921 100% */
 	public static final int GrowthFoliage = 3919;
-	
-	/** ÇÍºÒÀÇ ¿¹°Å¹ã(ÅõÁö) */
+
+	/** í•ë¶ˆì˜ ì˜ˆê±°ë°¤(íˆ¬ì§€) */
 	public static final int YeagerNight = 3922;
-	
+
 	public static final int DogBlood = 4001;
-	
-	/** ÀÎ´øÇü µğ¹öÇÁ */
+
+	/** ì¸ë˜í˜• ë””ë²„í”„ */
 	public static final int DungeonPoison = 8200;
 	public static final int DungeonFlare = 8201;
 
-	/** ¿ë¹«±â ½Ã¸®Áî */ 
-	public static final int ¹ß¶óÄ«½ºÀÇÀå°Ë = 18982; 
-	public static final int ¹ß¶óÄ«½ºÀÇ¾ç¼Õ°Ë = 18986; 					
-	public static final int ÆÄÇª¸®¿ÂÀÇÈ° = 18998; 			
-	public static final int ÆÄÇª¸®¿ÂÀÇÀÌµµ·ù = 19002; 
-	public static final int ¾ÈÅ¸¶ó½ºÀÇÁöÆÎÀÌ = 19010; 
-	public static final int ¾ÈÅ¸¶ó½ºÀÇµµ³¢ = 19006; 	
-	public static final int ¸°µåºñ¿À¸£ÀÇÅ°¸µÅ© = 18994; 
-	public static final int ¸°µåºñ¿À¸£ÀÇÃ¼ÀÎ¼Òµå = 18990; 	
-	
+	/** ìš©ë¬´ê¸° ì‹œë¦¬ì¦ˆ */
+	public static final int ë°œë¼ì¹´ìŠ¤ì˜ì¥ê²€ = 18982;
+	public static final int ë°œë¼ì¹´ìŠ¤ì˜ì–‘ì†ê²€ = 18986;
+	public static final int íŒŒí‘¸ë¦¬ì˜¨ì˜í™œ = 18998;
+	public static final int íŒŒí‘¸ë¦¬ì˜¨ì˜ì´ë„ë¥˜ = 19002;
+	public static final int ì•ˆíƒ€ë¼ìŠ¤ì˜ì§€íŒ¡ì´ = 19010;
+	public static final int ì•ˆíƒ€ë¼ìŠ¤ì˜ë„ë¼ = 19006;
+	public static final int ë¦°ë“œë¹„ì˜¤ë¥´ì˜í‚¤ë§í¬ = 18994;
+	public static final int ë¦°ë“œë¹„ì˜¤ë¥´ì˜ì²´ì¸ì†Œë“œ = 18990;
+
 	public static final int HALPAS_FAITH_DELAY = 4454;
 	public static final int HALPAS_FAITH_PVP_REDUC = 4453;
 	public static final int HALPAS_FAITH_STANDBY = 4452;
-	
-	public static final int miso1 = 8135;//¹Ì¼ÒÇÇ¾Æ °ø°İÃàº¹
-	public static final int miso2 = 8136;//¹Ì¼ÒÇÇ¾Æ ¹æ¾îÃàº¹
-	public static final int miso3 = 8137;//¹Ì¼ÒÇÇ¾Æ ¼ºÀåÃàº¹
-	
+
+	public static final int miso1 = 8135;//ë¯¸ì†Œí”¼ì•„ ê³µê²©ì¶•ë³µ
+	public static final int miso2 = 8136;//ë¯¸ì†Œí”¼ì•„ ë°©ì–´ì¶•ë³µ
+	public static final int miso3 = 8137;//ë¯¸ì†Œí”¼ì•„ ì„±ì¥ì¶•ë³µ
+
 }

@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.StringTokenizer;
+
 import javolution.util.FastMap;
 import javolution.util.FastTable;
-
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.templates.L1QuestView;
 import l1j.server.server.utils.SQLUtil;
@@ -79,40 +79,40 @@ public class QuestInfoTable {
 			while (s.hasMoreElements()) {
 				temp = s.nextToken();
 				String temp2 = "";
-				StringTokenizer values = new StringTokenizer(temp, "Äù½ºÆ® ¸ñÇ¥: ¸ó½ºÅÍ »ç³É ¾ÆÀÌÅÛ È¹µæ Áö±Ş °æÇèÄ¡ ¹øÈ£ ¼ö·® ÅÚ·¹Æ÷Æ® ÁÂÇ¥");
-				while (values.hasMoreElements()) {// °ø¹éÁ¦°Å
+				StringTokenizer values = new StringTokenizer(temp, "ã‚¯ã‚¨ã‚¹ãƒˆç›®æ¨™ï¼šãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ç‹©ã‚Šã‚¢ã‚¤ãƒ†ãƒ ç²å¾—æ”¯çµ¦çµŒé¨“å€¤ç•ªå·æ•°é‡ãƒ†ãƒ¬ãƒãƒ¼ãƒˆåº§æ¨™");
+				while (values.hasMoreElements()) {// ç©ºç™½ã®å‰Šé™¤
 					temp2 += values.nextToken();
 				}
 
 				StringTokenizer mdata = new StringTokenizer(temp2, ",");
-				if (count == 0) { // Äù½ºÆ®¸ñÇ¥
+				if (count == 0) { // ã‚¯ã‚¨ã‚¹ãƒˆç›®æ¨™
 					view.max_count[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.max_count[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.max_count[2] = Integer.parseInt(mdata.nextToken().trim());
 					view.max_count[3] = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 1) { // ¸ó½ºÅÍ»ç³É
+				} else if (count == 1) { // ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ç‹©ã‚Š
 					view.monid[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.monid[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.monid[2] = Integer.parseInt(mdata.nextToken().trim());
 					view.monid[3] = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 2) { // ¾ÆÀÌÅÛÈ¹µæ
+				} else if (count == 2) { // ã‚¢ã‚¤ãƒ†ãƒ ç²å¾—
 					view.pick_item[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.pick_item[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.pick_item[2] = Integer.parseInt(mdata.nextToken().trim());
 					view.pick_item[3] = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 3) { // °æÇèÄ¡
+				} else if (count == 3) { // çµŒé¨“å€¤
 					view._exp = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 4) { // ¾ÆÀÌÅÛid
+				} else if (count == 4) { // ã‚¢ã‚¤ãƒ†ãƒ id
 					view.item_id[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_id[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_id[2] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_id[3] = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 5) { // ¾ÆÀÌÅÛ¼ö·®
+				} else if (count == 5) { // ã‚¢ã‚¤ãƒ†ãƒ æ•°é‡
 					view.item_count[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_count[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_count[2] = Integer.parseInt(mdata.nextToken().trim());
 					view.item_count[3] = Integer.parseInt(mdata.nextToken().trim());
-				} else if (count == 6) { // ÅÚÁÂÇ¥
+				} else if (count == 6) { // ãƒ†ãƒ«åº§æ¨™
 					view.tel[0] = Integer.parseInt(mdata.nextToken().trim());
 					view.tel[1] = Integer.parseInt(mdata.nextToken().trim());
 					view.tel[2] = Integer.parseInt(mdata.nextToken().trim());
@@ -125,7 +125,7 @@ public class QuestInfoTable {
 	}
 
 	/**
-	 * ¸ó½ºÅÍ id·Î ÃÖ´ë¼öÄ¡Á¤º¸
+	 * ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼IDã§æœ€å¤§æ•°å€¤æƒ…å ±
 	 */
 	private void LoadMonInfo() {
 		for (L1QuestView view : Info_list.values()) {
@@ -143,7 +143,7 @@ public class QuestInfoTable {
 	}
 
 	/**
-	 * Àç·áÈ¹µæ ¾ÆÀÌÅÛ Á¤º¸
+	 * ææ–™ç²å¾—ã‚¢ã‚¤ãƒ†ãƒ æƒ…å ±
 	 */
 	private void LoadPickupItemInfo() {
 		for (L1QuestView view : Info_list.values()) {

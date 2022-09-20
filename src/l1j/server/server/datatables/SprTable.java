@@ -18,33 +18,7 @@
  */
 package l1j.server.server.datatables;
 
-import static l1j.server.server.ActionCodes.ACTION_AltAttack;
-import static l1j.server.server.ActionCodes.ACTION_Attack;
-import static l1j.server.server.ActionCodes.ACTION_AxeAttack;
-import static l1j.server.server.ActionCodes.ACTION_AxeWalk;
-import static l1j.server.server.ActionCodes.ACTION_BowAttack;
-import static l1j.server.server.ActionCodes.ACTION_BowWalk;
-import static l1j.server.server.ActionCodes.ACTION_CHAINSWORD;
-import static l1j.server.server.ActionCodes.ACTION_CHAINSWORD_Walk;
-import static l1j.server.server.ActionCodes.ACTION_ClawAttack;
-import static l1j.server.server.ActionCodes.ACTION_ClawWalk;
-import static l1j.server.server.ActionCodes.ACTION_DaggerAttack;
-import static l1j.server.server.ActionCodes.ACTION_DaggerWalk;
-import static l1j.server.server.ActionCodes.ACTION_EdoryuAttack;
-import static l1j.server.server.ActionCodes.ACTION_EdoryuWalk;
-import static l1j.server.server.ActionCodes.ACTION_SkillAttack;
-import static l1j.server.server.ActionCodes.ACTION_SkillBuff;
-import static l1j.server.server.ActionCodes.ACTION_SpearAttack;
-import static l1j.server.server.ActionCodes.ACTION_SpearWalk;
-import static l1j.server.server.ActionCodes.ACTION_StaffAttack;
-import static l1j.server.server.ActionCodes.ACTION_StaffWalk;
-import static l1j.server.server.ActionCodes.ACTION_SwordAttack;
-import static l1j.server.server.ActionCodes.ACTION_SwordWalk;
-import static l1j.server.server.ActionCodes.ACTION_ThrowingKnifeAttack;
-import static l1j.server.server.ActionCodes.ACTION_ThrowingKnifeWalk;
-import static l1j.server.server.ActionCodes.ACTION_TwoHandSwordAttack;
-import static l1j.server.server.ActionCodes.ACTION_TwoHandSwordWalk;
-import static l1j.server.server.ActionCodes.ACTION_Walk;
+import static l1j.server.server.ActionCodes.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,7 +60,7 @@ public class SprTable {
 	}
 
 	/**
-	 * spr_action Å×ÀÌºíÀ» ·ÎµåÇÑ´Ù.
+	 * spr_action load
 	 */
 	public void loadSprAction() {
 		Connection con = null;
@@ -173,11 +147,11 @@ public class SprTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.config("SPR µ¥ÀÌÅÍ " + _dataMap.size() + "°Ç ·Îµå");
+		_log.config("SPR Data" + _dataMap.size() + "is loaded.");
 	}
 
 	/**
-	 * ÇÁ·¹ÀÓ¼ö¿Í frame rate·ÎºÎÅÍ ¾×¼ÇÀÇ ÇÕ°è ½Ã°£(ms)À» °è»êÇØ µ¹·ÁÁØ´Ù.
+	 * ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã¨ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã‹ã‚‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®åˆè¨ˆæ™‚é–“ï¼ˆmsï¼‰ã‚’è¨ˆç®—ã—ã¦è¿”ã™ã€‚
 	 */
 	private int calcActionSpeed(int frameCount, int frameRate) {
 		// return (int) (frameCount * 40 * (24D / frameRate));
@@ -189,14 +163,14 @@ public class SprTable {
 	}
 
 	/**
-	 * ÁöÁ¤µÈ sprÀÇ °ø°İ ¼Óµµ¸¦ µ¹·ÁÁØ´Ù. ¸¸¾à spr·Î ÁöÁ¤µÈ weapon_typeÀÇ µ¥ÀÌÅÍ°¡ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì´Â, 1.
-	 * attackÀÇ µ¥ÀÌÅÍ¸¦ µ¹·ÁÁØ´Ù.
-	 * 
+	 * æŒ‡å®šã•ã‚ŒãŸsprã®æ”»æ’ƒé€Ÿåº¦ã‚’è¿”ã™ã€‚ sprã§æŒ‡å®šã•ã‚ŒãŸweapon_typeã®ãƒ‡ãƒ¼ã‚¿ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€1ã€‚
+	 * attackã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™ã€‚
+	 *
 	 * @param sprid
-	 *            - Á¶»çÇÏ´Â sprÀÇ ID
+	 * - èª¿æŸ»ã™ã‚‹sprã®ID
 	 * @param actid
-	 *            - ¹«±âÀÇ Á¾·ù¸¦ ³ªÅ¸³»´Â °ª. L1Item.getType1()ÀÇ º¯È¯°ª +1°ú ÀÏÄ¡ÇÑ´Ù
-	 * @return ÁöÁ¤µÈ sprÀÇ °ø°İ ¼Óµµ(ms)
+	 * - æ­¦å™¨ã®ç¨®é¡ã‚’è¡¨ã™å€¤ã€‚ L1Item.getType1() ã®å¤‰æ›å€¤ +1 ã¨ä¸€è‡´ã™ã‚‹
+	 * @return æŒ‡å®šã•ã‚ŒãŸ spr ã®æ”»æ’ƒé€Ÿåº¦ (ms)
 	 */
 	public int getAttackSpeed(int sprid, int actid) {
 		try {

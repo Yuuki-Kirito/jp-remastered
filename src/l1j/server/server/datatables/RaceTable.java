@@ -53,8 +53,8 @@ public class RaceTable {
 			_namelist.put(name.getNum(), name);
 		}
 		// Data.close();
-		// System.out.println("[::::::] util_racer: "+_namelist.size()+"°³ÀÇ Á¤º¸°¡ ·ÎµåµÇ¾ú½À´Ï´Ù.");
-		// eros.tarea.append("\n[::::::] util_racer: "+_namelist.size()+"°³ÀÇ Á¤º¸°¡ ·ÎµåµÇ¾ú½À´Ï´Ù.");
+		// System.out.println("[::::::] util_racer: "+_namelist.size()+" å€‹ã®æƒ…å ±ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚");
+		// eros.tarea.append("\n[::::::] util_racer: "+_namelist.size()+" å€‹ã®æƒ…å ±ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚");
 	}
 
 	public L1Racer getTemplate(int name) {
