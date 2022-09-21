@@ -55,13 +55,13 @@ public class BuffSystem implements Runnable {
 				}
 			}
 
-			if (_pc.isElf()) {// ¿äÁ¤ÀÌ¸é À©µå¼¦
+			if (_pc.isElf()) {// ã‚¨ãƒ«ãƒ•ã‚¦ã‚£ãƒ³ãƒ‰ã‚·ãƒ§ãƒƒãƒˆ
 				Broadcaster.broadcastPacket(npc1,
 						new S_DoActionGFX(_npc.getId(), 19));
 				new L1SkillUse().handleCommands(_pc, L1SkillId.WIND_SHOT,
 						_pc.getId(), _pc.getX(), _pc.getY(), null, 0,
 						L1SkillUse.TYPE_GMBUFF);
-			} else {// ¿äÁ¤¾Æ´Ï¸é ÆÄÀÌ¾î¿şÆù
+			} else {// ã‚¨ãƒ«ãƒ•ã§ã¯ãªã„å ´åˆã€ãƒ•ã‚¡ã‚¤ã‚¢ãƒ¼ã‚¦ã‚§ãƒãƒ³
 				Broadcaster.broadcastPacket(npc1,
 						new S_DoActionGFX(_npc.getId(), 19));
 				new L1SkillUse().handleCommands(_pc, L1SkillId.FIRE_WEAPON,
@@ -108,16 +108,16 @@ public class BuffSystem implements Runnable {
 					19));
 
 			/*
-			 * if(_adena >= 1000000){//100¸¸¹öÇÁ Thread.sleep(1000L);
+			 * if(_adena >= 1000000){//100ë§Œë²„í”„ Thread.sleep(1000L);
 			 * Broadcaster.broadcastPacket(npc1, new S_DoActionGFX(_npc.getId(),
 			 * 19)); new L1SkillUse().handleCommands(_pc,
 			 * L1SkillId.STATUS_TIKAL_BOSSDIE, _pc.getId(), _pc.getX(),
-			 * _pc.getY(), null, 0 ,L1SkillUse.TYPE_GMBUFF);//»ó¾ÆÅ¾¹öÇÁ } if(_adena
-			 * >= 10000000){//1000¸¸¹öÇÁ Thread.sleep(2000L);
+			 * _pc.getY(), null, 0 ,L1SkillUse.TYPE_GMBUFF);//è±¡ç‰™å¡”ãƒãƒ• } if(_adena
+			 * >= 10000000){//1000ãƒãƒ³ãƒãƒ• Thread.sleep(2000L);
 			 * Broadcaster.broadcastPacket(npc2, new S_DoActionGFX(_npc.getId(),
 			 * 19)); new L1SkillUse().handleCommands(_pc,
 			 * L1SkillId.STATUS_COMA_5, _pc.getId(), _pc.getX(), _pc.getY(),
-			 * null, 0 ,L1SkillUse.TYPE_GMBUFF);//ÄÚ¸¶¹öÇÁ }
+			 * null, 0 ,L1SkillUse.TYPE_GMBUFF);//ã‚³ãƒãƒãƒ• }
 			 */
 			// Broadcaster.broadcastPacket(npc1, new S_DoActionGFX(npc1.getId(),
 			// 19));

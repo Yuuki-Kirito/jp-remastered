@@ -43,21 +43,21 @@ public class Akduk4GameSystem {
 					L1BuffNpcInstance Npc = (L1BuffNpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000078) {
 						L1BuffNpcInstance dealer = Npc;
-						String chat = player.getName() + "´Ô " + bettingmoney
-								+ "¿ø ¹èÆÃÇÏ¼Ì½À´Ï´Ù.";
+						String chat = player.getName() + "ã•ã‚“ " + bettingmoney
+								+ "ãƒ¯ãƒ³ãƒ™ãƒƒãƒˆã—ã¾ã—ãŸ.";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat, 0));
 						Broadcaster.broadcastPacket(player,
 								new S_NpcChatPacket(dealer, chat, 0));
 						Thread.sleep(1000);
 						Thread.sleep(1000);
 						Thread.sleep(1000);
-						String chat2 = "(¹¬,Âî,ºü)¸¦ ¾Õ¿¡¼­ ¸»¾¸ÇÏ¼¼¿ä~";
+						String chat2 = "(ãƒ ãƒƒã‚¯,ãƒãƒ¼,ãƒ‘)å‰ã«ãŠè©±ã—ãã ã•ã„ã€œ";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat2, 0));
 						Broadcaster.broadcastPacket(player,
 								new S_NpcChatPacket(dealer, chat2, 0));
 						player.setGamblingMoney4(bettingmoney);
 						player.setGambling4(true);
-					}// ¿©±â±îÁö
+					}// ã“ã“ã¾ã§
 				}
 			}
 		} catch (Throwable e) {
@@ -84,9 +84,9 @@ public class Akduk4GameSystem {
 					L1BuffNpcInstance Npc = (L1BuffNpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000078) {
 						L1BuffNpcInstance dealer = Npc;
-						String chat9 = pc.getName() + "´Ô °í¼ö½Ã±º¿ä? ¹è´ç±İ Áö±ŞÇØµå·È½À´Ï´Ù.";
-						String chat10 = pc.getName() + "´Ô ºñ±â¼Ì³×¿ä. ¾Æ½±³×¿ä ¤Ì¤Ì";
-						String chat11 = pc.getName() + "´Ô ÇãÁ¢ÀÌ±º¿ä? ´Ù½Ã¹è¿ö¼­¿À¼¼¿ä~";
+						String chat9 = pc.getName() + "ãŠç–²ã‚Œæ§˜ã§ã™ã‹ï¼Ÿ é…å½“é‡‘ã‚’æ”¯æ‰•ã„ã¾ã—ãŸã€‚.";
+						String chat10 = pc.getName() + "æ§˜ã€ãŠç–²ã‚Œæ§˜ã§ã—ãŸã€‚ æ®‹å¿µã§ã™ã…œã…œ";
+						String chat11 = pc.getName() + "ä¸‹æ‰‹ã ï¼Ÿ ã‚‚ã†ä¸€åº¦å­¦ã‚“ã§ãã ã•ã„ã€œ";
 						int gfxid = 3229 + random.nextInt(3);
 						int gfxid1 = 3229;
 						int gfxid2 = 3230;
@@ -94,7 +94,7 @@ public class Akduk4GameSystem {
 						switch (type) {
 						case 1:
 							Thread.sleep(500);
-							String chat = pc.getName() + "´Ô Âî!";
+							String chat = pc.getName() + "ã•ã‚“!";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat, 0));
@@ -129,7 +129,7 @@ public class Akduk4GameSystem {
 							break;
 						case 2:
 							Thread.sleep(500);
-							String chat2 = pc.getName() + "´Ô ¹¬!";
+							String chat2 = pc.getName() + "ã•ã‚“!";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat2, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat2, 0));
@@ -164,7 +164,7 @@ public class Akduk4GameSystem {
 							break;
 						case 3:
 							Thread.sleep(500);
-							String chat3 = pc.getName() + "´Ô ºü";
+							String chat3 = pc.getName() + "ã•ã‚“";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat3, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat3, 0));

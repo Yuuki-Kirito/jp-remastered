@@ -50,8 +50,8 @@ public class PetRacing implements Runnable {
 	private L1PcInstance[] rankList;
 	private L1PcInstance[] finishMember;
 
-	private final int LIMIT_ENTERMEMBER_COUNT = 2; // ÀÔÀå¸Ş¼¼Áö Ãâ·Â¿¡ ÇÊ¿äÇÑ ÀÎ¿ø(º»¼· : 2)
-	private final int LIMIT_STARTMEMBER_COUNT = 2; // °æ±â½ÃÀÛ¿¡ ÇÊ¿äÇÑ ÀÎ¿ø (º»¼· : 2)
+	private final int LIMIT_ENTERMEMBER_COUNT = 2; // å…¥å ´ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡ºåŠ›ã«å¿…è¦ãªäººæ•°(æ•° : 2)
+	private final int LIMIT_STARTMEMBER_COUNT = 2; // è©¦åˆé–‹å§‹ã«å¿…è¦ãªäººå“¡ (æ•° : 2)
 	private final short PETRACE_MAPID = 5143;
 
 	public static int Start_X = 32735;
@@ -337,42 +337,42 @@ public class PetRacing implements Runnable {
 			setStatus(STATUS.PLAY);
 			/*
 			 * setStatus(STATUS.REST); while(true){ switch (getStatus()) { case
-			 * ENTERREADY: npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 2ºĞ ÀüÀÔ´Ï´Ù."); Thread.sleep(60000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 1ºĞ ÀüÀÔ´Ï´Ù."); Thread.sleep(30000L); // 2ºĞÁ¤µµ
-			 * ÀÔÀåÀ¯Àú¹ŞÀ»°â ±â´Ù¸°´Ù 120000L npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 30ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 30ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(10000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 20ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 20ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(10000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 10ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 10ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(5000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 5ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 5ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * Thread.sleep(1000L); npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 4ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 4ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(1000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 3ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 3ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * Thread.sleep(1000L); npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 2ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 2ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(1000L);
-			 * npcChat("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 1ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("Æê·¹ÀÌ½Ì °æ±â ÀÔÀå 1ÃÊ ÀüÀÔ´Ï´Ù.");
+			 * ENTERREADY: npcChat("ãƒšãƒ¬ãƒ¼ã‚·ãƒ³ã‚°ç«¶æŠ€å…¥å ´ã®2åˆ†å‰ã§ã™ã€‚"); Thread.sleep(60000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®1åˆ†å‰ã§ã™ã€‚"); Thread.sleep(30000L); // 2åˆ†ç²¾åº¦
+			 * å…¥å ´ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’å—ã‘å–ã‚Šã€å¾…ã¤ 120000L npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´30ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´30ç§’å‰ã§ã™ã€‚"); Thread.sleep(10000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®20ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®20ç§’å‰ã§ã™ã€‚"); Thread.sleep(10000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´10ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´10ç§’å‰ã§ã™ã€‚"); Thread.sleep(5000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®5ç§’å‰ã§ã™ã€‚"); enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®5ç§’å‰ã§ã™ã€‚");
+			 * Thread.sleep(1000L); npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®4ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®4ç§’å‰ã§ã™ã€‚"); Thread.sleep(1000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´3ç§’å‰ã§ã™ã€‚"); enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´3ç§’å‰ã§ã™ã€‚");
+			 * Thread.sleep(1000L); npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´2ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´2ç§’å‰ã§ã™ã€‚"); Thread.sleep(1000L);
+			 * npcChat("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®1ç§’å‰ã§ã™ã€‚"); enterMsg("ãƒšãƒƒãƒˆç«¶æŠ€å…¥å ´ã®1ç§’å‰ã§ã™ã€‚");
 			 * Thread.sleep(1000L); if(checkEnoughEnterMember()){
-			 * sendMessage(MSG.ENTER); } npcChat("Æê·¹ÀÌ½Ì °æ±â ½ÃÀÛ ´ë±â ÁßÀÔ´Ï´Ù.");
-			 * Thread.sleep(10000L); npcChat("Æê·¹ÀÌ½Ì °æ±â ½ÃÀÛ ´ë±â ÁßÀÔ´Ï´Ù.");
+			 * sendMessage(MSG.ENTER); } npcChat("ãƒšãƒƒãƒˆç«¶æŠ€ã®é–‹å§‹ã‚’å¾…ã£ã¦ã„ã¾ã™ã€‚");
+			 * Thread.sleep(10000L); npcChat("ãƒšãƒƒãƒˆç«¶æŠ€ã®é–‹å§‹ã‚’å¾…ã£ã¦ã„ã¾ã™ã€‚");
 			 * Thread.sleep(5000L); setStatus(STATUS.READY); break; case READY:
 			 * checkFinalPlayMember(); if (checkEnoughStartMember()){
 			 * sendMessage(MSG.WAIT_START); setStatus(STATUS.PLAY); } else {
 			 * sendMessage(MSG.NOT_ENOUGH_STARTMEMBERS); getOutPetRacing();
-			 * allClear(); npcChat("ÀÎ¿ø ºÎÁ·À¸·Î Æê·¹ÀÌ½Ì °æ±â°¡ Á¾·á µÇ¾ú½À´Ï´Ù."); } break; case
+			 * allClear(); npcChat("äººå“¡ä¸è¶³ã§ãƒšãƒƒãƒˆç«¶æŠ€ãŒçµ‚äº†ã—ã¾ã—ãŸã€‚"); } break; case
 			 * PLAY: timeover = false; //Thread.sleep(3000L);
 			 * doPolyPlayMember(); Thread.sleep(10000L); countDownStartGame();
-			 * //5,4,3,2,1 Thread.sleep(5000L); npcChat("Æê·¹ÀÌ½Ì °æ±â°¡ ½ÃÀÛ µÇ¾ú½À´Ï´Ù.");
+			 * //5,4,3,2,1 Thread.sleep(5000L); npcChat("ãƒšãƒƒãƒˆç«¶æŠ€ãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚");
 			 * checkWinnerCount(); startPlayGameMembersGameTime();
-			 * petRacingStartDoorOpen(); // 5ºĞ Ã¼Å© ½ÃÀÛ int j = 1; while (j <=
+			 * petRacingStartDoorOpen(); // 5ë¶„ ãƒã‚§ãƒƒã‚¯é–‹å§‹ int j = 1; while (j <=
 			 * 600){ if(getStatus() == STATUS.END){ break; } Thread.sleep(500L);
-			 * playmember_check(); RankList(); // ½Ç½Ã°£ µî¼ö º¯ÇÏ´ÂºÎºĞ ++j; } // 5ºĞ Ã¼Å©
-			 * Á¾·á if (notWinnerGame()) timeover = true; setStatus(STATUS.END);
+			 * playmember_check(); RankList(); // ãƒªã‚¢ãƒ«ã‚¿ã‚¤ãƒ ç­‰æ•°å¤‰åŒ–ã™ã‚‹éƒ¨åˆ† ++j; } // 5åˆ†ãƒã‚§ãƒƒã‚¯
+			 * çµ‚äº† if (notWinnerGame()) timeover = true; setStatus(STATUS.END);
 			 * break; case END: sendMessage(MSG.GAMEEND); Thread.sleep(10000L);
 			 * playGameMembersDisplayPacketClear(); getOutPetRacing(); if
 			 * (finalCheckFinishMember()){ giveItemToWinnerMember(); }
-			 * allClear(); npcChat("Æê·¹ÀÌ½Ì °æ±â°¡ Á¾·á µÇ¾ú½À´Ï´Ù."); break; case REST:
-			 * if(msgCount-- < 1){ npcChat("ÀëÀÖ´Â Æê·¹ÀÌ½Ì °æ±â ÇÏ±¸ °¡¼¼¿ä~"); msgCount =
+			 * allClear(); npcChat("ãƒšãƒƒãƒˆç«¶æŠ€ãŒçµ‚äº†ã—ã¾ã—ãŸã€‚"); break; case REST:
+			 * if(msgCount-- < 1){ npcChat("ã‚¸ãƒ£ãƒ ä»˜ããƒšãƒƒãƒˆç«¶æŠ€ã®æ²³å£ã«è¡Œãã¾ã™ã€œ"); msgCount =
 			 * 12; } Thread.sleep(1000L); break; default: Thread.sleep(1000L);
 			 * break; } }
 			 */
@@ -569,8 +569,8 @@ public class PetRacing implements Runnable {
 				if (pc.getMapId() == PETRACE_MAPID) {
 					if (getStatus() == STATUS.READY) {
 						pc.getInventory().storeItem(L1ItemId.ADENA, 1000); // 1000
-																			// ¾Æµ¥³ª
-																			// Áö±Ş
+																			// ã‚¢ãƒ‡ãƒŠ
+																			// æ”¯æ‰•ã„
 					}
 					l1skilluse = new L1SkillUse();
 					l1skilluse.handleCommands(pc, L1SkillId.CANCELLATION,
@@ -635,13 +635,13 @@ public class PetRacing implements Runnable {
 			String count = Integer.toString(getEnterMemberCount());
 
 			pc.sendPackets(new S_SystemMessage(count
-					+ "¹øÂ° ¼ø¹øÀ¸·Î Æê¸ÅÄ¡¿¡ ÀÔÀå ¿¹¾àµÇ¾ú½À´Ï´Ù."), true);
+					+ "æœ€åˆã®é †ç•ªã§ãƒšãƒƒãƒˆãƒãƒƒãƒã«å…¥å ´äºˆç´„ã•ã‚Œã¾ã—ãŸã€‚"), true);
 			count = null;
 			if (getStatus() == STATUS.REST)
 				setStatus(STATUS.ENTERREADY);
 		} else {
 
-			S_SystemMessage sm1230 = new S_SystemMessage("ÀÌ¹Ì Æê¸ÅÄ¡ ÀÔÀå ¿¹¾àµÇ¾îÀÖ½À´Ï´Ù.");
+			S_SystemMessage sm1230 = new S_SystemMessage("ã™ã§ã«ãƒšãƒƒãƒˆãƒãƒƒãƒå…¥å ´äºˆç´„ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 			pc.sendPackets(sm1230, true);
 		}
 	}
@@ -679,7 +679,7 @@ public class PetRacing implements Runnable {
 		case ENTER:
 			S_Message_YN ms = new S_Message_YN(1256, "");
 			L1PcInstance[] list = getEnterMemberArray();
-			// °æ±âÀå¿¡ ÀÔÀå ÇÏ½Ã°Ú½À´Ï±î
+			// ã‚¹ã‚¿ã‚¸ã‚¢ãƒ ã«å…¥å ´ã—ã¾ã™ã‹ï¼Ÿ
 			for (L1PcInstance pc : list) {
 				if (pc != null)
 					pc.sendPackets(ms);
@@ -689,7 +689,7 @@ public class PetRacing implements Runnable {
 		case WAIT_START:
 			S_ServerMessage sm = new S_ServerMessage(1257);
 			L1PcInstance[] list2 = getPlayMemberArray();
-			// Àá½Ã ÈÄ °æ±â°¡ ½ÃÀÛµË´Ï´Ù.
+			// ã—ã°ã‚‰ãã™ã‚‹ã¨è©¦åˆãŒå§‹ã¾ã‚Šã¾ã™ã€‚
 			for (L1PcInstance pc : list2)
 				if (pc != null)
 					pc.sendPackets(sm);
@@ -698,7 +698,7 @@ public class PetRacing implements Runnable {
 		case NOT_ENOUGH_STARTMEMBERS:
 			S_ServerMessage sm1264 = new S_ServerMessage(1264);
 			L1PcInstance[] list3 = getPlayMemberArray();
-			// °æ±â ÀÎ¿øÀÌ ºÎÁ·ÇÏ¿© ¸¶À»·Î ²¨Áö½Ê½Ã¿À
+			// è©¦åˆã®äººæ•°ãŒè¶³ã‚Šãªã„ãŸã‚ã€ç”ºã«æ¶ˆãˆã¦
 			for (L1PcInstance pc : list3)
 				if (pc != null)
 					pc.sendPackets(sm1264);

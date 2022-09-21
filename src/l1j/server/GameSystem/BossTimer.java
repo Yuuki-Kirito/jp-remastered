@@ -26,9 +26,9 @@ public class BossTimer implements Runnable {
 		return _instance;
 	}
 
-	public boolean Á¨»ç¿ë = false;
+	public boolean _is_ZEN_USE = false;
 
-	public boolean °øÁö»ç¿ë = false;
+	public boolean _is_USE_OF_NOTICE = false;
 
 	private Date day = new Date(System.currentTimeMillis());
 
@@ -57,9 +57,9 @@ public class BossTimer implements Runnable {
 	private void MerchantOneDayBuyReset() {
 		if (day.getMinutes() == 0 && day.getSeconds() == 0 && day.getHours() == 0) {
 			L1MerchantInstance.resetOneDayBuy();
-			C_ItemUSe.reset½Ã°øÀÇÇ×¾Æ¸®È½¼ö();
-			C_ItemUSe.reset¸¶ºóÁÖ¸Ó´Ï_°èÁ¤È½¼ö();
-			// C_Shop.reset»óÁ¡°³¼³°èÁ¤È½¼ö();
+			C_ItemUSe.number_of_jars_in_reset();
+			C_ItemUSe.reset_marvins_pocket_account_count();
+			// C_Shop.resetåº—èˆ—é–‹è¨­ã‚¢ã‚«ã‚¦ãƒ³ãƒˆæ•°();
 		}
 	}
 
@@ -108,26 +108,26 @@ public class BossTimer implements Runnable {
 		}, delay);
 	}
 
-	private int _4½Ã°£ÁÖ±â = (60000 * 60 * 3) + (60000 * 40);
+	private int _4_hour_cycle = (60000 * 60 * 3) + (60000 * 40);
 	Random _random = new Random(System.nanoTime());
 
 
 	@SuppressWarnings("deprecation")
 	public void boss() {
 		try {
-			if (Á¨»ç¿ë == true) {
+			if (_is_ZEN_USE == true) {
 				return;
 			}
 			if (day.getSeconds() == 0 && day.getMinutes() == 00) {
 				int rh = day.getHours();
-				Á¨»ç¿ë = true;
+				_is_ZEN_USE = true;
 				BossTimerCheck check = new BossTimerCheck(this);
 				check.begin();
 
 				if (rh == Config.ATTENDANCE_RESET_TIME) {
-					L1SpawnUtil.spawn6(33174, 33001, (short) 4, 203048, 0, _4½Ã°£ÁÖ±â, 0);// ¾îµÒÀÇ ±ºÁÖ
+					L1SpawnUtil.spawn6(33174, 33001, (short) 4, 203048, 0, _4_hour_cycle, 0);// é—‡ã®å›ä¸»
 					WeekQuestDateCalculator.getInstance().reloadTime();
-					L1World.getInstance().broadcastServerMessage("\\aDÃâ¼® ¸®½ºÆ® ¹× ÁÖ°£Äù½ºÆ® Àç °»½Å(¸ÅÀÏ ¿ÀÀü 9½Ã)");
+					L1World.getInstance().broadcastServerMessage("\\aDå‡ºå¸­ãƒªã‚¹ãƒˆãŠã‚ˆã³é€±åˆŠã‚¯ã‚¨ã‚¹ãƒˆå†æ›´æ–°ï¼ˆæ¯æ—¥åˆå‰9æ™‚ï¼‰");
 					for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 						UserWeekQuestLoader.load(pc);
 					}
@@ -137,28 +137,28 @@ public class BossTimer implements Runnable {
 			e.printStackTrace();
 		}
 		/**
-		 * ==================== 1 ½Ã °£ Á¨ º¸ ½º µé ===================================
-		 * Å©·ÎÄ¿´ÙÀÏ.µå·¹ÀÌÅ©¼±Àå.¸¾º¸Åä³¢. ÀÌÇÁ¸®Æ® µå·¹ÀÌÅ© ¸¾º¸Åä³¢ ÈæÀå·Î µµÆç°»¾î ±×·¹ÀÌÆ® ¹Ì³ëÅ¸¿ì¸£½º,Ä¿Ã÷,¿¡ÀÌ¼ÇÆ®
-		 * ÀÚÀÌ¾ğÆ®,ÇÇ´Ğ½º,´ë¿Õ¿ÀÂ¡¾î,¿ìµÎ¸Ó¸® ¹İ¾îÀÎ,
-		 * 
-		 * ¿À¿°µÈ ¿ÀÅ©Åõ»ç,½ºÇÇ¸®µå,Äí¸¸.Ä«½ºÆÄ ÆĞ¹Ğ¸®.À¯´ÏÄÜ,¸ù¼º´ëÁ¤·É,ÀúÁÖ¹ŞÀº ¹°ÀÇ ´ëÁ¤·É ,ÀúÁÖ¹ŞÀº ¹«³à »ç¿¤,¹°ÀÇ Á¤·É,½É¿¬ÀÇ ÁÖÀÎ,¸¶¼ö ±º¿Õ
-		 * ¹Ù¶õÄ«,Ä«Çª,ÀÚÀÌ¾ğÆ® ¿ú,Äí¸¸ ³×Å©·Î¸Ç¼­ ======================================
-		 * =================================
+		 *==================== 1æ™‚é–“ã‚¼ãƒ³ãƒœã‚¹ ======================= ============
+         *ã‚¯ãƒ­ã‚³ãƒ€ã‚¤ãƒ«ã€ãƒ‰ãƒ¬ã‚¤ã‚¯èˆ¹é•·ã€ãƒãƒ³ãƒœã‚¦ã‚µã‚®ã€‚ ã‚¤ãƒ•ãƒªãƒ¼ãƒˆãƒ‰ãƒ¬ã‚¤ã‚¯ãƒãƒ³ãƒœã‚¦ã‚µã‚®é»’æª€ã®ãƒ‰ãƒƒãƒšãƒ«ã‚®ãƒ£ãƒ³ã‚°ã‚°ãƒ¬ãƒ¼ãƒˆãƒŸãƒã‚¿ã‚¦ãƒ«ã‚¹
+         *ã‚¸ãƒ£ã‚¤ã‚¢ãƒ³ãƒˆã€ãƒ•ã‚§ãƒ‹ãƒƒã‚¯ã‚¹ã€å¤§ç‹ã‚¤ã‚«ã€ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ãƒ³ã€
+         *
+         * æ±šæŸ“ã•ã‚ŒãŸã‚ªãƒ¼ã‚¯é—˜å£«ã€ã‚¹ãƒ”ãƒªãƒƒãƒ‰ã€ã‚¯ãƒ¼ãƒãƒ³ã€‚
+         *ãƒãƒ©ãƒ³ã‚«ã€ã‚«ãƒ—ã€ã‚¸ãƒ£ã‚¤ã‚¢ãƒ³ãƒˆãƒ¯ãƒ¼ãƒ ã€ã‚¯ãƒ¼ãƒãƒ³ãƒã‚¯ãƒ­ãƒãƒ³ã‚µãƒ¼======================================
+         * =================================
 		 **/
 	}
 
 	public class EventNoticeTimer implements Runnable {
-		private BossTimer °øÁöÃ¼Å© = null;
+		private BossTimer notice_check = null;
 
 		public EventNoticeTimer(BossTimer bt) {
-			°øÁöÃ¼Å© = bt;
+			notice_check = bt;
 		}
 
 		@Override
 		public void run() {
 			try {
-				°øÁöÃ¼Å©.°øÁö»ç¿ë = false;
-				°øÁöÃ¼Å© = null;
+				notice_check._is_USE_OF_NOTICE = false;
+				notice_check = null;
 				// this.cancel();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -173,17 +173,17 @@ public class BossTimer implements Runnable {
 	}
 
 	public class BossTimerCheck implements Runnable {
-		private BossTimer Á¨Ã¼Å© = null;
+		private BossTimer gen_check = null;
 
 		public BossTimerCheck(BossTimer bt) {
-			Á¨Ã¼Å© = bt;
+			gen_check = bt;
 		}
 
 		@Override
 		public void run() {
 			try {
-				Á¨Ã¼Å©.Á¨»ç¿ë = false;
-				Á¨Ã¼Å© = null;
+				gen_check._is_ZEN_USE = false;
+				gen_check = null;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

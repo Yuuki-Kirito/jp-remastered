@@ -25,7 +25,7 @@ public class GameList {
 		return _instance;
 	}
 
-	private static boolean ¿ë¶¥½ºÆù = false;
+	private static boolean _is_DRAGON_LAND_SPAWN = false;
 
 	public synchronized static void setbdeath(L1NpcInstance npc) {
 		b_death = npc;
@@ -43,12 +43,12 @@ public class GameList {
 		return w_death;
 	}
 
-	public synchronized static void set¿ë¶¥(boolean f) {
-		¿ë¶¥½ºÆù = f;
+	public synchronized static void land_for_set(boolean f) {
+		_is_DRAGON_LAND_SPAWN = f;
 	}
 
-	public synchronized static boolean get¿ë¶¥() {
-		return ¿ë¶¥½ºÆù;
+	public synchronized static boolean get_dragon_land() {
+		return _is_DRAGON_LAND_SPAWN;
 	}
 
 	public static ConcurrentHashMap<Integer, DreamsTemple> DTList = new ConcurrentHashMap<Integer, DreamsTemple>(

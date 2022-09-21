@@ -340,7 +340,7 @@ public class NpcShopSystem implements TimeListener {
 		_power = true;
 	}
 	
-	/** 2016.11.24 MJ æ€ºæ≈Õ Ω√ºº **/
+	/** 2016.11.24 MJ app center price **/
 	public void npcShopStop() {
 		_power = false;
 		int size = _shops.size();
@@ -374,7 +374,7 @@ public class NpcShopSystem implements TimeListener {
 		}
 	}
 	
-	/** 2016.11.24 MJ æ€ºæ≈Õ Ω√ºº **/
+	/** 2016.11.24 MJ app center price **/
 	private void shopRefill(L1NpcInstance npc){
 		try{
 			L1Shop shop = NpcShopTable.getInstance().get(npc.getNpcId());

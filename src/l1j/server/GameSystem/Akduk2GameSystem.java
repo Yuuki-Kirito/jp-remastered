@@ -44,15 +44,15 @@ public class Akduk2GameSystem {
 					L1BuffNpcInstance Npc = (L1BuffNpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000068) {
 						L1BuffNpcInstance dealer = Npc;
-						String chat = player.getName() + "´Ô " + bettingmoney
-								+ "¿ø ¹èÆÃÇÏ¼Ì½À´Ï´Ù.";
+						String chat = player.getName() + "ã•ã‚“" + bettingmoney
+								+ "ãƒ¯ãƒ³ãƒ™ãƒƒãƒˆã—ã¾ã—ãŸ.";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat, 0));
 						Broadcaster.broadcastPacket(player,
 								new S_NpcChatPacket(dealer, chat, 0));
 						Thread.sleep(1000);
 						Thread.sleep(1000);
 						Thread.sleep(1000);
-						String chat2 = "È¦ or Â¦ 2¹è//// 1 ~ 6 ¼ıÀÚ 3¹è///È¦Â¦or¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+						String chat2 = "ãƒ›ãƒ¼ãƒ«orãƒšã‚¢2å€//// 1ã€œ6æ•°å­—3å€///ãƒ›ãƒ¼ãƒ«ãƒšã‚¢oræ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat2, 0));
 						Broadcaster.broadcastPacket(player,
 								new S_NpcChatPacket(dealer, chat2, 0));
@@ -85,11 +85,11 @@ public class Akduk2GameSystem {
 					L1BuffNpcInstance Npc = (L1BuffNpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000068) {
 						L1BuffNpcInstance dealer = Npc;
-						String chat9 = pc.getName() + "´Ô ¸ÂÃß¼Ë½À´Ï´Ù. "
-								+ pc.getGamblingMoney() * 2 + "¿ø Áö±ŞÇß½À´Ï´Ù.";
-						String chat10 = pc.getName() + "´Ô ¸ÂÃß¼Ë½À´Ï´Ù."
-								+ pc.getGamblingMoney() * 3 + "¿ø Áö±ŞÇß½À´Ï´Ù.";
-						String chat11 = pc.getName() + "´Ô Æ²¸®¼Ë½À´Ï´Ù.";
+						String chat9 = pc.getName() + "æ§˜ã«ãªã‚Šã¾ã—ãŸ. "
+								+ pc.getGamblingMoney() * 2 + "æ”¯æ‰•ã„ã¾ã—ãŸ.";
+						String chat10 = pc.getName() + "æ§˜ã«ãªã‚Šã¾ã—ãŸ."
+								+ pc.getGamblingMoney() * 3 + "æ”¯æ‰•ã„ã¾ã—ãŸ.";
+						String chat11 = pc.getName() + "é–“é•ã£ã¦ã„ã¾ã™.";
 
 						int gfxid = 3204 + random.nextInt(6);
 
@@ -97,7 +97,7 @@ public class Akduk2GameSystem {
 						case 1:
 							Thread.sleep(2000);
 							String chat = pc.getName()
-									+ "´Ô È¦À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“ãƒ›ãƒ¼ãƒ«ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat, 0));
@@ -125,7 +125,7 @@ public class Akduk2GameSystem {
 						case 2:
 							Thread.sleep(2000);
 							String chat2 = pc.getName()
-									+ "´Ô Â¦À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“ã®ãƒšã‚¢ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat2, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat2, 0));
@@ -152,7 +152,7 @@ public class Akduk2GameSystem {
 						case 3:
 							Thread.sleep(2000);
 							String chat3 = pc.getName()
-									+ "´Ô 1À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“1ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat3, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat3, 0));
@@ -179,7 +179,7 @@ public class Akduk2GameSystem {
 						case 4:
 							Thread.sleep(2000);
 							String chat4 = pc.getName()
-									+ "´Ô 2¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“2ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat4, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat4, 0));
@@ -206,7 +206,7 @@ public class Akduk2GameSystem {
 						case 5:
 							Thread.sleep(2000);
 							String chat5 = pc.getName()
-									+ "´Ô 3À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“3ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat5, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat5, 0));
@@ -233,7 +233,7 @@ public class Akduk2GameSystem {
 						case 6:
 							Thread.sleep(2000);
 							String chat6 = pc.getName()
-									+ "´Ô 4¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“4ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat6, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat6, 0));
@@ -260,7 +260,7 @@ public class Akduk2GameSystem {
 						case 7:
 							Thread.sleep(2000);
 							String chat7 = pc.getName()
-									+ "´Ô 5¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“5ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat7, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat7, 0));
@@ -287,7 +287,7 @@ public class Akduk2GameSystem {
 						case 8:
 							Thread.sleep(2000);
 							String chat8 = pc.getName()
-									+ "´Ô 6À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù.";
+									+ "ã•ã‚“6ã‚’é¸æŠã—ã¾ã—ãŸã€‚ é ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™.";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat8, 0));
 							Broadcaster.broadcastPacket(pc,
 									new S_NpcChatPacket(dealer, chat8, 0));

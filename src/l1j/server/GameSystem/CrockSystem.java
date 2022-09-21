@@ -33,28 +33,28 @@ public class CrockSystem extends Thread {
 
 	L1EvaSystem eva = EvaSystemTable.getInstance().getSystem(1);
 	/**
-	 * ±Õ¿­ ½Ã°£ ¼³Á¤
+	 * æ­ªè£‚æ™‚é–“ã®è¨­å®š
 	 */
 
-	/** ±Õ¿­ÀÌ ¿­·È´ÂÁö ¾Æ´ÑÁö */
+	/** æ­ªè£‚ãŒé–‹ã„ã¦ã„ã‚‹ã‹ã©ã†ã‹ */
 	private boolean isOpen = false;
 
-	/** º¸½º ½Ã°£ÀÌ ½ÃÀÛ µÇ¾ú´ÂÁö */
+	/** BOSSTIMEãŒå§‹ã¾ã£ãŸã‹*/
 	private boolean isBossTime = false;
 
-	/** ½Ã°£ÀÇ ±Õ¿­ Å×º£ º¸½º È½¼ö */
+	/** æ™‚é–“ã®æ­ªè£‚ãƒ†ãƒ¼ãƒ™BOSSå›æ•° */
 	private static int dieCount = 0;
 
-	/** º¸½º¹æ ÀÎ¿ø Ä«¿îÆ® (ÃÖÃÊ 20¸í¸¸ Á¢ °¡´É ±ÍÈ¯ ÇØµµ ¸®¼Â ¾ÈµÊ) **/
+	/** BOSSãƒ«ãƒ¼ãƒ äººæ•°ã‚«ã‚¦ãƒ³ãƒˆ **/
 	public int in_count = 0;
 
-	/** ±Õ¿­ ÁÂÇ¥ */
+	/** æ­ªè£‚åº§æ¨™ */
 	private static final int[][] loc = { { 32737, 32796, 99 },
 			{ 32737, 32796, 99 },{ 32737, 32796, 99 },{ 32737, 32796, 99 },
 			{ 32737, 32796, 99 },{ 32737, 32796, 99 },{ 32737, 32796, 99 },
 			{ 32737, 32796, 99 },{ 32737, 32796, 99 }};
 	// 33258 32742 783
-	/** º¸½º¹æ ¼±Âø¼ø 20¸íÀ» ´ã±â À§ÇÑ ¸®½ºÆ® */
+	/** BOSSãƒ«ãƒ¼ãƒ å…ˆç€é †20åã‚’åã‚ã‚‹ãŸã‚ã®ãƒªã‚¹ãƒˆ */
 	private static ArrayList<L1PcInstance> sList = new ArrayList<L1PcInstance>();
 
 	public void reload() {
@@ -64,7 +64,7 @@ public class CrockSystem extends Thread {
 	private CrockSystem() {
 		super("l1j.server.GameSystem.CrockSystem.CrockSystem");
 		if (eva.getOpenContinuation() == 1) {
-			isOpen = true; //Å×º£ ¿ÀÇÂ ¿©ºÎ
+			isOpen = true; //ãƒ†ãƒ¼ãƒ™ã‚ªãƒ¼ãƒ—ãƒ³ã‹ã©ã†ã‹
 			ready();
 		}
 		start();
@@ -77,7 +77,7 @@ public class CrockSystem extends Thread {
 			try {
 				if (ckck-- < 1) {
 					if (size() > 0) {
-						L1PcInstance[] list = toArray±Õ¿­();
+						L1PcInstance[] list = toArray_crack();
 						for (L1PcInstance mem : list) {
 							if (mem != null && mem.getNetConnection() != null) {
 								if (mem.getMapId() != 782
@@ -122,10 +122,10 @@ public class CrockSystem extends Thread {
 	private void openCrock(long time) {
 		if (!isOpen()) {
 			OpenTime = time;
-			// System.out.println("Å×º£¿ÀÇÂ");
+			// System.out.println("ãƒ†ãƒ¼ãƒ™ã‚ªãƒ¼ãƒ—ãƒ³");
 			setOpen(true);
 			ready();
-			L1World.getInstance().broadcastPacketToAll(sm1469);// ¿­·È´Ù~
+			L1World.getInstance().broadcastPacketToAll(sm1469);// é–‹ã‹ã‚Œã¾ã—ãŸã€œ
 			in_count = 0;
 		}
 	}
@@ -137,27 +137,27 @@ public class CrockSystem extends Thread {
 		try {
 			if (!isBossTime()) {
 				setBossTime(true);
-				// System.out.println("º¸½º Å¸ÀÓ!!");
+				// System.out.println("BOSSã‚¿ã‚¤ãƒ !!");
 			} else {
 				if (!boss_room_in) {
 					if (boss_room_in_check_count-- <= 0) {
-						// System.out.println("º¸½º Å¸ÀÓ ¹æ¿¡´Â ¾Æ¹«µµ ¾øÀ½.");
+						// System.out.println("BOSSã‚¿ã‚¤ãƒ ãƒ«ãƒ¼ãƒ ã«ã¯èª°ã‚‚ã„ãªã„.");
 						boss_room_in_check_count = 20;
 					}
 					if (sList.size() > 0) {
 						boss_room_in = true;
-						// System.out.println("º¸½º Å¸ÀÓ ¹æ¿¡ ÀÎ¿øÀÖÀ½ ½ºÆù~");
+						// System.out.println("BOSSã‚¿ã‚¤ãƒ ãƒ«ãƒ¼ãƒ ã«äººæ•°ãŒã‚ã‚‹ã‚¹ãƒãƒ¼ãƒ³ã€œ");
 						sleep(2000);
-						if (eva.getMoveLocation() == 1) { // Å×º£
-							sendSystemChat("¿À½Ã¸®½º : ¾î¸®¼®Àº °Íµé..ÀÌ°÷ÀÌ ¾îµğ¶ó°í!! ¾Æ´©ºñ½º! È£·ç½º! Àú°ÍµéÀ» ¾µ¾î¹ö·Á¶ó!!");
+						if (eva.getMoveLocation() == 1) { // ãƒ†ãƒ¼ãƒ™
+							sendSystemChat("ã‚ªã‚·ãƒªã‚¹ï¼šæ„šã‹ãªã‚‚ã®â€¦ã“ã“ãŒã©ã“ã ã¨ï¼ ã‚¢ãƒŒãƒ“ã‚¹ï¼ ãƒ›ãƒ«ã‚¹ï¼ ãã‚Œã‚‰ã‚’æƒé™¤ã—ã¦ãã ã•ã„ï¼");
 							sleep(3000);
-							sendSystemChat("¾Æ´©ºñ½º : ³ÊÈñ¿¡°Ô Á×À½À»....");
-							sendSystemChat("È£·ç½º : ÀÚºñ´Â ¾ø´Ù....");
-						} else if (eva.getMoveLocation() == 2) { // Æ¼Ä®
-							sendSystemChat("ÄíÄğÄ­ : °¨È÷ ÀÌ°÷¿¡ µé¾î¿À´Ù´Ï!! Á¦ºê ·¹Äû!! ±ú¾î³ª°Å¶ó!!");
+							sendSystemChat("ã‚¢ãƒŒãƒ“ã‚¹ï¼šã‚ãªãŸã«æ­»ã‚’â€¦ã€‚");
+							sendSystemChat("ãƒ›ãƒ«ã‚¹ï¼šæ…ˆæ‚²ã¯ãªã„â€¦ã€‚");
+						} else if (eva.getMoveLocation() == 2) { // ãƒ†ã‚£ã‚«ãƒ«
+							sendSystemChat("ã‚¯ã‚¯ãƒ«ã‚«ãƒ³ï¼šã‚ãˆã¦ã“ã“ã«å…¥ã£ã¦ãã‚‹ãªã‚“ã¦ï¼ ã‚¼ãƒ–ãƒ¬ã‚¯ã‚¤!! ç›®ã‚’è¦šã¾ã™ï¼");
 							sleep(3000);
-							sendSystemChat("Á¦ºê ·¹Äû : ½ºÀ¸À¸À¸À¸À¸....½ºÀ¸À¸À¸À¸....");
-							sendSystemChat("Á¦ºê ·¹Äû : ÈÖÀÌÀÌÀÌÀÍ....ÈÖÀÌÀÌÀÌÀÍ...");
+							sendSystemChat("ã‚¼ãƒ–ãƒ¬ã‚¯ã‚¤ï¼šã‚¹ã‚¦ãƒ¼â€¦ã€‚");
+							sendSystemChat("ã‚¼ãƒ–ãƒ¬ã‚¯ã‚¤ï¼šãƒ’ã‚¤ã‚¤ã‚¤ã‚¤ã‚¯....ãƒ’ã‚¤ã‚¤ã‚¤ã‚¤ã‚¤ã‚¯...");
 						}
 						bossStart();
 					}
@@ -172,28 +172,28 @@ public class CrockSystem extends Thread {
 		try {
 			if (isOpen()) {
 				if (isBossDie()) {
-					// System.out.println("º¸½º´ÙÀÌ ½Ã°£¿¬Àå");
-					if (eva.getMoveLocation() == 1) { // Å×º£
-						sendSystemChat("Å×º£ ¿À½Ã¸®½º : ÀÌ·²¼ö°¡..!!! ¿ì¸®°¡ Á³´Ù.");
+					// System.out.println("BOSSTIMEæ™‚é–“å»¶é•·");
+					if (eva.getMoveLocation() == 1) { // ãƒ†ãƒ¼ãƒ™
+						sendSystemChat("ãƒ†ãƒ¼ãƒ™ã‚ªã‚·ãƒªã‚¹ï¼šã“ã‚“ãªã“ã¨ãŒ..!!! æˆ‘ã€…ã¯è² ã‘ãŸã€‚");
 						sleep(2000);
-						sendSystemChat("Å×º£ ¿À½Ã¸®½º : Áö±İ ÀÌ ½Ã°£ºÎÅÍ ÇÏ·ç µ¿¾È Å×º£¶ó½º¸¦ °³¹æÇÏµµ·Ï ÇÏ°Ú´Ù.");
-					} else if (eva.getMoveLocation() == 2) { // Æ¼Ä®
-						sendSystemChat("ÄíÄğÄ­ : ÀÌ·²¼ö°¡..!!! ¿ì¸®°¡ Á³´Ù.");
+						sendSystemChat("ãƒ†ãƒ¼ãƒ™ã‚ªã‚·ãƒªã‚¹ï¼šä»Šã€ã“ã®æ™‚é–“ã‹ã‚‰1æ—¥é–“ãƒ†ãƒ¼ãƒ™ãƒ©ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã‚ˆã†ã«ã—ã¾ã—ã‚‡ã†ã€‚");
+					} else if (eva.getMoveLocation() == 2) { // ãƒ†ã‚£ã‚«ãƒ«
+						sendSystemChat("ã‚¯ã‚¯ãƒ«ã‚«ãƒ³ï¼šã“ã‚“ãªã“ã¨ãŒ..!!! æˆ‘ã€…ã¯è² ã‘ãŸã€‚");
 						sleep(2000);
-						sendSystemChat("ÄíÄğÄ­ : Áö±İ ÀÌ ½Ã°£ºÎÅÍ ÇÏ·ç µ¿¾È Æ¼Ä®»ç¿øÀ» °³¹æÇÏµµ·Ï ÇÏ°Ú´Ù.");
+						sendSystemChat("ã‚¯ã‚¯ãƒ«ã‚«ãƒ³ï¼šä»Šã“ã®æ™‚é–“ã‹ã‚‰ä¸€æ—¥ã®é–“ã€ãƒ†ã‚£ã‚«ãƒ«å¯ºé™¢ã‚’é–‹æ”¾ã™ã‚‹ã‚ˆã†ã«ã—ã¾ã™ã€‚");
 					}
 
 					eva.bosscheck += (long) ((long) 60000 * (long) 60 * (long) 19);
 					CrockContinuation();
 				} else if (eva.bosscheck < System.currentTimeMillis()) {
 					if (isBossTime()) {
-						if (eva.getMoveLocation() == 1) { // Å×º£
-							sendSystemChat("Å×º£ ¿À½Ã¸®½º : ³ÊÈñµéÀº ½ÇÆĞÇß´Ù!!!");
-						} else if (eva.getMoveLocation() == 2) { // Æ¼Ä®
-							sendSystemChat("ÄíÄğÄ­ : ³ÊÈñµéÀÇ ¹«¸ğÇÑ ¿ë±â¿Í ¾î¸®¼®À½À» ±â¾ï ÇÒÁö¾î´Ù!!!");
+						if (eva.getMoveLocation() == 1) { // ãƒ†ãƒ¼ãƒ™
+							sendSystemChat("ãƒ†ãƒ¼ãƒ™ã‚ªã‚·ãƒªã‚¹ï¼šã‚ãªãŸãŸã¡ã¯å¤±æ•—ã—ãŸï¼");
+						} else if (eva.getMoveLocation() == 2) { // ãƒ†ã‚£ã‚«ãƒ«
+							sendSystemChat("ã‚¯ã‚¯ãƒ«ã‚«ãƒ³ï¼šã‚ãªãŸãŸã¡ã®ç„¡è¬€ãªå‹‡æ°—ã¨æ„šã‹ã•ã‚’è¦šãˆã¦ã„ã‚‹ï¼");
 						}
 					}
-					// System.out.println("±×³É... Å¬¸®¾î");
+					// System.out.println("ãŸã â€¦ã‚¯ãƒªã‚¢");
 					setOpen(false);
 					setBossTime(false);
 					clear();
@@ -207,7 +207,7 @@ public class CrockSystem extends Thread {
 	private void close() {
 		if (isOpen()) {
 			if (System.currentTimeMillis() > eva.bosscheck) {
-				// System.out.println("¿¬Àå½Ã°£Á¾·á");
+				// System.out.println("å»¶é•·æ™‚é–“çµ‚äº†");
 				setOpen(false);
 				setBossTime(false);
 				clear();
@@ -222,20 +222,20 @@ public class CrockSystem extends Thread {
 		}
 		int OL = eva.getOpenLocation();
 		L1SpawnUtil.spawn2(loc[OL][0], loc[OL][1], (short) loc[OL][2], 4500100,
-				0, 0, 0);// À§Ä¡¿¡ ½ºÆùÇÑ´Ù
+				0, 0, 0);// å ´æ‰€ã«ã‚¹ãƒãƒ¼ãƒ³ã™ã‚‹
 	}
 
 	private void bossStart() {
-		// º¸½º¸¦ ½ºÆùÇÏ°í º¸½º Å¸ÀÓÀ» Àé´Ù
-		// System.out.println("º¸½º ½ºÆù!! "+eva.getMoveLocation());
+		// ãƒœã‚¹ã‚’ã‚¹ãƒãƒ¼ãƒ³ã—ã¦ãƒœã‚¹ã‚¿ã‚¤ãƒ ã‚’è¨ˆã‚‹
+		// System.out.println("ãƒœã‚¹ã‚¹ãƒãƒ¼ãƒ³ï¼ "+eva.getMoveLocation());
 		switch (eva.getMoveLocation()) {
-		case 1:// Å×º£
+		case 1:// ãƒ†ãƒ¼ãƒ™
 			L1SpawnUtil.spawn2(32794, 32825, (short) 782, 400016, 0,
 					(3600 * 1000) * 3, 0);
 			L1SpawnUtil.spawn2(32794, 32836, (short) 782, 400017, 0,
 					(3600 * 1000) * 3, 0);
 			break;
-		case 2:// Æ¼Ä®
+		case 2:// ãƒ†ã‚£ã‚«ãƒ«
 			L1SpawnUtil.spawn2(32753, 32870, (short) 784, 4036016, 0,
 					(3600 * 1000) * 3, 0);
 			L1SpawnUtil.spawn2(32751, 32859, (short) 784, 4036017, 0,
@@ -251,7 +251,7 @@ public class CrockSystem extends Thread {
 
 	private void clear() {
 		try {
-			// ¸ğµç »óÅÂ¸¦ ÃÊ±âÈ­ ÇÑ´Ù ±×¸®°í ´ÙÀ½ ¿ÀÇÂÀ» ÁØºñÇÑ´Ù
+			// ã™ã¹ã¦ã®çŠ¶æ…‹ã‚’åˆæœŸåŒ–ã—ã€æ¬¡ã®ã‚ªãƒ¼ãƒ—ãƒ³ã‚’æº–å‚™ã™ã‚‹
 			eva.setOpenLocation(0);
 			eva.setMoveLocation(0);
 			eva.setOpenContinuation(0);
@@ -268,8 +268,8 @@ public class CrockSystem extends Thread {
 					+ (long) ((long) 60000 * (long) 60 * (long) 4);
 			EvaSystemTable.getInstance().updateSystem(eva);
 
-			L1World.getInstance().broadcastPacketToAll(sm1467);// ½Ã°£ÀÇ ±Õ¿­ÀÌ °ğ
-																// ´İÈü´Ï´Ù.
+			L1World.getInstance().broadcastPacketToAll(sm1467);// æ™‚é–“ã®äº€è£‚ãŒã™ãã«
+																// é–‰ã˜ã¾ã™ã€‚
 			for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 				if (pc.getInventory().checkItem(L1ItemId.TEBEOSIRIS_KEY, 1))
 					pc.getInventory().consumeItem(L1ItemId.TEBEOSIRIS_KEY, 1);
@@ -287,7 +287,7 @@ public class CrockSystem extends Thread {
 			dieCount = 0;
 			if (sList.size() > 0)
 				sList.clear();
-			L1World.getInstance().broadcastPacketToAll(sm1468);// ½Ã°£ÀÇ ±Õ¿­ÀÌ »ç¶óÁı´Ï´Ù
+			L1World.getInstance().broadcastPacketToAll(sm1468);// æ™‚é–“ã®äº€è£‚ãŒæ¶ˆãˆã‚‹
 			crockDelete();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -309,21 +309,21 @@ public class CrockSystem extends Thread {
 	private void teleportMsg() {
 		try {
 			sleep(2000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 30ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š30ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(10000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 20ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š20ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(10000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 10ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š10ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(5000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 5ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š5ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(1000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 4ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š4ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(1000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 3ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š3ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(1000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 2ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š2ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(1000);
-			sendSystemChat("½Ã½ºÅÛ ¸Ş½ÃÁö : 1ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+			sendSystemChat("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š1ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 			sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -331,20 +331,20 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * º¸½º°¡ µÑ´Ù ÀâÇô¼­ ¼±¹° ÁÖ°í ¿¬Àå±îÁö ¼³Á¤ÇÑ´Ù
+	 * ãƒœã‚¹ãŒä¸¡æ–¹ã¨ã‚‚æ•ã¾ã£ã¦ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆã‚’ä¸ãˆã€å»¶é•·ã¾ã§è¨­å®šã™ã‚‹
 	 */
 	private static final S_ServerMessage sm1470 = new S_ServerMessage(1470);
 
 	public void CrockContinuation() {
 		try {
 			if (eva.getMoveLocation() == 2)
-				BossDieBuff();// ¹öÇÁ¸¦ ÁÖ°í
-			eva.setOpenContinuation(1);// ¿¬Àå »óÅÂ¸¦ º¯°æ
+				BossDieBuff();// ãƒãƒ•ã‚’ä¸ãˆã‚‹
+			eva.setOpenContinuation(1);// å»¶é•·çŠ¶æ…‹ã‚’å¤‰æ›´
 			EvaSystemTable.getInstance().updateExtend(1);
-			L1World.getInstance().broadcastPacketToAll(sm1470);// ½Ã°£ÀÇ ±Õ¿­ÀÌ »ç¶óÁı´Ï´Ù
+			L1World.getInstance().broadcastPacketToAll(sm1470);// æ™‚é–“ã®äº€è£‚ãŒæ¶ˆãˆã‚‹
 			teleportMsg();
 
-			L1PcInstance[] list5 = toArray±Õ¿­();
+			L1PcInstance[] list5 = toArray_crack();
 			if (list5.length > 0) {
 				for (L1PcInstance pc : list5) {
 					if (pc == null)
@@ -373,9 +373,9 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * ½Ã°£ÀÇ ±Õ¿­ º¸½º°ø·« È®ÀÎ
+	 * æ™‚é–“ã®äº€è£‚ãƒœã‚¹æ”»ç•¥ç¢ºèª
 	 * 
-	 * @return (boolean) 2º¸½º´Ù Á×¾ú´Ù¸é ture 1º¸½º ÀÌÇÏ Á×¿´´Ù¸é false
+	 * @return (boolean) 2ãƒœã‚¹ãƒ€æ­»ã‚“ã ã‚‰ture 1ãƒœã‚¹ä»¥ä¸‹æ®ºã—ãŸã‚‰false
 	 */
 	private boolean isBossDie() {
 		boolean sTemp = false;
@@ -391,9 +391,9 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * ½Ã°£ÀÇ ±Õ¿­ Å×º£ º¸½º ´ÙÀÌ ¹İ³³
+	 * æ™‚é–“ã®äº€è£‚ãƒ†ãƒ¼ãƒ™ãƒœã‚¹endè¿”å´
 	 * 
-	 * @return (int) dieCount º¸½º ´ÙÀÌ È½¼ö
+	 * @return (int) dieCount ãƒœã‚¹endå›æ•°
 	 */
 	public int dieCount() {
 		return dieCount;
@@ -404,9 +404,9 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * ½Ã°£ÀÇ ±Õ¿­ ÀÌµ¿ »óÅÂ
+	 * æ™‚é–“ã®äº€è£‚ç§»å‹•çŠ¶æ…‹
 	 * 
-	 * @return (boolean) move ÀÌµ¿ ¿©ºÎ
+	 * @return (boolean) move ç§»å‹•ã™ã‚‹ã‹ã©ã†ã‹
 	 */
 	public boolean isOpen() {
 		return isOpen;
@@ -417,7 +417,7 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * Å×º£³ª Æ¼Ä®ÀÌ º¸½º Å¸ÀÓÀÎÁö ¿©ºÎ
+	 * ãƒ†ãƒ¼ãƒ™ãƒŠãƒ†ã‚£ã‚«ãƒ«ãŒãƒœã‚¹ã‚¿ã‚¤ãƒ ã‹ã©ã†ã‹
 	 * 
 	 * @return
 	 */
@@ -437,22 +437,22 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * ÁöÁ¤µÈ npcId ¿¡ ´ëÇÑ loc À» ¹İ³³
+	 * æŒ‡å®šã•ã‚ŒãŸnpcIdã®locã‚’è¿”ã™
 	 * 
-	 * @return (int[]) loc ÁÂÇ¥ ¹è¿­
+	 * @return (int[]) loc åº§æ¨™é…åˆ—
 	 */
 	public int[] loc() {
 		return loc[eva.getOpenLocation()];
 	}
 
 	/**
-	 * ¼±Âø¼ø 20¸í µî·Ï
+	 * å…ˆç€é †20åç™»éŒ²
 	 */
 	public void add(L1PcInstance c) {
-		/** µî·ÏµÇ¾î ÀÖÁö ¾Ê°í */
+		/** ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ */
 		synchronized (sList) {
 			if (!sList.contains(c)) {
-				/** ¼±Âø¼ø 20¸í ÀÌÇÏ¶ó¸é */
+				/** å…ˆç€é †20åä»¥ä¸‹ãªã‚‰ */
 				if (sList.size() < 20)
 					sList.add(c);
 			}
@@ -461,19 +461,19 @@ public class CrockSystem extends Thread {
 
 	public void del(L1PcInstance c) {
 		synchronized (sList) {
-			/** µî·ÏµÇ¾î ÀÖÁö ¾Ê°í */
+			/** ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ */
 			if (sList.contains(c)) {
-				/** ¼±Âø¼ø 20¸í ÀÌÇÏ¶ó¸é */
+				/** å…ˆç€é †20åä»¥ä¸‹ãªã‚‰ */
 				sList.remove(c);
 			}
 		}
 	}
 
 	public void sendSystemChat(String msg) {
-		L1PcInstance[] list = toArray±Õ¿­();
+		L1PcInstance[] list = toArray_crack();
 		if (list.length > 0) {
 			S_SystemMessage smMsg = new S_SystemMessage(msg);
-			for (L1PcInstance pc : toArray±Õ¿­()) {
+			for (L1PcInstance pc : toArray_crack()) {
 				if (pc == null || pc.getNetConnection() == null)
 					continue;
 				if (pc.getMapId() != 782 && pc.getMapId() != 784)
@@ -484,7 +484,7 @@ public class CrockSystem extends Thread {
 		}
 	}
 
-	public static L1PcInstance[] toArray±Õ¿­() {
+	public static L1PcInstance[] toArray_crack() {
 		L1PcInstance[] list = null;
 		synchronized (sList) {
 			list = sList.toArray(new L1PcInstance[sList.size()]);
@@ -493,9 +493,9 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * ¼±Âø¼ø ¸®½ºÆ® »çÀÌÁî ¹İ³³
+	 * å…ˆç€é †ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºè¿”å´
 	 * 
-	 * @return (int) sList ÀÇ »çÀÌÁî
+	 * @return (int) sList ã®ã‚µã‚¤ã‚º
 	 */
 	public int size() {
 		synchronized (sList) {
@@ -504,10 +504,10 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * Æ¼Ä® º¸½º°¡ ÀâÇûÀ¸´Ï ¿ùµå ÇÇ¾¾ Àü¿ø¿¡°Ô ¹öÇÁ¸¦ ÁØ´Ù.
+	 * ãƒ†ã‚£ã‚«ãƒ«ãƒœã‚¹ãŒæ•ã¾ã£ãŸã®ã§ãƒ¯ãƒ¼ãƒ«ãƒ‰ãƒ»ãƒ”ãƒ¼æ°å…¨å“¡ã«ãƒãƒ•ã‚’ä¸ãˆã‚‹ã€‚
 	 */
 	public void BossDieBuff() {
-		L1PcInstance[] list = toArray±Õ¿­();
+		L1PcInstance[] list = toArray_crack();
 		for (L1PcInstance pc : list) {
 			if (pc.getSkillEffectTimerSet().hasSkillEffect(
 					L1SkillId.STATUS_TIKAL_BOSSJOIN))
@@ -528,9 +528,9 @@ public class CrockSystem extends Thread {
 	}
 
 	/**
-	 * º¸½º°¡ ÀâÇô¼­ ¿¬Àå »óÅÂÀÎÁö µ¹·ÁÁØ´Ù
+	 * ãƒœã‚¹ãŒæ•ã¾ã£ã¦å»¶é•·çŠ¶æ…‹ã‹è¿”ã™
 	 * 
-	 * @return true : ¿¬Àå
+	 * @return true : å»¶é•·
 	 */
 	public boolean isCrockIng() {
 		if (eva.getOpenContinuation() == 1)
@@ -539,14 +539,14 @@ public class CrockSystem extends Thread {
 			return false;
 	}
 
-	/** ½Ã°¢ µ¥ÀÌÅÍ Æ÷¸Ë */
+	/** è¦–è¦šãƒ‡ãƒ¼ã‚¿ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
 	private static final SimpleDateFormat ss = new SimpleDateFormat(
 			"MM-dd HH:mm", Locale.KOREA);
 	private Timestamp ts = new Timestamp(System.currentTimeMillis());
-	private long OpenTime = 0;// ¿ÀÇÂ½Ã°£
+	private long OpenTime = 0;// ã‚ªãƒ¼ãƒ—ãƒ³æ™‚é–“
 
 	public String OpenTime() {
-		String resul = "»ç¿ë ºÒ°¡´É";
+		String resul = "ä½¿ç”¨ä¸å¯";
 		if (OpenTime == 0) {
 			return resul;
 		} else {

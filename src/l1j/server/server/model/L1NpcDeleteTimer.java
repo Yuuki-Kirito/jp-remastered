@@ -39,7 +39,7 @@ public class L1NpcDeleteTimer implements Runnable {
 	public void run() {
 		try {
 			if (_npc != null && _npc.getNpcId() == 4212013) {
-				GameList.set¿ë¶¥(false);
+				GameList.land_for_set(false);
 			}
 			if (_npc != null
 					&& (_npc.getNpcId() == 100586 || _npc.getNpcId() == 100587)) {

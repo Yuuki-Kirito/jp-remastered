@@ -37,8 +37,8 @@ public class BossSpawnThread implements Runnable {
 			if (npc == null)
 				return;
 			sec = (int) _sleep / 1000;
-		//	System.out.println(npc.getName() + " ÀÌ " + sec + "ÃÊ ÈÄ ½ºÆùµÊ");
-	//		eva.EventLogAppend("[¾Ë¸²]-["+ sec +" ÃÊ] ÈÄ "+ npc.getName() + " ½ºÆù" );ÀÌº¥Æ®·Î±×¿À·ù
+		//	System.out.println(npc.getName() + " ã“ã® " + sec + "ç§’å¾Œã«ã‚¹ãƒãƒ¼ãƒ³");
+	//		eva.EventLogAppend("[ãŠçŸ¥ã‚‰ã›]-["+ sec +" ç§’]å¾Œ "+ npc.getName() + " ìŠ¤í°" );ã‚¤ãƒ™ãƒ³ãƒˆãƒ­ã‚°ã‚¨ãƒ©ãƒ¼
 			Thread.sleep(_sleep);
 			
 			npc.setMap(tempm);
@@ -80,32 +80,32 @@ public class BossSpawnThread implements Runnable {
 
 			npc.getLight().turnOnOffLight();
 
-			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // Ã¤ÆÃ °³½Ã
+			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // ãƒãƒ£ãƒƒãƒˆé–‹å§‹
 			if (0 < timeMillisToDelete) {
 				L1NpcDeleteTimer timer = new L1NpcDeleteTimer(npc,
 						timeMillisToDelete);
 				timer.begin();
 			}
 
-			if (npc.getNpcId() == 100338) {// ¿¡¸£ÀÚº£
+			if (npc.getNpcId() == 100338) {// ã‚¨ãƒ«ã‚¶ãƒ™
 				L1MobGroupSpawn.getInstance().doSpawn(npc, 106, false, false);
 			}
 
-			if (npc.getNpcId() == 100824) {// ½ºÆÄÀÌ½º
+			if (npc.getNpcId() == 100824) {// ã‚¹ãƒ‘ã‚¤ã‚¹
 				L1MobGroupSpawn.getInstance().doSpawn(npc, 150, false, false);
 			}
 
 			if (npc.getNpcId() == 45684) {
 				L1World.getInstance().broadcastPacketToAll(
 						new S_PacketBox(S_PacketBox.GREEN_MESSAGE,
-								"È­·æÀÇ µÕÁö ÃÖ»óºÎ¿¡ ¹ß¶óÄ«½º°¡ ÃâÇöÇÏ¿´½À´Ï´Ù."), true);
+								"ç«ç«œã®å·£ã®æœ€ä¸Šéƒ¨ã«ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ãŒå‡ºç¾ã—ã¾ã—ãŸ."), true);
 			}
 
-	//		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,"º¸½º°¡ ½ºÆùµÇ¾ú½À´Ï´Ù " + npc.getName()), true);
+	//		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,"ãƒœã‚¹ãŒã‚¹ãƒãƒ¼ãƒ³ã—ã¾ã—ãŸ " + npc.getName()), true);
 			
 			try {
 				if (Config._connection_chat_monitor() > 0) {
-					S_SystemMessage sm = new S_SystemMessage("º¸½º½ºÆù "
+					S_SystemMessage sm = new S_SystemMessage("BOSSãŒå‡ºç¾ã—ã¾ã—ãŸã€‚ "
 							+ npc.getName() + " X " + npc.getX() + " / y "
 							+ npc.getY() + " / id " + npc.getMapId());
 					for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {

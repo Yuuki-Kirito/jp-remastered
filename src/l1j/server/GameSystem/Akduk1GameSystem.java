@@ -45,11 +45,11 @@ public class Akduk1GameSystem {
 					L1NpcInstance Npc = (L1NpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000069) {
 						L1NpcInstance dealer = Npc;
-						String chat = player.getName() + "´Ô " + bettingmoney + "¾Æµ§ ¹èÆÃÇÏ¼Ì¾î¿ä~ 1¸¶¸®¸ÂÃâ¶§¸¶´Ù 2¹è ÀÔ´Ï´Ù~!";
+						String chat = player.getName() + "ã•ã‚“" + bettingmoney + "ã‚¢ãƒ‡ãƒ³ãƒãƒƒãƒ†ã‚£ãƒ³ã‚°ã—ã¾ã—ãŸã€œ1åŒ¹åˆã‚ã›ã‚‹ãŸã³ã«2å€ã§ã™ã€œï¼";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat, 0), true);
 						Broadcaster.broadcastPacket(player, new S_NpcChatPacket(dealer, chat, 0), true);
 						Thread.sleep(2000);
-						String chat2 = "¹èÆÃÇÒ ¸÷ÀÌ¸§À» ¸»ÇØÁÖ¼¼¿ä~!(¹ö±×º£¾î,Àå·Î,¸äµÅÁö,½ºÆÄÅäÀÌ,½½¶óÀÓ,ÇØ°ñ,´Á´ëÀÎ°£,±«¹°´«,¿ÀÅ©Àü»ç)";
+						String chat2 = "è³­ã‘ã‚‹å¥´ã®åå‰ã‚’æ•™ãˆã¦ãã ã•ã„ã€œï¼ï¼ˆãƒã‚°ãƒ™ã‚¢ãƒ¼ã€ã‚¨ãƒ«ãƒ€ãƒ¼ã€çŒªã€ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤ã€ã‚¹ãƒ©ã‚¤ãƒ ã€ã‚¹ã‚±ãƒ«ãƒˆãƒ³ã€ã‚¦ã‚§ã‚¢ã‚¦ãƒ«ãƒ•ã€ãƒ•ãƒ­ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¢ã‚¤ã€ã‚ªãƒ¼ã‚¯ãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼ï¼‰";
 						player.sendPackets(new S_NpcChatPacket(dealer, chat2, 0), true);
 						Broadcaster.broadcastPacket(player, new S_NpcChatPacket(dealer, chat2, 0), true);
 						player.setGamblingMoney3(bettingmoney);
@@ -79,9 +79,9 @@ public class Akduk1GameSystem {
 					L1NpcInstance Npc = (L1NpcInstance) l1object;
 					if (Npc.getNpcTemplate().get_npcId() == 7000069) {
 						L1NpcInstance dealer = Npc;
-						String chat8 = "ÀÚ~! °©´Ï´Ù~!";
-						String chat9 = "¿À! ÃàÇÏµå·Á¿ä... ¹è´ç±İ Áö±Ş ÇØ µå·È½À´Ï´Ù...";
-						String chat11 = "¾Æ½±±º¿ä... ´ÙÀ½±âÈ¸¿¡ µµÀüÇØÁÖ¼¼¿ä~!";
+						String chat8 = "ã•ã‚ã€œï¼ è¡Œãã¾ã™ã€œï¼";
+						String chat9 = "ã‚ã‚ï¼ ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™...é…å½“é‡‘ã‚’æ”¯æ‰•ã„ã¾ã—ãŸ...";
+						String chat11 = "æ®‹å¿µã§ã™ã­â€¦æ¬¡ã®æ©Ÿä¼šã«æŒ‘æˆ¦ã—ã¦ãã ã•ã„ï½ï¼";
 						int mobid1 = 81245 + random.nextInt(9);
 						int mobid2 = 81245 + random.nextInt(9);
 						int mobid3 = 81245 + random.nextInt(9);
@@ -89,7 +89,7 @@ public class Akduk1GameSystem {
 						switch (type) {
 						case 1:
 							Thread.sleep(1000);
-							String chat20 = "¿ÀÅ©Àü»ç¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat20 = "ã‚ªãƒ¼ã‚¯ãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat20, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat20, 0));
 							Thread.sleep(1000);
@@ -129,7 +129,7 @@ public class Akduk1GameSystem {
 
 						case 2:
 							Thread.sleep(1000);
-							String chat21 = "½ºÆÄÅäÀÌ¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat21 = "ã‚¹ãƒ‘ãƒ«ãƒˆã‚¤ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat21, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat21, 0));
 							Thread.sleep(1000);
@@ -168,7 +168,7 @@ public class Akduk1GameSystem {
 							break;
 						case 3:
 							Thread.sleep(1000);
-							String chat22 = "¸äµÅÁö¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat22 = "çŒªã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat22, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat22, 0));
 							Thread.sleep(1000);
@@ -207,7 +207,7 @@ public class Akduk1GameSystem {
 							break;
 						case 4:
 							Thread.sleep(1000);
-							String chat23 = "½½¶óÀÓ¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat23 = "ã‚¹ãƒ©ã‚¤ãƒ ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat23, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat23, 0));
 							Thread.sleep(1000);
@@ -246,7 +246,7 @@ public class Akduk1GameSystem {
 							break;
 						case 5:
 							Thread.sleep(1000);
-							String chat14 = "ÇØ°ñ¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat14 = "ã‚¹ã‚±ãƒ«ãƒˆãƒ³ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat14, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat14, 0));
 							Thread.sleep(1000);
@@ -285,7 +285,7 @@ public class Akduk1GameSystem {
 							break;
 						case 6:
 							Thread.sleep(1000);
-							String chat15 = "´Á´ëÀÎ°£¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat15 = "ã‚¦ã‚§ã‚¢ã‚¦ãƒ«ãƒ•ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat15, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat15, 0));
 							Thread.sleep(1000);
@@ -324,7 +324,7 @@ public class Akduk1GameSystem {
 							break;
 						case 7:
 							Thread.sleep(1000);
-							String chat16 = "¹ö±×º£¾î¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat16 = "ãƒã‚°ãƒ™ã‚¢ãƒ¼ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat16, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat16, 0));
 							Thread.sleep(1000);
@@ -363,7 +363,7 @@ public class Akduk1GameSystem {
 							break;
 						case 8:
 							Thread.sleep(1000);
-							String chat17 = "Àå·Î¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat17 = "ã‚¨ãƒ«ãƒ€ãƒ¼ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat17, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat17, 0));
 							Thread.sleep(1000);
@@ -402,7 +402,7 @@ public class Akduk1GameSystem {
 							break;
 						case 9:
 							Thread.sleep(1000);
-							String chat18 = "±«¹°´«¿¡ ¹èÆÃÇÕ´Ï´Ù~ ¸Ö¸®°¡½Ã¸é °ÔÀÓÀÌ Ãë¼ÒµË´Ï´Ù!";
+							String chat18 = "ãƒ•ãƒ­ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚¢ã‚¤ã«è³­ã‘ã¾ã™ã€œé ãã«è¡Œãã¨ã‚²ãƒ¼ãƒ ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã™ï¼";
 							pc.sendPackets(new S_NpcChatPacket(dealer, chat18, 0));
 							Broadcaster.broadcastPacket(pc, new S_NpcChatPacket(dealer, chat18, 0));
 							Thread.sleep(1000);

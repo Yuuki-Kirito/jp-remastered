@@ -55,10 +55,10 @@ public class GhostHouse implements Runnable {
 	};
 
 	private static final int GHOSTHOUSE_MAPID = 5140;
-	private static final int LIMIT_MIN_PLAYER_COUNT = 2; // °ÔÀÓ ½ÃÀÛ¿¡ ÇÊ¿äÇÑ ÀÎ¿ø (º»¼· :
-															// 2¸í)
-	private static final int LIMIT_MIN_ENTER_PLAYER_COUNT = 2; // °ÔÀÓ ÀÔÀå¿¡ ÇÊ¿äÇÑ ÀÎ¿ø
-																// (º»¼· : 5¸í)
+	private static final int LIMIT_MIN_PLAYER_COUNT = 2; // ã‚²ãƒ¼ãƒ é–‹å§‹ã«å¿…è¦ãªäººæ•° (æ•° :
+															// 2äºº)
+	private static final int LIMIT_MIN_ENTER_PLAYER_COUNT = 2; // ã‚²ãƒ¼ãƒ å…¥å ´ã«å¿…è¦ãªäººæ•°
+																// (æ•°ï¼š5äºº)
 
 	private L1PcInstance[] rankList;
 	private L1PcInstance[] finishMember;
@@ -92,45 +92,45 @@ public class GhostHouse implements Runnable {
 			setStatus(Status.PLAY);
 			/*
 			 * setStatus(Status.REST); while(true){ switch (GhostHouseStatus) {
-			 * case ENTER: npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 2ºĞ ÀüÀÔ´Ï´Ù."); Thread.sleep(60000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 1ºĞ ÀüÀÔ´Ï´Ù."); Thread.sleep(30000L); // 2ºĞÁ¤µµ
-			 * ÀÔÀåÀ¯Àú¹ŞÀ»°â ±â´Ù¸°´Ù 120000L npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 30ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 30ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(10000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 20ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 20ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(10000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 10ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 10ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(5000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 5ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 5ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * Thread.sleep(1000L); npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 4ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 4ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(1000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 3ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 3ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * Thread.sleep(1000L); npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 2ÃÊ ÀüÀÔ´Ï´Ù.");
-			 * enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 2ÃÊ ÀüÀÔ´Ï´Ù."); Thread.sleep(1000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ÀÔÀå 1ÃÊ ÀüÀÔ´Ï´Ù."); enterMsg("À¯·ÉÀÇÁı °æ±â ÀÔÀå 1ÃÊ ÀüÀÔ´Ï´Ù.");
+			 * case ENTER: npcChat("å¹½éœŠã®å®¶ã®è©¦åˆå…¥å ´ã®2åˆ†å‰ã§ã™."); Thread.sleep(60000L);
+			 * npcChat("å¹½éœŠã®å®¶ã®è©¦åˆå…¥å ´ã®1åˆ†å‰ã§ã™."); Thread.sleep(30000L); // 2åˆ†ç²¾åº¦mu8oe
+			 * å…¥å ´ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’å—ã‘å–ã‚Šã€å¾…ã¤ 120000L npcChat("å¹½éœŠã®å®¶ã®è©¦åˆã®å…¥å ´30ç§’å‰ã§ã™.");
+			 * enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´30ç§’å‰ã§ã™ã€‚"); Thread.sleep(10000L);
+			 * npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´20ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´20ç§’å‰ã§ã™ã€‚"); Thread.sleep(10000L);
+			 * npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´10ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´10ç§’å‰ã§ã™ã€‚"); Thread.sleep(5000L);
+			 * npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´5ç§’å‰ã§ã™ã€‚"); enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´5ç§’å‰ã§ã™ã€‚");
+			 * Thread.sleep(1000L); npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´4ç§’å‰ã§ã™ã€‚");
+			 * enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´4ç§’å‰ã§ã™ã€‚"); Thread.sleep(1000L);
+			 * npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´3ç§’å‰ã§ã™ã€‚"); enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´3ç§’å‰ã§ã™ã€‚");
+			 * Thread.sleep(1000L); npcChat("ìœ ë ¹ì˜ì§‘ ê²½ê¸° ì…ì¥ 2ì´ˆ ì „ì…ë‹ˆë‹¤.");
+			 * enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´2ç§’å‰ã§ã™ã€‚"); Thread.sleep(1000L);
+			 * npcChat("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´1ç§’å‰ã§ã™ã€‚"); enterMsg("å¹½éœŠã®å®¶ç«¶æŠ€å…¥å ´1ç§’å‰ã§ã™ã€‚");
 			 * Thread.sleep(1000L); sendMessage(Message.ENTER);
 			 * setStatus(Status.READY); break; case READY:
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ½ÃÀÛ ´ë±â ÁßÀÔ´Ï´Ù."); Thread.sleep(10000L);
-			 * npcChat("À¯·ÉÀÇÁı °æ±â ½ÃÀÛ ´ë±â ÁßÀÔ´Ï´Ù."); Thread.sleep(5000L);
+			 * npcChat("å¹½éœŠã®å®¶ è©¦åˆé–‹å§‹å¾…ã£ã¦ã„ã¾ã™ã€‚"); Thread.sleep(10000L);
+			 * npcChat("å¹½éœŠã®å®¶ è©¦åˆé–‹å§‹å¾…ã£ã¦ã„ã¾ã™ã€‚"); Thread.sleep(5000L);
 			 * finalPlayMemberCheck(); if(isGotEnoughStartMembers()){
 			 * sendMessage(Message.WAIT_START); setStatus(Status.PLAY); } else {
 			 * sendMessage(Message.NOT_ENOUGH_STARTMEMBERS); getOutGhostHouse();
-			 * setStatus(Status.REST); npcChat("ÀÎ¿ø ºÎÁ·À¸·Î À¯·ÉÀÇÁı °æ±â°¡ Á¾·á µÇ¾ú½À´Ï´Ù."); }
+			 * setStatus(Status.REST); npcChat("äººå“¡ä¸è¶³ã§å¹½éœŠã®å®¶ç«¶æŠ€ãŒçµ‚äº†ã—ã¾ã—ãŸã€‚"); }
 			 * break; case PLAY: isTimeOver = false; Thread.sleep(3000L);
-			 * clearEnterMember(); // ÀÔÀå´ë±â »èÁ¦ doPolyPlayGameMember(); // °ÔÀÓÀÎ¿ø º¯½Å
-			 * Thread.sleep(5000L); countDownStartGame(); // 5,4,3,2,1 Ä«¿îÆ® ´Ù¿î
-			 * Thread.sleep(5000L); npcChat("À¯·ÉÀÇÁı °æ±â°¡ ½ÃÀÛ µÇ¾ú½À´Ï´Ù.");
-			 * checkWinnerCount(); // ½ÂÀÚ Ã¼Å© startPlayGameMemberGameTime(); // °ÔÀÓ
-			 * Âü°¡ÀÚµé 00:00 ½Ã°£ ½ÃÀÛ GhostHouseStartDoorOpen(); // 5ºĞ Ã¼Å© ½ÃÀÛ int j =
+			 * clearEnterMember(); // å…¥å ´å¾…æ©Ÿã®å‰Šé™¤ doPolyPlayGameMember(); // ã‚²ãƒ¼ãƒ äººå“¡å¤‰èº«
+			 * Thread.sleep(5000L); countDownStartGame(); // 5,4,3,2,1 ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
+			 * Thread.sleep(5000L); npcChat("å¹½éœŠã®å®¶ã®è©¦åˆãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚");
+			 * checkWinnerCount(); // å‹è€…ãƒã‚§ãƒƒã‚¯ startPlayGameMemberGameTime(); // ã‚²ãƒ¼ãƒ 
+			 * å‚åŠ è€… 00:00 æ™‚é–“ã®é–‹å§‹ GhostHouseStartDoorOpen(); // 5åˆ†ãƒã‚§ãƒƒã‚¯é–‹å§‹ int j =
 			 * 0; while (j <= 300){ if(getStatus() == Status.END){ break; }
 			 * Thread.sleep(1000L); playmember_check(); sortRankList();
-			 * refreshRankList(); ++j; } // 5ºĞ Ã¼Å© Á¾·á if (notWinnerGame())
+			 * refreshRankList(); ++j; } // 5åˆ†ãƒã‚§ãƒƒã‚¯çµ‚äº†if (notWinnerGame())
 			 * isTimeOver = true; setStatus(Status.END); break; case END:
 			 * sendMessage(Message.GAMEEND); Thread.sleep(10000L);
 			 * playGameMembersDisplayPacketClear(); getOutGhostHouse(); if
 			 * (finalCheckFinishMember()){ giveItemToWinnerMember(); }
 			 * GhostHouseDoorClose(); allClear(); clearFinishMember();
-			 * npcChat("À¯·ÉÀÇÁı °æ±â°¡ Á¾·á µÇ¾ú½À´Ï´Ù."); break; case REST: if(msgCount-- <
-			 * 1){ npcChat("À¯·É ÇÑ¹ø º¸±¸ °¡¼¼¿ä~"); msgCount = 10; }
+			 * npcChat("å¹½éœŠã®å®¶ã®è©¦åˆãŒçµ‚äº†ã—ã¾ã—ãŸ."); break; case REST: if(msgCount-- <
+			 * 1){ npcChat("å¹½éœŠã‚’ä¸€åº¦è¦‹ã¦ãã ã•ã„ã€œ"); msgCount = 10; }
 			 * Thread.sleep(1000L); break; default: Thread.sleep(1000L); break;
 			 * } }
 			 */
@@ -389,7 +389,7 @@ public class GhostHouse implements Runnable {
 	}
 
 	private static final S_ServerMessage sm403 = new S_ServerMessage(403,
-			"¿ë±âÀÖ´Â ÀÚÀÇ È£¹Ú ÁÖ¸Ó´Ï");
+			"å‹‡æ°—ã‚ã‚‹è€…ã®ã‚«ãƒœãƒãƒ£ã®ãƒã‚±ãƒƒãƒˆ");
 
 	private void giveItemToWinnerMember() {
 		for (L1PcInstance pc : finishMember) {
@@ -411,7 +411,7 @@ public class GhostHouse implements Runnable {
 		for (L1PcInstance pc : list) {
 			if (pc != null) {
 				if (getStatus() == Status.READY) {
-					pc.getInventory().storeItem(40308, 1000); // 1000 ¾Æµ¥³ª Áö±Ş
+					pc.getInventory().storeItem(40308, 1000); // 1000 ã‚¢ãƒ‡ãƒŠæ”¯çµ¦
 				}
 				l1skilluse.handleCommands(pc, L1SkillId.CANCELLATION,
 						pc.getId(), pc.getX(), pc.getY(), null, 0,

@@ -181,7 +181,7 @@ public class NewTimeController extends Thread {
 			pstm.setInt(1, ObjectIdFactory.getInstance().nextId());
 			pstm.setInt(2, 60104);
 			pstm.setInt(3, id);
-			pstm.setString(4, "¸¶Á· ¹«±â º¸È£ ÁÖ¹®¼­");
+			pstm.setString(4, "é­”æ—æ­¦å™¨ä¿è­·æ›¸");
 			pstm.setInt(5, 1);
 			pstm.setInt(6, 1);
 			pstm.executeUpdate();
@@ -221,11 +221,11 @@ public class NewTimeController extends Thread {
 			if (player.getMapId() >= 451 && player.getMapId() <= 536 && player.getMapId() != 480 && player.getMapId() != 481
 					&& player.getMapId() != 482 && player.getMapId() != 483 && player.getMapId() != 484
 					&& player.getMapId() != 521 && player.getMapId() != 522 && player.getMapId() != 523
-					&& player.getMapId() != 524) {// ¶ó´ø
+					&& player.getMapId() != 524) {// ë¼ë˜
 				player.sendPackets(new S_PacketBox(S_PacketBox.TIME_COUNT, 7199), true);
-				player.sendPackets(new S_SystemMessage("¶ó´ø ÀÔÀå ½Ã°£ÀÌ ÃÊ±âÈ­ µÇ¾ú½À´Ï´Ù."), true);
-				player.sendPackets(new S_ServerMessage(1526, "2"), true);// 1 ½Ã°£
-																			// ³²¾Ò´Ù.
+				player.sendPackets(new S_SystemMessage("ãƒ©ãƒ€ãƒ³å…¥å ´æ™‚é–“ãŒåˆæœŸåŒ–ã•ã‚Œã¾ã—ãŸ."), true);
+				player.sendPackets(new S_ServerMessage(1526, "2"), true);// 1 ì‹œê°„
+																			// ë‚¨ì•˜ë‹¤.
 			}
 		} catch (Exception e) {
 		}

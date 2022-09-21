@@ -11988,7 +11988,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 	}
 
-	public static void reset시공의항아리횟수() {
+	public static void number_of_jars_in_reset() {
 		synchronized (시공의항아리_계정횟수) {
 			시공의항아리_계정횟수.clear();
 		}
@@ -12010,7 +12010,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 	}
 
-	public static void reset마빈주머니_계정횟수() {
+	public static void reset_marvins_pocket_account_count() {
 		synchronized (마빈주머니_계정횟수) {
 			마빈주머니_계정횟수.clear();
 		}

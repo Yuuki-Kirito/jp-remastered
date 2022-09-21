@@ -5294,7 +5294,7 @@ public class C_NPCAction extends ClientBasePacket {
 				// Å×º£ ¹®Áö±â
 			} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 4200005) {
 				if (s.equalsIgnoreCase("e")) {
-					for (L1PcInstance gm : CrockSystem.toArray±Õ¿­()) {
+					for (L1PcInstance gm : CrockSystem.toArray_crack()) {
 						if (gm.getMapId() != 782) {
 							CrockSystem.getInstance().del(gm);
 						}
@@ -5317,7 +5317,7 @@ public class C_NPCAction extends ClientBasePacket {
 				// Æ¼Ä® ¹®Áö±â
 			} else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 4200006) {
 				if (s.equalsIgnoreCase("e")) {
-					for (L1PcInstance gm : CrockSystem.toArray±Õ¿­()) {
+					for (L1PcInstance gm : CrockSystem.toArray_crack()) {
 						if (gm.getMapId() != 784) {
 							CrockSystem.getInstance().del(gm);
 						}

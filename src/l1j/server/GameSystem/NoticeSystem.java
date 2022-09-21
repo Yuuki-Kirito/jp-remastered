@@ -29,8 +29,8 @@ public class NoticeSystem implements TimeListener {
 		private int _type = 0;
 		// private String _msg = null;
 		private S_SystemMessage sm1 = new S_SystemMessage(
-				"Á¶ÀÌ¼­¹ö¿¡ ¿À½Å°ÍÀ» È¯¿µ ÇÕ´Ï´Ù");
-		private S_SystemMessage sm2 = new S_SystemMessage("¸ÅÀÏ Àú³á ¹«ÇÑ´ëÀü,ÀØÇôÁø¼¶ ¹İµå½Ã Àß ÀÌ¿ëµéÇÏ¼Å¿ä.");
+				"L1J Serverã¸ã‚ˆã†ã“ã");
+		private S_SystemMessage sm2 = new S_SystemMessage("æ¯æ—¥ã®å¤•æ–¹ç„¡é™å¤§æˆ¦ã€å¿˜ã‚Œã‚‰ã‚ŒãŸå³¶ã¯å¿…ãšã‚ˆãã”åˆ©ç”¨ãã ã•ã„ã€‚");
 
 		public NoticeTimer(int type, String MSG) {
 			_type = type;
