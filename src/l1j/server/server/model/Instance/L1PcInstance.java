@@ -9579,7 +9579,7 @@ public class L1PcInstance extends L1Character {
 
 	/** 通知の更新に使用 */
 	/** イベントを受け取ってイベント形式 突然浮かぶ追加通知日時 すべての通知削除後再登録 */
-	public void 알림서비스(L1PcInstance pc, boolean Event) {
+	public void notificaton_service(L1PcInstance pc, boolean Event) {
 		pc.sendPackets(new S_EventNotice(pc, Event, true), true);
 		GeneralThreadPool.getInstance().schedule(new Runnable() {
 			public void run() {

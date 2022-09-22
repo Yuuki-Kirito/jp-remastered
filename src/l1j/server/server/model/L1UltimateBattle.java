@@ -366,7 +366,7 @@ public class L1UltimateBattle {
 		RotationNoticeTable.getInstance().UpdateNotice(9, new Timestamp(Time), new Timestamp(EndTime));
 		for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 			if (pc instanceof L1RobotInstance) continue;
-			pc.알림서비스(pc, true);
+			pc.notificaton_service(pc, true);
 		}
 		
 		_pattern = 1;

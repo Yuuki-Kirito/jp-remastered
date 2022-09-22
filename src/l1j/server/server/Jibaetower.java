@@ -77,7 +77,7 @@ public class Jibaetower extends Thread {
 			for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 				if (pc instanceof L1RobotInstance)
 					continue;
-				pc.알림서비스(pc, true);
+				pc.notificaton_service(pc, true);
 			}
 			setOBStart(true);
 		} catch (Exception e2) {

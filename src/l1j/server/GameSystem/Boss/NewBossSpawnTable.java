@@ -74,29 +74,29 @@ public class NewBossSpawnTable {
 				int number = 0;
 				while (s.hasMoreElements()) {
 					String temp2 = "";
-					StringTokenizer values = new StringTokenizer(s.nextToken(), "½ºÆùµ¥ÀÌ: Å¸ÀÓ·£´ı»èÁ¦ÁÂÇ¥¹üÀ§±×·ìYN¸Ş¼¼Áö¸àÆ®");
-					while (values.hasMoreElements()) {// °ø¹éÁ¦°Å
+					StringTokenizer values = new StringTokenizer(s.nextToken(), "Spawn Day: Time Random Delete Coordinate Range Group YN Message");
+					while (values.hasMoreElements()) {// ç©ºç™½ã®å‰Šé™¤
 						temp2 += values.nextToken();
 					}
 					// System.out.println("temp2 = " + temp2);
-					if (number == 0) { // ³¯ÀÚ ¿ùÈ­¼ö¸ñ~~
+					if (number == 0) { // å¤©æ°—æœˆç«æ°´æœ¨~~
 						StringTokenizer Day = new StringTokenizer(temp2, ",");
 						ArrayList<Integer> list = new ArrayList<Integer>();
 						while (Day.hasMoreElements()) {
 							String day = Day.nextToken();
-							if (day.equalsIgnoreCase("ÀÏ")) {
+							if (day.equalsIgnoreCase("æ—¥")) {
 								list.add(new Integer(0));
-							} else if (day.equalsIgnoreCase("¿ù")) {
+							} else if (day.equalsIgnoreCase("æœˆ")) {
 								list.add(new Integer(1));
-							} else if (day.equalsIgnoreCase("È­")) {
+							} else if (day.equalsIgnoreCase("ç«")) {
 								list.add(new Integer(2));
-							} else if (day.equalsIgnoreCase("¼ö")) {
+							} else if (day.equalsIgnoreCase("æ°´")) {
 								list.add(new Integer(3));
-							} else if (day.equalsIgnoreCase("¸ñ")) {
+							} else if (day.equalsIgnoreCase("æœ¨")) {
 								list.add(new Integer(4));
-							} else if (day.equalsIgnoreCase("±İ")) {
+							} else if (day.equalsIgnoreCase("é‡‘")) {
 								list.add(new Integer(5));
-							} else if (day.equalsIgnoreCase("Åä")) {
+							} else if (day.equalsIgnoreCase("åœŸ")) {
 								list.add(new Integer(6));
 							}
 						}
@@ -104,15 +104,15 @@ public class NewBossSpawnTable {
 						for (int i = 0; i < list.size(); i++) {
 							temp.Day[i] = list.get(i);
 						}
-					} else if (number == 1) { // ½ºÆù½Ã°£
+					} else if (number == 1) { // ã‚¹ãƒãƒ¼ãƒ³æ™‚é–“
 						StringTokenizer mdata = new StringTokenizer(temp2, ",");
 						ArrayList<Integer> Hourlist = new ArrayList<Integer>();
 						ArrayList<Integer> Minutelist = new ArrayList<Integer>();
 						while (mdata.hasMoreElements()) {
 							String Times = mdata.nextToken();
-							StringTokenizer Hours = new StringTokenizer(Times, "½Ã");
+							StringTokenizer Hours = new StringTokenizer(Times, "å¸‚");
 							String Hour = Hours.nextToken();
-							StringTokenizer Minutes = new StringTokenizer(Hours.nextToken(), "ºĞ");
+							StringTokenizer Minutes = new StringTokenizer(Hours.nextToken(), "åˆ†");
 							String Minute = Minutes.nextToken();
 							Hourlist.add(Integer.parseInt(Hour.trim()));
 							Minutelist.add(Integer.parseInt(Minute.trim()));
@@ -129,23 +129,23 @@ public class NewBossSpawnTable {
 							 //System.out.println("Minute = " + Minute);
 						}
 						
-					} else if (number == 2) { // ·£´ıÅ¸ÀÓ ºĞ
-						StringTokenizer mdata = new StringTokenizer(temp2, "ºĞ");
+					} else if (number == 2) { // ãƒ©ãƒ³ãƒ€ãƒ ã‚¿ã‚¤ãƒ åˆ†
+						StringTokenizer mdata = new StringTokenizer(temp2, "åˆ†");
 						temp.rndTime = Integer.parseInt(mdata.nextToken().trim());
-						// System.out.println("·£´ı½Ã°£ = " + temp.rndTime);
-					} else if (number == 3) { // »èÁ¦½Ã°£ ÃÊ
-						StringTokenizer mdata = new StringTokenizer(temp2, "ÃÊ");
+						// System.out.println("ãƒ©ãƒ³ãƒ€ãƒ æ™‚é–“ = " + temp.rndTime);
+					} else if (number == 3) { // å‰Šé™¤æ™‚é–“ç§’
+						StringTokenizer mdata = new StringTokenizer(temp2, "ç§’");
 						temp.DeleteTime = Integer.parseInt(mdata.nextToken().trim());
-						// System.out.println("»èÁ¦½Ã°£ ÃÊ = " + temp.DeleteTime);
-					} else if (number == 4) { // ½ºÆùÁÂÇ¥
+						// System.out.println("å‰Šé™¤æ™‚é–“ç§’= " + temp.DeleteTime);
+					} else if (number == 4) { // ã‚¹ãƒãƒ¼ãƒ³åº§æ¨™
 						StringTokenizer mdata = new StringTokenizer(temp2, ",");
 						temp.SpawnLoc = new int[3];
 						temp.SpawnLoc[0] = Integer.parseInt(mdata.nextToken().trim());
 						temp.SpawnLoc[1] = Integer.parseInt(mdata.nextToken().trim());
 						temp.SpawnLoc[2] = Integer.parseInt(mdata.nextToken().trim());
-						// System.out.println("½ºÆùÁÂÇ¥x = " + temp.SpawnLoc[0]);
-						// System.out.println("½ºÆùÁÂÇ¥y = " + temp.SpawnLoc[1]);
-						// System.out.println("½ºÆùÁÂÇ¥m = " + temp.SpawnLoc[2]);
+						// System.out.println("ã‚¹ãƒãƒ¼ãƒ³åº§æ¨™x = " + temp.SpawnLoc[0]);
+						// System.out.println("ã‚¹ãƒãƒ¼ãƒ³åº§æ¨™y = " + temp.SpawnLoc[1]);
+						// System.out.println("ã‚¹ãƒãƒ¼ãƒ³åº§æ¨™m = " + temp.SpawnLoc[2]);
 					}
 
 					number++;
@@ -197,15 +197,15 @@ public class NewBossSpawnTable {
 
 	/*
 	 * 1~6 0 
-	 * ½ºÆùµ¥ÀÌ: ¿ù,È­,¼ö,¸ñ,±İ,Åä,ÀÏ 
-	 * ½ºÆùÅ¸ÀÓ: 2½Ã 00ºĞ, 5½Ã 30ºĞ 
-	 * ·£´ıÅ¸ÀÓ: 0ºĞ 
-	 * »èÁ¦Å¸ÀÓ: 3600ÃÊ 
-	 * ½ºÆùÁÂÇ¥: 32726, 32832, 603 
-	 * ·£´ı¹üÀ§: 0 
-	 * ±×·ì½ºÆù: 0 
-	 * YN¸Ş¼¼Áö: 1 
-	 * ½ºÆù¸àÆ®: 1
+	 * ã‚¹ãƒãƒ³ãƒ‡ãƒ¼: æœˆã€ç«ã€æ°´ã€æœ¨ã€é‡‘ã€åœŸã€æ—¥ 
+	 * ã‚¹ãƒãƒ¼ãƒ³ã‚¿ã‚¤ãƒ : 2æ™‚00åˆ†ã€5æ™‚30åˆ†
+	 * ãƒ©ãƒ³ãƒ€ãƒ ã‚¿ã‚¤ãƒ : 0åˆ†
+	 * å‰Šé™¤ã‚¿ã‚¤ãƒ : 3600ç§’
+	 * ã‚¹ãƒãƒ¼ãƒ³åº§æ¨™: 32726, 32832, 603 
+	 * ãƒ©ãƒ³ãƒ€ãƒ ç¯„å›²: 0 
+	 * ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ãƒãƒ¼ãƒ³: 0 
+	 * YNãƒ¡ãƒƒã‚»ãƒ¼ã‚¸: 1 
+	 * ã‚¹ãƒãƒ³ãƒ¡ãƒ³ãƒˆ: 1
 	 */
 	public static class BossTemp {
 		public int npcid;

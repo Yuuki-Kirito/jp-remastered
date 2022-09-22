@@ -99,18 +99,18 @@ public class BossTimeController implements Runnable {
 					/**
 					switch(temp.npcid){
 						case 100338:
-							if(!BossAlive.getInstance().is¿¡¸£ÀÚº£){
-								BossAlive.getInstance().is¿¡¸£ÀÚº£ = true;
-								BossAlive.getInstance().set¿¡¸£ÀÚº£Å¸ÀÓ(RealTimeClock.getInstance().getRealTime().getSeconds()+3600);
+							if(!BossAlive.getInstance().isì—ë¥´ìë² ){
+								BossAlive.getInstance().isì—ë¥´ìë²  = true;
+								BossAlive.getInstance().setì—ë¥´ìë² íƒ€ì„(RealTimeClock.getInstance().getRealTime().getSeconds()+3600);
 								int time = (int)(BossAlive.getInstance().ezTime - RealTimeClock.getInstance().getRealTime().getSeconds());
 								L1World.getInstance().broadcastPacketToAll(new S_EventNotice(1, time, 3600, true));
 
 							}
 						break;
 						case 100420:
-							if(!BossAlive.getInstance().is»÷µå¿ú){
-								BossAlive.getInstance().is»÷µå¿ú = true;
-								BossAlive.getInstance().set»÷µå¿úÅ¸ÀÓ(RealTimeClock.getInstance().getRealTime().getSeconds()+3600);
+							if(!BossAlive.getInstance().isìƒŒë“œì›œ){
+								BossAlive.getInstance().isìƒŒë“œì›œ = true;
+								BossAlive.getInstance().setìƒŒë“œì›œíƒ€ì„(RealTimeClock.getInstance().getRealTime().getSeconds()+3600);
 								int time = (int)(BossAlive.getInstance().sdTime - RealTimeClock.getInstance().getRealTime().getSeconds());
 								L1World.getInstance().broadcastPacketToAll(new S_EventNotice(2, time, 3600, true));
 							}
@@ -127,7 +127,7 @@ public class BossTimeController implements Runnable {
 	}
 	
 	
-	/**º¸½º ½ºÆù Ã³¸® */
+	/**Boss spawn handling */
 	class BossThread implements Runnable {
 		BossTemp temp;
 		public BossThread(BossTemp _temp){
@@ -150,7 +150,7 @@ public class BossTimeController implements Runnable {
 			L1Npc template = NpcTable.getInstance().getTemplate(npcid);
 			if (template == null) {
 				_log.warning("Boss mob data for id:" + npcid + " missing in npc table");
-				System.out.println("º¸½º½ºÆù ÄÁÆ®·Ñ·¯ º¸½º npcid " + npcid + "°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				System.out.println("boss spawn controller npcid " + npcid + "does not exist.");
 				return;
 			}
 			L1NpcInstance npc = NpcTable.getInstance().newNpcInstance(npcid);
@@ -162,44 +162,44 @@ public class BossTimeController implements Runnable {
 				loc.randomLocation(rndXY, false);
 			}
 			 
-			/** ¿£ÇÇ¾¾ À§Ä¡ Á¤º¸ °»½Å */
+			/** NPCä½ç½®æƒ…å ±æ›´æ–° */
 			npc.setLocation(loc);
 			npc.getLocation().forward(5);
 
-			/** Æ¯Á¤ ¿£ÇÇ¾¾ ¿ÀºêÁ§Æ® Ãß°¡ ºÎºĞ *//*
-			/** µîÀå½Ã 4¹ø¾×¼Ç Ãß°¡ÇØ¼­ ¹üÀ§³» ¸ğµçÀ¯Àú¿¡°Ô »Ñ·ÁÁØ´Ù *//*
-			/** Appear ¾×¼Ç Âü°ÅÁş Chat ¸àÆ® ³î */
+			/** ç‰¹å®šã®NPCã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè¿½åŠ éƒ¨åˆ† *//*
+			/** ç™»å ´æ™‚ã«4å›ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ã¦ç¯„å›²å†…ã®ã™ã¹ã¦ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã«æŒ¯ã‚Šã‹ã‘ã‚‹ *//*
+			/** Appear ã‚¢ã‚¯ã‚·ãƒ§ãƒ³æœ¬å½“ã®ãƒãƒ£ãƒƒãƒˆã‚³ãƒ¡ãƒ³ãƒˆ */
 			boolean Appear = false; String Chat = null;
 			switch (npcid){	
-				/** ¿Ö°îÀÇ Á¦´Ï½º Äı Áö¹è */
+				/** ã‚¼ãƒ‹ã‚¹ ã‚¯ã‚¤ãƒ¼ãƒ³ ãƒ‰ãƒŸãƒãƒ¼ã‚·ãƒ§ãƒ³ ã‚ªãƒ– ãƒ‡ã‚£ã‚¹ãƒˆãƒ¼ã‚·ãƒ§ãƒ³ */
 				case 910021: Appear = true; Chat = "\\fY$27422"; break;
-				/** ºÒ½ÅÀÇ ½Ã¾î Áö¹è */
+				/** ä¸ä¿¡ã®ã‚·ã‚¢ãƒ¼æ”¯é…*/
 				case 910028: Appear = true; Chat = "\\fY$27432"; break;
-				/** °øÆ÷ÀÇ ¹ìÆÄÀÌ¾î Áö¹è */
+				/** ææ€–ã®å¸è¡€é¬¼ã®æ”¯é… */
 				case 910036: Appear = true; Chat = "\\fY$27442"; break;
-				/** Á×À½ÀÇ Á»ºñ ·Îµå Áö¹è */
+				/** æ­»ã®ã‚¾ãƒ³ãƒ“ãƒ­ãƒ¼ãƒ‰æ”¯é… */
 				case 910042: Appear = true; Chat = "\\fY$27452"; break;
-				/** Áö¿ÁÀÇ Äí°Å Áö¹è */
+				/** åœ°ç„ã®ã‚¯ãƒ¼ã‚¬ãƒ¼æ”¯é… */
 				case 910050: Appear = true; Chat = "\\fY$27462"; break;
-				/** ºÒ»çÀÇ ¸Ó¹Ì ·Îµå Áö¹è */
+				/** ä¸æ­»ã®ãƒãƒ¼ãƒŸãƒ­ãƒ¼ãƒ‰æ”¯é… */
 				case 910056: Appear = true; Chat = "\\fY$27472"; break;
-				/** ÀÜÈ¤ÇÑ ¾ÆÀÌ¸®½º Áö¹è */
+				/** æ®‹é…·ãªã‚¢ã‚¤ãƒªã‚¹æ”¯é… */
 				case 910062: Appear = true; Chat = "\\fY$27482"; break;
-				/** ¾îµÒÀÇ ³ªÀÌÆ® ¹ßµå Áö¹è */
+				/** é—‡ã®ãƒŠã‚¤ãƒˆãƒãƒ«ãƒ‰æ”¯é… */
 				case 910069: Appear = true; Chat = "\\fY$27649"; break;
-				/** ºÒ¸êÀÇ ¸®Ä¡ Áö¹è */
+				/** ä¸æ»…ã®è±Šã‹ãªæ”¯é… */
 				case 910075: Appear = true; Chat = "\\fY$27659"; break;
-				/** ¿À¸¸ÇÑ ¿ì±×´©½º Áö¹è */
+				/** å‚²æ…¢ãªã‚¦ã‚°ãƒŒã‚¹æ”¯é… */
 				case 910014: Appear = true; Chat = "\\fY$27669"; break;
-				/** Æ÷¾ÇÇÑ »ç½ÅÀÇ ¿µÈ¥ */
+				/** é‚ªæ‚ªãªãƒªãƒƒãƒã®é­‚ */
 				//case 7310078: Appear = true; Chat = "\\fY$27679"; break;
-				/** °£¾ÇÇÑ »ç½ÅÀÇ ¿µÈ¥ */
+				/** é‚ªæ‚ªãªãƒªãƒƒãƒã®é­‚ */
 				//case 7310079: Appear = true; Chat = "\\fY$27689"; break;
-				/** »ç½Å ±×¸² ¸®ÆÛ */
+				/** æ­»ç¥ã‚°ãƒªãƒ ãƒªãƒ¼ãƒ‘ãƒ¼ */
 				case 910088: Appear = true; Chat = "\\fY$27699"; break;
 			}
 			
-			/** ¸àÆ®°¡ ÀÖ´Â ¾×¼Ç¸¸ µîÀå ¾×¼Ç Ã³¸® ÇÏµµ·Ï º¯°æ */
+			/** ã‚³ãƒ¡ãƒ³ãƒˆã®ã‚ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã¿ç™»å ´ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å‡¦ç†ã™ã‚‹ã‚ˆã†ã«å¤‰æ›´ */
 			for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(npc)) {
 				npc.onPerceive(pc);
 				pc.sendPackets(new S_NPCPack(npc), true);
@@ -207,39 +207,39 @@ public class BossTimeController implements Runnable {
 				if(Chat != null) pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, Chat), true);
 			}
 			
-			/** ¾Ë¶÷ ·ÎÅ×ÀÌ¼Ç¸¶´Ù °¢ ·ÎÅ×ÀÌ¼Ç Á¤º¸ º¯°æ */
+			/** Change each rotation information for each alarm rotation */
 			switch(npcid){
 				case 100338:
-					/** ·ÎÅ×ÀÌ¼Ç ÄÁÆ®·Ñ·¯ ÇöÀç ½Ã°£ºÎÅÍ ¾ğÁ¦±îÁö °¡´ÉÇÑÁö Ã¼Å© ¹® */
+					/** ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ç¾åœ¨æ™‚åˆ»ã‹ã‚‰ã„ã¤ã¾ã§å¯èƒ½ã‹ã‚’ç¢ºèªã™ã‚‹ */
 					long Time = System.currentTimeMillis();
-					/** 30ºĞ µ¿¾È À¯Áö */
+					/** 30åˆ†é–“ä¿æŒ*/
 					long EndTime = System.currentTimeMillis() + (1000 * 1800);
 					RotationNoticeTable.getInstance().UpdateNotice(1, new Timestamp(Time), new Timestamp(EndTime));
 					for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 						if (pc instanceof L1RobotInstance) continue;
-						pc.¾Ë¸²¼­ºñ½º(pc, true);
+						pc.notificaton_service(pc, true);
 					}
 					break;
 					
 				case 100420:{
 					long Time2 = System.currentTimeMillis();
-					/** 30ºĞ µ¿¾È À¯Áö */
+					/** 30åˆ†é–“ä¿æŒ */
 					long EndTime2 = System.currentTimeMillis() + (1000 * 1800);
 					RotationNoticeTable.getInstance().UpdateNotice(2, new Timestamp(Time2), new Timestamp(EndTime2));
 					for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 						if (pc instanceof L1RobotInstance) continue;
-						pc.¾Ë¸²¼­ºñ½º(pc, true);
+						pc.notificaton_service(pc, true);
 					}
 					break;
 				}
 				case 45752:
 					long Time3 = System.currentTimeMillis();
-					/** 30ºĞ µ¿¾È À¯Áö */
+					/** 30åˆ†é–“ä¿æŒ */
 					long EndTime3 = System.currentTimeMillis() + (1000 * 1800);
 					RotationNoticeTable.getInstance().UpdateNotice(11, new Timestamp(Time3), new Timestamp(EndTime3));
 					for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 						if (pc instanceof L1RobotInstance) continue;
-						pc.¾Ë¸²¼­ºñ½º(pc, true);
+						pc.notificaton_service(pc, true);
 					}
 					break;
 			}
@@ -258,9 +258,9 @@ public class BossTimeController implements Runnable {
 			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE);
 
 			if (isMent) {
-				L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "\\aH[º¸½º¾Ë¸²] :"+ ment.toString()));
-				L1World.getInstance().broadcastServerMessage("\\aH[º¸½º ¾Ë¸²] :"+ ment.toString());
-				L1World.getInstance().broadcastServerMessage("\\aJ[ÁÖ¿ä ¸®¿öµå] :"+ Rment.toString());
+				L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "\\aH[BOSSé€šçŸ¥] :"+ ment.toString()));
+				L1World.getInstance().broadcastServerMessage("\\aH[BOSSé€šçŸ¥] :"+ ment.toString());
+				L1World.getInstance().broadcastServerMessage("\\aJ[ä¸»ãªå ±é…¬] :"+ Rment.toString());
 			}
 			if (isYN) {
 

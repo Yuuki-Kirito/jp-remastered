@@ -10,7 +10,7 @@ public class BossAlive {
 			ins = new BossAlive();
 		return ins;
 	}
-	//MapID , 1생존 2죽음
+	//MapID , 1 Survive 2 Death
 	HashMap<Integer,Integer> isAlive = new HashMap<Integer,Integer>();
 	
 	public boolean isBossAlive(int mapid){
@@ -28,20 +28,20 @@ public class BossAlive {
 	public void BossDeath(int mapid){
 		isAlive.remove(mapid);
 	}
-	//나중에 이거 HashMap으로 만들기
-	public boolean is에르자베 = false;
+	//later make this a HashMap
+	public boolean _is_ERZABE = false;
 	public long ezTime = -1;
-	public void set에르자베타임(long s){
+	public void set_erzabe_thyme(long s){
 		ezTime = s;
 	}
-	public boolean is발록 = false;
+	public boolean is_BALROG = false;
 	public long BLTime = -1;
-	public void set발록타임(long s){
+	public void set_release_time(long s){
 		BLTime = s;
 	}
-	public boolean is샌드웜 = false;
+	public boolean is_SAND_WORM = false;
 	public long sdTime = -1;
-	public void set샌드웜타임(long s){
+	public void set_sand_warm_time(long s){
 		sdTime = s;
 	}
 }

@@ -5648,7 +5648,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 민첩의룬주머니(L1PcInstance pc) {
@@ -5676,7 +5676,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 체력의룬주머니(L1PcInstance pc) {
@@ -5704,7 +5704,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지식의룬주머니(L1PcInstance pc) {
@@ -5732,7 +5732,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지혜의룬주머니(L1PcInstance pc) {
@@ -5758,7 +5758,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 힘의룬주머니80(L1PcInstance pc) {
@@ -5786,7 +5786,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 민첩의룬주머니80(L1PcInstance pc) {
@@ -5814,7 +5814,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 체력의룬주머니80(L1PcInstance pc) {
@@ -5842,7 +5842,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지식의룬주머니80(L1PcInstance pc) {
@@ -5870,7 +5870,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지혜의룬주머니80(L1PcInstance pc) {
@@ -5898,7 +5898,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 민첩의룬주머니85(L1PcInstance pc) {
@@ -5926,7 +5926,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 체력의룬주머니85(L1PcInstance pc) {
@@ -5954,7 +5954,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지식의룬주머니85(L1PcInstance pc) {
@@ -5980,7 +5980,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지혜의룬주머니85(L1PcInstance pc) {
@@ -6006,7 +6006,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 힘의룬주머니85(L1PcInstance pc) {
@@ -6032,7 +6032,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 힘의룬주머니90(L1PcInstance pc) {
@@ -6058,7 +6058,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 민첩의룬주머니90(L1PcInstance pc) {
@@ -6084,7 +6084,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 체력의룬주머니90(L1PcInstance pc) {
@@ -6110,7 +6110,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지식의룬주머니90(L1PcInstance pc) {
@@ -6136,7 +6136,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private void 지혜의룬주머니90(L1PcInstance pc) {
@@ -6162,7 +6162,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		}
 
 		/** 주머니 획득시 알림 정리 */
-		pc.알림서비스(pc, false);
+		pc.notificaton_service(pc, false);
 	}
 
 	private boolean 닥쳐(L1PcInstance pc) {
