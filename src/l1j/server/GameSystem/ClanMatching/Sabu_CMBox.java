@@ -14,9 +14,9 @@ import l1j.server.server.utils.SQLUtil;
 
 public class Sabu_CMBox {
 	private static Sabu_CMBox _instance;
-	private static ArrayList<Sabu_cm> cmlist;// mapÀ¸·Î ±¸ÇöÇÏ´Â°Ô ¸ÂÀ»Áöµµ ¸ğ¸¥´Ù.
-	private static ArrayList<Sabu_um> umlist;// À¯Àú°¡ ½ÅÃ»¸ñ·ÏÀ» ¿­¶÷ÇßÀ»½Ã¿¡ ¸ğµç µî·ÏÇ÷¸ÍÀ» °Ë»öÇÏÁö
-												// ¾Ê±âÀ§ÇØ Ãß°¡
+	private static ArrayList<Sabu_cm> cmlist;// mapã§å®Ÿè£…ã™ã‚‹ã®ãŒæ­£ã—ã„ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
+	private static ArrayList<Sabu_um> umlist;// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒç”³è«‹ãƒªã‚¹ãƒˆã‚’é–²è¦§ã—ãŸã¨ãã«ã™ã¹ã¦ã®ç™»éŒ²è¡€ç›Ÿã‚’æ¤œç´¢ã—ãªã„
+												// ãªã„ãŸã‚ã«è¿½åŠ 
 
 	public static Sabu_CMBox getInstance() {
 		if (_instance == null) {
@@ -52,7 +52,7 @@ public class Sabu_CMBox {
 			synchronized (cmlist) {
 				if (cmlist.contains(cm)) {
 					cmlist.remove(cm);
-					Ç÷¸Íµî·ÏÃë¼Ò(cm.getClanId());
+					cancellation_clan_registration(cm.getClanId());
 					cm = null;
 				}
 			}
@@ -83,7 +83,7 @@ public class Sabu_CMBox {
 					if (cm.getClanId() == clanid) {
 						cm.setInfo(info);
 						cm.settype(type);
-						µî·Ï¼öÁ¤(clanid, type, info);
+						edit_registration(clanid, type, info);
 					}
 				}
 			}
@@ -96,7 +96,7 @@ public class Sabu_CMBox {
 		try {
 			synchronized (cmlist) {
 				if (!cmlist.contains(cm)) {
-					Ç÷¸Íµî·Ï(cm.getClanId(), cm.gettype(), cm.getInfo());
+					clan_registration(cm.getClanId(), cm.gettype(), cm.getInfo());
 					cmlist.add(cm);
 				}
 			}
@@ -178,7 +178,7 @@ public class Sabu_CMBox {
 		}
 	}
 
-	private void °¡ÀÔ½ÅÃ»(String name, int clanid, String info, int num, int type) {
+	private void application_for_membership(String name, int clanid, String info, int num, int type) {
 		try {
 			Sabu_um um = new Sabu_um();
 			um.setcharname(name);
@@ -202,8 +202,8 @@ public class Sabu_CMBox {
 				for (Sabu_cm cm : l) {
 					if (cm.getnum() == num) {
 						cm.add(charname);
-						°¡ÀÔ½ÅÃ»(charname, cm.getClanId(), cm.getInfo(), num, cm.gettype());
-						À¯Àú°¡ÀÔ½ÅÃ»(charname, cm.getClanId(), num);
+						application_for_membership(charname, cm.getClanId(), cm.getInfo(), num, cm.gettype());
+						user_registration_request(charname, cm.getClanId(), num);
 					}
 				}
 			}
@@ -230,7 +230,7 @@ public class Sabu_CMBox {
 				for (Sabu_um um : l) {
 					if (um.getcharname().equalsIgnoreCase(charname)) {
 						if (clanId == um.getClanId()) {
-							À¯Àú°¡ÀÔÃë¼Ò(um.getcharname(), um.getClanId());
+							cancel_user_registration(um.getcharname(), um.getClanId());
 							cmCharRemove(um.getcharname(), um.getClanId());
 							umlist.remove(um);
 							um = null;
@@ -281,10 +281,10 @@ public class Sabu_CMBox {
 	}
 
 	public int getnextnum() {
-		return ¸ÅÄª¹øÈ£() + 1;
+		return matching_number() + 1;
 	}
 
-	private synchronized static int ¸ÅÄª¹øÈ£() {
+	private synchronized static int matching_number() {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -305,7 +305,7 @@ public class Sabu_CMBox {
 		return 0;
 	}
 
-	private synchronized static void À¯Àú°¡ÀÔ½ÅÃ»(String charname, int clanid, int num) {
+	private synchronized static void user_registration_request(String charname, int clanid, int num) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -324,7 +324,7 @@ public class Sabu_CMBox {
 		}
 	}
 
-	private synchronized static void À¯Àú°¡ÀÔÃë¼Ò(String charname, int clanid) {
+	private synchronized static void cancel_user_registration(String charname, int clanid) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -341,7 +341,7 @@ public class Sabu_CMBox {
 		}
 	}
 
-	private synchronized static void Ç÷¸Íµî·Ï(int clanid, int type, String info) {
+	private synchronized static void clan_registration(int clanid, int type, String info) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -359,7 +359,7 @@ public class Sabu_CMBox {
 		}
 	}
 
-	private synchronized static void µî·Ï¼öÁ¤(int clanid, int type, String info) {
+	private synchronized static void edit_registration(int clanid, int type, String info) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -377,7 +377,7 @@ public class Sabu_CMBox {
 		}
 	}
 
-	private synchronized static void Ç÷¸Íµî·ÏÃë¼Ò(int clanid) {
+	private synchronized static void cancellation_clan_registration(int clanid) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
