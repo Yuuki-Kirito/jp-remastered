@@ -20,24 +20,24 @@ public final class World {
 	static private Map<Integer, l1j.server.GameSystem.Astar.bean.Map> list;
 
 	static public void init() {
-		TimeLine.start("¿ùµå¸Ê ºÒ·¯¿À±â....¾ÈÇØ");
+		TimeLine.start("Loading world map....don't do it");
 
 		list = new HashMap<Integer, l1j.server.GameSystem.Astar.bean.Map>();
 
 		try {
 			File f = new File("Sabu/maps/Cache");
-			// Æú´õ°¡ Á¸ÀçÇÒ°æ¿ì
+			// ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã™ã‚‹å ´åˆ
 			if (f.isDirectory()) {
-				// Ä³½¬ÆÄÀÏ·ÎºÎÅÍ ¸Ê ·Îµù
+				// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒãƒƒãƒ—ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 				read(false);
-				// Æú´õ°¡ Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì
+				// ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆ
 			} else {
-				System.out.println("Ä³½¬ Æú´õ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-				// Æú´õ»ı¼º
+				System.out.println("The cache folder does not exist.");
+				// ãƒ•ã‚©ãƒ«ãƒ€ã®ä½œæˆ
 				f.mkdir();
-				// txtÆÄÀÏ·ÎºÎÅÍ ¸Ê ·Îµù
+				// txtãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒãƒƒãƒ—ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
 				read(true);
-				// Ä³½¬ÆÄÀÏ ÀÛ¼º
+				// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ
 				writeCache();
 			}
 		} catch (Exception e) {
@@ -51,7 +51,7 @@ public final class World {
 	static private void writeCache() throws Exception {
 		try {
 
-			System.out.println("Ä³½¬ ÆÄÀÏÀ» »ı¼ºÇÏ°í ÀÖ½À´Ï´Ù.");
+			System.out.println("You are creating a cache file.");
 			BufferedOutputStream bw = null;
 			for (l1j.server.GameSystem.Astar.bean.Map m : list.values()) {
 				bw = new BufferedOutputStream(new FileOutputStream(
@@ -59,18 +59,18 @@ public final class World {
 				bw.write(m.data);
 				bw.close();
 			}
-			System.out.println(" (¿Ï·á)");
+			System.out.println(" (completion)");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	static private void read(boolean type) throws Exception {
-		// text·ÎºÎÅÍ ÀĞ´Â°Å ¾Ë¸²¿ë
+		// textã‹ã‚‰èª­ã¿å–ã‚‹é€šçŸ¥ç”¨
 		try {
 
 			if (type)
-				System.out.println("Text ÆÄÀÏ¿¡¼­ ¿ùµå¸Ê Á¤º¸¸¦ ÃßÃâÇÏ°í ÀÖ½À´Ï´Ù.");
+				System.out.println("I am extracting world map information from a text file.");
 
 			String maps;
 			StringTokenizer st1;
@@ -244,7 +244,7 @@ public final class World {
 	private static final byte BITFLAG_IS_DOOR_IMPASSABLE_X = (byte) 0x80;
 	private static final byte BITFLAG_IS_DOOR_IMPASSABLE_Y = (byte) 0x40;
 
-	static public void ¹®ÀÌµ¿(int x, int y, int map, boolean h, boolean flag) {
+	static public void door_to_door(int x, int y, int map, boolean h, boolean flag) {
 		L1V1Map m = (L1V1Map) L1WorldMap.getInstance().getMap((short) map);
 		if (m != null) {
 			if (!m.isInMap(x, y)) {
@@ -275,7 +275,7 @@ public final class World {
 	private static final byte HEADING_TABLE_X[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 	private static final byte HEADING_TABLE_Y[] = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
-	static public boolean ¹®ÀÌµ¿(int x, int y, int map, int h) {
+	static public boolean door_to_door(int x, int y, int map, int h) {
 		if (h < 0 || h > 7) {
 			return false;
 		}
@@ -484,7 +484,7 @@ public final class World {
 		 * L1WorldMap.getInstance().getMap((short)map).getOriginalTile(x-1,
 		 * y-1);break; default: return false; }
 		 * 
-		 * if(World.¹®ÀÌµ¿(x, y, map, dir)){ return false; }
+		 * if(World.ë¬¸ì´ë™(x, y, map, dir)){ return false; }
 		 * 
 		 * 
 		 * if (gab == 12 || gab2== 12){ return true; }else if (gab == 47 ||

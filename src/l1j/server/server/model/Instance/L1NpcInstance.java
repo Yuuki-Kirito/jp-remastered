@@ -882,7 +882,7 @@ public class L1NpcInstance extends L1Character {
 			 * if(!tail ){ broadcastPacket(new S_NpcChatPacket(this,
 			 * "아시바 나못가는디")); }
 			 */
-			boolean door = World.문이동(getX(), getY(), getMapId(),
+			boolean door = World.door_to_door(getX(), getY(), getMapId(),
 					calcheading(this, targetx, targety));
 			/*
 			 * if(!door ){ broadcastPacket(new S_NpcChatPacket(this,
@@ -1738,7 +1738,7 @@ public class L1NpcInstance extends L1Character {
 				int tmpx = aStar.getXY(dir, true) + getX();
 				int tmpy = aStar.getXY(dir, false) + getY();
 				boolean obj = World.isMapdynamic(tmpx, tmpy, getMapId());
-				boolean door = World.문이동(getX(), getY(), getMapId(), dir);
+				boolean door = World.door_to_door(getX(), getY(), getMapId(), dir);
 				if (this instanceof L1DollInstance) {
 					obj = false;
 				}
@@ -1785,7 +1785,7 @@ public class L1NpcInstance extends L1Character {
 				int tmpx = aStar.getXY(dir, true) + getX();
 				int tmpy = aStar.getXY(dir, false) + getY();
 				boolean obj = World.isMapdynamic(tmpx, tmpy, getMapId());
-				boolean door = World.문이동(getX(), getY(), getMapId(), dir);
+				boolean door = World.door_to_door(getX(), getY(), getMapId(), dir);
 				if (this instanceof L1DollInstance) {
 					obj = false;
 				}
@@ -1869,7 +1869,7 @@ public class L1NpcInstance extends L1Character {
 						boolean tail = World.isThroughObject(getX(), getY(),
 								getMapId(), heading);
 						boolean obj = World.isMapdynamic(x, y, getMapId());
-						boolean door = World.문이동(getX(), getY(), getMapId(),
+						boolean door = World.door_to_door(getX(), getY(), getMapId(),
 								heading);
 						if (this instanceof L1DollInstance) {
 							obj = false;
@@ -1899,7 +1899,7 @@ public class L1NpcInstance extends L1Character {
 							int tmpy = aStar.getXY(dir, false) + getY();
 							boolean obj = World.isMapdynamic(tmpx, tmpy,
 									getMapId());
-							boolean door = World.문이동(getX(), getY(),
+							boolean door = World.door_to_door(getX(), getY(),
 									getMapId(), dir);
 							if (this instanceof L1DollInstance) {
 								obj = false;
@@ -4076,7 +4076,7 @@ public class L1NpcInstance extends L1Character {
 		 * if(getNpcTemplate().get_npcId() >=100750 &&
 		 * getNpcTemplate().get_npcId() <= 100757){ return true; }
 		 */
-		return !World.문이동(x, y, getMapId(), h);
+		return !World.door_to_door(x, y, getMapId(), h);
 	}
 
 	private boolean 오브젝트체크(int x, int y, int h) {
@@ -4133,7 +4133,7 @@ public class L1NpcInstance extends L1Character {
 					}
 				} else {
 					aStar.cleanTail();
-					tail = aStar.근접서치타일(this, x, y, m, true);
+					tail = aStar.close_up_search(this, x, y, m, true);
 
 					if (tail != null && !(tail.x == getX() && tail.y == getY())) {
 						iCurrentPath = -1;

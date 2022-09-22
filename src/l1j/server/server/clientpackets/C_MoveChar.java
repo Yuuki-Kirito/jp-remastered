@@ -197,7 +197,7 @@ public class C_MoveChar extends ClientBasePacket {
 					return;
 				}
 				// 타일이 이동불가가 아니고 만약 아무것도 없으면 이동가능으로 셋팅
-				if (World.문이동(pc.getX(), pc.getY(), pc.getMapId(), heading)) {
+				if (World.door_to_door(pc.getX(), pc.getY(), pc.getMapId(), heading)) {
 					if (GMCommands.길팅체크) {
 						System.out.println("길팅 : 뚫어체크2 name : " + pc.getName());
 					}

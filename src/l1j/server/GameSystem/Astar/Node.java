@@ -2,23 +2,23 @@ package l1j.server.GameSystem.Astar;
 
 //******************************************************************************
 // File Name	: Node.java
-// Description	: 노드 클래스
+// Description	: node class
 // Create		: 2003/04/01 JongHa Woo
 // Update		:
 //******************************************************************************
 
 public class Node {
 	public int f; // f = g+h
-	public int h; // 휴리스틱 값
-	public int g; // 현재까지의 거리
-	public int x, y; // 노드의 위치
-	public Node prev; // 이전 노드
-	public Node direct[]; // 인접한 노드
-	public Node next; // 다음 노드
+	public int h; // heuristic value
+	public int g; // distance to date
+	public int x, y; // the location of the node
+	public Node prev; // previous node
+	public Node direct[]; // adjacent node
+	public Node next; // next node
 
 	// *************************************************************************
 	// Name : Node()
-	// Desc : 생성자
+	// Desc : constructor
 	// *************************************************************************
 	Node() {
 		direct = new Node[8];

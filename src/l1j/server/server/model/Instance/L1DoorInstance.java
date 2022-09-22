@@ -386,17 +386,17 @@ public class L1DoorInstance extends L1NpcInstance {
 			if (getDirection() == 0 || getDirection() == 4) {
 				if (getDoorId() == 2010) {
 					for (int x = leftEdgeLocation; x <= rightEdgeLocation; x++) {
-						World.문이동(x, entranceY - 1, this.getMapId(), false,
+						World.door_to_door(x, entranceY - 1, this.getMapId(), false,
 								flag);
 					}
 				} else {
 					for (int x = leftEdgeLocation; x <= rightEdgeLocation; x++) {
-						World.문이동(x, entranceY, this.getMapId(), false, flag);
+						World.door_to_door(x, entranceY, this.getMapId(), false, flag);
 					}
 				}
 			} else {
 				for (int y = leftEdgeLocation; y <= rightEdgeLocation; y++) {
-					World.문이동(entranceX, y, this.getMapId(), true, flag);
+					World.door_to_door(entranceX, y, this.getMapId(), true, flag);
 				}
 			}
 		}

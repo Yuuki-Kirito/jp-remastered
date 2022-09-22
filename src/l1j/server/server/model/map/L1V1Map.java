@@ -494,7 +494,7 @@ public class L1V1Map extends L1Map {
 			return true;
 		}
 
-		if (World.πÆ¿Ãµø(x, y, getId(), heading)) {
+		if (World.door_to_door(x, y, getId(), heading)) {
 			return false;
 		}
 		// boolean tail = World.isThroughAttack(x, y, this.getId(), heading);

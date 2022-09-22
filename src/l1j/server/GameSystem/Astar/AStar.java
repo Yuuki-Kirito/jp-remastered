@@ -16,7 +16,7 @@ import l1j.server.server.model.Instance.L1TrapInstance;
 
 public class AStar {
 
-	// ¿­¸° ³ëµå, ´İÈù ³ëµå ¸®½ºÆ®
+	// ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã€ã‚¯ãƒ­ãƒ¼ã‚ºãƒãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
 	Node OpenNode, ClosedNode;
 	private L1NpcInstance _npc = null;
 
@@ -24,7 +24,7 @@ public class AStar {
 		_npc = npc;
 	}
 
-	// ÃÖ´ë ·çÇÎ È¸¼ö
+	// Maximum number of loops
 	static final int LIMIT_LOOP = 200;
 	// private List<Node> pool;
 	// private List<Node> sabu;
@@ -52,7 +52,7 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : AStar()
-	// Desc : »ı¼ºÀÚ
+	// Desc : constructor
 	// *************************************************************************
 	public AStar() {
 		// sabu = new ArrayList<Node>();
@@ -88,7 +88,7 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : ResetPath()
-	// Desc : ÀÌÀü¿¡ »ı¼ºµÈ °æ·Î¸¦ Á¦°Å
+	// Desc : Remove previously created path
 	// *************************************************************************
 	public void cleanTail() {
 		Node tmp;
@@ -126,10 +126,10 @@ public class AStar {
 
 		/*
 		 * if(cnt > 5000){
-		 * System.out.println("ÀÎ¼­Æ® ÀÌ¸§ "+_npc.getName()+" x:"+_npc
+		 * System.out.println("insert name "+_npc.getName()+" x:"+_npc
 		 * .getX()+" y:"+_npc.getY()+" m:"+_npc.getMapId());
 		 * System.out.println(_npc.isDead()); L1PcInstance[] gm =
-		 * Config.toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ(); gm[0].dx= _npc.getX(); gm[0].dy=
+		 * Config.toArrayConnection chat monitor(); gm[0].dx= _npc.getX(); gm[0].dy=
 		 * _npc.getY(); gm[0].dm= _npc.getMapId();
 		 * gm[0].dh=gm[0].getMoveState().getHeading(); gm[0].setTelType(7);
 		 * gm[0].sendPackets(new S_SabuTell(gm[0])); }
@@ -138,10 +138,10 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : FindPath()
-	// Desc : ½ÃÀÛÀ§Ä¡¿Í ¸ñÇ¥À§Ä¡¸¦ ÀÔ·Â ¹Ş¾Æ °æ·Î³ëµå ¸®½ºÆ®¸¦ ¹İÈ¯
+	// Desc : Returns a list of path nodes by inputting the starting position and the target position.
 	// *************************************************************************
-	// ¸ó½ºÅÍÁÂÇ¥ sx, xy
-	// ÀÌµ¿ÇÒÁÂÇ¥ tx, ty
+	// ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åº§æ¨™ sx, xy
+	// ç§»å‹•ã™ã‚‹åº§æ¨™ tx, ty
 	public Node searchTail(L1Object o, int tx, int ty, int m, boolean obj) {
 		int calcx = o.getX() - tx;
 		int calcy = o.getY() - ty;
@@ -166,7 +166,7 @@ public class AStar {
 		int sx = o.getX();
 		int sy = o.getY();
 
-		// Ã³À½ ½ÃÀÛ³ëµå »ı¼º
+		// åˆã‚ã¦èµ·å‹•ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
 		src = getPool();
 		src.g = 0;
 		src.h = (tx - sx) * (tx - sx) + (ty - sy) * (ty - sy);
@@ -174,39 +174,39 @@ public class AStar {
 		src.x = sx;
 		src.y = sy;
 
-		// ½ÃÀÛ³ëµå¸¦ ¿­¸°³ëµå ¸®½ºÆ®¿¡ Ãß°¡
+		// é–‹å§‹ãƒãƒ¼ãƒ‰ã‚’é–‹ã„ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«è¿½åŠ 
 		OpenNode = src;
 
-		// ±æÃ£±â ¸ŞÀÎ ·çÇÁ
-		// ÃÖ´ë ¹İº¹ È¸¼ö°¡ ³ÑÀ¸¸é ±æÃ£±â ÁßÁö
+		// ãƒ«ãƒ¼ãƒˆæ¤œç´¢ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
+		// æœ€å¤§ç¹°ã‚Šè¿”ã—å›æ•°ã‚’è¶…ãˆã‚‹ã¨ãƒ«ãƒ¼ãƒˆã‚’åœæ­¢
 		while (count < LIMIT_LOOP) {
 			if (_npc != null) {
 				if (_npc.isDead()) {
 					return null;
 				}
 			}
-			// ¿­¸°³ëµå°¡ ¾ø´Ù¸é ¸ğµç ³ëµå¸¦ °Ë»öÇßÀ¸¹Ç·Î ±æÃ£±â ÁßÁö
+			// ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ãŒãªã„å ´åˆã¯ã€ã™ã¹ã¦ã®ãƒãƒ¼ãƒ‰ã‚’æ¤œç´¢ã—ãŸãŸã‚ã€ãƒ«ãƒ¼ãƒˆã‚’åœæ­¢
 			if (OpenNode == null) {
-				// System.out.println("¿­¸°°÷ÀÌ¾ø¾î");
+				// System.out.println("é–‹ã„ãŸå ´æ‰€ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
 				return null;
 			}
 
-			// ¿­¸°³ëµåÀÇ Ã¹¹øÂ° ³ëµå¸¦ °¡Á®¿À°í ¿­¸°³ëµå¿¡¼­ Á¦°Å
+			// ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã®æœ€åˆã®ãƒãƒ¼ãƒ‰ã‚’å–å¾—ã—ã€ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã‹ã‚‰å‰Šé™¤
 			best = OpenNode;
 			OpenNode = best.next;
 
-			// °¡Á®¿Â ³ëµå¸¦ ´İÈù³ëµå¿¡ Ãß°¡
+			// ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ãŸãƒãƒ¼ãƒ‰ã‚’é–‰ã˜ãŸãƒãƒ¼ãƒ‰ã«è¿½åŠ 
 			best.next = ClosedNode;
 			ClosedNode = best;
 
-			// ÇöÀç °¡Á®¿Â ³ëµå°¡ ¸ñÇ¥³ëµå¶ó¸é ±æÃ£±â ¼º°ø
+			// ç¾åœ¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ãŒã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒãƒ¼ãƒ‰ã§ã‚ã‚‹å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆæ¤œç´¢ã«æˆåŠŸ
 			if (best.x == tx && best.y == ty) {
 				return best;
 			}
 
-			// ÇöÀç ³ëµå¿Í ÀÎÁ¢ÇÑ ³ëµåµé·Î È®ÀåÇÏ¿© ¿­¸°³ëµå·Î Ãß°¡
+			// ç¾åœ¨ã®ãƒãƒ¼ãƒ‰ã«éš£æ¥ã™ã‚‹ãƒãƒ¼ãƒ‰ã«å±•é–‹ã—ã¦ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã¨ã—ã¦è¿½åŠ 
 			if (MakeChild(o, best, tx, ty, obj) == 0 && count == 0) {
-				// System.out.println("¸·ÇôÀÖ¾î..");
+				// System.out.println("è©°ã¾ã£ã¦ã„ã¾ã™..");
 				return null;
 			}
 
@@ -218,10 +218,10 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : MakeChild()
-	// Desc : ÀÔ·Â¹ŞÀº ³ëµåÀÇ ÀÎÁ¢ÇÑ ³ëµåµé·Î È®Àå
+	// Desc : Extend to adjacent nodes of the input node
 	// *************************************************************************
-	// ¸®´ÏÁö È¯°æ¿¡ ¸Â°Ô Àç¼öÁ¤ by sabu
-	private char ¸ŞÀÌÅ©Â÷ÀÏµå(L1Object o, Node node, int tx, int ty, boolean obj) {
+	// ãƒªãƒãƒ¼ã‚¸ãƒ¥ç’°å¢ƒã«åˆã‚ã›ã¦å†ä¿®æ­£ by sabu
+	private char makechild(L1Object o, Node node, int tx, int ty, boolean obj) {
 		int x, y;
 		char flag = 0;
 
@@ -233,18 +233,18 @@ public class AStar {
 		 * if(npp.getNpcId() >=100750 && npp.getNpcId() <= 100757){ ckckck =
 		 * true; } }
 		 */
-		// ÀÎÁ¢ÇÑ ³ëµå·Î ÀÌµ¿°¡´ÉÇÑÁö °Ë»ç
+		// éš£æ¥ãƒãƒ¼ãƒ‰ã«ç§»å‹•å¯èƒ½ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹
 		for (int i = 0; i < 8; ++i) {
 			if (ckckck || World.isThroughObject(x, y, o.getMapId(), i)) {
 				int nx = x + getXY(i, true);
 				int ny = y + getXY(i, false);
 				boolean ck = true;
-				// °ñÀÎÁöÁ¡ÀÇ ÁÂÇ¥´Â °Ë»öÇÒÇÊ¿ä ¾øÀ½.
+				// ã‚´ãƒ¼ãƒ«ãƒã‚¤ãƒ³ãƒˆã®åº§æ¨™ã¯æ¤œç´¢ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 				if (tx != nx || ty != ny) {
 					if (obj) {
 						if (o instanceof L1DollInstance) {
 							ck = true;
-						} else if (World.¹®ÀÌµ¿(x, y, o.getMapId(), i) == true) {
+						} else if (World.door_to_door(x, y, o.getMapId(), i) == true) {
 							if (o instanceof L1MonsterInstance) {
 								L1MonsterInstance Mon = (L1MonsterInstance) o;
 								if(!(Mon.getNpcId() >= 46410 && Mon.getNpcId() <= 46483)){
@@ -295,11 +295,11 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : FindPath()
-	// Desc : ±ÙÁ¢ÇÑ À§Ä¡ Ã£±â.. ¾¾¹ß µÉ·Á³ª
+	// Desc : Find a location close by.. fuck you
 	// *************************************************************************
-	// ¸ó½ºÅÍÁÂÇ¥ sx, xy
-	// ÀÌµ¿ÇÒÁÂÇ¥ tx, ty
-	public Node ±ÙÁ¢¼­Ä¡Å¸ÀÏ(L1Object o, int tx, int ty, int m, boolean obj) {
+	// ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼åº§æ¨™ sx, xy
+	// ç§»å‹•ã™ã‚‹åº§æ¨™ tx, ty
+	public Node close_up_search(L1Object o, int tx, int ty, int m, boolean obj) {
 		int calcx = o.getX() - tx;
 		int calcy = o.getY() - ty;
 		if (o instanceof L1RobotInstance) {
@@ -324,7 +324,7 @@ public class AStar {
 		int sx = o.getX();
 		int sy = o.getY();
 
-		// Ã³À½ ½ÃÀÛ³ëµå »ı¼º
+		// åˆã‚ã¦èµ·å‹•ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
 		src = getPool();
 		src.g = 0;
 		src.h = (tx - sx) * (tx - sx) + (ty - sy) * (ty - sy);
@@ -332,39 +332,39 @@ public class AStar {
 		src.x = sx;
 		src.y = sy;
 
-		// ½ÃÀÛ³ëµå¸¦ ¿­¸°³ëµå ¸®½ºÆ®¿¡ Ãß°¡
+		// é–‹å§‹ãƒãƒ¼ãƒ‰ã‚’é–‹ã„ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«è¿½åŠ 
 		OpenNode = src;
 
-		// ±æÃ£±â ¸ŞÀÎ ·çÇÁ
-		// ÃÖ´ë ¹İº¹ È¸¼ö°¡ ³ÑÀ¸¸é ±æÃ£±â ÁßÁö
+		// ãƒ«ãƒ¼ãƒˆæ¤œç´¢ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
+		// æœ€å¤§ç¹°ã‚Šè¿”ã—å›æ•°ã‚’è¶…ãˆã‚‹ã¨ãƒ«ãƒ¼ãƒˆã‚’åœæ­¢
 		while (count < LIMIT_LOOP) {
 			if (_npc != null) {
 				if (_npc.isDead()) {
 					return null;
 				}
 			}
-			// ¿­¸°³ëµå°¡ ¾ø´Ù¸é ¸ğµç ³ëµå¸¦ °Ë»öÇßÀ¸¹Ç·Î ±æÃ£±â ÁßÁö
+			// ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ãŒãªã„å ´åˆã¯ã€ã™ã¹ã¦ã®ãƒãƒ¼ãƒ‰ã‚’æ¤œç´¢ã—ãŸãŸã‚ã€ãƒ«ãƒ¼ãƒˆã‚’åœæ­¢
 			if (OpenNode == null) {
-				// System.out.println("¿­¸°°÷ÀÌ¾ø¾î");
+				// System.out.println("é–‹ã„ãŸå ´æ‰€ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
 				return null;
 			}
 
-			// ¿­¸°³ëµåÀÇ Ã¹¹øÂ° ³ëµå¸¦ °¡Á®¿À°í ¿­¸°³ëµå¿¡¼­ Á¦°Å
+			// ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã®æœ€åˆã®ãƒãƒ¼ãƒ‰ã‚’å–å¾—ã—ã€ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã‹ã‚‰å‰Šé™¤
 			best = OpenNode;
 			OpenNode = best.next;
 
-			// °¡Á®¿Â ³ëµå¸¦ ´İÈù³ëµå¿¡ Ãß°¡
+			// ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ãŸãƒãƒ¼ãƒ‰ã‚’é–‰ã˜ãŸãƒãƒ¼ãƒ‰ã«è¿½åŠ 
 			best.next = ClosedNode;
 			ClosedNode = best;
 
-			// ÇöÀç °¡Á®¿Â ³ëµå°¡ ¸ñÇ¥³ëµå¶ó¸é ±æÃ£±â ¼º°ø
+			// ç¾åœ¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ãŒã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒãƒ¼ãƒ‰ã§ã‚ã‚‹å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆæ¤œç´¢ã«æˆåŠŸ
 			if (best.x == tx && best.y == ty) {
 				return best;
 			}
 
-			// ÇöÀç ³ëµå¿Í ÀÎÁ¢ÇÑ ³ëµåµé·Î È®ÀåÇÏ¿© ¿­¸°³ëµå·Î Ãß°¡
-			if (¸ŞÀÌÅ©Â÷ÀÏµå(o, best, tx, ty, obj) == 0 && count == 0) {
-				// System.out.println("¸·ÇôÀÖ¾î..");
+			// ç¾åœ¨ã®ãƒãƒ¼ãƒ‰ã«éš£æ¥ã™ã‚‹ãƒãƒ¼ãƒ‰ã«å±•é–‹ã—ã¦ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒ‰ã¨ã—ã¦è¿½åŠ 
+			if (makechild(o, best, tx, ty, obj) == 0 && count == 0) {
+				// System.out.println("ë§‰í˜€ìˆì–´..");
 				return null;
 			}
 
@@ -396,9 +396,9 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : MakeChild()
-	// Desc : ÀÔ·Â¹ŞÀº ³ëµåÀÇ ÀÎÁ¢ÇÑ ³ëµåµé·Î È®Àå
+	// Desc : Extend to adjacent nodes of the input node
 	// *************************************************************************
-	// ¸®´ÏÁö È¯°æ¿¡ ¸Â°Ô Àç¼öÁ¤ by sabu
+	// ãƒªãƒãƒ¼ã‚¸ãƒ¥ç’°å¢ƒã«åˆã‚ã›ã¦å†ä¿®æ­£ by sabu
 
 	private char MakeChild(L1Object o, Node node, int tx, int ty, boolean obj) {
 		int x, y;
@@ -413,19 +413,19 @@ public class AStar {
 		 * true; //Broadcaster.broadcastPacket(npp, new S_NpcChatPacket(npp,
 		 * "33333333333", 0)); } }
 		 */
-		// ÀÎÁ¢ÇÑ ³ëµå·Î ÀÌµ¿°¡´ÉÇÑÁö °Ë»ç
+		// ì¸ì ‘í•œ ë…¸ë“œë¡œ ì´ë™ê°€ëŠ¥í•œì§€ ê²€ì‚¬
 
 		for (int i = 0; i < 8; ++i) {
 			if (ckckck || World.isThroughObject(x, y, o.getMapId(), i)) {
 				int nx = x + getXY(i, true);
 				int ny = y + getXY(i, false);
 				boolean ck = true;
-				// °ñÀÎÁöÁ¡ÀÇ ÁÂÇ¥´Â °Ë»öÇÒÇÊ¿ä ¾øÀ½.
+				// ã‚´ãƒ¼ãƒ«ãƒã‚¤ãƒ³ãƒˆã®åº§æ¨™ã¯æ¤œç´¢ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“.
 				if (tx != nx || ty != ny) {
 					if (obj) {
 						if (o instanceof L1DollInstance) {
 							ck = true;
-						} else if (World.¹®ÀÌµ¿(x, y, o.getMapId(), i) == true) {
+						} else if (World.door_to_door(x, y, o.getMapId(), i) == true) {
 							if (o instanceof L1MonsterInstance) {
 								L1MonsterInstance Mon = (L1MonsterInstance) o;
 								if(!(Mon.getNpcId() >= 46410 && Mon.getNpcId() <= 46483)){
@@ -473,14 +473,14 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : MakeChildSub()
-	// Desc : ³ëµå¸¦ »ı¼º. ¿­¸°³ëµå³ª ´İÈù³ëµå¿¡ ÀÌ¹Ì ÀÖ´Â ³ëµå¶ó¸é
-	// ÀÌÀü°ª°ú ºñ±³ÇÏ¿© f°¡ ´õ ÀÛÀ¸¸é Á¤º¸ ¼öÁ¤
-	// ´İÈù³ëµå¿¡ ÀÖ´Ù¸é ±×¿¡ ¿¬°áµÈ ¸ğµç ³ëµåµéÀÇ Á¤º¸µµ °°ÀÌ ¼öÁ¤
+	// Desc : create a node. If the node already exists in an open node or a closed node
+	// Correct information if f is smaller compared to previous value
+	// If it is in a closed node, the information of all nodes connected to it is also modified.
 	// *************************************************************************
 	void MakeChildSub(Node node, int x, int y, int m, int tx, int ty) {
 		Node old = null, child = null;
 		int g = node.g + 1;
-		// ÇöÀç³ëµå°¡ ¿­¸° ³ëµå¿¡ ÀÖ°í f°¡ ´õ ÀÛÀ¸¸é Á¤º¸ ¼öÁ¤
+		// Modify information if current node is in open node and f is smaller
 		if ((old = IsOpen(x, y, m)) != null) {
 			if (g < old.g) {
 				old.prev = node;
@@ -488,17 +488,17 @@ public class AStar {
 				old.f = old.h + old.g;
 			}
 
-			// ÇöÀç³ëµå°¡ ´İÈù ³ëµå¿¡ ÀÖ°í f°¡ ´õ ÀÛÀ¸¸é Á¤º¸ ¼öÁ¤
+			// ç¾åœ¨ã®ãƒãƒ¼ãƒ‰ãŒé–‰ã˜ãŸãƒãƒ¼ãƒ‰ã«ã‚ã‚Šã€fãŒå°ã•ã„å ´åˆã€æƒ…å ±ã‚’ä¿®æ­£ã™ã‚‹
 		} else if ((old = IsClosed(x, y, m)) != null) {
 			if (g < old.g) {
 				old.prev = node;
 				old.g = g;
 				old.f = old.h + old.g;
 			}
-			// »õ·Î¿î ³ëµå¶ó¸é ³ëµåÁ¤º¸ »ı¼ºÇÏ°í ¿­¸°³ëµå¿¡ Ãß°¡
+			// æ–°ã—ã„ãƒãƒ¼ãƒ‰ã§ã‚ã‚Œã°ã€ãƒãƒ¼ãƒ‰æƒ…å ±ã‚’ä½œæˆã—ã¦é–‹ã„ãŸãƒãƒ¼ãƒ‰ã«è¿½åŠ 
 		} else {
 			try {
-				// »õ·Î¿î ³ëµå »ı¼º
+				// æ–°ã—ã„ãƒãƒ¼ãƒ‰ã®ä½œæˆ
 				child = getPool();
 
 				child.prev = node;
@@ -508,7 +508,7 @@ public class AStar {
 				child.x = x;
 				child.y = y;
 
-				// »õ·Î¿î ³ëµå¸¦ ¿­¸°³ëµå¿¡ Ãß°¡
+				// æ–°ã—ã„ãƒãƒ¼ãƒ‰ã‚’é–‹ã„ãŸãƒãƒ¼ãƒ‰ã«è¿½åŠ 
 				InsertNode(child);
 			} catch (Exception e) {
 			}
@@ -517,7 +517,7 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : IsOpen()
-	// Desc : ÀÔ·ÂµÈ ³ëµå°¡ ¿­¸°³ëµåÀÎÁö °Ë»ç
+	// Desc : Check if the input node is an open node
 	// *************************************************************************
 	private Node IsOpen(int x, int y, int mapid) {
 		Node tmp = OpenNode;
@@ -540,11 +540,11 @@ public class AStar {
 
 		/*
 		 * if(cnt > 5000){
-		 * System.out.println(cnt+" ¿ÀÇÂ x :"+x+" y :"+y+" m :"+mapid);
+		 * System.out.println(cnt+" open x :"+x+" y :"+y+" m :"+mapid);
 		 * System.out.
-		 * println(" ÀÌ¸§"+_npc.getName()+" x:"+_npc.getX()+" y:"+_npc.getY
+		 * println(" ì´ë¦„"+_npc.getName()+" x:"+_npc.getX()+" y:"+_npc.getY
 		 * ()+" m:"+_npc.getMapId()); System.out.println(_npc.isDead());
-		 * L1PcInstance[] gm = Config.toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ(); gm[0].dx= _npc.getX();
+		 * L1PcInstance[] gm = Config.toArrayConnection chat monitor(); gm[0].dx= _npc.getX();
 		 * gm[0].dy= _npc.getY(); gm[0].dm= _npc.getMapId();
 		 * gm[0].dh=gm[0].getMoveState().getHeading(); gm[0].setTelType(7);
 		 * gm[0].sendPackets(new S_SabuTell(gm[0])); }
@@ -554,7 +554,7 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : IsClosed()
-	// Desc : ÀÔ·ÂµÈ ³ëµå°¡ ´İÈù³ëµåÀÎÁö °Ë»ç
+	// Desc : Check if the input node is a closed node
 	// *************************************************************************
 	private Node IsClosed(int x, int y, int mapid) {
 		Node tmp = ClosedNode;
@@ -576,11 +576,11 @@ public class AStar {
 		}
 		/*
 		 * if(cnt > 5000){
-		 * System.out.println(cnt+" Å¬·ÎÁî x :"+x+" y :"+y+" m :"+mapid);
+		 * System.out.println(cnt+" close x :"+x+" y :"+y+" m :"+mapid);
 		 * System.out
-		 * .println(" ÀÌ¸§"+_npc.getName()+" x:"+_npc.getX()+" y:"+_npc.getY
+		 * .println(" name"+_npc.getName()+" x:"+_npc.getX()+" y:"+_npc.getY
 		 * ()+" m:"+_npc.getMapId()); System.out.println(_npc.isDead());
-		 * L1PcInstance[] gm = Config.toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ(); gm[0].dx= _npc.getX();
+		 * L1PcInstance[] gm = Config.toArrayConnection chat monitor(); gm[0].dx= _npc.getX();
 		 * gm[0].dy= _npc.getY(); gm[0].dm= _npc.getMapId();
 		 * gm[0].dh=gm[0].getMoveState().getHeading(); gm[0].setTelType(7);
 		 * gm[0].sendPackets(new S_SabuTell(gm[0])); }
@@ -590,8 +590,8 @@ public class AStar {
 
 	// *************************************************************************
 	// Name : InsertNode()
-	// Desc : ÀÔ·ÂµÈ ³ëµå¸¦ ¿­¸°³ëµå¿¡ f°ª¿¡ µû¶ó Á¤·ÄÇÏ¿© Ãß°¡
-	// f°ªÀÌ ³ôÀº°ÍÀÌ Á¦ÀÏ À§¿¡ ¿Àµµ·Ï -> ÃÖÀûÀÇ ³ëµå
+	// Desc : The input node is added to the open node by sorting it according to the f value.
+	// -> Optimal node so that the one with the highest f-value is at the top
 	// *************************************************************************
 	private void InsertNode(Node src) {
 		Node old = null, tmp = null;
@@ -623,10 +623,10 @@ public class AStar {
 		}
 		/*
 		 * if(cnt > 100000){
-		 * System.out.println("ÀÎ¼­Æ® ÀÌ¸§ "+_npc.getName()+" x:"+_npc
+		 * System.out.println("insert name "+_npc.getName()+" x:"+_npc
 		 * .getX()+" y:"+_npc.getY()+" m:"+_npc.getMapId());
 		 * System.out.println(_npc.isDead()); L1PcInstance[] gm =
-		 * Config.toArrayÁ¢¼ÓÃ¤ÆÃ¸ğ´ÏÅÍ(); gm[0].dx= _npc.getX(); gm[0].dy=
+		 * Config.toArrayConnection chat monitor(); gm[0].dx= _npc.getX(); gm[0].dy=
 		 * _npc.getY(); gm[0].dm= _npc.getMapId();
 		 * gm[0].dh=gm[0].getMoveState().getHeading(); gm[0].setTelType(7);
 		 * gm[0].sendPackets(new S_SabuTell(gm[0])); }
@@ -634,22 +634,22 @@ public class AStar {
 	}
 
 	/**
-	 * Ç®¸µ¿¡ Ãß°¡ÇØµµµÇ´ÂÁö È®ÀÎÇØÁÖ´Â ÇÔ¼ö. : ³Ê¹« ¸¹ÀÌ µî·ÏµÇ¸é ¹®Á¦°¡ µÇ±â´ë¹®¿¡ ÀûÁ¤¼±À¸·Î Ä«¹Ù.. :
+	 * A function that checks if it is OK to add it to the pool. : If too many registrations are made, it will be a problem, so Kaba in the proper line.. :
 	 * java.lang.OutOfMemoryError: Java heap space
 	 * 
 	 * @param c
 	 * @return
 	 */
 	private boolean isPoolAppend(List<?> pool, Object c) {
-		// ÀüÃ¼ °¹¼ö·Î Ã¼Å©.
+		// å…¨æœ¬æ•°ã§ãƒã‚§ãƒƒã‚¯ã€‚
 		return pool.size() < 200;
 	}
 
 	/**
-	 * ¹æÇâ°ú Å¸ÀÔ¿¡µû¶ó ÀûÀıÇÏ°Ô ÁÂÇ¥°ª¼¼ÆÃ ¸®ÅÏ
+	 * æ–¹å‘ã¨ç¨®é¡ã«å¿œã˜ã¦é©åˆ‡ã«åº§æ¨™å€¤è¨­å®šã‚’è¿”ã™
 	 * 
 	 * @param h
-	 *            : ¹æÇâ
+	 *            : æ–¹å‘
 	 * @param type
 	 *            : true ? x : y
 	 * @return

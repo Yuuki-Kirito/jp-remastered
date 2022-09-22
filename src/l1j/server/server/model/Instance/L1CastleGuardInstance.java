@@ -99,7 +99,7 @@ public class L1CastleGuardInstance extends L1NpcInstance {
 				int tmpx = aStar.getXY(dir, true) + getX();
 				int tmpy = aStar.getXY(dir, false) + getY();
 				boolean obj = World.isMapdynamic(tmpx, tmpy, getMapId());
-				boolean door = World.πÆ¿Ãµø(getX(), getY(), getMapId(), dir);
+				boolean door = World.door_to_door(getX(), getY(), getMapId(), dir);
 				if (tail && !obj && !door) {
 					setDirectionMove(dir);
 				}
