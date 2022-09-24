@@ -47,9 +47,9 @@ public class DogFight {
 		return _instance;
 	}
 
-	/** µµ±× ½º·¡µå ±âº» ½ÃÀÛ */
+	/** ãƒ‰ãƒƒã‚°ãƒ•ã‚¡ã‚¤ãƒˆã®åŸºæœ¬èµ·å‹• */
 	private DogFight() {
-		/** Åõ°ß ¿£ÇÇ¾¾ Á¤¸® */
+		/** æŠ•å½±ã‚¨ãƒ³ãƒ”ãƒ¼ã•ã‚“ã¾ã¨ã‚ */
 		for (L1Object obj : L1World.getInstance().getObject()) {
 			if (obj instanceof L1NpcInstance) {
 				L1NpcInstance npc = (L1NpcInstance) obj;
@@ -58,9 +58,9 @@ public class DogFight {
 				}
 			}
 		}
-		/** Åõ°ß Á¤º¸ ¸®·Îµå */
+		/** æŠ•å½±æƒ…å ±ã®ãƒªãƒ­ãƒ¼ãƒ‰ */
 		race_loading();
-		/** °ÔÀÓ ½ºÅ¸Æ® Á¤º¸ */
+		/** ã‚²ãƒ¼ãƒ ã‚¹ã‚¿ãƒ¼ãƒˆæƒ…å ± */
 		GameStart();
 	}
 	
@@ -81,7 +81,7 @@ public class DogFight {
 
 	private static int StartTime = 2;
 	
-	/** µµ±× °æ±â ½ºÅ¸Æ® */
+	/** ãƒ‰ãƒƒã‚°ãƒãƒƒãƒã‚¹ã‚¿ãƒ¼ãƒˆ */
 	class Startbug implements Runnable {
 		public Startbug() {}
 
@@ -97,23 +97,23 @@ public class DogFight {
 		}
 	}
 	
-	/** ½º·¡µå Çü½ÄÀ¸·Î ¸Ş¼¼Áö Ãâ·Â */
+	/** ã‚¹ãƒ¬ãƒƒãƒ‰å½¢å¼ã§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ */
 	class L1ReadyThread implements Runnable {
 		@Override
 		public void run() {
 			try {
 				buyTickets = true;
-				broadCastTime("Á¦ " + getRound() + "È¸ Åõ°ß ³ªÆÈ ÆÇ¸Å°¡ ½ÃÀÛµÇ¾ú½À´Ï´Ù.");
+				broadCastTime("ç§ " + getRound() + "ä¼šé—˜çŠ¬ãƒˆãƒ©ãƒ³ãƒšãƒƒãƒˆã®è²©å£²ãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚");
 				try {
 					for (int time = StartTime; time > 0; time--) {
-						broadCastTime("Åõ°ß ½ÃÀÛ " + time + "$377");
+						broadCastTime("æŠ•å½±é–‹å§‹ " + time + "$377");
 						if(time == 1){
 							Thread.sleep(50000);
 						}else Thread.sleep(60000);
 					}
 				} catch (Exception e) {}
 				buyTickets = false;
-				broadCastTime("Åõ°ß ³ª¹ß ÆÇ¸Å°¡ Á¾·áµÇ¾ú½À´Ï´Ù.");
+				broadCastTime("æŠ•å½±ãƒŠãƒãƒ«ã®è²©å£²ãŒçµ‚äº†ã—ã¾ã—ãŸã€‚");
 				GeneralThreadPool.getInstance().execute(new L1BroadCastDividend());
 			} catch (Exception e) {}
 		}
@@ -137,7 +137,7 @@ public class DogFight {
 					DogChat = bug;
 				}
 				for (int i = 10; i > 0; i--) {
-					Broadcaster.wideBroadcastPacket(DogChat, new S_NpcChatPacket(DogChat, "½ÃÀÛ "+i+"ÃÊÀü", 2), true);
+					Broadcaster.wideBroadcastPacket(DogChat, new S_NpcChatPacket(DogChat, "ã‚¹ã‚¿ãƒ¼ãƒˆ "+i+"åˆæˆ¦", 2), true);
 					try {
 						Thread.sleep(1000);
 					} catch (Exception e) {}
@@ -160,7 +160,7 @@ public class DogFight {
 		}
 	}
 	
-	/** µµ±× Á¤º¸ ¸®¼Â */
+	/** ãƒ‰ãƒƒã‚°æƒ…å ±ã®ãƒªã‚»ãƒƒãƒˆ */
 	private void clearBug() {
 		try {
 			ArrayList<L1PetInstance> clonn = new ArrayList<L1PetInstance>();
@@ -266,19 +266,19 @@ public class DogFight {
 		}
 	}
 	
-	/** ¹èÀ² Á¶Á¤ ¹èÀ²Àº °íÁ¤ 1.95 */
+	/** å€ç‡èª¿æ•´å€ç‡ã¯å›ºå®š1.95 */
 	private void calcDividend() {
 		for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 			if (pc == null || pc.getNetConnection() == null || !pc.isGm()) continue;
 			int i = 0;
-			pc.sendPackets(new S_SystemMessage("\\aLÆ¼ÄÏ Á¤º¸ : Á¦ " + getRound()+ " Åõ°ß Æ¼ÄÏ"), true);
+			pc.sendPackets(new S_SystemMessage("\\aLãƒã‚±ãƒƒãƒˆæƒ…å ± : ç§ " + getRound()+ " æŠ•å½±ãƒã‚±ãƒƒãƒˆ"), true);
 			for (L1PetInstance Dog : _littleBug) {
 				if(i == 2) continue; 
-				else pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "Àå "), true);
+				else pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "ç«  "), true);
 				i++;
 			}
 		}
-		/** µµ±× °æ±â Á¶ÀÛ Á¤º¸ Ã¼Å© */
+		/** ãƒ‰ãƒƒã‚°ãƒãƒƒãƒæ“ä½œæƒ…å ±ãƒã‚§ãƒƒã‚¯ */
 		if(AutoDogFight){
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			int i = 0;
@@ -297,9 +297,9 @@ public class DogFight {
 					Dog.setFabrication(true);
 					for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 						if (pc == null || pc.getNetConnection() == null || !pc.isGm()) continue;
-						pc.sendPackets(new S_SystemMessage("\\aLÀÚµ¿ Á¶ÀÛ ÀÛ¾÷ Á¤º¸"), true);
-						pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[MinCon]) + "Àå "), true);
-						pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : Å©¸®Æ¼ÄÃ È®À² »ó½Â"), true);
+						pc.sendPackets(new S_SystemMessage("\\aLè‡ªå‹•æ“ä½œã‚¸ãƒ§ãƒ–æƒ…å ±"), true);
+						pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[MinCon]) + "ç«  "), true);
+						pc.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : ã‚¯ãƒªãƒ†ã‚£ã‚«ãƒ«ç¢ºç‡ä¸Šæ˜‡"), true);
 					}
 				}
 			}
@@ -335,7 +335,7 @@ public class DogFight {
 	}
 
 	private void broadCastWinner(String winner) {
-		String chat = "Á¦ " + getRound() + "È¸ Åõ°ß ¿ì½ÂÀÚ´Â " + " '" + winner + "' "+ "$367";
+		String chat = "ç§ " + getRound() + "ä¼šé—˜çŠ¬ã®å‹è€…ã¯ " + " '" + winner + "' "+ "$367";
 		for (L1PetInstance bug : _littleBug) {
 			if (!bug.isDogJudge()) continue;
 			Broadcaster.wideBroadcastPacket(bug, new S_NpcChatPacket(bug, chat,2), true);
@@ -350,7 +350,7 @@ public class DogFight {
 		int[] getBugCount = getDogCount(i);
 		L1PetInstance bug = _littleBug.get(getBugCount[0]);
 		StringBuilder BugName = new StringBuilder().append(getRound()).append("-").append(bug.getNumber() + 1).append(" ").append(bug.getName());
-		if(getBugCount[1] > 1) BugName.append("(").append(getBugCount[1]).append("Àå)").toString();
+		if(getBugCount[1] > 1) BugName.append("(").append(getBugCount[1]).append("ì¥)").toString();
 		return BugName.toString();
 	}
 
@@ -391,11 +391,11 @@ public class DogFight {
 			if(bug.isDogJudge()) continue;
 			status.add(bug.getName());
 			if (bug.getCondition() == L1PetInstance.GOOD) {
-				status.add("Â÷ºĞ");// $368
+				status.add("å·®åˆ†");// $368
 			} else if (bug.getCondition() == L1PetInstance.NORMAL) {
-				status.add("±äÀå");// $369
+				status.add("ç·Šå¼µ");// $369
 			} else if (bug.getCondition() == L1PetInstance.BAD) {
-				status.add("ÈïºĞ");// $370
+				status.add("èˆˆå¥®");// $370
 			}
 			status.add(bug.getWinPoint() + "%");
 		}
@@ -406,9 +406,9 @@ public class DogFight {
 		try {
 			if (!_Win && getBugRaceStatus() == STATUS_PLAYING) {
 				_Win = true;
-				/** ¸ğµç Æê ai¸¦ ¸ØÃá´Ù */
+				/** ã™ã¹ã¦ã®ãƒšãƒƒãƒˆaiã‚’æ­¢ã‚ã‚‹ */
 				for (L1PetInstance b : _littleBug) b.stopAI();
-				/** 10ÃÊ ½½¸³ »óÅÂ */
+				/** 10ç§’ã‚¹ãƒªãƒ¼ãƒ—çŠ¶æ…‹ */
 				Thread.sleep(1000L);
 				int PetAction = 67;
 				Broadcaster.broadcastPacket(bug, new S_DoActionGFX(bug.getId(), PetAction), true);
@@ -424,16 +424,16 @@ public class DogFight {
 				allBetting = allBetting * 500;
 				for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 					if (pc == null || pc.getNetConnection() == null || !pc.isGm()) continue;
-					/** °á°ú°ª °è»ê ÇÒ¶§ ¾²´Â°Å */
-					pc.sendPackets(new S_SystemMessage("\\aLÁ¦ " + getRound()+ " Åõ°ß ¿ì½Â"), true);
-					pc.sendPackets(new S_SystemMessage("\\aL ÃÑÆ¼ÄÏ : " + BettingPrice.format(allBetting)));
-					pc.sendPackets(new S_SystemMessage("\\aL ¿ì½ÂÆ¼ÄÏ ±İ¾× : " + BettingPrice.format(_betting[i] * bug.getDividend() * 500)));
-					pc.sendPackets(new S_SystemMessage("\\aL °á°úÆ¼ÄÏ Â÷¾× : " + BettingPrice.format(allBetting - (_betting[i] * bug.getDividend() * 500))));
-					pc.sendPackets(new S_SystemMessage("\\aL Æ¼ÄÏ Á¤º¸ : ÃÑ Æ¼ÄÏ ±¸¸Å °¹¼ö°¡ ³ª¿­"), true);
+					/** çµæœå€¤ã‚’è¨ˆç®—ã™ã‚‹ã¨ãã«æ›¸ãã‚‚ã® */
+					pc.sendPackets(new S_SystemMessage("\\aLç§ " + getRound()+ " æŠ•å½±å„ªå‹"), true);
+					pc.sendPackets(new S_SystemMessage("\\aL ç·ãƒã‚±ãƒƒãƒˆ : " + BettingPrice.format(allBetting)));
+					pc.sendPackets(new S_SystemMessage("\\aL å„ªå‹ãƒã‚±ãƒƒãƒˆé‡‘é¡ : " + BettingPrice.format(_betting[i] * bug.getDividend() * 500)));
+					pc.sendPackets(new S_SystemMessage("\\aL çµæœãƒã‚±ãƒƒãƒˆå·®é¡ : " + BettingPrice.format(allBetting - (_betting[i] * bug.getDividend() * 500))));
+					pc.sendPackets(new S_SystemMessage("\\aL ãƒã‚±ãƒƒãƒˆæƒ…å ±ï¼šç·ãƒã‚±ãƒƒãƒˆè³¼å…¥æšæ•°ã‚’ä¸€è¦§è¡¨ç¤º"), true);
 					int m = 0;
 					for (L1PetInstance Dog : _littleBug) {
 						if(m == 2) continue; 
-						else pc.sendPackets(new S_SystemMessage("\\aL "+Dog.getName()+" : "+ BettingPrice.format(_betting[m]) + "Àå "), true);
+						else pc.sendPackets(new S_SystemMessage("\\aL "+Dog.getName()+" : "+ BettingPrice.format(_betting[m]) + "ì¥ "), true);
 						m++;
 					}
 				}
@@ -445,13 +445,13 @@ public class DogFight {
 				broadCastWinner(bug.getNameId());
 				setBugRaceStatus(STATUS_NONE);
 				DogFightRecordTable.getInstance().updateDogFightRecord(bug.getNumber(), bug.getWin() + 1, bug.getLose());
-				/** Á¤¸®ÇØÁÖ°í 1ºĞÈÄ Àç½ÃÀÛ */
+				/** æ•´ç†ã—ã¦ã‹ã‚‰1åˆ†å¾Œã«å†èµ·å‹• */
 				GeneralThreadPool.getInstance().schedule(new Runnable() {
 					@Override
 					public void run() {
 						GameStart();
 					}
-				}, 60 * 1000); //Åõ°ß½Ã°£
+				}, 60 * 1000); //æŠ•å½±æ™‚é–“
 			} else {
 				DogFightRecordTable.getInstance().updateDogFightRecord(bug.getNumber(),bug.getWin(), bug.getLose() + 1);
 			}
@@ -639,41 +639,41 @@ public class DogFight {
 	
 	public static boolean AutoDogFight = false;
 	
-	/** Á¶ÀÛ¿ë ·¹ÀÌ½º ¹ö°æ ÀÌ¸§ Ã¼Å© */
+	/** æ“ä½œç”¨ãƒ¬ãƒ¼ã‚¹ ãƒãƒªã‚¢åãƒã‚§ãƒƒã‚¯ */
 	public void aTotalFabrication(L1PcInstance Gm, String DogName) {
 		if(getBugRaceStatus() == STATUS_NONE){
-			Gm.sendPackets(new S_SystemMessage("\\aL¾Ë¸²: ÇöÀç °æ±â ÁØºñÁßÀÌ¶ó Á¶ÀÛÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù."), true);
+			Gm.sendPackets(new S_SystemMessage("\\aLãŠçŸ¥ã‚‰ã›ï¼šç¾åœ¨ã€è©¦åˆæº–å‚™ä¸­ãªã®ã§æ“ä½œã¯ã§ãã¾ã›ã‚“ã€‚"), true);
 			return;
 		}
 		int i = 0;
 		if(DogName == null){
-			Gm.sendPackets(new S_SystemMessage("\\aLÆ¼ÄÏ Á¤º¸ : ÃÑ Æ¼ÄÏ ±¸¸Å °Ù¼ö°¡ ³ª·ÂµÊ"), true);
+			Gm.sendPackets(new S_SystemMessage("\\aLãƒã‚±ãƒƒãƒˆæƒ…å ±ï¼šç·ãƒã‚±ãƒƒãƒˆè³¼å…¥ã‚²ãƒƒãƒˆæ•°ãŒè¡¨ç¤ºã•ã‚Œã¾ã™"), true);
 			for (L1PetInstance Dog : _littleBug) {
 				if(i == 2)continue; 
-				else Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "Àå "), true);
+				else Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "ç«  "), true);
 				i++;
 			}
-		}else if(DogName.contains("ÀÚµ¿")){
+		}else if(DogName.contains("è‡ªå‹•")){
 			if(AutoDogFight){
 				AutoDogFight = false;
-				Gm.sendPackets(new S_SystemMessage("\\aLÅõ°ßÁ¶ÀÛ ÀÚµ¿ÇØÁ¦ µÇ¾ú½À´Ï´Ù."), true);
+				Gm.sendPackets(new S_SystemMessage("\\aLæŠ•å½±æ“ä½œè‡ªå‹•è§£é™¤ã•ã‚Œã¾ã—ãŸã€‚"), true);
 			}else{
 				AutoDogFight = true;
-				Gm.sendPackets(new S_SystemMessage("\\aLÅõ°ßÁ¶ÀÛ ÀÚµ¿»óÅÂÀÔ´Ï´Ù.(ÀûÀº¼ö·® Ä¡¸íÅ¸Áõ°¡)"), true);
+				Gm.sendPackets(new S_SystemMessage("\\aLæŠ•å½±æ“ä½œè‡ªå‹•çŠ¶æ…‹ã§ã™ã€‚ ï¼ˆå°‘æ•°é‡ã‚¯ãƒªãƒ†ã‚£ã‚«ãƒ«å¢—åŠ ï¼‰"), true);
 			}
 		}else{
 			for (L1PetInstance Dog : _littleBug) {
-				/** ¹®ÀÚ¿­ÀÌ Æ÷ÇÔµÇ¾îÀÖ´ÂÁö Ã¼Å© Æ÷ÇÔµÇ¾îÀÖ´Ù¸é º¯¼ö Á¶ÀÛ */
+				/** æ–‡å­—åˆ—ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯å¤‰æ•°æ“ä½œ */
 				if(Dog.getName().contains(DogName)){
 					Dog.setFabrication(true);
-					Gm.sendPackets(new S_SystemMessage("\\aLÆÇ¸Å Æ¼ÄÏ and Á¶ÀÛ Åõ°ß"), true);
-					Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "Àå "), true);
-					Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : Å©¸®Æ¼ÄÃ È®À² »ó½Â"), true);
+					Gm.sendPackets(new S_SystemMessage("\\aLè²©å£²ãƒã‚±ãƒƒãƒˆ and æ“ä½œæŠ•å½±"), true);
+					Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : "+ BettingPrice.format(_betting[i]) + "ç«  "), true);
+					Gm.sendPackets(new S_SystemMessage("\\aL"+Dog.getName()+" : ã‚¯ãƒªãƒ†ã‚£ã‚«ãƒ«ç¢ºç‡ä¸Šæ˜‡"), true);
 					return;
 				}
 				i++;
 			}
-			Gm.sendPackets(new S_SystemMessage("\\aL¾Ë¸² : °Ë»öÇÑ Åõ°ßÀÌ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù."), true);
+			Gm.sendPackets(new S_SystemMessage("\\aLæ³¨æ„ï¼šæ¤œç´¢ã—ãŸæŠ•å½±ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"), true);
 		}
 	}
 }
