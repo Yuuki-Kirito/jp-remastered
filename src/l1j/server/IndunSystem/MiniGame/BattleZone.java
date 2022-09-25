@@ -38,16 +38,16 @@ public class BattleZone implements Runnable {
 
 	private static BattleZone _instance;
 
-	int Á¤°¢2 = 3*3600;
-	int Á¤°¢5 = 6*3600;
-	int Á¤°¢8 = 9*3600;
-	int Á¤°¢11 = 12*3600;
-	int Á¤°¢14 = 15*3600;
-	int Á¤°¢17 = 18*3600;
-	int Á¤°¢20 = 21*3600;
-	int Á¤°¢23 = 24*3600;
+	int on_time_2 = 3*3600;
+	int on_time_5 = 6*3600;
+	int on_time_8 = 9*3600;
+	int on_time_11 = 12*3600;
+	int on_time_14 = 15*3600;
+	int on_time_17 = 18*3600;
+	int on_time_20 = 21*3600;
+	int on_time_23 = 24*3600;
 
-	//µà¾ó ½ÃÀÛ¿©ºÎ//
+	//ãƒ‡ãƒ¥ã‚¢ãƒ«ã‚¹ã‚¿ãƒ¼ãƒˆã‹ã©ã†ã‹//
 	private boolean _DuelStart;
 
 	public boolean getDuelStart() {
@@ -58,7 +58,7 @@ public class BattleZone implements Runnable {
 		_DuelStart = duel;
 	}
 
-	//µà¾ó ÀÔÀå¿©ºÎ//
+	//ãƒ‡ãƒ¥ã‚¢ãƒ«å…¥å ´å¯å¦//
 	private boolean _DuelOpen;
 
 	public boolean getDuelOpen() {
@@ -68,26 +68,26 @@ public class BattleZone implements Runnable {
 	public void setDuelOpen(boolean duel) {
 		_DuelOpen = duel;
 	}
-	//µà¾ó ½ÃÀÛ¿©ºÎ//
-	private boolean _ÁøÇà;
+	//ãƒ‡ãƒ¥ã‚¢ãƒ«ã‚¹ã‚¿ãƒ¼ãƒˆã‹ã©ã†ã‹//
+	private boolean is_PROGRESS;
 
-	public boolean ¹èÆ²Á¸ÁøÇà() {
-		return _ÁøÇà;
+	public boolean is_BATTLE_ZONE_PROGRESS() {
+		return is_PROGRESS;
 	}
 
-	public void set¹èÆ²Á¸ÁøÇà(boolean flag) {
-		_ÁøÇà = flag;
+	public void set_battle_zone_progress(boolean flag) {
+		is_PROGRESS = flag;
 	}
 
 
-	private boolean _Á¾·á;
+	private boolean is_END;
 
-	public boolean ¹èÆ²Á¸Á¾·á() {
-		return _Á¾·á;
+	public boolean is_BATTLE_ZONE_END() {
+		return is_END;
 	}
 
-	public void set¹èÆ²Á¸Á¾·á(boolean flag) {
-		_Á¾·á = flag;
+	public void set_battle_zone_ends(boolean flag) {
+		is_END = flag;
 	}
 	//public int DuelCount;//
 
@@ -96,19 +96,19 @@ public class BattleZone implements Runnable {
 	private boolean Close;
 
 	protected ArrayList<L1PcInstance> _battle_zone_user = new ArrayList<L1PcInstance>();
-	public void add¹èÆ²Á¸À¯Àú(L1PcInstance pc) 	{
+	public void addbattle_zone_user(L1PcInstance pc) 	{
 		_battle_zone_user.add(pc);
 	}
-	public void remove¹èÆ²Á¸À¯Àú(L1PcInstance pc) 	{
+	public void removebattle_zone_user(L1PcInstance pc) 	{
 		_battle_zone_user.remove(pc);
 	}
-	public void clear¹èÆ²Á¸À¯Àú() 					{
+	public void cear_battle_zone_user() 					{
 		_battle_zone_user.clear();
 	}
-	public boolean is¹èÆ²Á¸À¯Àú(L1PcInstance pc) 	{
+	public boolean is_BATTLE_ZONE_USER(L1PcInstance pc) 	{
 		return _battle_zone_user.contains(pc);
 	}
-	public int get¹èÆ²Á¸À¯ÀúCount(){
+	public int get_battle_zone_usercount(){
 		return _battle_zone_user.size();
 	}
 
@@ -133,13 +133,13 @@ public class BattleZone implements Runnable {
 		try {
 			while (true) {
 				try{
-					if(¹èÆ²Á¸Á¾·á()== false){
-						Thread.sleep(1000*60*60*2); //2½Ã°£ ´ë±â½Ã°£//
-						set¹èÆ²Á¸Á¾·á(false);
+					if(is_BATTLE_ZONE_END()== false){
+						Thread.sleep(1000*60*60*2); //2æ™‚é–“å¾…æ©Ÿæ™‚é–“//
+						set_battle_zone_ends(false);
 					}else{
-						checkDuelTime(); // µà¾ó °¡´É½Ã°£À» Ã¼Å©//
-						if (¹èÆ²Á¸ÁøÇà() == true)	{
-							À¯ÀúÃ¼Å©();
+						checkDuelTime(); // ãƒ‡ãƒ¥ã‚¢ãƒ«å¯èƒ½æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯//
+						if (is_BATTLE_ZONE_PROGRESS() == true)	{
+							user_check();
 						}
 						Thread.sleep(1000);
 					}
@@ -149,7 +149,7 @@ public class BattleZone implements Runnable {
 		}
 	}
 
-	private void À¯ÀúÃ¼Å©() {
+	private void user_check() {
 		L1PcInstance[] pc = toArray_battlezone_user();
 		for (int i = 0; i < pc.length; i++) {
 			if (pc[i] == null)
@@ -158,55 +158,55 @@ public class BattleZone implements Runnable {
 			if (pc[i].getMapId() == 5001 || pc[i].getMapId() == 5153) {
 				continue;
 			} else {
-				if (is¹èÆ²Á¸À¯Àú(pc[i])) {
-					remove¹èÆ²Á¸À¯Àú(pc[i]);
+				if (is_BATTLE_ZONE_USER(pc[i])) {
+					removebattle_zone_user(pc[i]);
 				}
 				pc[i].set_DuelLine(0);
 			}
 		}
 	}
 
-	//µà¾ó½Ã°£Ã¼Å©//
+	//ãƒ‡ãƒ¥ã‚¢ãƒ«ã‚¿ã‚¤ãƒ ãƒã‚§ãƒƒã‚¯//
 	public void checkDuelTime() {
-		//°ÔÀÓ½Ã°£À» ¹Ş¾Æ¿Â´Ù.//
+		//ã‚²ãƒ¼ãƒ æ™‚é–“ã‚’å—ã‘å–ã‚‹ã€‚//
 		try{
 			int servertime = RealTimeClock.getInstance().getRealTime().getSeconds();
-			//ÇöÀç½Ã°£//
+			//ç¾åœ¨æ™‚åˆ»//
 			int nowdueltime = servertime % 86400;
 			int count1 = 0;
 			int count2 = 0;
 			int winLine = 4;
 			if (getDuelStart() == false){
-				if (  	nowdueltime >= Á¤°¢2-31 && nowdueltime <= Á¤°¢2+31 // /2½Ã
-						|| nowdueltime >= Á¤°¢5-31 && nowdueltime <= Á¤°¢5+31 ///5½Ã
-						|| nowdueltime >= Á¤°¢8-31 && nowdueltime <= Á¤°¢8+31 ////8½Ã
-						|| nowdueltime >= Á¤°¢11-31 && nowdueltime <= Á¤°¢11+31 //11½Ã
-						|| nowdueltime >= Á¤°¢14-31 && nowdueltime <= Á¤°¢14+31//14½Ã
-						|| nowdueltime >= Á¤°¢17-31 && nowdueltime <= Á¤°¢17+31//17½Ã
-						|| nowdueltime >= Á¤°¢20-31 && nowdueltime <= Á¤°¢20+31//20½Ã
-						|| nowdueltime >= Á¤°¢23-31 && nowdueltime <= Á¤°¢23+31//23½Ã
+				if (  	nowdueltime >= on_time_2-31 && nowdueltime <= on_time_2+31 // /2æ™‚
+						|| nowdueltime >= on_time_5-31 && nowdueltime <= on_time_5+31 ///5æ™‚
+						|| nowdueltime >= on_time_8-31 && nowdueltime <= on_time_8+31 ////8æ™‚
+						|| nowdueltime >= on_time_11-31 && nowdueltime <= on_time_11+31 //11æ™‚
+						|| nowdueltime >= on_time_14-31 && nowdueltime <= on_time_14+31//14æ™‚
+						|| nowdueltime >= on_time_17-31 && nowdueltime <= on_time_17+31//17æ™‚
+						|| nowdueltime >= on_time_20-31 && nowdueltime <= on_time_20+31//20æ™‚
+						|| nowdueltime >= on_time_23-31 && nowdueltime <= on_time_23+31//23æ™‚
 						|| getGmStart())
 				{
 					setDuelOpen(true);
 					setDuelStart(true);
-					ÀÔÀå3ºĞ´ë±â();
+					minute_wait_3();
 				}
-				if (¹èÆ²Á¸ÁøÇà() == true)	{
+				if (is_BATTLE_ZONE_PROGRESS() == true)	{
 					L1PcInstance[] c = toArray_battlezone_user();
 					for (int i = 0; i < c.length; i++) {
 						if(c[i].getMapId() == 5001){
 							if(!c[i].isDead()){
-								¹èÆ²Á¸ÀÔÀå(c[i]);
+								battle_zone_entry(c[i]);
 							}
 						}
 					}
 					setDuelStart(true);
-					//³¡³ª´Â ½Ã°£ÁöÁ¤//
-					enddueltime = nowdueltime + 600; //10ºĞÈÄÁ¾·áÁ¾·á½Ã°£ Á¤ÇÏ´Â°÷//
+					//çµ‚ã‚ã‚‹æ™‚é–“æŒ‡å®š//
+					enddueltime = nowdueltime + 600; //10åˆ†å¾Œçµ‚äº†çµ‚äº†æ™‚é–“å®šã‚ã‚‹ã¨ã“ã‚//
 
 				}
 			}else{
-				//Á¾·á½Ã°£ÀÌ°Å³ª °­Á¦Á¾·á¶ó¸é//
+				//çµ‚äº†æ™‚é–“ã‹å¼·åˆ¶çµ‚äº†ã®å ´åˆ//
 				if(nowdueltime >= enddueltime || Close == true){
 					L1PcInstance[] c1 = toArray_battlezone_user();
 					for (int i = 0; i < c1.length; i++) {
@@ -220,35 +220,35 @@ public class BattleZone implements Runnable {
 							}
 						}
 					}
-					//¿ì½ÂÃ¼Å©//
+					//å„ªå‹ãƒã‚§ãƒƒã‚¯//
 					String ment = null;
 					if(count1 > count2){
-						//1¹ø¶óÀÎ ¿ì½Â//
+						//1ç•ªãƒ©ã‚¤ãƒ³å„ªå‹//
 						winLine = 1;
-						ment = "ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ '´ÙÅ©' ¶óÀÎÀÇ ½Â¸®ÀÔ´Ï´Ù.";
-						L1World.getInstance().broadcastServerMessage("\\fW* ¹èÆ²Á¸ Á¾·á! '´ÙÅ©' ¶óÀÎÀÇ ½Â¸®ÀÔ´Ï´Ù *");
+						ment = "ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã€Œãƒ€ãƒ¼ã‚¯ã€ãƒ©ã‚¤ãƒ³ã®å‹åˆ©ã§ã™ã€‚";
+						L1World.getInstance().broadcastServerMessage("\\fW* ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³çµ‚äº†ï¼ ã€Œãƒ€ãƒ¼ã‚¯ã€ãƒ©ã‚¤ãƒ³ã®å‹åˆ©ã§ã™ã€‚ *");
 					}else if(count1 < count2){
-						//2¹ø¶óÀÎ ¿ì½Â//
+						//2ë²ˆë¼ì¸ ìš°ìŠ¹//
 						winLine = 2;
-						ment = "ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ '½Ç¹ö' ¶óÀÎÀÇ ½Â¸®ÀÔ´Ï´Ù.";
-						L1World.getInstance().broadcastServerMessage("\\fW* ¹èÆ²Á¸ Á¾·á! '½Ç¹ö' ¶óÀÎÀÇ ½Â¸®ÀÔ´Ï´Ù *");
+						ment = "ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã€Œã‚·ãƒ«ãƒãƒ¼ã€ãƒ©ã‚¤ãƒ³ã®å‹åˆ©ã§ã™ã€‚";
+						L1World.getInstance().broadcastServerMessage("\\fW* ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³çµ‚äº†ï¼ ã€Œã‚·ãƒ«ãƒãƒ¼ã€ãƒ©ã‚¤ãƒ³ã®å‹åˆ©ã§ã™ã€‚ *");
 					}else{
 						winLine = 3;
-						ment = "ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ '´ÙÅ©' ¶óÀÎ°ú '½Ç¹ö' ¶óÀÎÀÌ ºñ°å½À´Ï´Ù.";
-						L1World.getInstance().broadcastServerMessage("\\fW* ¹èÆ²Á¸ Á¾·á! '´ÙÅ©' ¶óÀÎ°ú '½Ç¹ö'¶óÀÎÀÌ µ¿Á¡ÀÔ´Ï´Ù *");
+						ment = "ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã€Œãƒ€ãƒ¼ã‚¯ã€ãƒ©ã‚¤ãƒ³ã¨ã€Œã‚·ãƒ«ãƒãƒ¼ã€ãƒ©ã‚¤ãƒ³ãŒç©ºã„ãŸã€‚";
+						L1World.getInstance().broadcastServerMessage("\\fW* ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³çµ‚äº†ï¼ ã€Œãƒ€ãƒ¼ã‚¯ã€ãƒ©ã‚¤ãƒ³ã¨ã€Œã‚·ãƒ«ãƒãƒ¼ã€ãƒ©ã‚¤ãƒ³ãŒåŒç‚¹ã§ã™*");
 					}
 
 					L1PcInstance[] c2 = toArray_battlezone_user();
 					for (int i = 0; i < c2.length; i++) {
 						if(c2[i] == null) continue;
 						if(c2[i].get_DuelLine() != 0){
-							c2[i].sendPackets(new S_SystemMessage(ment));//¸àÆ®¼öÁ¤
-							//ÀÌ±ä ¶óÀÎ¿¡°Ô ¾ÆÀÌÅÛÁö±Ş
+							c2[i].sendPackets(new S_SystemMessage(ment));//ã‚³ãƒ¡ãƒ³ãƒˆä¿®æ­£
+							//å‹ã£ãŸãƒ©ã‚¤ãƒ³ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ”¯æ‰•ã†
 							 if(c2[i].get_DuelLine() == winLine){
 						    	 String[] itemIds = null;
 							 		try{
 							 			int idx = Config.BATTLE_ZONE_ITEMS.indexOf(",");
-							 			// ,·Î ÀÖÀ»°æ¿ì
+							 			// ,ãŒã‚ã‚‹å ´åˆ
 							 			if(idx > -1){
 							 				itemIds = Config.BATTLE_ZONE_ITEMS.split(",");
 							 			}else{
@@ -256,11 +256,11 @@ public class BattleZone implements Runnable {
 							 				itemIds[0] = Config.BATTLE_ZONE_ITEMS;
 							 			}
 							 		}catch(Exception e){}
-							 		// Áö±ŞÇÒ ¾ÆÀÌÅÛ °¹¼ö
+							 		// æ”¯æ‰•ã†ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°
 							 		String[] counts = null;
 							 		try{
 							 			int idx = Config.NUMBER_OF_BATTLE_ZONE_ITEMS.indexOf(",");
-							 			// ,·Î ÀÖÀ»°æ¿ì
+							 			// ,ãŒã‚ã‚‹å ´åˆ
 							 			if(idx > -1){
 							 				counts = Config.NUMBER_OF_BATTLE_ZONE_ITEMS.split(",");
 							 			}else{
@@ -268,7 +268,7 @@ public class BattleZone implements Runnable {
 							 				counts[0] = Config.NUMBER_OF_BATTLE_ZONE_ITEMS;
 							 			}
 							 		}catch(Exception e){}
-							 		// ¾ÆÀÌÅÛ ¾ÆÀÌµğ³ª Ä«¿îÆ®°¡ ¾øÀ»°æ¿ì//
+							 		// ã‚¢ã‚¤ãƒ†ãƒ IDã‚„ã‚«ã‚¦ãƒ³ãƒˆãŒãªã„å ´åˆ//
 							 		if (itemIds == null || counts == null)
 							 			return;
 							 		for (int j = 0; j < itemIds.length; j++) {
@@ -280,16 +280,16 @@ public class BattleZone implements Runnable {
 							 				continue;
 							 			L1ItemInstance item = c2[i].getInventory().storeItem(itemId, count);
 							 			if (item != null)
-							 				c2[i].sendPackets(new S_SystemMessage(item.getName() + " (" + count + ")À» ¾ò¾ú½À´Ï´Ù."));
+							 				c2[i].sendPackets(new S_SystemMessage(item.getName() + " (" + count + ")ã‚’å¾—ã¾ã—ãŸ."));
 							 		}
-							      c2[i].sendPackets(new S_SystemMessage("\\fU* ½Â¸®ÆÀ¿¡°Ô ¾ÆÀÌÅÛÀÌ Áö±ŞµÇ¾ú½À´Ï´Ù *"));
+							      c2[i].sendPackets(new S_SystemMessage("\\fU* å‹åˆ©ãƒãƒ¼ãƒ ã«ã‚¢ã‚¤ãƒ†ãƒ ãŒæ”¯æ‰•ã‚ã‚Œã¾ã—ãŸ *"));
 							     }
 
 
 
 							deleteMiniHp(c2[i]);
 							c2[i].set_DuelLine(0);
-							//¹èÆ²Á¸ÀÌ¶ó¸é//
+							//ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ãªã‚‰//
 							if(c2[i].getMapId() == 5153 || c2[i].getMapId() == 5001){
 								if(!c2[i].isDead()){
 									L1Teleport.teleport(c2[i], 33090, 33402, (short) 4, 0, true);//
@@ -298,38 +298,38 @@ public class BattleZone implements Runnable {
 						}
 					}
 					ment = null;
-					Announcements.getInstance().announceToAll("\\fW* ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù *");
-					Announcements.getInstance().announceToAll("\\fW* ¹èÆ²Á¸Àº 3½Ã°£ °£°İÀ¸·Î ¿­¸³´Ï´Ù *");
-					set¹èÆ²Á¸Á¾·á(true);
-					set¹èÆ²Á¸ÁøÇà(false);
+					Announcements.getInstance().announceToAll("\\fW* ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ãŒçµ‚äº†ã—ã¾ã—ãŸ *");
+					Announcements.getInstance().announceToAll("\\fW* ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã¯3æ™‚é–“é–“éš”ã§é–‹ãã¾ã™ *");
+					set_battle_zone_ends(true);
+					set_battle_zone_progress(false);
 					setDuelStart(false);
 					//	DuelCount = 0;
 					Close = false;
 					_battle_zone_user.clear();
 					setGmStart(false);
 				}else{
-					//ÀÔÀåÀÌ ¸¶°¨µÇ¾ú´Ù¸é//
+					//å…¥å ´ãŒçµ‚ã‚ã£ãŸã‚‰//
 					if(!getDuelOpen()){
 						int count3 = 0;
 						int count4 = 0;
 						L1PcInstance[] c3 = toArray_battlezone_user();
 						for (int i = 0; i < c3.length; i++) {
 							if(c3[i] == null) continue;
-							//¹èÆ²Á¸ÀÌ¶ó¸é//
+							//ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ãªã‚‰//
 							if(c3[i].getMapId() == 5153){
-								if(!c3[i].isDead()){//Á×Áö¾ÊÀº À¯Àú Ã¼Å©
+								if(!c3[i].isDead()){//æ­»ãªãªã„ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒã‚§ãƒƒã‚¯
 									if(c3[i].get_DuelLine() == 1){
 										count3 += 1;
 									}else if(c3[i].get_DuelLine() == 2){
 										count4 += 1;
 									}else{
-										remove¹èÆ²Á¸À¯Àú(c3[i]);
+										removebattle_zone_user(c3[i]);
 									}
 								}
 							}
 						}
 
-						//³²ÀºÀ¯Àú°¡ 0¸íÀÏ¶§ °­Á¦Á¾·á½ÇÇà<<//
+						//æ®‹ã‚Šã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒ0äººã®ã¨ãã«å¼·åˆ¶çµ‚äº†ã‚’å®Ÿè¡Œã™ã‚‹<<//
 						if(count3 == 0 || count4 == 0){
 							Close = true;
 						}
@@ -342,9 +342,9 @@ public class BattleZone implements Runnable {
 	}
 
 	private void createMiniHp(L1PcInstance pc) {
-		// ¹èÆ²½Ã, ¼­·Î HP¸¦ Ç¥½Ã½ÃÅ²´Ù//
+		// ãƒãƒˆãƒ«æ™‚ã€äº’ã„ã«HPã‚’è¡¨ç¤ºã•ã›ã‚‹//
 		for (L1PcInstance member : BattleZone.getInstance().toArray_battlezone_user()) {
-			// °°Àº¶óÀÎ¿¡°Ô hpÇ¥½Ã//
+			// åŒã˜ãƒ©ã‚¤ãƒ³ã«hpã‚’è¡¨ç¤º//
 			if (member != null) {
 				if (pc.get_DuelLine() == member.get_DuelLine()) {
 					/*member.sendPackets(new S_HPMeter(pc));
@@ -354,8 +354,8 @@ public class BattleZone implements Runnable {
 		}
 	}
 
-	////¹èÆ²Á¸ º¯½Å////////
-	private void ¹èÆ²Á¸º¯½Å(L1PcInstance pc) {
+	////ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³å¤‰èº«////////
+	private void battle_zone_transformation(L1PcInstance pc) {
 		if (pc == null)
 			return;
 		int DuelLine = pc.get_DuelLine();
@@ -363,15 +363,15 @@ public class BattleZone implements Runnable {
 		int time = 1800;
 		if (pc != null) {
 			if (pc.isKnight() || pc.isCrown() || pc.isDarkelf() || pc.isDragonknight() || pc.isWarrior() || pc.isFencer()) {
-				// ±â»ç ±ºÁÖ ´ÙÅ©¿¤ÇÁ ¿ë±â»ç Àü»ç//
+				// é¨å£«å›ä¸»ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•å‹‡æ°—å£«æˆ¦å£«//
 				if (DuelLine == 1) {
-					polyid = 13152;// <<1¹ø¶óÀÎ º¯½Å´ÙÅ©>
+					polyid = 13152;// <<1ç•ªãƒ©ã‚¤ãƒ³å¤‰èº«ãƒ€ãƒ¼ã‚¯>
 				} else {
-					polyid = 13153;// 2¹ø¶óÀÎ ¾ÆÅ©º¯½Å
+					polyid = 13153;// 2ç•ªãƒ©ã‚¤ãƒ³ã‚¢ãƒ¼ã‚¯å¤‰èº«
 				}
 				L1PolyMorph.doPoly(pc, polyid, time, 2);
 			}
-			// ¹ı»ç È¯¼ú»ç//
+			// æ³•å¸«å¹»è¡“å¸«//
 			if (pc.isWizard() || pc.isIllusionist()) {
 				if (DuelLine == 1) {
 					polyid = 13152;
@@ -380,7 +380,7 @@ public class BattleZone implements Runnable {
 				}
 				L1PolyMorph.doPoly(pc, polyid, time, 2);
 			}
-			// ¿äÁ¤//
+			// ã‚¨ãƒ«ãƒ•//
 			if (pc.isElf()) {
 				if (DuelLine == 1) {
 					polyid = 13635;
@@ -393,9 +393,9 @@ public class BattleZone implements Runnable {
 	}
 
 
-	private void ¹èÆ²Á¸ÀÔÀå(L1PcInstance pc) {
+	private void battle_zone_entry(L1PcInstance pc) {
 		try {
-			¹èÆ²Á¸º¯½Å(pc);
+			battle_zone_transformation(pc);
 			createMiniHp(pc);
 			if (pc.get_DuelLine() == 1) {
 				int ranx = 32628 + _random.nextInt(4);
@@ -407,32 +407,32 @@ public class BattleZone implements Runnable {
 				L1Teleport.teleport(pc, ranx2, rany2, (short) 5153, 5, true);
 			}
 
-			set¹èÆ²Á¸ÁøÇà(false);
+			set_battle_zone_progress(false);
 		} catch (Exception e) {
 		}
 	}
 
 
-	public void ÀÔÀå3ºĞ´ë±â() {
+	public void minute_wait_3() {
 		try {
 			L1World.getInstance().broadcastPacketToAll(
 					new S_PacketBox(S_PacketBox.GREEN_MESSAGE,
-							"¹èÆ²Á¸ÀÌ ¿­·È½À´Ï´Ù. ÀÔÀå´ë±â½Ã°£Àº 3ºĞÀÔ´Ï´Ù."), true);
+							"ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ãŒé–‹ã‹ã‚Œã¾ã—ãŸã€‚ å…¥å ´å¾…ã¡æ™‚é–“ã¯3åˆ†ã§ã™."), true);
 
-			Announcements.getInstance().announceToAll("3ºĞ ÈÄ ´ÜÃ¼Àü ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸À» °³ÃÖÇÕ´Ï´Ù.");
-			Announcements.getInstance().announceToAll("ÀÔÀåÀº ¼±Âø¼øÀ¸·Î ±â¶õ¸¶À»¿¡¼­ ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
-			Announcements.getInstance().announceToAll("´ë±â½Ç ÀÔÀåÈÄ ¸®½º¸¦ ÇÏ¸é Âü¿©°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+			Announcements.getInstance().announceToAll("3åˆ†å¾Œã€å›£ä½“å±•ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã‚’é–‹å‚¬ã—ã¾ã™ã€‚");
+			Announcements.getInstance().announceToAll("å…¥å ´ã¯å…ˆç€é †ã§ã‚®ãƒ©ãƒ³æ‘ã§ã„ãŸã ã‘ã¾ã™ã€‚");
+			Announcements.getInstance().announceToAll("å¾…åˆå®¤å…¥å ´å¾Œãƒªãƒ¼ã‚¹ã‚’ã™ã‚‹ã¨å‚åŠ ã§ãã¾ã›ã‚“ã€‚");
 			try {
 				Thread.sleep(1000 * 120);
 			} catch (Exception e) {
 			}
-			Announcements.getInstance().announceToAll("1ºĞ ÈÄ ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ ÀÔÀåÀ» ¸¶°¨ÇÕ´Ï´Ù.");
-			Announcements.getInstance().announceToAll("±â¶õ 'ÇÁ¸®¹Ì¾ö¹èÆ²Á¸'¸¦ ÅëÇÑ ÀÔÀåÀÌ °¡´ÉÇÕ´Ï´Ù.");
+			Announcements.getInstance().announceToAll("1åˆ†å¾Œã€ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã®å…¥å ´ã‚’ç· ã‚åˆ‡ã‚Šã¾ã™ã€‚");
+			Announcements.getInstance().announceToAll("ã‚®ãƒ©ãƒ³ã€Œãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã€ã«ã‚ˆã‚‹å…¥å ´ãŒå¯èƒ½ã§ã™ã€‚");
 			try {
 				Thread.sleep(1000 * 50);
 			} catch (Exception e) {
 			}
-			Announcements.getInstance().announceToAll("ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ ÀÔÀå ¸¶°¨ 10ÃÊ ³²¾Ò½À´Ï´Ù.");
+			Announcements.getInstance().announceToAll("ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³å…¥å ´ç· åˆ‡10ç§’æ®‹ã‚Šã¾ã—ãŸã€‚");
 			try {
 				Thread.sleep(1000 * 10);
 			} catch (Exception e) {
@@ -440,21 +440,21 @@ public class BattleZone implements Runnable {
 			if (getDuelOpen()) {
 				setDuelOpen(false);
 			}
-			Announcements.getInstance().announceToAll("ÇÁ¸®¹Ì¾ö ¹èÆ²Á¸ ÀÔÀåÀ» ¸¶°¨ÇÏ¿´½À´Ï´Ù.");
+			Announcements.getInstance().announceToAll("ãƒ—ãƒ¬ãƒŸã‚¢ãƒ ãƒãƒˆãƒ«ã‚¾ãƒ¼ãƒ³ã®å…¥å ´ã‚’ç· ã‚åˆ‡ã‚Šã¾ã—ãŸã€‚");
 			try {
 				Thread.sleep(1000 * 5);
 			} catch (Exception e) {
 			}
-			set¹èÆ²Á¸ÁøÇà(true);
+			set_battle_zone_progress(true);
 			setGmStart(true);
 		} catch (Exception e) {
 		}
 	}
 
 	private void deleteMiniHp(L1PcInstance pc) {
-		// ¹èÆ²Á¾·á½Ã, HP¹Ù¸¦ »èÁ¦ÇÑ´Ù.//
+		// ãƒãƒˆãƒ«çµ‚äº†æ™‚ã€HPãƒãƒ¼ã‚’å‰Šé™¤ã™ã‚‹.//
 		for (L1PcInstance member : pc.getKnownPlayers()){
-			//°°Àº¶óÀÎ¿¡°Ô hpÇ¥½Ã//
+			//åŒã˜ãƒ©ã‚¤ãƒ³ã«hpã‚’è¡¨ç¤º//
 			if(member != null){
 				if(pc.get_DuelLine() == member.get_DuelLine()){
 					/*pc.sendPackets(new S_HPMeter(member.getId(), 0xff, 0xff));

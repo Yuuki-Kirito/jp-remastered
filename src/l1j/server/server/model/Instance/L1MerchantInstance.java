@@ -2776,11 +2776,11 @@ public class L1MerchantInstance extends L1NpcInstance {
     private void DuelZone(L1PcInstance pc) {
         // 배틀존이 열려 있고 , 입장이 가능하다면
         if (BattleZone.getInstance().getDuelOpen()) {
-            if (pc.get_DuelLine() != 0 || BattleZone.getInstance().is배틀존유저(pc)) {
+            if (pc.get_DuelLine() != 0 || BattleZone.getInstance().is_BATTLE_ZONE_USER(pc)) {
                 pc.sendPackets(new S_SystemMessage("배틀존에서 나왔다가 다시 들어갈 수 없습니다."));
                 return;
             }
-            if (BattleZone.getInstance().get배틀존유저Count() > 50) {
+            if (BattleZone.getInstance().get_battle_zone_usercount() > 50) {
                 pc.sendPackets(new S_SystemMessage("프리미엄 배틀존의 인원이 모두 찼습니다."));
                 return;
             }
@@ -2789,7 +2789,7 @@ public class L1MerchantInstance extends L1NpcInstance {
                 return;
             }
             // 라인을 나누자..
-            if (BattleZone.getInstance().get배틀존유저Count() % 2 == 0) {
+            if (BattleZone.getInstance().get_battle_zone_usercount() % 2 == 0) {
                 // 짝수라인
                 pc.set_DuelLine(2);
             } else {
@@ -2797,7 +2797,7 @@ public class L1MerchantInstance extends L1NpcInstance {
                 pc.set_DuelLine(1);
             }
             pc.sendPackets(new S_SystemMessage("프리미엄 배틀존 대기실로 입장하셨습니다."));
-            BattleZone.getInstance().add배틀존유저(pc);
+            BattleZone.getInstance().addbattle_zone_user(pc);
             Random random = new Random();
             int i13 = 32770 + random.nextInt(5);
             int k19 = 32771 + random.nextInt(5);
