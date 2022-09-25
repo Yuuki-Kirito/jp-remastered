@@ -1205,7 +1205,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 					long BloodTime = pc.getNetConnection().getAccount().getDragonRaid().getTime() - sysTime;
 					pc.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.DRAGONRAID_BUFF);
 					pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DRAGONRAID_BUFF, (int) BloodTime);
-					pc.sendPackets(new S_PacketBox(S_PacketBox.드래곤레이드버프, (int) BloodTime / 1000), true);
+					pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGIB_RAID_BUFF, (int) BloodTime / 1000), true);
 				}
 			}
 

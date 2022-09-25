@@ -317,7 +317,7 @@ public class LindThread extends Thread {
 					+ (86400000 * Config.RAID_TIME));// 7일
 			pc.getNetConnection().getAccount().setDragonRaid(deleteTime);
 			pc.getNetConnection().getAccount().updateDragonRaidBuff();
-			pc.sendPackets(new S_PacketBox(S_PacketBox.드래곤레이드버프, 86400 * 2),
+			pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGIB_RAID_BUFF, 86400 * 2),
 					true);
 			// pc.sendPackets(new
 			// S_SystemMessage("드래곤 레이드 마법으로 인해 "+C_SelectCharacter.ss.format(pc.getNetConnection().getAccount().getDragonRaid())+" 이후에 드래곤 포탈 입장이 가능합니다."),

@@ -328,7 +328,7 @@ public class S_PacketBox extends ServerBasePacket {
 	 */
 	public static final int 인챈변경 = 172;
 	public static final int 지도위치보정 = 176;
-	public static final int 드래곤레이드버프 = 179;
+	public static final int DRAGIB_RAID_BUFF = 179;
 	public static final int 낚시_베리 = 182;
 	public static final int BATTLE_SHOT = 181;
 	public static final int NONE_TIME_ICON = 180;
@@ -741,7 +741,7 @@ public class S_PacketBox extends ServerBasePacket {
 		case BATTLE_SHOT:
 			writeD(value);
 			break;
-		case 드래곤레이드버프:
+		case DRAGIB_RAID_BUFF:
 			writeC(0x01);
 			writeC(0x27);
 			writeC(0x0E);

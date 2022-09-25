@@ -44,7 +44,7 @@ public class ValaRaidSystem {
     private ArrayList<L1DoorInstance> FireWall;
     
     private int[][] _FireWallSpawn = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** ãƒãƒƒãƒ—ç•ªå·ã¨æ–¹å‘ */
     		{32797, 32851, 2},
 			{32787, 32860, 4},
 			{32796, 32875, 2},
@@ -68,7 +68,7 @@ public class ValaRaidSystem {
 	}
 	public void startValakas(L1PcInstance pc){
 		if(countVala() >= 6){
-			pc.sendPackets(new S_ChatPacket(pc,"ÀÎ½ºÅÏ½º ´øÀüÀ» ´õ ÀÌ»ó »ı¼ºÇÒ¼ö ¾ø½À´Ï´Ù."));
+			pc.sendPackets(new S_ChatPacket(pc,"You can no longer create instanced dungeons."));
 			return;
 		}
 		int id = blankMapId();
@@ -79,13 +79,13 @@ public class ValaRaidSystem {
 
 		int fire_delay = 3200;
 		FireWall = new ArrayList<L1DoorInstance>();
-		L1SpawnUtil.spawn2(pc.getX(), pc.getY(), pc.getMapId(), 910008, 0, 3600 * 1000, id); // Æ÷Å»
-		L1SpawnUtil.spawn2(32731, 32922, (short) id, 3310015, 0, fire_delay * 1000, id); // µ¥½º³ªÀÌÆ® ÀÌÆåÆ®
-		L1SpawnUtil.spawn2(32732, 32922, (short) id, 3310018, 0, fire_delay * 1000, id); // µ¥½º³ªÀÌÆ® ¹öÇÁ
-		L1SpawnUtil.spawn2(32733, 32937, (short) id, 60032, 0, fire_delay * 1000, id); // Ã¢°íÁö±â
-		L1SpawnUtil.spawn2(32727, 32937, (short) id, 3310016, 0, fire_delay * 1000, id); // ÀâÈ­»óÀÎ
-		L1SpawnUtil.spawn2(32751, 32928, (short) id, 3310017, 0, fire_delay * 1000, id); // ·¹¾î ÀÔ±¸
-		L1SpawnUtil.spawn2(32738, 32925, (short) id, 170017, 0, fire_delay * 1000, id); // ¿À¸²
+		L1SpawnUtil.spawn2(pc.getX(), pc.getY(), pc.getMapId(), 910008, 0, 3600 * 1000, id); // ãƒãƒ¼ã‚¿ãƒ«
+		L1SpawnUtil.spawn2(32731, 32922, (short) id, 3310015, 0, fire_delay * 1000, id); // ãƒ‡ã‚¹ãƒŠã‚¤ãƒˆã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
+		L1SpawnUtil.spawn2(32732, 32922, (short) id, 3310018, 0, fire_delay * 1000, id); // ãƒ‡ã‚¹ãƒŠã‚¤ãƒˆãƒãƒ•
+		L1SpawnUtil.spawn2(32733, 32937, (short) id, 60032, 0, fire_delay * 1000, id); // å€‰åº«
+		L1SpawnUtil.spawn2(32727, 32937, (short) id, 3310016, 0, fire_delay * 1000, id); // é›‘è²¨å•†äºº
+		L1SpawnUtil.spawn2(32751, 32928, (short) id, 3310017, 0, fire_delay * 1000, id); // ãƒ¬ã‚¢å…¥ã‚Šå£
+		L1SpawnUtil.spawn2(32738, 32925, (short) id, 170017, 0, fire_delay * 1000, id); // æ£®
 		FireWall.add(DoorSpawn(32763, 32897, (short) id, 0, 5000100, 170  * 1000));
 		FireWall.add(DoorSpawn(32764, 32898, (short) id, 0, 5000100, 170  * 1000));
 		FireWall.add(DoorSpawn(32762, 32899, (short) id, 0, 5000100, 170  * 1000));

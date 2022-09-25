@@ -336,7 +336,7 @@ public class L1SkillId {
 	public static final int 군터의조언 = 6060;
 	public static final int DRAGON_GROWTH_BUFF = 6072;
 	public static final int CLAN_BLESS_BUFF = 6073;
-	public static final int 할파스권속버프 = 6062;
+	public static final int BUFF_IN_THE_HALFWAY_CIRCLE = 6062;
 
 	/** 안타라스 / 파푸리온 마안 버프 */
 	public static final int DRAGONBLOOD_A = 55001;

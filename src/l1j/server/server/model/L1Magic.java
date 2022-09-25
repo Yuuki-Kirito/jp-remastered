@@ -175,7 +175,7 @@ public class L1Magic {
 				return false;
 			}
 			
-			if (npcId >= 145685 && npcId <= 145686  && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.할파스권속버프)) {
+			if (npcId >= 145685 && npcId <= 145686  && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BUFF_IN_THE_HALFWAY_CIRCLE)) {
 				return false;
 			}
 			
@@ -2241,7 +2241,7 @@ public class L1Magic {
 							STATUS_HOLY_WATER)) {
 				dmg = 0;
 			}
-			if (npcId >= 145685 && npcId <= 145686  && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.할파스권속버프)) {
+			if (npcId >= 145685 && npcId <= 145686  && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BUFF_IN_THE_HALFWAY_CIRCLE)) {
 				dmg = 0;
 			}
 			if (npcId == 45916

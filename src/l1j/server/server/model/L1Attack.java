@@ -1128,7 +1128,7 @@ public class L1Attack {
 				int npcId = _targetNpc.getNpcTemplate().get_npcId();
 				if (npcId >= 45912 && npcId <= 45915 && !_pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_HOLY_WATER)) {
 					최종공격성공확률 = 0;
-				} else if (npcId >= 145685 && npcId <= 145686 && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.할파스권속버프)) {
+				} else if (npcId >= 145685 && npcId <= 145686 && !_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.BUFF_IN_THE_HALFWAY_CIRCLE)) {
 					최종공격성공확률 = 0;
 				} else if (npcId == 45916 && !_pc.getSkillEffectTimerSet().hasSkillEffect(STATUS_HOLY_MITHRIL_POWDER)) {
 					최종공격성공확률 = 0;

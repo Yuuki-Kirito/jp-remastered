@@ -434,7 +434,7 @@ public class AntarasRaidSystem {
 									System.currentTimeMillis()
 											+ (86400000 * Config.RAID_TIME));// 3일
 							pc.sendPackets(new S_PacketBox(
-									S_PacketBox.드래곤레이드버프, 86400 * 2), true);
+									S_PacketBox.DRAGIB_RAID_BUFF, 86400 * 2), true);
 							pc.getNetConnection().getAccount()
 									.setDragonRaid(deleteTime);
 							pc.getNetConnection().getAccount()

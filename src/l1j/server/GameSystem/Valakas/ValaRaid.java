@@ -1,6 +1,6 @@
 package l1j.server.GameSystem.Valakas;
 
-import static l1j.server.server.model.skill.L1SkillId.SHOCK_STUN;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class ValaRaid implements Runnable {
 			L1EffectSpawn.getInstance().spawnEffect(81162, _shockStunDuration, pc.getX(), pc.getY(), pc.getMapId());
 			pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN, true));
 			pc.getSkillEffectTimerSet().setSkillEffect(SHOCK_STUN, _shockStunDuration);
-			pc.sendPackets(new S_SkillSound(pc.getId(), 4434)); // ½ºÅÏ
+			pc.sendPackets(new S_SkillSound(pc.getId(), 4434)); // ã‚¹ã‚¿ãƒ³
 			Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(), 4434));
 			}
 		}
@@ -115,40 +115,40 @@ public class ValaRaid implements Runnable {
 					}
 					Thread.sleep(sleep * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸²: ´Ùµé Á¶½ÉÇÏ°Ô ³ğÀº ÀÌ¹Ì Àá¿¡¼­ ±ú¾î³µ¾î"));
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚ªãƒªãƒ ï¼šã¿ã‚“ãªæ°—ã‚’ã¤ã‘ã¦ã€å¥´ã¯ã™ã§ã«çœ ã‚Šã‹ã‚‰ç›®è¦šã‚ã¾ã—ãŸã€‚"));
 					}
 					Thread.sleep(5 * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸²: ÁÖº¯ÀÇ È­¿°... ÀÚ³×µéÀ» °¡µÎ±â À§ÇØ µ£À» ³õÀº °Í °°À¸´Ï Á¶½ÉÇÏ°Ô"));
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚ªãƒªãƒ ï¼šå‘¨å›²ã®ç‚â€¦ã‚ãªãŸã‚’é–‰ã˜è¾¼ã‚ã‚‹ãŸã‚ã«ç½ ã‚’ç½®ã„ãŸã‚ˆã†ã§ã™ã€‚"));
 					}
 					Thread.sleep(5 * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "¹ß¶óÄ«½º: Å©¸£¸£¸£... ±ÍÂúÀº ¹ú·¹µéÀÌ Ã£¾Æ¿Ô±¸³ª..", true));
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¯ãƒ«ãƒ«ãƒ«â€¦é¢å€’ãªè™«ãŒã‚„ã£ã¦ããŸãªâ€¦", true));
 
 					}
 					Thread.sleep(5 * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "¹ß¶óÄ«½º: ³×³ğµéµµ ÇÒÆÄ½ºÀÇ ±Ç¼ÓµéÀÌ³Ä..? ", true));
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šãŠå‰ã‚‰ã‚‚ãƒãƒ«ãƒ‘ã‚¹ã®æ‹³å±ãªã®ã‹â€¦ï¼Ÿ ", true));
 
 					}
-					// °ËÀº È­¸é ºñ³»¸®´Â È¿°ú
+					// é»’ã„ç”»é¢ã®é›¨ã®åŠ¹æœ
 					L1SpawnUtil.spawn2(32773, 32889, (short) _map, 3310030, 0, 1 * 1000, 3310030);
 					L1SpawnUtil.spawn2(32773, 32889, (short) _map, 3310031, 0, 1 * 1000, 3310031);
 
 					
 					Thread.sleep(10 * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "¹ß¶óÄ«½º: »ó°ü¾ø°ÚÁö.. ¹ú·¹¶ó¸é ´Ù ¾µ¾î¹ö¸®¸é ±×¸¸ÀÎ°ÍÀ»"), true);
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šæ°—ã«ã—ãªã„ã ã‚ã†ã€‚"), true);
 
 					}
 					Thread.sleep(5 * 1000);
-					//  ´« º¸ÀÌ°í ¹ß¶óÄ«½º ÃâÇö
+					//  ç›®ã«è¦‹ãˆãƒ´ã‚¡ãƒ©ã‚«ã‚¹å‡ºç¾
 		
 					L1SpawnUtil.spawn2(32773, 32889, (short) _map, 3310032, 0, 1 * 1000, 3310032);
 					
 					Thread.sleep(7 * 1000);
 					for (L1PcInstance pc : PcStageCK()){
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "¹ß¶óÄ«½º: °¨½Ã ½Å¼ºÇÑ °÷¿¡ ´õ·¯¿î ¹ßÀ» µéÀÌ¹Î °ÍÀ» ÈÄÈ¸ÇÏ°Ô ÇØÁÖ¸¶...!", true));
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šç›£è¦–ç¥è–ãªå ´æ‰€ã«æ±šã‚ŒãŸè¶³ã‚’å…¥ã‚ŒãŸã“ã¨ã‚’å¾Œæ‚”ã•ã›ã¦ã¯ã„ã‘ãªã„â€¦ï¼", true));
 						pc.sendPackets(new S_SkillSound (pc.getId(), 15930));	
 					}
 					Thread.sleep(2 * 1000);
@@ -170,7 +170,7 @@ public class ValaRaid implements Runnable {
 					
 					int rand = _random.nextInt(100)+1;
 					if(rand < 40) {
-						// Á¦¸£Å¥¿À »ïÄÉ·Î´©..
+						// Zercuo Samkeronu...
 						valakas_talk(vala, 0);
 						AllShockStun();
 						
@@ -191,7 +191,7 @@ public class ValaRaid implements Runnable {
 					Thread.sleep(5000);
 					int max = vala.getMaxHp();
 					int cur = vala.getCurrentHp();
-					// ¹ß¶óÄ«½º ÇÇ 70% ÀÏ¶§ ÇÒÆÄ½º ¼ÒÈ¯
+					// ãƒ´ã‚¡ãƒ©ã‚«ã‚¹è¡€ 70% æ™‚ãƒãƒ«ãƒ‘ã‚¹å¬å–š
 					if(cur <= max * 3/4)
 						stage = StageFour;
 					break;
@@ -202,11 +202,11 @@ public class ValaRaid implements Runnable {
 						stage = StageSix;
 						break;
 					}
-					// ÇÒÆÄ½º ÃâÇö ´Ü°è 
+					// ãƒãƒ«ãƒ‘ã‚¹ã®å‡ºç¾æ®µéš
 					valakas_talk(vala, 4);
 					for (L1PcInstance pc : PcStageCK()) {
 						pc.sendPackets(new S_SkillSound (pc.getId(), 15837));
-						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.ÇÒÆÄ½º±Ç¼Ó¹öÇÁ,60);
+						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.BUFF_IN_THE_HALFWAY_CIRCLE,60);
 					}
 					Thread.sleep(2000);
 					spawn(32772, 32889, (short) _map, _random.nextInt(8), 145686, 0); 
@@ -231,11 +231,11 @@ public class ValaRaid implements Runnable {
 					}
 					Thread.sleep(1000);
 					
-					//¸¶Áö¸· ´Ü°è
+					//æœ€å¾Œã®ã‚¹ãƒ†ãƒƒãƒ—
 					rand = _random.nextInt(100)+1;
 					
 					if(rand < 15) {
-						// Á¦¸£Å¥¿À »ïÄÉ·Î´©..
+						// Zercuo Samkeronu...
 						valakas_talk(vala, 0);
 						AllShockStun();
 						
@@ -253,7 +253,7 @@ public class ValaRaid implements Runnable {
 						}
 					}
 					rand = _random.nextInt(100)+1;
-					// Àü¿ª ½ºÅÏ¸¸
+					// global stunman
 					if(rand < 25) {
 						valakas_talk(vala, 3);
 						AllShockStun();
@@ -262,21 +262,21 @@ public class ValaRaid implements Runnable {
 					
 					break;
 				case StageSix:
-					for (L1PcInstance pc : PcStageCK()){ // µå·¡°ï ¹öÇÁ
+					for (L1PcInstance pc : PcStageCK()){ // ãƒ‰ãƒ©ã‚´ãƒ³ãƒãƒ•
 						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DRAGONRAID_BUFF, (86400 * 2) * 1000);
-						Timestamp deleteTime = new Timestamp(System.currentTimeMillis()+ (86400000 * Config.RAID_TIME));// 7ÀÏ
-						pc.sendPackets(new S_PacketBox(S_PacketBox.µå·¡°ï·¹ÀÌµå¹öÇÁ, 86400 * 2),true);
+						Timestamp deleteTime = new Timestamp(System.currentTimeMillis()+ (86400000 * Config.RAID_TIME));// 7æ—¥
+						pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGIB_RAID_BUFF, 86400 * 2),true);
 						pc.sendPackets(new S_SkillSound(pc.getId(), 7783));
 						Broadcaster.broadcastPacket(pc, new S_SkillSound(pc.getId(), 7783));
 						pc.getNetConnection().getAccount().setDragonRaid(deleteTime);
 						pc.getNetConnection().getAccount().updateDragonRaidBuff();
 					}
-					L1World.getInstance().broadcastServerMessage("³­ÀïÀÌÀÇ ¿ÜÄ§: ¹ß¶óÄ«½ºÀÇ ³¯°³¸¦ ²ªÀº ¿ë»çµéÀÌ Åº»ı ÇÏ¿´½À´Ï´Ù.!!");
+					L1World.getInstance().broadcastServerMessage("ãƒ‰ãƒ¯ãƒ¼ãƒ•ã®å«ã³ï¼šãƒ´ã‚¡ãƒ©ã‚«ã‚¹ã®ç¿¼ã‚’ç ´ã£ãŸå‹‡è€…ãŸã¡ãŒèª•ç”Ÿã—ã¾ã—ãŸã€‚");
 					Thread.sleep(2000);
 
 					for (L1PcInstance pc : PcStageCK()) {
-						pc.sendPackets(new S_ServerMessage(1476)); // 30ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ®
-						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "¹ß¶óÄ«½º:¿À´ÃÀº ÇÑ ¹ß ¹°·¯³ª°Ú´Ù.... ÇÏÁö¸¸ ºñ¿­ÇÑ Á·¼â°¡ Ç®¸®°í ÈûÀ» µÇÃ£°Ô µÇ´Â ³¯....", true));
+						pc.sendPackets(new S_ServerMessage(1476)); // 30ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆ
+						pc.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE,S_PacketBox.RED_MESSAGE, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šä»Šæ—¥ã¯ä¸€æ­©é€€ãâ€¦â€¦ã—ã‹ã—ã€å‘åŠ£ãªæŸç¸›ãŒè§£ã‘ã¦åŠ›ã‚’å–ã‚Šæˆ»ã™ã‚ˆã†ã«ãªã‚‹æ—¥â€¦ã€‚", true));
 					}
 					Thread.sleep(30000);
 					stage = StageStop;
@@ -303,8 +303,8 @@ public class ValaRaid implements Runnable {
 		
 	}
 
-	public static String []talkStr = { "¹ß¶óÄ«½º : Á¦¸£Å¥¿À »ïÄÉ·Î´©..", "¹ß¶óÄ«½º : Á¦¸£Å¥¿À Ä«¿ÀÇÁ..", "¹ß¶óÄ«½º : Äí¸£ µÒ Å©¶ó½º ÇÏ¸£ÆÄ¿ò..", "¹ß¶óÄ«½º : Äí¸£µÒ ¸®¶ó½ºÄñ..",
-	"¹ß¶óÄ«½º : Äí¸£ µÒ Å©¶ó½º ÇÏ¸£ÆÄ¿ò.." };
+	public static String []talkStr = { "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¸ã‚§ãƒ«ã‚­ãƒ¥ãƒ¼ã‚ªãƒ»ã‚µãƒ³ã‚±ãƒ­ãƒ¼ãƒŒ..", "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¸ã‚§ãƒ«ã‚­ãƒ¥ãƒ¼ã‚ªã‚«ã‚ªãƒ•..", "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¯ãƒ«ãƒ‰ã‚¥ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹ãƒãƒ«ãƒ‘ã‚¦ãƒ ..", "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¯ãƒ«ãƒ‰ã‚¥ãƒ ãƒ»ãƒªãƒ©ã‚¹ã‚«ãƒ ..",
+	"ãƒ´ã‚¡ãƒ©ã‚«ã‚¹ï¼šã‚¯ãƒ«ãƒ‰ã‚¥ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹ãƒãƒ«ãƒ‘ã‚¦ãƒ .." };
 	
 	public void valakas_talk(L1MonsterInstance vala, int talkNum){
 		try {
@@ -358,7 +358,7 @@ public class ValaRaid implements Runnable {
 				mob = (L1MonsterInstance)object;
 				int npc = mob.getNpcTemplate().get_npcId();
 				switch(npc){
-				case 145684: // ¹ß¶óÄ«½º
+				case 145684: // ãƒ´ã‚¡ãƒ©ã‚«ã‚¹
 					if (mob != null && mob.isDead()){
 						return true;
 					}
@@ -397,9 +397,9 @@ public class ValaRaid implements Runnable {
 		}
 		return _pc;
 	}
-	/** Ç÷Èç & ¾ÆÀÌÅÛ **/
+	/** è¡€ç—•ï¼†ã‚¢ã‚¤ãƒ†ãƒ  **/
 	private void health() { // L1SkillUse l1skilluse;
-		L1World.getInstance().broadcastServerMessage("³­ÀïÀÌÀÇ ¿ÜÄ§: ¹ß¶óÄ«½ºÀÇ ³¯°³¸¦ ²ªÀº ¿ë»çµéÀÌ Åº»ı ÇÏ¿´½À´Ï´Ù.!!");
+		L1World.getInstance().broadcastServerMessage("ãƒ‰ãƒ¯ãƒ¼ãƒ•ã®å«ã³ï¼šãƒ´ã‚¡ãƒ©ã‚«ã‚¹ã®ç¿¼ã‚’ç ´ã£ãŸå‹‡è€…ãŸã¡ãŒèª•ç”Ÿã—ã¾ã—ãŸã€‚");
 	}
 
 	private void giveItem(int id) {
@@ -416,11 +416,11 @@ public class ValaRaid implements Runnable {
 			item.setCount(count);
 			if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) {
 				pc.getInventory().storeItem(item);
-			} else { // °¡Áú ¼ö ¾ø´Â °æ¿ì´Â Áö¸é¿¡ ¶³¾î¶ß¸®´Â Ã³¸®ÀÇ Äµ½½Àº ÇÏÁö ¾Ê´Â´Ù(ºÎÁ¤ ¹æÁö)
+			} else { // æŒã¦ãªã„å ´åˆã¯åœ°é¢ã«è½ã¨ã™å‡¦ç†ã®ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã¯ã—ãªã„ï¼ˆå¦å®šé˜²æ­¢ï¼‰
 				L1World.getInstance().getInventory(pc.getX(), pc.getY(), pc.getMapId()).storeItem(item);
 			}
 			for (L1PcInstance pc1 : PcStageCK()) {
-				pc1.sendPackets(new S_ServerMessage(813, "¹ß¶óÄ«½º", item.getName(), pc1.getName()));
+				pc1.sendPackets(new S_ServerMessage(813, "ãƒ´ã‚¡ãƒ©ã‚«ã‚¹", item.getName(), pc1.getName()));
 			}
 			return true;
 		} else {
@@ -495,7 +495,7 @@ public class ValaRaid implements Runnable {
 			L1World.getInstance().addVisibleObject(npc);
 
 			npc.getLight().turnOnOffLight();
-			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // Ã¤ÆÃ °³½Ã
+			npc.startChat(L1NpcInstance.CHAT_TIMING_APPEARANCE); // ãƒãƒ£ãƒƒãƒˆé–‹å§‹
 
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
