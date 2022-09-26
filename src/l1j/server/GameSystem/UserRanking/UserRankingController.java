@@ -27,7 +27,7 @@ public class UserRankingController implements Runnable {
 	private static UserRankingController _instance;
 	public static boolean isRenewal = false;
 	
-	public static long ·©Å·°»½Å = System.currentTimeMillis() / 1000;
+	public static long ranking_update = System.currentTimeMillis() / 1000;
 
 	public static UserRankingController getInstance() {
 		if (_instance == null) {
@@ -66,19 +66,19 @@ public class UserRankingController implements Runnable {
 	public void run() {
 		try {
 			Calendar cal = Calendar.getInstance();
-			int ½Ã°£ = Calendar.HOUR;
-			int ºĞ = Calendar.MINUTE;
-			/** 0 ¿ÀÀü , 1 ¿ÀÈÄ * */
-			String ¿ÀÀü¿ÀÈÄ = "¿ÀÈÄ";
+			int hour = Calendar.HOUR;
+			int minute = Calendar.MINUTE;
+			/** 0 åˆå‰ , 1 åˆå¾Œ * */
+			String morning_afternoon = "PM";
 			if (cal.get(Calendar.AM_PM) == 0) {
-				¿ÀÀü¿ÀÈÄ = "¿ÀÀü";
+				morning_afternoon = "AM";
 			}
 			//Date day = new Date(System.currentTimeMillis());
 
 			//if (day.getHours() == 11 && day.getMinutes() == 0 && day.getSeconds() == 0) {
-			if ((isRenewal || cal.get(ºĞ) == 0)){
-				/** ·©Å· Á¤º¸ °»½Å ÇÒ¶§¸¶´Ù °»½ÅµÈ ½Ã°£ Á¤º¸ º¸°ü */
-				·©Å·°»½Å = System.currentTimeMillis() / 1000;
+			if ((isRenewal || cal.get(minute) == 0)){
+				/** ãƒ©ãƒ³ã‚­ãƒ³ã‚°æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ãŸã³ã«æ›´æ–°ã•ã‚ŒãŸæ™‚é–“æƒ…å ±ã‚’ã‚¢ãƒ¼ã‚«ã‚¤ãƒ– */
+				ranking_update = System.currentTimeMillis() / 1000;
 				isRenewal = false;
 				load();
 
@@ -298,9 +298,9 @@ public class UserRankingController implements Runnable {
 			{
 				pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.RANKING_BUFF_1, -1);
 				
-				if(!pc.getInventory().checkItem(600258)) //°¡È£ ¾ÆÀÌÅÛ ÀÌ ¾ø´Ù¸é
+				if(!pc.getInventory().checkItem(600258)) //åŠ è­·ã‚¢ã‚¤ãƒ†ãƒ ãŒãªã„å ´åˆ
 				{
-					pc.getInventory().storeItem(600258, 1); //¾ÆÀÌÅÛ »ı¼º
+					pc.getInventory().storeItem(600258, 1); //ã‚¢ã‚¤ãƒ†ãƒ ä½œæˆ
 				}
 				pc.addMaxHp(200);
 				pc.getAC().addAc(-3);
@@ -424,7 +424,7 @@ public class UserRankingController implements Runnable {
 
 	
 	/**
-	 *  Ä³¸¯ ·©Å© Á¶È¸
+	 *  Character Rank Lookup
 	 */
 	private void load() {
 

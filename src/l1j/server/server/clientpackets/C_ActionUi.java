@@ -905,7 +905,7 @@ public class C_ActionUi extends ClientBasePacket {
 				pc.sendPackets(new S_NewCreateItem(S_NewCreateItem.상태창랭킹, classRank, rank, true));
 			} else if (타입 == 2) {
 				pc.sendPackets(new S_NewCreateItem(S_NewCreateItem.상태창랭킹, classRank, rank, true));
-			} else if (타입 == 6 && UserRankingController.랭킹갱신 >= 시간) {
+			} else if (타입 == 6 && UserRankingController.ranking_update >= 시간) {
 				pc.sendPackets(new S_NewCreateItem(S_NewCreateItem.상태창랭킹, classRank, rank, true));
 			} else {
 				pc.sendPackets(new S_NewCreateItem(S_NewCreateItem.상태창랭킹, classRank, rank, false));
