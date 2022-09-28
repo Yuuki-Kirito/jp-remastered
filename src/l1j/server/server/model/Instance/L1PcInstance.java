@@ -3975,9 +3975,9 @@ public class L1PcInstance extends L1Character {
 					// 데미지 들어오는거 테스트해야됨.
 					if (this instanceof L1RobotInstance) {
 						L1RobotInstance bot = (L1RobotInstance) this;
-						if (bot.이동ディレイ == 0) {
+						if (bot.move_delay == 0) {
 							int sleepTime = bot.calcSleepTime(L1RobotInstance.DMG_MOTION_SPEED);
-							bot.이동ディレイ = sleepTime;
+							bot.move_delay = sleepTime;
 						}
 						/*
 						 * if (attacker instanceof L1PcInstance) { if (!isParalyzed() && !isSleeped()) {
@@ -4224,7 +4224,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	int stunskillid[] = { DEMOLITION, FORCE_STUN, SHOCK_STUN, ETERNITY, EMPIRE, MOB_SHOCKSTUN_30, MOB_RANGESTUN_19,
-			MOB_RANGESTUN_18, EARTH_BIND, MOB_COCA, MOB_BASILL, ICE_LANCE, FREEZING_BREATH, L1SkillId.데스페라도, BONE_BREAK,
+			MOB_RANGESTUN_18, EARTH_BIND, MOB_COCA, MOB_BASILL, ICE_LANCE, FREEZING_BREATH, L1SkillId.DESPERADO, BONE_BREAK,
 			PHANTASM, FOG_OF_SLEEPING, CURSE_PARALYZE, CURSE_PARALYZE2, L1SkillId.STATUS_CURSE_PARALYZED,
 			L1SkillId.STATUS_POISON_PARALYZED, L1SkillId.PANTERA, L1SkillId.SHADOW_TAB };
 	
@@ -6460,7 +6460,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	public boolean isFocuswave() {
-		return getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브);
+		return getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE);
 	}
 
 	public boolean isdarkhos() {
@@ -8500,7 +8500,7 @@ public class L1PcInstance extends L1Character {
 	}
 
 	public boolean Sabutelok() {
-		if (_TELL_WAIT() || isTeleport() || isDead() || getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)
+		if (_TELL_WAIT() || isTeleport() || isDead() || getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)
 				|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)
 				|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
 				|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PHANTOM)) {
@@ -9920,7 +9920,7 @@ public class L1PcInstance extends L1Character {
 //			}
 
 			if (hasSkillEffect(SHOCK_STUN) || hasSkillEffect(L1SkillId.EMPIRE) || hasSkillEffect(ICE_LANCE)
-					|| hasSkillEffect(BONE_BREAK) || hasSkillEffect(EARTH_BIND) || hasSkillEffect(L1SkillId.데스페라도)
+					|| hasSkillEffect(BONE_BREAK) || hasSkillEffect(EARTH_BIND) || hasSkillEffect(L1SkillId.DESPERADO)
 					|| isParalyzed() || this.isSleeped()) {
 				sendPackets(new S_Paralysis(7, false));
 				return;

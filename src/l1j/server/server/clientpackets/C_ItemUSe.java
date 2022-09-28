@@ -10373,7 +10373,7 @@ public class C_ItemUSe extends ClientBasePacket {
 		// pc.sendPackets(new S_ServerMessage(77)); // \f1기분이 좋아졌습니다.
 		healHp *= (_random.nextGaussian() / 5.0D) + 1.0D;
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)) {
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)) {
 			int atklv = pc.desperado_attack_level;
 			int dflv = pc.getLevel();
 			double 저하률 = 0.65;

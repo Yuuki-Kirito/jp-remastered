@@ -611,7 +611,7 @@ public class L1Spawn {
 						|| (mob.getMapId() >= 460 && mob.getMapId() <= 466) // 라던2층
 						|| (mob.getMapId() >= 470 && mob.getMapId() <= 478) // 라던3층
 				) {
-					Robot_Location.로케이션등록(mob.getX(), mob.getY(),
+					Robot_Location.location_registration(mob.getX(), mob.getY(),
 							mob.getMapId());
 				}
 				if (npcId == 80086) {
@@ -621,12 +621,12 @@ public class L1Spawn {
 				}
 				if (mob.getMapId() == 4) {
 					if (mob instanceof L1ScarecrowInstance) {
-						Robot_Location.로케이션등록(mob.getX(), mob.getY(), 4);
+						Robot_Location.location_registration(mob.getX(), mob.getY(), 4);
 					}
 					if (npcId == 70042 || npcId == 70035 || npcId == 70041) {
 						if (mob instanceof L1NpcInstance) {
 							if (!(mob instanceof L1LittleBugInstance)) {
-								Robot_Location.로케이션등록(mob.getX(), mob.getY(),
+								Robot_Location.location_registration(mob.getX(), mob.getY(),
 										7626);
 							}
 						}

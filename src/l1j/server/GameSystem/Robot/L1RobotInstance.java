@@ -1,6 +1,6 @@
 package l1j.server.GameSystem.Robot;
 
-import static l1j.server.server.model.skill.L1SkillId.POLLUTE_WATER;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +18,6 @@ import l1j.server.L1DatabaseFactory;
 import l1j.server.GameSystem.Astar.AStar;
 import l1j.server.GameSystem.Astar.Node;
 import l1j.server.GameSystem.Astar.World;
-import l1j.server.MJ3SEx.EActionCodes;
-import l1j.server.MJ3SEx.Loader.SpriteInformationLoader;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.GeneralThreadPool;
 import l1j.server.server.Opcodes;
@@ -36,7 +34,6 @@ import l1j.server.server.model.L1GroundInventory;
 import l1j.server.server.model.L1Inventory;
 import l1j.server.server.model.L1Location;
 import l1j.server.server.model.L1Object;
-import l1j.server.server.model.L1PolyMorph;
 import l1j.server.server.model.L1World;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1MonsterInstance;
@@ -80,16 +77,16 @@ public class L1RobotInstance extends L1PcInstance {
 	public L1PcInstance _target2;
 	public L1ItemInstance _targetItem;
 	
-	public int ¹ö°æº¿_ÀÌÀü_lawful = 0;
-	public byte ¸®½ºº¿_½ºÆùÀ§Ä¡ = -1;
-	public boolean ¸®½ºº¿ = false;
-	public boolean °¡ÀÔ±ºÁÖ = false; 
-	public boolean ³¬½Ãº¿ = false;
-	public boolean »ç³Éº¿ = false;
-	public boolean ¹ö°æº¿ = false;
-	public boolean ÀÎÇü½ºÆù = false;
-	private byte ¸®½ºº¿_ÀÌµ¿ = 0;
-	public boolean ÅÚ»ç³É = false;
+	public int berkyung_bot_previous_lawful = 0;
+	public byte lisbot_spawn_witch = -1;
+	public boolean is_LISBOT = false;
+	public boolean is_AFFILIATED_MONARCH = false; 
+	public boolean is_FISHING_BOT = false;
+	public boolean is_HUNTING_BOT = false;
+	public boolean is_BERKYUNG_BOT = false;
+	public boolean is_DOLL_SPAWN = false;
+	private byte listbot_move = 0;
+	public boolean is_TELL_HUNTING = false;
 	private int actionStatus = 0;
 	private boolean FirstSkill = false;
 	//private boolean FirstSkill2 = false;
@@ -102,20 +99,20 @@ public class L1RobotInstance extends L1PcInstance {
 	//private boolean FirstSkill9 = false;
 	//private boolean FirstSkill10 = false;
 	//private boolean FirstSkill11 = false;
-	public boolean »ç³É_Á¾·á = false;
-	public boolean Å¸°İ±ÍÈ¯¹«½Ã = true;
+	public boolean is_HUNT_END = false;
+	public boolean is_LGNORE_HIT_RETURN = true;
 
-	public String »ç³Éº¿_À§Ä¡;
-	public int »ç³Éº¿_Å¸ÀÔ = 0;
-	//private short »¡°»ÀÌ = 900;
-	//private short ÁÖÈ«ÀÌ = 10;
-	private short ¸»°»ÀÌ = 1000;
-	private short ºñÃë¹°¾à = 10;
+	public String hunting_bot_location;
+	public int hunting_bot_type = 0;
+	//private short ë¹¨ê°±ì´ = 900;
+	//private short ì£¼í™ì´ = 10;
+	private short horse_mackerel = 1000;
+	private short jade_potion = 10;
 
-	private AStar aStar; // ±æÃ£±â º¯¼ö
-	private int[][] iPath; // ±æÃ£±â º¯¼ö
-	private Node tail; // ±æÃ£±â º¯¼ö
-	private int iCurrentPath; // ±æÃ£±â º¯¼ö
+	private AStar aStar; // pathfinding variable
+	private int[][] iPath; // pathfinding variable
+	private Node tail; // pathfinding variable
+	private int iCurrentPath; // pathfinding variable
 	//private L1RobotInstance _instance = null;
 	
 	private boolean _Rsaid = false;
@@ -163,25 +160,25 @@ public class L1RobotInstance extends L1PcInstance {
 	
 
 	private String _himent;
-	private static final String[] himentArray = { "¤¾¤·", "5ÃÊÁØ´Ù º£¸£ÇØ¶ó", "¤»¤»¤»¤»¤»¤»¤»¤»" , "ÇÏÀÌ?" , "´Ô?", "Àú¸®°¡¶ó", "¤»¤»¤»?"};
+	private static final String[] himentArray = { "hi", "ã‚ã‚“ã‚ã‚“", "wwwwwww" , "ãƒã‚¤ï¼Ÿ" , "æ§˜ï¼Ÿ", "è¡Œããªã•ã„", "www?"};
 
 	private String _townment;
-	private static final String[] townmentArray = { "¾Æ ·ºº¸¼Ò", "³ª¸¸ Æ¨±è??", "Ååµé¾î¿Í", "¤¡¤¡¤¡¤¡","Àá¸¸ ³ª¾àÁ»","¤·¤·","¤»¤»¤»¤»¤»","µğÁú»·¤»",
-			"¤·¤·¤·","ÅåÇÔ?","¾Æ Çü","¤Ñ¤Ñ","?","¤µ¤²¤»¤»¤»","Çü","¤·¤·?","ÀÚµ¿°³¸¹³×;;","¿Àºü ³ª ¾à°ªÁ»Áà","»ç¶÷ °³¸¹³× ;;","¿¾³¯ °¨ÀÚ ³¿»õ ³ª³×","¾îÂ¼¶ó°í?"
-			,"Çü Àá±ñ¸¸ ³ªÄ¡Å²","¤·¤·","³ª ¹Û¿¡Á» ³ª°¬´Ù¿È Àá½Ã ¤¾","¸¶À»¿¡Á» ÀÖ¾îºÁ Àá±ñ¸¸","10Ãş°¡ÀÚ Á¤»ó ³Ê¹« ½êµå¶ó","¿Í °³¾ÆÇÁ³×","what?","±è¹Î¿µ º¸¸é Á¦º¸Á»"
-            ,"³ª ¹äÁ» ¸Ô°í¿È ¤¾","Àá±ñ µé¿Ô¾î ¿©ÀÚÄ£±¸¶§¹®¿¡ ¿À·¡ ¸øÇØ","¾à°ªµµ ¾È¹ú¸®³× ;","´Ô ¹¹ÇÔ??","Àá¸¸¿ä","Ä«º£ »ï ÆíÁöÁÖ»ï"};
+	private static final String[] townmentArray = { "Arekboso", "ç§ã ã‘ãŒé£›ã³æ•£ã‚‹ï¼Ÿ", "è©±ã™","å¯ã‚‹ã ã‘","ã…‡ã…‡","I almost lost",
+			"ãƒˆãƒ¼ã‚¯ãƒãƒ ï¼Ÿ","ã‚ã‚","ã…¡ã…¡","?","ã‚¿ã‚¤ãƒ—","è‡ªå‹•çŠ¬;;","ç§ã®ãŠå…„ã¡ã‚ƒã‚“","äººãŒãŸãã•ã‚“ã„ã¾ã™ã€‚ ;;","æ˜”ã®ã‚¸ãƒ£ã‚¬ã‚¤ãƒ¢ã®è‡­ã„ãŒã™ã‚‹","ãŸã¶ã‚“ï¼Ÿ"
+			,"å…„ã¡ã‚‡ã£ã¨ãƒŠãƒã‚­ãƒ³","ã…‡ã…‡","ç§ã¯å°‘ã—å¤–ã«å‡ºã¾ã—ãŸã€‚","æ‘ã«å°‘ã—ã‚ã‚Šã¾ã™ã€‚","10éšã«è¡Œãã¾ã—ã‚‡ã†ã€‚","ãã—ã¦çŠ¬ã®ç—›ã¿","what?",
+            "ç§ã¯ã”é£¯ã‚’é£Ÿã¹ã¾ã™ã€‚","ã¡ã‚‡ã£ã¨å¾…ã£ã¦ã€å½¼å¥³ã®ã›ã„ã§é•·ãã¯ã§ãã¾ã›ã‚“ã€‚","å¼±ã„å€¤ã‚‚ã‚ã‚Šã¾ã›ã‚“ã€‚ ;","ã¯ä½•ã§ã™ã‹ï¼Ÿï¼Ÿ","çœ ã‚‹","ã‚ã‚“ã‚ã‚“"};
 	
 	private String _disment;
-	private static final String[] dismentArray = { "´Ô  ", "´Ô Àá¸¸¿ä", "´Ô?" , "´Ô Àá¸¸¼­ºÁ¿ä" , " ´Ô Àá½Ã¸¸~", " ´Ô", "¾ÆÆÄ¿ä¤Ğ¤Ğ", "Ä¡Áö¸¶¿© ¾ÆÇÄ"};
+	private static final String[] dismentArray = { "hi  ", "å¯ã¦ã„ã¾ã™ã€‚", "hi?" , "å¯ã¦ãã ã•ã„ã€‚" , " ã—ã°ã‚‰ãã€œ", " ã‚ã‚“ã‚ã‚“", "ç—›ã„ã… ã… ", "æ²»ã‚‰ãªã„ã§ç—›ã¿"};
 	
 	private String _glment;
-	private static final String[] glmentArray = {"µ¥ÀÌ Á© Àå´ç 3¸¸ 1¸¸5Ãµ¿¡ »ï", "ºÀÀÎµÈ Ç÷Ç³»ğ´Ï´Ù", "±â¿îÀÒÀº ³ª¹ß¤½¤½ Á¦½Ã¸¸.","±â°¨ ÀüÀï ¤¡¤¡",
-			"¿ë´ø1Ãş ºò½Î¿ò","µ¥ÀÌ Àå´ç 3¸¸¿¡ ´Ù»ï.","Ç÷°© ÇÕ´Ï´Ù","8ÀÌ»ó ³ÃÅ° »ğ´Ï´Ù Á¦½Ã¿ä","µ¥ÀÌ Ãàµ¥ÀÌ ´Ù»ï","ºÀÀÎµÈ ÅÂÇ³ÀÇµµ³¢ ÆË´Ï´Ù Á¦½Ã.","°ÅÀÎÀÇ µµ³¢ ¤µ¤µ¤µ.","½ÓÀßÇÏ´Â Ç÷¿ø ¸ğÁıÁß",
-			"±â°¨1Ãş ÀüÀïÁß","ÀØ¼¶ ÆÄÆ¼»ç³É ÇÏ½ÇºĞ ±¸ÇØ¿ä","ÀØ¼¶ ¹èÅ¸°í °¡¾ßµÊ??","Á¤»ó ÆÄÆ¼ ±¸ÇÔ.","¹ß¶ó ¼û°á »ğ´Ï´Ù"
-			,"µ¥ÀÌ Á¦ÀÏ ºñ½Î°Ô »ğ´Ï´Ù", "±ØÃ¼ ¤½¤½ °³¼Ò¸® ¤¤", "5ÆÄ±Û ÆË´Ï´Ù 400","7¸¶¸ÁÀ¸·Î 7¸¶Åõ ±¸ÇÔ¤±","ºí¼­ ±¸ÇÕ´Ï´Ù"
-			,"7¿À´Ü 1Ãµ ¤½¤½.","¼Ò¿ï ±¸ÇÕ´Ï´Ù 5¸¸","9¹«¾çÆÈ°í 9Áø½Î ±¸ÇÕ´Ï´Ù","7½Å¸¶Åõ ¤½¤½ Á¦½¬","6½Å¼º¿äÅõ ¤½¤½ Á¦½¬","Å¸¶ó½º Àå°© »ğ´Ï´Ù","¿ÏºÎ ±¸ÇÕ´Ï´Ù"};
+	private static final String[] glmentArray = {"ãƒ‡ã‚¤ã‚¸ã‚§ãƒ«1æšã‚ãŸã‚Š3ä¸‡1ä¸‡5åƒäºº", "å¯†å°ã•ã‚ŒãŸè¡€é¢¨", "å…ƒæ°—ãªãƒŠãƒãƒ«ã…ã…ã‚¸ã‚§ã‚·ãƒ¼ãƒãƒ³.","æ°—è±¡æˆ¦äº‰ ã„±ã„±",
+			"ãƒ¨ãƒ³ãƒ€ãƒ³1éšãƒ“ãƒƒã‚°ãƒ•ã‚¡ã‚¤ãƒˆ","1æ—¥ã‚ãŸã‚Š30,000.","ã‚ã‚“ã‚ã‚“","8ä»¥ä¸Šã®å†·ãŸã„ã‚­ãƒ¼ã‚’è²·ã„ã¾ã™ã€‚","ãƒ‡ã‚¤ãƒ»ã‚¢ã‚¯ãƒ‡ã‚¤ãƒ»ãƒ€ã‚µãƒ ","å¯†å°ã•ã‚ŒãŸå°é¢¨ã®æ–§ãŒè¡¨ç¤ºã•ã‚Œã¾ã™.","å·¨äººã®æ–§ã……ã……ã…….","å®‰ã„è¡€æºå‹Ÿé›†ä¸­",
+			"è¨˜å¿µ1éšæˆ¦äº‰ä¸­","å¿˜ã‚Œå³¶ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ç‹©ã‚Šã‚’ã™ã‚‹äººã‚’æ•‘ã†","å¿˜ã‚Œã‚‰ã‚Œãªã„å³¶ã«ä¹—ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™??","ãƒãƒ¼ãƒãƒ«ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã‚’æ±‚ã‚ã‚‹.","ãƒãƒ©ã®æ¯å¹"
+			,"ãƒ‡ã‚¤ä¸€ç•ªé«˜ä¾¡ã«è²·ã„ã¾ã™", "wanwan", "5ãƒ‘ãƒ¼ã‚°ãƒ«ãƒãƒƒãƒ—400","7ãƒãƒãƒ³ã§7ãƒãƒ„ã‚’æ±‚ã‚ã‚‹ã…","ãƒ–ãƒ«ã‚µãƒ¼ã‚’æ±‚ã‚ã¾ã™"
+			,"7ã‚ªãƒ¼ãƒ€ãƒ³1åƒã…ã….","ã‚½ã‚¦ãƒ«ã‚’æ•‘ã†5ä¸‡","9ç„¡é‡å£²ã£ã¦9é€²å®‰ã‚’æ±‚ã‚ã¾ã™","7ã‚·ãƒ³ãƒãƒˆã…ã…ã‚¸ã‚§ãƒƒã‚·ãƒ¥","6ç¥è–ãƒ¨ãƒˆã‚¥ã…ã…ã‚¸ã‚§ãƒƒã‚·ãƒ¥","ã‚¿ãƒ©ã‚¹æ‰‹è¢‹ã‚’è²·ã†","ãƒ¯ãƒ³ãƒ–ãƒ¼ã‚’æ±‚ã‚ã¾ã™"};
 	
-	private static final int[] ¸®½ºº¿BuffSkill4 = {
+	private static final int[] leesbot_BuffSkill4 = {
 			L1SkillId.PHYSICAL_ENCHANT_STR, L1SkillId.PHYSICAL_ENCHANT_DEX,
 			L1SkillId.BLESS_WEAPON, L1SkillId.REMOVE_CURSE
 			};
@@ -229,20 +226,20 @@ public class L1RobotInstance extends L1PcInstance {
 	
 		
 
-	public boolean _½º·¹µåÁ¾·á = false;
+	public boolean is_THREAD_EXIT = false;
 
 	class BrainThread implements Runnable {
 
 		public void start() {
 			setAiRunning(true);
 			GeneralThreadPool.getInstance().execute(BrainThread.this);
-			if (»ç³Éº¿)
+			if (is_HUNTING_BOT)
 				GeneralThreadPool.getInstance().execute(new PotionThread());
 		}
 
 		public void run() {
 			try {
-				if (_½º·¹µåÁ¾·á) {
+				if (is_THREAD_EXIT) {
 					setAiRunning(false);
 					return;
 				}
@@ -251,14 +248,14 @@ public class L1RobotInstance extends L1PcInstance {
 					return;
 				}
 
-				if («Ç«£«ì«¤ != 0) {
-					GeneralThreadPool.getInstance().schedule(this, «Ç«£«ì«¤);
-					«Ç«£«ì«¤ = 0;
+				if (delay != 0) {
+					GeneralThreadPool.getInstance().schedule(this, delay);
+					delay = 0;
 					return;
 				}
-				if (actionStatus == MOVE && ÀÌµ¿«Ç«£«ì«¤ != 0) {
-					GeneralThreadPool.getInstance().schedule(this, ÀÌµ¿«Ç«£«ì«¤);
-					ÀÌµ¿«Ç«£«ì«¤ = 0;
+				if (actionStatus == MOVE && move_delay != 0) {
+					GeneralThreadPool.getInstance().schedule(this, move_delay);
+					move_delay = 0;
 					return;
 				}
 				if (AI()) {
@@ -283,7 +280,7 @@ public class L1RobotInstance extends L1PcInstance {
 
 		public void run() {
 			try {
-				if (_½º·¹µåÁ¾·á) {
+				if (is_THREAD_EXIT) {
 					setAiRunning(false);
 					return;
 				}
@@ -304,14 +301,14 @@ public class L1RobotInstance extends L1PcInstance {
 				}
 
 				int percent = (int) Math.round((double) getCurrentHp() / (double) getMaxHp() * 100);
-				if (percent < 10 && »ç³Éº¿_Å¸ÀÔ == HUNT && !»ç³Éº¿_À§Ä¡.startsWith("ÀØ¼¶")) {
+				if (percent < 10 && hunting_bot_type == HUNT && !hunting_bot_location.startsWith("ìŠì„¬")) {
 					setCurrentHp(getCurrentHp() + 500);
-					±ÍÈ¯();
+					_return();
 					GeneralThreadPool.getInstance().schedule(this, 2000);
 					return;
-				} else if (percent < 30 && »ç³Éº¿_Å¸ÀÔ == HUNT && !»ç³Éº¿_À§Ä¡.startsWith("ÀØ¼¶")) {
+				} else if (percent < 30 && hunting_bot_type == HUNT && !hunting_bot_location.startsWith("ìŠì„¬")) {
 					setCurrentHp(getCurrentHp() + 500);
-					·£´ıÅÚ();
+					random_tell();
 					GeneralThreadPool.getInstance().schedule(this, 2000);
 					return;
 				}
@@ -342,120 +339,120 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 
 
-		if (¸®½ºº¿) {
-			if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 1 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 0 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 3)
+		if (is_LISBOT) {
+			if (lisbot_spawn_witch == 1 || lisbot_spawn_witch == 0 || lisbot_spawn_witch == 3)
 				return false;
-			if (¸®½ºº¿_ÀÌµ¿ > 0)
-				¸®½ºº¿ÀÌµ¿();
+			if (listbot_move > 0)
+				move_bot();
 			else if (_random.nextInt(1000) <= 1)
-				¸®½ºº¿_ÀÌµ¿ = 1;
-		} else if (³¬½Ãº¿) {
-			³¬½Ãº¿();
-		} else if (»ç³Éº¿) {
-			»ç³Éº¿();
-		} else if (¹ö°æº¿) {
-			¹ö°æº¿();
+				listbot_move = 1;
+		} else if (is_FISHING_BOT) {
+			fishing_bot();
+		} else if (is_HUNTING_BOT) {
+			hunting_bot();
+		} else if (is_BERKYUNG_BOT) {
+			berkyung_bot();
 		}
 		return false;
 	}
 
 	private int Debuff() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
-		// Ä¿½º ´ë±â
+		// TODO Auto-generated method stubs
+		// Curse waiting
 		if (getSkillEffectTimerSet().hasSkillEffect(
 				L1SkillId.STATUS_CURSE_PARALYZING)) {
-			±ÍÈ¯();
-			«Ç«£«ì«¤ = 8000;
+			_return();
+			delay = 8000;
 			return 8000;
 		}
 		if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DECAY_POTION)) {
-			±ÍÈ¯();
+			_return();
 			int time = getSkillEffectTimerSet().getSkillEffectTimeSec(
 					L1SkillId.DECAY_POTION) * 1000;
-			return (int) («Ç«£«ì«¤ = time);
+			return (int) (delay = time);
 		}
 		if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SILENCE)) {
-			±ÍÈ¯();
+			_return();
 			int time = getSkillEffectTimerSet().getSkillEffectTimeSec(
 					L1SkillId.SILENCE) * 1000;
-			return (int) («Ç«£«ì«¤ = time);
+			return (int) (delay = time);
 		}
 		return 0;
 	}
 
 	public boolean Poison() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
-		if (getSkillEffectTimerSet().hasSkillEffect(71) == true) { // µğÄÉÀÌÆ÷¼Ç »óÅÂ
+		// TODO Auto-generated method stubs
+		if (getSkillEffectTimerSet().hasSkillEffect(71) == true) { // ãƒ‡ã‚£ã‚±ãƒ¼ã‚·ãƒ§ãƒ³çŠ¶æ…‹
 			return false;
 		}
 		if (getPoison() != null) {
-			cancelAbsoluteBarrier(); // ¾Æºê¼Ò¸£Æ®¹Ù¸®¾ÆÀÇ ÇØÁ¦
+			cancelAbsoluteBarrier(); // ã‚¢ãƒ–ã‚½ãƒ«ãƒˆãƒãƒªã‚¢ã®è§£æ”¾
 			Broadcaster.broadcastPacket(this, new S_SkillSound(getId(), 192),
 					true);
 			curePoison();
-			ºñÃë¹°¾à--;
-			if (ºñÃë¹°¾à <= 0)
-				¹°¾à¸®¼Â();
+			jade_potion--;
+			if (jade_potion <= 0)
+				potion_reset();
 			return true;
 		}
 		return false;
 	}
 
-	private boolean µµÂø(int ¹üÀ§) {
+	private boolean arrival(int range) {
 		return isDistance(getX(), getY(), getMapId(), loc.getX(), loc.getY(),
-				getMapId(), ¹üÀ§);
+				getMapId(), range);
 	}
 
-	public int ¹ö°æº¿_Å¸ÀÔ = 0;
+	public int berkyung_bot_type = 0;
 
-	private void ¹ö°æº¿() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+	private void berkyung_bot() {
+		// TODO Auto-generated method stubs
 		try {
-			switch (¹ö°æº¿_Å¸ÀÔ) {
-			case 0: // ¼ÂÆÃ
-				¹ö°æº¿ÁÂÇ¥¼ÂÆÃ();
-				¹ö°æº¿_Å¸ÀÔ++;
-				«Ç«£«ì«¤(1000 + _random.nextInt(1000));
+			switch (berkyung_bot_type) {
+			case 0: // è¨­å®š
+				berkyung_bot_coordinate_setting();
+				berkyung_bot_type++;
+				delay(1000 + _random.nextInt(1000));
 				return;
-			case 1: // ±âº»ÁÂÇ¥ µµÂøÀÌ°Å³ª ÇÃ·¹ÀÌÁßÀÎÁö
-				if (µµÂø(_random.nextInt(3))) {
-					// System.out.println(getName() +" ³ª µµÂøÇÔ");
-					¹ö°æº¿_Å¸ÀÔ++;
+			case 1: // åŸºæœ¬åº§æ¨™åˆ°ç€ã‹ãƒ—ãƒ¬ã‚¤ä¸­ã‹
+				if (arrival(_random.nextInt(3))) {
+					// System.out.println(getName() +" ç§ãŒåˆ°ç€ã—ã¾ã—ãŸ");
+					berkyung_bot_type++;
 					return;
 				} else if (L1BugBearRace.getInstance().getBugRaceStatus() == L1BugBearRace.STATUS_PLAYING) {
-					¹ö°æº¿_Å¸ÀÔ = 3;
+					berkyung_bot_type = 3;
 					loc = new Robot_Location_bean(33534 + _random.nextInt(6),
 							32853 + _random.nextInt(6), 4);
 					// loc = new Robot_Location_bean(33479 + _random.nextInt(8),
 					// 32849 + _random.nextInt(11), 4);
 					return;
 				} else {
-					// System.out.println("³»°¡¿©±â¿Ö¿ÔÁö" +getName());
+					// System.out.println("ã©ã†ã—ã¦ã“ã“ã«æ¥ãŸã®ï¼Ÿ" +getName());
 				}
 				break;
-			case 2: // ½ÃÀÛ ´ë±â
-				if (_random.nextInt(100) < 50 && Robot.¼Óµµ¹öÇÁ(this)) {
+			case 2: // waiting to start
+				if (_random.nextInt(100) < 50 && Robot.is_SPEED_BUFF(this)) {
 					setSleepTime(calcSleepTime(MAGIC_SPEED));
 					return;
 				}
 				if (L1BugBearRace.getInstance().getBugRaceStatus() == L1BugBearRace.STATUS_PLAYING) {
-					«Ç«£«ì«¤(500 + _random.nextInt(3500));
+					delay(500 + _random.nextInt(3500));
 					if (_random.nextInt(100) < 98) {
-						¹ö°æº¿_Å¸ÀÔ = 5;
+						berkyung_bot_type = 5;
 						return;
 					}
 					loc = new Robot_Location_bean(33534 + _random.nextInt(6),
 							32853 + _random.nextInt(6), 4);
 					// loc = new Robot_Location_bean(33479 +
 					// _random.nextInt(10), 32849 + _random.nextInt(11), 4);
-					¹ö°æº¿_Å¸ÀÔ++;
+					berkyung_bot_type++;
 				} else {
 					if (_random.nextInt(1000) > 0)
 						return;
 					GeneralThreadPool.getInstance().schedule(new Runnable() {
 						@Override
 						public void run() {
-							if (_½º·¹µåÁ¾·á || ¹ö°æº¿_Å¸ÀÔ != 2)
+							if (is_THREAD_EXIT || berkyung_bot_type != 2)
 								return;
 							int dir = L1SkillUse.checkObject(getX(), getY(),
 									getMapId(), _random.nextInt(20));
@@ -469,17 +466,17 @@ public class L1RobotInstance extends L1PcInstance {
 					}, 1);
 				}
 				return;
-			case 3: // ½ÃÀÛ ´ë±â
+			case 3: // waiting to start
 				if (L1BugBearRace.getInstance().getBugRaceStatus() == L1BugBearRace.STATUS_PLAYING) {
-					if (Robot.¼Óµµ¹öÇÁ(this)) {
+					if (Robot.is_SPEED_BUFF(this)) {
 						setSleepTime(calcSleepTime(MAGIC_SPEED));
 						return;
 					}
 					if (L1BugBearRace.racing_im) {
 						boolean ck = false;
-						if (µµÂø(_random.nextInt(2))) {
+						if (arrival(_random.nextInt(2))) {
 							ck = true;
-							«Ç«£«ì«¤(100 + _random.nextInt(3500));
+							delay(100 + _random.nextInt(3500));
 						} else {
 							ck = L1World
 									.getInstance()
@@ -487,7 +484,7 @@ public class L1RobotInstance extends L1PcInstance {
 											Config.PC_RECOGNIZE_RANGE).size() > 0;
 						}
 						if (ck) {
-							¹ö°æº¿_Å¸ÀÔ++;
+							berkyung_bot_type++;
 							loc = new Robot_Location_bean(
 									33516 + _random.nextInt(11),
 									32849 + _random.nextInt(7), 4);
@@ -497,30 +494,30 @@ public class L1RobotInstance extends L1PcInstance {
 				} else
 					return;
 				break;
-			case 4: // »óÀÎ µµÂø
-				if (µµÂø(_random.nextInt(3))) {
-					«Ç«£«ì«¤(3000 + _random.nextInt(7000));
-					¹ö°æº¿_Å¸ÀÔ = 0;
+			case 4: // Merchant Arrival
+				if (arrival(_random.nextInt(3))) {
+					delay(3000 + _random.nextInt(7000));
+					berkyung_bot_type = 0;
 					return;
 				}
 				break;
-			case 5:// ÀÏÁ¤È®·ü·Î ¹ö°æ½ÃÀÛ½Ã ¿òÁ÷ÀÌÁö ¾Ê´Â
+			case 5:// There is a certain probability that it does not move when starting
 				if (L1BugBearRace.getInstance().getBugRaceStatus() != L1BugBearRace.STATUS_PLAYING)
-					¹ö°æº¿_Å¸ÀÔ = 2;
+					berkyung_bot_type = 2;
 				return;
 			default:
 				break;
 			}
-			if (¹ö°æº¿_Å¸ÀÔ == 3 || ¹ö°æº¿_Å¸ÀÔ == 4) {
+			if (berkyung_bot_type == 3 || berkyung_bot_type == 4) {
 				if (getSleepTime() < 250 && _random.nextInt(100) < 3)
-					«Ç«£«ì«¤(300 + _random.nextInt(1700));
+					delay(300 + _random.nextInt(1700));
 			}
 			if (!isParalyzed()) {
 				int dir = moveDirection(loc.getX(), loc.getY(), loc.getMapId());
 				if (dir == -1) {
 					cnt++;
 					if (cnt > 50) {
-						Robot.·Îº¿Á¾·á(this);
+						Robot.robot_shutdown(this);
 						cnt = 0;
 					}
 				} else {
@@ -531,7 +528,7 @@ public class L1RobotInstance extends L1PcInstance {
 					if (door || !tail2) {
 						cnt++;
 						if (cnt > 50) {
-							Robot.·Îº¿Á¾·á(this);
+							Robot.robot_shutdown(this);
 							cnt = 0;
 						}
 					}
@@ -544,7 +541,7 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 	}
 
-	private void ¹ö°æº¿ÁÂÇ¥¼ÂÆÃ() {
+	private void berkyung_bot_coordinate_setting() {
 		int count = 1000;
 		while (count-- > 0) {
 			try {
@@ -642,31 +639,31 @@ public class L1RobotInstance extends L1PcInstance {
 
 	public long Hunt_Exit_Time = 0;
 
-	private boolean Å¸_¸¶À»_ÅÚÀÌµ¿ = false;
+	private boolean is_OTHER_VILLAGE_TEL_DONG = false;
 	private int cnt2 = 0;
 	private Queue<Robot_Location_bean> location_queue = new ConcurrentLinkedQueue<Robot_Location_bean>();
 	private Queue<L1ItemInstance> item_queue = new ConcurrentLinkedQueue<L1ItemInstance>();
 
-	private void »ç³Éº¿() {
+	private void hunting_bot() {
 		try {
-			if (isDead() && »ç³Éº¿_Å¸ÀÔ != DEATH) {
-				«Ç«£«ì«¤(2000 + _random.nextInt(3000));
-				»ç³Éº¿_Å¸ÀÔ = DEATH;
+			if (isDead() && hunting_bot_type != DEATH) {
+				delay(2000 + _random.nextInt(3000));
+				hunting_bot_type = DEATH;
 				return;
 			}
 			if (!isDead() && !isTeleport()) {
 				if (Hunt_Exit_Time <= System.currentTimeMillis()) {
-					«Ç«£«ì«¤(20000);
-					±ÍÈ¯(500);
-					Á¾·á();
-					Robot_Hunt.getInstance().delay_spawn(»ç³Éº¿_À§Ä¡, 60000);
+					delay(20000);
+					return_(500);
+					end();
+					Robot_Hunt.getInstance().delay_spawn(hunting_bot_location, 60000);
 					return;
 				}
 				if (!getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHAPE_CHANGE)) {
 					getSkillEffectTimerSet().setSkillEffect(L1SkillId.SHAPE_CHANGE, 1800 * 1000);
 					int time = getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.SHAPE_CHANGE);
 					if (time == -1) {
-						Á¾·á();
+						end();
 						return;
 					}
 					Robot.poly(this);
@@ -674,16 +671,16 @@ public class L1RobotInstance extends L1PcInstance {
 					Broadcaster.broadcastPacket(this, new S_CharVisualUpdate(this, getCurrentWeapon()));
 					return;
 				}
-				if (Robot.¼Óµµ¹öÇÁ(this)) {
+				if (Robot.is_SPEED_BUFF(this)) {
 					setSleepTime(calcSleepTime(MAGIC_SPEED));
 					return;
 				}
 				if (!isSkillDelay()) {
-					if (Robot.Å¬·¡½º¹öÇÁ(this)) {
+					if (Robot.is_CLASS_BUFF(this)) {
 						setSleepTime(calcSleepTime(MAGIC_SPEED));
 						return;
 					}
-					/** ¿äÁ¤ÀÌ¶ó¸é ¼Ò¿ï ½Ã½ºÅÛ Ãß°¡ */
+					/** If you are a fairy, add a soul system*/
 					if (isElf()) { 
 						if (actionStatus == MOVE) { 
 							int percent = (int) Math
@@ -701,24 +698,24 @@ public class L1RobotInstance extends L1PcInstance {
 			
 			}
 
-			// Å¸Áö¿ªÀÎÁö Ã¼Å© ±×À§Ä¡·Î ÅÚ
+			// Check if it is in another area and tell to that location
 			if (loc == null) {
 				location_queue.clear();
-				ArrayList<Robot_Location_bean> list = Robot_Location.·ÎÄÉÀÌ¼Ç(this);
+				ArrayList<Robot_Location_bean> list = Robot_Location.location(this);
 				if (list != null) {
 					for (Robot_Location_bean ro : list) {
 			
-						if (»ç³Éº¿_Å¸ÀÔ == SETTING)
-							Ãß°¡SETTINGÁÂÇ¥(ro);
+						if (hunting_bot_type == SETTING)
+							additional_setting_coordinates(ro);
 						location_queue.offer(ro);
 					}
 					loc = location_queue.poll();
 				}
 			}
-			switch (»ç³Éº¿_Å¸ÀÔ) {
-			case SETTING:// »óÁ¡, Ã¢°í, ¹öÇÁ
-			case TEL_NPC_MOVE:// ÅÚ³àÀÌµ¿
-				  	/** ¸¶À»¿¡¼­ Ã¤ÆÃ **/
+			switch (hunting_bot_type) {
+			case SETTING:// shop, warehouse, buff
+			case TEL_NPC_MOVE:// telnyeo move
+				  	/** chat in town **/
 					int townrandom = _random.nextInt(1000) +1;
 					if(!Townsaid() && townrandom > 998){
 					try{
@@ -731,45 +728,45 @@ public class L1RobotInstance extends L1PcInstance {
 						return;
 					}
 					}
-					/** ¸¶À»¿¡¼­ Ã¤ÆÃ **/
+					/** chat in town **/
 				if (loc == null) {
-					»ç³Éº¿_Å¸ÀÔ++;
+					hunting_bot_type++;
 					return;
 				}
 				if (isDistance(getX(), getY(), getMapId(), loc.getX(),
 						loc.getY(), loc.getMapId(), 1 + _random.nextInt(5))) {
 					loc = location_queue.poll();
-					«Ç«£«ì«¤(5000 + _random.nextInt(15000));
-					if (loc != null && Å¸_¸¶À»_ÅÚÀÌµ¿) {
+					delay(5000 + _random.nextInt(15000));
+					if (loc != null && is_OTHER_VILLAGE_TEL_DONG) {
 						getMoveState().setHeading(5);
-						ÅÚ(loc.getX(), loc.getY(), loc.getMapId(),
+						tell(loc.getX(), loc.getY(), loc.getMapId(),
 								3000 + _random.nextInt(3000));
 						loc = location_queue.poll();
-						Å¸_¸¶À»_ÅÚÀÌµ¿ = false;
+						is_OTHER_VILLAGE_TEL_DONG = false;
 					}
 					if (loc == null) {
-						if (»ç³Éº¿_Å¸ÀÔ == SETTING)
-							Á¨µµ¸£¹öÇÁ();
-							»ç³Éº¿_Å¸ÀÔ++;
+						if (hunting_bot_type == SETTING)
+							zendorbuff();
+							hunting_bot_type++;
 					}
 					return;
 				}
 				break;
-			case HUNT_MOVE: // »ç³ÉÅÍ·Î ÀÌµ¿
-				«Ç«£«ì«¤(500 + _random.nextInt(1000));
-				ÅÚ(loc.getX(), loc.getY(), loc.getMapId());
+			case HUNT_MOVE: // ç‹©ã‚Šå ´ã«è¡Œã
+				delay(500 + _random.nextInt(1000));
+				tell(loc.getX(), loc.getY(), loc.getMapId());
 				location_queue.offer(loc);
 				loc = location_queue.poll();
-				»ç³Éº¿_Å¸ÀÔ++;
+				hunting_bot_type++;
 				return;
-			case HUNT: // »ç³É
+			case HUNT: // ç‹©ã‚Š
 				if (checkTarget() || checkTarget2()){
 					return;
 				}
 			
-				if (ÅÚ»ç³É) {
-					«Ç«£«ì«¤(1000 + _random.nextInt(500));
-					·£´ıÅÚ(500 + _random.nextInt(1000));
+				if (is_TELL_HUNTING) {
+					delay(1000 + _random.nextInt(500));
+					random_tell(500 + _random.nextInt(1000));
 					setTownsaid(false);
 					setGlsaid(false);
 					return;
@@ -777,8 +774,8 @@ public class L1RobotInstance extends L1PcInstance {
 				}
 
 				if (loc == null) {
-					«Ç«£«ì«¤(3000 + _random.nextInt(6000));
-					±ÍÈ¯(1000 + _random.nextInt(2000));
+					delay(3000 + _random.nextInt(6000));
+					return_(1000 + _random.nextInt(2000));
 					return;
 				}
 
@@ -796,12 +793,12 @@ public class L1RobotInstance extends L1PcInstance {
 					}
 				}
 				break;
-			case DEATH: // Á×À½
+			case DEATH: // æ­»äº¡
 				int[] loc = Getback.GetBack_Restart(this);
 				Broadcaster.broadcastPacket(this, new S_RemoveObject(this),
 						true);
 				setCurrentHp(getLevel());
-				set_food(225); // Á×¾úÀ»¶§ 100%
+				set_food(225); // æ­»ã‚“ã ã¨ã100ï¼…
 				setDead(false);
 				L1World.getInstance().moveVisibleObject(this, loc[0], loc[1],
 						loc[2]);
@@ -812,21 +809,21 @@ public class L1RobotInstance extends L1PcInstance {
 						this)) {
 					pc2.sendPackets(new S_OtherCharPacks(this, pc2));
 				}
-				_target = null; //´©¼ö¹æÁö
-				_targetItem = null; //´©¼ö¹æÁö
-				_target2 = null; //´©¼ö¹æÁö
-				«Ç«£«ì«¤(3000 + _random.nextInt(6000));
-				±ÍÈ¯(1000 + _random.nextInt(2000));
+				_target = null; //Leak-proof
+				_targetItem = null; //Leak-proof
+				_target2 = null; //Leak-proof
+				delay(3000 + _random.nextInt(6000));
+				return_(1000 + _random.nextInt(2000));
 				setTownsaid(false);
 				setGlsaid(false);
 				return;
-			case EXIT: // Á¾·á
+			case EXIT: // çµ‚äº†
 				return;
 			default:
 				break;
 			}
 			if (!isDead() && loc != null) {
-				ÀÌµ¿();
+				move();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -834,135 +831,135 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 	}
 
-	private void Ãß°¡SETTINGÁÂÇ¥(Robot_Location_bean ro) {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
-		if (ro.getX() == 33457 && ro.getY() == 32819 && ro.getMapId() == 4) {// ±â¶õ
-																				// ¹°¾à»óÁ¡
+	private void additional_setting_coordinates(Robot_Location_bean ro) {
+		// TODO Auto-generated method stubs
+		if (ro.getX() == 33457 && ro.getY() == 32819 && ro.getMapId() == 4) {// Giran
+																				// potion shop
 			if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
-				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// ÅÚ
-																				// ÇÒ
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// ì˜¤ë Œ
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
+				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// tell
+																				// ã™ã‚‹
+																				// å ´æ‰€
 			} else if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 33432 && ro.getY() == 32815
-				&& ro.getMapId() == 4) {// ±â¶õ2 ¹°¾à»óÁ¡
+				&& ro.getMapId() == 4) {// Giran 2 Potion Shop
 			if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
-				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// ÅÚ
-																				// ÇÒ
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// Oren
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
+				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// tell
+																				// will do
+																				// location
 			} else if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// ì€ê¸°ì‚¬
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 33428 && ro.getY() == 32806
-				&& ro.getMapId() == 4) {// ±â¶õ3,5 ¾Æµ§»ó´Ü
+				&& ro.getMapId() == 4) {// Giran 3, 5 Aden Top
 			if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
-				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// ÅÚ
-																				// ÇÒ
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// Oren
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
+				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// tell
+																				// will do
+																				// location
 			} else if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 33437 && ro.getY() == 32803
-				&& ro.getMapId() == 4) {// ±â¶õ4 Á¨µµ¸£
+				&& ro.getMapId() == 4) {// Giran 4 Zendor
 			if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
-				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// ÅÚ
-																				// ÇÒ
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// Oren
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
+				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));// tell
+																				// will do
+																				// location
 			} else if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(33438, 32796, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 34065 && ro.getY() == 32287
-				&& ro.getMapId() == 4) {// ¿À·» ¹°¾à»óÁ¡
+				&& ro.getMapId() == 4) {// Oren Potion Shop
 			if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(34062, 32278, 4));
 			} else if (getX() >= 33410 && getX() <= 33461 && getY() >= 32788
-					&& getY() <= 32838 && getMapId() == 4) {// ±â¶õ
+					&& getY() <= 32838 && getMapId() == 4) {// Giran
 				location_queue.offer(new Robot_Location_bean(33437, 32794, 4));
 				location_queue.offer(new Robot_Location_bean(34062, 32278, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 32596 && ro.getY() == 32741
-				&& ro.getMapId() == 4) {// ±Û¸» ¹°¾à»óÁ¡
+				&& ro.getMapId() == 4) {// Gulmal Potion Shop
 			if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(32608, 32734, 4));
 			} else if (getX() >= 33410 && getX() <= 33461 && getY() >= 32788
-					&& getY() <= 32838 && getMapId() == 4) {// ±â¶õ
+					&& getY() <= 32838 && getMapId() == 4) {// Giran
 				location_queue.offer(new Robot_Location_bean(33437, 32794, 4));
 				location_queue.offer(new Robot_Location_bean(32608, 32734, 4));
 			} else if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// Oren
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
 				location_queue.offer(new Robot_Location_bean(32608, 32734, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		} else if (ro.getX() == 33738 && ro.getY() == 32494
-				&& ro.getMapId() == 4) {// À£´ø ¹°¾à»óÁ¡
+				&& ro.getMapId() == 4) {// Well Don Potion Shop
 			if (getX() >= 33065 && getX() <= 33093 && getY() >= 33385
-					&& getY() <= 33411 && getMapId() == 4) {// Àº±â»ç
+					&& getY() <= 33411 && getMapId() == 4) {// silver knight
 				location_queue.offer(new Robot_Location_bean(33080, 33384, 4));
 				location_queue.offer(new Robot_Location_bean(33709, 32500, 4));
 			} else if (getX() >= 33410 && getX() <= 33461 && getY() >= 32788
-					&& getY() <= 32838 && getMapId() == 4) {// ±â¶õ
+					&& getY() <= 32838 && getMapId() == 4) {// Giran
 				location_queue.offer(new Robot_Location_bean(33437, 32794, 4));
 				location_queue.offer(new Robot_Location_bean(33709, 32500, 4));
 			} else if (getX() >= 34047 && getX() <= 34064 && getY() >= 32273
-					&& getY() <= 32297 && getMapId() == 4) {// ¿À·»
-				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// ÅÚ³à
-																				// À§Ä¡
+					&& getY() <= 32297 && getMapId() == 4) {// Oren
+				location_queue.offer(new Robot_Location_bean(34064, 32278, 4));// tell me
+																				// location
 				location_queue.offer(new Robot_Location_bean(33709, 32500, 4));
 			}
 			if (location_queue.size() > 0)
-				Å¸_¸¶À»_ÅÚÀÌµ¿ = true;
+				is_OTHER_VILLAGE_TEL_DONG = true;
 		}
 	}
 
-	public void Á¾·á() {
-		Á¾·á(1000 + _random.nextInt(20000));
+	public void end() {
+		end(1000 + _random.nextInt(20000));
 	}
 
-	public void Á¾·á(int time) {
-		»ç³É_Á¾·á = true;
+	public void end(int time) {
+		is_HUNT_END = true;
 		GeneralThreadPool.getInstance().schedule(new Runnable() {
 			@Override
 			public void run() {
-				// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
-				_½º·¹µåÁ¾·á = true;
+				// TODO Auto-generated method stubs
+				is_THREAD_EXIT = true;
 				for (L1PcInstance pc : L1World.getInstance()
 						.getRecognizePlayer(L1RobotInstance.this)) {
 					pc.sendPackets(new S_RemoveObject(L1RobotInstance.this), true);
@@ -981,11 +978,11 @@ public class L1RobotInstance extends L1PcInstance {
 				stopSHRegeneration();
 				stopMpDecreaseByScales();
 				stopEtcMonitor();
-				»ç³Éº¿_À§Ä¡ = null;
-				»ç³Éº¿ = false;
-				»ç³Éº¿_Å¸ÀÔ = 0;
-				»ç³É_Á¾·á = false;
-				Å¸°İ±ÍÈ¯¹«½Ã = true; //Å¸°İ±ÍÈ¯ ¿ø·¡ false
+				hunting_bot_location = null;
+				is_HUNTING_BOT = false;
+				hunting_bot_type = 0;
+				is_HUNT_END = false;
+				is_LGNORE_HIT_RETURN = true; //hit return original false
 				loc = null;
 				updateconnect(false);
 				Robot.Doll_Delete(L1RobotInstance.this, true);
@@ -995,27 +992,27 @@ public class L1RobotInstance extends L1PcInstance {
 		}, time);
 	}
 
-	public void ·£´ıÅÚ() {
-		«Ç«£«ì«¤(1000);
-		·£´ıÅÚ(1);
+	public void random_tell() {
+		delay(1000);
+		random_tell(1);
 		passTargetList.clear();
 		passTargetList2.clear();
 		
 	}
 
-	private void ·£´ıÅÚ(int time) {
+	private void random_tell(int time) {
 		L1Location newLocation = getLocation().randomLocation(200, true);
 		int newX = newLocation.getX();
 		int newY = newLocation.getY();
 		short mapId = (short) newLocation.getMapId();
-		ÅÚ(newX, newY, mapId, time);
+		tell(newX, newY, mapId, time);
 	}
 
-	public void ±ÍÈ¯() {
-		±ÍÈ¯(1);
+	public void _return() {
+		return_(1);
 	}
 
-	public void ±ÍÈ¯(int time) {
+	public void return_(int time) {
 		int[] loc = new int[3];
 		_random.setSeed(System.currentTimeMillis());
 		switch (_random.nextInt(10)) {
@@ -1059,12 +1056,12 @@ public class L1RobotInstance extends L1PcInstance {
 			loc[2] = 4;
 			break;
 		}
-		ÅÚ(loc[0], loc[1], loc[2], time);
-		if (»ç³Éº¿) {
+		tell(loc[0], loc[1], loc[2], time);
+		if (is_HUNTING_BOT) {
 			item_queue.clear();
 			passTargetList.clear();
 			passTargetList2.clear();
-			»ç³Éº¿_Å¸ÀÔ = SETTING;
+			hunting_bot_type = SETTING;
 			this.loc = null;
 		}
 	}
@@ -1072,7 +1069,7 @@ public class L1RobotInstance extends L1PcInstance {
 	private int Potion() {
 		if (getSkillEffectTimerSet().hasSkillEffect(10513))
 			return 1000;
-		if (getSkillEffectTimerSet().hasSkillEffect(71) == true) { // µğÄÉÀÌÆ÷¼Ç »óÅÂ
+		if (getSkillEffectTimerSet().hasSkillEffect(71) == true) { // Decay Potion Status
 			return 0;
 		}
 		int percent = (int) Math.round((double) getCurrentHp()
@@ -1082,39 +1079,39 @@ public class L1RobotInstance extends L1PcInstance {
 		int delay = 0;
 	
 		if(percent < 95){
-			gfxid = 197; //»¡°»ÀÌ 189
+			gfxid = 197; //redhead 189
 			healHp = Config.BOT_POTION_BASIC_RECOVERY_AMOUNT + _random.nextInt(Config.BOT_POTION_RANDOM_RECOVERY_AMOUNT);
 			delay = 500;
-			¸»°»ÀÌ--;
+			horse_mackerel--;
 		}
 
 
 		if (healHp == 0)
 			return 0;
-		// ¾Û¼Ö·çÆ®º£¸®¾îÀÇ ÇØÁ¦
+		// ã‚¢ãƒ–ã‚½ãƒªãƒ¥ãƒ¼ãƒˆãƒãƒªã‚¢ã®è§£é™¤
 		cancelAbsoluteBarrier();
 		Broadcaster.broadcastPacket(this, new S_SkillSound(getId(), gfxid),
 				true);
 		if (getSkillEffectTimerSet().hasSkillEffect(POLLUTE_WATER)
-				|| getSkillEffectTimerSet().hasSkillEffect(10517)) { // Æ÷¸£Æ®¿öÅ¸ÁßÀº
-																		// È¸º¹·®1/2¹è
+				|| getSkillEffectTimerSet().hasSkillEffect(10517)) { // ãƒãƒ«ãƒˆã‚¦ã‚©ãƒ¼ã‚¿ãƒ¼ä¸­
+																		// å›å¾©é‡1/2å€
 			healHp /= 2;
 		}
 
 		setCurrentHp(getCurrentHp() + healHp);
-		if (¸»°»ÀÌ <= 0) {
-			¹°¾à¸®¼Â();
+		if (horse_mackerel <= 0) {
+			potion_reset();
 		}
 		return delay;
 	}
 
-	private void ¹°¾à¸®¼Â() {
+	private void potion_reset() {
 		/*
-		 * «Ç«£«ì«¤(2000+_random.nextInt(14000)); ±ÍÈ¯();
+		 * ãƒ‡ã‚£ãƒ¬ã‚¤(2000+_random.nextInt(14000)); å¸°é‚„();
 		 */
 		
-		¸»°»ÀÌ = (short) (800 + _random.nextInt(1000));
-		ºñÃë¹°¾à = (short) (1000);
+		horse_mackerel = (short) (800 + _random.nextInt(1000));
+		jade_potion = (short) (1000);
 	}
 
 	private boolean checkTarget() {
@@ -1139,13 +1136,13 @@ public class L1RobotInstance extends L1PcInstance {
 					_targetItem.getMapId());
 			if (!groundInventory.checkItem(_targetItem.getItemId())) {
 				_targetItem = null;
-				searchTarget(); //ÀÎ°øÁö´É
+				searchTarget(); //A.I
 				setSleepTime(100);
 			} else {
 				onTargetItem();
 				return true;
 			}
-		} else if (_target != null){ // && _target2 !=null) { //¶§¸±³ğ¾øÀ»¶§
+		} else if (_target != null){ // && _target2 !=null) { //æ™‚ãŒæ¥ãªã„ã¨ã
 			return onTarget();
 			
 		}
@@ -1155,7 +1152,7 @@ public class L1RobotInstance extends L1PcInstance {
 	}
 	
 	private boolean checkTarget2() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+		// TODO Auto-generated method stubs
  		if (_target2 == null) {
 			searchTarget();
 		}
@@ -1179,7 +1176,7 @@ public class L1RobotInstance extends L1PcInstance {
 		
 	
 		int MaxRange = 2;
-		//if (»ç³Éº¿_À§Ä¡.startsWith("ÀØ¼¶"))
+		//if (Hunting Bot_Location.startsWith("Forgot Island")))
 		//	MaxRange = 3;
 	
 		ArrayList<L1Object> list = L1World.getInstance().getVisibleObjects(this);
@@ -1188,7 +1185,7 @@ public class L1RobotInstance extends L1PcInstance {
 	    if(list2.contains(_target2)){
 	    	return;
 	    } 
-	    //¶§¸°³ğ ¾È¶§¸®°Ô? ÀÎ°øÁö´É
+	    //You won't hit the guy you hit? A.I
 	    
 	    
 	    if (list.size() > 1)
@@ -1201,7 +1198,7 @@ public class L1RobotInstance extends L1PcInstance {
 			if (obj instanceof L1GroundInventory) {
 				L1GroundInventory inv = (L1GroundInventory) obj;
 				for (L1ItemInstance item : inv.getItems()) {
-					if (item.getItemOwner() != null	&& item.getItemOwner() == this) { //¸ğµçÅÛ¸Ô°Ô
+					if (item.getItemOwner() != null	&& item.getItemOwner() == this) { //ã™ã¹ã¦ã‚’é£Ÿã¹ã‚‹
 						if (item !=null && !isDistance(getX(), getY(), mapid, item.getX(),item.getY(), mapid, 20)){
 							continue;
 						}
@@ -1213,12 +1210,12 @@ public class L1RobotInstance extends L1PcInstance {
 								continue;
 						}
 						 
-						} //¸ğµçÅÛ¸Ô°Ô
+						} //ã™ã¹ã¦ã‚’é£Ÿã¹ã‚‹
 					
 						item_queue.offer(item);
-					    list = null; //´©¼ö¹æÁö 2015.11.26
-					    obj = null; //´©¼ö¹æÁö 2015.11.26
-					    item = null; //´©¼ö¹æÁö
+					    list = null; //Leak-proof 2015.11.26
+					    obj = null; //Leak-proof 2015.11.26
+					    item = null; //Leak-proof
 					
 					}
 		
@@ -1293,8 +1290,8 @@ public class L1RobotInstance extends L1PcInstance {
 //					FirstSkill9 = false;
 //					FirstSkill10 = false;
 //					FirstSkill11 = false;
-					list = null; //´©¼ö¹æÁö 2015.11.26
-					obj = null; //´©¼ö¹æÁö 2015.11.26
+					list = null; //Leak-proof 2015.11.26
+					obj = null; //Leak-proof 2015.11.26
 					mon= null;
 					return;
 				}
@@ -1348,10 +1345,10 @@ public class L1RobotInstance extends L1PcInstance {
 //						FirstSkill9 = false;
 //						FirstSkill10 = false;
 //						FirstSkill11 = false;
-						setRsaid(false); //·Îº¿Ã¤ÆÃ
-						setDissaid(false); //°Å¸®Ã¤ÆÃ
-						list2 = null;//´©¼ö¹æÁö 2015.11.26
-						obj2 = null; //´©¼ö¹æÁö 2015.11.26
+						setRsaid(false); //robot chat
+						setDissaid(false); //street chat
+						list2 = null;//Leak-proof 2015.11.26
+						obj2 = null; //Leak-proof 2015.11.26
 						saram = null;
 						return;
 				}
@@ -1410,7 +1407,7 @@ public class L1RobotInstance extends L1PcInstance {
 	private ArrayList<L1Object> passTargetList = new ArrayList<L1Object>();
 	private ArrayList<L1PcInstance> passTargetList2 = new ArrayList<L1PcInstance>();
 
-//HashMap Ãß°¡ (·Îº¿ ½ºÅ³)
+//HashMap è¿½åŠ (ãƒ­ãƒœãƒƒãƒˆã‚¹ã‚­ãƒ«)
 	private HashMap<String, Integer> setRobotSKill(L1Character target,boolean firstAttack) {
 		HashMap<String, Integer> skillInfo = new HashMap<String, Integer>();
 		boolean isFirstAttackSkill = !firstAttack;
@@ -1420,7 +1417,7 @@ public class L1RobotInstance extends L1PcInstance {
 		
 		if (isElf()) {
 			
-			//Ã¹ ½ºÅ³ °ÔÀÏ
+			//first skill gail
 			if (isFirstAttackSkill)
 			{
 				skillId = L1SkillId.STRIKER_GALE;
@@ -1445,7 +1442,7 @@ public class L1RobotInstance extends L1PcInstance {
 		{
 			if (isFirstAttackSkill)
 			{
-			skillId = L1SkillId.µğ½ºÆ®·ÎÀÌ;
+			skillId = L1SkillId.DESTROY;
 			skill_range = 2;			
 		}
 		else
@@ -1457,14 +1454,14 @@ public class L1RobotInstance extends L1PcInstance {
 				}
 				if(rand < 14)
 				{
-					skillId = L1SkillId.µğ½ºÆ®·ÎÀÌ;
+					skillId = L1SkillId.DESTROY;
 					skill_range = 2;
 				}
 			}
 		} 
 		else if (isWizard())
 		{
-			//Ã¹ ½ºÅ³ µğ½º
+			//first skill dis
 			if (isFirstAttackSkill)
 			{
 				skillId = L1SkillId.ICE_SPIKE;
@@ -1472,7 +1469,7 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 			else if(target.getCurrentHp() < 1000 )
 			{
-				//Å¸°Ù hp 250 ÀÌÇÏ½Ã ÀÌÅÍ´ÏÆ¼·Î ¸¶¹«¸®
+				//End with Eternity when target HP is 250 or less
 			    skillId = L1SkillId.ETERNITY;
 			    skill_range = 7;
 			}
@@ -1480,7 +1477,7 @@ public class L1RobotInstance extends L1PcInstance {
 			{
 				if(rand < 10)
 				{
-				    skillId = L1SkillId.µ¥½ºÈú;
+				    skillId = L1SkillId.DEATH_HILL;
 				    skill_range = 2;
 				}
 				else if(rand < 50)
@@ -1510,12 +1507,12 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 			else if(rand < 20)
 			{
-				skillId =L1SkillId.ÆÄ¿ö±×¸³;
+				skillId =L1SkillId.POWER_GRIP;
 				skill_range = 1;
 			}
 			else if(rand < 20)
 			{
-				skillId =L1SkillId.µ¥½ºÆä¶óµµ;
+				skillId =L1SkillId.DESPERADO;
 				skill_range = 1;
 			}
 		}
@@ -1573,7 +1570,7 @@ public class L1RobotInstance extends L1PcInstance {
 		int percent = (int) Math.round((double) getCurrentHp() / (double) getMaxHp() * 100);
 		if(_target2 !=null && percent < 80){
 			_target = null;
-			return checkTarget2(); //ÀÎ°øÁö´É
+			return checkTarget2(); //A.I
 			 
 		}
 	
@@ -1581,12 +1578,12 @@ public class L1RobotInstance extends L1PcInstance {
 			return false;
 		}
 		
-		/** ¿ÜÃ¢ **/
+		/** ì™¸ì°½ **/
 		int glrandom = _random.nextInt(1000) +1;
 		 if(!Glsaid() && glrandom > 998){
-			 ¿ÜÃ¢();
+			 outsole();
 		 }
-		 /** ¿ÜÃ¢ **/
+		 /** ì™¸ì°½ **/
 		
 		int escapeDistance = 15;
 		if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DARKNESS)
@@ -1611,9 +1608,9 @@ public class L1RobotInstance extends L1PcInstance {
 		int range = 1;
 		if (isElf() && getCurrentWeapon() == 20)
 			range = 11;
-		// Ã¹Å¸ Æ÷¿ì ¶Ç´Â Æ®¸®ÇÃ ¶Ç´Â ¸¶¹ı?
+		// First Strike or Triple or Magic?
 //		if (!FirstSkill && !isSkillDelay() && getCurrentMp() > 70) {
-		//¸÷ÇÑÅ×´Â ½ºÅ³ »ç¿ë¾ÈÇÔ
+		//Don't use skills on mobs
 		if (!isSkillDelay() && getCurrentMp() > 70 && (target instanceof L1MonsterInstance) == true )
 		{
 			int skillId = 0;
@@ -1638,7 +1635,7 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 		}
 		if (CharPosUtil.isAttackPosition(this, target.getX(), target.getY(), target.getMapId(), range) == true
-				&& CharPosUtil.isAttackPosition(target, getX(), getY(), getMapId(), range) == true) {// ±âº» °ø°İ¹üÀ§
+				&& CharPosUtil.isAttackPosition(target, getX(), getY(), getMapId(), range) == true) {// åŸºæœ¬æ”»æ’ƒç¯„å›²
 			if (door || !tail) 
 			{
 				cnt++;
@@ -1693,7 +1690,7 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 							
 		
-		/** Á¶¿ì½Ã Ã¤ÆÃ **/
+		/** Chat on Encounter **/
 		int hirandom= _random.nextInt(1000)+1;
 		if(hirandom > 995 && !Rsaid() && !target2.isRobot()){
 		_himent = himentArray[_random.nextInt(himentArray.length)];
@@ -1705,7 +1702,7 @@ public class L1RobotInstance extends L1PcInstance {
 		}catch(Exception e){
 		}
 		}
-		/** Á¶¿ì½Ã Ã¤ÆÃ **/
+		/** Chat on Encounter **/
 	
 		int escapeDistance = 15;
 		if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DARKNESS)
@@ -1720,7 +1717,7 @@ public class L1RobotInstance extends L1PcInstance {
 			return false;
 		}
 		
-		/** µµ¸Á°¥½Ã Ã¤ÆÃ **/
+		/** Chat when running away **/
 		int disrandom= _random.nextInt(100)+1;
 		if(disrandom > 50 && !isElf() &&  Rsaid() && !target2.isRobot() && Math.abs(calcx) > 6 && !Dissaid() 
 		|| disrandom > 50 && !isElf() &&  Rsaid() && !target2.isRobot() && Math.abs(calcy) > 6 && !Dissaid()
@@ -1737,7 +1734,7 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 		}catch(Exception e){}
 		}
-		/** µµ¸Á°¥½Ã Ã¤ÆÃ **/
+		/** Chat when running away **/
 		
 		boolean tail = World.isThroughAttack(getX(), getY(), getMapId(), 
 				calcheading(this, target2.getX(), target2.getY()));
@@ -1752,9 +1749,9 @@ public class L1RobotInstance extends L1PcInstance {
 		if (isElf() && getCurrentWeapon() == 20)
 			range = 11;
 		
-		// Ã¹Å¸ Æ÷¿ì ¶Ç´Â Æ®¸®ÇÃ ¶Ç´Â ¸¶¹ı?
+		// First Strike or Triple or Magic?
 		//if (!FirstSkill && !isSkillDelay() && getCurrentMp() > 70) {
-		//¸÷ÇÑÅ×´Â ½ºÅ³ »ç¿ë¾ÈÇÔ
+		//ã¨ã¦ã‚‚ã‚¹ã‚­ãƒ«ã‚’ä½¿ã‚ãªã„
 		if (!isSkillDelay() && getCurrentMp() > 70) {
 			int skillId = 0;
 			int skill_range = 11;
@@ -1768,7 +1765,7 @@ public class L1RobotInstance extends L1PcInstance {
 						&& CharPosUtil.isAttackPosition(target2, getX(), getY(),getMapId(), skill_range) == true) {
 					
 					FirstSkill = true;
-					//±â»ç·Îº¿ ½ºÅÏ Ãß°¡½ÃÀÛ	
+					//ê¸°ì‚¬ë¡œë´‡ ìŠ¤í„´ ì¶”ê°€ì‹œì‘	
 					if (isKnight()
 							&& skillId == L1SkillId.SHOCK_STUN
 							&& !target2.hasSkillEffect(L1SkillId.SHOCK_STUN)) {
@@ -1806,7 +1803,7 @@ public class L1RobotInstance extends L1PcInstance {
 								L1SkillUse.TYPE_NORMAL);
 					}
 					int drandom = _random.nextInt(10) + 1;
-					if (drandom > 6 && isDarkelf()) { // ´Ù¿¤º¿ ´õºí
+					if (drandom > 6 && isDarkelf()) { // ë‹¤ì—˜ë´‡ ë”ë¸”
 						Broadcaster.broadcastPacket(_target2, new S_SkillSound(
 								_target2.getId(), 3398));
 						_target2.sendPackets(new S_SkillSound(_target2.getId(),
@@ -1816,7 +1813,7 @@ public class L1RobotInstance extends L1PcInstance {
 
 //					new L1SkillUse().handleCommands(this, skillId,_target2.getId(), _target2.getX(), _target2.getY(),
 //						null, 0, L1SkillUse.TYPE_NORMAL);
-//±â»ç·Îº¿½ºÅÏ Ãß°¡³¡
+//End of adding knight robot stun
 					setSleepTime(calcSleepTime(MAGIC_SPEED));
 					actionStatus = ATTACK;
 					return true;
@@ -1838,7 +1835,7 @@ public class L1RobotInstance extends L1PcInstance {
 //			}
 //		}
 		if (CharPosUtil.isAttackPosition(this, target2.getX(), target2.getY(),target2.getMapId(), range) == true
-				&& CharPosUtil.isAttackPosition(target2, getX(), getY(),getMapId(), range) == true) {// ±âº» °ø°İ¹üÀ§
+				&& CharPosUtil.isAttackPosition(target2, getX(), getY(),getMapId(), range) == true) {// åŸºæœ¬æ”»æ’ƒç¯„å›²
 			if (door || !tail) {
 				cnt++;
 				if (cnt > 5) {
@@ -1962,9 +1959,9 @@ public class L1RobotInstance extends L1PcInstance {
 	}
 	
 
-	// »ç³Éº¿ ÀÌµ¿
-	private void ÀÌµ¿() {
-		ÀÌµ¿(loc.getX(), loc.getY());
+	// hunting bot
+	private void move() {
+		move(loc.getX(), loc.getY());
 	}
 
 	private L1Location BackLoc_1th = null;
@@ -1972,20 +1969,20 @@ public class L1RobotInstance extends L1PcInstance {
 	private int cnt3 = 0;
 	private boolean BackRR = false;
 
-	private void ÀÌµ¿(int x, int y) {
+	private void move(int x, int y) {
 		int dir = moveDirection(x, y, getMapId());
 		if (dir == -1) {
 			cnt++;
 			if (cnt > 20) {
-				«Ç«£«ì«¤(3000 + _random.nextInt(2000));
-				±ÍÈ¯(1000 + _random.nextInt(2000));
+				delay(3000 + _random.nextInt(2000));
+				return_(1000 + _random.nextInt(2000));
 				cnt = 0;
 				/*
 				 * if(getMapId() >= 110 && getMapId() <= 179){
-				 * System.out.println(»ç³Éº¿_À§Ä¡);
-				 * System.out.println("°¥°÷¾øÀÌ ±ÍÈ¯ -> "+getName
+				 * System.out.println(hunting bot_location);
+				 * System.out.println("return without a place -> "+getName
 				 * ()+" X:"+getX()+" Y:"+
-				 * getY()+" m:"+getMapId()+" °¥·Á´Â°÷>"+x+" > "+y); }
+				 * getY()+" m:"+getMapId()+" place to go>"+x+" > "+y); }
 				 */
 				return;
 			}
@@ -1998,8 +1995,8 @@ public class L1RobotInstance extends L1PcInstance {
 			if (door || !tail2) {
 				cnt++;
 				if (cnt > 20) {
-					«Ç«£«ì«¤(3000 + _random.nextInt(2000));
-					±ÍÈ¯(1000 + _random.nextInt(2000));
+					delay(3000 + _random.nextInt(2000));
+					return_(1000 + _random.nextInt(2000));
 					cnt = 0;
 					return;
 				}
@@ -2010,7 +2007,7 @@ public class L1RobotInstance extends L1PcInstance {
 
 			/*
 			 * if(BackLoc_1th != null && BackLoc_2th != null &&
-			 * getName().equalsIgnoreCase("²¨Á®")){ System.out.println(cnt3);
+			 * getName().equalsIgnoreCase("ã‚ªãƒ•")){ System.out.println(cnt3);
 			 * System.out.println(BackLoc_1th.getX()+" > "+BackLoc_1th.getY());
 			 * System.out.println(BackLoc_2th.getX()+" > "+BackLoc_2th.getY());
 			 * }
@@ -2032,43 +2029,43 @@ public class L1RobotInstance extends L1PcInstance {
 			BackRR = !BackRR;
 
 			if (cnt3 > 20) {
-				«Ç«£«ì«¤(3000 + _random.nextInt(2000));
-				±ÍÈ¯(1000 + _random.nextInt(2000));
+				delay(3000 + _random.nextInt(2000));
+				return_(1000 + _random.nextInt(2000));
 				cnt3 = 0;
 				/*
 				 * if(getMapId() >= 133 && getMapId() <= 139){
-				 * System.out.println(»ç³Éº¿_À§Ä¡);
-				 * System.out.println("¹«ÇÑ¹İº¹ ±ÍÈ¯ -> "+getName
+				 * System.out.println(hunting bot_location);
+				 * System.out.println("infinite loop return -> "+getName
 				 * ()+" X:"+getX()+" Y:"+
-				 * getY()+" m:"+getMapId()+" °¥·Á´Â°÷>"+x+" > "+y); }
+				 * getY()+" m:"+getMapId()+" place to go>"+x+" > "+y); }
 				 */
 				return;
 			}
 		}
 	}
 
-	public void ÅÚ(int x, int y, int mapid) {
-		ÅÚ(x, y, mapid, 1, true);
+	public void tell(int x, int y, int mapid) {
+		tell(x, y, mapid, 1, true);
 	}
 
-	public void ÅÚ(int x, int y, int mapid, int time) {
-		ÅÚ(x, y, mapid, time, true);
+	public void tell(int x, int y, int mapid, int time) {
+		tell(x, y, mapid, time, true);
 	}
 
-	public void ÅÚ(final int x, final int y, final int mapid, int time,
+	public void tell(final int x, final int y, final int mapid, int time,
 			final boolean effect) {
-		if (»ç³Éº¿)
+		if (is_HUNTING_BOT)
 			item_queue.clear();
 		GeneralThreadPool.getInstance().schedule(new Runnable() {
 			@Override
 			public void run() {
-				// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+				// TODO Auto-generated method stubs
 				try {
 					if (L1RobotInstance.this.isDead()
 							|| L1RobotInstance.this.isTeleport()
 							|| L1RobotInstance.this.isParalyzed()
 							|| L1RobotInstance.this.isSleeped()
-							|| L1RobotInstance.this.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.µ¥½ºÆä¶óµµ)
+							|| L1RobotInstance.this.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)
 							|| L1RobotInstance.this.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PHANTOM))
 					return;
 			
@@ -2084,7 +2081,7 @@ public class L1RobotInstance extends L1PcInstance {
 					Thread.sleep(280);
 					for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(L1RobotInstance.this)) {
 						pc.getNearObjects().removeKnownObject(L1RobotInstance.this);
-						pc.sendPackets(ro); //ÅÚÇã»ó ¾È³²°Ô?
+						pc.sendPackets(ro); //Tell me not to stay?
 						
 					}
 					L1World.getInstance().moveVisibleObject(
@@ -2099,48 +2096,48 @@ public class L1RobotInstance extends L1PcInstance {
 		}, time);
 	}
 
-	public L1Location ³¬½ÃÁÂÇ¥ = null;
-	public L1Location ³¬½ÃÀÌµ¿ÁÂÇ¥ = null;
-	public boolean ³¬½ÃÁß = false;
-	public boolean ³¬½ÃÁ¾·á = false;
-	public boolean ³¬½ÃÅÚ = false;
-	public L1NpcInstance ³¬½Ã°¡±î¿îÅÚNpc = null;
+	public L1Location fishing_coordinates = null;
+	public L1Location fishing_movement_coordinates = null;
+	public boolean is_IM_FISHING_NOW = false;
+	public boolean is_FISHING_IS_OVER = false;
+	public boolean is_FISHING_LODGE = false;
+	public L1NpcInstance fishing_near_telnpc = null;
 
-	private void ³¬½Ãº¿() {
-		// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
-		if (³¬½ÃÁß) {
-			if (³¬½ÃÁ¾·á) {
-				if (³¬½Ã°¡±î¿îÅÚNpc == null) {
+	private void fishing_bot() {
+		// TODO Auto-generated method stubs
+		if (is_IM_FISHING_NOW) {
+			if (is_FISHING_IS_OVER) {
+				if (fishing_near_telnpc == null) {
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(5490).values()) {
 						if (obj == null || !(obj instanceof L1NpcInstance))
 							continue;
 						L1NpcInstance npc = (L1NpcInstance) obj;
-						if (³¬½Ã°¡±î¿îÅÚNpc == null)
-							³¬½Ã°¡±î¿îÅÚNpc = npc;
+						if (fishing_near_telnpc == null)
+							fishing_near_telnpc = npc;
 						else {
 							if (this.getLocation().getTileLineDistance(
 									npc.getLocation()) < this.getLocation()
 									.getTileLineDistance(
-											³¬½Ã°¡±î¿îÅÚNpc.getLocation()))
-								³¬½Ã°¡±î¿îÅÚNpc = npc;
+											fishing_near_telnpc.getLocation()))
+								fishing_near_telnpc = npc;
 						}
 					}
 				} else {
 					if (isDistance(getX(), getY(), getMapId(),
-							³¬½Ã°¡±î¿îÅÚNpc.getX(), ³¬½Ã°¡±î¿îÅÚNpc.getY(), getMapId(),
+							fishing_near_telnpc.getX(), fishing_near_telnpc.getY(), getMapId(),
 							1 + _random.nextInt(3))) {
-						³¬½ÃÅÚ = true;
+						is_FISHING_LODGE = true;
 						return;
 					}
 					if (!isParalyzed()) {
-						int dir = moveDirection(³¬½Ã°¡±î¿îÅÚNpc.getX(),
-								³¬½Ã°¡±î¿îÅÚNpc.getY(), ³¬½Ã°¡±î¿îÅÚNpc.getMapId());
+						int dir = moveDirection(fishing_near_telnpc.getX(),
+								fishing_near_telnpc.getY(), fishing_near_telnpc.getMapId());
 						if (dir == -1) {
 							cnt++;
 							if (cnt > 30) {
 								cnt = 0;
-								³¬½Ã°¡±î¿îÅÚNpc = null;
+								fishing_near_telnpc = null;
 								return;
 							}
 						} else {
@@ -2150,13 +2147,13 @@ public class L1RobotInstance extends L1PcInstance {
 									getX(),
 									getY(),
 									getMapId(),
-									calcheading(this, ³¬½ÃÀÌµ¿ÁÂÇ¥.getX(),
-											³¬½ÃÀÌµ¿ÁÂÇ¥.getY()));
+									calcheading(this, fishing_movement_coordinates.getX(),
+											fishing_movement_coordinates.getY()));
 							if (door || !tail2) {
 								cnt++;
 								if (cnt > 30) {
 									cnt = 0;
-									³¬½Ã°¡±î¿îÅÚNpc = null;
+									fishing_near_telnpc = null;
 									return;
 								}
 							}
@@ -2168,7 +2165,7 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 			return;
 		}
-		if (³¬½ÃÁÂÇ¥ == null) {
+		if (fishing_coordinates == null) {
 			L1Map map = L1WorldMap.getInstance().getMap((short) 5490);
 			int wi = 50;
 			while (wi-- > 0) {
@@ -2208,8 +2205,8 @@ public class L1RobotInstance extends L1PcInstance {
 									|| (tx >= 32782 && tx <= 32794
 											&& ty >= 32829 && ty <= 32831)) {
 							} else if (!ck) {
-								³¬½ÃÁÂÇ¥ = new L1Location(x, y, map);
-								³¬½ÃÀÌµ¿ÁÂÇ¥ = new L1Location(tx, ty, map);
+								fishing_coordinates = new L1Location(x, y, map);
+								fishing_movement_coordinates = new L1Location(tx, ty, map);
 								return;
 							}
 						}
@@ -2221,45 +2218,45 @@ public class L1RobotInstance extends L1PcInstance {
 					|| (getX() >= 32743 && getX() <= 32754 && getY() >= 32828 && getY() <= 32830)
 					|| (getX() >= 32764 && getX() <= 32766 && getY() >= 32804 && getY() <= 32815)
 					|| (getX() >= 32782 && getX() <= 32794 && getY() >= 32829 && getY() <= 32831)) {
-			} else if (isDistance(getX(), getY(), getMapId(), ³¬½ÃÁÂÇ¥.getX(),
-					³¬½ÃÁÂÇ¥.getY(), getMapId(), 1 + _random.nextInt(4))) {
-				³¬½ÃÁß = true;
-				int chdir = calcheading(this, ³¬½ÃÁÂÇ¥.getX(), ³¬½ÃÁÂÇ¥.getY());
+			} else if (isDistance(getX(), getY(), getMapId(), fishing_coordinates.getX(),
+					fishing_coordinates.getY(), getMapId(), 1 + _random.nextInt(4))) {
+				is_IM_FISHING_NOW = true;
+				int chdir = calcheading(this, fishing_coordinates.getX(), fishing_coordinates.getY());
 				if (getMoveState().getHeading() != chdir) {
 					this.getMoveState().setHeading(chdir);
 					Broadcaster.broadcastPacket(this,
 							new S_ChangeHeading(this), true);
 				}
 				Broadcaster.broadcastPacket(this, new S_Fishing(getId(),
-						ActionCodes.ACTION_Fishing, ³¬½ÃÁÂÇ¥.getX(), ³¬½ÃÁÂÇ¥.getY()),
+						ActionCodes.ACTION_Fishing, fishing_coordinates.getX(), fishing_coordinates.getY()),
 						true);
-				fishX = ³¬½ÃÁÂÇ¥.getX();
-				fishY = ³¬½ÃÁÂÇ¥.getY();
+				fishX = fishing_coordinates.getX();
+				fishY = fishing_coordinates.getY();
 				setFishing(true);
 				return;
 			}
 			if (!isParalyzed()) {
-				int dir = moveDirection(³¬½ÃÀÌµ¿ÁÂÇ¥.getX(), ³¬½ÃÀÌµ¿ÁÂÇ¥.getY(),
-						³¬½ÃÀÌµ¿ÁÂÇ¥.getMapId());
+				int dir = moveDirection(fishing_movement_coordinates.getX(), fishing_movement_coordinates.getY(),
+						fishing_movement_coordinates.getMapId());
 				if (dir == -1) {
 					cnt++;
 					if (cnt > 30) {
 						cnt = 0;
-						³¬½ÃÁÂÇ¥ = null;
-						³¬½ÃÀÌµ¿ÁÂÇ¥ = null;
+						fishing_coordinates = null;
+						fishing_movement_coordinates = null;
 						return;
 					}
 				} else {
 					boolean tail2 = World.isThroughObject(getX(), getY(),
 							getMapId(), dir);
 					boolean door = World.door_to_door(getX(), getY(), getMapId(),
-							calcheading(this, ³¬½ÃÀÌµ¿ÁÂÇ¥.getX(), ³¬½ÃÀÌµ¿ÁÂÇ¥.getY()));
+							calcheading(this, fishing_movement_coordinates.getX(), fishing_movement_coordinates.getY()));
 					if (door || !tail2) {
 						cnt++;
 						if (cnt > 30) {
 							cnt = 0;
-							³¬½ÃÁÂÇ¥ = null;
-							³¬½ÃÀÌµ¿ÁÂÇ¥ = null;
+							fishing_coordinates = null;
+							fishing_movement_coordinates = null;
 							return;
 						}
 					}
@@ -2280,9 +2277,9 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 		if (tail != null) {
 			iCurrentPath = -1;
-			while (!_½º·¹µåÁ¾·á && tail != null) {
+			while (!is_THREAD_EXIT && tail != null) {
 				if (tail.x == getX() && tail.y == getY()) {
-					// ÇöÀçÀ§Ä¡ ¶ó¸é Á¾·á
+					// ç¾åœ¨ä½ç½®ãªã‚‰çµ‚äº†
 					break;
 				}
 				if (iCurrentPath >= 299 || isDead()) {
@@ -2316,9 +2313,9 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 			if (tail != null && !(tail.x == getX() && tail.y == getY())) {
 				iCurrentPath = -1;
-				while (!_½º·¹µåÁ¾·á && tail != null) {
+				while (!is_THREAD_EXIT && tail != null) {
 					if (tail.x == getX() && tail.y == getY()) {
-						// ÇöÀçÀ§Ä¡ ¶ó¸é Á¾·á
+						// ç¾åœ¨ä½ç½®ãªã‚‰çµ‚äº†
 						break;
 					}
 					if (iCurrentPath >= 299 || isDead()) {
@@ -2337,7 +2334,7 @@ public class L1RobotInstance extends L1PcInstance {
 				}
 			} else {
 				dir = -1;
-				if (!»ç³Éº¿) {
+				if (!is_HUNTING_BOT) {
 					int chdir = calcheading(this, x, y);
 					if (getMoveState().getHeading() != chdir) {
 						this.getMoveState().setHeading(calcheading(this, x, y));
@@ -2359,15 +2356,15 @@ public class L1RobotInstance extends L1PcInstance {
 			int nx = 0;
 			int ny = 0;
 			if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.THUNDER_GRAB)
-					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.µ¥½ºÆä¶óµµ)
-					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ÆÄ¿ö±×¸³)
+					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)
+					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.POWER_GRIP)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
 					|| isPhantomRippered() || isPhantomDeathed()) {
 				return;
 			}
 			// Broadcaster.broadcastPacket(this, new S_ChatPacket(this,
-			// ""+»ç³É¸Ê.getId(), Opcodes.S_OPCODE_NORMALCHAT, 0));
+			// ""+ì‚¬ëƒ¥ë§µ.getId(), Opcodes.S_OPCODE_NORMALCHAT, 0));
 			int heading = 0;
 			nx = HEADING_TABLE_X[dir];
 			ny = HEADING_TABLE_Y[dir];
@@ -2393,7 +2390,7 @@ public class L1RobotInstance extends L1PcInstance {
 
 	private static final double HASTE_RATE = 0.745;
 	private static final double WAFFLE_RATE = 0.874;// 874;
-	private static final double THIRDSPEED_RATE = 0.874;// by»çºÎ
+	private static final double THIRDSPEED_RATE = 0.874;// by WANWAN
 	
 	private static final double Level_Rate_0 = 1.392;
 	private static final double Level_Rate_15 = 1.321;
@@ -2508,11 +2505,11 @@ public class L1RobotInstance extends L1PcInstance {
 			if (gfxid == 13140) {
 				interval *= Move_Level_Rate_80;
 			}
-			if (gfxid == 11333 || // "lv1 dwarf" ; ³­ÀïÀÌ
-					gfxid == 11343 || // "lv15 ungoliant" ; ¿õ°ñ¸®¾ğÆ®
-					gfxid == 11355 || // "lv30 cockatrice" ; ÄÚÄ«Æ®¸®½º
-					gfxid == 11364 || // "lv45 baphomet" ; ¹ÙÆ÷¸ŞÆ®
-					gfxid == 11379// "lv52 beleth" ; º£·¹½º
+			if (gfxid == 11333 || // "lv1 dwarf" ; dwarf
+					gfxid == 11343 || // "lv15 ungoliant" ; Ungoliant
+					gfxid == 11355 || // "lv30 cockatrice" ; cockatrice
+					gfxid == 11364 || // "lv45 baphomet" ; Baphomet
+					gfxid == 11379// "lv52 beleth" ; beleth
 			) {
 				if ( getLevel() >= 80) {
 					interval *= Move_Level_Rate_80;
@@ -2574,21 +2571,21 @@ public class L1RobotInstance extends L1PcInstance {
 				&&  isUgdraFruit()) {
 			interval *= HASTE_RATE;
 		}
-		if ( isBloodLust()) { // ºí·¯µå·¯½ºÆ®
+		if ( isBloodLust()) { // ãƒ–ãƒ©ãƒƒãƒ‰ãƒ©ã‚¹ãƒˆ
 			interval *= HASTE_RATE;
 		}
-		if ( isSandstorm()) { // »÷µå½ºÅè
+		if ( isSandstorm()) { // ã‚µãƒ³ãƒ‰ã‚¹ãƒˆãƒ¼ãƒ 
 			interval *= HASTE_RATE;
 		}
-		if ( isFocuswave()) { // »÷µå½ºÅè
-			interval *= HASTE_RATE;
-		}
-		
-		if ( isdarkhos()) { // »÷µå½ºÅè
+		if ( isFocuswave()) { // ã‚µãƒ³ãƒ‰ã‚¹ãƒˆãƒ¼ãƒ 
 			interval *= HASTE_RATE;
 		}
 		
-		if ( isHurricane()) { // Çã¸®ÄÉÀÎ
+		if ( isdarkhos()) { // ã‚µãƒ³ãƒ‰ã‚¹ãƒˆãƒ¼ãƒ 
+			interval *= HASTE_RATE;
+		}
+		
+		if ( isHurricane()) { // ãƒãƒªã‚±ãƒ¼ãƒ³
 			interval *= HASTE_RATE;
 		}
 
@@ -2618,59 +2615,59 @@ public class L1RobotInstance extends L1PcInstance {
 		return interval;
 	}
 
-	public long «Ç«£«ì«¤ = 0;
-	public int ÀÌµ¿«Ç«£«ì«¤ = 0;
+	public long delay = 0;
+	public int move_delay = 0;
 
-	public void «Ç«£«ì«¤(int i) {
-		«Ç«£«ì«¤ = i;
-		// «Ç«£«ì«¤ = System.currentTimeMillis() + i;
+	public void delay(int i) {
+		delay = i;
+		// ãƒ‡ã‚£ãƒ¬ã‚¤ = System.currentTimeMillis() + i;
 	}
 
 	private int cnt = 0;
 
-	public void ¸®½ºº¿ÀÌµ¿() {
-		if (¸®½ºº¿_ÀÌµ¿ == 1) {
+	public void move_bot() {
+		if (listbot_move == 1) {
 			if (loc == null) {
-				if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 2 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 4 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 5
-					|| ¸®½ºº¿_½ºÆùÀ§Ä¡ == 9 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 8) // ±â¶õ
+				if (lisbot_spawn_witch == 2 || lisbot_spawn_witch == 4 || lisbot_spawn_witch == 5
+					|| lisbot_spawn_witch == 9 || lisbot_spawn_witch == 8) // ã‚®ãƒ©ãƒ³
 					loc = new Robot_Location_bean(33437, 32804, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 6 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 7) // ÇÏÀÌ³×
+				else if (lisbot_spawn_witch == 6 || lisbot_spawn_witch == 7) // ãƒã‚¤ãƒ
 					loc = new Robot_Location_bean(33613, 33248, 4);
-				/*else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 8) // ¶ó´ø Á¤¹®
+				/*else if (ë¦¬ìŠ¤ë´‡_ìŠ¤í°ìœ„ì¹˜ == 8) // Raden front door
 					loc = new Robot_Location_bean(32693, 32794, 450);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 9) // ¿ìÁîº¤
+				else if (ë¦¬ìŠ¤ë´‡_ìŠ¤í°ìœ„ì¹˜ == 9) // Uzbekistan
 					loc = new Robot_Location_bean(32640, 33183, 4);*/
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 10 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 11) // ±Û·çµò
+				else if (lisbot_spawn_witch == 10 || lisbot_spawn_witch == 11) // Gludin
 					loc = new Robot_Location_bean(32609, 32738, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 12) // ¸»¼¶
+				else if (lisbot_spawn_witch == 12) // horse island
 					loc = new Robot_Location_bean(32587, 32929, 0);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 13) // Àº±â»ç
+				else if (lisbot_spawn_witch == 13) // silver knight
 					loc = new Robot_Location_bean(33089, 33393, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 14) // ¿À·»
+				else if (lisbot_spawn_witch == 14) // Oren
 					loc = new Robot_Location_bean(34065, 32280, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 15) // ¾Æµ§
+				else if (lisbot_spawn_witch == 15) // Aden
 					loc = new Robot_Location_bean(33938, 33358, 4);
 			}
-		} else if (¸®½ºº¿_ÀÌµ¿ == 2) {
+		} else if (listbot_move == 2) {
 			if (loc == null) {
-				if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 2 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 4 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 5
-					|| ¸®½ºº¿_½ºÆùÀ§Ä¡ == 9 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 8) // ±â¶õ
+				if (lisbot_spawn_witch == 2 || lisbot_spawn_witch == 4 || lisbot_spawn_witch == 5
+					|| lisbot_spawn_witch == 9 || lisbot_spawn_witch == 8) // Giran
 					loc = new Robot_Location_bean(33437, 32795, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 6 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 7) // ÇÏÀÌ³×
+				else if (lisbot_spawn_witch == 6 || lisbot_spawn_witch == 7) // Heine
 					loc = new Robot_Location_bean(33613, 33257, 4);
-				/*else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 8) // ¶ó´ø Á¤¹®
+				/*else if (ë¦¬ìŠ¤ë´‡_ìŠ¤í°ìœ„ì¹˜ == 8) // Raden front door
 					loc = new Robot_Location_bean(32685, 32795, 450);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 9) // ¿ìÁîº¤
+				else if (ë¦¬ìŠ¤ë´‡_ìŠ¤í°ìœ„ì¹˜ == 9) // Uzbekistan
 					loc = new Robot_Location_bean(32640, 33189, 4);*/
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 10 || ¸®½ºº¿_½ºÆùÀ§Ä¡ == 11) // ±Û·çµò
+				else if (lisbot_spawn_witch == 10 || lisbot_spawn_witch == 11) // Gludin
 					loc = new Robot_Location_bean(32611, 32732, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 12) // ¸»¼¶
+				else if (lisbot_spawn_witch == 12) // horse island
 					loc = new Robot_Location_bean(32583, 32922, 0);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 13) // Àº±â»ç
+				else if (lisbot_spawn_witch == 13) // silver knight
 					loc = new Robot_Location_bean(33089, 33396, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 14) // ¿À·»
+				else if (lisbot_spawn_witch == 14) // Oren
 					loc = new Robot_Location_bean(34063, 32278, 4);
-				else if (¸®½ºº¿_½ºÆùÀ§Ä¡ == 15) // ¾Æµ§
+				else if (lisbot_spawn_witch == 15) // Aden
 					loc = new Robot_Location_bean(33934, 33351, 4);
 			}
 		}
@@ -2680,13 +2677,13 @@ public class L1RobotInstance extends L1PcInstance {
 		if (isDistance(getX(), getY(), getMapId(), loc.getX(), loc.getY(),
 				getMapId(), 1 + _random.nextInt(3))) {
 			loc = null;
-			if (¸®½ºº¿_ÀÌµ¿ == 1) {
-				¸®½ºº¿_ÀÌµ¿ = 2;
-				Á¨µµ¸£¹öÇÁ();
+			if (listbot_move == 1) {
+				listbot_move = 2;
+				zendorbuff();
 			} else {
-				¸®½ºº¿_ÀÌµ¿ = 0;
-				ÅÚ(32750, 32809, 39, 1000 + _random.nextInt(3000));
-				_½º·¹µåÁ¾·á = true;
+				listbot_move = 0;
+				tell(32750, 32809, 39, 1000 + _random.nextInt(3000));
+				is_THREAD_EXIT = true;
 				stopHalloweenRegeneration();
 				stopPapuBlessing();
 				stopLindBlessing();
@@ -2721,13 +2718,13 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 	}
 
-	/*private static final int[] ¸®½ºº¿BuffSkill4 = {
+	/*private static final int[] ë¦¬ìŠ¤ë´‡BuffSkill4 = {
 			L1SkillId.PHYSICAL_ENCHANT_STR, L1SkillId.PHYSICAL_ENCHANT_DEX,
 			L1SkillId.BLESS_WEAPON, L1SkillId.REMOVE_CURSE
 			};*/
 	
 	
-	private void ¿ÜÃ¢(){
+	private void outsole(){
 		try{
 		_glment = glmentArray[_random.nextInt(glmentArray.length)];
 		Delay(900000000);
@@ -2735,7 +2732,7 @@ public class L1RobotInstance extends L1PcInstance {
 		S_ChatPacket cp = new S_ChatPacket(this, _glment, Opcodes.S_MESSAGE, 3);
 		listner.sendPackets(cp, true);
 		setGlsaid(true);
-		listner = null; //´©¼ö¹æÁö
+		listner = null; //Leak-proof
 		cp = null;
 		}
 		}catch(Exception e){
@@ -2745,13 +2742,13 @@ public class L1RobotInstance extends L1PcInstance {
 
 	
 
-	private void Á¨µµ¸£¹öÇÁ() {
+	private void zendorbuff() {
 		GeneralThreadPool.getInstance().schedule(new Runnable() {
 			@Override
 			public void run() {
-				// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+				// TODO Auto-generated method stubs
 				try {
-					int[] skillt = ¸®½ºº¿BuffSkill4;
+					int[] skillt = leesbot_BuffSkill4;
 					if (_random.nextInt(2) == 0) {
 						for (Integer i : skillt) {
 							L1Skills skill = SkillsTable.getInstance()
@@ -2770,12 +2767,12 @@ public class L1RobotInstance extends L1PcInstance {
 												skill.getCastGfx()), true);
 						}
 						Thread.sleep(1000 + _random.nextInt(1000));
-						// Èæ»çÄÚÀÎ
+						// í‘ì‚¬ì½”ì¸
 						// Broadcaster.broadcastPacket(L1RobotInstance.this, new
 						// S_SkillSound(L1RobotInstance.this.getId(), 4914),
 						// true);
 					} else {
-						// Èæ»çÄÚÀÎ
+						// í‘ì‚¬ì½”ì¸
 						// Broadcaster.broadcastPacket(L1RobotInstance.this, new
 						// S_SkillSound(L1RobotInstance.this.getId(), 4914),
 						// true);
@@ -2805,7 +2802,7 @@ public class L1RobotInstance extends L1PcInstance {
 	}
 
 	/**
-	 * °Å¸®°ª ÃßÃâ.
+	 * distance value extraction.
 	 * 
 	 * @param o
 	 * @param oo
@@ -2818,7 +2815,7 @@ public class L1RobotInstance extends L1PcInstance {
 	}
 
 	/**
-	 * °Å¸®¾È¿¡ ÀÖ´Ù¸é Âü
+	 * If you're on the street
 	 */
 	public boolean isDistance(int x, int y, int m, int tx, int ty, int tm,
 			int loc) {
@@ -2831,7 +2828,7 @@ public class L1RobotInstance extends L1PcInstance {
 	}
 
 	/**
-	 * ÇØ´çÇÏ´Â ÁÂÇ¥·Î ¹æÇâÀ» ÀüÈ¯ÇÒ¶§ »ç¿ë.
+	 * Used to change direction to the corresponding coordinates.
 	 */
 	public int calcheading(int myx, int myy, int tx, int ty) {
 		if (tx > myx && ty > myy) {
@@ -2903,7 +2900,7 @@ public class L1RobotInstance extends L1PcInstance {
 		}
 	}
 
-	public void updateclan(String Ç÷ÀÌ¸§, int clanid, String È£Äª, boolean swich) {
+	public void updateclan(String blood_name, int clanid, String title, boolean swich) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -2911,9 +2908,9 @@ public class L1RobotInstance extends L1PcInstance {
 			pstm = con
 					.prepareStatement("UPDATE robots SET clanname = ?,clanid = ?,title = ? WHERE name = ?");
 			if (swich) {
-				pstm.setString(1, Ç÷ÀÌ¸§);
+				pstm.setString(1, blood_name);
 				pstm.setInt(2, clanid);
-				pstm.setString(3, È£Äª);
+				pstm.setString(3, title);
 			} else {
 				pstm.setString(1, "");
 				pstm.setInt(2, 0);
@@ -2932,7 +2929,7 @@ public class L1RobotInstance extends L1PcInstance {
 		return calcheading(o.getX(), o.getY(), x, y);
 	}
 	
-	///º¸¶óµ¹ÀÌ ¾îÅÃ°ü·Ã
+	///Violet attack related
 
 	public synchronized int _serchCource(int x, int y) {
 		int courceRange = 10;
@@ -2956,9 +2953,9 @@ public class L1RobotInstance extends L1PcInstance {
 			}
 		}
 		// 32666 32820 32647 32795 19 25
-		// locbase = ÇöÀçÁÂÇ¥ - (Å¸°ÙÁÂÇ¥-25)
-		// locNext·Î º¹»ç
-		// locNext¿¡ ÇÑÄ­ÀÌµ¿
+		// locbase = í˜„ì¬ì¢Œí‘œ - (íƒ€ê²Ÿì¢Œí‘œ-25)
+		// locNextë¡œ ë³µì‚¬
+		// locNextì— í•œì¹¸ì´ë™
 		// locCenter = 26;
 		int[] firstCource = { 2, 4, 6, 0, 1, 3, 5, 7 };
 		for (i = 0; i < 8; i++) {

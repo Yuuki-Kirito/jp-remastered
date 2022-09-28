@@ -38,8 +38,8 @@ import static l1j.server.server.model.skill.L1SkillId.STATUS_DRAGONPERL;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_FREEZE;
 import static l1j.server.server.model.skill.L1SkillId.STATUS_UNDERWATER_BREATH;
 import static l1j.server.server.model.skill.L1SkillId.UNCANNY_DODGE;
-import static l1j.server.server.model.skill.L1SkillId.데스페라도;
-import static l1j.server.server.model.skill.L1SkillId.파워그립;
+import static l1j.server.server.model.skill.L1SkillId.DESPERADO;
+import static l1j.server.server.model.skill.L1SkillId.POWER_GRIP;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -1120,8 +1120,8 @@ public class AntarasRaid {
 	private boolean isNotCancelable(int skillNum) {
 		return skillNum == ENCHANT_WEAPON || skillNum == BLESSED_ARMOR
 				|| skillNum == ABSOLUTE_BARRIER || skillNum == ADVANCE_SPIRIT
-				|| skillNum == SHOCK_STUN || skillNum == 파워그립
-				|| skillNum == 데스페라도 || skillNum == STATUS_UNDERWATER_BREATH
+				|| skillNum == SHOCK_STUN || skillNum == POWER_GRIP
+				|| skillNum == DESPERADO || skillNum == STATUS_UNDERWATER_BREATH
 				|| skillNum == SHADOW_FANG || skillNum == REDUCTION_ARMOR
 				|| skillNum == SOLID_CARRIAGE || skillNum == COUNTER_BARRIER
 				|| skillNum == SHADOW_ARMOR || skillNum == ARMOR_BREAK

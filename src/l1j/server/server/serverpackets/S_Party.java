@@ -196,7 +196,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 						writeBit(754);
 						break;
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 						writeBit(7439);
 						break;
 					case L1SkillId.SHOCK_STUN:  
@@ -220,10 +220,10 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.PHANTASM:  
 						writeBit(3129);
 						break;
-					case L1SkillId.파워그립:  
+					case L1SkillId.POWER_GRIP:  
 						writeBit(6176);
 						break;
-					case L1SkillId.데스페라도:  
+					case L1SkillId.DESPERADO:  
 						writeBit(6499);
 						break;																								
 					case L1SkillId.ERASE_MAGIC:  
@@ -283,7 +283,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SILENCE:  
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.SHOCK_STUN:  
 					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -291,8 +291,8 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.STRIKER_GALE:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 					case L1SkillId.ERASE_MAGIC:  
 					case L1SkillId.EARTH_BIND:  
 					case L1SkillId.PANIC:  
@@ -335,12 +335,12 @@ public class S_Party extends ServerBasePacket {
 						break;
 					case L1SkillId.WEAKNESS:  
 					case L1SkillId.IMMUNE_TO_HARM: 
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 						writeBit(timeSec * 10);
 						break;
 					case L1SkillId.DARKNESS:  
@@ -452,7 +452,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 						os.writeBit(754);
 						break;
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 						os.writeBit(7439);
 						break;
 					case L1SkillId.SHOCK_STUN:  
@@ -476,10 +476,10 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.PHANTASM:  
 						os.writeBit(3129);
 						break;
-					case L1SkillId.파워그립:  
+					case L1SkillId.POWER_GRIP:  
 						os.writeBit(6176);
 						break;
-					case L1SkillId.데스페라도:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(6499);
 						break;																								
 					case L1SkillId.ERASE_MAGIC:  
@@ -539,7 +539,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SILENCE:  
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.SHOCK_STUN:  
 					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -547,8 +547,8 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.STRIKER_GALE:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 					case L1SkillId.ERASE_MAGIC:  
 					case L1SkillId.EARTH_BIND:  
 					case L1SkillId.PANIC:  
@@ -591,12 +591,12 @@ public class S_Party extends ServerBasePacket {
 						break;
 					case L1SkillId.WEAKNESS:  
 					case L1SkillId.IMMUNE_TO_HARM: 
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(timeSec * 10);
 						break;
 					case L1SkillId.DARKNESS:  
@@ -711,7 +711,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 						os.writeBit(754);
 						break;
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 						os.writeBit(7439);
 						break;
 					case L1SkillId.SHOCK_STUN:  
@@ -735,10 +735,10 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.PHANTASM:  
 						os.writeBit(3129);
 						break;
-					case L1SkillId.파워그립:  
+					case L1SkillId.POWER_GRIP:  
 						os.writeBit(6176);
 						break;
-					case L1SkillId.데스페라도:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(6499);
 						break;																								
 					case L1SkillId.ERASE_MAGIC:  
@@ -798,7 +798,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SILENCE:  
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.SHOCK_STUN:  
 					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -806,8 +806,8 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.STRIKER_GALE:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 					case L1SkillId.ERASE_MAGIC:  
 					case L1SkillId.EARTH_BIND:  
 					case L1SkillId.PANIC:  
@@ -850,12 +850,12 @@ public class S_Party extends ServerBasePacket {
 						break;
 					case L1SkillId.WEAKNESS:  
 					case L1SkillId.IMMUNE_TO_HARM: 
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(timeSec * 10);
 						break;
 					case L1SkillId.DARKNESS:  
@@ -945,7 +945,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.DECAY_POTION:  
 						os.writeBit(754);
 						break;
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 						os.writeBit(7439);
 						break;
 					case L1SkillId.SHOCK_STUN:  
@@ -969,10 +969,10 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.PHANTASM:  
 						os.writeBit(3129);
 						break;
-					case L1SkillId.파워그립:  
+					case L1SkillId.POWER_GRIP:  
 						os.writeBit(6176);
 						break;
-					case L1SkillId.데스페라도:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(6499);
 						break;																								
 					case L1SkillId.ERASE_MAGIC:  
@@ -1033,7 +1033,7 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.SILENCE:  
 					case L1SkillId.FOG_OF_SLEEPING:  
 					case L1SkillId.DECAY_POTION:  
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.SHOCK_STUN:  
 					case L1SkillId.EMPIRE:  
 					case L1SkillId.AREA_OF_SILENCE:  
@@ -1041,8 +1041,8 @@ public class S_Party extends ServerBasePacket {
 					case L1SkillId.STRIKER_GALE:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 					case L1SkillId.ERASE_MAGIC:  
 					case L1SkillId.EARTH_BIND:  
 					case L1SkillId.PANIC:  
@@ -1085,12 +1085,12 @@ public class S_Party extends ServerBasePacket {
 						break;
 					case L1SkillId.WEAKNESS:  
 					case L1SkillId.IMMUNE_TO_HARM: 
-					case L1SkillId.데스힐:  
+					case L1SkillId.DEATH_HILL:  
 					case L1SkillId.POLLUTE_WATER:  
 					case L1SkillId.THUNDER_GRAB:  
 					case L1SkillId.PHANTASM:  
-					case L1SkillId.파워그립:  
-					case L1SkillId.데스페라도:  
+					case L1SkillId.POWER_GRIP:  
+					case L1SkillId.DESPERADO:  
 						os.writeBit(timeSec * 10);
 						break;
 					case L1SkillId.DARKNESS:  

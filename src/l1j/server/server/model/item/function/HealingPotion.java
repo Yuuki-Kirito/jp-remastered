@@ -732,7 +732,7 @@ public class HealingPotion extends L1ItemInstance {
 			healHp += addhp + pc.getPotionPlus();
 		}
 
-		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)) {
+		if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)) {
 			int atklv = pc.desperado_attack_level;
 			int dflv = pc.getLevel();
 			double 저하률 = 0.45;

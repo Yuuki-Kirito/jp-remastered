@@ -11,7 +11,7 @@ public class S_SabuTell extends ServerBasePacket {
 	private byte[] _byte = null;
 
 	public S_SabuTell(L1PcInstance pc) {
-		if (pc._TELL_WAIT() || pc.isTeleport() || pc.isDead() || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)
+		if (pc._TELL_WAIT() || pc.isTeleport() || pc.isDead() || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION) || pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
 				|| pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PHANTOM)) {
 			return;

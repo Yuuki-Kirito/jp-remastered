@@ -64,7 +64,7 @@ public class L1Teleport {
 	public static void teleport(L1PcInstance pc, int x, int y, short mapid, int head, boolean effectable, boolean swich) {
 		if (swich) {
 			if (pc instanceof L1RobotInstance) {
-				((L1RobotInstance) pc).ÅÚ(x, y, mapid, 1, effectable);
+				((L1RobotInstance) pc).tell(x, y, mapid, 1, effectable);
 				return;
 			}
 			pc.setTeleportX(x);
@@ -95,7 +95,7 @@ public class L1Teleport {
 
 	public static void teleport(L1PcInstance pc, int x, int y, short mapid, int head, boolean effectable, boolean absolut, int absolutTime) {
 		if (pc instanceof L1RobotInstance) {
-			((L1RobotInstance) pc).ÅÚ(x, y, mapid, 1, effectable);
+			((L1RobotInstance) pc).tell(x, y, mapid, 1, effectable);
 		} else {
 			if (effectable)
 				pc.setTelType(7);
@@ -127,7 +127,7 @@ public class L1Teleport {
 
 	public static void «í«Ü«Ã«È«Æ«ë(L1RobotInstance rob, int x, int y, short m,
 			boolean swich) {
-		rob.ÅÚ(x, y, m);
+		rob.tell(x, y, m);
 		/*
 		 * rob.setTeleport(true); for (L1PcInstance pc :
 		 * L1World.getInstance().getRecognizePlayer(rob)) { if(swich){

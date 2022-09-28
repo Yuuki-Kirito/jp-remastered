@@ -255,7 +255,7 @@ public class L1Magic {
 
 					|| skillId == FOG_OF_SLEEPING || skillId == ICE_LANCE
 					|| skillId == POLLUTE_WATER || skillId == RETURN_TO_NATURE
-					|| skillId == THUNDER_GRAB || skillId == 파워그립
+					|| skillId == THUNDER_GRAB || skillId == POWER_GRIP
 					|| skillId == SHADOW_TAB) {
 				return false;
 			}
@@ -324,7 +324,7 @@ public class L1Magic {
 		switch (skillId) {
 		case CANCELLATION:
 		case SILENCE:
-		case L1SkillId.데스힐:
+		case L1SkillId.DEATH_HILL:
 			if (_calcType == PC_PC) {
 				if (_targetPc instanceof L1RobotInstance) {
 					if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(
@@ -531,8 +531,8 @@ public class L1Magic {
 						|| skillId == ERASE_MAGIC || skillId == EARTH_BIND
 						|| skillId == AREA_OF_SILENCE || skillId == SHADOW_TAB
 						|| skillId == WIND_SHACKLE || skillId == STRIKER_GALE
-						|| skillId == SHOCK_STUN || skillId == EMPIRE  || skillId == 파워그립 || skillId == JUDGEMENT
-						|| skillId == 데스페라도 || skillId == FOG_OF_SLEEPING || skillId == PANTERA || skillId == BLADE || skillId == PHANTOM
+						|| skillId == SHOCK_STUN || skillId == EMPIRE  || skillId == POWER_GRIP || skillId == JUDGEMENT
+						|| skillId == DESPERADO || skillId == FOG_OF_SLEEPING || skillId == PANTERA || skillId == BLADE || skillId == PHANTOM
 						|| skillId == ICE_LANCE || skillId == HORROR_OF_DEATH
 						|| skillId == POLLUTE_WATER || skillId == FEAR
 						|| skillId == ELEMENTAL_FALL_DOWN || skillId == FORCE_STUN
@@ -540,7 +540,7 @@ public class L1Magic {
 						|| skillId == DEMOLITION || skillId == AVENGER
 						|| skillId == RETURN_TO_NATURE || skillId == PHANTASM
 						|| skillId == CONFUSION || skillId == SILENCE
-						|| skillId == L1SkillId.데스힐) {
+						|| skillId == L1SkillId.DEATH_HILL) {
 					return false;
 				}
 			}
@@ -632,7 +632,7 @@ public class L1Magic {
 			}
 			break;
 
-		case 데스페라도:
+		case DESPERADO:
 			if (attackLevel >= defenseLevel) {
 				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.DEFE_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
@@ -706,7 +706,7 @@ public class L1Magic {
 
 			break;
 		
-		case 파워그립:
+		case POWER_GRIP:
 			if (attackLevel >= defenseLevel) {
 				probability = (int) ((attackLevel - defenseLevel) * 3) + Config.GRIP_PROBABILITY;
 			} else if (attackLevel < defenseLevel) {
@@ -1239,7 +1239,7 @@ public class L1Magic {
 			break;
 		case SILENCE:
 		case FOG_OF_SLEEPING:
-		case L1SkillId.데스힐:{
+		case L1SkillId.DEATH_HILL:{
 			if(attackInt > 50)attackInt=50;
 			if (attackLevel >= defenseLevel) {
 				defenseMr -= (int) ((attackLevel - defenseLevel) * 5);
@@ -1344,7 +1344,7 @@ public class L1Magic {
 			}
 		}
 			break;
-		case 디스트로이:
+		case DESTROY:
 			if (attackLevel >= defenseLevel) {
 				probability = (int) ((attackLevel - defenseLevel) * 2) + 45;
 			} else if (attackLevel < defenseLevel) {
@@ -1594,8 +1594,8 @@ public class L1Magic {
 		if (_calcType == PC_PC || _calcType == PC_NPC) {
 			if (probability > 0) {
 				if (skillId != L1SkillId.SHOCK_STUN
-						&& skillId != L1SkillId.데스페라도
-						&& skillId != L1SkillId.파워그립 && skillId != L1SkillId.DEMOLITION) {
+						&& skillId != L1SkillId.DESPERADO
+						&& skillId != L1SkillId.POWER_GRIP && skillId != L1SkillId.DEMOLITION) {
 					L1ItemInstance run = _pc.getInventory().getItemEquipped(2,
 							14);
 					if (run != null) {
@@ -1912,7 +1912,7 @@ public class L1Magic {
 		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(IMMUNE_TO_HARM)) {
 			dmg -= (dmg*Config.MUME_DAMAGE);
 		}
-		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(루시퍼)) {
+		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(LUCIFER)) {
 			dmg -= dmg / 10;
 		}
 

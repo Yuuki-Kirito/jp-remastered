@@ -318,13 +318,13 @@ public class S_CreateItem extends ServerBasePacket {
 			p[1] = 15012;
 			p[2] = 9604;
 			break;
-		case L1SkillId.데스힐:
+		case L1SkillId.DEATH_HILL:
 			// 73 8 14991 9601
 			p[0] = 73;
 			p[1] = 14991;
 			p[2] = 9601;
 			break;
-		case L1SkillId.디스트로이:
+		case L1SkillId.DESTROY:
 			// 452 30 15002 9603
 			p[0] = 452;
 			p[1] = 15002;

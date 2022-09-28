@@ -189,7 +189,7 @@ public class L1SkillUse {
 
 	// 카운터 매직으로 방어할수 없는 마법
 	private static final int[] EXCEPT_COUNTER_MAGIC = { 1, 2, 3, 5, 8, 9, 12, 13, 14, 19, 21, 26, 31, 32, 35, 37, 42, 43, 44, 48, 49, 52, 54, 55, 57, 60, 61,
-			63, 67, 68, 69, 72, 73, 75, 78, 79, FORCE_STUN, ETERNITY, AVENGER, DEMOLITION, SHOCK_STUN, EMPIRE, 파워그립, 데스페라도, PANTERA, SHADOW_TAB, PHANTOM, BLADE,
+			63, 67, 68, 69, 72, 73, 75, 78, 79, FORCE_STUN, ETERNITY, AVENGER, DEMOLITION, SHOCK_STUN, EMPIRE, POWER_GRIP, DESPERADO, PANTERA, SHADOW_TAB, PHANTOM, BLADE,
 			REDUCTION_ARMOR, BOUNCE_ATTACK, SOLID_CARRIAGE, 마제스티, COUNTER_BARRIER, HALPHAS, INFERNO, 97, 98, 99, 100, 101, 102, 104, 105, 106, 107, 109, 110, 111,
 			ARMOR_BREAK, 113, 114, 115, 116, 117, 118, 129, 130, 131, 132, 134, 137, 138, 146, 147, 148, 149, 150, 151, 155, 156, 158, 159, 161, 163, 164, 165,
 			166, 168, 169, 170, 171, 181, SOUL_OF_FLAME, ADDITIONAL_FIRE, FOU_SLAYER, SCALES_EARTH_DRAGON, SCALES_FIRE_DRAGON, SCALES_WATER_DRAGON,
@@ -1009,7 +1009,7 @@ public class L1SkillUse {
 		}
 
 		if ((cha.getSkillEffectTimerSet().hasSkillEffect(ICE_LANCE))
-				&& (_skillId == ICE_LANCE || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == EMPIRE || _skillId == 파워그립 || _skillId == FORCE_STUN
+				&& (_skillId == ICE_LANCE || _skillId == SHOCK_STUN || _skillId == DESPERADO || _skillId == EMPIRE || _skillId == POWER_GRIP || _skillId == FORCE_STUN
 						|| _skillId == ETERNITY || _skillId == DEMOLITION || _skillId == AVENGER || _skillId == PANTERA || _skillId == SHADOW_TAB || _skillId == PHANTOM)) {
 			return false;
 		}
@@ -1055,7 +1055,7 @@ public class L1SkillUse {
 						|| _skillId == ANTA_SKILL_2 || _skillId == ANTA_SKILL_3 // 안타라스 용언
 						|| _skillId == ANTA_SKILL_4 || _skillId == ANTA_SKILL_5 || _skillId == ANTA_SKILL_6 || _skillId == ANTA_SKILL_7
 						|| _skillId == ANTA_SKILL_8 || _skillId == ANTA_SKILL_9 || _skillId == ANTA_SKILL_10 || _skillId == ANTA_SKILL_11
-						|| _skillId == ANTA_SKILL_12 || _skillId == ANTA_SKILL_13 || _skillId == ANTA_SKILL_14 || _skillId == 40027 || _skillId == 데스힐
+						|| _skillId == ANTA_SKILL_12 || _skillId == ANTA_SKILL_13 || _skillId == ANTA_SKILL_14 || _skillId == 40027 || _skillId == DEATH_HILL
 						|| _skillId == miso1 || _skillId == miso2 || _skillId == miso3) {
 					return true;
 				} else {
@@ -1308,25 +1308,25 @@ public class L1SkillUse {
 			return true;
 		}
 
-		if (!_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM && magicattr != 0)
+		if (!_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM && magicattr != 0)
 				&& (magicattr != _player.getElfAttr() && !_player.isGm())) {
 			return false;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 2)) && (_player.getElfAttr() == 21)) {
 			return true;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 4)) && (_player.getElfAttr() == 24)) {
 			return true;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 2 || magicattr == 8)) && (_player.getElfAttr() == 28)) {
 			return true;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 4)) && (_player.getElfAttr() == 41)) {
 			return true;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 4 || magicattr == 8)) && (_player.getElfAttr() == 48)) {
 			return true;
-		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= 포커스웨이브 && _skillId <= SAND_STORM
+		} else if (_player._GLORIOUS && (_skill.getSkillLevel() >= 17 && _skill.getSkillLevel() <= 22 && _skillId >= FOCUS_WAVE && _skillId <= SAND_STORM
 				&& (magicattr == 1 || magicattr == 8)) && (_player.getElfAttr() == 81)) {
 			return true;
 		}
@@ -1542,7 +1542,7 @@ public class L1SkillUse {
 			_getBuffDuration = _skillTime * 1000;
 		}
 
-		if (_skillId == 데스힐 || _skillId == SHOCK_STUN || _skillId == 데스페라도 || _skillId == 파워그립 || _skillId == EMPIRE || _skillId == DEMOLITION
+		if (_skillId == DEATH_HILL || _skillId == SHOCK_STUN || _skillId == DESPERADO || _skillId == POWER_GRIP || _skillId == EMPIRE || _skillId == DEMOLITION
 				|| _skillId == FORCE_STUN || _skillId == ETERNITY || _skillId == L1SkillId.SHADOW_TAB || _skillId == PANTERA || _skillId == PHANTOM || _skillId == THUNDER_GRAB) {
 			_getBuffDuration = _shockStunDuration;
 		}
@@ -1738,8 +1738,8 @@ public class L1SkillUse {
 			pc.sendPackets(new S_NewSkillIcons(L1SkillId.ADVANCE_SPIRIT, true, 1200));
 			break;
 
-		case 기간틱:
-			pc.sendPackets(new S_NewSkillIcons(L1SkillId.기간틱, true, 300));
+		case PERIOD_TICK:
+			pc.sendPackets(new S_NewSkillIcons(L1SkillId.PERIOD_TICK, true, 300));
 			break;
 
 		case STRIKER_GALE:// -99
@@ -1812,11 +1812,11 @@ public class L1SkillUse {
 			pc.sendPackets(new S_SystemMessage("블로우 어택: 일정 확률로 근거리 대미지 1.5배 적용."));
 			break;
 
-		case 루시퍼:
-			pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 30));
+		case LUCIFER:
+			pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 30));
 			pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
 			if (pc._LUCIFER_DESTINY) {
-				pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 60));
+				pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 60));
 				pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
 			}
 			break;
@@ -1910,7 +1910,7 @@ public class L1SkillUse {
 			pc.sendPackets(new S_SystemMessage("포커스 스피릿츠: 마법 치명타 +5%."));
 			break;
 
-		case 포커스웨이브:
+		case FOCUS_WAVE:
 			pc.sendPackets(new S_SkillBrave(pc.getId(), 10, _getBuffIconDuration), true);
 			Broadcaster.broadcastPacket(pc, new S_SkillBrave(pc.getId(), 12, 0), true);
 			break;
@@ -2114,7 +2114,7 @@ public class L1SkillUse {
 				}
 			}
 
-			if (_skillId == 데스페라도) { // 데스페라도
+			if (_skillId == DESPERADO) { // 데스페라도
 				int gfxid = 12758;
 				if (_player._DESPERADO_ABSOLUTE) {
 					gfxid = 17235;
@@ -2374,7 +2374,7 @@ public class L1SkillUse {
 							_player.sendPackets(new S_SkillSound(targetid, castgfx), true);
 							Broadcaster.broadcastPacket(_player, new S_SkillSound(targetid, castgfx), true);
 						} else {
-							if(_skillId == 디스트로이) {
+							if(_skillId == DESTROY) {
 								if(_player.isSkillMastery(L1SkillId.FEAR)) {
 									_player.sendPackets(new S_SkillSound(targetid, 18959), true);
 									Broadcaster.broadcastPacket(_player, new S_SkillSound(targetid, 18959), true);
@@ -2695,8 +2695,8 @@ public class L1SkillUse {
 	}
 
 	private static final int[][] repeatedSkills = { { FIRE_WEAPON, WIND_SHOT, STORM_EYE, BURNING_WEAPON, STORM_SHOT, 블로우어택 }, { SHIELD, IRON_SKIN },
-			{ HOLY_WALK, BLOOD_LUST, MOVING_ACCELERATION, SAND_STORM, HURRICANE, STATUS_FRUIT, STATUS_BRAVE, STATUS_ELFBRAVE, FIRE_BLESS, 포커스웨이브 },
-			{ HASTE, GREATER_HASTE, STATUS_HASTE }, { 프라이드, 기간틱, ADVANCE_SPIRIT }, { PHYSICAL_ENCHANT_DEX, DRESS_DEXTERITY },
+			{ HOLY_WALK, BLOOD_LUST, MOVING_ACCELERATION, SAND_STORM, HURRICANE, STATUS_FRUIT, STATUS_BRAVE, STATUS_ELFBRAVE, FIRE_BLESS, FOCUS_WAVE },
+			{ HASTE, GREATER_HASTE, STATUS_HASTE }, { 프라이드, PERIOD_TICK, ADVANCE_SPIRIT }, { PHYSICAL_ENCHANT_DEX, DRESS_DEXTERITY },
 			{ PHYSICAL_ENCHANT_STR, DRESS_MIGHTY }, { FEATHER_BUFF_A, FEATHER_BUFF_B, FEATHER_BUFF_C, FEATHER_BUFF_D },
 			{ FAFU_MAAN, ANTA_MAAN, LIND_MAAN, VALA_MAAN, LIFE_MAAN, BIRTH_MAAN, SHAPE_MAAN, HALPAS_MAAN, NEVER_MAAN } };
 
@@ -2933,7 +2933,7 @@ public class L1SkillUse {
 						continue;
 					}
 				} else if (_skill.getType() == L1Skills.TYPE_HEAL) {
-					if (cha.getSkillEffectTimerSet().hasSkillEffect(10518) || cha.getSkillEffectTimerSet().hasSkillEffect(데스힐) || cha.isPhantomDeathed()) {
+					if (cha.getSkillEffectTimerSet().hasSkillEffect(10518) || cha.getSkillEffectTimerSet().hasSkillEffect(DEATH_HILL) || cha.isPhantomDeathed()) {
 						dmg = _magic.calcHealing(_skillId);
 					} else {
 						dmg = -1 * _magic.calcHealing(_skillId);
@@ -2965,8 +2965,8 @@ public class L1SkillUse {
 				
 				// 스킬 타이머 등록 확인 및 스킬 확인
 				try {
-					if (cha.getSkillEffectTimerSet().hasSkillEffect(_skillId) && _skillId != 토마호크 && _skillId != BONE_BREAK && _skillId != 파워그립
-							&& _skillId != 데스페라도 && _skillId != SHOCK_STUN && _skillId != THUNDER_GRAB && _skillId != 데스힐 && _skillId != 앱솔루트블레이드
+					if (cha.getSkillEffectTimerSet().hasSkillEffect(_skillId) && _skillId != 토마호크 && _skillId != BONE_BREAK && _skillId != POWER_GRIP
+							&& _skillId != DESPERADO && _skillId != SHOCK_STUN && _skillId != THUNDER_GRAB && _skillId != DEATH_HILL && _skillId != 앱솔루트블레이드
 							&& _skillId != SOUL_BARRIER && _skillId != RISING && _skillId != EMPIRE && _skillId != IMPACT && _skillId != FORCE_STUN
 							&& _skillId != DEMOLITION && _skillId != ETERNITY && _skillId != SHADOW_TAB && _skillId != PANTERA && _skillId != PHANTOM) {
 
@@ -4423,16 +4423,16 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 데스힐: {
+				case DEATH_HILL: {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
 						_shockStunDuration = 8 * 1000;// 데스힐도 일단 저변수를쓰자.
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.데스힐, true, 8));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.DEATH_HILL, true, 8));
 					}
 				}
 					break;
 
-				case 디스트로이: {
+				case DESTROY: {
 					if (_calcType == PC_PC) {
 						if (cha instanceof L1PcInstance) {
 							L1PcInstance pc = (L1PcInstance) cha;
@@ -4451,7 +4451,7 @@ public class L1SkillUse {
 								}
 							}
 							
-							pc.sendPackets(new S_CreateItem(디스트로이, 30));
+							pc.sendPackets(new S_CreateItem(DESTROY, 30));
 						}
 					}
 				}
@@ -4840,14 +4840,14 @@ public class L1SkillUse {
 					cha.setSleeped(true);
 					break;
 
-				case 기간틱: {
+				case PERIOD_TICK: {
 					L1PcInstance pc = (L1PcInstance) cha;
 					double per = (pc.getLevel() / 2.000) / 100.000;
 					int addhp = (int) ((double) pc.getBaseMaxHp() * per);
 					pc.setggHp(addhp);
 					pc.addMaxHp(addhp);
 					pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()), true);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.기간틱, true, 300));
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.PERIOD_TICK, true, 300));
 
 					if (pc.isInParty()) {
 						pc.getParty().updateMiniHP(pc);
@@ -5025,7 +5025,7 @@ public class L1SkillUse {
 				}
 					break;
 
-				case 루시퍼: {
+				case LUCIFER: {
 					L1PcInstance pc = (L1PcInstance) cha;
 					if(pc._LUCIFER_DESTINY && pc.getLevel() >= 85) {
 						int pvpre = pc.getLevel() - 83;
@@ -5041,15 +5041,15 @@ public class L1SkillUse {
 						pc.setLucifer(i);
 					}
 					if (pc._LUCIFER_DESTINY) {
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 60));
-						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.루시퍼, 60 * 1000);
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 60));
+						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.LUCIFER, 60 * 1000);
 						pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
 						_player.sendPackets(new S_SkillSound(_player.getId(), 19017), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 19017), true);
 						
 					} else {
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 30));
-						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.루시퍼, 30 * 1000);
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 30));
+						pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.LUCIFER, 30 * 1000);
 						pc.sendPackets(new S_SystemMessage("루시퍼 : 받는 대미지가 일정량 감소함."));
 						_player.sendPackets(new S_SkillSound(_player.getId(), 13112), true);
 						Broadcaster.broadcastPacket(_player, new S_SkillSound(_player.getId(), 13112), true);
@@ -5094,7 +5094,7 @@ public class L1SkillUse {
 					}
 					break;
 
-				case 파워그립: {
+				case POWER_GRIP: {
 					_shockStunDuration = random.nextInt(4000) + 2000;
 					L1EffectSpawn.getInstance().spawnEffect(91163, _shockStunDuration, cha.getX(), cha.getY(), cha.getMapId());
 					if (cha instanceof L1PcInstance) {
@@ -5104,12 +5104,12 @@ public class L1SkillUse {
 							|| cha instanceof L1DwarfInstance || cha instanceof L1TeleporterInstance || cha instanceof L1MerchantInstance
 							|| cha instanceof L1ScarecrowInstance || cha instanceof L1PeopleInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
-						npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.파워그립, _shockStunDuration);
+						npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.POWER_GRIP, _shockStunDuration);
 					}
 				}
 					break;
 
-				case 데스페라도: {
+				case DESPERADO: {
 					int targetLevel = 0;
 					int diffLevel = 0;
 
@@ -5182,13 +5182,13 @@ public class L1SkillUse {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
 						pc.desperado_attack_level = _user.getLevel();
-						pc.sendPackets(new S_NewSkillIcons(L1SkillId.데스페라도, true, -1));
+						pc.sendPackets(new S_NewSkillIcons(L1SkillId.DESPERADO, true, -1));
 						pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_DEATH_PERADO, true));
 					} else if (cha instanceof L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof L1PetInstance
 							|| cha instanceof L1DwarfInstance || cha instanceof L1TeleporterInstance || cha instanceof L1MerchantInstance
 							|| cha instanceof L1ScarecrowInstance || cha instanceof L1PeopleInstance) {
 						L1NpcInstance npc = (L1NpcInstance) cha;
-						npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.데스페라도, _shockStunDuration);
+						npc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.DESPERADO, _shockStunDuration);
 					}
 				}
 					break;
@@ -7192,7 +7192,7 @@ public class L1SkillUse {
 					}
 						break;
 
-					case 포커스웨이브: {
+					case FOCUS_WAVE: {
 						L1PcInstance pc = (L1PcInstance) cha;
 						if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_FRUIT)) {
 							pc.getSkillEffectTimerSet().killSkillEffectTimer(L1SkillId.STATUS_FRUIT);
@@ -7915,8 +7915,8 @@ public class L1SkillUse {
 
 	private boolean isNotCancelable(int skillNum) {
 		return skillNum == ENCHANT_WEAPON || skillNum == BLESSED_ARMOR || skillNum == ABSOLUTE_BARRIER || skillNum == ADVANCE_SPIRIT || skillNum == MOBIUS
-				|| skillNum == SHOCK_STUN || skillNum == SHADOW_TAB || skillNum == PANTERA || skillNum == 기간틱 || skillNum == FORCE_STUN || skillNum == DEMOLITION || skillNum == ETERNITY
-				|| skillNum == PRIME || skillNum == HALPHAS || skillNum == POTENTIAL || skillNum == PHANTOM || skillNum == 파워그립 || skillNum == 데스페라도
+				|| skillNum == SHOCK_STUN || skillNum == SHADOW_TAB || skillNum == PANTERA || skillNum == PERIOD_TICK || skillNum == FORCE_STUN || skillNum == DEMOLITION || skillNum == ETERNITY
+				|| skillNum == PRIME || skillNum == HALPHAS || skillNum == POTENTIAL || skillNum == PHANTOM || skillNum == POWER_GRIP || skillNum == DESPERADO
 				|| skillNum == EMPIRE || skillNum == SCALES_Lind_DRAGON || skillNum == STATUS_UNDERWATER_BREATH || skillNum == INFERNO || skillNum == SHADOW_FANG
 				|| skillNum == REDUCTION_ARMOR || skillNum == SOLID_CARRIAGE || skillNum == COUNTER_BARRIER || skillNum == INFERNO || skillNum == SHADOW_ARMOR
 				|| skillNum == ARMOR_BREAK || skillNum == DRESS_EVASION || skillNum == UNCANNY_DODGE || skillNum == SCALES_EARTH_DRAGON

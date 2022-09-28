@@ -1,6 +1,6 @@
 package l1j.server.GameSystem.Robot;
 
-import static l1j.server.server.model.skill.L1SkillId.HASTE;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,8 +76,8 @@ public class Robot_ConnectAndRestart {
 		}
 	}
 
-	// ¹ö°æÀå, ±êÅĞ, ±â¶õ ·ÎÅ×ÀÌ¼Ç ½ºÆù
-	// ½ºÆùÇÏ°í 1~2½Ã°£ ÀÖ´Ù°¡ »ç¶óÁö°í ÇÏ³ª ´õ³ª¿À°í
+	// Birch, Feather, and Giran Rotation Spawn
+	// ã‚¹ãƒãƒ¼ãƒ³ã—ã¦1ã€œ2æ™‚é–“ã„ã‚‹ã¨æ¶ˆãˆã¦ã‚‚ã†1ã¤
 
 	public void start_spawn() {
 		for (int i = 0; i < 300; i++) {
@@ -98,7 +98,7 @@ public class Robot_ConnectAndRestart {
 			if (bot == null)
 				return;
 			GeneralThreadPool.getInstance().schedule(new botVisible(bot),
-					60000 * (_random.nextInt(2) + 1)); //¿ø·¡  60000
+					60000 * (_random.nextInt(2) + 1)); //ã‚ªãƒªã‚¸ãƒŠãƒ«  60000
 	
 		}
 	}
@@ -126,7 +126,7 @@ public class Robot_ConnectAndRestart {
 
 		@Override
 		public void run() {
-			// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+			// TODO Auto-generated method stubs
 			try {
 				if (spawn_type == 1) {
 					if (System.currentTimeMillis() >= time) {
@@ -134,7 +134,7 @@ public class Robot_ConnectAndRestart {
 						GeneralThreadPool.getInstance().execute(this);
 						return;
 					} else {
-						if (bot.isDead() || bot._½º·¹µåÁ¾·á) {
+						if (bot.isDead() || bot.is_THREAD_EXIT) {
 							spawn_type = 3;
 							GeneralThreadPool.getInstance().schedule(this,
 									10000 + _random.nextInt(20000));
@@ -157,9 +157,9 @@ public class Robot_ConnectAndRestart {
 						pc.sendPackets(new S_RemoveObject(bot), true);
 					}
 					bot.getNearObjects().removeAllKnownObjects();
-					bot.¸®½ºº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
-					bot.¸®½ºº¿_½ºÆùÀ§Ä¡ = -1;
+					bot.is_LISBOT = false;
+					bot.is_THREAD_EXIT = true;
+					bot.lisbot_spawn_witch = -1;
 					bot.updateconnect(false);
 					put(bot);
 					spawn();
@@ -180,7 +180,7 @@ public class Robot_ConnectAndRestart {
 					// int map_type = _random.nextInt(20);
 					while (true) {
 						switch (map_type) {
-						case 19:// ¹ö°æ 3½Ã ¹æ·® ¶óÀÎ 20¸í
+						case 19:// 20 people in the 3 o'clock burjing line
 							if (_random.nextInt(100) > 75) {
 								bot.setX(33532 + _random.nextInt(2));
 								bot.setY(32860 + _random.nextInt(13));
@@ -190,7 +190,7 @@ public class Robot_ConnectAndRestart {
 							}
 							bot.setMap((short) 4);
 							break;
-						case 18:// ¹ö°æ À­ 11½Ã ¶óÀÎ 10¸í
+						case 18:// 10 people on the 11 o'clock line
 							if (_random.nextInt(100) > 50) {
 								bot.setX(33522 + _random.nextInt(8));
 								bot.setY(32836 + _random.nextInt(3));
@@ -201,7 +201,7 @@ public class Robot_ConnectAndRestart {
 							bot.setMap((short) 4);
 							break;
 						case 17:
-						case 16:// ¹ö°æ ¹Ø ¶óÀÎ 26
+						case 16:// line 26 below
 							// if(_random.nextInt(1000) > 200){
 							if (_random.nextInt(100) > 50) {
 								// 33494
@@ -224,7 +224,7 @@ public class Robot_ConnectAndRestart {
 							bot.setMap((short) 4);
 							break;
 						case 3:
-						case 0:// ¹ö°æ //6¸¶¸®
+						case 0:// Vergyeong //6
 							if (_random.nextInt(100) > 60) {
 								map_type = _random.nextInt(20);
 								continue;
@@ -234,53 +234,53 @@ public class Robot_ConnectAndRestart {
 							bot.setY(32858 + _random.nextInt(2));
 							bot.setMap((short) 4);
 							break;
-						case 1:// ±êÅĞ // 25¸¶¸®
+						case 1:// Feathers // 25
 							bot.setX(32755 + _random.nextInt(28));
 							bot.setY(32823 + _random.nextInt(15));
 							bot.setMap((short) 622);
 							break;
-						case 6:// ÇÏÀÌ³× ÅÚ³à //5¸¶¸®
+						case 6:// Heine Telly Girl //5
 							bot.setX(33608 + _random.nextInt(7));
 							bot.setY(33253 + _random.nextInt(7));
 							bot.setMap((short) 4);
 							break;
-						case 7:// ÇÏÀÌ³× Ã¢°í //5¸¶¸®
+						case 7:// Heine Warehouse //5
 							bot.setX(33597 + _random.nextInt(8));
 							bot.setY(33239 + _random.nextInt(2));
 							bot.setMap((short) 4);
 							break;
-						case 8:// ¶ó´øÁ¤¹® Ã¢°í //3¸¶¸®
+						case 8:// Raden Front Gate Warehouse //3
 							bot.setX(32682 + _random.nextInt(5));
 							bot.setY(32798 + _random.nextInt(12));
 							bot.setMap((short) 450);
 							break;
-						case 9:// ¿ìÁîº¤ Ã¢°í //15¸¶¸®
+						case 9:// ìš°ì¦ˆë²¡ ì°½ê³  //15ë§ˆë¦¬
 							bot.setX(32626 + _random.nextInt(3));
 							bot.setY(33176 + _random.nextInt(16));
 							bot.setMap((short) 4);
 							break;
-						case 10:// ±Û·çµò Ã¢°í //5¸¶¸®
+						case 10:// Gludin Warehouse //5
 							bot.setX(32616 + _random.nextInt(7));
 							bot.setY(32796 + _random.nextInt(7));
 							bot.setMap((short) 4);
 							break;
-						case 11:// ±Û·çµò ¿ä¸®»óÀÎ //5¸¶¸®
+						case 11:// Gludin Cooking Merchant //5
 							bot.setX(32607 + _random.nextInt(4));
 							bot.setY(32735 + _random.nextInt(4));
 							bot.setMap((short) 4);
 							break;
-						case 12:// ¸»¼¶ ¸¶À» //10¸¶¸®
+						case 12:// Horse Island Village //10
 							bot.setX(32575 + _random.nextInt(9));
 							bot.setY(32929 + _random.nextInt(10));
 							bot.setMap((short) 0);
 							break;
-						case 13:// Àº±â»ç Ã¢°í //15¸¶¸®
+						case 13:// Silver Knight Warehouse //15
 							// 33072 33379 33060 33391 33078 33409 33091 33397
 							bot.setX(33060 + _random.nextInt(32));
 							bot.setY(33379 + _random.nextInt(31));
 							bot.setMap((short) 4);
 							break;
-						case 14:// ¿À·» Ã¢°í //15¸¶¸®
+						case 14:// Oren Warehouse //15
 							if (_random.nextInt(3) == 0) {
 								bot.setX(34062 + _random.nextInt(14));
 								bot.setY(32277 + _random.nextInt(13));
@@ -290,34 +290,34 @@ public class Robot_ConnectAndRestart {
 							}
 							bot.setMap((short) 4);
 							break;
-						case 20:// ½ÃÀå 10¸¶¸®
+						case 20:// 10 markets
 							bot.setX(32801 + _random.nextInt(5));
 							bot.setY(32926 + _random.nextInt(5));
 							bot.setMap((short) 800);
 							break;
-						case 15:// ¾Æµ§ Ã¢°í //5¸¶¸®
+						case 15:// Aden Warehouse //5
 							bot.setX(33923 + _random.nextInt(5));
 							bot.setY(33340 + _random.nextInt(5));
 							bot.setMap((short) 4);
 							break;
 						case 5:
 						case 4:
-						case 2:// ±â¶õ
+						case 2:// Giran
 							/*
 							 * byte sub_type = (byte) _random.nextInt(100);
-							 * if(sub_type >= 95){ // °Ô½ÃÆÇ, Ã¢°í ¹Ø¿¡ Ãß°¡
+							 * if(sub_type >= 95){ // ê²Œì‹œíŒ, ì°½ê³  ë°‘ì— ì¶”ê°€
 							 * bot.setX(33412+_random.nextInt(8));
 							 * bot.setY(32800+_random.nextInt(15)); }else
-							 * if(sub_type >= 5){ // ±¤Àå
+							 * if(sub_type >= 5){ // ê´‘ì¥
 							 * bot.setX(33422+_random.nextInt(25));
 							 * bot.setY(32801+_random.nextInt(30));
 							 * while(bot.getX() >= 33440 && bot.getX() <= 33446
 							 * && bot.getY() >= 32824 && bot.getY() <= 32830){
 							 * bot.setX(33422+_random.nextInt(25));
 							 * bot.setY(32801+_random.nextInt(30)); } }else
-							 * if(sub_type >= 5){ // °Ô½ÃÆÇ ±ÙÃ³
+							 * if(sub_type >= 5){ // ê²Œì‹œíŒ ê·¼ì²˜
 							 * bot.setX(33420+_random.nextInt(5));
-							 * bot.setY(32803+_random.nextInt(10)); }else{ // ¹°¾à
+							 * bot.setY(32803+_random.nextInt(10)); }else{ // ë¬¼ì•½
 							 * bot.setX(33457+_random.nextInt(4));
 							 * bot.setY(32815+_random.nextInt(10)); }
 							 */
@@ -331,9 +331,9 @@ public class Robot_ConnectAndRestart {
 						int bot_count = 0;
 						for (L1RobotInstance Robot : L1World.getInstance()
 								.getAllRobot()) {
-							if (Robot.¸®½ºº¿) {
-								if (Robot.¸®½ºº¿_½ºÆùÀ§Ä¡ != -1) {
-									if (Robot.¸®½ºº¿_½ºÆùÀ§Ä¡ == map_type)
+							if (Robot.is_LISBOT) {
+								if (Robot.lisbot_spawn_witch != -1) {
+									if (Robot.lisbot_spawn_witch == map_type)
 										bot_count++;
 								}
 							}
@@ -389,7 +389,7 @@ public class Robot_ConnectAndRestart {
 								continue;
 							}
 						} else if (map_type == 16 || map_type == 17) {
-							if (bot_count >= 13) {// 16 17 °¢ 13¸¶¸®¾¿
+							if (bot_count >= 13) {// 16 17 å„13åŒ¹ãšã¤
 								map_type = _random.nextInt(21);
 								// map_type = _random.nextInt(20);
 								continue;
@@ -425,9 +425,9 @@ public class Robot_ConnectAndRestart {
 										bot.getY()))
 							break;
 					}
-					bot.¸®½ºº¿ = true;
-					bot._½º·¹µåÁ¾·á = false;
-					bot.¸®½ºº¿_½ºÆùÀ§Ä¡ = (byte) map_type;
+					bot.is_LISBOT = true;
+					bot.is_THREAD_EXIT = false;
+					bot.lisbot_spawn_witch = (byte) map_type;
 
 					bot.getMoveState().setHeading(_random.nextInt(8));
 					bot.getMoveState().setMoveSpeed(1);
@@ -458,7 +458,7 @@ public class Robot_ConnectAndRestart {
 							bot.getClanname());
 					if (clan != null) {
 						if (bot.getClanid() == clan.getClanId()
-								&& // Å©¶õÀ» ÇØ»êÇØ, ÀçÂ÷, µ¿¸íÀÇ Å©¶õÀÌ Ã¢¼³µÇ¾úÀ» ¶§ÀÇ ´ëÃ¥
+								&& // ã‚¯ãƒ©ãƒ³ã‚’è§£æ•£ã—ã€å†åº¦ã€åŒåã®ã‚¯ãƒ©ãƒ³ãŒå‰µè¨­ã•ã‚ŒãŸã¨ãã®å¯¾ç­–
 								bot.getClanname()
 										.toLowerCase()
 										.equals(clan.getClanName()
@@ -467,10 +467,10 @@ public class Robot_ConnectAndRestart {
 							for (L1PcInstance clanMember : clan
 									.getOnlineClanMember()) {
 								if (clanMember.getId() != bot.getId()) {
-									// Áö±İ, Ç÷¸Í¿øÀÇ%0%s°¡ °ÔÀÓ¿¡ Á¢¼ÓÇß½À´Ï´Ù.
+									// ä»Šã€è¡€ç›Ÿå“¡ã®%0%sãŒã‚²ãƒ¼ãƒ ã«æ¥ç¶šã—ã¾ã—ãŸã€‚
 									clanMember.sendPackets(new S_SystemMessage(
-											clanMember, "Ç÷¸Í¿ø " + bot.getName()
-													+ "´Ô²²¼­ ¹æ±İ °ÔÀÓ¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù."),
+											clanMember, "è¡€ç›Ÿå“¡ " + bot.getName()
+													+ "ã•ã‚“ãŒã¡ã‚‡ã†ã©ã‚²ãƒ¼ãƒ ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¾ã—ãŸã€‚"),
 											true);
 								}
 							}
@@ -505,9 +505,9 @@ public class Robot_ConnectAndRestart {
 					}
 					Robot.Doll_Delete(bot);
 					bot.getNearObjects().removeAllKnownObjects();
-					bot.¸®½ºº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
-					bot.¸®½ºº¿_½ºÆùÀ§Ä¡ = -1;
+					bot.is_LISBOT = false;
+					bot.is_THREAD_EXIT = true;
+					bot.lisbot_spawn_witch = -1;
 					bot.updateconnect(false);
 					put(bot);
 					spawn();

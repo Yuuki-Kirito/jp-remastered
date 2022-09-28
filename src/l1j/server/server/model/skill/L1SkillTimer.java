@@ -99,7 +99,7 @@ class L1SkillStop {
 				pc.setDessertId(0);
 			}
 				break;
-			case 디스트로이: {
+			case DESTROY: {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.getAC().addAc(-10);
@@ -111,7 +111,7 @@ class L1SkillStop {
 						pc.getAbility().addAddedInt(2);
 					}
 					
-					pc.sendPackets(new S_CreateItem(디스트로이, 1));
+					pc.sendPackets(new S_CreateItem(DESTROY, 1));
 				}
 			}
 				break;
@@ -160,10 +160,10 @@ class L1SkillStop {
 				}
 			}
 				break;
-			case 데스힐: {
+			case DEATH_HILL: {
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.sendPackets(new S_CreateItem( 데스힐, 1));	
+					pc.sendPackets(new S_CreateItem( DEATH_HILL, 1));	
 				}
 			}
 				break;				// 기존에 없었으나 추가함 by white
@@ -334,13 +334,13 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 기간틱:
+			case PERIOD_TICK:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.addMaxHp(-pc.getggHp());
 					pc.setggHp(0);
 					pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()),true);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.기간틱, false, -1), true);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.PERIOD_TICK, false, -1), true);
 					if (pc.isInParty()) {
 						pc.getParty().updateMiniHP(pc);
 					}
@@ -908,7 +908,7 @@ class L1SkillStop {
 				}
 				break;
 			
-			case L1SkillId.파워그립:
+			case L1SkillId.POWER_GRIP:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_POWER_GRIP, false), true);
@@ -1201,15 +1201,15 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 루시퍼:
+			case LUCIFER:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
 					if(pc.getLucifer() > 0) { 
 						pc.getResistance().addcalcPcDefense(pc.getLucifer());
 						pc.setLucifer(0);
 						
-					pc.removeSkillEffect(루시퍼);
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, false, -1), true);
+					pc.removeSkillEffect(LUCIFER);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, false, -1), true);
 					pc.sendPackets(new S_SystemMessage("루시퍼의 보호가 사라집니다."));
 				}
 			}
@@ -1443,10 +1443,10 @@ class L1SkillStop {
 				}
 				break;
 				
-			case 데스페라도:
+			case DESPERADO:
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;
-					pc.sendPackets(new S_NewSkillIcons(L1SkillId.데스페라도, false, -1), true);
+					pc.sendPackets(new S_NewSkillIcons(L1SkillId.DESPERADO, false, -1), true);
 					pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_DEATH_PERADO, false), true);
 				} else if (cha instanceof L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof L1PetInstance) {
 					L1NpcInstance npc = (L1NpcInstance) cha;
@@ -1829,7 +1829,7 @@ class L1SkillStop {
 				}
 				break;
 	
-			case 포커스웨이브:
+			case FOCUS_WAVE:
 				cha.getMoveState().setBraveSpeed(0);
 				if (cha instanceof L1PcInstance) {
 					L1PcInstance pc = (L1PcInstance) cha;

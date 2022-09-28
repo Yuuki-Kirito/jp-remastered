@@ -1,6 +1,6 @@
 package l1j.server.GameSystem.Robot;
 
-import static l1j.server.server.model.skill.L1SkillId.HASTE;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -65,14 +65,14 @@ public class Robot_Fish {
 		public void run() {
 			try {
 
-				// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+				// TODO Auto-generated method stubs
 				if (!GMCommands.fishBot) {
 					GeneralThreadPool.getInstance().schedule(this, 10000);
 					return;
 				}
-				if (time == 0) {// 1000 1ÃÊ
-								// 10000 10ÃÊ
-								// 100000 100ÃÊ 12~18ºĞ //6~12ºĞ
+				if (time == 0) {// 1000 1ç§’
+								// 10000 10ç§’
+								// 100000 100ç§’ 12ï½18åˆ† //6ï½12åˆ†
 					time = System.currentTimeMillis() + 7200000
 							+ _random.nextInt(3600000);
 				} else {
@@ -83,7 +83,7 @@ public class Robot_Fish {
 								L1PcInstance tp = (L1PcInstance) temp;
 								tp.sendPackets(new S_PacketBox(
 										S_PacketBox.GREEN_MESSAGE,
-										"´©±º°¡°¡ È²±İ ÀåÈ­¸¦ ½ÀµæÇÏ¿´½À´Ï´Ù!"), true);
+										"èª°ã‹ãŒã‚´ãƒ¼ãƒ«ãƒ‡ãƒ³ãƒ–ãƒ¼ãƒ„ã‚’ç¿’å¾—ã—ã¾ã—ãŸï¼"), true);
 							}
 						}
 						time = System.currentTimeMillis() + 3600000
@@ -170,7 +170,7 @@ public class Robot_Fish {
 
 		@Override
 		public void run() {
-			// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+			// TODO Auto-generated method stubs
 			try {
 				if (spawn_type == 1) {
 					if (System.currentTimeMillis() >= time) {
@@ -178,7 +178,7 @@ public class Robot_Fish {
 						GeneralThreadPool.getInstance().execute(this);
 						return;
 					} else {
-						if (bot.isDead() || bot._½º·¹µåÁ¾·á) {
+						if (bot.isDead() || bot.is_THREAD_EXIT) {
 							spawn_type = 3;
 							GeneralThreadPool.getInstance().schedule(this,
 									10000 + _random.nextInt(20000));
@@ -203,8 +203,8 @@ public class Robot_Fish {
 					}
 					Robot.Doll_Delete(bot);
 					bot.getNearObjects().removeAllKnownObjects();
-					bot.³¬½Ãº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
+					bot.is_FISHING_BOT = false;
+					bot.is_THREAD_EXIT = true;
 					bot.updateconnect(false);
 					put(bot);
 					spawn();
@@ -228,7 +228,7 @@ public class Robot_Fish {
 					 * 
 					 * @Override public void run() { spawning = false; }
 					 * 
-					 * }, (100));//ºü¸£°Ô
+					 * }, (100));//æ—©ã
 					 */
 					L1PcInstance rob = L1World.getInstance().getPlayer(
 							bot.getName());
@@ -245,13 +245,13 @@ public class Robot_Fish {
 					bot.setY(32831);
 					bot.setMap((short) 5490);
 					bot.getGfxId().setTempCharGfx(bot.getGfxId().getGfxId());
-					bot.³¬½Ãº¿ = true;
-					bot.³¬½ÃÁÂÇ¥ = null;
-					bot.³¬½ÃÀÌµ¿ÁÂÇ¥ = null;
-					bot.³¬½ÃÁß = false;
-					bot.³¬½ÃÁ¾·á = false;
-					bot.³¬½ÃÅÚ = false;
-					bot._½º·¹µåÁ¾·á = false;
+					bot.is_FISHING_BOT = true;
+					bot.fishing_coordinates = null;
+					bot.fishing_movement_coordinates = null;
+					bot.is_IM_FISHING_NOW = false;
+					bot.is_FISHING_IS_OVER = false;
+					bot.is_FISHING_LODGE = false;
+					bot.is_THREAD_EXIT = false;
 					bot.getMoveState().setHeading(_random.nextInt(8));
 					bot.getMoveState().setMoveSpeed(1);
 					bot.getSkillEffectTimerSet().setSkillEffect(HASTE,
@@ -281,7 +281,7 @@ public class Robot_Fish {
 							bot.getClanname());
 					if (clan != null) {
 						if (bot.getClanid() == clan.getClanId()
-								&& // Å©¶õÀ» ÇØ»êÇØ, ÀçÂ÷, µ¿¸íÀÇ Å©¶õÀÌ Ã¢¼³µÇ¾úÀ» ¶§ÀÇ ´ëÃ¥
+								&& // ã‚¯ãƒ©ãƒ³ã‚’è§£æ•£ã—ã€å†åº¦ã€åŒåã®ã‚¯ãƒ©ãƒ³ãŒå‰µè¨­ã•ã‚ŒãŸã¨ãã®å¯¾ç­–
 								bot.getClanname()
 										.toLowerCase()
 										.equals(clan.getClanName()
@@ -290,10 +290,10 @@ public class Robot_Fish {
 							for (L1PcInstance clanMember : clan
 									.getOnlineClanMember()) {
 								if (clanMember.getId() != bot.getId()) {
-									// Áö±İ, Ç÷¸Í¿øÀÇ%0%s°¡ °ÔÀÓ¿¡ Á¢¼ÓÇß½À´Ï´Ù.
+									// ä»Šã€è¡€ç›Ÿå“¡ã®%0%sãŒã‚²ãƒ¼ãƒ ã«æ¥ç¶šã—ã¾ã—ãŸã€‚
 									clanMember.sendPackets(new S_SystemMessage(
-											clanMember, "Ç÷¸Í¿ø " + bot.getName()
-													+ "´Ô²²¼­ ¹æ±İ °ÔÀÓ¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù."),
+											clanMember, "è¡€ç›Ÿå“¡ " + bot.getName()
+													+ "ã•ã‚“ãŒã¡ã‚‡ã†ã©ã‚²ãƒ¼ãƒ ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¾ã—ãŸã€‚"),
 											true);
 								}
 							}
@@ -318,7 +318,7 @@ public class Robot_Fish {
 					// time = System.currentTimeMillis();
 					GeneralThreadPool.getInstance().schedule(this, 1);
 				} else if (spawn_type == 4) {
-					if (!bot.³¬½ÃÅÚ) {
+					if (!bot.is_FISHING_LODGE) {
 						GeneralThreadPool.getInstance().schedule(this, 2000);
 						return;
 					}
@@ -352,8 +352,8 @@ public class Robot_Fish {
 					}
 					Robot.Doll_Delete(bot);
 					bot.getNearObjects().removeAllKnownObjects();
-					bot.³¬½Ãº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
+					bot.is_FISHING_BOT = false;
+					bot.is_THREAD_EXIT = true;
 					bot.updateconnect(false);
 					put(bot);
 					spawn();
@@ -364,7 +364,7 @@ public class Robot_Fish {
 					bot.setFishingItem(null);
 					Broadcaster.broadcastPacket(bot,
 							new S_CharVisualUpdate(bot));
-					bot.³¬½ÃÁ¾·á = true;
+					bot.is_FISHING_IS_OVER = true;
 					spawn_type = 4;
 					GeneralThreadPool.getInstance().schedule(this, 2000);
 				}

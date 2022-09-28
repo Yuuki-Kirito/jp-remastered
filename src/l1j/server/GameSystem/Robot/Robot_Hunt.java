@@ -1,6 +1,6 @@
 package l1j.server.GameSystem.Robot;
 
-import static l1j.server.server.model.skill.L1SkillId.HASTE;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +21,6 @@ import l1j.server.server.datatables.ExpTable;
 import l1j.server.server.model.Broadcaster;
 import l1j.server.server.model.L1Clan;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.WeaponSkill;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.skill.L1SkillId;
 import l1j.server.server.serverpackets.S_SkillBrave;
@@ -31,7 +30,7 @@ import l1j.server.server.utils.SQLUtil;
 
 public class Robot_Hunt {
 
-	public static boolean ±â°¨ = false;
+	public static boolean is_PERSIMMON = false;
 	private static Random _random = new Random(System.nanoTime());
 	private static Queue<L1RobotInstance> _queue;
 	private static Robot_Hunt _instance;
@@ -66,27 +65,27 @@ public class Robot_Hunt {
 		}
 	}
 
-	// ¿ë°è¸®´º¾ó·ÎÀÎÇØ Á¦¿Ü 15¸¶¸®
-	private static final String[] mapName = { "ÁöÀú", 
-			"°³¹Ì±¼1", "°³¹Ì±¼2", "°³¹Ì±¼3","°³¹Ì±¼4", "°³¹Ì±¼5", "°³¹Ì±¼6", 
-			"¿¡¹Ù1Ãþ", "¿¡¹Ù2Ãþ", "¿¡¹Ù3Ãþ", "¿¡¹Ù4Ãþ", "ÁöÇÏÄ§°ø·Î1Ãþ",
-			"ÁöÇÏÄ§°ø·Î2Ãþ", "ÁöÇÏÄ§°ø·Î3Ãþ", "¼±¹Ú½ÉÇØ", "ÀØ¼¶",
-		    "ÀÚÀÌ¾ðÆ®¹ç", "È­µÕ", "ÇÏÀÌ³×Àâ¹ç", "¿ë°è", "Ç³µÕ",
-			"¿ë´ø1Ãþ", "¿ë´ø2Ãþ", "¿ë´ø3Ãþ", "¿ë´ø4Ãþ", "¿ë´ø5Ãþ", "¿ë´ø6Ãþ", "¿ë´ø7Ãþ", 
-			"º»´ø1Ãþ", "º»´ø2Ãþ", "º»´ø3Ãþ", "º»´ø4Ãþ", "º»´ø5Ãþ", "º»´ø6Ãþ", "º»´ø7Ãþ", "±â°¨1Ãþ"
-             , "±â°¨2Ãþ" , "±â°¨3Ãþ" , "±â°¨4Ãþ"
-	         , "»ó¾ÆÅ¾4Ãþ", "»ó¾ÆÅ¾5Ãþ", "¿À¸¸8Ãþ", "¿À¸¸9Ãþ", "¿À¸¸10Ãþ" , "°á°è"};
+	// ìš©ê³„ë¦¬ë‰´ì–¼ë¡œì¸í•´ ì œì™¸ 15ë§ˆë¦¬
+	private static final String[] mapName = { "underground", 
+			"ant den 1", "ant den 2", "ant den 3","ant den 4", "ant den 5", "ant den 6", 
+			"Eva 1st floor", "Eva 2nd floor", "Eva 3rd floor", "Eva 4th floor", "åœ°ä¸‹ä¾µæ”»è·¯1éšŽ",
+			"åœ°ä¸‹ä¾µæ”»è·¯2éšŽ", "åœ°ä¸‹ä¾µæ”»è·¯3éšŽ", "ship deep sea", "forget island",
+		    "giant field", "huadong", "heine grass field", "first person", "storm",
+			"Yongdun 1st floor", "Yongdun 2nd floor", "Yongdun 3rd floor", "Yongdun 4th floor", "Yongdon 5th floor", "Yongdun 6th floor", "Yongdun 7th floor", 
+			"Bondon 1st floor", "Bondon 2nd floor", "Bondon 3rd floor", "Bondon 4th floor", "Bondon 5th floor", "Bondon 6th floor", "Bondon 7th floor", "Gigam 1st floor"
+             , "Gigam 2nd floor" , "Gigam 3rd floor" , "Gigam 4th floor"
+	         , "Ivory Tower 4th Floor", "Ivory Tower 5th Floor", "Oman 8th floor", "Oman 9th floor", "Oman 10th floor" , "Barrier"};
 
-	private static final int[] mapCount = { 0, // ÁöÀú
+	private static final int[] mapCount = { 0, // underground
 			20, 20, 20, 20, 20, 20,// 
-			3, 3, 3, 3, // ¿¡¹Ù
-			0, 0, 0,// Ä§°ø·Î
-			0,// ¼±¹Ú½ÉÇØ
-			0, // ÀØ¼¶
-			0, 10, 0, 10, 10,//ÀÚÀÌ¾ðÆ®¹ç, È­µÕ, ÇÏÀÌ³× Àâ¹ç, ¿ë°è, Ç³µÕ
-			3, 3, 3, 3, 3, 0, 0, //¿ë´ø1 -7
-			20, 15, 10, 25, 10, 15, 20, 40, 25, 10, 10// º»´ø +±â°¨
-		   ,2, 2, //»ó¾ÆÅ¾ 4Ãþ 5Ãþ
+			3, 3, 3, 3, // Eva
+			0, 0, 0,// invasion road
+			0,// ship deep sea
+			0, // forget island
+			0, 10, 0, 10, 10,//Giant Field, Hwadong, Heine Weed Field, Yonggye, Pungdung
+			3, 3, 3, 3, 3, 0, 0, //Dragon 1 -7
+			20, 15, 10, 25, 10, 15, 20, 40, 25, 10, 10// Seen + Sense
+		   ,2, 2, //è±¡ç‰™ã®å¡”4éšŽ5éšŽ
          	30,20,20,20};
 
 	public void start_spawn() {
@@ -97,33 +96,33 @@ public class Robot_Hunt {
 				if (bot == null)
 					continue;
 				GeneralThreadPool.getInstance().schedule(new botVisible(bot, mapName[a]),
-						6000 * (_random.nextInt(120) + 1)); //¿ø·¡ 120
+						6000 * (_random.nextInt(120) + 1)); //ã‚ªãƒªã‚¸ãƒŠãƒ« 120
 				// GeneralThreadPool.getInstance().schedule(new botVisible(bot,
 				// mapName[a]), 6000*(_random.nextInt(10)+1));
 			}
 		}
 	}
 
-	private void direct_spawn(String À§Ä¡) {
+	private void direct_spawn(String location) {
 		if (!GMCommands.huntBot)
 			return;
 		synchronized (_queue) {
 			L1RobotInstance bot = _queue.poll();
 			if (bot == null)
 				return;
-			GeneralThreadPool.getInstance().schedule(new botVisible(bot, À§Ä¡),
+			GeneralThreadPool.getInstance().schedule(new botVisible(bot, location),
 					1 * (_random.nextInt(2) + 1));
 		}
 	}
 
-	public void delay_spawn(String À§Ä¡, int time) {
+	public void delay_spawn(String location, int time) {
 		if (!GMCommands.huntBot)
 			return;
 		synchronized (_queue) {
 			L1RobotInstance bot = _queue.poll();
 			if (bot == null)
 				return;
-			GeneralThreadPool.getInstance().schedule(new botVisible(bot, À§Ä¡),
+			GeneralThreadPool.getInstance().schedule(new botVisible(bot, location),
 					time);
 		}
 	}
@@ -131,21 +130,21 @@ public class Robot_Hunt {
 	// private static boolean spawning = false;
 	class botVisible implements Runnable {
 		private L1RobotInstance bot;
-		private String »ç³ÉÀ§Ä¡;
+		private String hunting_location;
 
-		public botVisible(L1RobotInstance bot, String _»ç³ÉÀ§Ä¡) {
+		public botVisible(L1RobotInstance bot, String _hunting_location) {
 			this.bot = bot;
-			this.»ç³ÉÀ§Ä¡ = _»ç³ÉÀ§Ä¡;
+			this.hunting_location = _hunting_location;
 		}
 
 		@Override
 		public void run() {
-			// TODO ÀÚµ¿ »ý¼ºµÈ ¸Þ¼Òµå ½ºÅÓ
+			// TODO Auto-generated method stubs
 			try {
 				L1PcInstance rob = L1World.getInstance().getPlayer(bot.getName());
 				if (rob != null) {
 					put(bot);
-					direct_spawn(»ç³ÉÀ§Ä¡);
+					direct_spawn(hunting_location);
 					return;
 				}
 				if (!GMCommands.huntBot) {
@@ -153,47 +152,47 @@ public class Robot_Hunt {
 					return;
 				}
 				if ((bot.isWizard()) 
-						&& (»ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë°è") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿À¸¸10Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿À¸¸8Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø1Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø2Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø3Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø4Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø5Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø6Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿ë´ø7Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø1Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø2Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø3Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø4Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø5Ãþ")
-//						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø6Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("º»´ø7Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("±â°¨1Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿¡¹Ù1Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿¡¹Ù2Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿¡¹Ù3Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿¡¹Ù4Ãþ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("°á°è") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("»ó¾ÆÅ¾4Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("»ó¾ÆÅ¾5Ãþ")|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("È­µÕ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("Ç³µÕ") || »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼1")|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼2")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼3")|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼4")|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼5")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("°³¹Ì±¼6"))) {
+						&& (hunting_location.equalsIgnoreCase("dragon") || hunting_location.equalsIgnoreCase("Oman 10th floor") || hunting_location.equalsIgnoreCase("Oman 8th floor")
+						|| hunting_location.equalsIgnoreCase("Yongdun 1st floor") || hunting_location.equalsIgnoreCase("Yongdun 2nd floor") || hunting_location.equalsIgnoreCase("Yongdun 3rd floor")
+						|| hunting_location.equalsIgnoreCase("Yongdun 4th floor") || hunting_location.equalsIgnoreCase("Yongdon 5th floor") || hunting_location.equalsIgnoreCase("Yongdun 6th floor")
+						|| hunting_location.equalsIgnoreCase("Yongdun 7th floor") || hunting_location.equalsIgnoreCase("Bondon 1st floor") || hunting_location.equalsIgnoreCase("Bondon 2nd floor")
+						|| hunting_location.equalsIgnoreCase("Bondon 3rd floor") || hunting_location.equalsIgnoreCase("Bondon 4th floor") || hunting_location.equalsIgnoreCase("Bondon 5th floor")
+//						|| ì‚¬ëƒ¥ìœ„ì¹˜.equalsIgnoreCase("ë³¸ë˜6ì¸µ") || ì‚¬ëƒ¥ìœ„ì¹˜.equalsIgnoreCase("ë³¸ë˜7ì¸µ") || ì‚¬ëƒ¥ìœ„ì¹˜.equalsIgnoreCase("ê¸°ê°1ì¸µ")
+						|| hunting_location.equalsIgnoreCase("Eva 1st floor") || hunting_location.equalsIgnoreCase("Eva 2nd floor") || hunting_location.equalsIgnoreCase("Eva 3rd floor")
+						|| hunting_location.equalsIgnoreCase("Eva 4th floor") || hunting_location.equalsIgnoreCase("Barrier") || hunting_location.equalsIgnoreCase("è±¡ç‰™ã®å¡”4éšŽ")
+						|| hunting_location.equalsIgnoreCase("è±¡ç‰™ã®å¡”5éšŽ")|| hunting_location.equalsIgnoreCase("huadong")
+						|| hunting_location.equalsIgnoreCase("storm") || hunting_location.equalsIgnoreCase("ant den 1")|| hunting_location.equalsIgnoreCase("ant den 2")
+						|| hunting_location.equalsIgnoreCase("ant den 3")|| hunting_location.equalsIgnoreCase("ant den 4")|| hunting_location.equalsIgnoreCase("ant den 5")
+						|| hunting_location.equalsIgnoreCase("ant den 6"))) {
 					put(bot);
-					direct_spawn(»ç³ÉÀ§Ä¡);
+					direct_spawn(hunting_location);
 					return;
 				}
-				if ((!bot.isWizard()) && »ç³ÉÀ§Ä¡.equalsIgnoreCase("¿À¸¸9Ãþ")) {
+				if ((!bot.isWizard()) && hunting_location.equalsIgnoreCase("Oman 9th floor")) {
 					put(bot);
-					direct_spawn(»ç³ÉÀ§Ä¡);
+					direct_spawn(hunting_location);
 					return;
 				}
 				int map = _random.nextInt(2);
 				while (true) {
-					// ÁÂÇ¥ ¼³Á¤
+					// åº§æ¨™è¨­å®š
 					switch (map) {
-					case 0:// ±â¶õ
+					case 0:// ê¸°ëž€
 						bot.setX(33432 + _random.nextInt(30));
 						bot.setY(32811 + _random.nextInt(30));
 						break;
-					/*case 1:// Àº±â»ç
+					/*case 1:// silver knight
 						bot.setX(33078 + _random.nextInt(6));
 						bot.setY(33386 + _random.nextInt(14));
 						break;*/
-					case 1:// ¿À·»
+					case 1:// Oren
 						bot.setX(34055 + _random.nextInt(30));
 						bot.setY(32278 + _random.nextInt(30));
 						break;
 					default:
 						break;
 					}
-					bot.setMap((short) 4); //º¿½ÃÀÛÀ§Ä¡
+					bot.setMap((short) 4); //bot start position
 					boolean ck = false;
 					for (L1PcInstance pc : L1World.getInstance().getVisiblePlayer(bot, 0)) {
 						ck = true;
@@ -207,8 +206,8 @@ public class Robot_Hunt {
 					Thread.sleep(100);
 				}
 
-				if (»ç³ÉÀ§Ä¡.equalsIgnoreCase("»ó¾ÆÅ¾4Ãþ")
-						|| »ç³ÉÀ§Ä¡.equalsIgnoreCase("»ó¾ÆÅ¾5Ãþ")) {
+				if (hunting_location.equalsIgnoreCase("è±¡ç‰™ã®å¡”4éšŽ")
+						|| hunting_location.equalsIgnoreCase("è±¡ç‰™ã®å¡”5éšŽ")) {
 					bot.getAC().setAc(-80);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(1);
@@ -218,7 +217,7 @@ public class Robot_Hunt {
 						bot.addDmgup(1);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("º»´ø")) {
+				} else if (hunting_location.startsWith("seen")) {
 					bot.getAC().setAc(-80);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -228,7 +227,7 @@ public class Robot_Hunt {
 						bot.addDmgup(110);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("±â°¨")) {
+				} else if (hunting_location.startsWith("persimmon")) {
 					bot.getAC().setAc(-80);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -238,7 +237,7 @@ public class Robot_Hunt {
 						bot.addDmgup(110);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("¿À¸¸10Ãþ")) {
+				} else if (hunting_location.startsWith("Oman 10th floor")) {
 					bot.getAC().setAc(-120);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -248,7 +247,7 @@ public class Robot_Hunt {
 						bot.addDmgup(130);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("¿À¸¸9Ãþ")) {
+				} else if (hunting_location.startsWith("Oman 9th floor")) {
 					bot.getAC().setAc(-120);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -258,7 +257,7 @@ public class Robot_Hunt {
 						bot.addDmgup(130);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("¿À¸¸8Ãþ")) {
+				} else if (hunting_location.startsWith("Oman 8th floor")) {
 					bot.getAC().setAc(-120);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -268,7 +267,7 @@ public class Robot_Hunt {
 						bot.addDmgup(130);
 					}
 					bot.addDamageReductionByArmor(1);
-				} else if (»ç³ÉÀ§Ä¡.startsWith("°á°è")) {
+				} else if (hunting_location.startsWith("Barrier")) {
 					bot.getAC().setAc(-120);
 					if(bot.getCurrentWeapon() == 20){
 						bot.addHitup(30);
@@ -293,9 +292,9 @@ public class Robot_Hunt {
 				 * }else{ bot.getAC().setAc(-60); bot.addHitup(20);
 				 * bot.addBowHitup(20); bot.addDamageReductionByArmor(5); }
 				 */
-				bot.»ç³Éº¿ = true;
-				bot.»ç³Éº¿_À§Ä¡ = »ç³ÉÀ§Ä¡;
-				bot._½º·¹µåÁ¾·á = false;
+				bot.is_HUNTING_BOT = true;
+				bot.hunting_bot_location = hunting_location;
+				bot.is_THREAD_EXIT = false;
 				bot.getMoveState().setHeading(_random.nextInt(8));
 				bot.getMoveState().setMoveSpeed(1); 
 				bot.getSkillEffectTimerSet().setSkillEffect(HASTE,
@@ -313,9 +312,9 @@ public class Robot_Hunt {
 					      Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 751), true);
 					      Broadcaster.broadcastPacket(bot, new S_SkillBrave(bot.getId(), 3, 0), true);
 						} else {
-							if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.Æ÷Ä¿½º¿þÀÌºê) && 
+							if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE) && 
 							    !bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SILENCE)) {
-							     bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.Æ÷Ä¿½º¿þÀÌºê,(_random.nextInt(600) + 400) * 1000);
+							     bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.FOCUS_WAVE,(_random.nextInt(600) + 400) * 1000);
 							     bot.getMoveState().setBraveSpeed(1);
 							     Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 16531), true);
 							     Broadcaster.broadcastPacket(bot, new S_SkillBrave(bot.getId(), 10, 0), true);
@@ -349,18 +348,18 @@ public class Robot_Hunt {
 				}
 				L1Clan clan = L1World.getInstance().getClan(bot.getClanname());
 				if (clan != null) {
-					if (bot.getClanid() == clan.getClanId() && // Å©¶õÀ» ÇØ»êÇØ, ÀçÂ÷,
-																// µ¿¸íÀÇ Å©¶õÀÌ Ã¢¼³µÇ¾úÀ»
-																// ¶§ÀÇ ´ëÃ¥
+					if (bot.getClanid() == clan.getClanId() && // ã‚¯ãƒ©ãƒ³ã‚’è§£æ•£ã—ã€æ”¹ã‚ã¦ã€
+																// åŒåã®ã‚¯ãƒ©ãƒ³ãŒå‰µè¨­ã•ã‚ŒãŸ
+																// æ™‚ã®å¯¾ç­–
 							bot.getClanname().toLowerCase().equals(clan.getClanName().toLowerCase())) {
 						clan.addOnlineClanMember(bot.getName(), bot);
 						for (L1PcInstance clanMember : clan
 								.getOnlineClanMember()) {
 							if (clanMember.getId() != bot.getId()) {
-								// Áö±Ý, Ç÷¸Í¿øÀÇ%0%s°¡ °ÔÀÓ¿¡ Á¢¼ÓÇß½À´Ï´Ù.
+								// ä»Šã€è¡€ç›Ÿå“¡ã®%0%sãŒã‚²ãƒ¼ãƒ ã«æŽ¥ç¶šã—ã¾ã—ãŸã€‚
 								clanMember.sendPackets(new S_SystemMessage(
-										clanMember, "Ç÷¸Í¿ø " + bot.getName()
-												+ "´Ô²²¼­ ¹æ±Ý °ÔÀÓ¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù."), true);
+										clanMember, "è¡€ç›Ÿå“¡ " + bot.getName()
+												+ "ã•ã‚“ãŒã¡ã‚‡ã†ã©ã‚²ãƒ¼ãƒ ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¾ã—ãŸã€‚"), true);
 							}
 						}
 					}
@@ -373,9 +372,9 @@ public class Robot_Hunt {
 				Robot.clan_join(bot);
 				Robot.Doll_Spawn(bot);
 				bot.updateconnect(true);
-				bot.«Ç«£«ì«¤(3000 + _random.nextInt(15000));
-				//if ((_random.nextInt(100)+1) >= 60) //Å¸°Ý±ÍÈ¯ ¿ø·¡ false
-				bot.Å¸°Ý±ÍÈ¯¹«½Ã = true;
+				bot.delay(3000 + _random.nextInt(15000));
+				//if ((_random.nextInt(100)+1) >= 60) //hit return original false
+				bot.is_LGNORE_HIT_RETURN = true;
 				bot.Hunt_Exit_Time = System.currentTimeMillis()
 						+ (600000000 * (60 + _random.nextInt(40)));
 				bot.startAI();
@@ -443,16 +442,16 @@ public class Robot_Hunt {
 					newPc.setType(4);
 				} else if (newPc.isDragonknight()) {
 					//if (ran < 10)
-					//	newPc.setCurrentWeapon(4); //´Ü°Ë
+					//	newPc.setCurrentWeapon(4); //dagger
 					//else
-						newPc.setCurrentWeapon(24); //¾ç¼Õ
+						newPc.setCurrentWeapon(24); //ä¸¡æ‰‹
 						//newPc.setCurrentWeapon(24);
 					newPc.setType(5);
 				} else if (newPc.isIllusionist()) {
 					//if (ran < 10)
-					//	newPc.setCurrentWeapon(40); //ÁöÆÎÀÌ
+					//	newPc.setCurrentWeapon(40); //æ–
 					//else
-						newPc.setCurrentWeapon(58); //Å°¸µÅ©
+						newPc.setCurrentWeapon(58); //ã‚­ãƒ¼ãƒªãƒ³ã‚¯
 					newPc.setType(6);
 				} else if (newPc.isCrown()) {
 					newPc.setCurrentWeapon(4);

@@ -190,9 +190,9 @@ public class BravePotion extends L1ItemInstance {
 						L1SkillId.FIRE_BLESS);
 			}
 			if (pc.getSkillEffectTimerSet()
-					.hasSkillEffect(L1SkillId.포커스웨이브)) {
+					.hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 				pc.getSkillEffectTimerSet().removeSkillEffect(
-						L1SkillId.포커스웨이브);
+						L1SkillId.FOCUS_WAVE);
 			}
 			break;
 		case 550002: // 복지 집중
@@ -223,9 +223,9 @@ public class BravePotion extends L1ItemInstance {
 						L1SkillId.FIRE_BLESS);
 			}
 			if (pc.getSkillEffectTimerSet()
-					.hasSkillEffect(L1SkillId.포커스웨이브)) {
+					.hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 				pc.getSkillEffectTimerSet().removeSkillEffect(
-						L1SkillId.포커스웨이브);
+						L1SkillId.FOCUS_WAVE);
 			}
 			break;
 		case 40733:
@@ -284,9 +284,9 @@ public class BravePotion extends L1ItemInstance {
 						L1SkillId.FIRE_BLESS);
 			}
 			if (pc.getSkillEffectTimerSet()
-					.hasSkillEffect(L1SkillId.포커스웨이브)) {
+					.hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 				pc.getSkillEffectTimerSet().removeSkillEffect(
-						L1SkillId.포커스웨이브);
+						L1SkillId.FOCUS_WAVE);
 			}
 			break;
 		case 41415:
@@ -330,9 +330,9 @@ public class BravePotion extends L1ItemInstance {
 						L1SkillId.FIRE_BLESS);
 			}
 			if (pc.getSkillEffectTimerSet()
-					.hasSkillEffect(L1SkillId.포커스웨이브)) {
+					.hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 				pc.getSkillEffectTimerSet().removeSkillEffect(
-						L1SkillId.포커스웨이브);
+						L1SkillId.FOCUS_WAVE);
 			}
 			break;
 		}

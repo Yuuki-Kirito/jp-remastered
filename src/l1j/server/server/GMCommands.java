@@ -1439,19 +1439,19 @@ public class GMCommands {
 			if (로봇 != null) {
 				if (로봇 instanceof L1RobotInstance) {
 					L1World world = L1World.getInstance();
-					if (((L1RobotInstance) 로봇).사냥봇) {
-						if (((L1RobotInstance) 로봇).사냥_종료) {
+					if (((L1RobotInstance) 로봇).is_HUNTING_BOT) {
+						if (((L1RobotInstance) 로봇).is_HUNT_END) {
 							gm.sendPackets(new S_SystemMessage("종료 대기중인 로봇입니다."), true);
 							return;
 						} else {
-							Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).사냥봇_위치, 60000);
-							((L1RobotInstance) 로봇).종료(1);
+							Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).hunting_bot_location, 60000);
+							((L1RobotInstance) 로봇).end(1);
 							gm.sendPackets(new S_SystemMessage(이름 + " 로봇을 종료 시킵니다."), true);
 							return;
 						}
 					}
-					((L1RobotInstance) 로봇)._스레드종료 = true;
-					if (!((L1RobotInstance) 로봇).리스봇 && !((L1RobotInstance) 로봇).낚시봇) {
+					((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
+					if (!((L1RobotInstance) 로봇).is_LISBOT && !((L1RobotInstance) 로봇).is_FISHING_BOT) {
 						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
 							pc.sendPackets(new S_RemoveObject(로봇), true);
 							pc.getNearObjects().removeKnownObject(로봇);
@@ -1470,7 +1470,7 @@ public class GMCommands {
 					로봇.stopSHRegeneration();
 					로봇.stopMpDecreaseByScales();
 					로봇.stopEtcMonitor();
-					((L1RobotInstance) 로봇).버경봇_타입 = 0;
+					((L1RobotInstance) 로봇).berkyung_bot_type = 0;
 					((L1RobotInstance) 로봇).loc = null;
 					if (로봇.getClanid() != 0) {
 						로봇.getClan().removeOnlineClanMember(로봇.getName());
@@ -1761,8 +1761,8 @@ public class GMCommands {
 				gm.sendPackets(new S_SystemMessage("낚시봇 생성을 시작합니다."), true);
 				return;
 			} else if (기능.equalsIgnoreCase("인형")) {
-				Robot.인형 = !Robot.인형;
-				gm.sendPackets(new S_SystemMessage("로봇 인형 사용: " + Robot.인형), true);
+				Robot.is_DOLL = !Robot.is_DOLL;
+				gm.sendPackets(new S_SystemMessage("로봇 인형 사용: " + Robot.is_DOLL), true);
 			} else {
 				gm.sendPackets(new S_SystemMessage("기능은 [사냥 / 군주 / 리스 / 낚시 / 버경 / 인형(인형사용할지)] 만 가능합니다."), true);
 				return;
@@ -4387,7 +4387,7 @@ public class GMCommands {
 
 	private void 패킷4(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.포커스웨이브, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.FOCUS_WAVE, true, 128));
 	}
 
 	private void 패킷5(L1PcInstance gm) { // 데스
@@ -4422,7 +4422,7 @@ public class GMCommands {
 
 	private void 패킷11(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.루시퍼, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 128));
 	}
 
 	private void 패킷12(L1PcInstance gm) { // 데스
@@ -4487,7 +4487,7 @@ public class GMCommands {
 
 	private void 패킷24(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
-		pc.sendPackets(new S_NewSkillIcons(L1SkillId.데스힐, true, 128));
+		pc.sendPackets(new S_NewSkillIcons(L1SkillId.DEATH_HILL, true, 128));
 	}
 
 	private void 패킷25(L1PcInstance gm) { // 데스
@@ -5081,16 +5081,16 @@ public class GMCommands {
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
 							_cnt++;
 							L1World world = L1World.getInstance();
-							if (bot.사냥봇) {
-								if (bot.사냥_종료)
+							if (bot.is_HUNTING_BOT) {
+								if (bot.is_HUNT_END)
 									continue;
 								else {
-									bot.종료();
+									bot.end();
 									continue;
 								}
 							}
-							bot._스레드종료 = true;
-							if (!bot.리스봇 && !bot.낚시봇) {
+							bot.is_THREAD_EXIT = true;
+							if (!bot.is_LISBOT && !bot.is_FISHING_BOT) {
 								for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(bot)) {
 									pc.sendPackets(new S_RemoveObject(bot), true);
 									pc.getNearObjects().removeKnownObject(bot);
@@ -5121,20 +5121,20 @@ public class GMCommands {
 						int _cnt = 0;
 						huntBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
-							if (!bot.사냥봇 || bot.사냥_종료)
+							if (!bot.is_HUNTING_BOT || bot.is_HUNT_END)
 								continue;
 							_cnt++;
-							bot.종료();
+							bot.end();
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
 					} else if (이름.equalsIgnoreCase("리스")) {
 						int _cnt = 0;
 						restartBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
-							if (!bot.리스봇)
+							if (!bot.is_LISBOT)
 								continue;
 							_cnt++;
-							bot._스레드종료 = true;
+							bot.is_THREAD_EXIT = true;
 							bot.getNearObjects().removeAllKnownObjects();
 							bot.stopHalloweenRegeneration();
 							bot.stopPapuBlessing();
@@ -5153,10 +5153,10 @@ public class GMCommands {
 						int _cnt = 0;
 						bugbearBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
-							if (!bot.버경봇)
+							if (!bot.is_BERKYUNG_BOT)
 								continue;
 							_cnt++;
-							bot._스레드종료 = true;
+							bot.is_THREAD_EXIT = true;
 							bot.getNearObjects().removeAllKnownObjects();
 							bot.stopHalloweenRegeneration();
 							bot.stopPapuBlessing();
@@ -5168,7 +5168,7 @@ public class GMCommands {
 							bot.stopSHRegeneration();
 							bot.stopMpDecreaseByScales();
 							bot.stopEtcMonitor();
-							bot.버경봇_타입 = 0;
+							bot.berkyung_bot_type = 0;
 							Robot.Doll_Delete(bot);
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
@@ -5176,10 +5176,10 @@ public class GMCommands {
 						int _cnt = 0;
 						fishBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
-							if (!bot.낚시봇)
+							if (!bot.is_FISHING_BOT)
 								continue;
 							_cnt++;
-							bot._스레드종료 = true;
+							bot.is_THREAD_EXIT = true;
 							bot.getNearObjects().removeAllKnownObjects();
 							bot.stopHalloweenRegeneration();
 							bot.stopPapuBlessing();
@@ -5198,11 +5198,11 @@ public class GMCommands {
 						int _cnt = 0;
 						clanBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
-							if (!bot.가입군주)
+							if (!bot.is_AFFILIATED_MONARCH)
 								continue;
 							_cnt++;
 							L1World world = L1World.getInstance();
-							bot._스레드종료 = true;
+							bot.is_THREAD_EXIT = true;
 							for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(bot)) {
 								pc.sendPackets(new S_RemoveObject(bot), true);
 								pc.getNearObjects().removeKnownObject(bot);
@@ -5230,17 +5230,17 @@ public class GMCommands {
 						if (로봇 != null) {
 							if (로봇 instanceof L1RobotInstance) {
 								L1World world = L1World.getInstance();
-								if (((L1RobotInstance) 로봇).사냥봇) {
-									if (((L1RobotInstance) 로봇).사냥_종료)
+								if (((L1RobotInstance) 로봇).is_HUNTING_BOT) {
+									if (((L1RobotInstance) 로봇).is_HUNT_END)
 										return;
 									else {
-										Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).사냥봇_위치, 60000);
-										((L1RobotInstance) 로봇).종료();
+										Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).hunting_bot_location, 60000);
+										((L1RobotInstance) 로봇).end();
 										return;
 									}
 								}
-								((L1RobotInstance) 로봇)._스레드종료 = true;
-								if (!((L1RobotInstance) 로봇).리스봇 && !((L1RobotInstance) 로봇).낚시봇) {
+								((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
+								if (!((L1RobotInstance) 로봇).is_LISBOT && !((L1RobotInstance) 로봇).is_FISHING_BOT) {
 									for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
 										pc.sendPackets(new S_RemoveObject(로봇), true);
 										pc.getNearObjects().removeKnownObject(로봇);
@@ -5259,7 +5259,7 @@ public class GMCommands {
 								로봇.stopSHRegeneration();
 								로봇.stopMpDecreaseByScales();
 								로봇.stopEtcMonitor();
-								((L1RobotInstance) 로봇).버경봇_타입 = 0;
+								((L1RobotInstance) 로봇).berkyung_bot_type = 0;
 								((L1RobotInstance) 로봇).loc = null;
 								if (로봇.getClanid() != 0) {
 									로봇.getClan().removeOnlineClanMember(로봇.getName());
@@ -5348,7 +5348,7 @@ public class GMCommands {
 				if (로봇 != null) {
 					if (로봇 instanceof L1RobotInstance) {
 						L1World world = L1World.getInstance();
-						((L1RobotInstance) 로봇)._스레드종료 = true;
+						((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
 						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
 							pc.sendPackets(new S_RemoveObject(로봇), true);
 							pc.getNearObjects().removeKnownObject(로봇);

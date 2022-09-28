@@ -153,7 +153,7 @@ public class L1SkillId {
 	public static final int DRESS_DEXTERITY = 110;
 	public static final int DRESS_EVASION = 565;
 	public static final int ARMOR_BREAK = 112;
-	public static final int 루시퍼 = 234;
+	public static final int LUCIFER = 234;
 	public static final int ASSASSIN = 233;
 
 	public static final int 출석체크 = 6000;
@@ -238,14 +238,14 @@ public class L1SkillId {
 	public static final int SOUL_OF_FLAME = 175;
 	public static final int ADDITIONAL_FIRE = 176;
 	public static final int HURRICANE = 178;
-	public static final int 포커스웨이브 = 177;
+	public static final int FOCUS_WAVE = 177;
 	public static final int SAND_STORM = 179;
 
 
 	// 용기사
 	public static final int DRAGON_SKIN = 181;
 	public static final int BURNING_SLASH = 182;
-	public static final int 디스트로이 = 183;
+	public static final int DESTROY = 183;
 	public static final int MAGMA_BREATH = 184;
 	public static final int SCALES_EARTH_DRAGON = 185;
 	public static final int BLOOD_LUST = 186;
@@ -579,9 +579,9 @@ public class L1SkillId {
 	public static final int 제로스리덕 = 10535;
 
 	public static final int 토마호크 = 229;
-	public static final int 기간틱 = 226;
-	public static final int 파워그립 = 228;
-	public static final int 데스페라도 = 230;
+	public static final int PERIOD_TICK = 226;
+	public static final int POWER_GRIP = 228;
+	public static final int DESPERADO = 230;
 	public static final int 하울 = 225;
 
 	public static final int PRIME = 241;
@@ -629,7 +629,7 @@ public class L1SkillId {
 	public static final int 정상의가호 = 80004;
 	public static final int COMBO_BUFF = 80006; //콤보
 
-	public static final int 데스힐 = 73;
+	public static final int DEATH_HILL = 73;
 	public static final int 앱솔루트블레이드 = 92;
 	public static final int GRACE = 122;
 	public static final int EMPIRE = 123;

@@ -12,7 +12,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 		writeH(0x6E);
 		writeC(0x08);
 		if(skillId == L1SkillId.PHANTOM || skillId == L1SkillId.PHANTOM_R || skillId == L1SkillId.PHANTOM_D || skillId == L1SkillId.FLAME || skillId == L1SkillId.JUDGEMENT
-				|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.데스힐 || skillId == L1SkillId.데스페라도) {
+				|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.DEATH_HILL || skillId == L1SkillId.DESPERADO) {
 			writeC(on ? 1 : 3);	
 		} else {
 			writeC(on ? 2 : 3);
@@ -33,7 +33,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 			writeC(0x20);
 			if (skillId == L1SkillId.드래곤의축복1단계 || skillId == L1SkillId.드래곤의축복2단계 || skillId == L1SkillId.드래곤의축복3단계
 					|| skillId == L1SkillId.PC방  || skillId == L1SkillId.FLAME
-					|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.데스페라도){
+					|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.DESPERADO){
 				writeC(0x0a); // 10
 			} else if (skillId == L1SkillId.PHANTOM) {
 				writeC(0x00);
@@ -47,7 +47,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(763);
 			} else if (skillId == L1SkillId.순간이동지배) {// 순간이동 지배반지
 				byteWrite(8463);// 인벤 이미지.
-			} else if (skillId == L1SkillId.포커스웨이브) {// 어쌔신
+			} else if (skillId == L1SkillId.FOCUS_WAVE) {// 어쌔신
 				byteWrite(8480);
 			} else if (skillId == L1SkillId.STATUS_KURTZ_FIGHTER) {// 블레이징 스피릿츠
 				byteWrite(2430);
@@ -63,7 +63,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(4832);
 			} else if (skillId == L1SkillId.블로우어택) {// 소울 배리어
 				byteWrite(8843);
-			} else if (skillId == L1SkillId.루시퍼) {// 소울 배리어
+			} else if (skillId == L1SkillId.LUCIFER) {// 소울 배리어
 				byteWrite(4503);
 			} else if (skillId == L1SkillId.IMMUNE_TO_HARM) {// 소울 배리어
 				byteWrite(1562);
@@ -91,7 +91,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(7427);
 			} else if (skillId == L1SkillId.앱솔루트블레이드) {// 앱솔루트 블레이드
 				byteWrite(7432);// 인벤 이미지.
-			} else if (skillId == L1SkillId.데스힐) {// 데스힐
+			} else if (skillId == L1SkillId.DEATH_HILL) {// 데스힐
 				byteWrite(7439);
 			} else if (skillId == L1SkillId.cyclone) {// 싸이클론
 				byteWrite(9190);
@@ -127,7 +127,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(1128);
 			} else if (skillId == L1SkillId.ADVANCE_SPIRIT) {// 
 				byteWrite(1607);
-			} else if (skillId == L1SkillId.기간틱) {// 
+			} else if (skillId == L1SkillId.PERIOD_TICK) {// 
 				byteWrite(6168);
 			} else if (skillId == L1SkillId.프라이드) {// 
 				byteWrite(8854);
@@ -175,7 +175,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				byteWrite(1567);
 			} else if (skillId == L1SkillId.CONFUSION) {
 				byteWrite(3211);
-			} else if (skillId == L1SkillId.데스페라도) {
+			} else if (skillId == L1SkillId.DESPERADO) {
 				byteWrite(6499);
 			} else if (skillId == L1SkillId.BLESS_WEAPON) {
 				byteWrite(728);
@@ -193,7 +193,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 		if (on) {
 			writeC(0x38);
 			if (skillId == L1SkillId.PHANTOM || skillId == L1SkillId.PHANTOM_R || skillId == L1SkillId.PHANTOM_D || skillId == L1SkillId.FLAME || skillId == L1SkillId.JUDGEMENT
-				|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.데스힐 || skillId == L1SkillId.데스페라도) {
+				|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.DEATH_HILL || skillId == L1SkillId.DESPERADO) {
 				writeC(0x07);
 			} else {
 				writeC(0x03);
@@ -206,7 +206,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5119;// 메세지.
 			else if (skillId == L1SkillId.FIRE_SHIELD)// 
 				msgNum = 5165;
-			else if (skillId == L1SkillId.포커스웨이브)// 어쌔신
+			else if (skillId == L1SkillId.FOCUS_WAVE)// 어쌔신
 				msgNum = 5155;
 			else if (skillId == L1SkillId.STATUS_KURTZ_FIGHTER)// 블레이징 스피릿츠
 				msgNum = 5180;
@@ -222,7 +222,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 5266;
 			else if (skillId == L1SkillId.포커스스피릿츠)// 임팩트
 				msgNum = 5272;
-			else if (skillId == L1SkillId.루시퍼)// 임팩트
+			else if (skillId == L1SkillId.LUCIFER)// 임팩트
 				msgNum = 5268;
 			else if (skillId == L1SkillId.IMMUNE_TO_HARM)// 임팩트
 				msgNum = 314;
@@ -250,7 +250,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 4734;
 			else if (skillId == L1SkillId.앱솔루트블레이드)// 앱솔루트 블레이드
 				msgNum = 4735;// 메세지.
-			else if (skillId == L1SkillId.데스힐)// 데스힐
+			else if (skillId == L1SkillId.DEATH_HILL)// 데스힐
 				msgNum = 4737;
 			else if (skillId == L1SkillId.cyclone)// 싸이클론
 				msgNum = 5446;
@@ -286,7 +286,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 1339;
 			else if (skillId == L1SkillId.ADVANCE_SPIRIT)// 
 				msgNum = 982;
-			else if (skillId == L1SkillId.기간틱)// 
+			else if (skillId == L1SkillId.PERIOD_TICK)// 
 				msgNum = 3918;
 			else if (skillId == L1SkillId.프라이드)// 
 				msgNum = 5264;
@@ -334,7 +334,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 				msgNum = 865;
 			else if (skillId == L1SkillId.CONFUSION) 
 				msgNum = 285;
-			else if (skillId == L1SkillId.데스페라도) 
+			else if (skillId == L1SkillId.DESPERADO) 
 				msgNum = 4119;
 			else if (skillId == L1SkillId.BLESS_WEAPON) 
 				msgNum = 693;
@@ -354,7 +354,7 @@ public class S_NewSkillIcons extends ServerBasePacket {
 		if (on) {
 			writeC(0x58);
 			if (skillId == L1SkillId.PHANTOM || skillId == L1SkillId.PHANTOM_R || skillId == L1SkillId.PHANTOM_D || skillId == L1SkillId.FLAME || skillId == L1SkillId.JUDGEMENT 
-					|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.데스힐 || skillId == L1SkillId.데스페라도) {
+					|| skillId == L1SkillId.FORCE_STUN || skillId == L1SkillId.DEMOLITION || skillId == L1SkillId.ETERNITY || skillId == L1SkillId.DEATH_HILL || skillId == L1SkillId.DESPERADO) {
 				writeC(0x00);
 			} else {
 				writeC(0x01);

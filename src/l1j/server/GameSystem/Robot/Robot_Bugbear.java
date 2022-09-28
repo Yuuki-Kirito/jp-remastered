@@ -123,7 +123,7 @@ public class Robot_Bugbear {
 
 		@Override
 		public void run() {
-			// TODO ÀÚµ¿ »ı¼ºµÈ ¸Ş¼Òµå ½ºÅÓ
+			// TODO Auto-generated method stubs
 			try {
 				if (spawn_type == 1) {
 					if (System.currentTimeMillis() >= time) {
@@ -131,12 +131,12 @@ public class Robot_Bugbear {
 						GeneralThreadPool.getInstance().execute(this);
 						return;
 					} else {
-						if (bot.isDead() || bot._½º·¹µåÁ¾·á) {
+						if (bot.isDead() || bot.is_THREAD_EXIT) {
 							spawn_type = 3;
 							GeneralThreadPool.getInstance().schedule(this,
 									10000 + _random.nextInt(20000));
 							// GeneralThreadPool.getInstance().schedule(this,
-							// 100);//ºü¸£°Ô
+							// 100);//æ—©ã
 							return;
 						}
 						GeneralThreadPool.getInstance().schedule(this, 100);
@@ -156,10 +156,10 @@ public class Robot_Bugbear {
 						pc.sendPackets(new S_RemoveObject(bot), true);
 					}
 					bot.getNearObjects().removeAllKnownObjects();
-					bot.¹ö°æº¿_Å¸ÀÔ = 0;
+					bot.berkyung_bot_type = 0;
 					bot.loc = null;
-					bot.¹ö°æº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
+					bot.is_BERKYUNG_BOT = false;
+					bot.is_THREAD_EXIT = true;
 					bot.updateconnect(false);
 					put(bot);
 					spawn();
@@ -168,7 +168,7 @@ public class Robot_Bugbear {
 					if (spawning) {
 						GeneralThreadPool.getInstance().schedule(this, 10000);
 						// GeneralThreadPool.getInstance().schedule(this,
-						// 100);//ºü¸£°Ô0
+						// 100);//é«˜é€Ÿ0
 						return;
 					}
 					spawning = true;
@@ -186,7 +186,7 @@ public class Robot_Bugbear {
 					// spawning = false;
 					// }
 					//
-					// }, (100));//ºü¸£°Ô
+					// }, (100));//æ—©ã
 					//
 					L1PcInstance rob = L1World.getInstance().getPlayer(
 							bot.getName());
@@ -213,17 +213,17 @@ public class Robot_Bugbear {
 										bot.getY()))
 							break;
 					}
-					// bot.¹ö°æº¿_ÀÌÀü_lawful = bot.getLawful();
+					// bot.ë²„ê²½ë´‡_ì´ì „_lawful = bot.getLawful();
 					// bot.setLawful(_random.nextInt(32768));
-					bot.¹ö°æº¿ = true;
-					bot._½º·¹µåÁ¾·á = false;
+					bot.is_BERKYUNG_BOT = true;
+					bot.is_THREAD_EXIT = false;
 
 					bot.getMoveState().setHeading(_random.nextInt(8));
 					L1Clan clan = L1World.getInstance().getClan(
 							bot.getClanname());
 					if (clan != null) {
 						if (bot.getClanid() == clan.getClanId()
-								&& // Å©¶õÀ» ÇØ»êÇØ, ÀçÂ÷, µ¿¸íÀÇ Å©¶õÀÌ Ã¢¼³µÇ¾úÀ» ¶§ÀÇ ´ëÃ¥
+								&& // í¬ë€ì„ í•´ì‚°í•´, ì¬ì°¨, ë™ëª…ì˜ í¬ë€ì´ ì°½ì„¤ë˜ì—ˆì„ ë•Œì˜ ëŒ€ì±…
 								bot.getClanname()
 										.toLowerCase()
 										.equals(clan.getClanName()
@@ -232,10 +232,10 @@ public class Robot_Bugbear {
 							for (L1PcInstance clanMember : clan
 									.getOnlineClanMember()) {
 								if (clanMember.getId() != bot.getId()) {
-									// Áö±İ, Ç÷¸Í¿øÀÇ%0%s°¡ °ÔÀÓ¿¡ Á¢¼ÓÇß½À´Ï´Ù.
+									// ì§€ê¸ˆ, í˜ˆë§¹ì›ì˜%0%sê°€ ê²Œì„ì— ì ‘ì†í–ˆìŠµë‹ˆë‹¤.
 									clanMember.sendPackets(new S_SystemMessage(
-											clanMember, "Ç÷¸Í¿ø " + bot.getName()
-													+ "´Ô²²¼­ ¹æ±İ °ÔÀÓ¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù."),
+											clanMember, "è¡€ç›Ÿå“¡ " + bot.getName()
+													+ "ã•ã‚“ãŒã‚²ãƒ¼ãƒ ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¾ã—ãŸã€‚"),
 											true);
 								}
 							}
@@ -260,12 +260,12 @@ public class Robot_Bugbear {
 							+ System.currentTimeMillis();
 					GeneralThreadPool.getInstance().schedule(this, 1);
 				} else {
-					if (L1BugBearRace.getInstance().getBugRaceStatus() == L1BugBearRace.STATUS_PLAYING || bot.¹ö°æº¿_Å¸ÀÔ != 2) {
+					if (L1BugBearRace.getInstance().getBugRaceStatus() == L1BugBearRace.STATUS_PLAYING || bot.berkyung_bot_type != 2) {
 						GeneralThreadPool.getInstance().schedule(this, 1000);
 						return;
 					}
 					Thread.sleep(1000 + _random.nextInt(30000));
-					// Thread.sleep(100);//ºü¸£°Ô
+					// Thread.sleep(100);//æ—©ã
 					if (bot.getClanid() != 0) {
 						bot.getClan().removeOnlineClanMember(bot.getName());
 					}
@@ -292,11 +292,11 @@ public class Robot_Bugbear {
 
 					Robot.Doll_Delete(bot);
 					bot.getNearObjects().removeAllKnownObjects();
-					// bot.setLawful(bot.¹ö°æº¿_ÀÌÀü_lawful);
-					// bot.¹ö°æº¿_ÀÌÀü_lawful = 0;
-					bot.¹ö°æº¿ = false;
-					bot._½º·¹µåÁ¾·á = true;
-					bot.¹ö°æº¿_Å¸ÀÔ = 0;
+					// bot.setLawful(bot.ë²„ê²½ë´‡_ì´ì „_lawful);
+					// bot.ë²„ê²½ë´‡_ì´ì „_lawful = 0;
+					bot.is_BERKYUNG_BOT = false;
+					bot.is_THREAD_EXIT = true;
+					bot.berkyung_bot_type = 0;
 					bot.loc = null;
 					bot.updateconnect(false);
 					put(bot);

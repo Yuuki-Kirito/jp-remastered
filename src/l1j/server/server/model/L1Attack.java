@@ -1462,30 +1462,30 @@ public class L1Attack {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
 					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_PC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_PC;
-				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) { // 활
+				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE)) { // 활
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
 						_pc.setHeading(_pc.targetDirection(_targetX, _targetY)); // 방향세트
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (_pc.getSkillEffectTimerSet().hasSkillEffect(포커스웨이브)) {
+					if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
 						if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
 							_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
 							switch (_pc.get포커스웨이브()) {
 							case 1:
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16532), true);
 								break;
 							case 2:
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 12, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16533), true);
 								break;
 							case 3:
 								_pc.set포커스웨이브(0);
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 10, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16540), true);
 								break;
@@ -1822,23 +1822,23 @@ public class L1Attack {
 			}
 			/** 플레임 스킬 */
 
-			if (_pc.getSkillEffectTimerSet().hasSkillEffect(포커스웨이브)) {
+			if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
 				if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
 					_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
 					switch (_pc.get포커스웨이브()) {
 					case 1:
-						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 						Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
 						_pc.sendPackets(new S_SkillSound(_pc.getId(), 16532));
 						break;
 					case 2:
-						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 						Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 12, 0), true);
 						_pc.sendPackets(new S_SkillSound(_pc.getId(), 16533));
 						break;
 					case 3:
 						_pc.set포커스웨이브(0);
-						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 						Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 10, 0), true);
 						_pc.sendPackets(new S_SkillSound(_pc.getId(), 16540));
 						break;
@@ -2730,7 +2730,7 @@ public class L1Attack {
 
 		}
 
-		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(루시퍼)) {
+		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(LUCIFER)) {
 			dmg -= dmg / 10;
 
 		}
@@ -3539,30 +3539,30 @@ public class L1Attack {
 						dmg += WeaponSkill.getNightmareDmg(this._pc, this._target);
 					}
 					dmg += _random.nextInt(Config.FAIRY_BOW_RANDOM_HIT_POINT_NPC) + Config.FAIRY_BOW_BASIC_STRIKE_VALUE_NPC;
-				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) { // 활
+				} else if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE)) { // 활
 					int rnd = _random.nextInt(100);
 					if (rnd < 9) {
 						_pc.setHeading(_pc.targetDirection(_targetX, _targetY)); // 방향세트
 						_pc.sendPackets(new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
-					if (_pc.getSkillEffectTimerSet().hasSkillEffect(포커스웨이브)) {
+					if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
 						if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
 							_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
 							switch (_pc.get포커스웨이브()) {
 							case 1:
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16532), true);
 								break;
 							case 2:
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 12, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16533), true);
 								break;
 							case 3:
 								_pc.set포커스웨이브(0);
-								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 10, 0), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16540), true);
 								break;
@@ -3833,25 +3833,25 @@ public class L1Attack {
 		}
 		/** 플레임 스킬 */
 
-		if (_pc.getSkillEffectTimerSet().hasSkillEffect(포커스웨이브)) {
+		if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
 			if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
 				_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
 				switch (_pc.get포커스웨이브()) {
 				case 1:
-					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 					Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
 					_pc.sendPackets(new S_SkillSound(_pc.getId(), 16532));
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16532), true);
 					break;
 				case 2:
-					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 12, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 					Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 12, 0), true);
 					_pc.sendPackets(new S_SkillSound(_pc.getId(), 16533));
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16533), true);
 					break;
 				case 3:
 					_pc.set포커스웨이브(0);
-					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(포커스웨이브)), true);
+					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 10, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 					Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 10, 0), true);
 					_pc.sendPackets(new S_SkillSound(_pc.getId(), 16540));
 					Broadcaster.broadcastPacket(_pc, new S_SkillSound(_pc.getId(), 16540), true);
@@ -5092,7 +5092,7 @@ public class L1Attack {
 
 		}
 
-		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(루시퍼)) {
+		if (_targetPc.getSkillEffectTimerSet().hasSkillEffect(LUCIFER)) {
 			dmg -= dmg / 10;
 
 		}

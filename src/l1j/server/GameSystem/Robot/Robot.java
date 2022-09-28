@@ -1,8 +1,6 @@
 package l1j.server.GameSystem.Robot;
 
-import static l1j.server.server.model.skill.L1SkillId.HASTE;
-import static l1j.server.server.model.skill.L1SkillId.PHYSICAL_ENCHANT_DEX;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_UNDERWATER_BREATH;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +28,6 @@ import l1j.server.server.serverpackets.S_CharVisualUpdate;
 import l1j.server.server.serverpackets.S_ClanJoinLeaveStatus;
 import l1j.server.server.serverpackets.S_DRAGONPERL;
 import l1j.server.server.serverpackets.S_DoActionGFX;
-import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.serverpackets.S_ReturnedStat;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.serverpackets.S_SkillBrave;
@@ -41,17 +38,17 @@ import l1j.server.server.utils.SQLUtil;
 public class Robot {
 
 	private static Random _random = new Random(System.currentTimeMillis());
-	public static boolean ¿Œ«¸ = false;
+	public static boolean is_DOLL = false;
 
 	public static void poly(L1RobotInstance bot) {
 		/*
 		 * int rr = 0;
 		 * 
-		 * if (bot.∏ÆΩ∫∫ø || bot.ªÁ≥…∫ø) rr = _random.nextInt(3); else rr =
+		 * if (bot.Î¶¨Ïä§Î¥á || bot.ÏÇ¨ÎÉ•Î¥á) rr = _random.nextInt(3); else rr =
 		 * _random.nextInt(2);
 		 */
 
-		if (/* rr == 0 || */(bot.∏ÆΩ∫∫ø_Ω∫∆˘¿ßƒ° == 1 && _random.nextInt(10) < 8)) {
+		if (/* rr == 0 || */(bot.lisbot_spawn_witch == 1 && _random.nextInt(10) < 8)) {
 			polyNormal(bot);
 		} else {
 				polyNormal(bot);
@@ -59,72 +56,72 @@ public class Robot {
 	}
 
 	private static void polyNormal(L1RobotInstance bot) {
-		if (bot.ªÁ≥…∫ø) {
+		if (bot.is_HUNTING_BOT) {
 			if (bot.isElf() && bot.getCurrentWeapon() == 20) {
 				int f = _random.nextInt(5);
 				if (f == 1) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_1); //ø‰¡§ ≥≤
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_1); //fairy man
 					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_1);
 				} else if (f == 2) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_2); //∆˜≥ÎΩ∫±√ºˆ
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_2); //phonos archer
 					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_2);
 				} else if (f == 3) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_3); // ∫“≈∏¥¬±√ºˆ
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_3); // burning archer
 					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_3);
 				} else if (f == 4) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_4); // ∫“≈∏¥¬±√ºˆ
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_4); // burning archer
 					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_4);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_5); // ∫“≈∏¥¬±√ºˆ
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_FAIRY_BOW_5); // burning archer
 					bot.setCurrentSprite(Config.ROBOT_FAIRY_BOW_5);
 				}
 			} else if (bot.getCurrentWeapon() == 50 || bot.getCurrentWeapon() == 4 || bot.getCurrentWeapon() == 88 || bot.getCurrentWeapon() == 58){
 				int f1 = _random.nextInt(3);
 				if (f1 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // ª˛∏£≥™75 ±‚ªÁ ≥≤
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // Sharna 75 Knight M
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_1);
 				} else if(f1 == 2) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // ª˛∏£≥™ 75 ø‰¡§ ≥≤
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // Sharna 75 Fairy M
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_2);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_3); // ª˛∏£≥™ 75 ø‰¡§ ≥≤
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_3); // Sharna 75 Fairy M
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_3);
 				}
 			} else if (bot.getCurrentWeapon() == 54){
 				int f2 = _random.nextInt(2);
 				if (f2 == 1) { 
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_4); // ª˛∏£≥™ 75 øÎ±‚ªÁø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_4); // Sharna 75 Dragon Knight
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_4);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_5); // ª˛∏£≥™ 75 »Øº˙ ≥≤
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_5); // Sharna 75 Phantom Magic Male
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_5);
 				}
 
 			}else if(bot.getCurrentWeapon() == 24) {
 				int f3 = _random.nextInt(2);
 				if (f3 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_6); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_6); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_6);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_7); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_7); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_7);
 				}
 			}else if(bot.getCurrentWeapon() == 40) {
 				int f4 = _random.nextInt(2);
 				if(f4 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_8); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_8); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_8);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_9); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_9); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_9);
 				}
 			}
 		} else {
 			// int f = _random.nextInt(100);
-			// πˆ∞Ê ∫øµÈ
+			// buggy bots
 			/*
-			 * if(bot.∏ÆΩ∫∫ø && (bot.∏ÆΩ∫∫ø_Ω∫∆˘¿ßƒ° == 0 || bot.∏ÆΩ∫∫ø_Ω∫∆˘¿ßƒ° == 3 ||
-			 * (bot.∏ÆΩ∫∫ø_Ω∫∆˘¿ßƒ° >= 16 && bot.∏ÆΩ∫∫ø_Ω∫∆˘¿ßƒ° <= 19))) f =
+			 * if(bot.Î¶¨Ïä§Î¥á && (bot.Î¶¨Ïä§Î¥á_Ïä§Ìè∞ÏúÑÏπò == 0 || bot.Î¶¨Ïä§Î¥á_Ïä§Ìè∞ÏúÑÏπò == 3 ||
+			 * (bot.Î¶¨Ïä§Î¥á_Ïä§Ìè∞ÏúÑÏπò >= 16 && bot.Î¶¨Ïä§Î¥á_Ïä§Ìè∞ÏúÑÏπò <= 19))) f =
 			 * _random.nextInt(100);
 			 */
 			bot.getGfxId().setTempCharGfx(bot.getGfxId().getGfxId());
@@ -133,7 +130,7 @@ public class Robot {
 			/*
 			 * if(f < 15){
 			 * bot.getGfxId().setTempCharGfx(bot.getGfxId().getGfxId());
-			 * if(bot.πˆ∞Ê∫ø && bot.isCrown()){ if(_random.nextInt(2) == 0){
+			 * if(bot.Î≤ÑÍ≤ΩÎ¥á && bot.isCrown()){ if(_random.nextInt(2) == 0){
 			 * if(bot.get_sex() == 0) bot.getGfxId().setTempCharGfx(6094); else
 			 * bot.getGfxId().setTempCharGfx(6080); } } }else if(f < 50){
 			 * bot.getGfxId().setTempCharGfx(11375); }else if(f < 75){
@@ -148,23 +145,23 @@ public class Robot {
 	
 	
 	public static void polyWar(L1RobotInstance bot) {
-		if (bot.ªÁ≥…∫ø) {
+		if (bot.is_HUNTING_BOT) {
 			if(bot.isWizard()) {
 				int f4 = _random.nextInt(2);
 				if(f4 == 1) {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_1); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_1);
 				} else {
-					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // ª˛∏£≥™ 75 »Øº˙ ø©
+					bot.getGfxId().setTempCharGfx(Config.ROBOT_KNIFE_2); // Sharna 75 Phantom W
 					bot.setCurrentSprite(Config.ROBOT_KNIFE_2);
 				}
 			}
 		}
 	}
 
-	public static boolean º”µµπˆ«¡(L1RobotInstance bot) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
-		// µƒ…¿Ã æ∆¥“∂ß
+	public static boolean is_SPEED_BUFF(L1RobotInstance bot) {
+		// TODO Auto-generated method stubs
+		// When not Decay
 		if (bot.getMap().isUnderwater()) {
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(
 					STATUS_UNDERWATER_BREATH)) {
@@ -187,7 +184,7 @@ public class Robot {
 		if (_random.nextInt(100) > 10)
 			return false;
 		if (bot.isKnight() || bot.isCrown() || bot.isWarrior()) {
-			// µƒ…¿Ãæ∆¥“∂ß
+			// When it's not Decay
 			if (!bot.getSkillEffectTimerSet().hasSkillEffect(
 					L1SkillId.STATUS_BRAVE)
 					&& !bot.getSkillEffectTimerSet().hasSkillEffect(
@@ -246,7 +243,7 @@ public class Robot {
 				int rnd = _random.nextInt(100) + 1;
 				if(rnd >= 50){
 					if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_ELFBRAVE) && !bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DECAY_POTION) &&
-							!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.∆˜ƒøΩ∫ø˛¿Ã∫Í)) {
+							!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 						   bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.STATUS_ELFBRAVE,(_random.nextInt(600) + 400) * 1000);
 						   bot.getMoveState().setBraveSpeed(3);
 						   Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 751), true);
@@ -266,9 +263,9 @@ public class Robot {
 						return true;
 					}
 				} else {
-					if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_ELFBRAVE) && !bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.∆˜ƒøΩ∫ø˛¿Ã∫Í) 
+					if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.STATUS_ELFBRAVE) && !bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE) 
 							&& !bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SILENCE)) {
-						bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.∆˜ƒøΩ∫ø˛¿Ã∫Í,(_random.nextInt(600) + 400) * 1000);
+						bot.getSkillEffectTimerSet().setSkillEffect(L1SkillId.FOCUS_WAVE,(_random.nextInt(600) + 400) * 1000);
 						bot.getMoveState().setBraveSpeed(1);
 						Broadcaster.broadcastPacket(bot, new S_SkillSound(bot.getId(), 16531), true);
 						Broadcaster.broadcastPacket(bot, new S_SkillBrave(bot.getId(), 10, 0), true);
@@ -414,8 +411,8 @@ public class Robot {
 		return false;
 	}
 
-	public static boolean ≈¨∑°Ω∫πˆ«¡(L1RobotInstance bot) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+	public static boolean is_CLASS_BUFF(L1RobotInstance bot) {
+		// TODO Auto-generated method stubs
 		if (bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SILENCE))
 			return false;
 		if (!bot.isDragonknight()) {
@@ -472,7 +469,7 @@ public class Robot {
 					new L1SkillUse().handleCommands(bot, L1SkillId.WIND_WALK,bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
 					return true;
 				}
-			} else if (bot.getCurrentWeapon() == 20 && bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.∆˜ƒøΩ∫ø˛¿Ã∫Í)) {
+			} else if (bot.getCurrentWeapon() == 20 && bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
 				if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.WIND_SHOT)) {
 					new L1SkillUse().handleCommands(bot, L1SkillId.WIND_SHOT,bot.getId(), bot.getX(), bot.getY(), null, 0, L1SkillUse.TYPE_NORMAL);
 					return true;
@@ -560,8 +557,8 @@ public class Robot {
 				new L1SkillUse().handleCommands(bot, L1SkillId.SHADOW_FANG,bot.getId(), bot.getX(), bot.getY(), null, 192, L1SkillUse.TYPE_NORMAL);
 				return true;
 			}
-			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.∑ÁΩ√∆€)) {
-				new L1SkillUse().handleCommands(bot, L1SkillId.∑ÁΩ√∆€,bot.getId(), bot.getX(), bot.getY(), null, 192, L1SkillUse.TYPE_NORMAL);
+			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.LUCIFER)) {
+				new L1SkillUse().handleCommands(bot, L1SkillId.LUCIFER,bot.getId(), bot.getX(), bot.getY(), null, 192, L1SkillUse.TYPE_NORMAL);
 				return true;
 			}
 		} else if (bot.isWizard()) {
@@ -589,8 +586,8 @@ public class Robot {
 				return true;
 			}
 		} else if (bot.isWarrior()) {
-			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.±‚∞£∆Ω)) {
-				new L1SkillUse().handleCommands(bot, L1SkillId.±‚∞£∆Ω,bot.getId(), bot.getX(), bot.getY(), null, 60, L1SkillUse.TYPE_NORMAL);
+			if (!bot.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.PERIOD_TICK)) {
+				new L1SkillUse().handleCommands(bot, L1SkillId.PERIOD_TICK,bot.getId(), bot.getX(), bot.getY(), null, 60, L1SkillUse.TYPE_NORMAL);
 				return true;
 			}
 		}
@@ -600,7 +597,7 @@ public class Robot {
 	private static long joinTime = 0;
 
 	public static void clan_join(L1RobotInstance bot) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+		// TODO Auto-generated method stubs
 		if (bot.getClanid() != 0 || bot.isCrown())
 			return;
 		if (_random.nextInt(10) == 0)
@@ -615,8 +612,8 @@ public class Robot {
 			joinTime = System.currentTimeMillis()
 					+ (60000 * (20 + _random.nextInt(21)));
 		}
-		// ∑Œ∫ø¡ﬂ ∞°¿‘ µ«æÓ¿÷¥¬ ƒ…∏Ø¿Ã 650ƒ…∏Ø ¿ÃªÛ¿Œ¡ˆ
-		// ∞°¿‘«œ∑¡¥¬«˜ √—«˜ ¥Ÿ πﬁæ∆øÕº≠ ¿Ø¿˙ ∫Ò±≥ ¡¶¿œ¿˚¿∫«˜
+		// Î°úÎ¥áÏ§ë Í∞ÄÏûÖ ÎêòÏñ¥ÏûàÎäî ÏºÄÎ¶≠Ïù¥ 650ÏºÄÎ¶≠ Ïù¥ÏÉÅÏù∏ÏßÄ
+		// Í∞ÄÏûÖÌïòÎ†§ÎäîÌòà Ï¥ùÌòà Îã§ Î∞õÏïÑÏôÄÏÑú Ïú†Ï†Ä ÎπÑÍµê Ï†úÏùºÏ†ÅÏùÄÌòà
 		String clanname = robot_clan_count();
 		if (clanname == null)
 			return;
@@ -626,24 +623,24 @@ public class Robot {
 		L1PcInstance pc = L1World.getInstance().getPlayer(clan.getLeaderName());
 		if (pc == null)
 			return;
-		// ±∫¡÷±Ÿ√≥ø° «˜ø¯¿Ã ¿÷¥¬¡ˆ
+		// Íµ∞Ï£ºÍ∑ºÏ≤òÏóê ÌòàÏõêÏù¥ ÏûàÎäîÏßÄ
 		for (L1PcInstance pp : L1World.getInstance().getVisiblePlayer(pc)) {
 			if (!(pp instanceof L1RobotInstance)
 					&& pc.getClanid() == pp.getClanid())
 				return;
 		}
-		// ≥ª ±Ÿ√≥ø° ∞∞¿∫«˜ ¿÷¥¬¡ˆ
+		// ÎÇ¥ Í∑ºÏ≤òÏóê Í∞ôÏùÄÌòà ÏûàÎäîÏßÄ
 		for (L1PcInstance pp : L1World.getInstance().getVisiblePlayer(bot)) {
 			if (!(pp instanceof L1RobotInstance)
 					&& pc.getClanid() == pp.getClanid())
 				return;
 		}
-		// ∞°¿‘
+		// Í∞ÄÏûÖ
 		for (L1PcInstance clanMembers : clan.getOnlineClanMember()) {
-			clanMembers.sendPackets(new S_ServerMessage(94, bot.getName())); // \f1%0¿Ã
-																				// «˜∏Õ¿«
-																				// ¿œø¯¿∏∑Œº≠
-																				// πﬁæ∆µÈø©¡≥Ω¿¥œ¥Ÿ.
+			clanMembers.sendPackets(new S_ServerMessage(94, bot.getName())); // \f1%0Ïù¥
+																				// ÌòàÎßπÏùò
+																				// ÏùºÏõêÏúºÎ°úÏÑú
+																				// Î∞õÏïÑÎì§Ïó¨Ï°åÏäµÎãàÎã§.
 		}
 		bot.setClanid(clan.getClanId());
 		bot.setClanname(clan.getClanName());
@@ -777,7 +774,7 @@ public class Robot {
 
 		@Override
 		public void run() {
-			// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+			// TODO Auto-generated method stubs
 			try {
 
 				if (crown._userTitle == null
@@ -797,7 +794,7 @@ public class Robot {
 						joinchar.updateclan(joinchar.getClanname(),
 								joinchar.getClanid(), crown._userTitle, true);
 					else
-						joinchar.save(); // DBø° ƒ≥∏Ø≈Õ ¡§∫∏∏¶ Ω· øÏ
+						joinchar.save(); // DBÏóê Ï∫êÎ¶≠ÌÑ∞ Ï†ïÎ≥¥Î•º Ïç® Ïö∞
 				} catch (Exception e) {
 				}
 
@@ -805,7 +802,7 @@ public class Robot {
 						.getClan(crown.getClanname());
 				if (clan != null) {
 					for (L1PcInstance clanPc : clan.getOnlineClanMember()) {
-						// \f1%0¿Ã%1ø° °∏%2∂Û∞Ì «œ¥¬ »£ƒ™¿ª ¡÷æ˙Ω¿¥œ¥Ÿ.
+						// \f1%0Ïù¥%1Ïóê „Äå%2ÎùºÍ≥† ÌïòÎäî Ìò∏Ïπ≠ÏùÑ Ï£ºÏóàÏäµÎãàÎã§.
 						S_ServerMessage sm = new S_ServerMessage(203,
 								crown.getName(), joinchar.getName(),
 								joinchar.getTitle());
@@ -820,12 +817,12 @@ public class Robot {
 	}
 
 	public static void Doll_Delete(L1RobotInstance bot) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+		// TODO Auto-generated method stubs
 		Doll_Delete(bot, false);
 	}
 
 	public static void Doll_Delete(L1RobotInstance bot, boolean effect) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+		// TODO Auto-generated method stubs
 		L1DollInstance doll = null;
 		for (Object dollObject : bot.getDollList()) {
 			doll = (L1DollInstance) dollObject;
@@ -839,21 +836,21 @@ public class Robot {
 	}
 
 	public static void Doll_Spawn(L1RobotInstance bot) {
-		// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
-		if (!¿Œ«¸)
+		// TODO Auto-generated method stubs
+		if (!is_DOLL)
 			return;
-		if (bot.¿Œ«¸Ω∫∆˘)
+		if (bot.is_DOLL_SPAWN)
 			return;
 		if (bot.getDollList().size() > 0)
 			return;
-		if (!bot.ªÁ≥…∫ø && _random.nextInt(100) < 70)
+		if (!bot.is_HUNTING_BOT && _random.nextInt(100) < 70)
 			return;
 		int time = 2000 + _random.nextInt(8000);
-		if (bot.πˆ∞Ê∫ø)
+		if (bot.is_BERKYUNG_BOT)
 			time = 1;
 		GeneralThreadPool.getInstance().schedule(new DollSpawn(bot, time != 1),
 				time);
-		bot.¿Œ«¸Ω∫∆˘ = true;
+		bot.is_DOLL_SPAWN = true;
 	}
 
 	static class DollSpawn implements Runnable {
@@ -869,9 +866,9 @@ public class Robot {
 		public void run() {
 			try {
 
-				// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+				// TODO Auto-generated method stubs
 				if (bot.isDead()
-						|| bot._Ω∫∑πµÂ¡æ∑·
+						|| bot.is_THREAD_EXIT
 						|| L1World.getInstance().getPlayer(bot.getName()) == null)
 					return;
 				int npcId = 0;
@@ -883,28 +880,28 @@ public class Robot {
 						dollType = Config.DOLL_TYPE_BOW;
 					} else {
 					if (bot.isKnight() || bot.isCrown()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_1; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_1; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_1;
 				    } else if (bot.isWarrior()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_2; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_2; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_2;
 					} else if (bot.isDarkelf()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_3; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_3; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_3;
 					} else if (bot.isDragonknight()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_4; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_4; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_4;
 					} else if (bot.getCurrentWeapon() != 20 && bot.isElf()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_5; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_5; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_5;
 					} else if (bot.isWizard() || bot.isIllusionist()) {
-						npcId = Config.DOLL_TYPE_KALNPC_ID_6; //Ω∫∆ƒ≈‰¿Ã
-						//npcId = 1600247; //µ•≥™
+						npcId = Config.DOLL_TYPE_KALNPC_ID_6; //„Çπ„Éë„É´„Éà„Ç§
+						//npcId = 1600247; //Îç∞ÎÇò
 						dollType = Config.DOLL_TYPE_KNIFE_6;
 					}
 					if (_random.nextInt(3) == 0) {
@@ -942,9 +939,9 @@ public class Robot {
 		@Override
 		public void run() {
 			try {
-				// TODO ¿⁄µø ª˝º∫µ» ∏ﬁº“µÂ Ω∫≈”
+				// TODO Auto-generated method stubs
 				if (bot.isDead()
-						|| bot._Ω∫∑πµÂ¡æ∑·
+						|| bot.is_THREAD_EXIT
 						|| L1World.getInstance().getPlayer(bot.getName()) == null)
 					return;
 				poly(bot);
@@ -956,9 +953,9 @@ public class Robot {
 		}
 	}
 
-	public static void ∑Œ∫ø¡æ∑·(L1RobotInstance bot) {
-		if (bot.πˆ∞Ê∫ø) {
-			bot._Ω∫∑πµÂ¡æ∑· = true;
+	public static void robot_shutdown(L1RobotInstance bot) {
+		if (bot.is_BERKYUNG_BOT) {
+			bot.is_THREAD_EXIT = true;
 			bot.getNearObjects().removeAllKnownObjects();
 			bot.stopHalloweenRegeneration();
 			bot.stopPapuBlessing();
@@ -970,7 +967,7 @@ public class Robot {
 			bot.stopSHRegeneration();
 			bot.stopMpDecreaseByScales();
 			bot.stopEtcMonitor();
-			bot.πˆ∞Ê∫ø_≈∏¿‘ = 0;
+			bot.berkyung_bot_type = 0;
 		}
 	}
 

@@ -4738,8 +4738,8 @@ public class L1EquipmentSlot {
 			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.INFERNO);
 		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SAND_STORM)) {
 			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.SAND_STORM);
-		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.포커스웨이브)) {
-			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.포커스웨이브);
+		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.FOCUS_WAVE)) {
+			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.FOCUS_WAVE);
 		} else if (_owner.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.HURRICANE)) {
 			_owner.getSkillEffectTimerSet().removeSkillEffect(L1SkillId.HURRICANE);
 		}

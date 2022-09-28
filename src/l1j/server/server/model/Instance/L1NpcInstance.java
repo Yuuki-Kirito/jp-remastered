@@ -2932,8 +2932,8 @@ public class L1NpcInstance extends L1Character {
 	public void setDirectionMove(int dir) {
 		if (dir < 8 && dir >= 0) {
 			if (getSkillEffectTimerSet().hasSkillEffect(L1SkillId.THUNDER_GRAB)
-					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.데스페라도)
-					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.파워그립)
+					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DESPERADO)
+					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.POWER_GRIP)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.DEMOLITION)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.ETERNITY)
 					|| getSkillEffectTimerSet().hasSkillEffect(L1SkillId.SHADOW_TAB)
