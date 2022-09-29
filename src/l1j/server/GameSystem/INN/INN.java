@@ -71,64 +71,64 @@ public class INN {
 		synchronized (INNList) {
 			int minmap = 0;
 			switch (npcid) {
-			case 70012:// ¸»¼¶
-				if (type == 0) {// ¿©°ü
+			case 70012:// ãƒãƒ«ã‚µãƒ 
+				if (type == 0) {// æ—…é¤¨
 					minmap = 16384;
-				} else {// È¦
+				} else {// ãƒ›ãƒ¼ãƒ«
 					minmap = 16896;
 				}
 				break;
-			case 70019:// ±Û¸»
-				if (type == 0) {// ¿©°ü
+			case 70019:// æ–‡ç« 
+				if (type == 0) {// æ—…é¤¨
 					minmap = 17408;
 				} else {
 					minmap = 17920;
 				}
 				break;
-			case 70031:// ±â¶õ
-				if (type == 0) {// ¿©°ü
+			case 70031:// ã‚®ãƒ©ãƒ³
+				if (type == 0) {// æ—…é¤¨
 					minmap = 18432;
 				} else {
 					minmap = 18944;
 				}
 				break;
-			case 70054:// ¾Æµ§
-				if (type == 0) {// ¿©°ü
+			case 70054:// ã‚¢ãƒ‡ãƒ³
+				if (type == 0) {// æ—…é¤¨
 					minmap = 19456;
 				} else {
 					minmap = 19968;
 				}
 				break;
-			case 70065:// ¿À·»
-				if (type == 0) {// ¿©°ü
+			case 70065:// ã‚ªãƒ¼ãƒ¬ãƒ³
+				if (type == 0) {// æ—…é¤¨
 					minmap = 23552;
 				} else {
 					minmap = 24064;
 				}
 				break;
-			case 70070:// À©´Ù¿ìµå
-				if (type == 0) {// ¿©°ü
+			case 70070:// ã‚¦ã‚£ãƒ³ãƒ€ã‚¦ãƒƒãƒ‰
+				if (type == 0) {// æ—…é¤¨
 					minmap = 20480;
 				} else {
 					minmap = 20992;
 				}
 				break;
-			case 70075:// Àº±â»ç
-				if (type == 0) {// ¿©°ü
+			case 70075:// SKT
+				if (type == 0) {// æ—…é¤¨
 					minmap = 21504;
 				} else {
 					minmap = 22016;
 				}
 				break;
-			case 70084:// ÇÏÀÌ³×
-				if (type == 0) {// ¿©°ü
+			case 70084:// ãƒã‚¤ãƒ
+				if (type == 0) {// æ—…é¤¨
 					minmap = 22528;
 				} else {
 					minmap = 23040;
 				}
 				break;
-			case 70096:// ÇØÀû¼¶
-				if (type == 0) {// ¿©°ü
+			case 70096:// æµ·è³Šå³¶
+				if (type == 0) {// æ—…é¤¨
 					minmap = 24576;
 				} else {
 					minmap = 25088;
@@ -147,30 +147,30 @@ public class INN {
 						checkmap = false; // getINN(minmap+i);
 					}
 
-					if (checkmap == false) {// ºñ¾îÀÕÀ½
+					if (checkmap == false) {// ç©ºã
 						cnt = i;
 						break;
 					}
 					// cnt++;
 				}
-				if (checkmap == true || cnt == 0) {// ÀüÃ¼»ç¿ëÁß
+				if (checkmap == true || cnt == 0) {// å…¨ä½“ä½¿ç”¨ä¸­
 					if (type == 0) {
 						pc.sendPackets(new S_NPCTalkReturn(objid, "inn6"), true);
 					} else {
 						pc.sendPackets(new S_NPCTalkReturn(objid, "inn16"),
 								true);
 					}
-					// System.out.println("ºó¹æÀÌ ¾øÀ½.");
-					// ºó¹æÀÌ¾øÀ½
+					// System.out.println("ç©ºéƒ¨å±‹ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
+					// ç©ºå®¤ãŒãªã„
 					return;
-				} else {// ºó¹æÀÖÀ½
+				} else {// ç©ºå®¤ã‚ã‚Š
 
 					int price = 0;
 					if (type == 0) {
 						price = count * 300;
 						if (pc.getInventory().countItems(40308) < price) {
 							S_SystemMessage sm = new S_SystemMessage(
-									"¾Æµ§ÀÌ ºÎÁ· ÇÕ´Ï´Ù.");
+									"ã‚¢ãƒ‡ãƒ³ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚");
 							pc.sendPackets(sm, true);
 							return;
 						}
@@ -178,7 +178,7 @@ public class INN {
 						price = count * 600;
 						if (pc.getInventory().countItems(40308) < price) {
 							S_SystemMessage sm = new S_SystemMessage(
-									"¾Æµ§ÀÌ ºÎÁ· ÇÕ´Ï´Ù.");
+									"ã‚¢ãƒ‡ãƒ³ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚");
 							pc.sendPackets(sm, true);
 							return;
 						}
@@ -186,7 +186,7 @@ public class INN {
 					pc.getInventory().consumeItem(40308, price);
 					INNList.put(minmap + cnt, true);
 					InnTimer IT = new InnTimer(minmap + cnt, count,
-							(3600000 * 4));// 4½Ã°£ÈÄ10000);//
+							(3600000 * 4));// 4æ™‚é–“å¾Œ10000);//
 					IT.begin();
 					setInnTimer(minmap + cnt, IT);
 

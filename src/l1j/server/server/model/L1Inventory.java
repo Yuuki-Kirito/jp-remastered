@@ -1344,7 +1344,7 @@ public class L1Inventory extends L1Object {
 			if (item.getItemId() == 40312) {
 				InnTimer IT = INN.getInnTimer(item.getKey());
 				if (IT != null) {
-					IT.Å°Â÷°¨(count);
+					IT.key_subtraction(count);
 				}
 			}
 

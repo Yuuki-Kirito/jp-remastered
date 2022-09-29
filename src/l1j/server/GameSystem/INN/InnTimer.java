@@ -8,23 +8,23 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_SabuTell;
 
 public class InnTimer extends TimerTask {
-	private int _Å°¸Ê¹øÈ£;
-	private int _Å°°¹¼ö;
+	private int _keymap_number;
+	private int _number_of_keys;
 	private int _timeMillis;
 private boolean exit = false;
-	public InnTimer(int Å°¸Ê¹øÈ£, int Å°°¹¼ö, int timeMillis) {
-		_Å°¸Ê¹øÈ£ = Å°¸Ê¹øÈ£;
-		_Å°°¹¼ö = Å°°¹¼ö;
+	public InnTimer(int keymap_nember, int number_of_keys, int timeMillis) {
+		_keymap_number = keymap_nember;
+		_number_of_keys = number_of_keys;
 		_timeMillis = timeMillis;
 	}
 
-	public synchronized void Å°Â÷°¨(int count) {
+	public synchronized void key_subtraction(int count) {
 		try {
-			int check = _Å°°¹¼ö - count;
+			int check = _number_of_keys - count;
 			if (check <= 0) {
 				run();
 			} else {
-				_Å°°¹¼ö = check;
+				_number_of_keys = check;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,15 +37,15 @@ private boolean exit = false;
 			if(exit)return;
 			exit = true;
 			for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
-				if (pc.getMapId() == _Å°¸Ê¹øÈ£) {
+				if (pc.getMapId() == _keymap_number) {
 					pc.setTelType(5);
 					S_SabuTell st = new S_SabuTell(pc);
 					pc.sendPackets(st, true);
 				}
 			}
 			//System.out.println("111111111111111111111111");
-			INN.setINN(_Å°¸Ê¹øÈ£, false);
-			INN.setInnTimer(_Å°¸Ê¹øÈ£, null);
+			INN.setINN(_keymap_number, false);
+			INN.setInnTimer(_keymap_number, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
