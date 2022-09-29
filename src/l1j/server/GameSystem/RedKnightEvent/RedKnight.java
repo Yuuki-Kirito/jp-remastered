@@ -38,16 +38,16 @@ public class RedKnight implements Runnable {
 	private static final int END = 6;
 	private static final int TIME_OVER = 7;
 
-	private FastTable<L1NpcInstance> ¹Ù¸®1 = null;
-	private FastTable<L1NpcInstance> ¹Ù¸®2 = null;
-	private FastTable<L1NpcInstance> ¹Ù¸®3 = null;
+	private FastTable<L1NpcInstance> bari1 = null;
+	private FastTable<L1NpcInstance> bari2 = null;
+	private FastTable<L1NpcInstance> bari3 = null;
 
-	private FastTable<L1NpcInstance> Àâ¸÷ = null;
-	private L1NpcInstance º¸½º = null;
+	private FastTable<L1NpcInstance> miscellaneous_mobs = null;
+	private L1NpcInstance boss = null;
 
-	private L1NpcInstance µ¥Æ÷·ÎÁê = null;
-	private L1NpcInstance ºÓÀº±â»ç´Ü1 = null;
-	private L1NpcInstance ºÓÀº±â»ç´Ü2 = null;
+	private L1NpcInstance deformation = null;
+	private L1NpcInstance red_knights1 = null;
+	private L1NpcInstance red_knights2 = null;
 
 	private boolean on = true;
 
@@ -62,17 +62,17 @@ public class RedKnight implements Runnable {
 					if (!on)
 						return;
 					if (TIMER == 5) {
-						GREEN_MSG("Àü·É: ¼­µÎ¸£¼¼¿ä. 5ºĞ ÈÄ¿¡ ÀûÀÇ Áõ¿ø±ºÀÌ µµÂøÇÒ °Í °°½À´Ï´Ù. ±× Àü¿¡ ÀÛÀüÀ» ¿Ï·áÇÏÁö ¸øÇÏ¸é ¸¶À»·Î ÈÄÅğÇØ¾ß ÇÕ´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ€¥ã„ã§ãã ã•ã„ã€‚ 5åˆ†å¾Œã«æ•µã®å¢—æ´è»ãŒåˆ°ç€ã—ãã†ã§ã™ã€‚ ãã®å‰ã«ä½œæˆ¦ã‚’å®Œäº†ã§ããªã‹ã£ãŸã‚‰ã€æ‘ã«å¾Œé€€ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚");
 					} else if (TIMER == 4) {
-						GREEN_MSG("Àü·É: ¼­µÎ¸£¼¼¿ä. 4ºĞ ÈÄ¿¡ ÀûÀÇ Áõ¿ø±ºÀÌ µµÂøÇÒ °Í °°½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ€¥ã„ã§ãã ã•ã„ã€‚ 4åˆ†å¾Œã«æ•µã®å¢—æ´ç¾¤ãŒåˆ°ç€ã—ãã†ã§ã™ã€‚");
 					} else if (TIMER == 3) {
-						GREEN_MSG("Àü·É: ¼­µÎ¸£¼¼¿ä. 3ºĞ ÈÄ¿¡ ÀûÀÇ Áõ¿ø±ºÀÌ µµÂøÇÒ °Í °°½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ€¥ã„ã§ãã ã•ã„ã€‚ 3åˆ†å¾Œã«æ•µã®å¢—æ´ç¾¤ãŒåˆ°ç€ã—ãã†ã§ã™ã€‚");
 					} else if (TIMER == 2) {
-						GREEN_MSG("Àü·É: ¼­µÎ¸£¼¼¿ä. 2ºĞ ÈÄ¿¡ ÀûÀÇ Áõ¿ø±ºÀÌ µµÂøÇÒ °Í °°½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ€¥ã„ã§ãã ã•ã„ã€‚ 2åˆ†å¾Œã«æ•µã®å¢—æ´ç¾¤ãŒåˆ°ç€ã—ãã†ã§ã™ã€‚");
 					} else if (TIMER == 1) {
-						GREEN_MSG("Àü·É: ¼­µÎ¸£¼¼¿ä. 1ºĞ ÈÄ¿¡ ÀûÀÇ Áõ¿ø±ºÀÌ µµÂøÇÒ °Í °°½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ€¥ã„ã§ãã ã•ã„ã€‚ 1åˆ†å¾Œã«æ•µã®å¢—æ´ç¾¤ãŒåˆ°ç€ã—ãã†ã§ã™ã€‚");
 					} else if (TIMER == 0) {
-						GREEN_MSG("Àü·É: ÀûÀÇ Áõ¿ø±ºÀÌ ÄÚ ¾Õ±îÁö µµÂøÇß½À´Ï´Ù. ´õ ÀÌ»ó ÁöÃ¼ÇÒ ¼ö ¾øÀ¸´Ï ¸¶À»·Î ÈÄÅğÇÏ°Ú½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šæ•µã®å¢—æ´è»ãŒé¼»ã®å‰ã¾ã§åˆ°ç€ã—ã¾ã—ãŸã€‚ ã‚‚ã†é…æ»ã§ããªã„ã®ã§ç”ºã«å¾Œé€€ã—ã¾ã™ã€‚");
 						step = TIME_OVER;
 						return;
 					}
@@ -90,18 +90,18 @@ public class RedKnight implements Runnable {
 		try {
 			switch (step) {
 			case SPAWN:
-				¹Ù¸®1 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 0);
-				¹Ù¸®2 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 1);
-				¹Ù¸®3 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 2);
+				bari1 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 0);
+				bari2 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 1);
+				bari3 = RedKnightSpawn.getInstance().fillSpawnTable(_mapnum, 2);
 				sleep = 60;
 				step++;
 				break;
 			case READY:
 				if (READY_TIME == 4)
-					GREEN_MSG("Àü·É: 4ºĞ ÈÄ Ãâ¹ßÇÒ ¿¹Á¤ÀÔ´Ï´Ù.");
+					GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼š4åˆ†å¾Œã«å‡ºç™ºã™ã‚‹äºˆå®šã§ã™ã€‚");
 				else
-					GREEN_MSG("Àü·É: " + READY_TIME
-							+ "ºĞ ÈÄ Ãâ¹ßÇÒ ¿¹Á¤ÀÔ´Ï´Ù. Âü¿© ÀÎ¿øÀÌ 10¸í ¹Ì¸¸ÀÌ¸é ÃâÁ¤ÀÌ Ãë¼ÒµË´Ï´Ù.");
+					GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼š " + READY_TIME
+							+ "åˆ†å¾Œã«å‡ºç™ºã™ã‚‹äºˆå®šã§ã™ã€‚ å‚åŠ äººæ•°ãŒ10äººæœªæº€ã®å ´åˆã€å‡ºæ­£ã¯å–ã‚Šæ¶ˆã•ã‚Œã¾ã™ã€‚");
 				sleep = 60;
 				READY_TIME--;
 				if (READY_TIME <= 0)
@@ -117,13 +117,13 @@ public class RedKnight implements Runnable {
 						count++;
 				}
 				if (count < 1) {
-					GREEN_MSG("Àü·É: Âü¿© ÀÎ¿ø ºÎÁ·À¸·Î ÀÌ¹ø ÃâÁ¤ÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù. ´ÙÀ½ ÃâÁ¤À» ±â´Ù·Á ÁÖ¼¼¿ä.");
+					GREEN_MSG("ãƒ¡ã‚¸ãƒ£ãƒ¼ï¼šå‚åŠ äººæ•°ä¸è¶³ã§ä»Šå›ã®å‡ºæ­£ãŒå–ã‚Šæ¶ˆã•ã‚Œã¾ã—ãŸã€‚ æ¬¡ã®å‡ºæƒ…ã‚’ãŠå¾…ã¡ãã ã•ã„ã€‚");
 					Thread.sleep(3000);
 					HOME_TELEPORT();
 					Object_Delete();
 					return;
 				} else {
-					GREEN_MSG("Àü·É: ÃâÁ¤¿¡ ¾Õ¼­ µ¥Æ÷·ÎÁê´ÔÀÌ ¿©·¯ºĞµéÀ» °İ·ÁÇÏ·¯ ¿À½Ç ¿¹Á¤ÀÔ´Ï´Ù.");
+					GREEN_MSG("ä¼ä»¤ï¼šå‡ºå¾ã«å…ˆç«‹ã¡ã€ãƒ‡ãƒãƒ­ã‚¸ãƒ¥æ§˜ãŒçš†ã•ã‚“ã‚’åŠ±ã¾ã—ã«æ¥ã‚‰ã‚Œã‚‹äºˆå®šã§ã™ã€‚");
 					sleep = 5;
 				}
 				step++;
@@ -131,58 +131,58 @@ public class RedKnight implements Runnable {
 			case ROUND_1:
 				sleep = 5;
 				if (ROUND_1_STEP == 8) {
-					ºÓÀº±â»ç´Ü1 = L1SpawnUtil.spawn4(32772, 32814, (short) _mapnum,
+					red_knights1 = L1SpawnUtil.spawn4(32772, 32814, (short) _mapnum,
 							4, 100660, 0, 0, 0);
-					ºÓÀº±â»ç´Ü2 = L1SpawnUtil.spawn4(32768, 32814, (short) _mapnum,
+					red_knights2 = L1SpawnUtil.spawn4(32768, 32814, (short) _mapnum,
 							4, 100660, 0, 0, 0);
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(ºÓÀº±â»ç´Ü1, 4, 5), 50);
+							new NpcMove(red_knights1, 4, 5), 50);
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(ºÓÀº±â»ç´Ü2, 4, 5), 50);
+							new NpcMove(red_knights2, 4, 5), 50);
 				} else if (ROUND_1_STEP == 7) {
-					SHOUT_MSG(ºÓÀº±â»ç´Ü2, "ºÓÀº ±â»ç´Ü: ÁıÁßÇØ ÁÖ½Ê½Ã¿ä!! µ¥Æ÷·ÎÁê´ÔÀÌ ¿À½Ê´Ï´Ù.");
-					µ¥Æ÷·ÎÁê = L1SpawnUtil.spawn4(32770, 32814, (short) _mapnum, 4,
+					SHOUT_MSG(red_knights2, "èµ¤ã„é¨å£«å›£ï¼šé›†ä¸­ã—ã¦ãã ã•ã„ï¼ ãƒ‡ãƒãƒ­ã‚¸ãƒ¥æ§˜ãŒæ¥ã¾ã™ã€‚");
+					deformation = L1SpawnUtil.spawn4(32770, 32814, (short) _mapnum, 4,
 							100659, 0, 0, 0);
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(µ¥Æ÷·ÎÁê, 4, 7), 50);
+							new NpcMove(deformation, 4, 7), 50);
 				} else if (ROUND_1_STEP == 6) {
-					SHOUT_MSG(µ¥Æ÷·ÎÁê,
-							"µ¥Æ÷·ÎÁê: ÀÌ·¸°Ô ¿ì¸® ºÓÀº ±â»ç´ÜÀ» µµ¿ì·¯ ¿ÍÁØ ±×´ëµéÀÇ ³ë°í¸¦ Ä¡ÇÏÇÏ³×.");
+					SHOUT_MSG(deformation,
+							"ãƒ‡ãƒãƒ­ã‚¸ãƒ¥ï¼šã“ã†ã—ã¦ç§ãŸã¡ã®èµ¤ã„é¨å£«å›£ã‚’åŠ©ã‘ã«æ¥ã¦ãã‚ŒãŸå›ãŸã¡ã®åŠ´è‹¦ã‚’æ²»ã‚ã‚‹ã­ã€‚");
 					sleep = 10;
 				} else if (ROUND_1_STEP == 5) {
-					SHOUT_MSG(µ¥Æ÷·ÎÁê,
-							"µ¥Æ÷·ÎÁê: ¼­½Å°ú ºÎ°üµéÀ» ÅëÇØ ÀÌ¹Ì ÀüÇØ µé¾ú°ÚÁö¸¸ ÀÌ¹ø ÀÓ¹«´Â Á¤¸» Áß¿äÇÏ´Ù³×.");
+					SHOUT_MSG(deformation,
+							"ãƒ‡ãƒãƒ­ã‚¸ãƒ¥ï¼šæ‰‹ç´™ã¨å‰¯å®˜ã‚’é€šã˜ã¦æ—¢ã«ä¼ãˆã‚‰ã‚ŒãŸã ã‚ã†ãŒä»Šå›ã®ä»»å‹™ã¯æœ¬å½“ã«é‡è¦ã ã­ã€‚");
 					sleep = 10;
 				} else if (ROUND_1_STEP == 4) {
-					SHOUT_MSG(µ¥Æ÷·ÎÁê,
-							"µ¥Æ÷·ÎÁê: °ğ.. ¾ÕÀ» °¡·Î ¸·°í ÀÖ´Â ¹æÃ¥À» ¹«³ÊÆ®¸±Å×´Ï ¾ÕÀ¸·Î ³ª¾Æ°¡¼­ ´Ü¼­¸¦ Ã£¾Æ¿À°Ô.");
+					SHOUT_MSG(deformation,
+							"ãƒ‡ãƒãƒ­ã‚¸ãƒ¥ï¼šã™ãã«â€¦å‰ã‚’é®ã£ã¦ã„ã‚‹æ–¹ç­–ã‚’å´©ã™ã‹ã‚‰å…ˆã«é€²ã‚“ã§æ‰‹ãŒã‹ã‚Šã‚’è¨ªã­ã¦ãã‚‹ã€‚");
 					sleep = 10;
 				} else if (ROUND_1_STEP == 3) {
-					SHOUT_MSG(µ¥Æ÷·ÎÁê, "µ¥Æ÷·ÎÁê: ±×´ëµéÀ» ¹Ï°í ³­ µ¹¾Æ°¡¼­ ¼ºÀÇ Å»È¯À» ÁØºñ ÇÏ°Ú³×.");
+					SHOUT_MSG(deformation, "ãƒ‡ãƒãƒ­ã‚¸ãƒ¥ï¼šã‚ãªãŸã‚’ä¿¡ã˜ã¦ã€ç§ã¯å¸°ã£ã¦åŸã®å¥ªé‚„ã‚’æº–å‚™ã—ã¾ã™ã€‚");
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(ºÓÀº±â»ç´Ü1, 0, 5), 2500);
+							new NpcMove(red_knights1, 0, 5), 2500);
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(ºÓÀº±â»ç´Ü2, 0, 5), 2500);
+							new NpcMove(red_knights2, 0, 5), 2500);
 					GeneralThreadPool.getInstance().schedule(
-							new NpcMove(µ¥Æ÷·ÎÁê, 0, 7), 50);
+							new NpcMove(deformation, 0, 7), 50);
 					sleep = 10;
 				} else if (ROUND_1_STEP == 2) {
-					¹Ù¸®»èÁ¦(¹Ù¸®1);
-					Àâ¸÷ = RedKnightSpawn.getInstance()
+					barry_delete(bari1);
+					miscellaneous_mobs = RedKnightSpawn.getInstance()
 							.fillSpawnTable(_mapnum, 3);
-					GREEN_MSG("Àü·É: Ã¹ ¹øÂ° ¹æÃ¥ÀÌ ÆÄ±«µÆ´Ù. ¸ğµÎ Áø°İÇÏ¶ó!!");
+					GREEN_MSG("ä¼ä»¤ï¼šæœ€åˆã®æ–¹ç­–ãŒç ´å£Šã•ã‚ŒãŸã€‚ ã¿ã‚“ãªé€²æ’ƒã›ã‚ˆï¼");
 				} else if (ROUND_1_STEP == 1) {
-					if (Àâ¸÷Ã¼Å©()) {
-						º¸½º = L1SpawnUtil.spawn2(32770, 32923, (short) _mapnum,
-								100653, 3, 0, 0);// ¶ó¹Ì¾Æ½º
-						GREEN_MSG("ºÎ´ëÀå: ¿©±â¸¦ ¾î¶»°Ô Ã£¾Æ³ÂÁö? ¿ì¸® °ËÀº ±â»ç´ÜÀ» °Çµå¸° ÁË°ªÀ» Ä¡¸£°Ô ÇØÁÖ¸¶!!");
+					if (is_MISCELLANEOUS_MOD_CHECK()) {
+						boss = L1SpawnUtil.spawn2(32770, 32923, (short) _mapnum,
+								100653, 3, 0, 0);// ãƒ©ãƒŸã‚¢ã‚¹
+						GREEN_MSG("éƒ¨éšŠé•·ï¼šã“ã“ã‚’ã©ã†ã‚„ã£ã¦è¦‹ã¤ã‘ãŸã®ï¼Ÿ ç§ãŸã¡ã®é»’é¨å£«å›£ã«è§¦ã‚ŒãŸç½ªå€¤ã‚’æ‰•ã‚ãªã„ã§ãã ã•ã„ï¼");
 					} else {
 						GeneralThreadPool.getInstance()
 								.schedule(this, 5 * 1000);
 						return;
 					}
 				} else if (ROUND_1_STEP == 0) {
-					if (º¸½ºÃ¼Å©())
+					if (is_BOSS_CHECK())
 						step++;
 				}
 				if (ROUND_1_STEP != 0)
@@ -191,22 +191,22 @@ public class RedKnight implements Runnable {
 			case ROUND_2:
 				sleep = 5;
 				if (ROUND_2_STEP == 2) {
-					¹Ù¸®»èÁ¦(¹Ù¸®2);
-					Àâ¸÷ = RedKnightSpawn.getInstance()
+					barry_delete(bari2);
+					miscellaneous_mobs = RedKnightSpawn.getInstance()
 							.fillSpawnTable(_mapnum, 5);
-					GREEN_MSG("Àü·É: µÎ ¹øÂ° ¹æÃ¥ÀÌ ÆÄ±«µÆ´Ù. µ¹°İ~¾ÕÀ¸·Î~~!!");
+					GREEN_MSG("ä¼ä»¤ï¼š2ç•ªç›®ã®æ–¹ç­–ãŒç ´å£Šã•ã‚ŒãŸã€‚ çªæ’ƒï½ã“ã‚Œã‹ã‚‰ï½ï½!!");
 				} else if (ROUND_2_STEP == 1) {
-					if (Àâ¸÷Ã¼Å©()) {
-						º¸½º = L1SpawnUtil.spawn2(32771, 33009, (short) _mapnum,
-								100654, 3, 0, 0);// ¹Ù·Îµå
-						GREEN_MSG("ºÎ´ëÀå: ¿©±â±îÁö ¿Ô´Ù´Â °ÍÀº ¾ÕÀÇ ºÎ´ë¸¦ ¾²·¯Æ®·È´Ù´Â °ÍÀÎµ¥... ½±°Ô º¼ ³ğµéÀÌ ¾Æ´Ï±º. ³»°¡ »ó´ëÇØ ÁÖ¸¶!!");
+					if (is_MISCELLANEOUS_MOD_CHECK()) {
+						boss = L1SpawnUtil.spawn2(32771, 33009, (short) _mapnum,
+								100654, 3, 0, 0);// ãƒãƒ­ãƒƒãƒ‰
+						GREEN_MSG("éƒ¨éšŠé•·ï¼šã“ã“ã¾ã§æ¥ãŸã¨ã„ã†ã®ã¯å‰ã®éƒ¨éšŠã‚’å€’ã—ãŸã¨ã„ã†ã“ã¨ãªã®ã«â€¦ç°¡å˜ã«è¦‹ã‚‹å¥´ã§ã¯ãªã„ã­ã€‚ ç§ãŒç›¸æ‰‹ã«ã—ã¦ãã ã•ã„ï¼");
 					} else {
 						GeneralThreadPool.getInstance()
 								.schedule(this, 5 * 1000);
 						return;
 					}
 				} else if (ROUND_2_STEP == 0) {
-					if (º¸½ºÃ¼Å©())
+					if (is_BOSS_CHECK())
 						step++;
 				}
 				if (ROUND_2_STEP != 0)
@@ -215,22 +215,22 @@ public class RedKnight implements Runnable {
 			case ROUND_3:
 				sleep = 5;
 				if (ROUND_3_STEP == 2) {
-					¹Ù¸®»èÁ¦(¹Ù¸®3);
-					Àâ¸÷ = RedKnightSpawn.getInstance()
+					barry_delete(bari3);
+					miscellaneous_mobs = RedKnightSpawn.getInstance()
 							.fillSpawnTable(_mapnum, 7);
-					GREEN_MSG("Àü·É: ¸¶Áö¸· ¹æÃ¥ÀÌ ÆÄ±«µÆ´Ù. Á¶±İ ´õ ÈûÀ» ³»¶ó~~!!");
+					GREEN_MSG("ä¼ä»¤ï¼šæœ€å¾Œã®æ–¹ç­–ãŒç ´å£Šã•ã‚ŒãŸã€‚ ã‚‚ã†å°‘ã—åŠ›ã‚’å‡ºã—ãªã•ã„~~!!");
 				} else if (ROUND_3_STEP == 1) {
-					if (Àâ¸÷Ã¼Å©()) {
-						º¸½º = L1SpawnUtil.spawn2(32769, 33093, (short) _mapnum,
-								100655, 3, 0, 0);// ±×¸²¸®ÆÛ
-						GREEN_MSG("ºÎ´ëÀå: ¾Ã¾î¸Ô¾îµµ ½Ã¿øÂúÀ» ³ğµé!! ³» ³ÊÈñ¸¦ °¡¸¸µÎÁö ¾Ê°Ú´Ù!!");
+					if (is_MISCELLANEOUS_MOD_CHECK()) {
+						boss = L1SpawnUtil.spawn2(32769, 33093, (short) _mapnum,
+								100655, 3, 0, 0);// ã‚¤ãƒ©ã‚¹ãƒˆãƒªãƒƒãƒ‘ãƒ¼
+						GREEN_MSG("éƒ¨éšŠé•·ï¼šå™›ã‚“ã§é£Ÿã¹ã¦ã‚‚æ¶¼ã—ã„å¥´ã‚‰ï¼ ç§ã¯ã‚ãªãŸãŒãŸã‚’æ­¢ã‚ã¾ã›ã‚“ï¼");
 					} else {
 						GeneralThreadPool.getInstance()
 								.schedule(this, 5 * 1000);
 						return;
 					}
 				} else if (ROUND_3_STEP == 0) {
-					if (º¸½ºÃ¼Å©())
+					if (is_BOSS_CHECK())
 						step++;
 				}
 				if (ROUND_3_STEP != 0)
@@ -242,16 +242,16 @@ public class RedKnight implements Runnable {
 					Object_Delete();
 					return;
 				} else if (END_TIME == 13) {
-					GREEN_MSG("Àü·É: ÀÌ¹ø ¿øÁ¤À» ¼º°øÀûÀ¸·Î ³¡¸¶Ä£ °Í¿¡ ´ëÇØ µ¥Æ÷·ÎÁê´ÔÀÌ ±â»µÇÏ½Ç °ÍÀÔ´Ï´Ù.");
+					GREEN_MSG("ä¼ä»¤ï¼šä»Šå›ã®é å¾ã‚’æˆåŠŸè£ã«çµ‚ãˆãŸã“ã¨ã«ã¤ã„ã¦ã€ãƒ‡ãƒãƒ­ã‚¸ãƒ¥æ§˜ãŒå–œã°ã‚Œã‚‹ã§ã—ã‚‡ã†ã€‚");
 					sleep = 3;
 				} else if (END_TIME == 12) {
-					GREEN_MSG("Àü·É: È¹µæÇÑ ´Ü¼­ 3Á¾·ù¸¦ 'Âü¸ğ'¿¡°Ô °¡Á®°¡ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+					GREEN_MSG("ä¼ä»¤ï¼šç²å¾—ã—ãŸæ‰‹ãŒã‹ã‚Š3ç¨®é¡ã‚’ã€Œå‚è¬€ã€ã«æŒã£ã¦ã„ã£ã¦ãã ã•ã„ã€‚");
 					sleep = 3;
 				} else if (END_TIME == 11) {
-					GREEN_MSG("½Ã½ºÅÛ ¸Ş½ÃÁö: 1ºĞÈÄ ¸¶À»·Î °­Á¦ ÅÚ·¹Æ÷Æ® µË´Ï´Ù.");
+					GREEN_MSG("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š1åˆ†å¾Œã«æ‘ã«å¼·åˆ¶ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã•ã‚Œã¾ã™ã€‚");
 					sleep = 50;
 				} else {
-					GREEN_MSG("½Ã½ºÅÛ ¸Ş½ÃÁö: " + END_TIME + "ÃÊ");
+					GREEN_MSG("ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š " + END_TIME + "ç§’");
 				}
 				END_TIME--;
 				break;
@@ -268,16 +268,16 @@ public class RedKnight implements Runnable {
 		GeneralThreadPool.getInstance().schedule(this, sleep * 1000);
 	}
 
-	private boolean º¸½ºÃ¼Å©() {
-		if (º¸½º == null || º¸½º._destroyed || º¸½º.isDead())
+	private boolean is_BOSS_CHECK() {
+		if (boss == null || boss._destroyed || boss.isDead())
 			return true;
 		return false;
 	}
 
-	private boolean Àâ¸÷Ã¼Å©() {
-		if (Àâ¸÷ == null || Àâ¸÷.size() <= 0)
+	private boolean is_MISCELLANEOUS_MOD_CHECK() {
+		if (miscellaneous_mobs == null || miscellaneous_mobs.size() <= 0)
 			return true;
-		for (L1NpcInstance npc : Àâ¸÷) {
+		for (L1NpcInstance npc : miscellaneous_mobs) {
 			if (npc == null || npc._destroyed || npc.isDead())
 				continue;
 			// System.out.println(npc.getX()+" > "+npc.getY());
@@ -286,7 +286,7 @@ public class RedKnight implements Runnable {
 		return true;
 	}
 
-	private void ¹Ù¸®»èÁ¦(FastTable<L1NpcInstance> list) {
+	private void barry_delete(FastTable<L1NpcInstance> list) {
 		if (list == null || list.size() <= 0)
 			return;
 		for (L1NpcInstance npc : list) {
