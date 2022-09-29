@@ -393,14 +393,14 @@ public class L1Shop {
 					if (remaindcount == amount) {
 						isRemoveFromList[orderid] = true;
 						try {
-							NpcBuyShop.getInstance().상점아이템삭제(_npcId, objid);
+							NpcBuyShop.getInstance().delete_shop_item(_npcId, objid);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					} else {
 						_sellingItems.get(orderid).setCount(remaindcount - amount);
 						try {
-							NpcBuyShop.getInstance().상점아이템업데이트(_npcId, objid, remaindcount - amount);
+							NpcBuyShop.getInstance().store_item_update(_npcId, objid, remaindcount - amount);
 						} catch (Exception e) {
 							e.printStackTrace();
 							// _log.log(Level.SEVERE, e.getLocalizedMessage(),

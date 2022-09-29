@@ -68,12 +68,12 @@ public class NpcBuyShop {
 				if (shop.getSellingItems().size() > 0) {
 					boolean ckck = false;
 					for (L1ShopItem shopitem : shop.getSellingItems()) {
-						ckck = ªÛ¡°≈€√º≈©(shopitem.getId());
+						ckck = shop_item_check(shopitem.getId());
 						if (!ckck) {
 							NpcBuyShop.getInstance().SaveShop(npc, shopitem,
 									shopitem.getPrice(), shopitem.getCount());
 						} else {
-							// System.out.println("»Æ¿Œ«ÿæﬂ«“ Ω√¿ÂªÛ¡° =>> "+npc.getName());
+							// System.out.println("Market stores to check =>> "+npc.getName());
 						}
 					}
 				}
@@ -132,64 +132,64 @@ public class NpcBuyShop {
 							String att = "";
 							switch (d.getAttr()) {
 							case 1:
-								att = "»≠∑…1¥‹";
+								att = "ÁÅ´Èúä1ÊÆµ";
 								break;
 							case 2:
-								att = "»≠∑…2¥‹";
+								att = "ÁÅ´Èúä2ÊÆµ";
 								break;
 							case 3:
-								att = "»≠∑…3¥‹";
+								att = "ÁÅ´Èúä3ÊÆµ";
 								break;
 							case 4:
-								att = "ºˆ∑…1¥‹";
+								att = "Ê∞¥Èúä1ÊÆµ";
 								break;
 							case 5:
-								att = "ºˆ∑…2¥‹";
+								att = "Ê∞¥Èúä2ÊÆµ";
 								break;
 							case 6:
-								att = "ºˆ∑…3¥‹";
+								att = "Ê∞¥Èúä3ÊÆµ";
 								break;
 							case 7:
-								att = "«≥∑…1¥‹";
+								att = "È¢®Èúä1ÊÆµ";
 								break;
 							case 8:
-								att = "«≥∑…2¥‹";
+								att = "È¢®Èúä2ÊÆµ";
 								break;
 							case 9:
-								att = "«≥∑…3¥‹";
+								att = "È¢®Èúä3ÊÆµ";
 								break;
 							case 10:
-								att = "¡ˆ∑…1¥‹";
+								att = "ÂúüÈúä1ÊÆµ";
 								break;
 							case 11:
-								att = "¡ˆ∑…2¥‹";
+								att = "ÂúüÈúä2ÊÆµ";
 								break;
 							case 12:
-								att = "¡ˆ∑…3¥‹";
+								att = "ÂúüÈúä3ÊÆµ";
 								break;
 							case 33:
-								att = "»≠∑…4¥‹";
+								att = "ÁÅ´Èúä4ÊÆµ";
 								break;
 							case 34:
-								att = "»≠∑…5¥‹";
+								att = "ÁÅ´Èúä5ÊÆµ";
 								break;
 							case 35:
-								att = "ºˆ∑…4¥‹";
+								att = "Ê∞¥Èúä4ÊÆµ";
 								break;
 							case 36:
-								att = "ºˆ∑…5¥‹";
+								att = "Ê∞¥Èúä5ÊÆµ";
 								break;
 							case 37:
-								att = "«≥∑…4¥‹";
+								att = "È¢®Èúä4ÊÆµ";
 								break;
 							case 38:
-								att = "«≥∑…5¥‹";
+								att = "È¢®Èúä5ÊÆµ";
 								break;
 							case 39:
-								att = "¡ˆ∑…4¥‹";
+								att = "ÂúüÈúä4ÊÆµ";
 								break;
 							case 40:
-								att = "¡ˆ∑…5¥‹";
+								att = "ÂúüÈúä5ÊÆµ";
 								break;
 							default:
 								break;
@@ -229,14 +229,14 @@ public class NpcBuyShop {
 
 	private NpcBuyShop() {
 		NpcChatThread.get();
-		/** NPC Ω∫∆˘ **/
+		/** NPC spawn **/
 		shoplist = NpcBuyShopSpawn.getInstance().load();
-		/** æ∆¿Ã≈€ ∞°∞› º¬∆√ **/
+		/** Item price setting **/
 		itemlist = NpcBuyShopPrice.getInstance().load();
 	//	System.out.println(":: NpcBuyShop Loading Compleate");
 	}
 
-	public boolean ªÛ¡°≈€√º≈©(int objid) {
+	public boolean shop_item_check(int objid) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -259,7 +259,7 @@ public class NpcBuyShop {
 		return false;
 	}
 
-	public void ªÛ¡°æ∆¿Ã≈€ªË¡¶(int npcid, int objid) {// æ∆¿Ã≈€æ∆¿Ãµ∫∞ ∆«∏≈ ±∏∏≈ ±∏∫–»ƒ ªË¡¶
+	public void delete_shop_item(int npcid, int objid) {// ÏïÑÏù¥ÌÖúÏïÑÏù¥ÎîîÎ≥Ñ ÌåêÎß§ Íµ¨Îß§ Íµ¨Î∂ÑÌõÑ ÏÇ≠Ï†ú
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -277,7 +277,7 @@ public class NpcBuyShop {
 		}
 	}
 
-	public void ªÛ¡°æ∆¿Ã≈€æ˜µ•¿Ã∆Æ(int npcid, int objid, int count1) {
+	public void store_item_update(int npcid, int objid, int count1) {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
@@ -337,7 +337,7 @@ public class NpcBuyShop {
 			pstm.setInt(10, npc.getY());
 			pstm.setInt(11, npc.getMapId());
 			/*
-			 * 0 = πÃ»Æ 1 = »Æ¿Œ∫∏≈Î 2 = √‡ 3 = ¿˙¡÷
+			 * 0 =Êú™Á¢∫Ë™ç1 =Á¢∫Ë™çÈÄöÂ∏∏2 =Ëª∏3 =Âë™„ÅÑ
 			 */
 			/*
 			 * if (!item.isIdentified()) { pstm.setInt(13, 0); }else{
@@ -345,13 +345,13 @@ public class NpcBuyShop {
 			switch (bless) {
 			case 0:
 				pstm.setInt(12, 2);
-				break;// √‡
+				break;// axis
 			case 1:
 				pstm.setInt(12, 1);
-				break;// ∫∏≈Î
+				break;// usually
 			case 2:
 				pstm.setInt(12, 3);
-				break;// ¿˙¡÷
+				break;// curse
 			}
 			// }
 			pstm.setInt(13, attr);
@@ -362,10 +362,10 @@ public class NpcBuyShop {
 			pstm.setInt(14, item.getId());
 			pstm.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("¡ﬂ∫π objid -> " + npc.getName() + " >>>> [" + item.getItem().getName() + "] æ∆¿Ãµ : " + item.getId());
+			System.out.println("ÈáçË§á objid -> " + npc.getName() + " >>>> [" + item.getItem().getName() + "] ID : " + item.getId());
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("¡ﬂ∫π objid -> " + npc.getName() + " >>>> [" + item.getItem().getName() + "] æ∆¿Ãµ : " + item.getId());
+			System.out.println("ÈáçË§á objid -> " + npc.getName() + " >>>> [" + item.getItem().getName() + "] ID : " + item.getId());
 			e.printStackTrace();
 		} finally {
 			SQLUtil.close(pstm);
@@ -380,7 +380,7 @@ public class NpcBuyShop {
 					&& item.getEnchant() == enchant && item.getAttr() == attr
 					&& item.getBless() == bles) {
 				int objid = ObjectIdFactory.getInstance().nextId();
-				// System.out.println(item.getItem().getName()+" ¿« æ∆¿Ãµ :"+objid);
+				// System.out.println(item.getItem().getName()+" Ïùò ÏïÑÏù¥Îîî :"+objid);
 				L1ShopItem tempItem = new L1ShopItem(item.getItemId(),
 						item.getPrice(), item.getBuyPrice(),
 						item.getPackCount(), item.getEnchant(), item.getAttr(),
@@ -412,7 +412,7 @@ public class NpcBuyShop {
 		return _npcShops.get(npcId);
 	}
 
-	// Ω«Ω√∞£ ∏≈¿‘
+	// Real-time buy
 	public synchronized void insert(int itemid, int enchant, int attr,
 			Timestamp time, int bless) {
 		L1NpcShopInstance ns = null;
@@ -429,29 +429,29 @@ public class NpcBuyShop {
 			if (ns.getDefaultName() != null && ns.getShopName() != null
 					&& !ns.getShopName().equalsIgnoreCase("")) {
 				L1Shop s = get(ns.getNpcTemplate().get_npcId());
-				if (s == null || s.getSellingItems().size() < 5) {// π´¡∂∞« «—∞≥æø∏∏
-																	// ∆»µµ∑œ ∫Ø∞Ê.
+				if (s == null || s.getSellingItems().size() < 5) {// ÁÑ°Êù°‰ª∂„Å´1„Å§„Åö„Å§
+																	// Â£≤„Çå„Çã„Çà„ÅÜ„Å´Â§âÊõ¥„ÄÇ
 					ck = false;
 					break;
 				}
 			}
 		}
 		if (ck || ns == null) {
-			S_SystemMessage sm = new S_SystemMessage("> ∏≈¿‘¿ª ≈Î«— ∆«∏≈ ªÛ¡°¿Ã æ¯∞≈≥™ ∫Œ¡∑«’¥œ¥Ÿ.");
+			S_SystemMessage sm = new S_SystemMessage("> Ë≥ºÂÖ•„Å´„Çà„ÇãË≤©Â£≤Â∫ó„Åå„Å™„ÅÑ„Åã‰∏çË∂≥„Åó„Å¶„ÅÑ„Åæ„Åô„ÄÇ");
 			for (L1PcInstance pc : L1World.getInstance().getAllPlayers()) {
 				if (pc.isGm()) {
 					pc.sendPackets(sm);
 				}
 			}
 			sm = null;
-			System.out.println("> ∏≈¿‘¿ª ≈Î«— ∆«∏≈ ªÛ¡°¿Ã æ¯∞≈≥™ ∫Œ¡∑«’¥œ¥Ÿ.");
+			System.out.println("> Ë≥ºÂÖ•„Å´„Çà„ÇãË≤©Â£≤Â∫ó„Åå„Å™„ÅÑ„Åã‰∏çË∂≥„Åó„Å¶„ÅÑ„Åæ„Åô„ÄÇ");
 			return;
 		}
 		int npcId = ns.getNpcTemplate().get_npcId();
 		L1Shop shop = get(npcId);
 		L1ShopItem item = getItem(itemid, enchant, attr, bless);
 		if (item == null) {
-			System.out.println(":: ∏≈¿‘ ªÛ¡° ∑Œµ˘¡ﬂ ∞°∞› æ¯¥¬ æ∆¿Ã≈€ >> " + itemid);
+			System.out.println(":: Ë≤∑ÂèñÂ∫ó „É≠„Éº„Éá„Ç£„É≥„Ç∞‰∏≠ ‰æ°Ê†º„ÅÆ„Å™„ÅÑ„Ç¢„Ç§„ÉÜ„É† >> " + itemid);
 			return;
 		}
 		if (time != null)
@@ -479,64 +479,64 @@ public class NpcBuyShop {
 			String att = "";
 			switch (i.getAttr()) {
 			case 1:
-				att = "»≠∑…1¥‹";
+				att = "ÁÅ´Èúä1ÊÆµ";
 				break;
 			case 2:
-				att = "»≠∑…2¥‹";
+				att = "ÁÅ´Èúä2ÊÆµ";
 				break;
 			case 3:
-				att = "»≠∑…3¥‹";
+				att = "ÁÅ´Èúä3ÊÆµ";
 				break;
 			case 4:
-				att = "ºˆ∑…1¥‹";
+				att = "Ê∞¥Èúä1ÊÆµ";
 				break;
 			case 5:
-				att = "ºˆ∑…2¥‹";
+				att = "Ê∞¥Èúä2ÊÆµ";
 				break;
 			case 6:
-				att = "ºˆ∑…3¥‹";
+				att = "Ê∞¥Èúä3ÊÆµ";
 				break;
 			case 7:
-				att = "«≥∑…1¥‹";
+				att = "È¢®Èúä1ÊÆµ";
 				break;
 			case 8:
-				att = "«≥∑…2¥‹";
+				att = "È¢®Èúä2ÊÆµ";
 				break;
 			case 9:
-				att = "«≥∑…3¥‹";
+				att = "È¢®Èúä3ÊÆµ";
 				break;
 			case 10:
-				att = "¡ˆ∑…1¥‹";
+				att = "ÂúüÈúä1ÊÆµ";
 				break;
 			case 11:
-				att = "¡ˆ∑…2¥‹";
+				att = "ÂúüÈúä2ÊÆµ";
 				break;
 			case 12:
-				att = "¡ˆ∑…3¥‹";
+				att = "ÂúüÈúä3ÊÆµ";
 				break;
 			case 33:
-				att = "»≠∑…4¥‹";
+				att = "ÁÅ´Èúä4ÊÆµ";
 				break;
 			case 34:
-				att = "»≠∑…5¥‹";
+				att = "ÁÅ´Èúä5ÊÆµ";
 				break;
 			case 35:
-				att = "ºˆ∑…4¥‹";
+				att = "Ê∞¥Èúä4ÊÆµ";
 				break;
 			case 36:
-				att = "ºˆ∑…5¥‹";
+				att = "Ê∞¥Èúä5ÊÆµ";
 				break;
 			case 37:
-				att = "«≥∑…4¥‹";
+				att = "È¢®Èúä4ÊÆµ";
 				break;
 			case 38:
-				att = "«≥∑…5¥‹";
+				att = "È¢®Èúä5ÊÆµ";
 				break;
 			case 39:
-				att = "¡ˆ∑…4¥‹";
+				att = "ÂúüÈúä4ÊÆµ";
 				break;
 			case 40:
-				att = "¡ˆ∑…5¥‹";
+				att = "ÂúüÈúä5ÊÆµ";
 				break;
 			default:
 				break;
@@ -564,11 +564,11 @@ public class NpcBuyShop {
 				das = null;
 				boolean ckck = false;
 				for (L1ShopItem i : shop.getSellingItems()) {
-					ckck = ªÛ¡°≈€√º≈©(i.getId());
+					ckck = shop_item_check(i.getId());
 					if (!ckck) {
 						SaveShop(ns, i, i.getPrice(), i.getCount());
 					} else {
-						// System.out.println("[1] »Æ¿Œ«ÿæﬂ«“ Ω√¿ÂªÛ¡° =>> "+ns.getName()+" item "+i.getItem().getItemId());
+						// System.out.println("[1] ÌôïÏù∏Ìï¥ÏïºÌï† ÏãúÏû•ÏÉÅÏ†ê =>> "+ns.getName()+" item "+i.getItem().getItemId());
 					}
 				}
 			}
@@ -598,7 +598,7 @@ public class NpcBuyShop {
 		L1ShopItem item = getItem(itemid, enchant, attr, bless);
 
 		if (item == null) {
-			System.out.println(":: ∏≈¿‘ ªÛ¡° ∑Œµ˘¡ﬂ ∞°∞› æ¯¥¬ æ∆¿Ã≈€ >> " + itemid);
+			System.out.println(":: Ë≤∑ÂèñÂ∫ó „É≠„Éº„Éá„Ç£„É≥„Ç∞‰∏≠ ‰æ°Ê†º„ÅÆ„Å™„ÅÑ„Ç¢„Ç§„ÉÜ„É†>> " + itemid);
 			return;
 		}
 		if (time != null) {
@@ -628,64 +628,64 @@ public class NpcBuyShop {
 			String att = "";
 			switch (i.getAttr()) {
 			case 1:
-				att = "»≠∑…1¥‹";
+				att = "ÁÅ´Èúä1ÊÆµ";
 				break;
 			case 2:
-				att = "»≠∑…2¥‹";
+				att = "ÁÅ´Èúä2ÊÆµ";
 				break;
 			case 3:
-				att = "»≠∑…3¥‹";
+				att = "ÁÅ´Èúä3ÊÆµ";
 				break;
 			case 4:
-				att = "ºˆ∑…1¥‹";
+				att = "Ê∞¥Èúä1ÊÆµ";
 				break;
 			case 5:
-				att = "ºˆ∑…2¥‹";
+				att = "Ê∞¥Èúä2ÊÆµ";
 				break;
 			case 6:
-				att = "ºˆ∑…3¥‹";
+				att = "Ê∞¥Èúä3ÊÆµ";
 				break;
 			case 7:
-				att = "«≥∑…1¥‹";
+				att = "È¢®Èúä1ÊÆµ";
 				break;
 			case 8:
-				att = "«≥∑…2¥‹";
+				att = "È¢®Èúä2ÊÆµ";
 				break;
 			case 9:
-				att = "«≥∑…3¥‹";
+				att = "È¢®Èúä3ÊÆµ";
 				break;
 			case 10:
-				att = "¡ˆ∑…1¥‹";
+				att = "ÂúüÈúä1ÊÆµ";
 				break;
 			case 11:
-				att = "¡ˆ∑…2¥‹";
+				att = "ÂúüÈúä2ÊÆµ";
 				break;
 			case 12:
-				att = "¡ˆ∑…3¥‹";
+				att = "ÂúüÈúä3ÊÆµ";
 				break;
 			case 33:
-				att = "»≠∑…4¥‹";
+				att = "ÁÅ´Èúä4ÊÆµ";
 				break;
 			case 34:
-				att = "»≠∑…5¥‹";
+				att = "ÁÅ´Èúä5ÊÆµ";
 				break;
 			case 35:
-				att = "ºˆ∑…4¥‹";
+				att = "Ê∞¥Èúä4ÊÆµ";
 				break;
 			case 36:
-				att = "ºˆ∑…5¥‹";
+				att = "Ê∞¥Èúä5ÊÆµ";
 				break;
 			case 37:
-				att = "«≥∑…4¥‹";
+				att = "È¢®Èúä4ÊÆµ";
 				break;
 			case 38:
-				att = "«≥∑…5¥‹";
+				att = "È¢®Èúä5ÊÆµ";
 				break;
 			case 39:
-				att = "¡ˆ∑…4¥‹";
+				att = "ÂúüÈúä4ÊÆµ";
 				break;
 			case 40:
-				att = "¡ˆ∑…5¥‹";
+				att = "ÂúüÈúä5ÊÆµ";
 				break;
 			default:
 				break;
@@ -737,7 +737,7 @@ public class NpcBuyShop {
 
 		L1ShopItem item = getItem(itemid, enchant, attr, bless);
 		if (item == null) {
-			System.out.println(":: ∏≈¿‘ ªÛ¡° ∑Œµ˘¡ﬂ ∞°∞› æ¯¥¬ æ∆¿Ã≈€ >> " + itemid);
+			System.out.println(":: Ë≤∑ÂèñÂ∫ó „É≠„Éº„Éá„Ç£„É≥„Ç∞‰∏≠ ‰æ°Ê†º„ÅÆ„Å™„ÅÑ„Ç¢„Ç§„ÉÜ„É† >> " + itemid);
 			return;
 		}
 		if (time != null) {
@@ -793,7 +793,7 @@ public class NpcBuyShop {
 				}
 				ss = this;
 				// Thread.sleep(20000+_rnd.nextInt(10000));
-				// System.out.println("Ω∫∆˘");
+				// System.out.println("spawn");
 				Thread.sleep(_rnd.nextInt(1000) + 1000);
 
 				// Thread.sleep(100);
@@ -803,14 +803,14 @@ public class NpcBuyShop {
 				L1Shop shop = get(npc.getNpcId());
 				boolean ckck = false;
 				for (L1ShopItem i : shop.getSellingItems()) {
-					ckck = ªÛ¡°≈€√º≈©(i.getId());
+					ckck = shop_item_check(i.getId());
 					if (!ckck) {
 						SaveShop(npc, i, i.getPrice(), i.getCount());
 					} else {
-						// System.out.println("[2] »Æ¿Œ«ÿæﬂ«“ Ω√¿ÂªÛ¡° =>> "+npc.getName()+" item "+i.getItem().getItemId());
+						// System.out.println("[2] ÌôïÏù∏Ìï¥ÏïºÌï† ÏãúÏû•ÏÉÅÏ†ê =>> "+npc.getName()+" item "+i.getItem().getItemId());
 					}
 				}
-				// System.out.println("Ω√¿ÂªÛ¡° Ω∫∆˘ =>> "+npc.getName());
+				// System.out.println("ÏãúÏû•ÏÉÅÏ†ê Ïä§Ìè∞ =>> "+npc.getName());
 				L1World.getInstance().storeObject(npc);
 				L1World.getInstance().addVisibleObject(npc);
 			} catch (Exception e) {
@@ -867,7 +867,7 @@ public class NpcBuyShop {
 	 * ----------------------------- 32803 32813 32883 32897 32817 32826 32883
 	 * 32896 32830 32844 32883 32897 32830 32844 32901 32910 32829 32844 32914
 	 * 32924 32829 32444 32929 32938 32829 32830 32942 32952 32830 32844 32970
-	 * 32955 //1Ω√πÊ«‚ 32817 32826 32955 32970 32803 32813 32955 32970 32788 32798
+	 * 32955 //1ÊñπÂêë 32817 32826 32955 32970 32803 32813 32955 32970 32788 32798
 	 * 32956 32970 32775 32784 32956 32970 32771 32757 32956 32970 32757 32771
 	 * 32943 32952 32757 32771 32929 32939 32757 32771 32914 32924 32757 32771
 	 * 32901 32910 32757 32771 32883 32897 32775 32785 32883 32897 32790 32798
@@ -1020,9 +1020,9 @@ public class NpcBuyShop {
 
 	public void NpcBuyShop() {
 		NpcChatThread.get();
-		/** NPC Ω∫∆˘ **/
+		/** NPC spawn **/
 		shoplist = NpcBuyShopSpawn.getInstance().load();
-		/** æ∆¿Ã≈€ ∞°∞› º¬∆√ **/
+		/** Item price setting **/
 		itemlist = NpcBuyShopPrice.getInstance().load();
 	//	System.out.println(":: NpcBuyShop Loading Compleate");
 		

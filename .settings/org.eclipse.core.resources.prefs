@@ -61,6 +61,7 @@ encoding//src/l1j/server/GameSystem/MiniGame/MiniGame.java=UTF-8
 encoding//src/l1j/server/GameSystem/NavalWarfare/NavalWarfareSpawn.java=UTF-8
 encoding//src/l1j/server/GameSystem/NewTimeController.java=UTF-8
 encoding//src/l1j/server/GameSystem/NoticeSystem.java=UTF-8
+encoding//src/l1j/server/GameSystem/NpcBuyShop/NpcBuyShop.java=UTF-8
 encoding//src/l1j/server/GameSystem/NpcBuyShop/NpcBuyShopPrice.java=UTF-8
 encoding//src/l1j/server/GameSystem/NpcBuyShop/NpcBuyShopSell.java=UTF-8
 encoding//src/l1j/server/GameSystem/NpcBuyShop/NpcBuyShopSpawn.java=UTF-8
