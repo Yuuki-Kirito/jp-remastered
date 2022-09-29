@@ -51,7 +51,7 @@ public class NavalWarfare {
 		synchronized (mapList) {
 			map = mapCheck();
 			if (map == null) {
-				pc.sendPackets(new S_SystemMessage("ÀÎ¿øÀÌ ³Ê¹« ¸¹¾Æ ÀÔÀå ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù."));
+				pc.sendPackets(new S_SystemMessage("äººæ•°ãŒå¤šã™ãã¦å…¥å ´ã§ãã¾ã›ã‚“ã€‚"));
 				return true;
 			}
 			mapList.put(map, true);

@@ -90,7 +90,7 @@ public class NavalWarfareController implements Runnable {
 		mapid = _mapid;
 		baseList = NavalWarfareSpawn.getInstance().spawnList(_mapid, 0);
 		_member = new FastTable<L1PcInstance>();
-		/** ÀÎ¿ø Ã¼Å© ½º·¹µå **/
+		/** Personnel check thread **/
 		GeneralThreadPool.getInstance().schedule(new Runnable() {
 			@Override
 			public void run() {
@@ -115,16 +115,16 @@ public class NavalWarfareController implements Runnable {
 		}, 5000);
 	}
 
-	// µå¶ø ¸®½ºÆ® ¹× ¹ë·±½º
+	// ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆã¨ãƒãƒ©ãƒ³ã‚¹
 
-	// ¹èÆÄÆí?
-	// ¼øÀ§ ¹× Á¡¼ö?
+	// shipwreck?
+	// Rank and score?
 	private static final int bossid1[] = { 100146, 100154, 100153, 100152,
 			100151, 100150, 100148, 100145, 100146, 100147 };
 
 	// private static final int bossid2[] =
 	// {100146,100154,100153,100152,100151,100150,100148,100145,100146,100147};
-	private void ´ëÆ÷¾×¼Ç() {
+	private void cannon_action() {
 		for (L1NpcInstance npc : baseList) {
 			if (npc != null && npc.getNpcId() == 100108) {
 				Broadcaster.broadcastPacket(npc, new S_DoActionGFX(npc.getId(),
@@ -134,7 +134,7 @@ public class NavalWarfareController implements Runnable {
 
 	}
 
-	private void È­¸éÀÌÆÑ() {
+	private void screen_pack() {
 		L1PcInstance[] list = getMemberArray();
 		if (list != null && list.length > 0) {
 			for (L1PcInstance pc : list) {
@@ -152,7 +152,7 @@ public class NavalWarfareController implements Runnable {
 	@Override
 	public void run() {
 		try {
-			// System.out.println("ÇØ»óÀü ½º·¹µå °¡µ¿Áß");
+			// System.out.println("Naval warfare thread running");
 			if (!on) {
 				reset();
 				return;
@@ -170,17 +170,17 @@ public class NavalWarfareController implements Runnable {
 			}
 
 			/*
-			 * if(totalDamageCount > 10){ GreenMsg("\\f=¹è°¡ ¸¹ÀÌ ¼Õ»óµÇ¾î Ä§¸ôÇÏ¿´½À´Ï´Ù.");
+			 * if(totalDamageCount > 10){ GreenMsg("\\f=ë°°ê°€ ë§ì´ ì†ìƒë˜ì–´ ì¹¨ëª°í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			 * Thread.sleep(5000); for(L1PcInstance pc :
 			 * L1World.getInstance().getAllPlayers()){ if(pc.getMapId() ==
 			 * mapid){ L1Teleport.teleport(pc, 32574, 32942, (short)0, 4, true);
 			 * } } on = false; GeneralThreadPool.getInstance().schedule(this,
 			 * 1000); return; }
 			 */
-			//System.out.println("½ºÅÜ> " + step + " º¸Á¶½ºÅÜ> " + sub_step + " ½ºÅ×ÀÌÁö> " + stage);
+			//System.out.println("ìŠ¤í…> " + step + " ë³´ì¡°ìŠ¤í…> " + sub_step + " ìŠ¤í…Œì´ì§€> " + stage);
 			switch (step) {
 			case STATUS_READY:
-				¿À¸²¸Ş½ÃÁö();
+				is_ORIM_MESSAGE();
 				_timecount = 5 * 2;
 				// GeneralThreadPool.getInstance().schedule(this, 5000);
 				break;
@@ -193,103 +193,103 @@ public class NavalWarfareController implements Runnable {
 							new ShipMove(32797, 32811));
 					_timecount = 20 * 2;
 				} else if (sub_step == 2) {
-					È­¸éÀÌÆÑ();
-					GreenMsg("Ã¹¹øÂ° ºÎ´ë°¡ ³­ÀÔ Çß½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					screen_pack();
+					GreenMsg("æœ€åˆã®éƒ¨éšŠãŒä¹±å…¥ã—ã¾ã—ãŸã€‚"); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 				} else if (sub_step == 3) {
 					// Thread.sleep(19800);
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 4) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 5) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 6) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 7) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 				} else if (sub_step == 8) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 9) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 10) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 11) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 12) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 13) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 14) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 15) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 16) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 17) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 18) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(12) + 2, level); // ¸÷½ºÆù
+							_rnd.nextInt(12) + 2, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 19) {
-					GreenMsg("ÀûÀÇ ¹è°¡ ¼Õ»óµÇ¿© ÈÄÅğ ÇÏ¿´½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					GreenMsg("ì ì˜ ë°°ê°€ ì†ìƒë˜ì—¬ í›„í‡´ í•˜ì˜€ìŠµë‹ˆë‹¤."); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 					GeneralThreadPool.getInstance().execute(
 							new ShipMove(32797, 32831));
 				} else if (sub_step == 20) {
 					// Thread.sleep(19800);
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 21) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 22) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 23) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 24) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 25) {
 					int rnd = _rnd.nextInt(100) + 1;
 					if (rnd < 50) {
-						GreenMsg("¿À¸²: ÁÖº¯¿¡ ÀÌ»óÇÑ ±â¿îÀÌ ´À²¸Áı´Ï´Ù..Á¶½ÉÇÏ¼¼¿ä!");
+						GreenMsg("ã‚ªãƒªãƒ ï¼šå‘¨ã‚Šã«å¥‡å¦™ãªã‚ªãƒ¼ãƒ©ãŒæ„Ÿã˜ã‚‰ã‚Œã¾ã™ã€‚");
 					} else {
-						GreenMsg("¿À¸²: ÀûµéÀÌ ÈÄÅğ ÇØ¼­ Àá½Ã ¼ûÁ» µ¹¸± ¼ö ÀÖ°Ú±º¿ä.");
+						GreenMsg("ã‚ªãƒªãƒ ï¼šæ•µãŒå¾Œé€€ã—ã¦ã—ã°ã‚‰ãæ¯ã‚’ã¤ãã“ã¨ãŒã§ãã¾ã™ã­ã€‚");
 						step = STATUS_LEVEL_2;
 						sub_step = 0;
 					}
 					_timecount = 60 * 2;// Thread.sleep(10000);Thread.sleep(10000);
 					// /GeneralThreadPool.getInstance().schedule(this, 1000);
-				} else if (sub_step == 26) {// º¸½º
+				} else if (sub_step == 26) {// ë³´ìŠ¤
 					/*
-					 * 100146 ¿Ãµò Á¦´Ï½ºÄı 100157 ÇØ»óÀü ´ë¿Õ ¿ÀÂ¡¾î 100154 ÇØ»óÀü Ä«½ºÆÄ 100153
-					 * ÇØ»óÀü ¼¼¸¶ 2 100152 ÇØ»óÀü ¼¼¸¶ 100151 ÇØ»óÀü ¸Ş¸£Å°¿À¸£ 100150 ÇØ»óÀü ¹ßÅÍÀÚ¸£
-					 * 100148 ÇØ»óÀü ¹ÙÆ÷¸ŞÆ® 100145 ¿Ãµò ¸®Ä¡ 100146 ¿Ãµò Á¦´Ï½ºÄı 100147 ¿Ãµò Å¸¶ô
+					 * 100146ã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¼ãƒ³ã‚¸ã‚§ãƒ‹ã‚¹ã‚¯ã‚¤ãƒ¼ãƒ³100157æµ·ä¸Šæˆ¦å¤§ç‹ã‚¤ã‚«100154æµ·ä¸Šæˆ¦ã‚«ã‚¹ãƒ‘100153
+					 * æµ·ä¸Šæˆ¦ã‚»ãƒ2 100152æµ·ä¸Šæˆ¦ã‚»ãƒ100151æµ·ä¸Šæˆ¦ãƒ¡ãƒ«ã‚­ã‚ªãƒ¼ãƒ«100150æµ·ä¸Šæˆ¦ãƒãƒ«ã‚¿ã‚¶ãƒ¼ãƒ«
+					 * 100148æµ·ä¸Šæˆ¦ãƒãƒ•ã‚©ãƒ¡ãƒƒãƒˆ100145ã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¼ãƒ³ãƒªãƒƒãƒ100146ã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¼ãƒ³ã‚¸ã‚§ãƒ‹ã‚¹ã‚¯ã‚¤ãƒ¼ãƒ³100147ã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ³å •è½
 					 */
 					int bossid = 0;
 					int rrr = _rnd.nextInt(100);
@@ -316,7 +316,7 @@ public class NavalWarfareController implements Runnable {
 				if (sub_step == 1) {
 					_timecount = 15 * 2;
 				} else if (sub_step == 2) {
-					GreenMsg("¿À¸²: ÀûµéÀÌ ¸ô·Á¿À°í ÀÖ½À´Ï´Ù. Á¶½ÉÇÏ¼¼¿ä!");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šæ•µãŒé›†ã¾ã£ã¦ãã¦ã„ã¾ã™ã€‚ æ³¨æ„ã—ã¦ãã ã•ã„ï¼");
 					_timecount = 5 * 2;
 				} else if (sub_step == 3) {
 					// Thread.sleep(5000);
@@ -328,94 +328,94 @@ public class NavalWarfareController implements Runnable {
 					_timecount = 19 * 2;
 				} else if (sub_step == 4) {
 					// /Thread.sleep(19800);
-					È­¸éÀÌÆÑ();
-					GreenMsg("µÎ¹øÂ° ºÎ´ë°¡ ³­ÀÔ Çß½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					screen_pack();
+					GreenMsg("ç¬¬äºŒéƒ¨éšŠãŒä¹±å…¥ã—ã¾ã—ãŸã€‚"); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 				} else if (sub_step == 5) {
 					// Thread.sleep(19800);
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 6) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 7) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 8) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 9) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 				} else if (sub_step == 10) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;
 				} else if (sub_step == 11) {
 					// Thread.sleep(10000);
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 12) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 13) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 14) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 15) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 16) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 17) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 18) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 19) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 20) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 30, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 30, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 21) {
-					GreenMsg("ÀûÀÇ ¹è°¡ ¼Õ»óµÇ¿© ÈÄÅğ ÇÏ¿´½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					GreenMsg("æ•µã®èˆ¹ãŒæå‚·ã—ã¦å¾Œé€€ã—ã¾ã—ãŸã€‚"); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 					GeneralThreadPool.getInstance().execute(
 							new ShipMove(32797, 32831));
 				} else if (sub_step == 22) {
 					// Thread.sleep(19800);
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 23) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 24) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 25) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 26) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 10 * 2;// Thread.sleep(10000);Thread.sleep(10000);
 				} else if (sub_step == 27) {
 					int rnd = _rnd.nextInt(100) + 1;
 					if (rnd < 50) {
-						GreenMsg("¿À¸²: ÁÖº¯¿¡ ÀÌ»óÇÑ ±â¿îÀÌ ´À²¸Áı´Ï´Ù..Á¶½ÉÇÏ¼¼¿ä!");
+						GreenMsg("ã‚ªãƒªãƒ ï¼šå‘¨ã‚Šã«å¥‡å¦™ãªã‚ªãƒ¼ãƒ©ãŒæ„Ÿã˜ã‚‰ã‚Œã¾ã™ã€‚");
 					} else {
-						GreenMsg("¿À¸²: ÀûµéÀÌ ÈÄÅğ ÇØ¼­ Àá½Ã ¼ûÁ» µ¹¸± ¼ö ÀÖ°Ú±º¿ä.");
+						GreenMsg("ã‚ªãƒªãƒ ï¼šæ•µãŒå¾Œé€€ã—ã¦ã—ã°ã‚‰ãæ¯ã‚’ã¤ãã“ã¨ãŒã§ãã¾ã™ã­ã€‚");
 						step = STATUS_LEVEL_3;
 						sub_step = 0;
 					}
@@ -423,7 +423,7 @@ public class NavalWarfareController implements Runnable {
 					// _timecount =
 					// 1*2;//GeneralThreadPool.getInstance().schedule(this,
 					// 1000);
-				} else if (sub_step == 28) {// º¸½º
+				} else if (sub_step == 28) {// ë³´ìŠ¤
 					int bossid = 0;
 					int rrr = _rnd.nextInt(100);
 					if (level) {
@@ -446,7 +446,7 @@ public class NavalWarfareController implements Runnable {
 				break;
 			case STATUS_LEVEL_3:
 				if (sub_step == 1) {
-					GreenMsg("¿À¸²: À¸..! ÀÌ¹ø¿¡ ¿À´Â ¹è¿¡¼­´Â ¿ÃµòÀÇ ±â¿îÀÌ ´À²¸Áı´Ï´Ù!");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šãˆãˆã¨â€¦ï¼ ä»Šå›æ¥ã‚‹èˆ¹ã§ã¯ã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¼ãƒ³ã®ã‚ªãƒ¼ãƒ©ãŒæ„Ÿã˜ã‚‰ã‚Œã¾ã™ï¼");
 					_timecount = 15 * 2;// Thread.sleep(15000);
 				} else if (sub_step == 2) {
 					int shipid = 100112;
@@ -456,89 +456,89 @@ public class NavalWarfareController implements Runnable {
 							new ShipMove(32797, 32811));
 					_timecount = 19 * 2;// Thread.sleep(19800);
 				} else if (sub_step == 3) {
-					È­¸éÀÌÆÑ();
-					GreenMsg("¼¼¹øÂ° ºÎ´ë°¡ ³­ÀÔ Çß½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					screen_pack();
+					GreenMsg("3ç•ªç›®ã®éƒ¨éšŠãŒä¹±å…¥ã—ã¾ã—ãŸã€‚"); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 				} else if (sub_step == 4) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 5) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 6) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 7) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 8) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 				} else if (sub_step == 9) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 10) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 11) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 12) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 13) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 14) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 15) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 16) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 17) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 18) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 19) {
 					NavalWarfareSpawn.getInstance().monster_spawn(mapid,
-							_rnd.nextInt(6) + 37, level); // ¸÷½ºÆù
+							_rnd.nextInt(6) + 37, level); // mopson
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 20) {
-					GreenMsg("ÀûÀÇ ¹è°¡ ¼Õ»óµÇ¿© ÈÄÅğ ÇÏ¿´½À´Ï´Ù."); // ¿ø·¡´Â ³ë¶õ»ö
+					GreenMsg("æ•µã®èˆ¹ãŒæå‚·ã—ã¦å¾Œé€€ã—ã¾ã—ãŸã€‚"); // ã‚‚ã¨ã‚‚ã¨é»„è‰²
 					GeneralThreadPool.getInstance().execute(
 							new ShipMove(32797, 32831));
 				} else if (sub_step == 21) {
 					// if(drakeCount >= 3){
 				} else if (sub_step == 22) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 23) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 24) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 25) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 1;// Thread.sleep(500);
 				} else if (sub_step == 26) {
-					´ëÆ÷¾×¼Ç();
+					cannon_action();
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 27) {
-					GreenMsg("¿À¸²: ¿ÃµòÀÇ ±â¿îÀÌ Á¡Á¡ ´À²¸Áı´Ï´Ù!");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šã‚ªãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¼ãƒ³ã®ã‚ªãƒ¼ãƒ©ãŒã©ã‚“ã©ã‚“æ„Ÿã˜ã‚‰ã‚Œã¾ã™ï¼");
 					_timecount = 60 * 2;// Thread.sleep(10000);Thread.sleep(10000);
 				} else if (sub_step == 28) {
 					monList.add(L1SpawnUtil.spawn2(32789 + _rnd.nextInt(10),
@@ -551,7 +551,7 @@ public class NavalWarfareController implements Runnable {
 				}
 				sub_step++;
 				break;
-			case STATUS_LEVEL_4: // º¸½º
+			case STATUS_LEVEL_4: // ãƒœã‚¹
 				for (L1NpcInstance npc : monList) {
 					if (npc == null || npc._destroyed || npc.isDead()) {
 						if (monList.contains(npc))
@@ -567,43 +567,43 @@ public class NavalWarfareController implements Runnable {
 				break;
 			case STATUS_LEVEL_5:
 				if (sub_step == 1) {
-					GreenMsg("¿À¸²: ¸¹Àº ¼³¸íÀÌ ÇÊ¿äÇÏÁø ¾ÊÀ»°Í °°½À´Ï´Ù...");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šå¤šãã®èª¬æ˜ãŒå¿…è¦ãªã„ã‚ˆã†ã§ã™ã€‚");
 					// L1MonsterInstance mon = (L1MonsterInstance)
 					// L1SpawnUtil.spawn2(32795, 32803, (short)mapid, 100210, 0,
-					// 0, 0); // º¸»ó ¹Ì¹Í ½ºÆù
-					// mon.ÇØ»óÀüº¸»ó¹Ì¹Í´Ü°è = º¸»ó¹Ì¹Í·¹º§;
+					// 0, 0); // ë³´ìƒ ë¯¸ë¯¹ ìŠ¤í°
+					// mon.í•´ìƒì „ë³´ìƒë¯¸ë¯¹ë‹¨ê³„ = ë³´ìƒë¯¸ë¯¹ë ˆë²¨;
 					_timecount = 5 * 2;//
 				} else if (sub_step == 2) {
-					GreenMsg("¿À¸²: Áö±İÂë ¸»ÇÏ´Â ¼¶Àº ³ğµé¿¡ ÀÇÇØ ÆóÇã°¡ µÇ¾úÀ» °Ì´Ï´Ù.");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šä»Šã®ã¨ã“ã‚è¨€ã†å³¶ã¯å¥´ã‚‰ã«ã‚ˆã£ã¦å»ƒå¢Ÿã«ãªã£ãŸã¯ãšã§ã™ã€‚");
 					_timecount = 10 * 2;//
 				} else if (sub_step == 3) {
 					// Thread.sleep(10000);
-					GreenMsg("¿À¸²: ´Ù½Ã µ¹¾Æ°¡¸é, ±â¾ïÇÏ°í ÀÖ´ø ¸¹Àº °÷µéÀº ÈçÀûµµ ³²¾Æ ÀÖÁö ¾ÊÀ»°Ì´Ï´Ù.");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šå†ã³æˆ»ã‚‹ã¨ã€è¦šãˆã¦ã„ãŸå¤šãã®å ´æ‰€ã¯ç—•è·¡ã‚‚æ®‹ã£ã¦ã„ã¾ã›ã‚“ã€‚");
 					_timecount = 5 * 2;//
 				} else if (sub_step == 4) {
 					// Thread.sleep(5000);
-					GreenMsg("¿À¸²: ½Î¿òÀº ½ÃÀÛ µÇ¾ú½À´Ï´Ù. Àú´Â ½º½Â´ÔÀ» Ã£¾Æ ÀÌ ½Î¿òÀ» ³¡³¾ ¹æ¹ıÀ» Ã£°Ú½À´Ï´Ù.");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šæˆ¦ã„ãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚ ç§ã¯å…ˆç”Ÿã‚’è¦‹ã¤ã‘ã¦ã€ã“ã®æˆ¦ã„ã‚’çµ‚ã‚ã‚‰ã›ã‚‹æ–¹æ³•ã‚’æ¢ã—ã¾ã™ã€‚");
 					_timecount = 10 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 5) {
-					GreenMsg("¿À¸²: ¿©·¯ºĞÀº ºÎµğ »ì¾Æ³²¾Æ ÁÖ¼¼¿ä. ÀÌ ½Î¿òÀÌ ³¡³¯¶§±îÁö...");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šçš†ã•ã‚“ã¯æ˜¯éç”Ÿãæ®‹ã£ã¦ãã ã•ã„ã€‚ ã“ã®æˆ¦ã„ãŒçµ‚ã‚ã‚‹ã¾ã§...");
 					_timecount = 5 * 2;// Thread.sleep(5000);
 				} else if (sub_step == 6) {
-					GreenMsg("¿À¸²: ±Û·çµğ¿À ¿µÁö¿¡ °ÅÀÇ µµÂøÇß½À´Ï´Ù! ¾î¼­ ÀÌ À§ÇèÀ» »ç¶÷µé¿¡°Ô ¾Ë·Á¾ß ÇÕ´Ï´Ù!");
+					GreenMsg("ã‚ªãƒªãƒ ï¼šã‚°ãƒ«ãƒ¼ãƒ‡ã‚£ã‚ªé ˜åœ°ã«ã»ã¼åˆ°ç€ã—ã¾ã—ãŸï¼ ã•ã‚ã€ã“ã®å±é™ºã‚’äººã€…ã«çŸ¥ã‚‰ã›ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ï¼");
 					_timecount = 5 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 7) {
-					GreenMsg("Á¾·á ±îÁö 3ºĞ ³²¾Ò½À´Ï´Ù.");
+					GreenMsg("çµ‚äº†ã¾ã§3åˆ†æ®‹ã‚Šã¾ã—ãŸã€‚");
 					_timecount = 60 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 8) {
-					GreenMsg("Á¾·á ±îÁö 2ºĞ ³²¾Ò½À´Ï´Ù.");
+					GreenMsg("çµ‚äº†ã¾ã§2åˆ†æ®‹ã‚Šã¾ã—ãŸã€‚");
 					_timecount = 60 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 9) {
-					GreenMsg("Á¾·á ±îÁö 1ºĞ ³²¾Ò½À´Ï´Ù.");
+					GreenMsg("çµ‚äº†ã¾ã§1åˆ†æ®‹ã‚Šã¾ã—ãŸã€‚");
 					_timecount = 30 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 10) {
-					GreenMsg("Á¾·á ±îÁö 30ÃÊ ³²¾Ò½À´Ï´Ù.");
+					GreenMsg("çµ‚äº†ã¾ã§30ç§’æ®‹ã‚Šã¾ã—ãŸã€‚");
 					_timecount = 25 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 11) {
-					GreenMsg("Á¾·á ±îÁö 5ÃÊ ³²¾Ò½À´Ï´Ù.");
+					GreenMsg("çµ‚äº†ã¾ã§5ç§’æ®‹ã‚Šã¾ã—ãŸã€‚");
 					_timecount = 5 * 2;// Thread.sleep(10000);
 				} else if (sub_step == 12) {
 					step = STATUS_LEVEL_END;
@@ -612,14 +612,14 @@ public class NavalWarfareController implements Runnable {
 				sub_step++;
 				break;
 			case STATUS_LEVEL_END:
-				// ¼øÀ§ ¹× Á¡¼ö Ãâ·Â
+				// Rank and score output
 				/*
 				 * rankInsert(); int rank = rankLoad(); L1PcInstance[] list =
 				 * getMemberArray(); if(list != null && list.length > 0){
 				 * for(L1PcInstance pc : list){ if(pc == null) continue;
 				 * pc.sendPackets(new S_NavarWarfare_Ranking(rank >= 6 ? 6 :
 				 * rank, score), true); //pc.sendPackets(new
-				 * S_SystemMessage("ÇØ»óÀü - Á¡¼ö: "+score+" ¼øÀ§: "+rank+"À§"), true);
+				 * S_SystemMessage("í•´ìƒì „ - ì ìˆ˜: "+score+" ìˆœìœ„: "+rank+"ìœ„"), true);
 				 * } } list = null;
 				 */
 				// Thread.sleep(30000);
@@ -694,19 +694,19 @@ public class NavalWarfareController implements Runnable {
 
 	}
 
-	private boolean ¿À¸²¸Ş½ÃÁö() {
+	private boolean is_ORIM_MESSAGE() {
 		boolean ck = false;
 		String msg = "";
 		switch (step) {
 		case STATUS_READY:
 			if (sub_step == 0)
-				msg = "¿À¸² : ¿©·¯ºĞ ´çÈ²ÇÏÁö ¸¶½Ã°í ¹è¸¦ »ç¼ö ÇØ¾ß ÇÕ´Ï´Ù.";
+				msg = "ã‚ªãƒªãƒ ï¼šçš†ã•ã‚“æ…Œã¦ãªã„ã§èˆ¹ã‚’å°„æ‰‹ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚";
 			else if (sub_step == 1)
-				msg = "¿À¸² : ¿ì¸® ¹è¸¦ °ø°İÇÏ°í ÀÖ´Â °ÍÀº ¿ÃµòÀÌ¶ó ºÒ¸®´Â °ÍÀÔ´Ï´Ù.";
+				msg = "ã‚ªãƒªãƒ ï¼šç§ãŸã¡ã®èˆ¹ã‚’æ”»æ’ƒã—ã¦ã„ã‚‹ã®ã¯ã‚ªãƒ«ãƒ‡ã‚£ãƒ³ã¨å‘¼ã°ã‚Œã‚‹ã‚‚ã®ã§ã™ã€‚";
 			else if (sub_step == 2)
-				msg = "¿À¸² : ÀÚ¼¼ÇÑ ¾ê±â´Â Á¶±İ ÈÄ¿¡ ÇÏÁö!.";
+				msg = "ã‚ªãƒªãƒ ï¼šè©³ç´°ãªè©±ã¯å°‘ã—å¾Œã«ã—ãªã„ã§ãã ã•ã„ã€‚";
 			else if (sub_step == 3) {
-				msg = "¿À¸² : ¸í½ÉÇÏ°Ô ¿ÃµòÀ» »ó´ë ÇÏ·Á¸é ÃÖ¼Ò 3¸íÀÌ ÀÖ¾î¾ß ÇÏ¿À! ¹è°¡ Ãæµ¹ÇÏ¸é, ÀûµéÀÌ ¶Ù¾îµé °ÍÀÔ´Ï´Ù! Á¶½ÉÇÏ¼¼¿ä!";
+				msg = "ã‚ªãƒªãƒ ï¼šå¿ƒã«ç•™ã‚ã¦ã‚ªãƒ«ãƒ‡ã‚£ãƒ³ã‚’ç›¸æ‰‹ã«ã™ã‚‹ã«ã¯ã€å°‘ãªãã¨ã‚‚3äººãŒå¿…è¦ã§ã™ã€‚ èˆ¹ãŒè¡çªã™ã‚‹ã¨ã€æ•µãŒé£›ã³è¾¼ã‚€ã§ã—ã‚‡ã†ï¼ æ³¨æ„ã—ã¦ãã ã•ã„ï¼";
 				step = STATUS_LEVEL_1;
 				sub_step = 0;
 				ck = true;
@@ -719,24 +719,24 @@ public class NavalWarfareController implements Runnable {
 			}
 			/*
 			 * else if(sub_step == 4){ msg =
-			 * "¿À¸² : ÀÌÁ¦, ÀûÀÇ °ø°İ¿¡ ´ëºñÇØ¾ß ÇÕ´Ï´Ù. ¼­µÑ·¯ÁÖ¼¼¿ä."; step = STATUS_LEVEL_1;
+			 * "ì˜¤ë¦¼ : ì´ì œ, ì ì˜ ê³µê²©ì— ëŒ€ë¹„í•´ì•¼ í•©ë‹ˆë‹¤. ì„œë‘˜ëŸ¬ì£¼ì„¸ìš”."; step = STATUS_LEVEL_1;
 			 * sub_step = -1; ck = true; }
 			 */
 			sub_step++;
 			break;
 		case STATUS_LEVEL_1:
 			if (sub_step == 0)
-				msg = "¿À¸² : ¹è¿¡ ¼û¾îµé¾ú´ø ¸ó½ºÅÍµéÀÌ ÀÖ½À´Ï´Ù! Ã³Ä¡ÇØÁÖ¼¼¿ä!";
+				msg = "ã‚ªãƒªãƒ ï¼šèˆ¹ã«éš ã‚ŒãŸãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ãŒã„ã¾ã™ï¼ å€’ã—ã¦ãã ã•ã„ï¼";
 			else if (sub_step == 1)
-				msg = "¿À¸² : ÁÖº¯¿¡ ¹º°¡°¡ ¸Éµ¹°í ÀÖ´Â ±â¿îÀÌ °¨ÁöµË´Ï´Ù. Á¶½ÉÇÏ¼¼¿ä.";
+				msg = "ã‚ªãƒªãƒ ï¼šå‘¨è¾ºã«ä½•ã‹ãŒæ¼‚ã£ã¦ã„ã‚‹ã‚ªãƒ¼ãƒ©ãŒæ„ŸçŸ¥ã•ã‚Œã¾ã™ã€‚ æ³¨æ„ã—ã¦ãã ã•ã„ã€‚";
 			else if (sub_step == 2)
-				msg = "¿À¸² : ÁÖº¯¿¡ »ó¾î¶¼°¡ ÀÖ½À´Ï´Ù. Á¶½ÉÇÏ¼¼¿ä.";
+				msg = "ã‚ªãƒªãƒ ï¼šå‘¨å›²ã«ã‚µãƒ¡ã®ç¾¤ã‚ŒãŒã‚ã‚Šã¾ã™ã€‚ æ³¨æ„ã—ã¦ãã ã•ã„ã€‚";
 			else if (sub_step == 3)
-				msg = "¿À¸² : Àüº¸´Ù °­ÇÑ ±â¿îÀÌ ´À²¸Áı´Ï´Ù! Á¶½ÉÇÏ¼¼¿ä!";
+				msg = "ã‚ªãƒªãƒ ï¼šä»¥å‰ã‚ˆã‚Šå¼·ã„ã‚ªãƒ¼ãƒ©ãŒæ„Ÿã˜ã‚‰ã‚Œã¾ã™ï¼ æ³¨æ„ã—ã¦ãã ã•ã„ï¼";
 			else if (sub_step == 6)
-				msg = "¿À¸² : ¹è°¡ °ğ Ãæµ¹ÇÕ´Ï´Ù! ¹Ù´Ù¿¡ ºüÁöÁö ¾Ê°Ô Á¶½ÉÇÏ¼¼¿ä!";
+				msg = "ã‚ªãƒªãƒ :èˆ¹ã¯ã™ãã«ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã™ ï¼ æµ·ã«è½ã¡ãªã„ã‚ˆã†ã«æ°—ã‚’ã¤ã‘ã¦ï¼";
 			else if (sub_step == 11)
-				msg = "¿À¸² : ¹è°¡ Ãæµ¹ÇÏ¸é, ÀûµéÀÌ ¶Ù¾îµé °ÍÀÔ´Ï´Ù! Á¶½ÉÇÏ¼¼¿ä!";
+				msg = "ã‚ªãƒªãƒ ï¼šèˆ¹ãŒè¡çªã™ã‚‹ã¨ã€æ•µãŒé£›ã³è¾¼ã‚€ã§ã—ã‚‡ã†ï¼ æ³¨æ„ã—ã¦ãã ã•ã„ï¼";
 			break;
 		default:
 			return false;
@@ -846,7 +846,7 @@ public class NavalWarfareController implements Runnable {
 		list = null;
 	}
 
-	/** ad - True ¹æ¾î False °ø°İ **/
+	/** ad - True Defense False Attack **/
 	public void TrapAction(boolean ad) {
 		if ((ad && trapCK) || (!ad && shootTrapCK))
 			return;
@@ -861,7 +861,7 @@ public class NavalWarfareController implements Runnable {
 							if (npc.getX() == pc.getX()
 									&& npc.getY() == pc.getY())
 								count++;
-							/** ¿î¿µÀÚ Å×½ºÆ® ¿ë **/
+							/** For operator testing **/
 							if (pc.isGm()) {
 								if (ad)
 									trapCK = true;
