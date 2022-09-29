@@ -81,7 +81,7 @@ public class ORIM {
 				int mapid = GameList.getORIMMapId();
 				if (mapid == 0) {
 					S_SystemMessage sm = new S_SystemMessage(
-							"��� ���� ������Դϴ� ����� �ٽ� �̿����ּ���.");
+							"すべてのマップが使用中です。しばらくしてからもう一度ご利用ください。");
 					pc.sendPackets(sm, true);
 					return 0;
 				}
@@ -183,9 +183,9 @@ public class ORIM {
 	}
 
 	/*
-	 * �߶�ī��:���� ���� ����°�?18869 ��������Ʈ:�߶�ī��! ���� �ʸ� ������ �Ǵ±���..18870 �߶�ī��:���� ���� ����
-	 * �񰡴�..���� �뿹�� �Ǿ� ��� ���� �Ǹ���..18871 ��������Ʈ:�׷� ���� ���� �й����� �� �ص� ���� �ʴ´�.18872
-	 * �߶�ī��:ũũ..�ڽŰ��� ��ġ�±���..18873 �߶�ī��:�׾�� �ΰ�!18874
+	 * バラカス：誰が私を目覚めさせるのですか？18869デスナイト：バラカス！ ついにあなたに会います…18870バラカス：私の睡眠を起こしました
+	 * 18871デスナイト：そういう言葉は私が敗北した時も遅くない。 18872
+	 * バラカス：クック…自信感あふれるね…18873バラカス：死ぬ人間！
 	 */
 
 	private void MSG(L1NpcInstance npc, int id, String msg, int x, int y) {
@@ -195,7 +195,7 @@ public class ORIM {
 
 	public void Reset() {
 		try {
-			// System.out.println("���� �δ� �� ���� : "+_mapnum);
+			// System.out.println("オリムインダンマップの削除 : "+_mapnum);
 			for (L1NpcInstance mon : MonList) {
 				if (mon == null || mon._destroyed || mon.isDead()) {
 					continue;
