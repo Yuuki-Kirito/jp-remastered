@@ -551,12 +551,12 @@ public class L1SpawnUtil {
 			if (npcId == 4039004) {
 				PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 						pc.getMapId());
-				ar.�»翤(npc);
+				ar.sethsael1(npc);
 			}
 			if (npcId == 4039005) {
 				PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 						pc.getMapId());
-				ar.�»翤2(npc);
+				ar.sethsael2(npc);
 			}
 			L1World.getInstance().storeObject(npc);
 			L1World.getInstance().addVisibleObject(npc);

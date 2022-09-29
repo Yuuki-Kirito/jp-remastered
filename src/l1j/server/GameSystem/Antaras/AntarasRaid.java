@@ -1218,7 +1218,7 @@ public class AntarasRaid {
 			pc.sendPackets(new S_SkillIconBlessOfEva(pc.getId(), timeSec), true);
 		}
 		pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_FREEZE);
-		if (pc.is에틴인형()) {
+		if (pc.is_ETHIN_DOLL()) {
 			pc.getMoveState().setMoveSpeed(1);
 			S_SkillHaste sh1 = new S_SkillHaste(pc.getId(), 1, -1);
 			pc.sendPackets(sh1);

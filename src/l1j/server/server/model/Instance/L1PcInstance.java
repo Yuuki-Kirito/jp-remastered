@@ -6995,11 +6995,11 @@ public class L1PcInstance extends L1Character {
 
 	private boolean _ETIN_DOLL = false;
 
-	public boolean is에틴인형() {
+	public boolean is_ETHIN_DOLL() {
 		return _ETIN_DOLL;
 	}
 
-	public void set에틴(boolean f) {
+	public void set_etin(boolean f) {
 		_ETIN_DOLL = f;
 	}
 

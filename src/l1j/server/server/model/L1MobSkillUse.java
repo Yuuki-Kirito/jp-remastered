@@ -1298,15 +1298,15 @@ public class L1MobSkillUse {
 		if (_attacker.marble.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤() != null) {
-				ar.»ç¿¤().deleteMe();
+			if (ar.sael() != null) {
+				ar.sael().deleteMe();
 			}
 		}
 		if (_attacker.marble2.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤2() != null) {
-				ar.»ç¿¤2().deleteMe();
+			if (ar.sael2() != null) {
+				ar.sael2().deleteMe();
 			}
 		}
 		if (_attacker.marble.size() > 0) {
@@ -1398,15 +1398,15 @@ public class L1MobSkillUse {
 		if (_attacker.marble.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤() != null) {
-				ar.»ç¿¤().deleteMe();
+			if (ar.sael() != null) {
+				ar.sael().deleteMe();
 			}
 		}
 		if (_attacker.marble2.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤2() != null) {
-				ar.»ç¿¤2().deleteMe();
+			if (ar.sael2() != null) {
+				ar.sael2().deleteMe();
 			}
 		}
 		if (_attacker.marble.size() > 0) {
@@ -1500,15 +1500,15 @@ public class L1MobSkillUse {
 		if (_attacker.marble.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤() != null) {
-				ar.»ç¿¤().deleteMe();
+			if (ar.sael() != null) {
+				ar.sael().deleteMe();
 			}
 		}
 		if (_attacker.marble2.size() == 0) {
 			PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(
 					_attacker.getMapId());
-			if (ar.»ç¿¤2() != null) {
-				ar.»ç¿¤2().deleteMe();
+			if (ar.sael2() != null) {
+				ar.sael2().deleteMe();
 			}
 		}
 		if (_attacker.marble.size() > 0) {

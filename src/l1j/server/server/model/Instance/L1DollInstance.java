@@ -303,7 +303,7 @@ public class L1DollInstance extends L1NpcInstance {
 				S_SkillHaste sh2 = new S_SkillHaste(_master.getId(), 1, 0);
 				Broadcaster.broadcastPacket(_master, sh2, true);
 			}
-			_master.set에틴(true);
+			_master.set_etin(true);
 		}
 
 		if (type == DOLLTYPE_SNOWMAN_A) {
@@ -399,7 +399,7 @@ public class L1DollInstance extends L1NpcInstance {
 				S_SkillHaste sh2 = new S_SkillHaste(_master.getId(), 1, 0);
 				Broadcaster.broadcastPacket(_master, sh2, true);
 			}
-			_master.set에틴(true);
+			_master.set_etin(true);
 		}
 
 		if (type == DOLLTYPE_RICH) {
@@ -737,7 +737,7 @@ public class L1DollInstance extends L1NpcInstance {
 				S_SkillHaste sh = new S_SkillHaste(_master.getId(), 0, 0);
 				_master.sendPackets(sh);
 				Broadcaster.broadcastPacket(_master, sh, true);
-				_master.set에틴(false);
+				_master.set_etin(false);
 			}
 
 			if (type == DOLLTYPE_SNOWMAN_A) {
@@ -804,7 +804,7 @@ public class L1DollInstance extends L1NpcInstance {
 				S_SkillHaste sh = new S_SkillHaste(_master.getId(), 0, 0);
 				_master.sendPackets(sh);
 				Broadcaster.broadcastPacket(_master, sh, true);
-				_master.set에틴(false);
+				_master.set_etin(false);
 			}
 			if (type == DOLLTYPE_RICH) {
 				_master.getAbility().addSp(-2);

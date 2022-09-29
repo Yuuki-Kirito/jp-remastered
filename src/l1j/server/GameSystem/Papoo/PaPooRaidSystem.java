@@ -54,8 +54,8 @@ public class PaPooRaidSystem {
 				switch (_type) {
 				case 0:
 					/*
-					 * ½ÇÆĞÇßÀ»¶§ ¸àÆ® ÆÄÇª¸®¿Â : ÀÌÁ¦ ¹°³îÀÌ´Â ³¡ÀÌ´Ù. ³ÊÈñµéÀº ÀÌÁ¦ ³» ÀúÁÖ¸¦ ÇÇÇÒ ¼ö ¾ø´Ù! ¹«³à »ç¿¤
-					 * : ÀÌÁ¦ Á¦°¡ ÇÒ ¼ö ÀÖ´Â ¸¶Áö¸· ÈûÀ¸·Î ¿ë»ç´ÔµéÀ» ¼ÒÈ¯ÇÏ°Ú½À´Ï´Ù. ÀÌÁ¦ ¾îÂ¿ ¼ö ¾ø½À´Ï´Ù.
+					 * å¤±æ•—ã—ãŸæ™‚ã®ãƒ¡ãƒ³ãƒ„ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚‚ã†æ°´éŠã³ã¯çµ‚ã‚ã‚Šã ã€‚ ã‚ãªãŸã¯ä»Šç§ã®å‘ªã„ã‚’é¿ã‘ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ï¼ å·«å¥³ã‚µã‚¨ãƒ«
+					 * : ä»Šç§ãŒã§ãã‚‹æœ€å¾Œã®åŠ›ã§å‹‡è€…ãŸã¡ã‚’å¬å–šã—ã¾ã™ã€‚ ä»Šã¯ä»•æ–¹ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 					 */
 					try {
 						ArrayList<L1PcInstance> antapc = null;
@@ -67,7 +67,7 @@ public class PaPooRaidSystem {
 							}
 						}
 						S_SystemMessage sm = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : ÀÌÁ¦ ¹°³îÀÌ´Â ³¡ÀÌ´Ù. ³ÊÈñµéÀº ÀÌÁ¦ ³» ÀúÁÖ¸¦ ÇÇÇÒ ¼ö ¾ø´Ù!");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šä»Šã€æ°´éŠã³ã¯çµ‚ã‚ã‚Šã§ã™ã€‚ ã‚ãªãŸã¯ä»Šç§ã®å‘ªã„ã‚’é¿ã‘ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ï¼");
 						L1PcInstance[] list = antapc
 								.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
@@ -86,9 +86,9 @@ public class PaPooRaidSystem {
 						sm = null;
 						Thread.sleep(5000);
 						S_SystemMessage sm2 = new S_SystemMessage(
-								"¹«³à »ç¿¤ : ÀÌÁ¦ Á¦°¡ ÇÒ ¼ö ÀÖ´Â ¸¶Áö¸· ÈûÀ¸·Î ¿ë»ç´ÔµéÀ» ¼ÒÈ¯ÇÏ°Ú½À´Ï´Ù. ÀÌÁ¦ ¾îÂ¿ ¼ö ¾ø½À´Ï´Ù.");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šä»Šã€ç§ãŒã§ãã‚‹æœ€å¾Œã®åŠ›ã§å‹‡è€…ã‚’å¬å–šã—ã¾ã™ã€‚ ä»Šã¯ä»•æ–¹ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
 						S_SystemMessage sm3 = new S_SystemMessage(
-								"20ºĞÀÌ ÃÊ°úµÇ¾î ·¹ÀÌµå ½ÇÆĞ! 5ÃÊÈÄ ±â¶õ¸¶À»·Î ÀÌµ¿ µË´Ï´Ù.");
+								"20åˆ†ã‚’è¶…ãˆã¦ãƒ¬ã‚¤ãƒ‰å¤±æ•—ï¼ 5ç§’å¾Œã«ã‚®ãƒ©ãƒ³æ‘ã«ç§»å‹•ã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -134,7 +134,7 @@ public class PaPooRaidSystem {
 					} catch (Exception exception) {
 					}
 					break;
-				case 1:// ÆÄÇª ÀÔÀå½Ã
+				case 1:// ãƒ‘ãƒ—å…¥å ´æ™‚
 					try {
 						for (L1Object npc : L1World.getInstance().getObject()) {
 							if (npc instanceof L1MonsterInstance) {
@@ -161,16 +161,16 @@ public class PaPooRaidSystem {
 							}
 						}
 						/*
-						 * ÀÔÀå½Ã¸àÆ® °¨È÷ ³ªÀÇ ¿µ¿ª¿¡ µé¾î¿À´Ù´Ï¡¦ ¿ë±â°¡ °¡»ó ÇÏ±¸³ª..
+						 * å…¥å ´ã‚»ãƒ¡ãƒ³ãƒˆã‚ãˆã¦ç§ã®é ˜åŸŸã«å…¥ã‚‹ãªã‚“ã¦â€¦ å‹‡æ°—ãŒä»®æƒ³ã ãªâ€¦
 						 * 
-						 * ÀÌ ºñ¿­ÇÑ ÆÄÇª¸®¿Â! ÀÌÁ¦ ³ª¸¦ ¼ÓÀÎ ´ñ°¡¸¦ Ä¡·ç°Ô µÉ °ÍÀÌ´Ù! (¹«³à »ç¿¤)
+						 * ã“ã®å‘åŠ£ãªãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼ ä»Šç§ã‚’ã ã¾ã—ãŸã‚³ãƒ¡ãƒ³ãƒˆã‚’æ‰•ã†ã§ã—ã‚‡ã†ï¼ (å·«å¥³ã‚µã‚¨ãƒ«)
 						 * 
-						 * ºÀÀÎÀ» Ç® ¶§ ³×°¡ Å« µµ¿òÀÌ µÇ¾úÁö¸¸.. ³ª¿¡°Ô µÎ ¹øÀÇ ÀÚºñ´Â ¾ø´Ù.
+						 * å°å°ã‚’è§£ãã¨å¤§å¤‰åŠ©ã‹ã‚Šã¾ã—ãŸãŒâ€¦ç§ã«ã¯äºŒåº¦ã®æ…ˆæ‚²ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 						 * 
-						 * ±×¶§´Â ³× ³à¼®ÀÌ ³» »À ¼Ó±îÁö ÀúÁÖ¸¦ ³»·ÈÁö¸¸.. Áö±İÀº ´Ù¸£´Ù! (¹«³à »ç¿¤) 1Â÷¾ÈÅ¸ ½ºÆù
+						 * ã‚ã®æ™‚ã¯å›ã®å¥´ãŒä¿ºã®éª¨ã®ä¸­ã¾ã§å‘ªã‚ã‚ŒãŸã‘ã©â€¦ä»Šã¯é•ã†ï¼ ï¼ˆå·«å¥³ã‚µã‚¨ãƒ«ï¼‰1æ¬¡ãƒ’ãƒƒãƒˆã‚¹ãƒãƒ¼ãƒ³
 						 */
 						S_SystemMessage sm = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : °¨È÷ ³ªÀÇ ¿µ¿ª¿¡ µé¾î¿À´Ù´Ï...¿ë±â°¡ °¡»óÇÏ±¸³ª..");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚ãˆã¦ç§ã®é ˜åŸŸã«å…¥ã‚‹ãªã‚“ã¦â€¦å‹‡æ°—ãŒä»®æƒ³ã ãªâ€¦");
 						L1PcInstance[] list = antapc
 								.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
@@ -189,7 +189,7 @@ public class PaPooRaidSystem {
 						sm = null;
 						Thread.sleep(5000);
 						S_SystemMessage sm2 = new S_SystemMessage(
-								"¹«³à »ç¿¤ : ÀÌ ºñ¿­ÇÑ ÆÄÇª¸®¿Â! ÀÌÁ¦ ³ª¸¦ ¼ÓÀÎ ´ñ°¡¸¦ Ä¡·ç°Ô µÉ °ÍÀÌ´Ù!");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šã“ã®å‘åŠ£ãªãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼ ä»Šç§ã‚’ã ã¾ã—ãŸã‚³ãƒ¡ãƒ³ãƒˆã‚’æ‰•ã†ã§ã—ã‚‡ã†ï¼");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -207,7 +207,7 @@ public class PaPooRaidSystem {
 						sm2 = null;
 						Thread.sleep(5000);
 						S_SystemMessage sm3 = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : ºÀÀÎÀ» Ç® ¶§ ³×°¡ Å« µµ¿òÀÌ µÇ¾úÁö¸¸..³ª¿¡°Ô µÎ ¹øÀÇ ÀÚºñ´Â ¾ø´Ù..");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ : å°å°ã‚’è§£ãæ™‚ã€ã‚ãªãŸã¯å¤§ããªåŠ©ã‘ã«ãªã£ãŸãŒ..ç§ã«ã¯äºŒåº¦ã®æ…ˆæ‚²ã¯ãªã„ã€‚");
 						for (L1PcInstance pc : antapc) {
 							if (pc.getMapId() != _mapid) {
 								antapc.remove(pc);
@@ -223,7 +223,7 @@ public class PaPooRaidSystem {
 						sm3 = null;
 						Thread.sleep(5000);
 						S_SystemMessage sm4 = new S_SystemMessage(
-								"¹«³à »ç¿¤ : ±×¶§´Â ³× ³à¼®ÀÌ ³» »À ¼Ó±îÁö ÀúÁÖ¸¦ ³»·ÈÁö¸¸..Áö±İÀº ´Ù¸£´Ù!");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šãã®æ™‚ã¯ã‚ãªãŸã®ç”·ãŒç§ã®éª¨ã®ä¸­ã¾ã§å‘ªã„ã‚’ä¸‹ã—ãŸãŒâ€¦ä»Šã¯é•ã†ï¼");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -249,9 +249,9 @@ public class PaPooRaidSystem {
 
 				case 2:
 					/*
-					 * 1Â÷ ´ÙÀÌ ¸àÆ® ÆÄÇª¸®¿Â : °¡¼Ò·Ó±¸³ª! ÀúµéÀÌ ³Ê¿Í ÇÔ²² ÀÌ½ÂÀ» ¶°µ¹°Ô µÉ ³ªÀÇ Á¦¹°µéÀÎ °ÍÀÌ³Ä!
-					 * ¹«³à »ç¿¤ : ¿ë»çµéÀÌ¿©! Àú »ç¾ÇÇÑ ÆÄÇª¸®¿ÂÀ» ¹°¸®Ä¡°í ¿¡¹Ù ¿Õ±¹¿¡ ³»·ÁÁø ÇÇÀÇ ÀúÁÖ¸¦ ºÎµğ Ç®¾î
-					 * ÁÖ¼Ò¼­! ÆÄÇª¸®¿Â : ³îÀÕ°¨À¸·Î´Â ÃæºĞÇÏ±¸³ª! ÈåÈåÈå...
+					 * 1æ¬¡ãƒ€ã‚¤ãƒ¡ãƒ³ãƒˆãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šå¯å¡‘æ€§ï¼ å½¼ã‚‰ãŒã‚ãªãŸã¨ä¸€ç·’ã«ã‚¤ãƒ»ã‚¹ãƒ³ã‚’æ€ã„å‡ºã™ç§ã®ä¾›ãˆç‰©ãªã®ã‹ï¼
+					 * å·«å¥³ã‚µã‚¨ãƒ«ï¼šå‹‡è€…ã‚ˆï¼ ã‚ã®é‚ªæ‚ªãªãƒ‘ãƒ—ãƒªã‚ªãƒ³ã‚’å€’ã—ã¦ã‚¨ãƒ´ã‚¡ç‹å›½ã«ä¸‹ã•ã‚ŒãŸè¡€ã®å‘ªã„ã‚’è§£ãæ”¾ã¡
+					 * ä½æ‰€ï¼ ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šéŠã³æ„Ÿã§ååˆ†ã ã­ï¼ ã»ã£ãºâ€¦
 					 */
 					try {
 						for (L1Object npc : L1World.getInstance().getObject()) {
@@ -277,7 +277,7 @@ public class PaPooRaidSystem {
 						}
 
 						S_SystemMessage sm = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : °¡¼Ò·Ó±¸³ª! ÀúµéÀÌ ³Ê¿Í ÇÔ²² ÀÌ½ÂÀ» ¶°µ¹°Ô µÉ ³ªÀÇ Á¦¹°µéÀÎ °ÍÀÌ³Ä!");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šå¯å“€æƒ³ã ã­ï¼ å½¼ã‚‰ãŒã‚ãªãŸã¨ä¸€ç·’ã«ã‚¤ãƒ»ã‚¹ãƒ³ã‚’æ€ã„å‡ºã™ç§ã®ä¾›ãˆç‰©ãªã®ã‹ï¼");
 						L1PcInstance[] list = antapc
 								.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
@@ -296,7 +296,7 @@ public class PaPooRaidSystem {
 						sm = null;
 						Thread.sleep(4000);
 						S_SystemMessage sm2 = new S_SystemMessage(
-								"¹«³à »ç¿¤ : ¿ë»çµéÀÌ¿©! Àú »ç¾ÇÇÑ ÆÄÇª¸®¿ÂÀ» ¹°¸®Ä¡°í ¿¡¹Ù ¿Õ±¹¿¡ ³»·ÁÁø ÇÇÀÇ ÀúÁÖ¸¦ ºÎµğ Ç®¾î ÁÖ¼Ò¼­!");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šå‹‡è€…ã‚ˆï¼ ã‚ã®é‚ªæ‚ªãªãƒ‘ãƒ—ãƒªã‚ªãƒ³ã‚’å€’ã—ã¦ã‚¨ãƒ´ã‚¡ç‹å›½ã«ä¸‹ã•ã‚ŒãŸè¡€ã®å‘ªã„ã‚’æ˜¯éè§£ãæ”¾ã£ã¦ãã ã•ã„ï¼");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -314,7 +314,7 @@ public class PaPooRaidSystem {
 						sm2 = null;
 						Thread.sleep(4000);
 						S_SystemMessage sm3 = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : ³îÀÕ°¨À¸·Î´Â ÃæºĞÇÏ±¸³ª! ÈåÈåÈå...");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šéŠã³æ„Ÿã§ååˆ†ã ã­ï¼ ã»ã£ãºâ€¦");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -332,7 +332,7 @@ public class PaPooRaidSystem {
 						sm3 = null;
 						Thread.sleep(10000);
 						S_SystemMessage sm4 = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : »À ¼Ó±îÁö ÆÄ°íµå´Â µÎ·Á¿òÀÌ ¹«¾ùÀÎÁö ÀÌ ¸öÀÌ ¾Ë°Ô ÇØÁÖ¸¶!");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šéª¨ã®ä¸­ã¾ã§æ˜ã‚Šèµ·ã“ã™æã‚ŒãŒä½•ãªã®ã‹ã€ã“ã®ä½“ã‚’çŸ¥ã‚‰ã›ã¦ãã ã•ã„ï¼");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -360,11 +360,11 @@ public class PaPooRaidSystem {
 					break;
 				case 3:
 					/*
-					 * 2Â÷ ´ÙÀÌ ¸àÆ®
+					 * äºŒæ¬¡ãƒ€ã‚¤ãƒ¡ãƒ³ãƒˆ
 					 * 
-					 * ¹«³à »ç¿¤ : ÀÌÁ¦ ÆÄÇª¸®¿ÂÀÇ ÈûÀÌ ¸¹ÀÌ ¶³¾îÁø°Í °°½À´Ï´Ù! ¿ë»çµéÀÌ¾î Á¶±İ ´õ ÈûÀ» ³»ÁÖ¼Ò¼­!
-					 * ÆÄÇª¸®¿Â : ³× ³ğµéÀÌ Èñ¸ÁÀÌ¶ó ºÎ¸£´Â °ÍÀÌ, ´ÜÁö ÇêµÈ ¸ù»óÀÌ¾úÀ½À» ¾Ë°Ô ÇØÁÖ¸¶! ÆÄÇª¸®¿Â : »ç¿¤°ú
-					 * ÇÔ²² ÇÑ°ÍÀ» ÈÄÈ¸ÇÏ°Ô µÉ °ÍÀÌ´Ù! ¾î¸®¼®Àº Á¸ÀçµéÀÌ¿©...
+					 * å·«å¥³ã‚µã‚¨ãƒ«ï¼šä»Šãƒ‘ãƒ—ãƒªã‚ªãƒ³ã®åŠ›ãŒãŸãã•ã‚“è½ã¡ãŸã‚ˆã†ã§ã™ï¼ å‹‡è€…ãŸã¡ã‚‚ã†å°‘ã—åŠ›ã‚’å‡ºã—ã¦ãã ã•ã„ï¼
+					 * ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚ãªãŸã®å¥´ãŒå¸Œæœ›ã¨å‘¼ã¶ã®ãŒã€ãŸã ç„¡é§„ãªå¤¢æƒ³ã ã£ãŸã“ã¨ã‚’çŸ¥ã‚‰ã›ã¦ãã ã•ã„ï¼ ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚µã‚¨ãƒ«ã¨
+					 * ä¸€ç·’ã«ã—ãŸã“ã¨ã‚’å¾Œæ‚”ã™ã‚‹ã§ã—ã‚‡ã†ï¼ æ„šã‹ãªå­˜åœ¨ã§ã™...
 					 */
 					try {
 						for (L1Object npc : L1World.getInstance().getObject()) {
@@ -389,7 +389,7 @@ public class PaPooRaidSystem {
 							}
 						}
 						S_SystemMessage sm = new S_SystemMessage(
-								"¹«³à »ç¿¤ : ÀÌÁ¦ ÆÄÇª¸®¿ÂÀÇ ÈûÀÌ ¸¹ÀÌ ¶³¾îÁø°Í °°½À´Ï´Ù! ¿ë»çµéÀÌ¾î Á¶±İ ´õ ÈûÀ» ³»ÁÖ¼Ò¼­!");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šä»Šãƒ‘ãƒ—ãƒªã‚ªãƒ³ã®åŠ›ãŒãŸãã•ã‚“è½ã¡ãŸã‚ˆã†ã§ã™ï¼ å‹‡è€…ãŸã¡ã‚‚ã†å°‘ã—åŠ›ã‚’å‡ºã—ã¦ãã ã•ã„ï¼");
 						L1PcInstance[] list = antapc
 								.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
@@ -408,7 +408,7 @@ public class PaPooRaidSystem {
 						sm = null;
 						Thread.sleep(4000);
 						S_SystemMessage sm2 = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : ³× ³ğµéÀÌ Èñ¸ÁÀÌ¶ó ºÎ¸£´Â °ÍÀÌ, ´ÜÁö ÇêµÈ ¸ù»óÀÌ¾úÀ½À» ¾Ë°Ô ÇØÁÖ¸¶!");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚ãªãŸã®å¥´ãŒå¸Œæœ›ã¨å‘¼ã¶ã®ãŒã€ãŸã ç„¡é§„ãªå¤¢æƒ³ã ã£ãŸã“ã¨ã‚’çŸ¥ã‚‰ã›ã¦ãã ã•ã„ï¼");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -427,7 +427,7 @@ public class PaPooRaidSystem {
 						Thread.sleep(10000);
 
 						S_SystemMessage sm3 = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : »ç¿¤°ú ÇÔ²² ÇÑ°ÍÀ» ÈÄÈ¸ÇÏ°Ô µÉ °ÍÀÌ´Ù! ¾î¸®¼®Àº Á¸ÀçµéÀÌ¿©...");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚µã‚¨ãƒ«ã¨ä¸€ç·’ã«ã—ãŸã“ã¨ã‚’å¾Œæ‚”ã™ã‚‹ã§ã—ã‚‡ã†ï¼ æ„šã‹ãªå­˜åœ¨ã§ã™...");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -454,9 +454,9 @@ public class PaPooRaidSystem {
 				case 4:
 
 					/*
-					 * 3Â÷ ´ÙÀÌ ¸àÆ® ÆÄÇª¸®¿Â : »ç¿¤..³× ³à¼®ÀÌ..¾î¶»°Ô...³ªÀÇ ¾î¸Ó´Ï..½Ç·»ÀÌ½Ã¿© ³ªÀÇ
-					 * ¼ûÀ»..°ÅµÎ¼Ò¼­... ¹«³à »ç¿¤ : °¨»çÇÕ´Ï´Ù..´ç½ÅµéÀº ¿ª½Ã ¾Æµ§ ÃÖ°íÀÇ ¿ë»çµéÀÔ´Ï´Ù. µåµğ¾î..¿¡¹Ù
-					 * ¿Õ±¹ÀÇ ¿À·£ ÀúÁÖ°¡ Ç®¸± ¼ö ÀÖÀ» °Í °°½À´Ï´Ù.
+					 * 3æ¬¡ãƒ€ã‚¤ãƒ¡ãƒ³ãƒˆãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚µã‚¨ãƒ«..
+					 * æ¯ã‚’ã™ã‚‹ã€‚ ã„ã‚ˆã„ã‚ˆ..ã‚¨ãƒ´ã‚¡
+					 * ç‹å›½ã®é•·ã„å‘ªã„ãŒè§£ã‘ãã†ã§ã™ã€‚
 					 */
 					try {
 						ArrayList<L1PcInstance> antapc = null;
@@ -489,7 +489,7 @@ public class PaPooRaidSystem {
 									L1SkillId.DRAGONRAID_BUFF,
 									(86400 * 1) * 1000);
 							Timestamp deleteTime = new Timestamp(
-									System.currentTimeMillis() + (86400000 * Config.RAID_TIME));// 3ÀÏ
+									System.currentTimeMillis() + (86400000 * Config.RAID_TIME));// 3æ—¥
 							pc.sendPackets(new S_PacketBox(
 									S_PacketBox.DRAGIB_RAID_BUFF, 86400 * 1), true);
 							pc.getNetConnection().getAccount()
@@ -497,7 +497,7 @@ public class PaPooRaidSystem {
 							pc.getNetConnection().getAccount()
 									.updateDragonRaidBuff();
 							// pc.sendPackets(new
-							// S_SystemMessage("µå·¡°ï ·¹ÀÌµå ¸¶¹ıÀ¸·Î ÀÎÇØ "+C_SelectCharacter.ss.format(pc.getNetConnection().getAccount().getDragonRaid())+" ÀÌÈÄ¿¡ µå·¡°ï Æ÷Å» ÀÔÀåÀÌ °¡´ÉÇÕ´Ï´Ù."),
+							// S_SystemMessage("ë“œë˜ê³¤ ë ˆì´ë“œ ë§ˆë²•ìœ¼ë¡œ ì¸í•´ "+C_SelectCharacter.ss.format(pc.getNetConnection().getAccount().getDragonRaid())+" ì´í›„ì— ë“œë˜ê³¤ í¬íƒˆ ì…ì¥ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤."),
 							// true);
 
 							/*
@@ -510,14 +510,14 @@ public class PaPooRaidSystem {
 							 * pc.sendPackets(pb);pb = null; Timestamp
 							 * deleteTime = null; deleteTime = new
 							 * Timestamp(System.currentTimeMillis() +
-							 * 259200000);// 3ÀÏ pc.setpaTime(deleteTime);
+							 * 259200000);// 3ì¼ pc.setpaTime(deleteTime);
 							 */
 						}
 						list = null;
-						// Ç÷Èç ¹öÇÁ Åõ¿©
+						// è¡€ç—•ãƒãƒ•æŠ•ä¸
 						Thread.sleep(3000);
 						S_SystemMessage sm = new S_SystemMessage(
-								"ÆÄÇª¸®¿Â : »ç¿¤..³× ³à¼®ÀÌ..¾î¶»°Ô...³ªÀÇ ¾î¸Ó´Ï..½Ç·»ÀÌ½Ã¿© ³ªÀÇ ¼ûÀ»..°ÅµÎ¼Ò¼­...");
+								"ãƒ‘ãƒ—ãƒªã‚ªãƒ³ï¼šã‚µã‚¨ãƒ«..ã‚ãªãŸã®ç”·ãŒ..ã©ã®ã‚ˆã†ã«...ç§ã®æ¯..");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -535,7 +535,7 @@ public class PaPooRaidSystem {
 						sm = null;
 						Thread.sleep(3000);
 						S_SystemMessage sm2 = new S_SystemMessage(
-								"¹«³à »ç¿¤ : °¨»çÇÕ´Ï´Ù..´ç½ÅµéÀº ¿ª½Ã ¾Æµ§ ÃÖ°íÀÇ ¿ë»çµéÀÔ´Ï´Ù. µåµğ¾î..¿¡¹Ù ¿Õ±¹ÀÇ ¿À·£ ÀúÁÖ°¡ Ç®¸± ¼ö ÀÖÀ» °Í °°½À´Ï´Ù.");
+								"å·«å¥³ã‚µã‚¨ãƒ«ï¼šã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ã€‚ ã„ã‚ˆã„ã‚ˆ..ã‚¨ãƒ´ã‚¡ç‹å›½ã®é•·ã„å‘ªã„ãŒè§£ã‘ã‚‹ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã§ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -553,7 +553,7 @@ public class PaPooRaidSystem {
 						sm2 = null;
 						Thread.sleep(2000);
 						S_SystemMessage sm3 = new S_SystemMessage(
-								"³­ÀïÀÌÀÇ ¿ÜÄ§ : ¾î¼­ ÀÌ °÷À» ¶°³ª¼¼¿ä. °ğ ¹®ÀÌ ´İÈú °ÍÀÔ´Ï´Ù.");
+								"ãƒ‰ãƒ¯ãƒ¼ãƒ•ã®å«ã³ï¼šã•ã‚ã€ã“ã“ã‚’å»ã‚Šãªã•ã„ã€‚ ã¾ã‚‚ãªããƒ‰ã‚¢ãŒé–‰ã¾ã‚Šã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -570,21 +570,21 @@ public class PaPooRaidSystem {
 						list = null;
 						sm3 = null;
 						/*
-						 * if(GameList.get¿ë¶¥() == false){
+						 * if(GameList.getìš©ë•…() == false){
 						 * L1World.getInstance().broadcastServerMessage
-						 * ("³­ÀïÀÌÀÇ ¿ÜÄ§ : À£´ø ¸¶À»¿¡ ¼û°ÜÁø ¿ëµéÀÇ ¶¥À¸·Î °¡´Â ¹®ÀÌ ¿­·È½À´Ï´Ù.");
+						 * ("ë‚œìŸì´ì˜ ì™¸ì¹¨ : ì›°ë˜ ë§ˆì„ì— ìˆ¨ê²¨ì§„ ìš©ë“¤ì˜ ë•…ìœ¼ë¡œ ê°€ëŠ” ë¬¸ì´ ì—´ë ¸ìŠµë‹ˆë‹¤.");
 						 * L1SpawnUtil.spawn2( 33726, 32506, (short)4 , 4212013,
-						 * 0, 1000*60*60*12 , 0); GameList.set¿ë¶¥(true); }else{
+						 * 0, 1000*60*60*12 , 0); GameList.setìš©ë•…(true); }else{
 						 * L1World.getInstance().broadcastServerMessage(
-						 * "³­ÀïÀÌÀÇ ¿ÜÄ§ : ¼û°ÜÁø ¿ëµéÀÇ ¶¥À¸·Î °¡´Â ¹®ÀÌ ÀÌ¹Ì À£´ø ¸¶À»¿¡ ¿­·Á ÀÖ½À´Ï´Ù."); }
+						 * "ë‚œìŸì´ì˜ ì™¸ì¹¨ : ìˆ¨ê²¨ì§„ ìš©ë“¤ì˜ ë•…ìœ¼ë¡œ ê°€ëŠ” ë¬¸ì´ ì´ë¯¸ ì›°ë˜ ë§ˆì„ì— ì—´ë ¤ ìˆìŠµë‹ˆë‹¤."); }
 						 */
 
 						Thread.sleep(2000);
-						// ¾ÆÀÌÅÛ ºĞ¹è
+						// ã‚¢ã‚¤ãƒ†ãƒ é…å¸ƒ
 
 						Thread.sleep(10000);
 						S_SystemMessage sm6 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 10ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š10ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -602,7 +602,7 @@ public class PaPooRaidSystem {
 						sm6 = null;
 						Thread.sleep(5000);
 						S_SystemMessage sm7 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 5ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š5ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -620,7 +620,7 @@ public class PaPooRaidSystem {
 						sm7 = null;
 						Thread.sleep(1000);
 						S_SystemMessage sm8 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 4ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š4ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -638,7 +638,7 @@ public class PaPooRaidSystem {
 						sm8 = null;
 						Thread.sleep(1000);
 						S_SystemMessage sm9 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 3ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š3ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -656,7 +656,7 @@ public class PaPooRaidSystem {
 						sm9 = null;
 						Thread.sleep(1000);
 						S_SystemMessage sm10 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 2ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š2ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -674,7 +674,7 @@ public class PaPooRaidSystem {
 						sm10 = null;
 						Thread.sleep(1000);
 						S_SystemMessage sm11 = new S_SystemMessage(
-								"½Ã½ºÅÛ ¸Ş½ÃÁö : 1ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								"ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š1ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 						list = antapc.toArray(new L1PcInstance[antapc.size()]);
 						for (L1PcInstance pc : list) {
 							if (pc.getMapId() != _mapid) {
@@ -755,7 +755,7 @@ public class PaPooRaidSystem {
 		@Override
 		public void run() {
 			try {
-				int idlist[] = { ¾Ë·ÎÆÛ½º¸Ş°¡, ¾Ë·ÎÆÛ½ººñ¾Æ };
+				int idlist[] = { allophus_mega, allophusvia };
 
 				int x = 0, y = 0, x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0, x4 = 0, y4 = 0;
 
@@ -767,62 +767,62 @@ public class PaPooRaidSystem {
 				switch (_type) {
 				case 1:
 					x = 32743;
-					y = 32862; // 1¹ø¹æ
+					y = 32862; // 1ç•ªéƒ¨å±‹
 					x1 = 32752;
-					y1 = 32809; // 2¹ø¹æ
+					y1 = 32809; // 2ç•ªéƒ¨å±‹
 
 					x2 = 32809;
 					y2 = 32813;
 					x3 = 32811;
 					y3 = 32854;
 					x4 = 32860;
-					y4 = 32858;// 3¹ø¹æ
+					y4 = 32858;// 3ç•ªéƒ¨å±‹
 					break;
 				case 2:
 					x = 32743;
 					y = 32733;
 					x1 = 32752;
-					y1 = 32680; // 2¹ø¹æ
+					y1 = 32680; // 2ç•ªéƒ¨å±‹
 
 					x2 = 32809;
 					y2 = 32685;
 					x3 = 32811;
 					y3 = 32724;
 					x4 = 32860;
-					y4 = 32728;// 3¹ø¹æ
+					y4 = 32728;// 3ç•ªéƒ¨å±‹
 					break;
 				case 3:
 					x = 32743;
 					y = 32605;
 					x1 = 32752;
-					y1 = 32552; // 2¹ø¹æ
+					y1 = 32552; // 2ç•ªéƒ¨å±‹
 
 					x2 = 32809;
 					y2 = 32557;
 					x3 = 32811;
 					y3 = 32596;
 					x4 = 32860;
-					y4 = 32598;// 3¹ø¹æ
+					y4 = 32598;// 3ç•ªéƒ¨å±‹
 					break;
 				case 4:
 					x = 32935;
 					y = 32605;
 					x1 = 32943;
-					y1 = 32552; // 2¹ø¹æ
+					y1 = 32552; // 2ç•ªéƒ¨å±‹
 
 					x2 = 32999;
 					y2 = 32557;
 					x3 = 33000;
 					y3 = 32596;
 					x4 = 33050;
-					y4 = 32598;// 3¹ø¹æ
+					y4 = 32598;// 3ç•ªéƒ¨å±‹
 					break;
 				}
 				/*
-				 * 1679 º£¾Æ»ç¹«ÀÇ ¿ÜÄ§ : °ğ ¾Ë·ÎÆÛ½ºµéÀÌ ¸ô·Á¿Ã °ÍÀÔ´Ï´Ù. ¸¸¹İÀÇ ÁØºñ¸¦ ÇÏ¼¼¿ä. º£¾Æ»ç¹«ÀÇ ¿ÜÄ§ :
-				 * ³à¼®µéÀº ³ôÀº Áö´É°ú À¯¿¬ÇÑ ¸öÀ» °¡Áö°í ÀÖÀ¸¸ç, ÃË¼ö°¡ ¸¹Àº ³à¼®À» Æ¯È÷ Á¶½ÉÇÏ¼¼¿ä. º£¾Æ»ç¹«ÀÇ ¿ÜÄ§ :
-				 * ¾Ë·ÎÆÛ½ºµéÀº ÆÄÇª¸®¿ÂÀÇ ¾È½ÄÀ» ÁöÅ°±â À§ÇØ ÇÒÆÄ½º°¡ ÆÄ°ßÇÑ ¼öÇÏµé ÀÔ´Ï´Ù. Ä«ÀÓ»ç¹«ÀÇ ¿ÜÄ§ : ÆÄÇª¸®¿ÂÀÇ °ËÀº
-				 * ¼û°áÀ» ¸ØÃß°Ô ÇÑ ¿ë»çµéÀÌ Åº»ı ÇÏ¿´½À´Ï´Ù.!!
+				 * 1679 ãƒ™ã‚¢ã‚µãƒ ã®å«ã³ï¼šã™ãã«ã‚¢ãƒ­ãƒ‘ã‚¹ãŒé›†ã¾ã‚‹ã€‚ ä¸‡å…¨ã®æº–å‚™ã‚’ã—ã¦ãã ã•ã„ã€‚ ãƒ™ã‚¢äº‹å‹™ã®å«ã³ï¼š
+				 * äººã¯é«˜ã„çŸ¥æ€§ã¨æŸ”è»Ÿãªä½“ã‚’æŒã£ã¦ãŠã‚Šã€è§¦æ‰‹ã®å¤šã„äººã«ã¯ç‰¹ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚ ãƒ™ã‚¢äº‹å‹™ã®å«ã³ï¼š
+				 * ã‚¢ãƒ­ãƒ‘ã‚¹ã¯ãƒ‘ãƒ—ãƒªã‚ªãƒ³ã®å®‰æ¯ã‚’å®ˆã‚‹ãŸã‚ã«ãƒãƒ«ãƒ‘ã‚¹ãŒæ´¾é£ã—ãŸæ‰‹è·ç‰©ã§ã™ã€‚ ã‚«ã‚¤ãƒ äº‹å‹™ã®å«ã³ï¼šãƒ‘ãƒ—ãƒªã‚ªãƒ³ã®é»’
+				 * æ¯ã‚’æ­¢ã‚ãŸå‹‡è€…ãŸã¡ãŒèª•ç”Ÿã—ã¾ã—ãŸã€‚
 				 */
 				PaPooRaid PT = PaPooRaidSystem.getInstance().getAR(_mapid);
 				// L1Party PT =
@@ -863,15 +863,15 @@ public class PaPooRaidSystem {
 						ranx *= -1;
 						rany *= -1;
 					}
-					// 1¹ø¹æ ½ºÆù
+					// 1ç•ªéƒ¨å±‹ã‚¹ãƒãƒ¼ãƒ³
 					L1SpawnUtil.spawn2(x + ranx, y + rany, (short) _mapid,
 							idlist[ranid], 5, 0, 0);
-					// 2¹ø¹æ ½ºÆù
+					// 2ç•ªéƒ¨å±‹ã‚¹ãƒãƒ¼ãƒ³
 					L1SpawnUtil.spawn2(x1 + ranx, y1 + rany, (short) _mapid,
 							idlist[ranid], 5, 0, 0);
 					L1SpawnUtil.spawn2(x2 + ranx, y2 + rany, (short) _mapid,
 							idlist[ranid], 5, 0, 0);
-					// 3¹ø¹æ ½ºÆù
+					// 3ç•ªéƒ¨å±‹ã‚¹ãƒãƒ¼ãƒ³
 					L1SpawnUtil.spawn2(x3 + ranx, y3 + rany, (short) _mapid,
 							idlist[ranid], 5, 0, 0);
 					L1SpawnUtil.spawn2(x4 + ranx, y4 + rany, (short) _mapid,
@@ -883,14 +883,14 @@ public class PaPooRaidSystem {
 		}
 	}
 
-	private static int ¾Ë·ÎÆÛ½º¸Ş°¡ = 4039012;
-	private static int ¾Ë·ÎÆÛ½ººñ¾Æ = 4039013;
+	private static int allophus_mega = 4039012;
+	private static int allophusvia = 4039013;
 
 	public boolean startRaid(L1PcInstance pc) {
 		checkAR();
 		if (_list.size() >= 15) {
 			S_SystemMessage sm = new S_SystemMessage(
-					"¾Æµ§¿ùµå ¿¡ ´õÀÌ»ó ÆÄÇª Æ÷Å»À» ¼ÒÈ¯ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					"ã‚¢ãƒ‡ãƒ³ãƒ¯ãƒ¼ãƒ«ãƒ‰ã¯ã‚‚ã¯ã‚„ãƒ‘ãƒ—ãƒãƒ¼ã‚¿ãƒ«ã‚’å¬å–šã§ãã¾ã›ã‚“ã€‚");
 			pc.sendPackets(sm);
 			sm = null;
 			return false;
@@ -899,7 +899,7 @@ public class PaPooRaidSystem {
 		ArrayList<L1Object> list = L1World.getInstance().getVisibleObjects(pc,
 				0);
 		if (list.size() > 0) {
-			pc.sendPackets(new S_SystemMessage("ÀÌ À§Ä¡¿¡ ÆÄÇª Æ÷Å»À» ¼ÒÈ¯ÇÒ ¼ö ¾ø½À´Ï´Ù."),
+			pc.sendPackets(new S_SystemMessage("ã“ã®å ´æ‰€ã«ãƒ‘ãƒ—ãƒãƒ¼ã‚¿ãƒ«ã‚’å¬å–šã§ãã¾ã›ã‚“ã€‚"),
 					true);
 			return false;
 		}
@@ -945,7 +945,7 @@ public class PaPooRaidSystem {
 	}
 
 	/**
-	 * ºó ¸Ê ¾ÆÀÌµğ¸¦ °¡Á®¿Â´Ù
+	 * ç©ºã®ãƒãƒƒãƒ—IDã‚’å–å¾—ã™ã‚‹
 	 * 
 	 * @return
 	 */

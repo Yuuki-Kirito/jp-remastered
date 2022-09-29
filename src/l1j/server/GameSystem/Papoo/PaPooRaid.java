@@ -1,40 +1,6 @@
 package l1j.server.GameSystem.Papoo;
 
-import static l1j.server.server.model.skill.L1SkillId.ABSOLUTE_BARRIER;
-import static l1j.server.server.model.skill.L1SkillId.ADVANCE_SPIRIT;
-import static l1j.server.server.model.skill.L1SkillId.ARMOR_BREAK;
-import static l1j.server.server.model.skill.L1SkillId.BLESSED_ARMOR;
-import static l1j.server.server.model.skill.L1SkillId.BOUNCE_ATTACK;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_BEGIN;
-import static l1j.server.server.model.skill.L1SkillId.COOKING_END;
-import static l1j.server.server.model.skill.L1SkillId.COUNTER_BARRIER;
-import static l1j.server.server.model.skill.L1SkillId.COUNTER_MAGIC;
-import static l1j.server.server.model.skill.L1SkillId.DRESS_EVASION;
-import static l1j.server.server.model.skill.L1SkillId.ENCHANT_WEAPON;
-import static l1j.server.server.model.skill.L1SkillId.IllUSION_AVATAR;
-import static l1j.server.server.model.skill.L1SkillId.IllUSION_DIAMONDGOLEM;
-import static l1j.server.server.model.skill.L1SkillId.IllUSION_LICH;
-import static l1j.server.server.model.skill.L1SkillId.IllUSION_OGRE;
-import static l1j.server.server.model.skill.L1SkillId.REDUCTION_ARMOR;
-import static l1j.server.server.model.skill.L1SkillId.SCALES_EARTH_DRAGON;
-import static l1j.server.server.model.skill.L1SkillId.SCALES_FIRE_DRAGON;
-import static l1j.server.server.model.skill.L1SkillId.SCALES_WATER_DRAGON;
-import static l1j.server.server.model.skill.L1SkillId.SHADOW_ARMOR;
-import static l1j.server.server.model.skill.L1SkillId.SHADOW_FANG;
-import static l1j.server.server.model.skill.L1SkillId.SHOCK_STUN;
-import static l1j.server.server.model.skill.L1SkillId.SKILLS_BEGIN;
-import static l1j.server.server.model.skill.L1SkillId.SKILLS_END;
-import static l1j.server.server.model.skill.L1SkillId.SOLID_CARRIAGE;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_BEGIN;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_CANCLEEND;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_BARLOG;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_CURSE_YAHEE;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_DRAGONPERL;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_FREEZE;
-import static l1j.server.server.model.skill.L1SkillId.STATUS_UNDERWATER_BREATH;
-import static l1j.server.server.model.skill.L1SkillId.UNCANNY_DODGE;
-import static l1j.server.server.model.skill.L1SkillId.DESPERADO;
-import static l1j.server.server.model.skill.L1SkillId.POWER_GRIP;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,13 +60,13 @@ public class PaPooRaid {
 	private long _endtime;
 	private boolean _isPaPoo = false;
 	private L1NpcInstance PaPoo = null;
-	private L1NpcInstance _»ç¿¤ = null;
-	private L1NpcInstance _»ç¿¤2 = null;
+	private L1NpcInstance _Sael = null;
+	private L1NpcInstance _Sael2 = null;
 	private Random random = new Random(System.nanoTime());
 
 	public PaPooRaid(int id) {
 		_id = id;
-		_endtime = System.currentTimeMillis() + 7200000;// 2½Ã°£ ÈÄ
+		_endtime = System.currentTimeMillis() + 7200000;// 2ì‹œê°„ í›„
 		MiniBoss1.put(1, false);
 		MiniBoss1.put(2, false);
 		MiniBoss1.put(3, false);
@@ -122,7 +88,7 @@ public class PaPooRaid {
 
 	public void timeOverRun(int type) {
 		switch (type) {
-		case -4:// 4¹øÂ° ¹æ 2ºĞ ¿À¹ö ¸÷ ¼ÒÈ¯
+		case -4:// 4ç•ªç›®ã®éƒ¨å±‹2åˆ†ã‚ªãƒ¼ãƒãƒ¼ãƒ¢ãƒ–å¬å–š
 			FafulionMsgTimer room4 = new FafulionMsgTimer(_id, 4);
 			GeneralThreadPool.getInstance().execute(room4);
 			break;
@@ -139,65 +105,65 @@ public class PaPooRaid {
 			GeneralThreadPool.getInstance().execute(room1);
 			break;
 
-		case 0:// ¾ÈÅ¸¹æ¿¡ ÀÖ´Â »ç¶÷ ¸ğµÎ ÅÚ½ÃÅ²´Ù
+		case 0:// Tell everyone in the room
 			if (isPaPoo() == true) {
 				papoomsg anta1 = new papoomsg(_id, 0);
 				GeneralThreadPool.getInstance().execute(anta1);
 			}
 			break;
-		case 1:// 1Â÷¾ÈÅ¸ µÚÁú¶§ ¸àÆ® »ÑÀ×
+		case 1:// ãƒ—ãƒ©ã‚¤ãƒãƒªãƒ’ãƒƒãƒˆå¾Œã®ãƒ¡ãƒ³ãƒ„ãƒ—ã‚¤ãƒ³
 				// S_SystemMessage sm = new
-				// S_SystemMessage("ÆÄÇª¸®¿Â ÀÌ ´Ş¾Æ³­ µå·¡°ïÀÇ ÈçÀûÀ» ÁÖ¾ú½À´Ï´Ù.");
+				// S_SystemMessage("íŒŒí‘¸ë¦¬ì˜¨ ì´ ë‹¬ì•„ë‚œ ë“œë˜ê³¤ì˜ í”ì ì„ ì£¼ì—ˆìŠµë‹ˆë‹¤.");
 			/*
 			 * for (L1PcInstance player: L1World.getInstance().getAllPlayers()){
 			 * if(player.getMapId()== PaPoo().getMapId()){ createNewItem(player,
-			 * 787878, 1); //ÈçÀû 1 //player.sendPackets(sm); for (L1Object temp :
+			 * 787878, 1); //í”ì  1 //player.sendPackets(sm); for (L1Object temp :
 			 * L1World
 			 * .getInstance().getVisibleObjects(player.getMapId()).values()){
 			 * if(temp instanceof L1PcInstance) ((L1PcInstance)
-			 * temp).sendPackets(new S_ServerMessage(813, "ÆÄÇª¸®¿Â", "´Ş¾Æ³­ µå·¡°ïÀÇ ÈçÀû",
+			 * temp).sendPackets(new S_ServerMessage(813, "íŒŒí‘¸ë¦¬ì˜¨", "ë‹¬ì•„ë‚œ ë“œë˜ê³¤ì˜ í”ì ",
 			 * player.getName())); } } }
 			 */
 			// sm = null;
 			papoomsg anta1 = new papoomsg(_id, 2);
 			GeneralThreadPool.getInstance().execute(anta1);
 			break;
-		case 2:// 2Â÷¾ÈÅ¸ µÚÁú¶§ ¸àÆ® »ÑÀ×
+		case 2:// ã‚»ã‚«ãƒ³ãƒ‰ãƒ’ãƒƒãƒˆå¾Œã«ãƒ¡ãƒ³ãƒ„ãƒ—ã‚¤ãƒ³ã‚°
 				// S_SystemMessage sm2 = new
-				// S_SystemMessage("ÆÄÇª¸®¿Â ÀÌ ´Ş¾Æ³­ µå·¡°ïÀÇ ÈçÀûÀ» ÁÖ¾ú½À´Ï´Ù.");
+				// S_SystemMessage("íŒŒí‘¸ë¦¬ì˜¨ ì´ ë‹¬ì•„ë‚œ ë“œë˜ê³¤ì˜ í”ì ì„ ì£¼ì—ˆìŠµë‹ˆë‹¤.");
 			/*
 			 * for (L1PcInstance player: L1World.getInstance().getAllPlayers()){
 			 * if(player.getMapId()== PaPoo().getMapId()){ createNewItem(player,
-			 * 787878, 1); //ÈçÀû 1 for (L1Object temp :
+			 * 787878, 1); //í”ì  1 for (L1Object temp :
 			 * L1World.getInstance().getVisibleObjects
 			 * (player.getMapId()).values()){ if(temp instanceof L1PcInstance)
 			 * ((L1PcInstance) temp).sendPackets(new S_ServerMessage(813,
-			 * "ÆÄÇª¸®¿Â", "´Ş¾Æ³­ µå·¡°ïÀÇ ÈçÀû", player.getName())); }
+			 * "íŒŒí‘¸ë¦¬ì˜¨", "ë‹¬ì•„ë‚œ ë“œë˜ê³¤ì˜ í”ì ", player.getName())); }
 			 * //player.sendPackets(sm2); } }
 			 */
 			// sm2 = null;
 			papoomsg anta2 = new papoomsg(_id, 3);
 			GeneralThreadPool.getInstance().execute(anta2);
 			break;
-		case 3:// 3Â÷¾ÈÅ¸ µÚÁú¶§ ¸àÆ® »ÑÀ×
+		case 3:// 3å›ç›®ã®ãƒ’ãƒƒãƒˆå¾Œã®ãƒ¡ãƒ³ãƒ„ãƒ—ã‚¤ãƒ³
 				// S_SystemMessage sm3 = new
-				// S_SystemMessage("ÆÄÇª¸®¿ÂÀÌ Á×À¸¸é¼­ ÁõÇ¥¸¦ ³²°å½À´Ï´Ù.");
+				// S_SystemMessage("íŒŒí‘¸ë¦¬ì˜¨ì´ ì£½ìœ¼ë©´ì„œ ì¦í‘œë¥¼ ë‚¨ê²¼ìŠµë‹ˆë‹¤.");
 
 			L1World.getInstance().broadcastServerMessage(
-					"³­ÀïÀÌÀÇ ¿ÜÄ§ : ÆÄÇª¸®¿ÂÀÇ °ËÀº ¼û°áÀ» ¸ØÃß°Ô ÇÑ ¿ë»çµéÀÌ Åº»ı ÇÏ¿´½À´Ï´Ù.!!");
+					"ãƒ‰ãƒ¯ãƒ¼ãƒ•ã®å«ã³ï¼šãƒ‘ãƒ—ãƒªã‚ªãƒ³ã®é»’ã„æ¯ã‚’æ­¢ã‚ãŸå‹‡è€…ãŸã¡ãŒèª•ç”Ÿã—ã¾ã—ãŸã€‚");
 			GeneralThreadPool.getInstance().schedule(new Runnable() {
 				@Override
 				public void run() {
 					for (L1PcInstance player : L1World.getInstance()
 							.getAllPlayers()) {
 						if (player.getMapId() == PaPoo().getMapId()) {
-							createNewItem(player, 5000066, 1); // ÈçÀû 11
+							createNewItem(player, 5000066, 1); // ãƒˆãƒ¬ãƒ¼ã‚¹11
 							for (L1Object temp : L1World.getInstance()
 									.getVisibleObjects(player.getMapId())
 									.values()) {
 								if (temp instanceof L1PcInstance)
 									((L1PcInstance) temp).sendPackets(new S_ServerMessage(
-											813, "ÆÄÇª¸®¿Â", "¼ö·æÀÇ Ç¥½Ä", player
+											813, "ãƒ‘ãƒ—ãƒªã‚ªãƒ³", "æ°´ç«œã®æ¨™è­˜", player
 													.getName()));
 							}
 							// player.sendPackets(sm3);
@@ -210,12 +176,12 @@ public class PaPooRaid {
 			GeneralThreadPool.getInstance().execute(anta3);
 			break;
 
-		case 4:// ÀÔÀå´ë±â
+		case 4:// å…¥å ´å¾…æ©Ÿ
 			papoomsg anta4 = new papoomsg(_id, 1);
 			GeneralThreadPool.getInstance().execute(anta4);
 			break;
 
-		case 5: {// ¾ÈÅ¸ 1Â÷ ¿ë¾ğ
+		case 5: {// ãƒ’ãƒƒãƒˆ1æ¬¡é¾è¨€
 			L1SpawnUtil.spawn3(PaPoo(), 145943, 10, 0, false);
 			S_SkillSound ss = new S_SkillSound(PaPoo().getId(), 761);
 			Broadcaster.broadcastPacket(PaPoo(), ss);
@@ -223,7 +189,7 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 6: {// ÆÄÇª ¿À»öÁøÁÖ ~
+		case 6: {// ãƒ‘ãƒ—äº”è‰²çœŸç ã€œ
 			try {
 				ArrayList<L1PcInstance> list = new ArrayList<L1PcInstance>();
 				for (L1Object obj : L1World.getInstance().getVisibleObjects(
@@ -267,17 +233,17 @@ public class PaPooRaid {
 				// L1SpawnUtil.spawn3(PaPoo(), 4039004, 10, 120*1000, false);
 				// L1SpawnUtil.spawn3(PaPoo(), 4039005, 10, 120*1000, false);
 				L1SpawnUtil.spawn3(PaPoo(), 4039001, 10, 0, false);
-				PaPoo().marble.add("¿À»ö±¸½½");
+				PaPoo().marble.add("äº”è‰²ç‰");
 				L1SpawnUtil.spawn3(PaPoo(), 4039002, 10, 0, false);
-				PaPoo().marble2.add("½ÅºñÇÑ¿À»ö±¸½½");
+				PaPoo().marble2.add("ç¥ç§˜çš„ãªäº”è‰²ã®ãƒ“ãƒ¼ã‚º");
 				if (PaPoo().getNpcId() == 4039006) {
 					L1SpawnUtil.spawn3(PaPoo(), 4039001, 10, 0, false);
-					PaPoo().marble.add("¿À»ö±¸½½");
+					PaPoo().marble.add("äº”è‰²ç‰");
 				} else if (PaPoo().getNpcId() == 4039007) {
 					L1SpawnUtil.spawn3(PaPoo(), 4039001, 10, 0, false);
-					PaPoo().marble.add("¿À»ö±¸½½");
+					PaPoo().marble.add("äº”è‰²ç‰");
 					L1SpawnUtil.spawn3(PaPoo(), 4039001, 10, 0, false);
-					PaPoo().marble.add("¿À»ö±¸½½");
+					PaPoo().marble.add("äº”è‰²ç‰");
 				}
 				S_SkillSound ss = new S_SkillSound(PaPoo().getId(), 761);
 				Broadcaster.broadcastPacket(PaPoo(), ss);
@@ -287,7 +253,7 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 7: {// ¶ó³ª ÆùÆù
+		case 7: {// ãƒ©ãƒŠãƒ»ãƒãƒ³ãƒ•ã‚©ãƒ³
 			S_DoActionGFX gfx3 = new S_DoActionGFX(PaPoo().getId(), 5);
 			Broadcaster.broadcastPacket(PaPoo(), gfx3);
 
@@ -332,7 +298,7 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 8: {// ·¹Æ÷ ÆùÆù
+		case 8: {// repo phone
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
@@ -377,7 +343,7 @@ public class PaPooRaid {
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
 
 					/*
-					 * //////////////////////////////////////////¿şÆùºê·¹ÀÌÅ©
+					 * //////////////////////////////////////////ì›¨í°ë¸Œë ˆì´í¬
 					 * //////////////////////////// for (L1Object obj :
 					 * L1World.getInstance().getVisibleObjects(PaPoo(),3)){ if
 					 * (obj instanceof L1PcInstance) { L1PcInstance pc =
@@ -399,12 +365,12 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 9: {// Å×³ª ·Ğµğ¸£
+		case 9: {// tena rondir
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
 					S_DoActionGFX gfx3 = new S_DoActionGFX(PaPoo().getId(), 25);
-					S_DoActionGFX gfx4 = new S_DoActionGFX(PaPoo().getId(), 41);// ÀÌ·´
+					S_DoActionGFX gfx4 = new S_DoActionGFX(PaPoo().getId(), 41);// ì´ëŸ½
 
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 25);
@@ -494,12 +460,12 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 10: {// ³×³ª ·Ğµğ¸£
+		case 10: {// Nena Rondir
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
 					S_DoActionGFX gfx3 = new S_DoActionGFX(PaPoo().getId(), 1);
-					S_DoActionGFX gfx4 = new S_DoActionGFX(PaPoo().getId(), 41);// ÀÌ·´
+					S_DoActionGFX gfx4 = new S_DoActionGFX(PaPoo().getId(), 41);// ì´ëŸ½
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 1);
 					for (L1Object obj : L1World.getInstance()
@@ -580,21 +546,21 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 11: {// ¸®¿ÀÅ¸! ¿À´ÏÁî ¿şÀÎ¶óÅ©
-			// ¹üÀ§Äµ½½+µ¥½ºÈú+¾ÆÀÌ½º¹ÌÆ¼¾î+¾ÆÀÌ½ºÀÌ·´
+		case 11: {// Riota! Oniz Weinlark
+			// Range Cancel + Death Heal + Ice Meteor + Ice Rub
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ¹üÀ§ = new S_DoActionGFX(PaPoo().getId(), 41);// Áö´À·¯¹Ì
-																				// ¹üÀ§
-					S_DoActionGFX ¹ÌÅß = new S_DoActionGFX(PaPoo().getId(), 20);// ¹ÌÅß
-					S_DoActionGFX ÀÌ·´ = new S_DoActionGFX(PaPoo().getId(), 18);// ¹ÌÅß
+					S_DoActionGFX range = new S_DoActionGFX(PaPoo().getId(), 41);// fin
+																				// range
+					S_DoActionGFX miter = new S_DoActionGFX(PaPoo().getId(), 20);// miter
+					S_DoActionGFX lrup = new S_DoActionGFX(PaPoo().getId(), 18);// miter
 
-					Broadcaster.broadcastPacket(PaPoo(), ¹üÀ§);
-					¹üÀ§ = null;
+					Broadcaster.broadcastPacket(PaPoo(), range);
+					range = null;
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
 					for (L1Object obj : L1World.getInstance()
@@ -621,8 +587,8 @@ public class PaPooRaid {
 							PaPoo().getNpcTemplate().get_gfxid(), 41);
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
-					Broadcaster.broadcastPacket(PaPoo(), ¹ÌÅß);
-					¹ÌÅß = null;
+					Broadcaster.broadcastPacket(PaPoo(), miter);
+					miter = null;
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 8)) {
 						if (obj instanceof L1PcInstance) {
@@ -651,8 +617,8 @@ public class PaPooRaid {
 							PaPoo().getNpcTemplate().get_gfxid(), 20);
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
-					Broadcaster.broadcastPacket(PaPoo(), ÀÌ·´);
-					ÀÌ·´ = null;
+					Broadcaster.broadcastPacket(PaPoo(), lrup);
+					lrup = null;
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 5)) {
 						if (obj instanceof L1PcInstance) {
@@ -690,21 +656,21 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 12: {// ¸®¿ÀÅ¸! ¿À´ÏÁî Äí½º¿Â ¿şÀÎ¶óÅ©
-			// ¹üÀ§Äµ½½+µ¥½ºÈú+¾ÆÀÌ½º¹ÌÆ¼¾î+¹ßÀÛ ¤»
+		case 12: {// Riota! Onizu Kusuon Wainlark
+			// Range Cancel + Death Heal + Ice Meteor + Seizure
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ¹üÀ§ = new S_DoActionGFX(PaPoo().getId(), 41);// Áö´À·¯¹Ì
-																				// ¹üÀ§
-					S_DoActionGFX ¹ÌÅß = new S_DoActionGFX(PaPoo().getId(), 20);// ¹ÌÅß
-					S_DoActionGFX ¹ßÀÛ = new S_DoActionGFX(PaPoo().getId(), 30);// ¹ßÀÛ
+					S_DoActionGFX range = new S_DoActionGFX(PaPoo().getId(), 41);// ì§€ëŠëŸ¬ë¯¸
+																				// ë²”ìœ„
+					S_DoActionGFX miter = new S_DoActionGFX(PaPoo().getId(), 20);// ë¯¸í…¨
+					S_DoActionGFX seizure = new S_DoActionGFX(PaPoo().getId(), 30);// ë°œì‘
 
-					Broadcaster.broadcastPacket(PaPoo(), ¹üÀ§);
-					¹üÀ§ = null;
+					Broadcaster.broadcastPacket(PaPoo(), range);
+					range = null;
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
 					for (L1Object obj : L1World.getInstance()
@@ -732,8 +698,8 @@ public class PaPooRaid {
 							PaPoo().getNpcTemplate().get_gfxid(), 41);
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
-					Broadcaster.broadcastPacket(PaPoo(), ¹ÌÅß);
-					¹ÌÅß = null;
+					Broadcaster.broadcastPacket(PaPoo(), miter);
+					miter = null;
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 8)) {
 						if (obj instanceof L1PcInstance) {
@@ -765,8 +731,8 @@ public class PaPooRaid {
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
 
-					Broadcaster.broadcastPacket(PaPoo(), ¹ßÀÛ);
-					¹ßÀÛ = null;
+					Broadcaster.broadcastPacket(PaPoo(), seizure);
+					seizure = null;
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 10)) {
 						if (obj instanceof L1PcInstance) {
@@ -805,17 +771,17 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 13: {// ¸®¿ÀÅ¸! Å×³ª ¿şÀÎ¶óÅ© µ¥½ºÈú+²¿¸®+¾ÆÀÌ½º ºê·¹½º
-			// // ¸®¿ÀÅ¸! Å×³ª ¿şÀÎ¶óÅ© µ¥½ºÈú+²¿¸®+¾ÆÀÌ½º ºê·¹½º
+		case 13: {// Riota! Thena Wayne Lark Death Hill + Tail + Ice Breath
+			// // Riota! Thena Wayne Lark Death Hill + Tail + Ice Breath
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ²¿¸® = new S_DoActionGFX(PaPoo().getId(), 25);// Áö´À·¯¹Ì
-																				// ¹üÀ§
-					S_DoActionGFX ºê·¹ = new S_DoActionGFX(PaPoo().getId(), 18);// ¹ÌÅß
+					S_DoActionGFX tail = new S_DoActionGFX(PaPoo().getId(), 25);// fin
+																				// range
+					S_DoActionGFX bre = new S_DoActionGFX(PaPoo().getId(), 18);// miter
 
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
@@ -845,7 +811,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ²¿¸®);
+							Broadcaster.broadcastPacket(PaPoo(), tail);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 2)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -857,7 +823,7 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					²¿¸® = null;
+					tail = null;
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 25);
 					if (time > 0)
@@ -876,7 +842,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ºê·¹);
+							Broadcaster.broadcastPacket(PaPoo(), bre);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 2)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -904,7 +870,7 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					ºê·¹ = null;
+					bre = null;
 					time = SprTable.getInstance().getDirSpellSpeed(
 							PaPoo().getNpcTemplate().get_gfxid());
 					if (time > 0)
@@ -916,17 +882,17 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 14: {// ¸®¿ÀÅ¸! ·¹³ª ¿ì´©½º ¸®µà½ºÈú+¸Ó¸®°ø°İ+¾ÆÀÌ½ººê·¹½º
-			// // ·¹³ª ¿ì´©½º ¸®µà½ºÈú+¸Ó¸®°ø°İ+¾ÆÀÌ½ººê·¹½º
+		case 14: {// Riota! Lena Unus Reduce Heal + Head Attack + Ice Breath
+			// // Lena Unus Reduce Heal + Head Attack + Ice Breath
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ¸Ó¸® = new S_DoActionGFX(PaPoo().getId(), 1);// Áö´À·¯¹Ì
-																				// ¹üÀ§
-					S_DoActionGFX ºê·¹ = new S_DoActionGFX(PaPoo().getId(), 18);// ¹ÌÅß
+					S_DoActionGFX head = new S_DoActionGFX(PaPoo().getId(), 1);// fin
+																				// range
+					S_DoActionGFX bre = new S_DoActionGFX(PaPoo().getId(), 18);// miter
 
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
@@ -956,7 +922,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ¸Ó¸®);
+							Broadcaster.broadcastPacket(PaPoo(), head);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 1)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -968,7 +934,7 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					¸Ó¸® = null;
+					head = null;
 
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 1);
@@ -988,7 +954,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ºê·¹);
+							Broadcaster.broadcastPacket(PaPoo(), bre);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 2)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -1016,7 +982,7 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					ºê·¹ = null;
+					bre = null;
 					time = SprTable.getInstance().getDirSpellSpeed(
 							PaPoo().getNpcTemplate().get_gfxid());
 					if (time > 0)
@@ -1028,16 +994,16 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 15: {// ¸®¿ÀÅ¸! ¶ó³ª ¿ÀÀÌ¹Ç µ¥½ºÆ÷¼Ç + ¿À¸¥¼Õ + ¾ÆÀÌ½ºÀÌ·´
-			// // ¸®¿ÀÅ¸! ¶ó³ª ¿ÀÀÌ¹Ç µ¥½ºÆ÷¼Ç + ¿À¸¥¼Õ + ¾ÆÀÌ½ºÀÌ·´
+		case 15: {// Riota! Lana Oym Death Death + Right Hand + Ice Rub
+			// // Riota! Lana Oym Death Death + Right Hand + Ice Rub
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ¿À¸¥ = new S_DoActionGFX(PaPoo().getId(), 5);// ¿À¸¥¼Õ
-					S_DoActionGFX ÀÌ·´ = new S_DoActionGFX(PaPoo().getId(), 41);// ¾ÆÀÌ½ºÀÌ·´
+					S_DoActionGFX right = new S_DoActionGFX(PaPoo().getId(), 5);// right hand
+					S_DoActionGFX lrup = new S_DoActionGFX(PaPoo().getId(), 41);// ice drop
 
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
@@ -1067,7 +1033,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ¿À¸¥);
+							Broadcaster.broadcastPacket(PaPoo(), right);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 1)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -1079,13 +1045,13 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					¿À¸¥ = null;
+					right = null;
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 5);
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
 
-					Broadcaster.broadcastPacket(PaPoo(), ÀÌ·´);
+					Broadcaster.broadcastPacket(PaPoo(), lrup);
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 5)) {
 						if (obj instanceof L1PcInstance) {
@@ -1116,7 +1082,7 @@ public class PaPooRaid {
 							pc.receiveDamage(PaPoo(), ran2, true);
 						}
 					}
-					ÀÌ·´ = null;
+					lrup = null;
 					time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 41);
 					if (time > 0)
@@ -1128,16 +1094,16 @@ public class PaPooRaid {
 		}
 			break;
 
-		case 16: {// ¸®¿ÀÅ¸! ·¹Æ÷ ¿ÀÀÌ¹Ç µ¥½ºÆ÷¼Ç+¿À¸¥¼Õ+°íÇÔ
-			// // ¸®¿ÀÅ¸! ·¹Æ÷ ¿ÀÀÌ¹Ç µ¥½ºÆ÷¼Ç+¿À¸¥¼Õ+°íÇÔ
+		case 16: {// Riota! Repo oime death potion + right hand + shout
+			// // Riota! Repo oime death potion + right hand + shout
 			/*
-			 * 1¸Ó¸® 5¿À¸¥¼Õ 12 ¿Ş¼Õ 18 ºê·¹½º 19 °íÇÔ 20 ¾ÆÀÌ½º¹ÌÅß 25 ²¿¸® 30 ¹ßÀÛ 41 Áö´À·¯¹Ì
+			 * 1 Head 5 Right Hand 12 Left Hand 18 Breath 19 Shout 20 Ice Mitter 25 Tail 30 Seizure 41 Fin
 			 */
 			try {
 				synchronized (PaPoo().synchObject) {
 					PaPoo().setParalyzed(true);
-					S_DoActionGFX ¿À¸¥ = new S_DoActionGFX(PaPoo().getId(), 5);// ¿À¸¥¼Õ
-					S_DoActionGFX °íÇÔ = new S_DoActionGFX(PaPoo().getId(), 19);// ¾ÆÀÌ½ºÀÌ·´
+					S_DoActionGFX right = new S_DoActionGFX(PaPoo().getId(), 5);// right hand
+					S_DoActionGFX shout = new S_DoActionGFX(PaPoo().getId(), 19);// ice drop
 
 					L1SkillUse l1skilluse = null;
 					l1skilluse = new L1SkillUse();
@@ -1167,7 +1133,7 @@ public class PaPooRaid {
 							S_ChangeHeading ch = new S_ChangeHeading(PaPoo());
 							Broadcaster.broadcastPacket(PaPoo(), ch);
 							ch = null;
-							Broadcaster.broadcastPacket(PaPoo(), ¿À¸¥);
+							Broadcaster.broadcastPacket(PaPoo(), right);
 							for (L1Object obj2 : L1World.getInstance()
 									.getVisibleObjects(pc, 1)) {
 								if (obj2 instanceof L1PcInstance) {
@@ -1179,12 +1145,12 @@ public class PaPooRaid {
 						}
 						break;
 					}
-					¿À¸¥ = null;
+					right = null;
 					int time = SprTable.getInstance().getAttackSpeed(
 							PaPoo().getNpcTemplate().get_gfxid(), 5);
 					if (time > 0)
 						Thread.sleep(PaPoo().calcSleepTime(time, 2));
-					Broadcaster.broadcastPacket(PaPoo(), °íÇÔ);
+					Broadcaster.broadcastPacket(PaPoo(), shout);
 					for (L1Object obj : L1World.getInstance()
 							.getVisibleObjects(PaPoo(), 8)) {
 						if (obj instanceof L1PcInstance) {
@@ -1210,7 +1176,7 @@ public class PaPooRaid {
 							pc.receiveDamage(PaPoo(), ran, true);
 						}
 					}
-					°íÇÔ = null;
+					shout = null;
 					time = SprTable.getInstance().getNodirSpellSpeed(
 							PaPoo().getNpcTemplate().get_gfxid());
 					if (time > 0)
@@ -1232,13 +1198,13 @@ public class PaPooRaid {
 			item.setCount(count);
 			if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) {
 				pc.getInventory().storeItem(item);
-			} else { // °¡Áú ¼ö ¾ø´Â °æ¿ì´Â Áö¸é¿¡ ¶³¾î¶ß¸®´Â Ã³¸®ÀÇ Äµ½½Àº ÇÏÁö ¾Ê´Â´Ù(ºÎÁ¤ ¹æÁö)
+			} else { // æŒã¦ãªã„å ´åˆã¯åœ°é¢ã«è½ã¨ã™å‡¦ç†ã®ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã¯ã—ãªã„ï¼ˆå¦å®šé˜²æ­¢ï¼‰
 				L1World.getInstance()
 						.getInventory(pc.getX(), pc.getY(), pc.getMapId())
 						.storeItem(item);
 			}
 			// S_ServerMessage ss = new S_ServerMessage(403, item.getLogName());
-			// pc.sendPackets(ss); // %0¸¦ ¼Õ¿¡ ³Ö¾ú½À´Ï´Ù.
+			// pc.sendPackets(ss); // ï¼…0ã‚’æ‰‹ã«å…¥ã‚Œã¾ã—ãŸã€‚
 			// ss = null;
 			return true;
 		} else {
@@ -1263,7 +1229,7 @@ public class PaPooRaid {
 				|| skillNum == IllUSION_AVATAR;
 	}
 
-	int Äµ½½°­Á¦»èÁ¦[] = { STATUS_CURSE_BARLOG, STATUS_CURSE_YAHEE, STATUS_DRAGONPERL };
+	int cancel_forced_delete[] = { STATUS_CURSE_BARLOG, STATUS_CURSE_YAHEE, STATUS_DRAGONPERL };
 
 	public void can(L1PcInstance pc) {
 		if (pc.getResistance().getMr() >= 150) {
@@ -1276,9 +1242,9 @@ public class PaPooRaid {
 			}
 			pc.getSkillEffectTimerSet().removeSkillEffect(skillNum);
 		}
-		for (int i = 0; i < Äµ½½°­Á¦»èÁ¦.length; i++) {
-			if (pc.getSkillEffectTimerSet().hasSkillEffect(Äµ½½°­Á¦»èÁ¦[i]))
-				pc.getSkillEffectTimerSet().removeSkillEffect(Äµ½½°­Á¦»èÁ¦[i]);
+		for (int i = 0; i < cancel_forced_delete.length; i++) {
+			if (pc.getSkillEffectTimerSet().hasSkillEffect(cancel_forced_delete[i]))
+				pc.getSkillEffectTimerSet().removeSkillEffect(cancel_forced_delete[i]);
 		}
 		for (int skillNum = STATUS_BEGIN; skillNum <= STATUS_CANCLEEND; skillNum++) {
 			if (isNotCancelable(skillNum) && !pc.isDead()) {
@@ -1348,7 +1314,7 @@ public class PaPooRaid {
 			pc.sendPackets(new S_SkillIconBlessOfEva(pc.getId(), timeSec), true);
 		}
 		pc.getSkillEffectTimerSet().removeSkillEffect(STATUS_FREEZE);
-		if (pc.is¿¡Æ¾ÀÎÇü()) {
+		if (pc.is_ETHIN_DOLL()) {
 			pc.getMoveState().setMoveSpeed(1);
 			S_SkillHaste sh = new S_SkillHaste(pc.getId(), 1, -1);
 			pc.sendPackets(sh);
@@ -1360,7 +1326,7 @@ public class PaPooRaid {
 	}
 
 	/**
-	 * ÇØ´çÇÏ´Â ÁÂÇ¥·Î ¹æÇâÀ» ÀüÈ¯ÇÒ¶§ »ç¿ë.
+	 * å¯¾å¿œã™ã‚‹åº§æ¨™ã«æ–¹å‘ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ã¨ãã«ä½¿ç”¨ã€‚
 	 */
 	public int calcheading(int myx, int myy, int tx, int ty) {
 		if (tx > myx && ty > myy) {
@@ -1382,27 +1348,27 @@ public class PaPooRaid {
 		}
 	}
 
-	/** »ç¿¤1 ¿ÀºêÁ§Æ®¸¦ µ¹·ÁÁØ´Ù */
-	public L1NpcInstance »ç¿¤() {
-		return _»ç¿¤;
+	/** Returns a sael1 object*/
+	public L1NpcInstance sael() {
+		return _Sael;
 	}
 
-	/** »ç¿¤1 ¿ÀºêÁ§Æ®¸¦ ¼¼ÆÃ ÇÑ´Ù. */
-	public void ¼Â»ç¿¤(L1NpcInstance npc) {
-		_»ç¿¤ = npc;
+	/** Set the sael 1 object. */
+	public void sethsael1(L1NpcInstance npc) {
+		_Sael = npc;
 	}
 
-	/** »ç¿¤2 ¿ÀºêÁ§Æ®¸¦ µ¹·ÁÁØ´Ù */
-	public L1NpcInstance »ç¿¤2() {
-		return _»ç¿¤2;
+	/** Returns a sael2 object*/
+	public L1NpcInstance sael2() {
+		return _Sael2;
 	}
 
-	/** »ç¿¤2 ¿ÀºêÁ§Æ®¸¦ ¼¼ÆÃ ÇÑ´Ù. */
-	public void ¼Â»ç¿¤2(L1NpcInstance npc) {
-		_»ç¿¤2 = npc;
+	/** Set up the SAEL 2 object. */
+	public void sethsael2(L1NpcInstance npc) {
+		_Sael2 = npc;
 	}
 
-	public void ¾²·¹±âÁ¤¸®() {
+	public void garbage_disposal() {
 		for (L1Object obj : L1World.getInstance()
 				.getVisibleObjects(PaPoo(), 15)) {
 			if (obj instanceof L1NpcInstance) {
@@ -1431,12 +1397,12 @@ public class PaPooRaid {
 		}
 	}
 
-	/** ÆÄÇª¸®¿Â·¹¾î¿¡ ÁøÀÔÇÑ À¯Àú ¼ö¸¦ °¡Á®¿Â´Ù */
+	/** Get the number of users who have entered Papurion Rare */
 	public int countLairUser() {
 		return _PaPoolist.size();
 	}
 
-	/** ÆÄÇª¸®¿Â·¹¾î¿¡ ÁøÀÔÇÒ À¯Àú¸¦ ³Ö´Â´Ù */
+	/** Enter a user to enter Papurion Rare */
 	public void addLairUser(L1PcInstance pc) {
 		if (_PaPoolist.contains(pc)) {
 			return;
@@ -1444,27 +1410,27 @@ public class PaPooRaid {
 		_PaPoolist.add(pc);
 	}
 
-	/** ÆÄÇª ·¹¾î¿¡ ÁøÀÔÇÒ À¯Àú¸¦ ÃÊ±âÈ­ */
+	/** Initialize users who will enter Papu Rare */
 	public void clLairUser() {
 		_PaPoolist.clear();
 	}
 
-	/** ÆÄÇª ¿ÀºêÁ§Æ®¸¦ µ¹·ÁÁØ´Ù */
+	/** Returns a papu object */
 	public L1NpcInstance PaPoo() {
 		return PaPoo;
 	}
 
-	/** ÆÄÇª ¿ÀºêÁ§Æ®¸¦ ¼¼ÆÃ ÇÑ´Ù. */
+	/** Set the papu object. */
 	public void setPaPoo(L1NpcInstance npc) {
 		PaPoo = npc;
 	}
 
-	/** ÆÄÇª ¶¹´ÂÁö ¾Ë·ÁÁØ´Ù */
+	/** Let me know if it's popped */
 	public boolean isPaPoo() {
 		return _isPaPoo;
 	}
 
-	/** ÆÄÇª°¡ ¶¹´ÂÁö ¼³Á¤ÇÑ´Ù */
+	/** Set whether Papoo is floating */
 	public void setPapoo(boolean flag) {
 		_isPaPoo = flag;
 	}
@@ -1565,61 +1531,61 @@ public class PaPooRaid {
 		}
 	}
 
-	private int ³×·Îa = 4039014;
-	private int ³×·Îb = 4039015;
-	private int ³×·Îc = 4039016;
+	private int nero_a = 4039014;
+	private int nero_b = 4039015;
+	private int nero_c = 4039016;
 
 	private void BossSpawn(int step, int type) {
 		switch (type) {
 		case 1:
 			switch (step) {
 			case 1:
-				L1SpawnUtil.spawn2(32740, 32842, (short) _id, ³×·Îa, 0, 0, 0);
+				L1SpawnUtil.spawn2(32740, 32842, (short) _id, nero_a, 0, 0, 0);
 				break;
 			case 2:
-				L1SpawnUtil.spawn2(32777, 32810, (short) _id, ³×·Îb, 0, 0, 0);
+				L1SpawnUtil.spawn2(32777, 32810, (short) _id, nero_b, 0, 0, 0);
 				break;
 			case 3:
-				L1SpawnUtil.spawn2(32860, 32840, (short) _id, ³×·Îc, 0, 0, 0);
+				L1SpawnUtil.spawn2(32860, 32840, (short) _id, nero_c, 0, 0, 0);
 				break;
 			}
 			break;
 		case 2:
 			switch (step) {
 			case 1:
-				L1SpawnUtil.spawn2(32741, 32715, (short) _id, ³×·Îa, 0, 0, 0);
+				L1SpawnUtil.spawn2(32741, 32715, (short) _id, nero_a, 0, 0, 0);
 				break;
 			case 2:
-				L1SpawnUtil.spawn2(32777, 32682, (short) _id, ³×·Îb, 0, 0, 0);
+				L1SpawnUtil.spawn2(32777, 32682, (short) _id, nero_b, 0, 0, 0);
 				break;
 			case 3:
-				L1SpawnUtil.spawn2(32861, 32711, (short) _id, ³×·Îc, 0, 0, 0);
+				L1SpawnUtil.spawn2(32861, 32711, (short) _id, nero_c, 0, 0, 0);
 				break;
 			}
 			break;
 		case 3:
 			switch (step) {
 			case 1:
-				L1SpawnUtil.spawn2(32740, 32587, (short) _id, ³×·Îa, 0, 0, 0);
+				L1SpawnUtil.spawn2(32740, 32587, (short) _id, nero_a, 0, 0, 0);
 				break;
 			case 2:
-				L1SpawnUtil.spawn2(32777, 32554, (short) _id, ³×·Îb, 0, 0, 0);
+				L1SpawnUtil.spawn2(32777, 32554, (short) _id, nero_b, 0, 0, 0);
 				break;
 			case 3:
-				L1SpawnUtil.spawn2(32861, 32583, (short) _id, ³×·Îc, 0, 0, 0);
+				L1SpawnUtil.spawn2(32861, 32583, (short) _id, nero_c, 0, 0, 0);
 				break;
 			}
 			break;
 		case 4:
 			switch (step) {
 			case 1:
-				L1SpawnUtil.spawn2(32932, 32587, (short) _id, ³×·Îa, 0, 0, 0);
+				L1SpawnUtil.spawn2(32932, 32587, (short) _id, nero_a, 0, 0, 0);
 				break;
 			case 2:
-				L1SpawnUtil.spawn2(32969, 32554, (short) _id, ³×·Îb, 0, 0, 0);
+				L1SpawnUtil.spawn2(32969, 32554, (short) _id, nero_b, 0, 0, 0);
 				break;
 			case 3:
-				L1SpawnUtil.spawn2(33052, 32584, (short) _id, ³×·Îc, 0, 0, 0);
+				L1SpawnUtil.spawn2(33052, 32584, (short) _id, nero_c, 0, 0, 0);
 				break;
 			}
 			break;
@@ -1640,7 +1606,7 @@ public class PaPooRaid {
 		MonList.clear();
 	}
 
-	/** ÆÄÆ¼ °ü·Ã */
+	/** party related */
 	/*
 	 * public L1Party getParty(int type){ switch (type) { case 1:return
 	 * Party1;case 2:return Party2; case 3:return Party3;case 4:return Party4; }
@@ -1673,7 +1639,7 @@ public class PaPooRaid {
 	public void addMember(L1PcInstance pc) {
 		synchronized (_list) {
 			if (!_list.contains(pc)) {
-				// System.out.println("Ãß°¡ > "+pc.getName());
+				// System.out.println("ì¶”ê°€ > "+pc.getName());
 				_list.add(pc);
 			}
 		}
@@ -1682,7 +1648,7 @@ public class PaPooRaid {
 	public void removeMember(L1PcInstance pc) {
 		synchronized (_list) {
 			if (_list.contains(pc)) {
-				// System.out.println("»èÁ¦ > "+pc.getName());
+				// System.out.println("ì‚­ì œ > "+pc.getName());
 				_list.remove(pc);
 			}
 		}

@@ -1475,7 +1475,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				if (npcid == 4039000 && ispapoorun == false) { // 엔피씨 번호
 					ispapoorun = true;
 					PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(getMapId());
-					ar.쓰레기정리();
+					ar.garbage_disposal();
 					PaPooTimer antaendtime = new PaPooTimer(this, ar, 1, 2000); // 22분 체크
 					antaendtime.begin();
 				}
@@ -1483,7 +1483,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				if (npcid == 4039006 && ispapoorun == false) { // 엔피씨 번호
 					ispapoorun = true;
 					PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(getMapId());
-					ar.쓰레기정리();
+					ar.garbage_disposal();
 					PaPooTimer antaendtime = new PaPooTimer(this, ar, 2, 2000); // 22분  체크
 					antaendtime.begin();
 				}
@@ -1491,7 +1491,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 				if (npcid == 4039007 && ispapoorun == false) { // 엔피씨 번호
 					ispapoorun = true;
 					PaPooRaid ar = PaPooRaidSystem.getInstance().getAR(getMapId());
-					ar.쓰레기정리();
+					ar.garbage_disposal();
 					PaPooTimer antaendtime = new PaPooTimer(this, ar, 3, 2000); // 22분 체크
 					antaendtime.begin();
 				}

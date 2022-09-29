@@ -4497,7 +4497,7 @@ public class L1SkillUse {
 				case MOB_SLOW_18: {
 					if (cha instanceof L1PcInstance) {
 						L1PcInstance pc = (L1PcInstance) cha;
-						if (pc.is에틴인형()) {
+						if (pc.is_ETHIN_DOLL()) {
 							continue;
 						}
 
@@ -6445,7 +6445,7 @@ public class L1SkillUse {
 							}
 						}
 
-						if (pc.is에틴인형()) {
+						if (pc.is_ETHIN_DOLL()) {
 							pc.getMoveState().setMoveSpeed(1);
 							pc.sendPackets(new S_SkillHaste(pc.getId(), 1, -1), true);
 							Broadcaster.broadcastPacket(pc, new S_SkillHaste(pc.getId(), 1, 0), true);
