@@ -29,13 +29,13 @@ public class IceQeen {
 	public L1PcInstance _pc;
 	private int _mapnum;
 
-	private int ±ÙÀ§Ã¢ = 90023;
-	private int ±ÙÀ§È° = 90022;
-	//private int ½Ã³à = 90026;
-	private int ¾ÆÀÌ½º¸Ç = 90021;
-	private int ¾ÆÀÌ½º°ñ·½ = 90024;
-	private int ¿¡Æ¼ = 90027;
-	private int ½ºÄİÇÇ¿Â = 90025;
+	private int guard_window = 90023;
+	private int guard_bow = 90022;
+	//private int ì‹œë…€ = 90026;
+	private int ice_man = 90021;
+	private int ice_golem = 90024;
+	private int ety = 90027;
+	private int scorpion = 90025;
 
 	// private int MonsterCount = 200;
 	private Random random = new Random(System.nanoTime());
@@ -52,7 +52,7 @@ public class IceQeen {
 				int mapid = GameList.getIceQueenMapId();
 
 				if (mapid == 0) {
-					S_SystemMessage sm = new S_SystemMessage("¸ğµç ¸ÊÀÌ »ç¿ëÁßÀÔ´Ï´Ù Àá½ÃÈÄ ´Ù½Ã ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+					S_SystemMessage sm = new S_SystemMessage("ã™ã¹ã¦ã®ãƒãƒƒãƒ—ãŒä½¿ç”¨ä¸­ã§ã™ã€‚ã—ã°ã‚‰ãã—ã¦ã‹ã‚‰ã‚‚ã†ä¸€åº¦ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 					pc.sendPackets(sm, true);
 					// System.out.println("0");
 					return 0;
@@ -61,7 +61,7 @@ public class IceQeen {
 				boolean ok = GameList.addIceQeen(mapid, this);
 
 				if (!ok) {
-					S_SystemMessage sm = new S_SystemMessage("¸Ê¼³Á¤ÀÌ Àß¸ø µÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔÀå ½ÅÃ» ¹Ù¶ø´Ï´Ù.");
+					S_SystemMessage sm = new S_SystemMessage("ãƒãƒƒãƒ—è¨­å®šãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚ å†åº¦å…¥å ´ç”³è«‹é¡˜ã„ã¾ã™ã€‚");
 					pc.sendPackets(sm, true);
 					// System.out.println("1");
 					return 0;
@@ -105,12 +105,12 @@ public class IceQeen {
 				IceQeenSpawn.getInstance().Spawn(mapid, random.nextInt(3)+1);
 
 				int idlist[] = new int[6];
-					idlist[0] = ¾ÆÀÌ½º°ñ·½;
-					idlist[1] = ±ÙÀ§Ã¢;
-					idlist[2] = ¾ÆÀÌ½º¸Ç;
-					idlist[3] = ¿¡Æ¼;
-					idlist[4] = ½ºÄİÇÇ¿Â;
-					idlist[5] = ±ÙÀ§È°;
+					idlist[0] = ice_golem;
+					idlist[1] = guard_window;
+					idlist[2] = ice_man;
+					idlist[3] = ety;
+					idlist[4] = scorpion;
+					idlist[5] = guard_bow;
 				int ranid1 = 0;
 				int ranid = 0;
 				int ranx = 0;
@@ -121,18 +121,18 @@ public class IceQeen {
 						ranid = random.nextInt(6);
 						ranx = random.nextInt(10);
 						rany = random.nextInt(10);
-						// 1¹ø¹æ ½ºÆù
+						// 1Birthroom Spawn
 						L1SpawnUtil.spawn2(32760 + ranx, 32813 + rany, (short) mapid, idlist[ranid1], 5, 0, 0);
-						// 2¹ø¹æ ½ºÆù
+						// 2Birthroom Spawn
 						L1SpawnUtil.spawn2(32832 + ranx, 32801 + rany, (short) mapid, idlist[ranid], 5, 0, 0);
-						// 3¹ø¹æ ½ºÆù
+						// 3Birthroom Spawn
 						L1SpawnUtil.spawn2(32843 + ranx, 32847 + rany, (short) mapid, idlist[ranid], 5, 0, 0);
-						// 4¹ø¹æ ½ºÆù
+						// 4Birthroom Spawn
 						L1SpawnUtil.spawn2(32763 + ranx, 32882 + rany, (short) mapid, idlist[ranid], 5, 0, 0);
-						// 5¹ø¹æ ½ºÆù
+						// 5Birthroom Spawn
 						L1SpawnUtil.spawn2(32820 + ranx, 32916 + rany, (short) mapid, idlist[ranid], 5, 0, 0);
 					} catch (Exception e) {
-						// ¿©±â¼­ null °ª ¿¡·¯ ¶ß´Â°Å ºÁ¼­´Â NPC°¡ ¾ø´Â°Å °°À½.Ã¼Å©¹Ù¶÷
+						// ã“ã“ã§nullå€¤ã‚¨ãƒ©ãƒ¼ã‚’æµ®ã‹ã¹ã‚‹ã®ã¯NPCãŒãªã„ã‚ˆã†ã§ã™ã€‚
 						e.printStackTrace();
 					}
 				}
@@ -258,7 +258,7 @@ public class IceQeen {
 		}
 	}
 
-	private void ¹®ÆĞÅ¶(L1DoorInstance door) {
+	private void door_packet(L1DoorInstance door) {
 		S_Door packet = new S_Door(door);
 		_pc.sendPackets(packet);
 	}
@@ -270,7 +270,7 @@ public class IceQeen {
 					door.isPassibleDoor(true);
 					door.setPassable(0);
 					if (_pc != null) {
-						¹®ÆĞÅ¶(door);
+						door_packet(door);
 					}
 					door.deleteMe();
 				}
@@ -294,7 +294,7 @@ public class IceQeen {
 
 	public void Reset() {
 		try {
-		//	System.out.println("¾ó´ø 1ÀÎ ÀÎ´ø ¸Ê »èÁ¦ : " + _mapnum);
+		//	System.out.println("ä¸€äººä¸€äººã®ã‚¤ãƒ³ãƒ€ãƒ³ãƒãƒƒãƒ—ã‚’å‰Šé™¤ : " + _mapnum);
 			if (mct != null)
 				mct.off();
 			mct = null;
