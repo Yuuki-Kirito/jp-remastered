@@ -1,7 +1,7 @@
 /**
- * º»¼· ¸®´º¾óµÈ Ç³·æ ¸°µåºñ¿À¸£
- * ¸°µåºñ¿À¸£ ¸Ê °ü·Ã ½ºÆù Ã³¸® Å¬·¡½º
- * by. ÄÉÀÎ
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
+ * by. ï¿½ï¿½ï¿½ï¿½
  */
 package l1j.server.GameSystem.Lind;
 
@@ -67,11 +67,11 @@ public class LindSpawn {
 						if (type == 2) {
 							if (level2_randomck == 0) {
 								if (rs.getString("location").equalsIgnoreCase(
-										"¸°µå2Â÷ ¿ŞÂÊ"))
+										"ãƒªãƒ³ãƒ‰äºŒæ¬¡å·¦"))
 									continue;
 							} else if (level2_randomck == 1) {
 								if (rs.getString("location").equalsIgnoreCase(
-										"¸°µå2Â÷ ¿À¸¥ÂÊ"))
+										"ãƒªãƒ³ãƒ‰2æ¬¡å³"))
 									continue;
 							}
 						}
@@ -88,10 +88,10 @@ public class LindSpawn {
 						field.getLight().turnOnOffLight();
 						field.setSpawnLocation(rs.getString("location"));
 						if (field.getSpawnLocation()
-								.equalsIgnoreCase("¸°µå2Â÷ ¿ŞÂÊ")) {
+								.equalsIgnoreCase("ãƒªãƒ³ãƒ‰äºŒæ¬¡å·¦")) {
 							field.getGfxId().setTempCharGfx(8047);
 						} else if (field.getSpawnLocation().equalsIgnoreCase(
-								"¸°µå2Â÷ ¿À¸¥ÂÊ")) {
+								"ãƒªãƒ³ãƒ‰2æ¬¡å³")) {
 							field.getGfxId().setTempCharGfx(8057);
 						}
 

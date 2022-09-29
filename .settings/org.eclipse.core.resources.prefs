@@ -56,6 +56,7 @@ encoding//src/l1j/server/GameSystem/Lastabard/LastabardSpawnTable.java=UTF-8
 encoding//src/l1j/server/GameSystem/Lind/Lind.java=UTF-8
 encoding//src/l1j/server/GameSystem/Lind/LindRaid.java=UTF-8
 encoding//src/l1j/server/GameSystem/Lind/LindSpawn.java=UTF-8
+encoding//src/l1j/server/GameSystem/Lind/LindThread.java=UTF-8
 encoding//src/l1j/server/GameSystem/MiniGame/DeathMatch.java=UTF-8
 encoding//src/l1j/server/GameSystem/MiniGame/MiniGame.java=UTF-8
 encoding//src/l1j/server/GameSystem/NavalWarfare/NavalWarfare.java=UTF-8

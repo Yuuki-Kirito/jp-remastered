@@ -1,8 +1,6 @@
 package l1j.server.GameSystem.Lind;
 
-import static l1j.server.server.model.skill.L1SkillId.EARTH_BIND;
-import static l1j.server.server.model.skill.L1SkillId.FREEZING_BREATH;
-import static l1j.server.server.model.skill.L1SkillId.ICE_LANCE;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -73,66 +71,66 @@ public class LindThread extends Thread {
 						if (lind.getEndTIme() < System.currentTimeMillis())
 							quit(lind);
 
-						/** À¯Àú ¸Ê Ã¼Å© **/
+						/** user map check **/
 						mapUserCheck(lind);
 
 						if (lind.Sleep > System.currentTimeMillis())
 							continue;
 						Sleep_Setting(lind);
 						switch (lind.Step) {
-						case 1: // ·¹¾î ÀÔÀå
+						case 1: // ë ˆì–´ ìž…ìž¥
 							if (lind.Sub_Step == 1)
-								SystemChat(lind, "¸°µåºñ¿À¸£ : ´©°¡ ³ªÀÇ ´ÜÀáÀ» ¹æÇØ ÇÏ´Â°¡?");
+								SystemChat(lind, "ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šèª°ãŒç§ã®çŸ­çœ ã‚’å¦¨ã’ã‚‹ã®ã‹ï¼Ÿ");
 							else if (lind.Sub_Step == 2)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ÄÉ·¹´Ï½º ¶Ç ³ª¸¦ È­³ª°Ô ÇÏ·Á´Â °Ç°¡?");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã‚±ãƒ¬ãƒ‹ã‚¹ã¾ãŸç§ã‚’æ€’ã‚‰ã›ãŸã„ã®ã‹ï¼Ÿ");
 							else if (lind.Sub_Step == 3)
-								SystemChat(lind, "¸°µåºñ¿À¸£ : ¾î¸®¼®Àº ÀÎ°£µé ÀÌ±º...");
+								SystemChat(lind, "ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šæ„šã‹ãªäººé–“ã ã­â€¦");
 							else if (lind.Sub_Step == 4)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ³ª ¸°µåºñ¿À¸£¸¦ È­³ª°Ô ÇÑ ´ë°¡¸¦ Ä¡·ê °ÍÀÌ´Ù.");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šç§ã¯ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ã‚’æ€’ã‚‰ã›ãŸå¯¾ä¾¡ã‚’æ‰•ã†ã ã‚ã†ã€‚");
 							else if (lind.Sub_Step == 5)
 								lind.dragon_lind = LindSpawn.getInstance()
 										.fillSpawnTable(lind.getMap().getId(),
-												1); // ¸°µå ½ºÆù
+												1); // ãƒªãƒ³ãƒ‰ã‚¹ãƒãƒ¼ãƒ³
 							lind.Sub_Step++;
 							if (lind.Sub_Step == 6) {
 								lind.Step = 2;
 								lind.Sub_Step = 0;
 							}
 							break;
-						case 2: // ¸°µå ³ª¿È
+						case 2: // ãƒªãƒ³ãƒ‰ãƒŠãƒ 
 							if (lind.dragon_lind == null
 									|| lind.dragon_lind.isDead()
 									|| lind.dragon_lind._destroyed) {
 								lind.Step = 3;
 								// giveItem(lind, 787878);
 								// SystemChat(lind,
-								// "¸°µåºñ¿À¸£ °¡ ´Þ¾Æ³­ µå·¡°ïÀÇ ÈçÀûÀ» ÁÖ¾ú½À´Ï´Ù.");
+								// "ë¦°ë“œë¹„ì˜¤ë¥´ ê°€ ë‹¬ì•„ë‚œ ë“œëž˜ê³¤ì˜ í”ì ì„ ì£¼ì—ˆìŠµë‹ˆë‹¤.");
 							}
 							break;
-						case 3: // ¸°µå 2Æä °øÁß
+						case 3: // ë¦°ë“œ 2íŽ˜ ê³µì¤‘
 							if (lind.Sub_Step == 0)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : °¡¼Ò·Ó±¸³ª! ³ÊÈñµéÀÇ ¾î¸®¼®À½À» »À¼Ó ±íÀÌ ÈÄÈ¸ÇÏ°Ô ¸¸µé¾îÁÖ°Ú´Ù!");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šå¯å¡‘ã ã­ï¼ ã‚ãªãŸãŸã¡ã®æ„šã‹ã•ã‚’éª¨ã®å¥¥æ·±ãå¾Œæ‚”ã™ã‚‹ã‚ˆã†ã«ã—ã¦ãã‚Œã‚‹ï¼");
 							else if (lind.Sub_Step == 1)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ±×·¡µµ Á¦¹ýÀÌ±¸³ª! ÇÏÁö¸¸ ¾ðÁ¦±îÁö ¹öÆ¿ ¼ö ÀÖÀ»±î?");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šãã‚Œã§ã‚‚çµæ§‹ã ã­ï¼ ã—ã‹ã—ã€ã„ã¤ã¾ã§è€ãˆã‚‹ã“ã¨ãŒã§ãã¾ã™ã‹ï¼Ÿ");
 							else if (lind.Sub_Step == 2)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ¿À·§µ¿¾È ¸öÀ» Ç®Áö ¸øÇß´Âµ¥, ³î¾Æº¸µµ·Ï ÇÏÀÚ!!");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šé•·ã„é–“ä½“ã‚’è§£ã‘ãªã‹ã£ãŸãŒã€éŠã‚“ã§ã¿ã‚ˆã†ï¼");
 							else if (lind.Sub_Step == 3)
 								Lind_level2_setting(lind);
 							else if (lind.Sub_Step == 5)
 								cloud_npcChat(lind,
-										"±¸¸§´ëÁ¤·É : ¸°µåºñ¿À¸£´ÔÀÇ ¼º¼Ò¿¡ Ä§ÀÔÇÑ ÀÚ ´©±¸ÀÎ°¡?");
+										"é›²å¤§æ”¿ä»¤ï¼šãƒªãƒ³ãƒ‰ãƒ´ã‚£ã‚ªãƒ«æ§˜ã®è–æ‰€ã«ä¾µå…¥ã—ãŸäººã¯èª°ã§ã™ã‹ï¼Ÿ");
 							else if (lind.Sub_Step == 6)
 								cloud_npcChat(lind,
-										"±¸¸§´ëÁ¤·É : ¿ì¿ì..°¨È÷ ¸°µåºñ¿À¸£´ÔÀÇ ½É±â¸¦ ºÒÆíÇÏ°Ô ÇÏ´Ù´Ï!");
+										"é›²å¤§ç²¾éœŠï¼šã†ã‚ãƒ¼..ã‚ãˆã¦ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«æ§˜ã®æ¤æ ½ã‚’ä¸ä¾¿ã«ã™ã‚‹ãªã‚“ã¦ï¼");
 							else if (lind.Sub_Step == 7)
-								cloud_npcChat(lind, "±¸¸§´ëÁ¤·É : °¨È÷! °¡¸¸µÎÁö ¾Ê°Ú´Ù!");
+								cloud_npcChat(lind, "é›²å¤§ç²¾éœŠï¼šã‚ãˆã¦ï¼ æ­¢ã¾ã‚‰ãªã„ï¼");
 							else if (lind.Sub_Step == 8)
-								cloud_npcChat(lind, "±¸¸§´ëÁ¤·É : ±¸¸§ÀÇ Á¤·ÉÀÌ¿© ³ª¿¡°Ô ÈûÀ»!");
+								cloud_npcChat(lind, "é›²å¤§ç²¾éœŠï¼šé›²ã®ç²¾éœŠãŒç§ã«åŠ›ã‚’ï¼");
 
 							if (lind.Sub_Step != 4 && lind.Sub_Step != 9)
 								lind.Sub_Step++;
@@ -146,11 +144,11 @@ public class LindThread extends Thread {
 											lind.dragon_lind,
 											new S_NpcChatPacket(
 													lind.dragon_lind,
-													"º¥ ¶óÀÌ¸£! ½ºº£·ç ÄÉ..", 0), true);
+													"ãƒ™ãƒ³ãƒ»ãƒ©ã‚¤ãƒ«ï¼ ã‚¹ãƒ™ãƒ«ã‚±..", 0), true);
 									lind.cloud_list = LindSpawn.getInstance()
 											.fillSpawnTable(
 													lind.getMap().getId(), 4,
-													true); // ±¸¸§ ´ëÁ¤·É
+													true); // é›²å¤§ç²¾éœŠ
 									lind.Sub_Step++;
 								}
 								if (lind.dragon_lind == null
@@ -161,27 +159,27 @@ public class LindThread extends Thread {
 									lind.Sub_Step = 0;
 									// giveItem(lind, 787878);
 									// SystemChat(lind,
-									// "¸°µåºñ¿À¸£ °¡ ´Þ¾Æ³­ µå·¡°ïÀÇ ÈçÀûÀ» ÁÖ¾ú½À´Ï´Ù.");
+									// "ë¦°ë“œë¹„ì˜¤ë¥´ ê°€ ë‹¬ì•„ë‚œ ë“œëž˜ê³¤ì˜ í”ì ì„ ì£¼ì—ˆìŠµë‹ˆë‹¤.");
 								}
 								continue;
 							}
 							break;
-						case 4: // ¸°µå 3Æä
+						case 4: // ë¦°ë“œ 3íŽ˜
 							if (lind.Sub_Step == 0)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ÀÌ·± ±ÍÂúÀº... ¾î¸®¼®Àº °ÍµéÀÌ¿©~~ Áö±Ý ³ª¸¦ ½ÃÇèÇÏ´Â °Ç°¡?");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã“ã‚“ãªé¢å€’â€¦æ„šã‹ãªã“ã¨ã‚ˆï½žï½žä»Šç§ã‚’è©¦ã—ã¦ã‚‹ã®ã‹ï¼Ÿ");
 							else if (lind.Sub_Step == 1)
-								SystemChat(lind, "¸°µåºñ¿À¸£ : ÀÚ ±×·³ Á»´õ ¹ß¹öµÕÃÄ º¸¾Æ¶ó~~");
+								SystemChat(lind, "ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã•ã¦ã€ã‚‚ã†å°‘ã—è¶³ã‚’è¸ã¿å…¥ã‚Œã¦ãã ã•ã„ã€œã€œ");
 							else if (lind.Sub_Step == 2)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ³× ³à¼®µéÀÇ ¿ìµÐÇÔÀ» Å¿ÇÏ°Ô µÉ °ÍÀÌ´Ù.");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã‚ãªãŸã®ç”·ãŸã¡ã®æã‚ã—ã•ã‚’è²¬ã‚ã‚‹ã ã‚ã†ã€‚");
 							else if (lind.Sub_Step == 3)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ³×³ðµéÀ» ´õÀÌ»ó ºÁÁÖÁö ¾ÊÀ» °ÍÀÌ´Ù. ´Ù½Ã ½ÃÀÛÇÏÀÚ!");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã‚ãªãŸã¯ãã‚Œã‚’ã‚‚ã†è¦‹ãªã„ã§ã—ã‚‡ã†ã€‚ å†èµ·å‹•ã—ã‚ˆã†ï¼");
 							else if (lind.Sub_Step == 4)
 								lind.dragon_lind = LindSpawn.getInstance()
 										.fillSpawnTable(lind.getMap().getId(),
-												3); // ¸°µå ½ºÆù
+												3); // ë¦°ë“œ ìŠ¤í°
 							else if (lind.Sub_Step == 5) {
 								if (lind.dragon_lind == null
 										|| lind.dragon_lind.isDead()
@@ -198,7 +196,7 @@ public class LindThread extends Thread {
 							}
 							lind.Sub_Step++;
 							break;
-						case 5: // ¸°µå ³«·Ú
+						case 5: // ë¦°ë“œ ë‚™ë¢°
 							if (lind.dragon_lind == null
 									|| lind.dragon_lind.isDead()
 									|| lind.dragon_lind._destroyed) {
@@ -253,30 +251,30 @@ public class LindThread extends Thread {
 							}
 							lind.Sub_Step++;
 							break;
-						case 6: // ¸°µå Á×À½
+						case 6: // ë¦°ë“œ ì£½ìŒ
 							if (lind.Sub_Step == 0)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ÀÌ·²¼ö°¡!! Å©¾Æ¾Ç..³ÊÈñµéÀ» ¾èº» ³»°¡ ³Ê¹«³ªµµ ¾î¸®¼®¾ú±¸³ª... ");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã“ã‚“ãªã“ã¨ãŒï¼ å¤§ããªã‚ã‚â€¦");
 							else if (lind.Sub_Step == 1)
 								SystemChat(lind,
-										"¸°µåºñ¿À¸£ : ¾Æ¾Æ~!! ³ªÀÇ ¾î¸Ó´Ï ½Ç·»ÀÌ¿© ³ª¸¦ ºÙÀâ¾Æ ÁÖ¼Ò¼­...");
+										"ãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ«ï¼šã‚ã‚ã€œï¼ ç§ã®æ¯ã‚·ãƒ¬ãƒ³ã¯ç§ã‚’æ•ã¾ãˆã¦ä½ã‚“ã§ã„ã¾ã™...");
 							else if (lind.Sub_Step == 2) {
-								// Ç÷Èç
+								// í˜ˆí”
 								health(lind);
 								giveItem(lind, 5000065);
-								// SystemChat(lind, "¸°µåºñ¿À¸£°¡ Á×À¸¸é¼­ ÁõÇ¥¸¦ ³²°å½À´Ï´Ù.");
+								// SystemChat(lind, "ë¦°ë“œë¹„ì˜¤ë¥´ê°€ ì£½ìœ¼ë©´ì„œ ì¦í‘œë¥¼ ë‚¨ê²¼ìŠµë‹ˆë‹¤.");
 							} else if (lind.Sub_Step == 3)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 10ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š10ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else if (lind.Sub_Step == 4)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 5ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š5ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else if (lind.Sub_Step == 5)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 4ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š4ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else if (lind.Sub_Step == 6)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 3ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š3ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else if (lind.Sub_Step == 7)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 2ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š2ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else if (lind.Sub_Step == 8)
-								SystemChat(lind, "½Ã½ºÅÛ ¸Þ½ÃÁö : 1ÃÊ ÈÄ¿¡ ÅÚ·¹Æ÷Æ® ÇÕ´Ï´Ù.");
+								SystemChat(lind, "ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ï¼š1ç§’å¾Œã«ãƒ†ãƒ¬ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚");
 							else {
 								lind.Step = 7;
 								lind.Sub_Step = 0;
@@ -284,7 +282,7 @@ public class LindThread extends Thread {
 							}
 							lind.Sub_Step++;
 							break;
-						case 7: // Á¾·á
+						case 7: // ì¢…ë£Œ
 							home(lind);
 							quit(lind);
 
@@ -292,7 +290,7 @@ public class LindThread extends Thread {
 						default:
 							break;
 						}
-						// System.out.println("½ºÅÇ >> "+lind.Step);
+						// System.out.println("ìŠ¤íƒ­ >> "+lind.Step);
 					}
 				}
 				list = null;
@@ -303,7 +301,7 @@ public class LindThread extends Thread {
 		}
 	}
 
-	/** Ç÷Èç & ¾ÆÀÌÅÛ **/
+	/** Bloodstains & Items **/
 	private void health(Lind lind) {
 		// L1SkillUse l1skilluse;
 		S_PacketBox pb = new S_PacketBox(S_PacketBox.DRAGONBLOOD, 88, 4320);
@@ -314,13 +312,13 @@ public class LindThread extends Thread {
 			pc.getSkillEffectTimerSet().setSkillEffect(
 					L1SkillId.DRAGONRAID_BUFF, (86400 * 2) * 1000);
 			Timestamp deleteTime = new Timestamp(System.currentTimeMillis()
-					+ (86400000 * Config.RAID_TIME));// 7ÀÏ
+					+ (86400000 * Config.RAID_TIME));// 7ì¼
 			pc.getNetConnection().getAccount().setDragonRaid(deleteTime);
 			pc.getNetConnection().getAccount().updateDragonRaidBuff();
 			pc.sendPackets(new S_PacketBox(S_PacketBox.DRAGIB_RAID_BUFF, 86400 * 2),
 					true);
 			// pc.sendPackets(new
-			// S_SystemMessage("µå·¡°ï ·¹ÀÌµå ¸¶¹ýÀ¸·Î ÀÎÇØ "+C_SelectCharacter.ss.format(pc.getNetConnection().getAccount().getDragonRaid())+" ÀÌÈÄ¿¡ µå·¡°ï Æ÷Å» ÀÔÀåÀÌ °¡´ÉÇÕ´Ï´Ù."),
+			// S_SystemMessage("ë“œëž˜ê³¤ ë ˆì´ë“œ ë§ˆë²•ìœ¼ë¡œ ì¸í•´ "+C_SelectCharacter.ss.format(pc.getNetConnection().getAccount().getDragonRaid())+" ì´í›„ì— ë“œëž˜ê³¤ í¬íƒˆ ìž…ìž¥ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤."),
 			// true);
 
 			/*
@@ -328,21 +326,21 @@ public class LindThread extends Thread {
 			 * L1SkillId.DRAGONBLOOD_L, pc.getId(), pc.getX(), pc.getY(), null,
 			 * 0, L1SkillUse.TYPE_GMBUFF); l1skilluse = null;
 			 * pc.sendPackets(pb); Timestamp deleteTime = null; deleteTime = new
-			 * Timestamp(System.currentTimeMillis() + 259200000);// 3ÀÏ
+			 * Timestamp(System.currentTimeMillis() + 259200000);// 3ì¼
 			 * pc.setlindTime(deleteTime);
 			 */
 		}
 		pb = null;
 		L1World.getInstance().broadcastServerMessage(
-				"³­ÀïÀÌÀÇ ¿ÜÄ§ : ¸°µåºñ¿À¸£ÀÇ ³¯°³¸¦ ²ªÀº ¿ë»çµéÀÌ Åº»ý ÇÏ¿´½À´Ï´Ù.!!");
+				"ãƒ‰ãƒ¯ãƒ¼ãƒ•ã®å«ã³ï¼šãƒªãƒ³ãƒ‰ãƒ“ã‚ªãƒ¼ãƒ«ã®ç¿¼ã‚’ç ´ã£ãŸå‹‡è€…ãŸã¡ãŒèª•ç”Ÿã—ã¾ã—ãŸã€‚");
 		/*
-		 * if(GameList.get¿ë¶¥() == false){
+		 * if(GameList.getìš©ë•…() == false){
 		 * L1World.getInstance().broadcastServerMessage
-		 * ("³­ÀïÀÌÀÇ ¿ÜÄ§ : À£´ø ¸¶À»¿¡ ¼û°ÜÁø ¿ëµéÀÇ ¶¥À¸·Î °¡´Â ¹®ÀÌ ¿­·È½À´Ï´Ù."); L1SpawnUtil.spawn2(
+		 * ("ë‚œìŸì´ì˜ ì™¸ì¹¨ : ì›°ë˜ ë§ˆì„ì— ìˆ¨ê²¨ì§„ ìš©ë“¤ì˜ ë•…ìœ¼ë¡œ ê°€ëŠ” ë¬¸ì´ ì—´ë ¸ìŠµë‹ˆë‹¤."); L1SpawnUtil.spawn2(
 		 * 33726, 32506, (short)4 , 4212013, 0, 1000*60*60*12 , 0);
-		 * GameList.set¿ë¶¥(true); }else{
+		 * GameList.setìš©ë•…(true); }else{
 		 * L1World.getInstance().broadcastServerMessage
-		 * ("³­ÀïÀÌÀÇ ¿ÜÄ§ : ¼û°ÜÁø ¿ëµéÀÇ ¶¥À¸·Î °¡´Â ¹®ÀÌ ÀÌ¹Ì À£´ø ¸¶À»¿¡ ¿­·Á ÀÖ½À´Ï´Ù."); }
+		 * ("ë‚œìŸì´ì˜ ì™¸ì¹¨ : ìˆ¨ê²¨ì§„ ìš©ë“¤ì˜ ë•…ìœ¼ë¡œ ê°€ëŠ” ë¬¸ì´ ì´ë¯¸ ì›°ë˜ ë§ˆì„ì— ì—´ë ¤ ìžˆìŠµë‹ˆë‹¤."); }
 		 */
 	}
 
@@ -361,17 +359,17 @@ public class LindThread extends Thread {
 			item.setCount(count);
 			if (pc.getInventory().checkAddItem(item, count) == L1Inventory.OK) {
 				pc.getInventory().storeItem(item);
-			} else { // °¡Áú ¼ö ¾ø´Â °æ¿ì´Â Áö¸é¿¡ ¶³¾î¶ß¸®´Â Ã³¸®ÀÇ Äµ½½Àº ÇÏÁö ¾Ê´Â´Ù(ºÎÁ¤ ¹æÁö)
+			} else { // ê°€ì§ˆ ìˆ˜ ì—†ëŠ” ê²½ìš°ëŠ” ì§€ë©´ì— ë–¨ì–´ëœ¨ë¦¬ëŠ” ì²˜ë¦¬ì˜ ìº”ìŠ¬ì€ í•˜ì§€ ì•ŠëŠ”ë‹¤(ë¶€ì • ë°©ì§€)
 				L1World.getInstance()
 						.getInventory(pc.getX(), pc.getY(), pc.getMapId())
 						.storeItem(item);
 			}
 			for (L1PcInstance temp : lind.getMember()) {
-				temp.sendPackets(new S_ServerMessage(813, "¸°µåºñ¿À¸£", item
+				temp.sendPackets(new S_ServerMessage(813, "ë¦°ë“œë¹„ì˜¤ë¥´", item
 						.getName(), temp.getName()));
 			}
 			// S_ServerMessage sm = new S_ServerMessage(403, item.getLogName());
-			// pc.sendPackets(sm); // %0¸¦ ¼Õ¿¡ ³Ö¾ú½À´Ï´Ù.
+			// pc.sendPackets(sm); // %0ë¥¼ ì†ì— ë„£ì—ˆìŠµë‹ˆë‹¤.
 			// sm = null;
 			return true;
 		} else {
@@ -394,7 +392,7 @@ public class LindThread extends Thread {
 		}
 	}
 
-	/** ¸°µå ¸Ê Á¾·á Ã³¸® **/
+	/** Lind map exit handling **/
 	public void quit(Lind lind) {
 		for (L1FieldObjectInstance npc : L1World.getInstance().getAllField()) {
 			if (npc.moveMapId == lind.getMap().getId()) {
@@ -428,12 +426,12 @@ public class LindThread extends Thread {
 
 	public void remove(Lind lind) {
 		_list.remove(lind);
-		// System.out.println("Á¾·á > "+lind.getMap().getId());
+		// System.out.println("ì¢…ë£Œ > "+lind.getMap().getId());
 	}
 
 	public void add(Lind lind) {
 		_list.add(lind);
-		// System.out.println("½ÃÀÛ > "+lind.getMap().getId());
+		// System.out.println("ì‹œìž‘ > "+lind.getMap().getId());
 	}
 
 	public Lind getLind(int mapid) {
@@ -459,7 +457,7 @@ public class LindThread extends Thread {
 		}
 	}
 
-	/** ÇØ´ç ¸Ê À¯Àú Ã¼Å© ±ÍÈ¯ or ¸ÊÀÌµ¿ ÇßÀ»°æ¿ì ¸®½ºÆ®¿¡¼­ Á¦¿Ü **/
+	/** í•´ë‹¹ ë§µ ìœ ì € ì²´í¬ ê·€í™˜ or ë§µì´ë™ í–ˆì„ê²½ìš° ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œì™¸ **/
 	public void mapUserCheck(Lind lind) {
 		boolean ck = false;
 		boolean ck2 = false;
@@ -471,7 +469,7 @@ public class LindThread extends Thread {
 					&& (pc.getY() >= 32857 && pc.getY() <= 32899)) {
 				ck = true;
 				lind.mapckCount = 0;
-				// System.out.println("¾È¿¡ À¯Àú ÀÖÀ½");
+				// System.out.println("ä¸­ã«ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã„ã‚‹");
 			}
 		}
 		if ((lind.Step > 0 && lind.Step < 6) && !ck) {
@@ -487,7 +485,7 @@ public class LindThread extends Thread {
 				lind.Step = 0;
 				lind.mapckCount = 0;
 				lind.Sleep = System.currentTimeMillis();
-				// System.out.println("¾Ïµµ ¾ø¾î¼­ ¸®¼Â");
+				// System.out.println("ãŒã‚“ã‚‚ãªãã¦ãƒªã‚»ãƒƒãƒˆ");
 			}
 		}
 		if (ck2) {
@@ -560,7 +558,7 @@ public class LindThread extends Thread {
 
 	private void Lind_level2_setting(Lind lind) {
 		lind.lind_level2 = LindSpawn.getInstance().fillSpawnTable(
-				lind.getMap().getId(), 2, true); // ±âº» NPC ½ºÆù
+				lind.getMap().getId(), 2, true); // åŸºæœ¬NPCã‚¹ãƒãƒ¼ãƒ³
 		int c = _rnd.nextInt(lind.lind_level2.size());
 		int c2 = 0;
 		for (FastMap.Entry<String, L1NpcInstance> e = lind.lind_level2.head(), mapEnd = lind.lind_level2
