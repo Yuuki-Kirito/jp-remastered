@@ -41,7 +41,7 @@ public class FireDragon {
 				int mapid = GameList.getFireDragonMapId();
 
 				if (mapid == 0) {
-					S_SystemMessage sm = new S_SystemMessage("¸ğµç ¸ÊÀÌ »ç¿ëÁßÀÔ´Ï´Ù Àá½ÃÈÄ ´Ù½Ã ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+					S_SystemMessage sm = new S_SystemMessage("ã™ã¹ã¦ã®ãƒãƒƒãƒ—ãŒä½¿ç”¨ä¸­ã§ã™ã€‚ã—ã°ã‚‰ãã—ã¦ã‹ã‚‰ã‚‚ã†ä¸€åº¦ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 					pc.sendPackets(sm, true);
 					return 0;
 				}
@@ -49,7 +49,7 @@ public class FireDragon {
 				boolean ok = GameList.addFireDragon(mapid, this);
 
 				if (!ok) {
-					S_SystemMessage sm = new S_SystemMessage("¸Ê¼³Á¤ÀÌ Àß¸ø µÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔÀå ½ÅÃ» ¹Ù¶ø´Ï´Ù.");
+					S_SystemMessage sm = new S_SystemMessage("ãƒãƒƒãƒ—è¨­å®šãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚ å†åº¦å…¥å ´ç”³è«‹é¡˜ã„ã¾ã™ã€‚");
 					pc.sendPackets(sm, true);
 					return 0;
 				}
@@ -71,7 +71,7 @@ public class FireDragon {
 		}
 	}
 
-	public void _¹ß¶ó_start() {
+	public void _apply_start() {
 		try {
 
 			_wstcon = 1;
@@ -83,9 +83,9 @@ public class FireDragon {
 	}
 
 	/*
-	 * ¹ß¶óÄ«½º:´©°¡ ³ª¸¦ ±ú¿ì´Â°¡?18869 µ¥½º³ªÀÌÆ®:¹ß¶óÄ«½º! µåµğ¾î ³Ê¸¦ ¸¸³ª°Ô µÇ´Â±¸³ª..18870 ¹ß¶óÄ«½º:³ªÀÇ ÀáÀ» ±ú¿î
-	 * ´ñ°¡´Â..³ªÀÇ ³ë¿¹°¡ µÇ¾î Æò»ı °±°Ô µÇ¸®¶ó..18871 µ¥½º³ªÀÌÆ®:±×·± ¸»Àº ³»°¡ ÆĞ¹èÇßÀ» ¶§ ÇØµµ ´ÊÁö ¾Ê´Â´Ù.18872
-	 * ¹ß¶óÄ«½º:Å©Å©..ÀÚ½Å°¨ÀÌ ³ÑÄ¡´Â±¸³ª..18873 ¹ß¶óÄ«½º:Á×¾î¶ó ÀÎ°£!18874
+	 * ãƒãƒ©ã‚«ã‚¹ï¼šèª°ãŒç§ã‚’ç›®è¦šã‚ã•ã›ã‚‹ã®ã§ã™ã‹ï¼Ÿ18869ãƒ‡ã‚¹ãƒŠã‚¤ãƒˆï¼šãƒãƒ©ã‚«ã‚¹ï¼ ã¤ã„ã«ã‚ãªãŸã«ä¼šã„ã¾ã™â€¦18870ãƒãƒ©ã‚«ã‚¹ï¼šç§ã®ç¡çœ ã‚’èµ·ã“ã—ã¾ã—ãŸ
+	 * 18871ãƒ‡ã‚¹ãƒŠã‚¤ãƒˆï¼šãã†ã„ã†è¨€è‘‰ã¯ç§ãŒæ•—åŒ—ã—ãŸæ™‚ã‚‚é…ããªã„ã€‚ 18872
+	 * ãƒãƒ©ã‚«ã‚¹ï¼šã‚¯ãƒƒã‚¯â€¦è‡ªä¿¡æ„Ÿã‚ãµã‚Œã‚‹ã­â€¦18873ãƒãƒ©ã‚«ã‚¹ï¼šæ­»ã¬äººé–“ï¼
 	 */
 	class Start_vchat implements Runnable {
 		public Start_vchat() {
