@@ -1,7 +1,7 @@
 /**
- * º»¼· ¸®´º¾óµÈ Chapter1. ºñ¹ĞÀÇ ¸¶¹ı»ç ÇÏµò
- * ÄÉ·¹´Ï½º vs ¹ÙÆ÷¸ŞÆ® ½º·¹µå
- * by. ÄÉÀÎ
+ * Chapter1, which has been renewed by Bonseop. Secret Wizard Hardin
+ * Kerenis vs Baphomet Thread
+ * by. ã‚ã‚“ã‚ã‚“
  */
 package l1j.server.GameSystem.Hadin;
 

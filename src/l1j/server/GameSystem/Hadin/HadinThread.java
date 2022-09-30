@@ -1,7 +1,7 @@
 /**
- * ∫ªº∑ ∏Æ¥∫æÛµ» Chapter1. ∫Òπ–¿« ∏∂π˝ªÁ «œµÚ
- * ∏ﬁ¿Œ ¿Ã∫•∆Æ √≥∏Æ Ω∫∑πµÂ
- * by. ƒ…¿Œ
+ * Chapter1, which has been renewed by Bonseop. Secret Wizard Hardin
+ * main event processing thread
+ * by. „Çè„Çì„Çè„Çì
  */
 package l1j.server.GameSystem.Hadin;
 
@@ -44,10 +44,10 @@ import l1j.server.server.utils.Teleportation;
 public class HadinThread extends Thread {
 
 	private static final int lobby = 1;
-	private static final int DUNGEON_1 = 2; // √ππ¯¬∞ ∆Æ∑¶ -> µŒπ¯¬∞ ∏˜ ª˝º∫
-	private static final int DUNGEON_2 = 3; // 3π¯¬∞ ∆Æ∑¶ πﬂ∆« ¥Ÿ ¥≠∑»¥¬¡ˆ √º≈© -> ∏˜ ª˝º∫ Ω√¿€
-	private static final int DUNGEON_3 = 4; // ∏˜ª˝º∫ -> ∏˜ ¥Ÿ ¿‚¿∏∏È ∞ÒπÊ¿‘±∏ πÆ ø¿«¬ & ∏˜ª˝º∫
-	private static final int DUNGEON_4 = 5; // ∞ÒπÊ ∏˜ ª˝º∫ -> ∏˜ ¥Ÿ ¿‚¿∏∏È º–πÊ πÆ ø¿«¬ **/
+	private static final int DUNGEON_1 = 2; // ÊúÄÂàù„ÅÆ„Éà„É©„ÉÉ„Éó - > 2Áï™ÁõÆ„ÅÆ„É¢„Éñ„ÅÆ‰ΩúÊàê
+	private static final int DUNGEON_2 = 3; // 3Áï™ÁõÆ„ÅÆ„Éà„É©„ÉÉ„ÉóË∂≥Â†¥„ÅåÊäº„Åï„Çå„Åü„Åã„Å©„ÅÜ„Åã„Çí„ÉÅ„Çß„ÉÉ„ÇØ - >„É¢„Éñ‰ΩúÊàêÈñãÂßã
+	private static final int DUNGEON_3 = 4; // „É¢„Éñ„ÅÆÁîüÊàê -> „É¢„Éñ„ÅÆ„Åô„Åπ„Å¶„Çí„Ç≠„É£„ÉÉ„ÉÅ„Åô„Çå„Å∞Ë∞∑„ÅÆÂÖ•„ÇäÂè£„ÅÆ„Éâ„Ç¢„ÇíÈñã„ÅèÔºÜ„É¢„Éñ„Çí‰Ωú„Çã
+	private static final int DUNGEON_4 = 5; // „Ç¥„É´„Éê„É≥„É¢„Éñ„ÅÆÁîüÊàê -> „É¢„Éñ„Åô„Åπ„Å¶„Ç≠„É£„ÉÉ„ÉÅ„Åó„Åü„Çâ„Ç∑„Çß„É´„Éê„É≥„Éâ„Ç¢„Ç™„Éº„Éó„É≥**/
 	private static final int DUNGEON_5 = 6;
 	private static final int DUNGEON_6 = 7;
 	private static final int DUNGEON_ENDING = 8;
@@ -58,7 +58,7 @@ public class HadinThread extends Thread {
 	private L1Location loc = new L1Location();
 	private static int WHITE_MAGIC_ZONE = 5000080;
 
-	/** ∆Æ∑¶ ∞¸∑√ **/
+	/** Ìä∏Îû© Í¥ÄÎ†® **/
 	private boolean LEVEL_1_TRAP_1, LEVEL_1_TRAP_2, LEVEL_1_TRAP_3,
 			LEVEL_1_TRAP_4, LEVEL_2_TRAP_1, LEVEL_2_TRAP_2, LEVEL_2_TRAP_3,
 			LEVEL_2_TRAP_4, LEVEL_3_TRAP_1, LEVEL_3_TRAP_2, LEVEL_3_TRAP_3,
@@ -276,7 +276,7 @@ public class HadinThread extends Thread {
 			LeaderChatSend(p);
 		LeaderSleep_time_setting(p);
 		switch (p.leader_step) {
-		/** ƒ…∑π¥œΩ∫ √≥¿Ω ¥ÎªÁ **/
+		/** Kerenice's first ambassador **/
 		case 1:
 			if (p.leader_sub_step == 5) {
 				// if(p.getParty().getLeader().getClassId() !=
@@ -292,7 +292,7 @@ public class HadinThread extends Thread {
 						"j_ep003", null);
 				p.getParty().getLeader().sendPackets(ntr);
 				ntr = null;
-				BonginSendPacket(p, 7615, "«œµÚ");
+				BonginSendPacket(p, 7615, "„Éè„Éº„Éá„Ç£„É≥");
 			}
 			p.leader_sub_step++;
 			if (p.leader_sub_step == 9) {
@@ -300,7 +300,7 @@ public class HadinThread extends Thread {
 				p.leader_sub_step = 0;
 			}
 			break;
-		/** ø¿≈© º“»Ø ∫Œ∫– **/
+		/** orc summoning part **/
 		case 2:
 			if (p.leader_sub_step == 1) {
 				Teleportation.teleport(p.Npc_Orc, 32747, 32930, p.mapid, 5);
@@ -322,7 +322,7 @@ public class HadinThread extends Thread {
 				p.leader_sub_step = 0;
 			}
 			break;
-		/** ø¿≈© ¿Ã∫•∆Æ ∫Œ∫– **/
+		/** Orc event part **/
 		case 3:
 			if (p.Leader_NpcList.size() > 0)
 				return;
@@ -374,7 +374,7 @@ public class HadinThread extends Thread {
 				p.leader_sub_step = 0;
 			}
 			break;
-		/** 2π¯¬∞ ∆Æ∑¶ ∞°µø »ƒ ¿Ã∫•∆Æ **/
+		/** Event after triggering the 2nd trap **/
 		case 4:
 			if (p.Leader_Chapter_2) {
 				if (p.leader_sub_step == 2) {
@@ -392,7 +392,7 @@ public class HadinThread extends Thread {
 			} else
 				HadinSpawn.getInstance().fillSpawnTable(p.mapid, 9);
 			break;
-		/** 3π¯¬∞ ∆Æ∑¶ ∞°µø»ƒ ¿Ã∫•∆Æ **/
+		/** Event after triggering the 3rd trap **/
 		case 5:
 			if (p.Leader_Chapter_3) {
 				if (p.leader_sub_step == 1) {
@@ -414,7 +414,7 @@ public class HadinThread extends Thread {
 						"$7583", 0), true);
 			}
 			break;
-		/** ∫∏Ω∫πÊ πÆø≠∑»¿ª∂ß ¿Ã∫•∆Æ **/
+		/** Event when the boss room door opens **/
 		case 6:
 			if (p.leader_bossroom_sub_step > 0) {
 				if (p.leader_bossroom_sub_step == 3) {
@@ -444,15 +444,15 @@ public class HadinThread extends Thread {
 				}
 
 				if (p.leader_sub_step == 5) {
-					Door(p, "«ÿ∞ÒπÆ 13");
-					Door(p, "«ÿ∞ÒπÆ 14");
+					Door(p, "Skeleton Gate 13");
+					Door(p, "Skeleton Gate 14");
 					L1Teleport.teleport(p.getParty().getLeader(), 32719, 32848,
-							p.mapid, 3, true); // ∫∏Ω∫πÊ ¡¬«•∑Œ ¿Ãµø
+							p.mapid, 3, true); // Î≥¥Ïä§Î∞© Ï¢åÌëúÎ°ú Ïù¥Îèô
 				}
 
 				p.leader_sub_step++;
 				if (p.leader_sub_step == 7) {
-					BonginSendPacket(p, 7647, "«œµÚ");
+					BonginSendPacket(p, 7647, "„Éè„Éº„Éá„Ç£„É≥");
 					p.leader_step = 7;
 					p.leader_sub_step = 0;
 				}
@@ -473,20 +473,20 @@ public class HadinThread extends Thread {
 		ChatSend(p);
 		Sleep_time_setting(p);
 		switch (p.step) {
-		/** «œµÚ ∑Œ∫Ò **/
+		/** Hardin Lobby **/
 		case lobby:
 			if (p.sub_step == 2) {
-				BonginSendPacket(p, 8693, "«œµÚ");
+				BonginSendPacket(p, 8693, "„Éè„Éº„Éá„Ç£„É≥");
 				Teleportation
 						.teleport(p.Hadin_Effect, 32716, 32846, p.mapid, 6);
-				/** √÷¡æ ¡°∞À **/
+				/** final check **/
 			} else if (p.sub_step == 5) {
 				// if(p.getParty().getLeader().getClassId() !=
 				// p.getParty().getLeader().getGfxId().getTempCharGfx())
 				// L1PolyMorph.undoPoly(p.getParty().getLeader());
 				return;
 			} else if (p.sub_step == 12)
-				BonginSendPacket(p, 8702, "«œµÚ");
+				BonginSendPacket(p, 8702, "„Éè„Éº„Éá„Ç£„É≥");
 			else if (p.sub_step == 14 || p.sub_step == 15) {
 				// if(p.getParty().getLeader().getClassId() !=
 				// p.getParty().getLeader().getGfxId().getTempCharGfx())
@@ -513,14 +513,14 @@ public class HadinThread extends Thread {
 			}
 			p.sub_step++;
 			break;
-		/** √ππ¯¬∞ ∆Æ∑¶ -> µŒπ¯¬∞ ∏˜ ª˝º∫ **/
+		/** First trap -> spawn second mob **/
 		case DUNGEON_1:
 			if (p.sub_step == 0)
-				BonginSendPacket(p, 7611, "«œµÚ");
+				BonginSendPacket(p, 7611, "„Éè„Éº„Éá„Ç£„É≥");
 			else if (p.sub_step == 1) {
-				BonginSendPacket(p, 7613, "«œµÚ");
+				BonginSendPacket(p, 7613, "„Éè„Éº„Éá„Ç£„É≥");
 			} else if (p.sub_step == 3) {
-				Door(p, "«ÿ∞ÒπÆ 1");
+				Door(p, "Skeleton Gate 1");
 				Effect_EQ(p, false);
 				p.step = 3;
 				p.sub_step = 0;
@@ -528,7 +528,7 @@ public class HadinThread extends Thread {
 			}
 			p.sub_step++;
 			break;
-		/** 3π¯¬∞ ∆Æ∑¶ πﬂ∆« ¥Ÿ ¥≠∑»¥¬¡ˆ √º≈© -> ∏˜ ª˝º∫ Ω√¿€ **/
+		/** Check if the 3rd trap step is pressed -> Start creating mobs **/
 		case DUNGEON_2:
 			if (p.LEVEL_3_TRAP_CK) {
 				HadinSpawn.getInstance().fillSpawnTable(p.mapid, 6, true);
@@ -536,29 +536,29 @@ public class HadinThread extends Thread {
 				p.step = 4;
 			}
 			break;
-		/** ∏˜ª˝º∫ -> ∏˜ ¥Ÿ ¿‚¿∏∏È ∞ÒπÊ¿‘±∏ πÆ ø¿«¬ & ∏˜ª˝º∫ **/
+		/** Mob generation -> When all the mobs are caught, the door to the alcove is opened & mobs are created. **/
 		case DUNGEON_3:
-			Door(p, "«ÿ∞ÒπÆ 12");
+			Door(p, "Skeleton Gate 12");
 			p.sub_step = 0;
 			HadinSpawn.getInstance().fillSpawnTable(p.mapid, 7, true);
 			p.step = 5;
 			break;
-		/** ∞ÒπÊ ∏˜ ª˝º∫ -> ∏˜ ¥Ÿ ¿‚¿∏∏È º–πÊ πÆ ø¿«¬ **/
+		/** Create closet mobs -> Open the shell room door when you catch all the mobs **/
 		case DUNGEON_4:
 			p.Leader_Chapter_4 = true;
 			p.sub_step = 0;
 			p.step = 6;
 			break;
-		/** ∆Æ∑¶¿∏∑Œ ∫∏Ω∫πÊ πÆ ø¿«¬ √º≈©«ÿº≠ ¿œ¡§Ω√∞£»ƒ ¥›»˜∞‘ º≥¡§ **/
+		/** Check the boss room door open with trap and set it to close after a certain period of time **/
 		case DUNGEON_5:
 			if (p.BossRoomCK /* && !p.leaderOn */) {
 				if (p.sub_step == 1) {
-					Door(p, "«ÿ∞ÒπÆ 14", false);
+					Door(p, "Skeleton Gate 14", false);
 					Effect_EQ(p, true);
-					BonginSendPacket(p, 7650, "«œµÚ");
+					BonginSendPacket(p, 7650, "„Éè„Éº„Éá„Ç£„É≥");
 					p.ArrowTrap = true;
 				} else if (p.sub_step == 2) {
-					BonginSendPacket(p, 7651, "«œµÚ");
+					BonginSendPacket(p, 7651, "„Éè„Éº„Éá„Ç£„É≥");
 					p.step = 7;
 					p.sub_step = 10;
 					return;
@@ -566,7 +566,7 @@ public class HadinThread extends Thread {
 				p.sub_step++;
 			}
 			break;
-		/** ∫∏Ω∫πÊ ¿Ã∫•∆Æ ∑Œ¡˜ º≥¡§ **/
+		/** Boss room event logic setup **/
 		case DUNGEON_6:
 			if (p.ssub_step == 0
 					&& ((p.NpcList != null && p.NpcList.size() > 0)
@@ -582,15 +582,15 @@ public class HadinThread extends Thread {
 				if (p.sub_step == 21) {
 					Broadcaster.broadcastPacket(p.Npc_Hadin,
 							new S_NpcChatPacket(p.Npc_Hadin, "$7654", 0), true);
-					BonginSendPacket(p, 7654, "«œµÚ");
+					BonginSendPacket(p, 7654, "„Éè„Éº„Éá„Ç£„É≥");
 				} else if (p.sub_step == 17) {
 					Broadcaster.broadcastPacket(p.Npc_Hadin,
 							new S_NpcChatPacket(p.Npc_Hadin, "$7653", 0), true);
-					BonginSendPacket(p, 7653, "«œµÚ");
+					BonginSendPacket(p, 7653, "ÌïòÎîò");
 				} else {
 					Broadcaster.broadcastPacket(p.Npc_Hadin,
 							new S_NpcChatPacket(p.Npc_Hadin, "$7652", 0), true);
-					BonginSendPacket(p, 7652, "«œµÚ");
+					BonginSendPacket(p, 7652, "„Éè„Éº„Éá„Ç£„É≥");
 				}
 				Effect_P(p);
 				p.ssub_step++;
@@ -603,7 +603,7 @@ public class HadinThread extends Thread {
 				return;
 			}
 			if (p.ssub_step == 3) {
-				BonginSendPacket(p, 8689, "«œµÚ");
+				BonginSendPacket(p, 8689, "„Éè„Éº„Éá„Ç£„É≥");
 				p.NpcList = HadinSpawn.getInstance().fillSpawnTable(32710,
 						32836, p.mapid, p.sub_step);
 			}
@@ -644,7 +644,7 @@ public class HadinThread extends Thread {
 							32846, p.mapid, 23);
 					Effect_P(p);
 					Effect_EQ(p, true);
-					S_PacketBox pb = new S_PacketBox(84, "«œµÚ : W I T H !!!");
+					S_PacketBox pb = new S_PacketBox(84, "„Éè„Éº„Éá„Ç£„É≥ÔºöW I T H!!!");
 					for (L1PcInstance pc : p.getParty().getMembers()) {
 						pc.sendPackets(pb);
 					}
@@ -698,7 +698,7 @@ public class HadinThread extends Thread {
 				p.sub_step = 0;
 			}
 			break;
-		/** ƒ…∑π¥œΩ∫ or πŸ∆˜ ¡◊¿∫ ¿Ã»ƒ ¿Ã∫•∆Æ **/
+		/** Events after death of Kerenis or Vapo **/
 		case DUNGEON_ENDING:
 			if (p.Baphomet == null || p.Baphomet.isDead()) {
 				p.Baphomet.setParalyzed(false);
@@ -753,7 +753,7 @@ public class HadinThread extends Thread {
 				p.sub_step = 0;
 			}
 			break;
-		/** ƒ…∑π ¡◊¿∫ ¿Ã»ƒ ¿Ã∫•∆Æ **/
+		/** Events after Kere's death **/
 		case DUNGEON_ENDING_BaphoDie:
 			// if((p.NpcList != null && p.NpcList.size() > 0) || (p.NpcList2 !=
 			// null && p.NpcList2.size() > 0) || (p.NpcList3 != null &&
@@ -762,7 +762,7 @@ public class HadinThread extends Thread {
 			if (p.Kere == null || p.Kere.isDead())
 				BossRoomLast(p);
 			break;
-		/** πŸ∆˜ ¡◊¿∫ ¿Ã»ƒ ¿Ã∫•∆Æ **/
+		/** Events after Bappo's death **/
 		case DUNGEON_ENDING_KereDie:
 			// if((p.NpcList != null && p.NpcList.size() > 0) || (p.NpcList2 !=
 			// null && p.NpcList2.size() > 0) || (p.NpcList3 != null &&
@@ -771,7 +771,7 @@ public class HadinThread extends Thread {
 			if (p.Baphomet == null || p.Baphomet.isDead())
 				BossRoomLast(p);
 			break;
-		/** ∫∏ªÛπÊ ¿Ã∫•∆Æ ¿Ã»ƒ **/
+		/** After the reward room event **/
 		case DUNGEON_END:
 			if (p.sub_step == 0) {
 				p.sub_step++;
@@ -969,7 +969,7 @@ public class HadinThread extends Thread {
 		}
 	}
 
-	private void ∫∏Ω∫πÊ»ƒπÆ∆–≈∂¿¸º€(HadinParty p, L1DoorInstance door) {
+	private void bose_back_door_packet_transmission(HadinParty p, L1DoorInstance door) {
 		S_Door packet = new S_Door(door);
 		for (L1PcInstance pc : p.getParty().getMembers()) {
 			if (pc != null)
@@ -1072,7 +1072,7 @@ public class HadinThread extends Thread {
 			if (pc.getX() == 32808 && pc.getY() == 32838)
 				Teleport(pc, 32785, 32821, p.mapid);
 		}
-		/** øÓøµ¿⁄ ∞≥¿Œ ≈◊Ω∫∆ÆøÎ **/
+		/** For operator personal testing **/
 		if (pc.isGm()) {
 			if (pc.getX() == 32666 && pc.getY() == 32817) {
 				LEVEL_1_TRAP_1 = true;
@@ -1095,7 +1095,7 @@ public class HadinThread extends Thread {
 				LEVEL_2_TRAP_3 = true;
 				LEVEL_2_TRAP_4 = true;
 				// TRAP_2 = true;
-			} else if (pc.getX() == 32760 && pc.getY() == 32791) // »∞ ∆Æ∑¶
+			} else if (pc.getX() == 32760 && pc.getY() == 32791) // Ìôú Ìä∏Îû©
 				TRAP_3 = true;
 			else if (pc.getX() == 32807 && pc.getY() == 32837) {
 				LEVEL_3_TRAP_1 = true;
@@ -1143,8 +1143,8 @@ public class HadinThread extends Thread {
 		else if (pc.getX() == 32712 && pc.getY() == 32793)
 			LEVEL_2_TRAP_4 = true;
 		else if (pc.getX() == 32732 && pc.getY() == 32789) {
-			// TRAP_2 = true;//»˜µÁ ∆Æ∑¶?
-		} else if (pc.getX() == 32760 && pc.getY() == 32791) // »∞ ∆Æ∑¶
+			// TRAP_2 = true;//Èö†„Åó„Éà„É©„ÉÉ„Éó?
+		} else if (pc.getX() == 32760 && pc.getY() == 32791) // Âºì„Éà„É©„ÉÉ„Éó
 			TRAP_3 = true;
 		else if (pc.getX() == 32807 && pc.getY() == 32837)
 			LEVEL_3_TRAP_1 = true;
@@ -1155,7 +1155,7 @@ public class HadinThread extends Thread {
 		else if (pc.getX() == 32809 && pc.getY() == 32839)
 			LEVEL_3_TRAP_4 = true;
 		else if (pc.getX() == 32729 && pc.getY() == 32854) {
-			// LEVEL_4_TRAP = true; // »˜µÁ ∆Æ∑¶??
+			// LEVEL_4_TRAP = true; // Èö†„Åó„Éà„É©„ÉÉ„Éó??
 		} else if (pc.getX() == 32798 && pc.getY() == 32866)
 			LAST_TRAP_1 = true;
 		else if (pc.getX() == 32801 && pc.getY() == 32864)
@@ -1215,27 +1215,27 @@ public class HadinThread extends Thread {
 				&& LEVEL_1_TRAP_4) {
 			if (!p.LEVEL_1_TRAP_CK) {
 				p.LEVEL_1_TRAP_CK = true;
-				Door(p, "«ÿ∞ÒπÆ 2");
+				Door(p, "Skeleton Gate 2");
 				L1SpawnUtil.spawn2(32743, 32930, p.mapid, 5000050, 0, 0, 0);
 				L1SpawnUtil.spawn2(32667, 32818, p.mapid, WHITE_MAGIC_ZONE, 0,
 						0, 0);
 				L1SpawnUtil.spawn2(32684, 32816, p.mapid, 5000093, 0, 0, 0);
-				BonginSendPacket(p, 7621, "«œµÚ");
-				Door(p, "«ÿ∞ÒπÆ 4"); // √ﬂ∞°
-				Door(p, "«ÿ∞ÒπÆ 5");
-				Door(p, "«ÿ∞ÒπÆ 6");
-				Door(p, "«ÿ∞ÒπÆ 8");
+				BonginSendPacket(p, 7621, "„Éè„Éº„Éá„Ç£„É≥");
+				Door(p, "Skeleton Gate 4"); // ËøΩÂä†
+				Door(p, "Skeleton Gate 5");
+				Door(p, "Skeleton Gate 6");
+				Door(p, "Skeleton Gate 8");
 			}
 		} else if (LEVEL_2_TRAP_1 && LEVEL_2_TRAP_2 && LEVEL_2_TRAP_3
 				&& LEVEL_2_TRAP_4) {
 			if (!p.Leader_Chapter_2) {
 				p.Leader_Chapter_2 = true;
 				L1SpawnUtil.spawn2(32741, 32928, p.mapid, 5000050, 0, 0, 0);
-				BonginSendPacket(p, 7628, "«œµÚ");
-				Door(p, "«ÿ∞ÒπÆ 7");
-				Door(p, "«ÿ∞ÒπÆ 9");
-				Door(p, "«ÿ∞ÒπÆ 10");
-				Door(p, "«ÿ∞ÒπÆ 11");
+				BonginSendPacket(p, 7628, "„Éè„Éº„Éá„Ç£„É≥");
+				Door(p, "Skeleton Gate 7");
+				Door(p, "Skeleton Gate 9");
+				Door(p, "Skeleton Gate 10");
+				Door(p, "Skeleton Gate 11");
 				HadinSpawn.getInstance().fillSpawnTable2(p.mapid, 42);
 				HadinSpawn.getInstance().fillSpawnTable(p.mapid, 25);
 				Effect_EQ(p, false);
@@ -1245,14 +1245,14 @@ public class HadinThread extends Thread {
 			if (p.Leader_Chapter_2 && !p.LEVEL_3_TRAP_CK) {
 				p.LEVEL_3_TRAP_CK = true;
 				L1SpawnUtil.spawn2(32808, 32838, p.mapid, WHITE_MAGIC_ZONE, 0,
-						0, 0); // ∏∂π˝¡¯
+						0, 0); // È≠îÊ≥ïÈô£
 				L1SpawnUtil.spawn2(32743, 32928, p.mapid, 5000050, 0, 0, 0);
-				BonginSendPacket(p, 7635, "«œµÚ");
+				BonginSendPacket(p, 7635, "„Éè„Éº„Éá„Ç£„É≥");
 			}
 		}
 
 		if (TRAP_1) {
-			Door(p, "«ÿ∞ÒπÆ 4");
+			Door(p, "Skeleton Gate 4");
 		} else if (TRAP_3) {
 			p.ArrowTrap = true;
 		} else if (!p.LAST_TRAP_CK) {
@@ -1384,7 +1384,7 @@ public class HadinThread extends Thread {
 		}
 	}
 
-	/** true ±‡¡§ Alt+2, false ∫Œ¡§ Alt+4 **/
+	/** true Positive Alt+2, false denial Alt+4 **/
 	public void Alt_Action(L1Party l1party, boolean action) {
 		HadinParty hp = null;
 		for (HadinParty p : party) {
@@ -1423,32 +1423,32 @@ public class HadinThread extends Thread {
 			return;
 		}
 		if (p.sub_step == 1) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 8");
+			door = p.BossRoomDoor.get("Boss room back door 8");
 			Effect_EQ(p, true);
 		} else if (p.sub_step == 2) {
 			Effect_P(p);
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 7");
+			door = p.BossRoomDoor.get("Boss room back door 7");
 		} else if (p.sub_step == 3) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 6");
+			door = p.BossRoomDoor.get("Boss room back door 6");
 			Effect_P(p);
 		} else if (p.sub_step == 4) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 5");
+			door = p.BossRoomDoor.get("Boss room back door 5");
 		} else if (p.sub_step == 5) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 16");
+			door = p.BossRoomDoor.get("Boss room back door 16");
 			Effect_P(p);
 		} else if (p.sub_step == 6) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 15");
+			door = p.BossRoomDoor.get("Boss room back door 15");
 		} else if (p.sub_step == 7) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 14");
+			door = p.BossRoomDoor.get("Boss room back door 14");
 			Effect_P(p);
 			S_PacketBox pb = new S_PacketBox(84,
-					"«œµÚ : 3∫– µ⁄ø° ∏ª«œ¥¬ º∂¿∏∑Œ ¿Ãµø µ… ∞Õ¿Ã≥◊ º≠µŒ∏£∞‘");
+					"„Éè„Éº„Éá„Ç£„É≥Ôºö3ÂàÜÂæå„Å´Ë©±„ÅôÂ≥∂„Å´ÁßªÂãï„Åô„Çã„Å†„Çç„ÅÜ„Å≠ÊÄ•„ÅÑ„Åß");
 			L1PcInstance[] pl = p.getParty().getMembers();
 			for (L1PcInstance pc : pl) {
 				pc.sendPackets(pb);
 			}
 		} else if (p.sub_step == 8) {
-			door = p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 13");
+			door = p.BossRoomDoor.get("Î≥¥Ïä§Î∞© ÌõÑÎ¨∏ Î¨∏ 13");
 			Broadcaster.broadcastPacket(p.Npc_Hadin, new S_SkillSound(
 					p.Npc_Hadin.getId(), 169), true);
 			Teleportation.teleport(p.Npc_Hadin, 32747, 32930, p.mapid, 5);
@@ -1465,7 +1465,7 @@ public class HadinThread extends Thread {
 
 					dor.isPassibleDoor(true);
 					dor.setPassable(0);
-					∫∏Ω∫πÊ»ƒπÆ∆–≈∂¿¸º€(p, dor);
+					bose_back_door_packet_transmission(p, dor);
 					dor.deleteMe();
 					L1SpawnUtil.spawn2(x, y, p.mapid, 5000091, 0, 0, 0);
 				}
@@ -1483,7 +1483,7 @@ public class HadinThread extends Thread {
 	/*
 	 * private void BossRoomLast2(HadinParty p){ L1NpcInstance door = null; int
 	 * x = 32703 + _rnd.nextInt(11); int y = 32861 + _rnd.nextInt(5); door =
-	 * p.BossRoomDoor.get("∫∏Ω∫πÊ »ƒπÆ πÆ 8"); Effect_EQ(p, true); L1DoorInstance dor
+	 * p.BossRoomDoor.get("Î≥¥Ïä§Î∞© ÌõÑÎ¨∏ Î¨∏ 8"); Effect_EQ(p, true); L1DoorInstance dor
 	 * = (L1DoorInstance)door; //Teleportation.teleport(door, x, y, p.mapid, 5);
 	 * dor.open(); dor.deleteMe(); L1SpawnUtil.spawn2(x, y, p.mapid, 5000091, 0,
 	 * 0, 0); BonginSendPacket(p, 8718); }
@@ -1503,173 +1503,173 @@ public class HadinThread extends Thread {
 				if (npc == null)
 					continue;
 				if (p.ArrowTrap) {
-					if (s.equalsIgnoreCase("»≠ªÏ 1")
-							|| s.equalsIgnoreCase("»≠ªÏ 2")
-							|| s.equalsIgnoreCase("»≠ªÏ 3")
-							|| s.equalsIgnoreCase("»≠ªÏ 4")
-							|| s.equalsIgnoreCase("»≠ªÏ 5")
-							|| s.equalsIgnoreCase("»≠ªÏ 6")
-							|| s.equalsIgnoreCase("»≠ªÏ 7")
-							|| s.equalsIgnoreCase("»≠ªÏ 8")
-							|| s.equalsIgnoreCase("»≠ªÏ 9")
-							|| s.equalsIgnoreCase("»≠ªÏ 10")
-							|| s.equalsIgnoreCase("»≠ªÏ 11")
-							|| s.equalsIgnoreCase("»≠ªÏ 12"))
+					if (s.equalsIgnoreCase("arrow 1")
+							|| s.equalsIgnoreCase("arrow 2")
+							|| s.equalsIgnoreCase("arrow 3")
+							|| s.equalsIgnoreCase("arrow 4")
+							|| s.equalsIgnoreCase("arrow 5")
+							|| s.equalsIgnoreCase("arrow 6")
+							|| s.equalsIgnoreCase("arrow 7")
+							|| s.equalsIgnoreCase("arrow 8")
+							|| s.equalsIgnoreCase("arrow 9")
+							|| s.equalsIgnoreCase("arrow 10")
+							|| s.equalsIgnoreCase("arrow 11")
+							|| s.equalsIgnoreCase("arrow 12"))
 						continue;
 				}
 				x = npc.getX();
 				y = npc.getY();
-				if (s.equalsIgnoreCase("»≠ªÏ 1")) {
+				if (s.equalsIgnoreCase("arrow 1")) {
 					tx = 32751;
 					ty = 32798;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 2")) {
+				} else if (s.equalsIgnoreCase("arrow 2")) {
 					tx = 32755;
 					ty = 32798;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 3")) {
+				} else if (s.equalsIgnoreCase("arrow 3")) {
 					tx = 32759;
 					ty = 32798;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 4")) {
+				} else if (s.equalsIgnoreCase("arrow 4")) {
 					tx = 32763;
 					ty = 32798;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 5")) {
+				} else if (s.equalsIgnoreCase("arrow 5")) {
 					tx = 32745;
 					ty = 32800;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 6")) {
+				} else if (s.equalsIgnoreCase("arrow 6")) {
 					tx = 32745;
 					ty = 32801;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 7")) {
+				} else if (s.equalsIgnoreCase("arrow 7")) {
 					tx = 32745;
 					ty = 32802;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 8")) {
+				} else if (s.equalsIgnoreCase("arrow 8")) {
 					tx = 32745;
 					ty = 32803;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 9")) {
+				} else if (s.equalsIgnoreCase("arrow 9")) {
 					tx = 32753;
 					ty = 32804;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 10")) {
+				} else if (s.equalsIgnoreCase("arrow 10")) {
 					tx = 32753;
 					ty = 32805;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 11")) {
+				} else if (s.equalsIgnoreCase("arrow 11")) {
 					tx = 32737;
 					ty = 32806;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 12")) {
+				} else if (s.equalsIgnoreCase("arrow 12")) {
 					tx = 32737;
 					ty = 32807;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 13")) {
+				} else if (s.equalsIgnoreCase("arrow 13")) {
 					tx = 32803 - 8;
 					ty = 32838;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 14")) {
+				} else if (s.equalsIgnoreCase("arrow 14")) {
 					tx = 32803 - 8;
 					ty = 32841;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 15")) {
+				} else if (s.equalsIgnoreCase("arrow 15")) {
 					tx = 32760 - 8;
 					ty = 32863;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 16")) {
+				} else if (s.equalsIgnoreCase("arrow 16")) {
 					tx = 32757;
 					ty = 32854 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 17")) {
+				} else if (s.equalsIgnoreCase("arrow 17")) {
 					tx = 32754 - 8;
 					ty = 32855;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 18")) {
+				} else if (s.equalsIgnoreCase("arrow 18")) {
 					tx = 32754 - 8;
 					ty = 32842;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 19")) {
+				} else if (s.equalsIgnoreCase("arrow 19")) {
 					tx = 32760 - 8;
 					ty = 32833;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 20")) {
+				} else if (s.equalsIgnoreCase("arrow 20")) {
 					tx = 32759;
 					ty = 32828 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 21")) {
+				} else if (s.equalsIgnoreCase("arrow 21")) {
 					tx = 32750;
 					ty = 32828 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 22")) {
+				} else if (s.equalsIgnoreCase("arrow 22")) {
 					tx = 32748;
 					ty = 32828 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 23")) {
+				} else if (s.equalsIgnoreCase("arrow 23")) {
 					tx = 32746;
 					ty = 32828 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 24")) {
+				} else if (s.equalsIgnoreCase("arrow 24")) {
 					tx = 32741;
 					ty = 32832 + 4;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 25")) {
+				} else if (s.equalsIgnoreCase("arrow 25")) {
 					tx = 32733;
 					ty = 32832 + 4;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 26")) {
+				} else if (s.equalsIgnoreCase("arrow 26")) {
 					tx = 32728;
 					ty = 32832 + 4;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 27")) {
+				} else if (s.equalsIgnoreCase("arrow 27")) {
 					tx = 32743;
 					ty = 32860 + 4;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 28")) {
+				} else if (s.equalsIgnoreCase("arrow 28")) {
 					tx = 32735;
 					ty = 32860 + 4;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 29")) {
+				} else if (s.equalsIgnoreCase("arrow 29")) {
 					tx = 32732;
 					ty = 32858 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 30")) {
+				} else if (s.equalsIgnoreCase("arrow 30")) {
 					tx = 32730;
 					ty = 32858 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 31")) {
+				} else if (s.equalsIgnoreCase("arrow 31")) {
 					tx = 32728;
 					ty = 32858 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 32")) {
+				} else if (s.equalsIgnoreCase("arrow 32")) {
 					tx = 32733;
 					ty = 32840 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 33")) {
+				} else if (s.equalsIgnoreCase("arrow 33")) {
 					tx = 32731;
 					ty = 32840 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 34")) {
+				} else if (s.equalsIgnoreCase("arrow 34")) {
 					tx = 32729;
 					ty = 32840 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 35")) {
+				} else if (s.equalsIgnoreCase("arrow 35")) {
 					tx = 32727;
 					ty = 32840 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 36")) {
+				} else if (s.equalsIgnoreCase("arrow 36")) {
 					tx = 32736;
 					ty = 32853 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 37")) {
+				} else if (s.equalsIgnoreCase("arrow 37")) {
 					tx = 32734;
 					ty = 32853 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 38")) {
+				} else if (s.equalsIgnoreCase("arrow 38")) {
 					tx = 32732;
 					ty = 32853 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 39")) {
+				} else if (s.equalsIgnoreCase("arrow 39")) {
 					tx = 32730;
 					ty = 32853 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 40")) {
+				} else if (s.equalsIgnoreCase("arrow 40")) {
 					tx = 32728;
 					ty = 32853 + 3;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 41")) {
+				} else if (s.equalsIgnoreCase("arrow 41")) {
 					tx = 32726;
 					ty = 32853 + 1;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 42")) {
+				} else if (s.equalsIgnoreCase("arrow 42")) {
 					tx = 32736;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 43")) {
+				} else if (s.equalsIgnoreCase("arrow 43")) {
 					tx = 32734;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 44")) {
+				} else if (s.equalsIgnoreCase("arrow 44")) {
 					tx = 32732;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 45")) {
+				} else if (s.equalsIgnoreCase("arrow 45")) {
 					tx = 32730;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 46")) {
+				} else if (s.equalsIgnoreCase("arrow 46")) {
 					tx = 32728;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 47")) {
+				} else if (s.equalsIgnoreCase("arrow 47")) {
 					tx = 32726;
 					ty = 32845 + 6;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 48")) {
+				} else if (s.equalsIgnoreCase("arrow 48")) {
 					tx = 32720;
 					ty = 32842 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 49")) {
+				} else if (s.equalsIgnoreCase("arrow 49")) {
 					tx = 32721 - 12;
 					ty = 32834;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 50")) {
+				} else if (s.equalsIgnoreCase("arrow 50")) {
 					tx = 32694;
 					ty = 32832 + 8;
-				} else if (s.equalsIgnoreCase("»≠ªÏ 51")) {
+				} else if (s.equalsIgnoreCase("arrow 51")) {
 					tx = 32701 - 6;
 					ty = 32843;
 				}
@@ -1705,7 +1705,7 @@ public class HadinThread extends Thread {
 							}
 						}
 					}
-					if (!ck) { // »≠ªÏ GFX 66
+					if (!ck) { // arrow GFX 66
 						S_UseArrowSkill ua = new S_UseArrowSkill(npc, 0, 171,
 								tx, ty, false);
 						Broadcaster.broadcastPacket(npc, ua);
@@ -1721,7 +1721,7 @@ public class HadinThread extends Thread {
 						Broadcaster.broadcastPacketExceptTargetSight(target,
 								da, npc);
 						da = null;
-						target.setCurrentHp(target.getCurrentHp() - 30); // ∫ªº∑¿∫
+						target.setCurrentHp(target.getCurrentHp() - 30); // Bon-seop is
 																			// Dmg
 																			// 5
 					}

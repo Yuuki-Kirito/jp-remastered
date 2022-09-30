@@ -1,7 +1,7 @@
 /**
- * º»¼· ¸®´º¾óµÈ Chapter1. ºñ¹ĞÀÇ ¸¶¹ı»ç ÇÏµò
- * ÇÏµò ¸Ê ¹× ÀÔÀå °ü¸® Å¬·¡½º
- * by. ÄÉÀÎ
+ * Chapter1, which has been renewed by Bonseop. Secret Wizard Hardin
+ * Hardin Map and Entry Management Class
+ * by. ã‚ã‚“ã‚ã‚“
  */
 package l1j.server.GameSystem.Hadin;
 
@@ -50,7 +50,7 @@ public class Hadin {
 			L1Map map = mapCheck();
 			if (map == null) {
 				S_SystemMessage sm = new S_SystemMessage(
-						"ÀÎ½ºÅÏ½º ´øÀüÀ» ´õ ÀÌ»ó »ı¼ºÇÒ¼ö ¾ø½À´Ï´Ù.");
+						"ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³ã‚’ä½œæˆã§ããªããªã‚Šã¾ã—ãŸã€‚");
 				pc.sendPackets(sm, true);
 				return;
 			}

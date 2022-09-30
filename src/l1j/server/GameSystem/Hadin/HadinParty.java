@@ -1,7 +1,7 @@
 /**
- * ∫ªº∑ ∏Æ¥∫æÛµ» Chapter1. ∫Òπ–¿« ∏∂π˝ªÁ «œµÚ
- * «œµÚ ¿Ã∫•∆Æ √≥∏Æ∏¶ ¿ß«— ∏ﬁ∏∏Æ ≈¨∑°Ω∫
- * by. ƒ…¿Œ
+ * Chapter1, which has been renewed by Bonseop. Secret Wizard Hardin
+ * Memory class for handling hardin events
+ * by. „Çè„Çì„Çè„Çì
  */
 package l1j.server.GameSystem.Hadin;
 
@@ -22,11 +22,11 @@ public class HadinParty {
 		Arrow = HadinSpawn.getInstance().fillSpawnTable2(mapid, 40);
 		for (L1NpcInstance npc : BasicNpcList) {
 			if (npc != null) {
-				if (npc.getName().equalsIgnoreCase("«œµÚ")) {
+				if (npc.getName().equalsIgnoreCase("„Éè„Éº„Éá„Ç£„É≥")) {
 					Npc_Hadin = npc;
-				} else if (npc.getName().equalsIgnoreCase("«œµÚ πŸ¥⁄ ¿Ã∆Â∆Æ")) {
+				} else if (npc.getName().equalsIgnoreCase("„Éè„Éº„Éá„Ç£„É≥„Éï„É≠„Ç¢„Ç®„Éï„Çß„ÇØ„Éà")) {
 					Hadin_Effect = npc;
-				} else if (npc.getName().equalsIgnoreCase("ƒ…∑π¥œΩ∫")) {
+				} else if (npc.getName().equalsIgnoreCase("„Ç±„É¨„Éã„Çπ")) {
 					Kere = npc;
 				}
 				if (Npc_Hadin != null && Hadin_Effect != null && Kere != null)
@@ -34,13 +34,13 @@ public class HadinParty {
 			}
 		}
 		for (L1NpcInstance npc : Leader_BasicNpcList) {
-			if (npc.getSpawnLocation().equalsIgnoreCase("ø¿≈©"))
+			if (npc.getSpawnLocation().equalsIgnoreCase("„Ç™„Éº„ÇØ"))
 				Npc_Orc = npc;
-			else if (npc.getSpawnLocation().equalsIgnoreCase("ø¿≈© ¿¸ªÁ"))
+			else if (npc.getSpawnLocation().equalsIgnoreCase("„Ç™„Éº„ÇØ„Éï„Ç°„Ç§„Çø„Éº"))
 				Npc_OrcWarrior = npc;
-			else if (npc.getSpawnLocation().equalsIgnoreCase("ø¿≈© ±√ºˆ"))
+			else if (npc.getSpawnLocation().equalsIgnoreCase("„Ç™„Éº„ÇØ„Ç¢„Éº„ÉÅ„É£„Éº"))
 				Npc_OrcAcher = npc;
-			else if (npc.getSpawnLocation().equalsIgnoreCase("ø¿≈© ªÛ¿Œ πﬂΩ…"))
+			else if (npc.getSpawnLocation().equalsIgnoreCase("Orc Merchant Balsim"))
 				Npc_Balsim = npc;
 		}
 	}

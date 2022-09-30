@@ -1,7 +1,7 @@
 /**
- * º»¼· ¸®´º¾óµÈ Chapter1. ºñ¹ĞÀÇ ¸¶¹ı»ç ÇÏµò
- * ÇÏµò ¸Ê °ü·Ã ½ºÆù Ã³¸® Å¬·¡½º
- * by. ÄÉÀÎ
+ * Chapter1, which has been renewed by Bonseop. Secret Wizard Hardin
+ * Hardin map related spawn handling class
+ * by. ã‚ã‚“ã‚ã‚“
  */
 package l1j.server.GameSystem.Hadin;
 
