@@ -36,7 +36,7 @@ public class GambleInstance extends L1NpcInstance {
 		super(_npc);
 	}
 
-	/** Type. 1=¼Ò¸· **/
+	/** Type. 1=ï¿½Ò¸ï¿½ **/
 	private byte _type;
 	private boolean _show;
 	private String _chat_msg;
@@ -65,7 +65,7 @@ public class GambleInstance extends L1NpcInstance {
 		clanid = i;
 	}
 
-	public String getClanname() { // Å©¶õ¸í
+	public String getClanname() { // Å©ï¿½ï¿½ï¿½ï¿½
 		return clanname;
 	}
 
@@ -124,7 +124,7 @@ public class GambleInstance extends L1NpcInstance {
 				if (!npc.isParalyzed()) {
 					if (player.getTradeReady())
 						return;
-					player.setTradeID(getId()); // »ó´ëÀÇ ¿ÀºêÁ§Æ® ID¸¦ º¸Á¸ÇØ µĞ´Ù
+					player.setTradeID(getId()); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ğ´ï¿½
 					S_Message_YN yn = new S_Message_YN(252, npc.getName());
 					player.sendPackets(yn, true);
 				}
@@ -145,8 +145,8 @@ public class GambleInstance extends L1NpcInstance {
 		}
 	}
 
-	private static String chat9 = "¿À! ÃàÇÏµå·Á¿ä... ¹è´ç±İ Áö±Ş ÇØ µå·È½À´Ï´Ù...";
-	private static String chat11 = "¾Æ½±±º¿ä... ´ÙÀ½±âÈ¸¿¡ µµÀüÇØÁÖ¼¼¿ä~!";
+	private static String chat9 = "ã‚ã‚ï¼ ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™...é…å½“é‡‘ã‚’æ”¯æ‰•ã„ã¾ã—ãŸ...";
+	private static String chat11 = "æ®‹å¿µã§ã™ã­â€¦æ¬¡ã®æ©Ÿä¼šã«æŒ‘æˆ¦ã—ã¦ãã ã•ã„ï½ï¼";
 
 	class Somak implements Runnable {
 		GambleInstance npc;
@@ -181,8 +181,8 @@ public class GambleInstance extends L1NpcInstance {
 			try {
 				if (npc == null || pc == null || item_count == 0)
 					return;
-				String chat = pc.getName() + "´Ô " + item_count
-						+ "¾Æµ§ ¹èÆÃÇÏ¼Ì¾î¿ä~ 1¸¶¸®¸ÂÃâ¶§¸¶´Ù 5¹è ÀÔ´Ï´Ù~!";
+				String chat = pc.getName() + "ï¿½ï¿½ " + item_count
+						+ "ã‚¢ãƒ‡ãƒ³ãƒãƒƒãƒ†ã‚£ãƒ³ã‚°ã—ã¾ã—ãŸã€œ1åŒ¹åˆã‚ã›ã‚‹ãŸã³ã«5å€ã§ã™ã€œï¼";
 				Broadcaster.broadcastPacket(npc, new S_NpcChatPacket(npc, chat,
 						0), true);
 				int count = 15;
@@ -197,7 +197,7 @@ public class GambleInstance extends L1NpcInstance {
 					}
 					if (pc.Gamble_Text == null || pc.Gamble_Text.equals("")) {
 						Broadcaster.broadcastPacket(npc, new S_NpcChatPacket(
-								npc, "¹èÆÃÇÒ ¸÷ÀÌ¸§À» " + (count * 4) + "ÃÊ ³»·Î ¸»ÇØÁÖ¼¼¿ë~",
+								npc, "è³­ã‘ã‚‹ã¹ãåå‰ " + (count * 4) + "ç§’ä»¥å†…ã«æ•™ãˆã¦ãã ã•ã„ã€œ",
 								0), true);
 					} else
 						break;
@@ -206,16 +206,16 @@ public class GambleInstance extends L1NpcInstance {
 					npc.play = false;
 					pc.Gamble_Somak = false;
 					Broadcaster.broadcastPacket(npc, new S_NpcChatPacket(npc,
-							"60ÃÊ ³»·Î ¸÷ÀÌ¸§À» ÀÔ·ÂÇÏÁö ¾Ê¾Æ ¾Æµ§ ±×³É °®À»°Ô¿ä~", 0), true);
+							"60ç§’ä»¥å†…ã«ã‚ãªãŸã®åå‰ã‚’å…¥åŠ›ã—ãªã„ã§ã€Adenã¯ãŸã æŒã£ã¦ã„ã¾ã™ã€œ", 0), true);
 					return;
 				}
 				Broadcaster.broadcastPacket(npc, new S_NpcChatPacket(npc,
-						pc.Gamble_Text + "¿¡ ¹èÆÃÇÕ´Ï´Ù~", 0), true);
+						pc.Gamble_Text + "ã«è³­ã‘ã¾ã™ã€œ", 0), true);
 				Thread.sleep(2000);
 				if (ck())
 					return;
 				Broadcaster.broadcastPacket(npc, new S_NpcChatPacket(npc,
-						"ÀÚ~! °©´Ï´Ù~!", 0), true);
+						"ã•ã‚ã€œï¼ è¡Œãã¾ã™ã€œï¼", 0), true);
 				Thread.sleep(2000);
 				if (ck())
 					return;
@@ -317,12 +317,12 @@ public class GambleInstance extends L1NpcInstance {
 						if (npc.getTileLineDistance(pc) == 1) {
 							if (FaceToFace.faceToFaceforNpc(pc, true,
 									npc.getId()) != null) {
-								pc.setTradeID(npc.getId()); // »ó´ëÀÇ ¿ÀºêÁ§Æ® ID¸¦ º¸Á¸ÇØ
-															// µĞ´Ù
+								pc.setTradeID(npc.getId()); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+															// ï¿½Ğ´ï¿½
 								pc.sendPackets(
 										new S_Message_YN(252, npc.getName()),
-										true); // %0%s°¡ ´ç½Å°ú ¾ÆÀÌÅÛÀÇ °Å·¡¸¦ ¹Ù¶ó°í ÀÖ½À´Ï´Ù.
-												// °Å·¡ÇÕ´Ï±î? (Y/N)
+										true); // %0%sï¿½ï¿½ ï¿½ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
+												// ï¿½Å·ï¿½ï¿½Õ´Ï±ï¿½? (Y/N)
 							}
 						}
 						Thread.sleep(2000);
@@ -333,7 +333,7 @@ public class GambleInstance extends L1NpcInstance {
 									item_count);
 							Broadcaster.broadcastPacket(npc,
 									new S_NpcChatPacket(npc, pc.getName()
-											+ "´Ô ±³È¯À» °è¼Ó ¾È¹ŞÀ¸¼Å¼­ ÀÎº¥¿¡ ³Ö¾îµå·È¾î¿©~", 0),
+											+ "ã‚ãªãŸã®äº¤æ›ã‚’ç¶šã‘ã¦ã„ãªã„ã®ã§ã€ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆã«å…¥ã‚Œã¾ã—ãŸã€œ", 0),
 									true);
 							npc.play = false;
 						}
@@ -422,7 +422,7 @@ public class GambleInstance extends L1NpcInstance {
 							break;
 						attacker.getMoveState().setHeading(
 								CharPosUtil.targetDirection(attacker,
-										mon.getX(), mon.getY())); // ¹æÇâ¼¼Æ®
+										mon.getX(), mon.getY())); // ï¿½ï¿½ï¿½â¼¼Æ®
 						S_UseArrowSkill uas = new S_UseArrowSkill(attacker,
 								mon.getId(), 66, mon.getX(), mon.getY(), true);
 						Broadcaster.broadcastPacket(attacker, uas, true);

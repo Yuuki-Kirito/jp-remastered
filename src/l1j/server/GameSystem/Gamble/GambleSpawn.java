@@ -96,7 +96,7 @@ public class GambleSpawn {
 		return npcShoplist;
 	}
 
-	/** 소막 타입(1)만 사용하도록 셋팅되어있음 추후 업그레이드시 타입 체크 해줘야됨 **/
+	/** It is set to use only Somak type (1). You need to check the type when upgrading later. **/
 	private void support_spawn(Connection con, GambleInstance npc) {
 		PreparedStatement pstm2 = null;
 		ResultSet rs2 = null;
