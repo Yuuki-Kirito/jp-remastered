@@ -22,7 +22,7 @@ public class DungeonSystem {
 		return _instance;
 	}
 	
-	/** 맵에 파생되어있는 빈공간 찾음  */
+	/** Finding empty spaces derived from the map  */
 	public static int getDungeonInfo() {
 		_Counter += 1;
 		if(_Counter >= 1000)
@@ -30,13 +30,13 @@ public class DungeonSystem {
 		return _Counter;
 	}
 	
-	/** 현재 진행중인 무한대전 입장 상태 확인 */
+	/** Check the status of the current Infinity War entry status */
 	public static void getDungeonInfo(int RoomNumber, DungeonInfo DungeonInfo) {
 		if(!_List.containsKey(RoomNumber))
 			_List.put(RoomNumber, DungeonInfo);
 	}
 	
-	/** 현재 진행중인 무한대전 입장 상태 확인 */
+	/** Check the status of the current Infinity War entry status */
 	public static DungeonInfo isDungeonInfo(int RoomNumber) {
 		if(_List.containsKey(RoomNumber))
 			return _List.get(RoomNumber);
@@ -61,7 +61,7 @@ public class DungeonSystem {
         while (it.hasNext()) {
         	DungeonInfo = _List.get(it.next());
         	if(DungeonInfo.DungeonList.contains(DungeonInfo.isUser(Pc))){
-        		/** 인던 장이라면 체크해서 인던 정보 삭제 하고 전부 빠져나가게 작업 */
+        		/** If it is a dungeon chapter, check it, delete the dungeon information, and let it all exit */
         		if(DungeonInfo.isDungeonLeadt() == Pc.getId() && !DungeonInfo.InPlaygame){
 					for(L1PcInstance ListPc : DungeonInfo.isDungeonInfoUset()){
 						ListPc.isDungeonTeleport(false);
@@ -79,12 +79,12 @@ public class DungeonSystem {
         }
 	}
 	
-	/** 리스트 정보 체크 */
+	/** Check list information */
 	public static Map<Integer, DungeonInfo> DungeonInfoList() {
 		return _List;
 	}
 
-	/** 룸 정보 삭제 */
+	/** Delete room information */
 	public static void DungeonInfoRemove(int RoomNumber) {
 		_List.remove(RoomNumber);
 	}
