@@ -41,7 +41,7 @@ public class DreamsTemple {
 				int mapid = GameList.getDreamsTempleMapId();
 				if (mapid == 0) {
 					S_SystemMessage sm = new S_SystemMessage(
-							"¸ğµç ¸ÊÀÌ »ç¿ëÁßÀÔ´Ï´Ù Àá½ÃÈÄ ´Ù½Ã ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+							"ã™ã¹ã¦ã®ãƒãƒƒãƒ—ãŒä½¿ç”¨ä¸­ã§ã™ã€‚ã—ã°ã‚‰ãã—ã¦ã‹ã‚‰ã‚‚ã†ä¸€åº¦ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 					pc.sendPackets(sm, true);
 					return 0;
 				}
@@ -49,7 +49,7 @@ public class DreamsTemple {
 				boolean ok = GameList.addDreamsTemple(mapid, this);
 				if (!ok) {
 					S_SystemMessage sm = new S_SystemMessage(
-							"¸Ê¼³Á¤ÀÌ Àß¸ø µÇ¾ú½À´Ï´Ù. ´Ù½Ã ÀÔÀå ½ÅÃ» ¹Ù¶ø´Ï´Ù.");
+							"ãƒãƒƒãƒ—è¨­å®šãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚ å†åº¦å…¥å ´ç”³è«‹é¡˜ã„ã¾ã™ã€‚");
 					pc.sendPackets(sm, true);
 					// System.out.println("1");
 					return 0;

@@ -38,7 +38,7 @@ public class DreamsTempleController implements Runnable {
 	private int sub_step = 0;
 	private int sub_step2 = 0;
 	private int round = 0;
-	private L1NpcInstance 유니콘;
+	private L1NpcInstance unicorn;
 	private FastTable<L1NpcInstance> monster;
 
 	public DreamsTempleController(L1PcInstance _pc, int mapid) {
@@ -49,7 +49,7 @@ public class DreamsTempleController implements Runnable {
 
 		DreamsTempleSpawn.getInstance().fillSpawnTable(mapid, 0);
 		monster = DreamsTempleSpawn.getInstance().fillSpawnTable(mapid, 1);
-		유니콘 = L1SpawnUtil.spawn4(32801, 32862, (short) mapid, 4, 100749, 0, 0,
+		unicorn = L1SpawnUtil.spawn4(32801, 32862, (short) mapid, 4, 100749, 0, 0,
 				0);
 
 		GeneralThreadPool.getInstance().schedule(new timer(), 1000);
@@ -85,13 +85,13 @@ public class DreamsTempleController implements Runnable {
 			try {
 				if (!on)
 					return;
-				if (유니콘 == null || 유니콘._destroyed || 유니콘.isDead()) {
+				if (unicorn == null || unicorn._destroyed || unicorn.isDead()) {
 					step = 11;
 					return;
 				}
 				if (!ck) {
-					int percent = (int) Math.round((double) 유니콘.getCurrentHp()
-							/ (double) 유니콘.getMaxHp() * 100);
+					int percent = (int) Math.round((double) unicorn.getCurrentHp()
+							/ (double) unicorn.getMaxHp() * 100);
 					if (percent < 30) {
 						GREEN_MSG("유니콘이 너무 많은 피해를 입었습니다.");
 					}
@@ -223,7 +223,7 @@ public class DreamsTempleController implements Runnable {
 					if (mon == null || mon._destroyed || mon.isDead()) {
 						step = 5;
 						GREEN_MSG("몽환의 지배자가 퇴치 되었습니다.");
-						유니콘.setCurrentHp(유니콘.getMaxHp());
+						unicorn.setCurrentHp(unicorn.getMaxHp());
 						return;
 					}
 					break;
@@ -276,13 +276,13 @@ public class DreamsTempleController implements Runnable {
 				break;
 			case 1:
 				if (sub_step == 0)
-					MSG(유니콘, "도와주러 와 주셔서 감사합니다.");
+					MSG(unicorn, "도와주러 와 주셔서 감사합니다.");
 				else if (sub_step == 1)
-					MSG(유니콘, "이계의 존재가 곧 돌아올겁니다.");
+					MSG(unicorn, "이계의 존재가 곧 돌아올겁니다.");
 				else if (sub_step == 2)
-					MSG(유니콘, "그전에 제가 봉인을 풀 수 있도록 시간을 벌어주세요.");
+					MSG(unicorn, "그전에 제가 봉인을 풀 수 있도록 시간을 벌어주세요.");
 				else if (sub_step == 3) {
-					MSG(유니콘, "마법 막대를 이용해 적을 처치해주세요.");
+					MSG(unicorn, "마법 막대를 이용해 적을 처치해주세요.");
 					GREEN_MSG("마법 막대를 이용해 적을 처치해주세요.");
 
 				}
@@ -313,7 +313,7 @@ public class DreamsTempleController implements Runnable {
 			case 3:
 				if (sub_step++ < 4) {
 					DreamsTempleSpawn.getInstance().fillSpawnTable(_mapnum,
-							1 + sub_step, 유니콘, round != 1);
+							1 + sub_step, unicorn, round != 1);
 					if (round == 3 || round == 4)
 						GeneralThreadPool.getInstance().schedule(this, 8000);
 					else
@@ -328,7 +328,7 @@ public class DreamsTempleController implements Runnable {
 						GeneralThreadPool.getInstance().schedule(new 지배자(),
 								7000);
 					} else if (round == 4 && sub_step2 == 1) {
-						MSG(유니콘, "얼마 남지 않았습니다. 조금만 더 버텨주세요");
+						MSG(unicorn, "얼마 남지 않았습니다. 조금만 더 버텨주세요");
 					}
 					GeneralThreadPool.getInstance().schedule(this, 2000);
 					return;
@@ -361,31 +361,31 @@ public class DreamsTempleController implements Runnable {
 				return;
 			case 6:
 				if (sub_step == 0) {
-					유니콘.setTempCharGfx(12493);
-					pc.sendPackets(new S_ChangeShape(유니콘.getId(), 12493), true);
+					unicorn.setTempCharGfx(12493);
+					pc.sendPackets(new S_ChangeShape(unicorn.getId(), 12493), true);
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 1000);
 					return;
 				} else if (sub_step == 1) {
-					MSG(유니콘, "감사합니다");
+					MSG(unicorn, "감사합니다");
 					GREEN_MSG("감사합니다!");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 2) {
-					MSG(유니콘, "당분간 그것은 돌아올 수 없을 것입니다.");
+					MSG(unicorn, "당분간 그것은 돌아올 수 없을 것입니다.");
 					GREEN_MSG("당분간 그것은 돌아올 수 없을 것입니다.");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 3) {
-					MSG(유니콘, "어서 몽환의 섬으로 돌아가 봐야겠군요.");
+					MSG(unicorn, "어서 몽환의 섬으로 돌아가 봐야겠군요.");
 					GREEN_MSG("어서 몽환의 섬으로 돌아가 봐야겠군요.");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 4) {
-					MSG(유니콘, "선물을 드리고 싶군요. 마음에 드셨으면 좋겠네요.");
+					MSG(unicorn, "선물을 드리고 싶군요. 마음에 드셨으면 좋겠네요.");
 					GREEN_MSG("선물을 드리고 싶군요. 마음에 드셨으면 좋겠네요.");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
@@ -411,16 +411,16 @@ public class DreamsTempleController implements Runnable {
 					}
 
 					L1GroundInventory targetInventory = L1World.getInstance()
-							.getInventory(유니콘.getX(), 유니콘.getY(),
-									유니콘.getMapId());
+							.getInventory(unicorn.getX(), unicorn.getY(),
+									unicorn.getMapId());
 					targetInventory.storeItem(60514, 1);
 					if (itemid > 0)
 						targetInventory.storeItem(itemid, 1);
 
-					pc.sendPackets(new S_SkillSound(유니콘.getId(), 169));
-					pc.sendPackets(new S_RemoveObject(유니콘));
-					pc.getNearObjects().removeKnownObject(유니콘);
-					유니콘.teleport(32771, 32835, 6);
+					pc.sendPackets(new S_SkillSound(unicorn.getId(), 169));
+					pc.sendPackets(new S_RemoveObject(unicorn));
+					pc.getNearObjects().removeKnownObject(unicorn);
+					unicorn.teleport(32771, 32835, 6);
 					step++;
 					GeneralThreadPool.getInstance().schedule(this, 20000);
 					return;
