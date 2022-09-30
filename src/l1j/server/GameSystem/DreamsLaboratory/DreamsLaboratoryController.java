@@ -52,7 +52,7 @@ public class DreamsLaboratoryController implements Runnable {
     private boolean[] FieldBoseMente = new boolean[4];
     
     private int[][] _FieldBoseSpawn = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46407, 32800, 32825, 2},
 			{46408, 32763, 32864, 4},
 			{46406, 32799, 32901, 2},
@@ -97,7 +97,7 @@ public class DreamsLaboratoryController implements Runnable {
     private ArrayList<L1DoorInstance> FireWall;
     
     private int[][] _FireWallSpawn = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{32797, 32851, 2},
 			{32787, 32860, 4},
 			{32796, 32875, 2},
@@ -105,7 +105,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _LocationSpawn = new int[][]{ 
-    		/** ½ºÆùµÉ ÁÂÇ¥ Ã¼Å© */
+    		/** Check the coordinates to be spawned */
     		{32800, 32845, 2},
 			{32782, 32863, 4},
 			{32800, 32880, 2},
@@ -113,7 +113,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _FireObjid = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46402, 32798, 32854, 3},
 			{46402, 32787, 32864, 3},
 			{46402, 32798, 32875, 3},
@@ -121,20 +121,20 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _BuffuffObjid = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{47220, 32800, 32863, 3},
 			{47221, 32800, 32863, 3},
     };
     
     private int[][] _1RoundSpawn = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46411, 46422, 46431, 46441},
 			{46411, 46422, 46431, 46441},
 			{46410, 46420, 46430, 46440},
     };
     
     private int[][] _2RoundSpawnType1 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46412, 46423, 46432, 46442},
 			{46412, 46423, 46432, 46442},
     		{46412, 46423, 46432, 46442},
@@ -142,7 +142,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _2RoundSpawnType2 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46412, 46423, 46432, 46442},
 			{46412, 46423, 46432, 46442},
 			{46410, 46420, 46430, 46440},
@@ -150,7 +150,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _RoundSpawnBonus1 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46450, 32802, 32868, 3},
 			{46450, 32795, 32860, 3},
 			{46450, 32804, 32870, 3},
@@ -163,7 +163,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
 
     private int[][] _RoundSpawnBonus2 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46450, 32802, 32868, 3},
     		{46450, 32795, 32860, 3},
     		{46450, 32804, 32870, 3},
@@ -180,7 +180,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _RoundSpawnBonus3 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
     		{46450, 32797, 32870, 3},
 			{46450, 32793, 32866, 3},
     		{46450, 32798, 32869, 3},
@@ -193,7 +193,7 @@ public class DreamsLaboratoryController implements Runnable {
     };
     
     private int[][] _RoundSpawnBonus4 = new int[][]{ 
-    		/** ¸Ê¹øÈ£ and ¹æÇâ */
+    		/** map number and direction */
 			{46450, 32797,	32870, 3},
 			{46450, 32793,	32866, 3},
 			{46450, 32798,	32869, 3},
@@ -209,7 +209,7 @@ public class DreamsLaboratoryController implements Runnable {
 			{46450, 32796,	32867, 3},
     };
     
-	/** ½ÃÁ÷°ú ÇÔ²² ½ºÅä¸® ÁøÇà ºÎºĞ */
+	/** Part of the story progressing along with the poem */
 	public DreamsLaboratoryController(DungeonInfo DungeonInfo, int Type, int Mapid) {
 		try{
 			boolean StartOpen = true;
@@ -217,7 +217,7 @@ public class DreamsLaboratoryController implements Runnable {
 			int Counter = 0;
 			while (StartOpen) {
 				if(DungeonInfo == null || Counter == 60) StartOpen = false;
-				/** À¯Àú»Ì°í 1ºĞµ¿¾È µ¹¸±¼öÀÖ¶Ç·Ï Ä«¿îÅÍ Á¶Á¤ */
+				/** Adjust the counter so that it can rotate for 1 minute after selecting a user */
 				User = DungeonInfo.isDungeonInfoUset(); Counter++;
 				if(User.size() != DungeonInfo.DungeonList.size()) continue;
 				
@@ -240,15 +240,15 @@ public class DreamsLaboratoryController implements Runnable {
 				Party.addInterMember(PcList);
 			}
 			
-			/** °ÔÀÓ ¼¼ÆÃ ºÎºĞ Á¤¸® */
+			/** game settings section */
 			GameType = Type;
 			GameMapId = Mapid;
 			DungeonRoom = DungeonInfo;
 			
-			/** ±âÁ¸ º£ÀÌ½º ½ºÆù ºÎºĞ Á¤¸® */
+			/** Clean up the existing base spawn part */
 			DefendTower = Spawn(32800, 32864, (short)GameMapId, 0, 46400, 0, false);
 			
-			/** ¹®Â¦ ½ºÆù¿¡ ´ëÇÑ Á¤º¸ */
+			/** Information about door leaf spawning */
 			int LocX, LocY, Heading;
 			FireWall = new ArrayList<L1DoorInstance>();
 			for (int i = 0; i < _FireWallSpawn.length; i++) {
@@ -261,52 +261,52 @@ public class DreamsLaboratoryController implements Runnable {
 				}
 			}
 			
-			/** ÇÏµò ¾×¼Ç ±âº»ÀûÀ¸·Î ÁÖ±â ÀÓÆÑÅÍ »Ñ·ÁÁÖ°í Àá±ñ ÈŞ½Ä */
+			/** Hardin Action Basically, spray a cycle impactor and rest for a while*/
 			Thread.sleep(2000);
 			for (L1PcInstance Player : PlayerList())
 				Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 4), true);
 			
-			/** ¸ğµç À¯Àú¿¡°Ô ¿À¸² ÀÓÆÑÆ® »Ñ·ÁÁÖ±â */
+			/** Give Orim Impact to all users */
 			Thread.sleep(5000);
 			for (L1PcInstance Player : PlayerList())
 				Player.sendPackets(new S_CreateItem(true), true);
 			
-			/** ¸àÆ® 1¹ø ½ÃÀÛ */
+			/** Start message 1 */
 			Thread.sleep(20000);
 			for (L1PcInstance Player : PlayerList())
-				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "Áß¾Ó¿¡ ÀÖ´Â ¼öÁ¤±¸¸¦ º¸È£ÇÏ¼¼¿ä."), true);
+				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ä¸­å¤®ã®æ°´æ™¶ä½“ã‚’ä¿è­·ã—ã¾ã™ã€‚"), true);
 			
-			/** ¸àÆ® 2¹ø */
+			/** comment 2 */
 			Thread.sleep(10000);
 			for (L1PcInstance Player : PlayerList())
-				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "½Ã°£ÀÌ ÃÊ°úµÇ°Å³ª ¼öÁ¤±¸°¡ ÆÄ±«µÇ¸é ½ÇÆĞÀÔ´Ï´Ù."), true);
+				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¾ãŸã¯ä¿®æ­£ãŒç ´å£Šã•ã‚Œã‚‹ã¨å¤±æ•—ã—ã¾ã™ã€‚"), true);
 			
-			/** ¸àÆ® 3¹ø */
+			/** comment 3 */
 			Thread.sleep(10000);
 			int[] AllBuffSkill = { L1SkillId.PHYSICAL_ENCHANT_STR, L1SkillId.PHYSICAL_ENCHANT_DEX, L1SkillId.NATURES_TOUCH, L1SkillId.IRON_SKIN};
 			L1SkillUse L1skilluse = new L1SkillUse();
 			for (L1PcInstance Player : PlayerList()){
-				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸²ÀÌ ´ç½Å¿¡°Ô ÀÛÀº ÈûÀ» º¸ÅÆ´Ï´Ù."), true);
+				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æ£®ã¯ã‚ãªãŸã«å°ã•ãªåŠ›ã‚’ä¸ãˆã¾ã™ã€‚"), true);
 				for (int i = 0; i < AllBuffSkill.length; i++) 
 					L1skilluse.handleCommands(Player, AllBuffSkill[i], Player.getId(), Player.getX(), Player.getY(), null, 0, L1SkillUse.TYPE_LOGIN);
 				
-				/** Èú ÀÓÆÑÆ® and ¹éÁ¶ */
+				/** Hill Impact and Swan */
 				Player.sendPackets(new S_SkillSound(Player.getId(), 9009), true);
 				Broadcaster.broadcastPacket(Player, new S_SkillSound(Player.getId(), 9009), true);
 				Player.sendPackets(new S_SkillSound(Player.getId(), 11722), true);
 				Broadcaster.broadcastPacket(Player, new S_SkillSound(Player.getId(), 11722), true);
 			}
 			
-			/** ¸àÆ® 4¹ø °ÔÀÓ ÇÃ·¹ÀÌ ½ÃÀÛ */
+			/** Comment No. 4 Game play begins*/
 			Thread.sleep(4000);
-			/** Å¸ÀÔ¾îÅÃ ½Ã°£ °è»ê 60 * 60 * 15 15ºĞ */
+			/** Å¸ï¿½Ô¾ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ 60 * 60 * 15 15ï¿½ï¿½ */
 			GameTiemAttack = System.currentTimeMillis() + (15 * 60 * 1000);
 			for (L1PcInstance Player : PlayerList()){
-				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀúÁÖ¹ŞÀº ¹«¸®°¡ ¸ô·Á¿À±â ½ÃÀÛÇÕ´Ï´Ù."), true);
+				Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å‘ªã‚ã‚ŒãŸç¾¤ã‚ŒãŒé›†ã¾ã‚Šå§‹ã‚ã¾ã™ã€‚"), true);
 				Player.sendPackets(new S_ServerVersion(DungeonInfo, null), true);
 			}
 			
-			/** ÇÊµå º¸½º ½ºÆù : Ä«½ºÆÄ ÀÏ´çµé */
+			/** Field Boss Spawn: Kaspar crew */
 			L1NpcInstance FieldBose;
 			for (int Spawn = 0; Spawn < _FieldBoseSpawn.length; Spawn++) {
 				FieldBose = Spawn(_FieldBoseSpawn[Spawn][1], _FieldBoseSpawn[Spawn][2], (short)GameMapId, _FieldBoseSpawn[Spawn][3], _FieldBoseSpawn[Spawn][0], 0, false);
@@ -314,14 +314,14 @@ public class DreamsLaboratoryController implements Runnable {
 				FieldBoseMente[Spawn] = false;
 			}
 			
-			/** ½Ã°£ ÁøÇà ½º·¡µå ¿ÀÇÂ */
+			/** time progress thread open*/
 			GeneralThreadPool.getInstance().schedule(new GameTiemAttack(), 1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/** Å¸ÀÓ½º·¡µå »ç¿ø Á¤º¸ °»½Å¿ë */
+	/** Times thread for updating employee information*/
 	class GameTiemAttack implements Runnable {
 		public boolean Mente = false;
 
@@ -329,7 +329,7 @@ public class DreamsLaboratoryController implements Runnable {
 		public void run() {
 			try {
 				if(GameRound == -1 || !Status) return;
-				/** ÇÊµå ¿£ÇÇ¾¾ Ã¼Å©ÇØ¼­ »ì¾ÆÀÖ´ÂÁö °Ë»ç */
+				/** Check field npc to see if it's alive */
 				if(GameRound >= 21 && GameRound <= 24){
 					L1NpcInstance Npc;
 					for (int i = 0; i < FieldBoseNpc.length; i++) {
@@ -341,18 +341,18 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 					}
 				}
-				/** µğÆÒ½º Å¸¿ö°¡ ³îÀÌ°Å³ª ´ÙÀÌ»óÅÂ¶ó¸é Á¾·á ÆĞÅ¶ Ã³¸® */
+				/** If the defense tower is idle or in a die state, the end packet is processed. */
 				if (DefendTower == null || DefendTower.isDead()) {
 					GameRound = 32;
 				}else{
-					/** ÇöÀç ½Ã°£ÀÌ Å¸ÀÓ¾îÅÃ ½Ã°£º¸´Ù ³ô´Ù¸é */
+					/** If the current time is higher than the time attack time*/
 					if(System.currentTimeMillis() >= GameTiemAttack){
 						GameRound = 32;
 					}else if(!Mente){
 						int Percent = (int) Math.round((double) DefendTower.getCurrentHp() / (double) DefendTower.getMaxHp() * 100);
 						if (Percent < 20) {
 							for (L1PcInstance Player : PlayerList()){
-								Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¼öÈ£Å¾ÀÇ ÇÇ°¡ °ÅÀÇ ¾ø½À´Ï´Ù."), true);
+								Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å®ˆè­·å¡”ã®è¡€ã¯ã»ã¨ã‚“ã©ã‚ã‚Šã¾ã›ã‚“ã€‚"), true);
 							}
 							Mente = true;
 						}
@@ -376,52 +376,52 @@ public class DreamsLaboratoryController implements Runnable {
 		public void run() {
 			try {	
 				switch (_Type) {	
-					/** ÀúÁÖ¹ŞÀº ¼¼¸¶ */
+					/** Cursed Sema */
 					case 0:
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¼¼¸¶.. ¹Ì¾ÈÇØ.."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚»ãƒ..ã”ã‚ã‚“ãªã•ã„.."), true);
 						
-						/** 10ÃÊÈÄ ¸àÆ® */
+						/** 10 seconds later*/
 						Thread.sleep(10 * 1000);
 						FieldBoseMente[_Type] = true;
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "È­¿°ÀÇ ¸ó½ºÅÍ ¼ÒÈ¯ÀÌ ¸ØÃè½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ç‚ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼å¬å–šãŒæ­¢ã¾ã‚Šã¾ã—ãŸã€‚"), true);
 						break;
 						
-					/** ÀúÁÖ¹ŞÀº ¹ßÅÍÀÚ¸£ */
+					/**Cursed Walthersar*/
 					case 1:
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¹ßÅÍÀÚ¸£.. ±× °íÅë¿¡¼­ ³Î ±¸ÇØÁÙ°Ô.."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ãƒãƒ«ã‚¿ã‚¶ãƒ¼ãƒ«..ãã®ç—›ã¿ã‹ã‚‰å›ã‚’æ•‘ã£ã¦ã‚ã’ã‚‹ã‚ˆ.."), true);
 						
-						/** 10ÃÊÈÄ ¸àÆ® */
+						/** 10 seconds later */
 						Thread.sleep(10 * 1000);
 						FieldBoseMente[_Type] = true;
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "Ç³·®ÀÇ ¸ó½ºÅÍ ¼ÒÈ¯ÀÌ ¸ØÃè½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "é¢¨é‡ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼å¬å–šãŒæ­¢ã¾ã‚Šã¾ã—ãŸã€‚"), true);
 						break;
 						
-					/** ÀúÁÖ¹ŞÀº Ä«½ºÆÄ */
+					/** Cursed Caspar*/
 					case 2:
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "Ä«½ºÆÄ.. Áø½ÇÀ» ¾Ë°Ô µÉ°Å¾ß.."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚«ã‚¹ãƒ‘.. çœŸå®Ÿã‚’çŸ¥ã‚‹ã‚ˆ.."), true);
 						
-						/** 10ÃÊÈÄ ¸àÆ® */
+						/** 10 seconds later */
 						Thread.sleep(10 * 1000);
 						FieldBoseMente[_Type] = true;
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "´ëÁöÀÇ ¸ó½ºÅÍ ¼ÒÈ¯ÀÌ ¸ØÃè½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å¤§åœ°ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼å¬å–šãŒæ­¢ã¾ã‚Šã¾ã—ãŸã€‚"), true);
 						break;
 						
-					/** ÀúÁÖ¹ŞÀº ¸Ş¸£Å°¿À¸£ */
+					/** Cursed Merchior */
 					case 3:
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¸Ş¸£Å°¿À¸£.. Á¶±İ¸¸ ±â´Ù·Á.."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ãƒ¡ãƒ«ã‚­ã‚ªãƒ¼ãƒ«â€¦å°‘ã—å¾…ã£ã¦â€¦"), true);
 						
-						/** 10ÃÊÈÄ ¸àÆ® */
+						/** 10 seconds later*/
 						Thread.sleep(10 * 1000);
 						FieldBoseMente[_Type] = true;
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "½ÉÇØÀÇ ¸ó½ºÅÍ ¼ÒÈ¯ÀÌ ¸ØÃè½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æ·±æµ·ã®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼å¬å–šãŒæ­¢ã¾ã‚Šã¾ã—ãŸã€‚"), true);
 						break;
 				}
 			} catch (Exception e) {
@@ -455,13 +455,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage1:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -480,13 +480,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage2:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 						
@@ -516,13 +516,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage3:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -541,13 +541,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay */
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage4:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 						
@@ -577,17 +577,17 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
-					/** µ¶ ÆäÀÌÁö */
+					/** poison page */
 					case RoundStage5:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList()){
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀúÁÖ¹ŞÀº ¾È°³´Â ½É°¢ÇÑ ¿À¿° ÇÇÇØ¸¦ Áİ´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å‘ªã‚ã‚ŒãŸéœ§ã¯æ·±åˆ»ãªæ±šæŸ“ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã¾ã™ã€‚"), true);
 						}
 						
 						for (int i = 0; i < _FireObjid.length; i++) {
@@ -616,13 +616,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage6:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 			
@@ -652,13 +652,13 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay */
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage7:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -689,13 +689,13 @@ public class DreamsLaboratoryController implements Runnable {
 							Spawn(Loc.getX(), Loc.getY(), (short)GameMapId, _BuffuffObjid[i][3], SpawnNpc, 120, false);
 						}
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(10 * 1000);
 						GameRound++;
 						break;
 						
 					case RoundStage8:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change*/
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 						
@@ -740,13 +740,13 @@ public class DreamsLaboratoryController implements Runnable {
 							Spawn(Loc.getX(), Loc.getY(), (short)GameMapId, _BuffuffObjid[i][3], SpawnNpc, 120, false);
 						}
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(10 * 1000);
 						GameRound++;
 						break;
 					
 					case RoundStage9:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 			
@@ -782,35 +782,35 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** 1ºĞ «Ç«£«ì«¤ÈÄ 2½ºÆù½ÃÀÛ */
+						/** 2 spawns start after 1 minute delay*/
 						Thread.sleep(15 * 1000);
 						GameRound++;
 						break;
 						
-					/** ÈŞ½Ä½Ã°£ ÆäÀÌÁöÀüÈ¯ ¿ë Ã¼Å© ÇÊ¿ä */
+					/** Need to check for break time page conversion */
 					case RoundStage10:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						GameRound++;
 						break;
 						
-					/** ÈŞ½Ä ÆäÀÌÁö¸¦ µ¹ÀÔÀü¿¡ 
-					 * ¸ó½ºÅÍ°¡ ¸ğµÎ ÀâÇû´ÂÁö Ã¼Å©*/
+					/** Before rushing to the break page
+					 * Check if all monsters have been caught*/
 					case RoundStage11:
-						/** ÂüÀÌ¸é ¸ó½ºÅÍ°¡ ³²¾ÆÀÖ´Ù´Â */
+						/** If true, the monster remains.*/
 						if(MonList()) continue;
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀÌÁ¦ ´ÙÀ½ °ø°İÀ» ´ëºñÇØÁÖ¼¼¿ä."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ç§ã®æ¬¡ã®æ”»æ’ƒã«å‚™ãˆã¦ãã ã•ã„ã€‚"), true);
 						GameRound++;
-						/** ÈŞ½Ä½Ã°£ */
+						/**rest time */
 						Thread.sleep(30 * 1000);
 						break;
 					
 					case RoundStage12:
 						for (L1PcInstance Player : PlayerList()){
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 6), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀúÁÖÀÇ ±â¿îÀÌ ´õ¿í ´õ °Å¼¼Áö°í ÀÖ½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å‘ªã„ã®ã‚ªãƒ¼ãƒ©ãŒã•ã‚‰ã«å¼·ã¾ã£ã¦ã„ã¾ã™ã€‚"), true);
 						}
 						
 						BonusSpawn = GameType == 0 ? false : true;
@@ -838,7 +838,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 						
 					case RoundStage13:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -858,7 +858,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 					
 					case RoundStage14:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -887,7 +887,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 					
 					case RoundStage15:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 						
@@ -908,7 +908,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 						
 					case RoundStage16:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -932,7 +932,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 				
 					case RoundStage17:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -968,7 +968,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 					
 					case RoundStage18:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -986,7 +986,7 @@ public class DreamsLaboratoryController implements Runnable {
 						break;
 						
 					case RoundStage19:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
 						
@@ -1014,12 +1014,12 @@ public class DreamsLaboratoryController implements Runnable {
 						GameRound++;
 						Thread.sleep(10 * 1000);
 						
-					/** ¸àÆ® ÆäÀÌÁö */
+					/** comment page */
 					case RoundStage20:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList()){
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸²ÀÇ ´«¹°ÀÌ... È­¿°ÀÇ º®À» ÀáÀç¿ó´Ï´Ù..."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æ£®ã®æ¶™ãŒ...ç‚ã®å£ã‚’æ½œã‚€..."), true);
 						}
 						
 						for (int i = 0; i < _FireObjid.length; i++) {
@@ -1048,7 +1048,7 @@ public class DreamsLaboratoryController implements Runnable {
 						Thread.sleep(1000);
 						
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "º® ³Ê¸Ó¿¡´Â ÀúÁÖ¸¦ ¼ÒÈ¯ÇÏ´Â ½½ÇÂ »çÁ¦µéÀÌ ÀÖ½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å£ã‚’è¶Šãˆã¦ã€å‘ªã„ã‚’å¬å–šã™ã‚‹æ‚²ã—ã„å¸ç¥­ãŒã„ã¾ã™ã€‚"), true);
 						
 						if(BonusSpawn)
 							for (L1DoorInstance Door : FireWall) Door.open();
@@ -1057,10 +1057,10 @@ public class DreamsLaboratoryController implements Runnable {
 						Thread.sleep(20 * 1000);
 						break;
 					
-					/** ¿©±â¼­ºÎÅÍ ¹®°³¹æÀÌ¶ó 
-					 * ÇÊµå º¸½º ½ºÆù Ã¼Å© ÇØ¾ß´ï */
+					/** The door is open from here.
+					 * Field boss spawn check */
 					case RoundStage21:
-						/** ½ºÅ×ÀÌÁö º¯°æ¿¡ ´ëÇÑ ±ô¹ÚÀÌ */
+						/** Flashing for stage change */
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						
@@ -1172,16 +1172,16 @@ public class DreamsLaboratoryController implements Runnable {
 						Thread.sleep(10 * 1000);
 						break;
 						
-					/** ±«¹°¼¼³¢ ÆäÀÌÁö */
+					/** three monsters page*/
 					case RoundStage25:
 						for (L1PcInstance Player : PlayerList()){
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 8), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿ì¾î¾î¾î¾î ±«¹°ÀÌ´Ù¾Æ¾Æ¾Æ¾Æ¾Æ"), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚ã‚ã€ãã‚Œã¯ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã§ã™ã€‚"), true);
 						}
 						
 						for (int i = 0; i < _2RoundSpawnType2.length; i++) {
 							if(FieldBoseMente[i]) continue;
-							/** ¼Ó¼º º¸½º°¡ ÀÖ´Ù¸é »èÁ¦ ½ÃÄÑÁÖµµ·Ï */
+							/** If there is a castle boss, please delete it*/
 							MonDelete(FieldBoseNpc[i]);
 							SpawnNpc = 46461;
 							Spawn(_LocationSpawn[i][0], _LocationSpawn[i][1], (short)GameMapId, _LocationSpawn[i][2], SpawnNpc, 0, true);
@@ -1233,7 +1233,7 @@ public class DreamsLaboratoryController implements Runnable {
 						
 						BonusSpawn = GameType == 0 ? false : true;
 						
-						/** À¯Àú¿¡°Ô È­¿° ¿ÀºêÁ§Æ® »Ñ¸² ÃÖ´ë ÀÎ¿ø  / 2·Î °è»êÇØ¼­ »Ñ¸² */
+						/** The maximum number of people spraying flame objects on users / Calculated as 2 */
 						SkillUser = PlayerList();
 						Collections.shuffle(SkillUser);
 						Counter = BonusSpawn ? 2 : 3;  
@@ -1286,7 +1286,7 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(1000);
 						
-						/** À¯Àú¿¡°Ô È­¿° ¿ÀºêÁ§Æ® »Ñ¸² ÃÖ´ë ÀÎ¿ø  / 2·Î °è»êÇØ¼­ »Ñ¸² */
+						/** The maximum number of people spraying flame objects on users / Calculated as 2*/
 						SkillUser = PlayerList();
 						Collections.shuffle(SkillUser);
 						Counter = BonusSpawn ? 2 : 3;  
@@ -1301,22 +1301,22 @@ public class DreamsLaboratoryController implements Runnable {
 						GameRound++;
 						break;
 						
-					/** º¸½ºÀü ÆäÀÌÁö 
-					 * ¸ğµç¸÷À» ÀâÀ»½Ã º¸½º·Î ÀüÈ¯ */
+					/** boss page
+					 * When you kill all mobs, you turn into a boss. */
 					case RoundStage28:
 						for (L1PcInstance Player : PlayerList())
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 7), true);
 						GameRound++;
 						break;
 						
-					/** º¸½º ÆäÀÌÁö */
+					/** boss page*/
 					case RoundStage29:
-						/** ÂüÀÌ¸é ¸ó½ºÅÍ°¡ ³²¾ÆÀÖ´Ù´Â */
+						/** If true, the monster remains. */
 						if(MonList()) continue;
 						
 						for (L1PcInstance Player : PlayerList()){
 							Player.sendPackets(new S_PacketBox(S_PacketBox.HADIN_DISPLAY, 6), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀúÁÖ¹ŞÀº ±â¿îÀÌ ´Ù°¡¿À±â ½ÃÀÛÇÕ´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "å‘ªã‚ã‚ŒãŸã‚ªãƒ¼ãƒ©ãŒè¿‘ã¥ãå§‹ã‚ã¾ã™ã€‚"), true);
 						}
 						
 						
@@ -1330,38 +1330,38 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						Thread.sleep(5 * 1000);
 						
-						/** À¯Àú¿¡°Ô È­¿° ¿ÀºêÁ§Æ® »Ñ¸² ÃÖ´ë ÀÎ¿ø  / 2·Î °è»êÇØ¼­ »Ñ¸² */
+						/** The maximum number of people spraying flame objects on users / Calculated as 2*/
 						for (L1PcInstance Player : PlayerList())
 							EffectSpawn(Player.getX(), Player.getY(), (short)GameMapId, Player.getMoveState().getHeading(), 46403, 8);
 						
 						GameRound++;
 						break;
 					
-					/** º¸½º ÆäÀÌÁö Á¾·áÈÄ ÆĞÅ¶ */
+					/** Packet after end of boss page */
 					case RoundStage30:
-						/** º¸½º ¸ó½ºÅÍ°¡ ´ÙÀÌ°Å³ª ¾ø´Ù¸é ¸¶Áö¸· ÆäÀÌÁö ÀüÈ¯ */
+						/** If the boss monster is dead or not, switch to the last page*/
 						if(MainBose == null || MainBose.isDead() || MainBose._destroyed){
 							GameRound++;
 						}else continue;
 						
-					/** Á¾·á ÆĞÅ¶ Ã³¸® */
+					/** End Packet Handling */
 					case RoundStage31:
-						/** º¸½º ¸ó½ºÅÍ°¡ ´ÙÀÌ°Å³ª ¾ø´Ù¸é ¸¶Áö¸· ÆäÀÌÁö ÀüÈ¯ */
+						/** If the boss monster is dead or not, switch to the last page*/
 						L1ItemInstance Item = null;
 						for (L1PcInstance Player : PlayerList()){
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¸ğµç °ø°İÀ» ¸·¾Æ³Â½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã™ã¹ã¦ã®æ”»æ’ƒã‚’é˜²ãã¾ã—ãŸã€‚"), true);
 							Player.sendPackets(new S_CreateItem(false), true);
-							/** °æÇèÄ¡ º¸³Ê½º ºÎºĞ ¾ÆÀÌÅÛ È¹µæ ÀÌ¶û °°ÀÌ µ¹¾Æ°¨ */
-							//Player.°æÇèÄ¡º¸»ó(Player, Config.NewCharactere, 1000);
+							/** Returning with experience bonus item acquisition*/
+							//Player.ê²½í—˜ì¹˜ë³´ìƒ(Player, Config.NewCharactere, 1000);
 							int addexp = 0;
-							// Äùº¸»ó52~64 10ÆÛ 65~75 5ÆÛ 76 1
+							// Quebo Sang 52~64 10% 65~75 5% 76 1
 							addexp = (int) (240000 * 180 * Config.RATE_XP);
 							double exppenalty = ExpTable.getPenaltyRate(Player.getLevel());
 							addexp *= exppenalty;
 							if (addexp != 0) {
 								int level = ExpTable.getLevelByExp(Player.getExp() + addexp);
 								if (level > Config.MAXLEVEL) {
-									Player.sendPackets(new S_SystemMessage("·¹º§ Á¦ÇÑÀ¸·Î ÀÎÇØ  ´õÀÌ»ó °æÇèÄ¡¸¦ È¹µæÇÒ ¼ö ¾ø½À´Ï´Ù."), true);
+									Player.sendPackets(new S_SystemMessage("ãƒ¬ãƒ™ãƒ«åˆ¶é™ã®ãŸã‚ã€ã“ã‚Œä»¥ä¸ŠçµŒé¨“å€¤ã‚’ç²å¾—ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"), true);
 								} else
 									Player.addExp(addexp);
 								Player.sendPackets(new S_SkillSound(Player.getId(), 3944), true);
@@ -1379,11 +1379,11 @@ public class DreamsLaboratoryController implements Runnable {
 						Thread.sleep(15 * 1000);
 						
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸²À» µ½´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æ£®æ—ã‚’åŠ©ã‘ã‚‹ã“ã¨ã«æˆåŠŸã—ã¾ã—ãŸã€‚"), true);
 						Thread.sleep(5 * 1000);
 						
 						for (L1PcInstance Player : PlayerList())
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÀÌÁ¦ ½Ã°ø ¿©ÇàÀÌ Á¾·áµË´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã“ã‚Œã§æ–½å·¥æ—…è¡ŒãŒçµ‚äº†ã—ã¾ã™ã€‚"), true);
 						Thread.sleep(10 * 1000);
 						
 						for (int i = 0; i < 2; i++) {
@@ -1397,20 +1397,20 @@ public class DreamsLaboratoryController implements Runnable {
 						}
 						
 						for (L1PcInstance Player : PlayerList()){
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "¿À¸² ¾Õ¿¡ »ı¼ºµÈ ÅÚ·¹Æ÷Æ® ¸¶¹ıÁøÀ¸·Î ÀÌµ¿ ÇÏ¼¼¿ä."), true);
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "´ç½ÅÀÇ ¾Õ ³¯¿¡ ¾ÆÀÎÇÏ»çµåÀÇ Ãàº¹ÀÌ ÀÖ±â¸¦.."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "æ£®ã®å‰ã«ä½œæˆã•ã‚ŒãŸãƒ†ãƒ¬ãƒãƒ¼ãƒˆé­”æ³•é™£ã«ç§»å‹•ã—ã¾ã™ã€‚"), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ã‚ãªãŸã®å‰ã®æ—¥ã«ã‚¢ã‚¤ãƒ³ãƒã‚¶ãƒ¼ãƒ‰ã®ç¥ç¦ãŒã‚ã‚Šã¾ã™ã€‚"), true);
 						}
 						
 						Reset(false);
 						GameRound = -1;
 						break;
 						
-					/** °ÔÀÓ ½ÇÆĞ Ã³¸® ºÎºĞ */
+					/** game failure handling*/
 					case RoundStage32:
-						/** ¸ğµç À¯Àú ´ÙÀÌ»óÅÂ·Î ¸¸µç´Ù 
-						 * ½º·¡µå Á¾·á·Î ÆäÀÌÁö ´õÀÌ»ó µ¹Áö ¾ÊÀ½*/
+						/** Make all users die state
+						 * No more page rotation due to thread termination*/
 						for (L1PcInstance Player : PlayerList()){
-							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "´øÀü °ø·«¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù."), true);
+							Player.sendPackets(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ãƒ€ãƒ³ã‚¸ãƒ§ãƒ³æ”»ç•¥ã«å¤±æ•—ã—ã¾ã—ãŸã€‚"), true);
 							Player.setCurrentHp(0);
 							Player.death(null);
 						}
@@ -1442,7 +1442,7 @@ public class DreamsLaboratoryController implements Runnable {
 	private boolean MonList() {
 		boolean Check = false;
 		for(L1MonsterInstance Mon : L1World.getInstance().getVisibleMapObjects(GameMapId)){
-			/** ÇÊµåº¸½º º¸½º·Î »ç¿ë µÇ´Â ºÎºĞ ¼öÁ¤±¸µµ Æ÷ÇÔ */
+			/** A partial crystal ball used as a field boss is also included.*/
 			if(Mon.getNpcId() >= 46406 && Mon.getNpcId() <= 46409) continue;
 			if(Mon.getNpcId() == 46400) continue;
 			if(Mon.isDead() || Mon._destroyed) continue;

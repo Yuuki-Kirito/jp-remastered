@@ -44,13 +44,13 @@ public class DreamsLaboratory {
 			Loc = new L1Location(32800, 32863, (short) _MapId).randomLocation(5, false);
 			L1Teleport.teleport(PcList, Loc.getX(), Loc.getY(), (short)Loc.getMapId() , PcList.getMoveState().getHeading(), false, false, 5000);
 		}
-		/** À¯ÀúµéÀÌ ³½ ¾Æµ¥³ª ÆÄÀåÇÑÅ× Áö±Þ */
+		/** Paid to the adena wave paid by users */
 		Pc.getInventory().storeItem(L1ItemId.ADENA, Adena);
 
 		GeneralThreadPool.getInstance().schedule(new DreamsLaboratoryController(DungeonInfo, Type == 3 ? 0 : 1, _MapId), 1000);
 	}
 
-	/** ¸ÊÀÌ ÀÖ´ÂÁö Ã¼Å©ÇØ¼­ ±×¸Ê¿¡ Á¤º¸ °»½Å */
+	/** Check if a map exists and update information on that map*/
 	public int Start(L1PcInstance pc, int Type) {
 		synchronized (GameList.DLList) {
 			try {
@@ -74,7 +74,7 @@ public class DreamsLaboratory {
 
 	public void Reset() {
 		try {
-			/** ¸ðµç ¿ÀºêÁ§Æ® »èÁ¦ */
+			/** ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ */
 			Object_Delete();
 
 			L1V1Map Map = (L1V1Map) L1WorldMap.getInstance().getMap((short) _MapId);
