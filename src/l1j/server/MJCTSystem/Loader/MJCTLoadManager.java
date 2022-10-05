@@ -37,8 +37,8 @@ public class MJCTLoadManager {
 		return argsQ;
 	}
 	
-	private static final S_SystemMessage _basicMenus = new S_SystemMessage(".±¸½½" + "[1. Ä³¸¯ÅÍÁ¤º¸] [2. ÀÎº¥Åä¸®] [3. ½ºÅ³]" + "[Ä³¸¯ÅÍ ÀÌ¸§]\n"
-			+ "(EX1:.±¸½½ 1 ¸ŞÆ¼½º, EX2:.±¸½½ 2 ¸ŞÆ¼½º, EX3:.±¸½½ 3 ¸ŞÆ¼½º)");
+	private static final S_SystemMessage _basicMenus = new S_SystemMessage(".ãƒ“ãƒ¼ã‚º" + "[1. ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±] [2. åœ¨åº«] [3. ã‚¹ã‚­ãƒ«]" + "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å]\n"
+			+ "(EX1:.ãƒ“ãƒ¼ã‚º1ãƒ¡ãƒ†ã‚£ã‚¹ã€EX2:.ãƒ“ãƒ¼ã‚º2ãƒ¡ãƒ†ã‚£ã‚¹ã€EX3:.ãƒ“ãƒ¼ã‚º3ãƒ¡ãƒ†ã‚£ã‚¹)");
 	public static void commands(L1PcInstance pc, String param){
 		try{
 			ArrayDeque<String> argsQ = parseToStringArray(param);
@@ -66,9 +66,9 @@ public class MJCTLoadManager {
 		}
 	}
 	
-	public static final S_SystemMessage _invalidCharacter = new S_SystemMessage("Ä³¸¯ÅÍ Á¤º¸¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
-	public static final S_SystemMessage _DontHaveSpell = new S_SystemMessage("Ä³¸¯ÅÍÀÇ ½ºÆç Á¤º¸¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
-	public static final S_SystemMessage _DontHaveInvItem = new S_SystemMessage("Ä³¸¯ÅÍÀÇ ¾ÆÀÌÅÛ Á¤º¸¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+	public static final S_SystemMessage _invalidCharacter = new S_SystemMessage("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
+	public static final S_SystemMessage _DontHaveSpell = new S_SystemMessage("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¹ãƒšãƒ«æƒ…å ±ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
+	public static final S_SystemMessage _DontHaveInvItem = new S_SystemMessage("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ã‚¢ã‚¤ãƒ†ãƒ æƒ…å ±ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
 	public static void infoAskCommands(L1PcInstance pc, String cName){
 		MJCTObject obj = MJCTSystemLoader.getInstance().get(cName);
 		if(obj == null){
