@@ -120,6 +120,7 @@ encoding//src/l1j/server/L1DatabaseFactory.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/ActionInformation.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/EActionCodes.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/EActionConstruct.java=UTF-8
+encoding//src/l1j/server/MJ3SEx/IntervalDecorator/ActionIntervalDecoratorFactory.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/MJNpcSpeedData.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/MJSprBoundary.java=UTF-8
 encoding//src/l1j/server/MJ3SEx/SpriteInformation.java=UTF-8

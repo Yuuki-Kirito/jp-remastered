@@ -1470,9 +1470,9 @@ public class L1Attack {
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
 					if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
-						if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
-							_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
-							switch (_pc.get포커스웨이브()) {
+						if (_random.nextInt(100) >= (90 + _pc.get_focus_wave() * 4)) {
+							_pc.set포커스웨이브(_pc.get_focus_wave() + 1);
+							switch (_pc.get_focus_wave()) {
 							case 1:
 								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
@@ -1823,9 +1823,9 @@ public class L1Attack {
 			/** 플레임 스킬 */
 
 			if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
-				if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
-					_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
-					switch (_pc.get포커스웨이브()) {
+				if (_random.nextInt(100) >= (90 + _pc.get_focus_wave() * 4)) {
+					_pc.set포커스웨이브(_pc.get_focus_wave() + 1);
+					switch (_pc.get_focus_wave()) {
 					case 1:
 						_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 						Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
@@ -3547,9 +3547,9 @@ public class L1Attack {
 						Broadcaster.broadcastPacket(_pc, new S_AttackCritical(_pc, _targetId, _targetX, _targetY, 20, _isHit));// 새로만드셔서 ㅎ
 					}
 					if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
-						if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
-							_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
-							switch (_pc.get포커스웨이브()) {
+						if (_random.nextInt(100) >= (90 + _pc.get_focus_wave() * 4)) {
+							_pc.set포커스웨이브(_pc.get_focus_wave() + 1);
+							switch (_pc.get_focus_wave()) {
 							case 1:
 								_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 								Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);
@@ -3834,9 +3834,9 @@ public class L1Attack {
 		/** 플레임 스킬 */
 
 		if (_pc.getSkillEffectTimerSet().hasSkillEffect(FOCUS_WAVE)) {
-			if (_random.nextInt(100) >= (90 + _pc.get포커스웨이브() * 4)) {
-				_pc.set포커스웨이브(_pc.get포커스웨이브() + 1);
-				switch (_pc.get포커스웨이브()) {
+			if (_random.nextInt(100) >= (90 + _pc.get_focus_wave() * 4)) {
+				_pc.set포커스웨이브(_pc.get_focus_wave() + 1);
+				switch (_pc.get_focus_wave()) {
 				case 1:
 					_pc.sendPackets(new S_SkillBrave(_pc.getId(), 11, _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(FOCUS_WAVE)), true);
 					Broadcaster.broadcastPacket(_pc, new S_SkillBrave(_pc.getId(), 11, 0), true);

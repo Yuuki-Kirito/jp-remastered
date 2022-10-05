@@ -9455,7 +9455,7 @@ public class L1PcInstance extends L1Character {
 
 	private int focus_wave = 0;
 
-	public int get포커스웨이브() {
+	public int get_focus_wave() {
 		return focus_wave;
 	}
 

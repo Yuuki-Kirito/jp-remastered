@@ -37,7 +37,7 @@ public class ActionIntervalDecoratorFactory {
 			else if(owner.hasSkillEffect(L1SkillId.SLOW))
 				interval *= HASTE_RETARDATION;
 			if(owner.hasSkillEffect(L1SkillId.FOCUS_WAVE)){
-				for(int i=owner.get포커스웨이브() - 1; i>=0; --i)
+				for(int i=owner.get_focus_wave() - 1; i>=0; --i)
 					interval *= THIRD_ACCELERATION;
 			} else if (owner.hasSkillEffect(L1SkillId.STATUS_FRUIT)) {
 				if (owner.isdarkhos()) {
