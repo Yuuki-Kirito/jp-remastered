@@ -17,10 +17,10 @@ public class WeekQuestCompensator implements QuestCompensator{
 	public static final String		_table		= "tb_weekquest_compensate";
 	
 	private int 			_buttonNo;			// button number.
-	private int 			_ingredientItemId;	// Àç·á ¾ÆÀÌÅÛ id.
-	private ExpCompensator 	_exp;				// º¸»ó °æÇèÄ¡¸¦ Á¦°øÇÒ element.
-	private ItemCompensator _item;				// º¸»ó ¾ÆÀÌÅÛÀ» Á¦°øÇÒ element.
-	private String 			_lastRecord;		// ¸¶Áö¸· ±â·ÏµÈ ·¹ÄÚµå
+	private int 			_ingredientItemId;	// ææ–™ã‚¢ã‚¤ãƒ†ãƒ id.
+	private ExpCompensator 	_exp;				// å ±é…¬çµŒé¨“å€¤ã‚’æä¾›ã™ã‚‹ element.
+	private ItemCompensator _item;				// å ±é…¬ã‚¢ã‚¤ãƒ†ãƒ ã‚’æä¾›ã™ã‚‹ element.
+	private String 			_lastRecord;		// last recorded record
 	private byte[]	 		_serialDatas;
 	
 	@Override
@@ -83,11 +83,11 @@ public class WeekQuestCompensator implements QuestCompensator{
 		mbos.write(0x22);
 		mbos.write(0x06);
 		mbos.write(0x08);
-		// ±ºÅÍÀÇ ÀÎÀå descid
+		// ã‚°ãƒ³ã‚¿ãƒ¼ã®å¼•å¼µ descid
 		mbos.writeBit(17368);
 		mbos.write(0x10);
 		
-		// °¹¼ö,,, ³­ÀÌµµº°·Î 1, 5, 10°³
+		// 1, 5, 10 by number,,, difficulty
 		mbos.write((_buttonNo / 3) + (_buttonNo % 3));
 		_serialDatas = mbos.toArray();
 		_serialDatas[1] = (byte)((_serialDatas.length - 2) & 0xff);
@@ -112,7 +112,7 @@ public class WeekQuestCompensator implements QuestCompensator{
 				if(item == null)
 					return;
 				
-				sb.append(item.getName()).append("À» °¡Áö°í ÀÖÁö ¾Ê½À´Ï´Ù.");
+				sb.append(item.getName()).append("ã‚’æŒã£ã¦ã„ã¾ã›ã‚“ã€‚");
 				pc.sendPackets(new S_SystemMessage(sb.toString()));
 				return;
 			}
