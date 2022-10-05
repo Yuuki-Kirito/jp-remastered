@@ -31,7 +31,7 @@ public class SpriteInformationLoader {
 
 	public static int levelToIndex(int level, int sprId) {
 		/*
-		 * TODO ÀÌº¥Æ® º¯½Å Ãß°¡ ·¹º§»ó°ü¾øÀÌ µ¿ÀÏÇÑ ¼Óµµ ³ª¿Àµµ·Ï »ç¿ë½Ã ÁÖ¼®ÇØÁ¦ ¼Óµµ ·¹º§ÁöÁ¤
+		 * TODO ã‚¤ãƒ™ãƒ³ãƒˆå¤‰èº«è¿½åŠ ãƒ¬ãƒ™ãƒ«ã«é–¢ä¿‚ãªãåŒã˜é€Ÿåº¦å‡ºã‚‹ã‚ˆã†ã«ä½¿ç”¨æ™‚æ³¨é‡ˆè§£é™¤é€Ÿåº¦ãƒ¬ãƒ™ãƒ«æŒ‡å®š
 		 */
 		MJSprBoundary boundary = MJSprBoundary.get_boundary(sprId);
 		if (boundary != null)
