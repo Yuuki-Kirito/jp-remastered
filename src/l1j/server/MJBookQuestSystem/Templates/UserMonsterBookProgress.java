@@ -4,16 +4,16 @@ import l1j.server.MJBookQuestSystem.MonsterBook;
 import l1j.server.MJBookQuestSystem.Loader.MonsterBookLoader;
 
 public class UserMonsterBookProgress {
-	/** 북 id **/
+	/** drum id **/
 	private int _bookId;
 	
-	/** 현재 진행 레벨 **/
+	/** current progress level **/
 	private int _level;
 	
-	/** 현재 잡은 수 **/
+	/** currently caught **/
 	private int _step;
 	
-	/** 보상 받은 단계 **/
+	/** rewarded stage **/
 	private int _completed;
 	
 	public UserMonsterBookProgress(int bookId, int level, int step, int completed){

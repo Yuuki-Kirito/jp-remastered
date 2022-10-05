@@ -112,13 +112,13 @@ public class UserWeekQuestProgress {
 		mbos.write(0x08);
 		mbos.write(getSection());
 		mbos.write(0x10);
-		mbos.writeBit(book.getWeekSuccessCount());	// 여기
+		mbos.writeBit(book.getWeekSuccessCount());	// here
 		mbos.write(0x18);
 		mbos.writeBit(book.getClearNum());
 		mbos.write(0x20);
 		mbos.writeBit(book.getBookId());
 		mbos.write(0x28);
-		mbos.writeBit(getStep());					// 여기
+		mbos.writeBit(getStep());					// here
 		
 		byte[] b = mbos.toArray();
 		int size = b.length - 2;

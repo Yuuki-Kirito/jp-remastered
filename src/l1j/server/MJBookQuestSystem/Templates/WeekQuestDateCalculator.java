@@ -19,7 +19,7 @@ import l1j.server.server.model.L1World;
 import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.utils.SQLUtil;
 
-/** ÁÖ°£ Äù½ºÆ® ½Ã°£À» ´ã´çÇÒ Å¬·¡½º **/
+/** The class responsible for the weekly quest time **/
 public class WeekQuestDateCalculator {
 	private static Logger _log = Logger.getLogger(WeekQuestDateCalculator.class.getName());
 	
@@ -85,34 +85,34 @@ public class WeekQuestDateCalculator {
 		long sleepTime = 0;
 		long nowMillis = System.currentTimeMillis();
 		
-		// ÀÌÀü ¾÷µ¥ÀÌÆ® Á¤º¸¸¦ ºÒ·¯¿Â´Ù.
+		// ä»¥å‰ã®æ›´æ–°æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
 		Date oldDate = getLastTime();
 		
-		// ÀÌÀü ¾÷µ¥ÀÌÆ® Á¤º¸°¡ ¾ø´Ù.
+		// ä»¥å‰ã®æ›´æ–°æƒ…å ±ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 		if(oldDate == null){												
 			
-			// ÇöÀç·Î ¾÷µ¥ÀÌÆ®¸¦ ÇÑ´Ù.
+			// ç¾åœ¨ã«ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã‚’ã™ã‚‹ã€‚
 			setUpdate(nowMillis);
 		}else{
-			// ÀÌÀü ¾÷µ¥ÀÌÆ® Á¤º¸·ÎºÎÅÍ ´ÙÀ½ ¾÷µ¥ÀÌÆ® Á¤º¸¸¦ ºÒ·¯¿Â´Ù.
+			// å‰ã®æ›´æ–°æƒ…å ±ã‹ã‚‰æ¬¡ã®æ›´æ–°æƒ…å ±ã‚’å‘¼ã³å‡ºã™ã€‚
 			Calendar cal = getNextWeekCalendar(oldDate.getTime());
 			
-			// ÇöÀç ½Ã°£ÀÌ ´ÙÀ½ ¾÷µ¥ÀÌÆ® ½Ã°£º¸´Ù ´õ Å©´Ù¸é ¾÷µ¥ÀÌÆ®°¡ µÇÁö ¾Ê¾Ò´Ù.
+			// ç¾åœ¨ã®æ™‚é–“ãŒæ¬¡ã®æ›´æ–°æ™‚é–“ã‚ˆã‚Šã‚‚å¤§ãã„å ´åˆã¯æ›´æ–°ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚
 			if(nowMillis >= cal.getTimeInMillis()){ 	
 
-				// ÇöÀç ¾÷µ¥ÀÌÆ® ½Ã°£À¸·Î °»½ÅÇÑ´Ù.
+				// ç¾åœ¨ã®æ›´æ–°æ™‚é–“ã§æ›´æ–°ã™ã‚‹ã€‚
 				setUpdate(nowMillis);
 		
 				
-			// ¾ÆÁ÷ ¾÷µ¥ÀÌÆ® ÇÒ ¶§°¡ ¾Æ´Ï´Ù.
+			// ã¾ã æ›´æ–°ã™ã‚‹æ™‚ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 			}else{									
-				// ÀÌÀü ¾÷µ¥ÀÌÆ® Á¤º¸¸¦ ¸ÊÇÎÇÑ´Ù.
+				// å‰å›ã®æ›´æ–°æƒ…å ±ã‚’ãƒãƒƒãƒ—ã—ã¾ã™ã€‚
 				_updateStamp = new Timestamp(oldDate.getTime());
 				
-				// ´ÙÀ½ ¾÷µ¥ÀÌÆ®±îÁö ½¯ ½Ã°£À» ±¸ÇÏ°í 
+				// æ¬¡ã®æ›´æ–°ã¾ã§ã®æ™‚é–“ã‚’è¦‹ã¤ã‘ã¦ä¼‘ã‚€
 				sleepTime = cal.getTimeInMillis() - nowMillis;
 				
-				// ½®´Ù.
+				// ä¼‘ã‚€ã€‚
 				setNextUpdate(sleepTime);
 			}
 		}
@@ -122,11 +122,11 @@ public class WeekQuestDateCalculator {
 		
 	}
 	
-	/** ÇöÀç calendar·Î ºÎÅÍ ´ÙÀ½ÁÖ ±îÁöÀÇ ÇÊ¿ä ÀÏ¼ö¸¦ ¹İÈ¯ÇÑ´Ù. **/
+	/** Returns the required number of days from the current calendar to the next week. **/
 	private int getDayToNextWeek(Calendar cal){
-		int week 		= cal.get(Calendar.DAY_OF_WEEK);// ¿äÀÏÀ» ±¸ÇÑ´Ù.
+		int week 		= cal.get(Calendar.DAY_OF_WEEK);// æ›œæ—¥ã‚’å–å¾—ã™ã‚‹
 		int nextWeek 	= 0;
-		if(Config.WQ_UPDATE_TYPE == 0)	// ¸¸¾à ÀÏÀÏ Å¸ÀÔÀÌ¶ó¸é, 1ÀÏ¾¿ ¹İÈ¯ÇÑ´Ù.
+		if(Config.WQ_UPDATE_TYPE == 0)	// æ—¥å‹ã®å ´åˆã¯1æ—¥ãŒè¿”å´ã•ã‚Œã¾ã™ã€‚
 			nextWeek = 1;
 		else if(week >= Config.WQ_UPDATE_WEEK)
 			nextWeek = (Config.WQ_UPDATE_WEEK + 7) - week;
@@ -135,7 +135,7 @@ public class WeekQuestDateCalculator {
 		return nextWeek;
 	}
 	
-	/** ÁÖ¾îÁø ½Ã°£À¸·ÎºÎÅÍ ´ÙÀ½ÁÖ ¿À´ÃÀÇ calendar¸¦ ¹İÈ¯ÇÑ´Ù. **/
+	/** Returns today's calendar next week from the given time. **/
 	private Calendar getNextWeekCalendar(long sysmillis){
 		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		cal.setTime(new Date(sysmillis));
@@ -149,12 +149,12 @@ public class WeekQuestDateCalculator {
 		return nextCal;
 	}
 	
-	/** ÁÖ°£ Äù½ºÆ®°¡ °»½ÅµÇ¾ú´ÂÁö¸¦ ¹İÈ¯ÇÑ´Ù. **/
+	/** Returns whether the weekly quest has been updated. **/
 	public boolean isUpdateWeekQuest(Timestamp ts){
 		if(ts == null)
 			return true;
 		
-		// timezone ¼¼ÆÃ¿¡ ÀÇÇØ ¼Ò¼ö´ÜÀ§ ms Æ²¸²À¸·Î °»½Å ¾ÈµÇ´Â Çö»ó °£È¤¹ß»ı.. 1ÃÊ ÀÌ³» ¿ÀÂ÷´Â ¸ğµÎ °°Àº °ÍÀ¸·Î.
+		// æ™‚æŠ˜ã€ã‚¿ã‚¤ãƒ ã‚¾ãƒ¼ãƒ³ã®è¨­å®šã«ã‚ˆã‚Šå°æ•°ç‚¹ä»¥ä¸‹ã®å˜ä½msãŒé–“é•ã£ã¦æ›´æ–°ã§ããªã„å ´åˆãŒã‚ã‚Šã¾ã™.1ç§’ä»¥å†…ã®èª¤å·®ã¯å…¨ã¦åŒã˜ã§ã™ã€‚
 		long time = Math.abs(ts.getTime() - _updateStamp.getTime());
 		if(time <= 1000)
 			return false;
@@ -165,24 +165,24 @@ public class WeekQuestDateCalculator {
 		return _updateStamp;
 	}
 	
-	/** ÇöÀç ½Ã°£À¸·ÎºÎÅÍ ¾÷µ¥ÀÌÆ®¸¦ ½Ç½ÃÇÑ´Ù. **/
+	/** Update from the current time. **/
 	public void setUpdate(){
 		setUpdate(System.currentTimeMillis());
 	}
 	
-	/** ÁÖ¾îÁø ½Ã°£À¸·ÎºÎÅÍ ¾÷µ¥ÀÌÆ®¸¦ ½Ç½ÃÇÑ´Ù. **/
+	/** Update from the given time. **/
 	public void setUpdate(long nowMillis){
-		_updateStamp = new Timestamp(nowMillis);	// ÇöÀç ½Ã°£À» ÁöÁ¤ÇÏ°í
-		setLastTime();								// DB¿¡ ÀúÀåÇÑ´Ù.
-		// ´ÙÀ½ÁÖ ±îÁö ½®´Ù.
+		_updateStamp = new Timestamp(nowMillis);	// ç¾åœ¨æ™‚åˆ»ã‚’æŒ‡å®šã—ã€
+		setLastTime();								// DBã«ä¿å­˜ã—ã¾ã™ã€‚
+		// æ¥é€±ã¾ã§ä¼‘ã‚€ã€‚
 		long sleepTime = getNextWeekCalendar(_updateStamp.getTime()).getTimeInMillis() - _updateStamp.getTime();
 		setNextUpdate(sleepTime);		
 	}
 	
-	/** ´ÙÀ½ ¾÷µ¥ÀÌÆ®°¡ ½ÇÇàµÇµµ·Ï ÇÑ´Ù. **/
+	/** Let the next update run. **/
 	private void setNextUpdate(long sleepTime){
 		WeekQuestLoader.reload();
-		// ¾î¶² ÀÌÀ¯¿¡¼­°Ç ¸®·Îµå µÉ °¡´É¼ºÀÌ ÀÖ´Ù¸é, ÇÑ¹ø¸¸ Ã³¸®ÇÏµµ·Ï,
+		// ä½•ã‚‰ã‹ã®ç†ç”±ã§ãƒªãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹å ´åˆã¯ã€ä¸€åº¦ã ã‘å‡¦ç†ã™ã‚‹ã‚ˆã†ã«ã€
 		if(_updator == null)
 			_updator = new WeekUpdator();
 		
@@ -195,10 +195,10 @@ public class WeekQuestDateCalculator {
 		}
 		
 		setUpdate(System.currentTimeMillis());
-		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÁÖ°£ Äù½ºÆ® ¹× Ãâ¼®¸®½ºÆ®°¡ °»½ÅµÇ¾ú½À´Ï´Ù."), true);
+		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "é€±é–“ã‚¯ã‚¨ã‚¹ãƒˆã¨å‡ºå¸­ãƒªã‚¹ãƒˆãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚"), true);
 	}
 	
-	/** ÁÖ±âÀû ¾÷µ¥ÀÌÆ®¸¦ µµ¿ÍÁÙ ÇïÆÛ **/
+	/** Helpers to help with periodic updates **/
 	class WeekUpdator implements Runnable{
 		
 		@Override
@@ -215,7 +215,7 @@ public class WeekQuestDateCalculator {
 				
 				WeekQuestDateCalculator.getInstance().setUpdate(now);
 				Thread.sleep(500);
-				L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "ÁÖ°£ Äù½ºÆ®°¡ °»½ÅµÇ¾ú½À´Ï´Ù. ÄÉ¸¯ÅÍ¸¦ Àç½ÃÀÛÇÏ¸é »õ Äù½ºÆ® ¸ñ·ÏÀ» ¹Ş¾Æº¼ ¼ö ÀÖ½À´Ï´Ù."), true);
+				L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "é€±é–“ã‚¯ã‚¨ã‚¹ãƒˆãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’å†èµ·å‹•ã™ã‚‹ã¨ã€æ–°ã—ã„ã‚¯ã‚¨ã‚¹ãƒˆã®ãƒªã‚¹ãƒˆã‚’å—ã‘å–ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚"), true);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
