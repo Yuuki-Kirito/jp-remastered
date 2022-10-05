@@ -3,6 +3,7 @@ package l1j.server.MJBookQuestSystem;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 import l1j.server.MJBookQuestSystem.Compensator.WeekQuestCompensator;
 import l1j.server.MJBookQuestSystem.Loader.MonsterBookCompensateLoader;
 import l1j.server.MJBookQuestSystem.Loader.WeekQuestLoader;
@@ -14,7 +15,7 @@ import l1j.server.server.serverpackets.S_WeekQuest;
 import l1j.server.server.utils.MJBytesOutputStream;
 
 public class UserWeekQuest {
-	private static final S_SystemMessage _updateMessage = new S_SystemMessage("ÁÖ°£ Äù½ºÆ®°¡ °»½ÅµÇ¾ú½À´Ï´Ù. ÀçÁ¢¼ÓÀ» ÇÏ¿© ÇıÅÃÀ» ¹ŞÀ¸¼¼¿ä.");
+	private static final S_SystemMessage _updateMessage = new S_SystemMessage("é€±é–“ã‚¯ã‚¨ã‚¹ãƒˆãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚ å†æ¥ç¶šã—ã¦æ©æµã‚’å—ã‘ã¦ãã ã•ã„ã€‚");
 	
 	private L1PcInstance 				_owner;
 	private UserWeekQuestProgress[][] 	_wq;
@@ -31,7 +32,7 @@ public class UserWeekQuest {
 		_lock = new Object();
 	}
 	
-	/** ÁÖ°£Äù½ºÆ® Á¤º¸¸¦ ¸ÅÇÎÇÑ´Ù. **/
+	/** Map weekly quest information. **/
 	public void setWeekQuestInformation(ResultSet rs) throws Exception{
 		int bookId; 
 		int difficulty; 
@@ -40,7 +41,7 @@ public class UserWeekQuest {
 		Timestamp stamp;
 		boolean isCompleted;
 		
-		// ¸ÕÀú dbÁ¤º¸¸¦ ±Ü¾î¿Â´Ù.
+		// First, scrape the db information.
 		while(rs.next()){
 			bookId 		= rs.getInt("bookId"); 
 			difficulty 	= rs.getInt("difficulty"); 
@@ -57,19 +58,19 @@ public class UserWeekQuest {
 		WeekQuestDateCalculator wqcal 		= WeekQuestDateCalculator.getInstance();
 		WeekQuestLoader wqLoader			= WeekQuestLoader.getInstance();
 		
-		// ·ÎµùµÈ ¸ó½ºÅÍ ºÏÀ» °Ë»çÇÑ´Ù.
+		// Inspect the loaded monster book.
 		for(int i=0; i<3; i++){			
-			// ¸¸¾à ·ÎµùµÈ Á¤º¸°¡ ¾ø´Ù¸é, »õ·Î ÇÒ´çÇÑ´Ù.
+			// If there is no loaded information, it allocates a new one.
 			if(_wq[i][0] == null){
 				for(int j=0; j<3; j++)
 					_wq[i][j] = new UserWeekQuestProgress(0, 0, 0, 0, null, false);
 			}
 			
-			// °¢ ³­ÀÌµµ º° 0¹øÀ» ±âÁØÀ¸·Î ÇÏ¿©, ¾÷µ¥ÀÌÆ®°¡ µÇ¾î¾ß ÇÑ´Ù¸é, ÁÖ°£ Äù½ºÆ®¸¦ °»½ÅÇÑ´Ù.
+			// Based on number 0 for each difficulty level, if an update is needed, update the weekly quest.
 			if(wqcal.isUpdateWeekQuest(_wq[i][0].getStamp())){
 				for(int j=0; j<3; j++){
 					book = wqLoader.getBook(i, j);
-					// »õ·Î¿î ºÏ Á¤º¸¸¦ °»½ÅÇÑ´Ù.
+					// Update new book information.
 					_wq[i][j].setBookId(book.getBookId());
 					_wq[i][j].setDifficulty(i + 1);
 					_wq[i][j].setSection(j);
@@ -102,11 +103,11 @@ public class UserWeekQuest {
 			mbos.write(i);
 			mbos.write(0x18);
 			
-			// ¶óÀÎÀÌ Å¬¸®¾î »óÅÂ¶ó¸é, º¸»ó ¹öÆ° È°¼ºÈ­
+			// If the line is clear, the reward button is activated
 			if(isLineClear(i)){
 				successfully = 3;
 				
-				// ÀÌ¹Ì º¸»óÀ» ¹Ş¾Ò´Ù¸é ¶óÀÎ Å¬¸®¾î »óÅÂ·Î,
+				// If you have already received a reward, the line is cleared,
 				if(isLineCompleted(i))
 					successfully = 5;
 			}
@@ -119,7 +120,7 @@ public class UserWeekQuest {
 		return mbos.toArray();
 	}
 	
-	/** ¼½¼Çº°·Î º¹¼öÀÇ ºÏid°¡ ÀÖ´Ù¸é true, ¾Æ´Ò °æ¿ì false. **/
+	/** true if there are multiple book ids for each section, false otherwise. **/
 	private boolean checkDuplicateBookId(MonsterBook book, int difficulty, int section) throws Exception{
 		if(difficulty < 0 || difficulty > 2)
 			throw new Exception("invalid difficulty " + difficulty);
@@ -131,7 +132,7 @@ public class UserWeekQuest {
 		return false;
 	}
 	
-	/** ³­ÀÌµµ º° ÁÖÄù ¸®½ºÆ®¸¦ ¹İÈ¯ÇÑ´Ù. **/
+	/** Returns a list of main quests by difficulty. **/
 	public UserWeekQuestProgress[] getProgressList(int difficulty){
 		UserWeekQuestProgress[] progresses = new UserWeekQuestProgress[3];
 		progresses[0] = _wq[difficulty][0];
@@ -141,7 +142,7 @@ public class UserWeekQuest {
 		return progresses;
 	}
 	
-	/** ¸ğµç ÁÖÄù ¸®½ºÆ®¸¦ ¹İÈ¯ÇÑ´Ù. **/
+	/** Returns a list of all main quests.**/
 	public ArrayList<UserWeekQuestProgress> getProgressList(){
 		ArrayList<UserWeekQuestProgress> list 	= new ArrayList<UserWeekQuestProgress>(9);
 		for(int i=0; i<3; i++){
@@ -152,15 +153,15 @@ public class UserWeekQuest {
 		return list;
 	}
 	
-	/** ÁÖÄù ¸®½ºÆ®¸¦ Àü¼ÛÇÑ´Ù. **/
+	/** Send the main quest list. **/
 	public void sendList(){
-		// ÁÖÄù ¸®½ºÆ® Àü¼Û
+		// ã‚¸ãƒ¥ã‚¯ã‚¨ãƒªã‚¹ãƒˆè»¢é€
 		S_WeekQuest wq = new S_WeekQuest();
 		wq.writeWQList(_owner);
 		_owner.sendPackets(wq);
 	}
 	
-	/** ÅÚ·¹Æ÷Æ® ¿äÃ»¿¡ ÀÀÇÑ´Ù. **/
+	/** Respond to teleport requests. **/
 	public void teleport(int difficulty, int section){
 		if(difficulty < 0 || difficulty > 2)
 			return;
@@ -168,7 +169,7 @@ public class UserWeekQuest {
 		_owner.getMonsterBook().teleport(_wq[difficulty][section].getBookId());
 	}
 	
-	/** ¸ó½ºÅÍ¸¦ »ç³ÉÇß´Ù. **/
+	/** hunted monsters. **/
 	public void addMonster(MonsterBook book){
 		if(book == null)
 			return;
@@ -183,7 +184,7 @@ public class UserWeekQuest {
 			return;
 		}
 		
-		// ÀÌ¹Ì ¶óÀÎÀÌ Å¬¸®¾î µÆ°Å³ª, º¸»óÀ»¹Ş¾Ò´Ù¸é ¸®ÅÏ,
+		// If the line has already been cleared or a reward has been received, return,
 		if(isLineClear(difficulty) || isLineCompleted(difficulty))
 			return;
 		
@@ -195,12 +196,12 @@ public class UserWeekQuest {
 			synchronized(_lock){
 				progress.addStep(1);
 				
-				// °»½ÅµÈ Äù½ºÆ® »óÅÂ¸¦ Àü¼ÛÇÑ´Ù.
+				// æ›´æ–°ã•ã‚ŒãŸã‚¯ã‚¨ã‚¹ãƒˆçŠ¶æ…‹ã‚’é€ä¿¡ã™ã‚‹ã€‚
 				S_WeekQuest wq = new S_WeekQuest();
 				wq.writeWQUpdate(difficulty, i, progress.getStep());
 				_owner.sendPackets(wq);
 				
-				// Äù½ºÆ® ¿Ï·á µÇ¾ú´Ù¸é, ¿Ï·á ¸Ş½ÃÁö¸¦ Àü¼ÛÇÑ´Ù.
+				// ã‚¯ã‚¨ã‚¹ãƒˆå®Œäº†ã—ãŸã‚‰ã€å®Œäº†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚
 				if(isLineClear(difficulty)){
 					wq = new S_WeekQuest();
 					wq.writeWQLineClear(difficulty, 3);
@@ -211,7 +212,7 @@ public class UserWeekQuest {
 		}
 	}
 	
-	/** º¸»óÀ» ½ÇÇàÇÑ´Ù. **/
+	/** execute compensation. **/
 	public void complete(int difficulty, int section){
 		synchronized(_lock){
 			UserWeekQuestProgress progress 	= null; 
@@ -224,10 +225,10 @@ public class UserWeekQuest {
 				return;
 			}
 			
-			// ¶óÀÎÀ» Å¬¸®¾î ÇÏÁö ¸øÇß°Å³ª, ¶óÀÎ º¸»óÀ» ¹Ş¾Ò´Ù¸é Ã³¸®ÇÏÁö ¾Ê´Â´Ù.
+			// If you do not clear the line or receive a line reward, it will not be processed.
 			if(!isLineClear(difficulty) || isLineCompleted(difficulty)){
 				StringBuilder sb = new StringBuilder(128);
-				sb.append("ÀÌ¹Ì ÁÖ°£ Äù½ºÆ® º¸»óÀ» ¹ŞÀº »ç¿ëÀÚ : ").append(_owner.getName()).append("ÀÌ(°¡) º¸»ó ½Ãµµ¸¦ ÇÕ´Ï´Ù.");
+				sb.append("ã™ã§ã«é€±é–“ã‚¯ã‚¨ã‚¹ãƒˆå ±é…¬ã‚’å—ã‘å–ã£ãŸãƒ¦ãƒ¼ã‚¶ãƒ¼ï¼š ").append(_owner.getName()).append("ãŒå ±é…¬ã‚’è©¦ã¿ã¾ã™ã€‚");
 				System.out.println(sb.toString());
 				return;
 			}
@@ -243,14 +244,14 @@ public class UserWeekQuest {
 		}
 	}
 	
-	/** ¶óÀÎÀÌ ¸ğµÎ Å¬¸®¾î µÆ´ÂÁö **/
+	/** Are all lines cleared? **/
 	public boolean isLineClear(int difficulty){
 		if(_wq[difficulty][0].isClear() && _wq[difficulty][1].isClear() && _wq[difficulty][2].isClear())
 			return true;
 		return false;
 	}
 	
-	/** ¶óÀÎ º¸»óÀ» ¹Ş¾Ò´ÂÁö **/
+	/** Did you receive line rewards? **/
 	public boolean isLineCompleted(int difficulty){
 		if(_wq[difficulty][0].isCompleted() || _wq[difficulty][1].isCompleted() || _wq[difficulty][2].isCompleted())
 			return true;

@@ -50,7 +50,7 @@ public class UserMonsterBook {
 				progress.addStep(1);
 				_owner.sendPackets(new S_MonsterBook(S_MonsterBook.MB_ADD, bookId, progress.getStep()));
 				
-				// °¢°¢ ´Ş¼ºÀÌ ¿Ï·áµÇ¾úÀ» ¶§,
+				// ãã‚Œãã‚Œé”æˆãŒå®Œäº†ã™ã‚‹ã¨ã€
 				if(progress.getStep() == book.getStepThird() || progress.getStep() == book.getStepSecond() || progress.getStep() == book.getStepFirst()){
 					_owner.sendPackets(new S_MonsterBook(S_MonsterBook.MB_NEXT, bookId, progress.getLevel() + 4));
 					progress.setLevel(progress.getLevel() + 1);
