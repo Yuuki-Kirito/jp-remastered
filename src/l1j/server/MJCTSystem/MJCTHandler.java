@@ -8,7 +8,6 @@ import l1j.server.L1DatabaseFactory;
 import l1j.server.MJCTSystem.Loader.MJCTLoadManager;
 import l1j.server.MJCTSystem.Loader.MJCTSystemLoader;
 import l1j.server.server.Account;
-import server.LineageClient;
 import l1j.server.server.clientpackets.C_NoticeClick;
 import l1j.server.server.clientpackets.C_Restart;
 import l1j.server.server.model.Instance.L1ItemInstance;
@@ -16,15 +15,16 @@ import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_CharAmount;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.utils.SQLUtil;
+import server.LineageClient;
 /** 
  * MJCTCharInfo
  * MJSoft Character TradeSystem - Handler
- * made by mjsoft, 2016.
+ * made by ã‚ã‚“ã‚ã‚“, 2016.
  **/
 public class MJCTHandler {
 	public static boolean load(L1PcInstance pc, L1ItemInstance item){
 		if(!pc.getMap().isSafetyZone(pc.getLocation())){
-			pc.sendPackets(new S_SystemMessage("¸¶À»¿¡¼­¸¸ »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù."));
+			pc.sendPackets(new S_SystemMessage("ç”ºã§ã®ã¿ãŠä½¿ã„ã„ãŸã ã‘ã¾ã™ã€‚"));
 			return false;
 		}
 		
@@ -37,7 +37,7 @@ public class MJCTHandler {
 		Account acc	= pc.getAccount();
 		if(acc.countCharacters() > 8 || acc.getCharSlot() - acc.countCharacters() <= 0){
 			MJCTSystemLoader.getInstance().reset(obj);
-			pc.sendPackets(new S_SystemMessage("Ä³¸¯ÅÍ ½½·ÔÀÌ ºÎÁ·ÇÕ´Ï´Ù."));
+			pc.sendPackets(new S_SystemMessage("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚¹ãƒ­ãƒƒãƒˆãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"));
 			return false;
 		}
 		
@@ -65,12 +65,12 @@ public class MJCTHandler {
 	
 	public static boolean store(L1PcInstance pc, L1ItemInstance item, int objid){
 		if(pc.getId() == objid){
-			pc.sendPackets(new S_SystemMessage("ÀÚ±â ÀÚ½Å¿¡°Ô´Â »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù."));
+			pc.sendPackets(new S_SystemMessage("è‡ªåˆ†è‡ªèº«ã«ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚"));
 			return false;
 		}
 		
 		if(!pc.getMap().isSafetyZone(pc.getLocation())){
-			pc.sendPackets(new S_SystemMessage("¸¶À»¿¡¼­¸¸ »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù."));
+			pc.sendPackets(new S_SystemMessage("ç”ºã§ã®ã¿ãŠä½¿ã„ã„ãŸã ã‘ã¾ã™ã€‚"));
 			return false;
 		}
 		Connection con = null;
@@ -84,7 +84,7 @@ public class MJCTHandler {
 			
 			updateAccount(con, "[MJCTSYSTEM]", objid);
 			pc.setTamTime(null);
-			//L1PcInstance.tamdel(objid); ÀÓ½Ã ÁÖ¼®
+			//L1PcInstance.tamdel(objid); temporary comment
 			pc.getInventory().removeItem(item, 1);
 			L1ItemInstance item2 = pc.getInventory().storeItem(MJCTLoadManager.CTSYSTEM_LOAD_ID, 1);
 			

@@ -6,10 +6,10 @@ import java.util.Locale;
 /** 
  * MJCTCharInfo
  * MJSoft Character TradeSystem - Character Info
- * made by mjsoft, 2016.
+ * made by „Çè„Çì„Çè„Çì, 2016.
  **/
 public class MJCTCharInfo {
-	private static final SimpleDateFormat _dateFormat = new SimpleDateFormat("MM-dd HH:mm", Locale.KOREA);
+	private static final SimpleDateFormat _dateFormat = new SimpleDateFormat("MM-dd HH:mm", Locale.JAPAN);
 	
 	public String 		name;
 	public int			level;
@@ -32,18 +32,18 @@ public class MJCTCharInfo {
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder(256);
-		sb.append("¿Ã∏ß : ").append(name).append("\n");
-		sb.append("∑π∫ß : ").append(level).append("\n");
-		sb.append("≈¨∑°Ω∫ : ").append(toMoreClass()).append("\n");
-		sb.append("«˜∏Õ : ").append(clanName).append("\n");
-		sb.append("æ∆¿Œ : ").append(einhasad).append("\n");		
+		sb.append("name : ").append(name).append("\n");
+		sb.append("level : ").append(level).append("\n");
+		sb.append("class : ").append(toMoreClass()).append("\n");
+		sb.append("clanName : ").append(clanName).append("\n");
+		sb.append("Ain : ").append(einhasad).append("\n");		
 		sb.append("STR : ").append(str).append("\n");
 		sb.append("DEX : ").append(dex).append("\n");
 		sb.append("CON : ").append(con).append("\n");
 		sb.append("WIS : ").append(wis).append("\n");
 		sb.append("INT : ").append(intel).append("\n");
 		sb.append("CHA : ").append(cha).append("\n");
-		sb.append("ø§∏Øº≠ : ").append(elixir).append("∞≥").append("\n");
+		sb.append("Elixir : ").append(elixir).append("Í∞ú").append("\n");
 		sb.append("HP : ").append(hp).append("\n");
 		sb.append("MP : ").append(mp).append("\n");
 		sb.append("AC : ").append(String.valueOf(ac)).append("\n");
@@ -51,29 +51,29 @@ public class MJCTCharInfo {
 	}
 	
 	private String toMoreClass(){
-		return String.format("%s(%s)", toClass(), sex == 0 ? "≥≤" : "ø©");
+		return String.format("%s(%s)", toClass(), sex == 0 ? "ÎÇ®" : "Ïó¨");
 	}
 	
 	private String toClass(){
 		switch(type){
 		case 0:
-			return "±∫¡÷";
+			return "crown";
 		case 1:
-			return "±‚ªÁ";
+			return "Knight";
 		case 2:
-			return "ø‰¡§";
+			return "ELF";
 		case 3:
-			return "π˝ªÁ";
+			return "wizard";
 		case 4:
-			return "¥Ÿ≈©ø§«¡";
+			return "Dark Elf";
 		case 5:
-			return "øÎ±‚ªÁ";
+			return "Dragon Knight";
 		case 6:
-			return "»Øº˙ªÁ";
+			return "Illusionist";
 		case 7:
-			return "¿¸ªÁ";
+			return "Warrior";
 		case 8:
-			return "∞ÀªÁ";
+			return "test"; //Í≤ÄÏÇ¨
 		default:
 			return "";
 		}

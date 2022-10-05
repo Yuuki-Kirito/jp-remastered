@@ -125,17 +125,17 @@ public class MJCTItem {
 //		return new int[] {attr_bit, attr};
 //	}
 //
-//	/** 타입형 아이템 패킷 정리 */
+//	/** Typed Item Packet Cleanup*/
 //	public int getStatusType() {
 //		int Type = 0;
 //		if (item.getType2() == 0) Type = -128;
-//		/** 확인 미확인 */
+//		/** Confirm Unconfirmed */
 //		if (iden == 1) Type += 1;
-//		/** 교환 불가 */
+//		/** non-exchangeable */
 //		if (!item.isTradable() || item.getBless() >= 128) Type += 2;
-//		/** 삭제 불가 */
+//		/** cannot be deleted */
 //		if (item.isCantDelete()) Type += 4;
-//		/** 인첸 불가 */
+//		/** Enchantable */
 //		if (item.get_safeenchant() == -1 || item.getBless() >= 128) Type += 8;
 //		return Type;
 //	}
