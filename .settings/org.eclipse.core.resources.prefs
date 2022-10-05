@@ -132,6 +132,11 @@ encoding//src/l1j/server/MJBookQuestSystem/Compensator/Element/ItemCompensator.j
 encoding//src/l1j/server/MJBookQuestSystem/Compensator/NormalQuestCompensator.java=UTF-8
 encoding//src/l1j/server/MJBookQuestSystem/Compensator/QuestCompensator.java=UTF-8
 encoding//src/l1j/server/MJBookQuestSystem/Compensator/WeekQuestCompensator.java=UTF-8
+encoding//src/l1j/server/MJBookQuestSystem/Loader/MonsterBookCompensateLoader.java=UTF-8
+encoding//src/l1j/server/MJBookQuestSystem/Loader/MonsterBookLoader.java=UTF-8
+encoding//src/l1j/server/MJBookQuestSystem/Loader/UserMonsterBookLoader.java=UTF-8
+encoding//src/l1j/server/MJBookQuestSystem/Loader/UserWeekQuestLoader.java=UTF-8
+encoding//src/l1j/server/MJBookQuestSystem/Loader/WeekQuestLoader.java=UTF-8
 encoding//src/l1j/server/MJBookQuestSystem/MonsterBook.java=UTF-8
 encoding//src/l1j/server/MJBookQuestSystem/UserMonsterBook.java=UTF-8
 encoding//src/l1j/server/MJBookQuestSystem/UserWeekQuest.java=UTF-8

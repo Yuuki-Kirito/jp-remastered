@@ -36,10 +36,10 @@ public class MonsterBookLoader {
 		}
 	}
 	
-	/** 도감 정보를 담을 맵 **/
+	/** A map to contain the encyclopedia information **/
 	private Map<Integer, MonsterBook> 				_books;
 	
-	/** 주간 퀘스트 별로 도감 퀘스트를 담을 맵 **/
+	/** A map to contain the illustrated quests for each weekly quest **/
 	private Map<Integer, ArrayList<MonsterBook>> 	_weekCategory;
 	
 	private MonsterBookLoader(){
@@ -89,7 +89,7 @@ public class MonsterBookLoader {
 		}
 	}
 	
-	/** 입력받은 주간 난이도를 통해 몬스터 북을 반환한다. **/
+	/** Returns the monster book through the entered weekly difficulty. **/
 	public MonsterBook getWeekDiffToMonsterBook(int difficulty){
 		ArrayList<MonsterBook> list = _weekCategory.get(difficulty);
 		if(list == null)
@@ -98,7 +98,7 @@ public class MonsterBookLoader {
 		return list.get(_rnd.nextInt(list.size()));
 	}
 	
-	/** bookid에 따른 몬스터 북을 반환한다. **/
+	/** Returns the monster book according to bookid. **/
 	public MonsterBook getTemplate(int id){
 		if(_books != null)
 			return _books.get(id);

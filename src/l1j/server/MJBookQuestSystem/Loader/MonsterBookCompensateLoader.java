@@ -33,10 +33,10 @@ public class MonsterBookCompensateLoader {
 		tmp = null;
 	}
 
-	/** 일반 도감퀘 보상 **/
+	/** General Encyclopedia Quest Rewards **/
 	private Map<Integer, ArrayList<NormalQuestCompensator>> _normal_compensators;
 
-	/** 주간 도감퀘 보상 **/
+	/** Weekly Book Quest Rewards **/
 	private Map<Integer, WeekQuestCompensator> _week_compensators;
 
 	private MonsterBookCompensateLoader() {

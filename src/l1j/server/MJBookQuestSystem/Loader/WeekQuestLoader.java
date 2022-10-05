@@ -152,7 +152,7 @@ public class WeekQuestLoader {
 		try{
 			for(int row=0; row<3; row++){
 				for(int col=0; col<3; col++){
-					// ¸¸¾à Áßº¹ ºÏid°¡ ÇÒ´çµÇ¾ú´Ù¸é, ´Ù¸¥ ºÏ id¸¦ ¹ÞÀ»¶§ ±îÁö °»½ÅÇÑ´Ù.
+					// é‡è¤‡ã—ãŸãƒ–ãƒƒã‚¯IDãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ä»–ã®ãƒ–ãƒƒã‚¯IDã‚’å—ã‘å–ã‚‹ã¾ã§æ›´æ–°ã—ã¾ã™ã€‚
 					do{
 						book = loader.getWeekDiffToMonsterBook(row);
 					}while(checkDuplicateBookId(matrix, book, row, col));
