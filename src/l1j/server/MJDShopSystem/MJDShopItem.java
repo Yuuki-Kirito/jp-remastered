@@ -1,6 +1,7 @@
 package l1j.server.MJDShopSystem;
 
 import java.sql.ResultSet;
+
 import l1j.server.server.datatables.ItemTable;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.templates.L1Item;
@@ -11,18 +12,18 @@ import l1j.server.server.templates.L1ShopItem;
  * Dynamic Shop Item.
  * made by mjsoft, 2016.
  *  **/
-/** ¼¥ ¾ÆÀÌÅÛ¿¡ ´ëÇÑ Á¤º¸¸¦ °¡Áø´Ù. **/
+/** Have information about shop items. **/
 public class MJDShopItem {
-	public int 		objId;		// ¿ÀºêÁ§Æ® ID
-	public int 		itemId;		// ¾ÆÀÌÅÛ ID
+	public int 		objId;		// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID
+	public int 		itemId;		// ã‚¢ã‚¤ãƒ†ãƒ ID
 	public String	name;
-	public int 		invId;		// ÀÎº¥Åä¸® ID
-	public int 		count;		// ¼ö·®
-	public int 		price;		// °¡°İ
-	public int		iden;		// ¾ÆÀÌÅÛÀÇ »óÅÂ
-	public int 		enchant;	// ÀÎÃ¦Æ® ¼öÄ¡
-	public int 		attr;		// ¼Ó¼º
-	public boolean 	isPurchase;	// ÆÇ¸Å(false), ¸ÅÀÔ(true)
+	public int 		invId;		// åœ¨åº«ID
+	public int 		count;		// æ•°é‡
+	public int 		price;		// ä¾¡æ ¼
+	public int		iden;		// ã‚¢ã‚¤ãƒ†ãƒ ã®çŠ¶æ…‹
+	public int 		enchant;	// ã‚¨ãƒ³ãƒãƒ£ãƒ³ãƒˆæ•°å€¤
+	public int 		attr;		// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+	public boolean 	isPurchase;	// è²©å£²ï¼ˆfalseï¼‰ã€è³¼å…¥ï¼ˆtrueï¼‰
 	
 	public static MJDShopItem create(L1ShopItem sitem, int i, boolean isPurchase){
 		L1Item item			= ItemTable.getInstance().getTemplate(sitem.getItemId());
