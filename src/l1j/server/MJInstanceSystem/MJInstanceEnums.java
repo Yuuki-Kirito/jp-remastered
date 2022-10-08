@@ -1,6 +1,7 @@
 package l1j.server.MJInstanceSystem;
 
 import java.util.ArrayList;
+
 import l1j.server.server.clientpackets.C_Attr;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.serverpackets.S_Message_YN;
@@ -9,9 +10,9 @@ import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.ServerBasePacket;
 
 public class MJInstanceEnums {
-	/** ������ instance space ���¸� ��Ÿ����. **/
+	/** Indicates the user's instance space status.**/
 	public enum InstStatus{
-		INST_USERSTATUS_NONE(1),	// instance space�� ���� ���� ��
+		INST_USERSTATUS_NONE(1),	// instance space에 when not
 		INST_USERSTATUS_LFCREADY(2),
 		INST_USERSTATUS_LFCINREADY(4),
 		INST_USERSTATUS_LFC(8);		
@@ -23,7 +24,7 @@ public class MJInstanceEnums {
 	}
 	
 	public enum InstSpcMessages{
-		INSTANCE_SPACE_FULL("�ν��Ͻ� ������ �� á���ϴ�. ��� �� �ٽ� �õ����ּ���.");
+		INSTANCE_SPACE_FULL("インスタンスダンジョンがいっぱいです。 しばらくしてからもう一度お試しください。");
 		
 		private String _msg;		
 		InstSpcMessages(String msg){
@@ -47,35 +48,35 @@ public class MJInstanceEnums {
 		}
 	}
 	
-	/** ��� ���� �޽��� **/
+	/** Registration Related Messages **/
 	public enum LFCMessages{	
-		REGIST_SUCCESS("����� �Ϸ�Ǿ����ϴ�."),
-		REGIST_ERR_ININST("�ν��Ͻ� ���¿����� ����� �� �����ϴ�."),
-		REGIST_ERR_NOADENA("�ʿ� �������� �����մϴ�."),
-		REGIST_ERR_INTHEMILL("���� �غ����Դϴ�."),
-		REGIST_ERR_ADENA("���� �ݾ��� �߸��ƽ��ϴ�."),
-		REGIST_ERR_LEVEL("���� ������ �������� �ʽ��ϴ�. "),
-		CREATE_ERR_TARGET_CANNOT("����(��)�� ���� ������ �� ���� �����Դϴ�."),
-		CREATE_ERR_CANNOT_INPARTYPLAY("��Ƽ�߿��� ������ ��û�� �Ұ����մϴ�."),
-		CREATE_ERR_RVR("RVR �������� ��Ƽ �������Դϴ�."),
-		CREATE_ERR_PVP("PVP �������� �� ��Ƽ �������Դϴ�."),
-		CREATE_ERR_ONLYLEADER("��Ƽ�常 ��û�� �� �ֽ��ϴ�."),
-		CREATE_ERR_PARTYMEMBER("���� �Ұ� ������ ��Ƽ���� �ֽ��ϴ�."),
-		CREATE_ERR_PARTYMAXSIZE("�ִ� ��Ƽ �ο��� �Ѿ����ϴ�."),
-		CREATE_ERR_PARTYMINSIZE("�ּ� ���� ��Ƽ�ο��� ä���� ���߽��ϴ�."),
-		CREATE_NOTIFY_CANCEL_INPARTYPLAY("�ݷμ��� ��û�� �������� ��Ƽ��(������)/��Ƽ���� �ƴ�(��ü��)���� ���� ��ҵǾ����ϴ�."),
-		CREATE_SUBSCRIBE("�ݷμ��� ��û�� ���Խ��ϴ�. 15�� ���� �������� ������ ��ҷ� �����մϴ�."),
-		CREATE_SUCCESS("�ݷμ��� ��û�� �Ϸ�Ǿ����ϴ�. ������ 15�� ���� �������� ������ ��ҵ˴ϴ�."),
-		CREATE_CANCEL_OWNERUSER("������ ��û�� �����߽��ϴ�."),
-		CREATE_CANCEL("��Ⱑ ��ҵǾ����ϴ�."),
-		INGAME_CLOSE("��Ⱑ ����Ǿ����ϴ�. ��� �� ��� ���� �� ������ �̵��մϴ�."),
-		INGAME_CLOSE_FORGM("GM�� ���� ������ ������ ����Ǿ����ϴ�."),
-		INGAME_NOTIFY_WINNER("�¸��߽��ϴ�. �¸� ���� �������� �� ���޵˴ϴ�."),
-		INGAME_NOTIFY_LOSER("����� LFC������ �й��߽��ϴ�."),
-		INGAME_NOTIFY_READY("[����غ�] "),
+		REGIST_SUCCESS("登録が完了しました。"),
+		REGIST_ERR_ININST("インスタンス状態では使用できません。"),
+		REGIST_ERR_NOADENA("必要アイテムが不足しています。"),
+		REGIST_ERR_INTHEMILL("まだ準備中です。"),
+		REGIST_ERR_ADENA("賭け金額が間違っています。"),
+		REGIST_ERR_LEVEL("レベル条件が満たされません。 "),
+		CREATE_ERR_TARGET_CANNOT("相手（チーム）は現在参加できない状態です。"),
+		CREATE_ERR_CANNOT_INPARTYPLAY("パーティー中は個人展の申請ができません。"),
+		CREATE_ERR_RVR("RVRコンテンツはパーティーコンテンツです。"),
+		CREATE_ERR_PVP("PVPコンテンツはノンパーティーコンテンツです。"),
+		CREATE_ERR_ONLYLEADER("パーティー会場のみ申請できます。"),
+		CREATE_ERR_PARTYMEMBER("参加不可状態のパーティーメンバーがいます。"),
+		CREATE_ERR_PARTYMAXSIZE("最大パーティーの人数を超えました。"),
+		CREATE_ERR_PARTYMINSIZE("最小会合パーティーの人数を記入できませんでした。"),
+		CREATE_NOTIFY_CANCEL_INPARTYPLAY("コロシアム申請が入ってきましたが、パーティー中（個人展）/パーティー中ではない（団体展）のためキャンセルされました。"),
+		CREATE_SUBSCRIBE("コロシアム申請が入ってきました。 15秒以内に受け入れない場合はキャンセルとみなします。"),
+		CREATE_SUCCESS("コロシアム申請が完了しました。 相手が15秒以内に受け入れない場合はキャンセルされます。"),
+		CREATE_CANCEL_OWNERUSER("相手が申請を拒否しました。"),
+		CREATE_CANCEL("試合がキャンセルされました。"),
+		INGAME_CLOSE("試合が終了しました。 しばらくすると、結果判定後に村に移動します。"),
+		INGAME_CLOSE_FORGM("GMによって強制的にゲームが終了しました。"),
+		INGAME_NOTIFY_WINNER("勝利しました。 勝利報酬アイテムがすぐに支払われます。"),
+		INGAME_NOTIFY_LOSER("あなたはLFC戦で敗北しました。"),
+		INGAME_NOTIFY_READY("[試合準備]"),
 		INGAME_NOTIFY_START("Start!"),
-		INGAME_NOTIFY_CLOSETIME("[�����ӹ�] "),
-		INGAME_NOTIFY_LOTTO("�����մϴ�. �������� ��÷�Ǿ����ϴ�.");
+		INGAME_NOTIFY_CLOSETIME("[終了差し迫った] "),
+		INGAME_NOTIFY_LOTTO("おめでとうございます。 ランダム報酬に当選しました。");
 		private String _msg;		
 		LFCMessages(String msg){
 			_msg = msg;
