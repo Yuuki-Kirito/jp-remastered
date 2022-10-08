@@ -3,10 +3,10 @@ package l1j.server.MJInstanceSystem.MJLFC.Creator;
 import java.util.ArrayList;
 import java.util.Random;
 
-import l1j.server.MJInstanceSystem.Loader.MJLFCTypeLoader;
 import l1j.server.MJInstanceSystem.MJInstanceEnums.InstStatus;
 import l1j.server.MJInstanceSystem.MJInstanceEnums.LFCMessages;
 import l1j.server.MJInstanceSystem.MJInstanceSpace;
+import l1j.server.MJInstanceSystem.Loader.MJLFCTypeLoader;
 import l1j.server.MJInstanceSystem.MJLFC.MJLFCPlayFactory;
 import l1j.server.MJInstanceSystem.MJLFC.MJLFCType;
 import l1j.server.MJInstanceSystem.MJLFC.Template.MJLFCObject;
@@ -139,7 +139,7 @@ public class MJLFCCreator implements Runnable{
 				}
 				type = MJLFCTypeLoader.getInstance().get(Integer.parseInt(post.getContent()));
 			}catch(Exception e){
-				/** Àß¸øµÈ ±ÛÀÌ ¹ß»ýÇÏ¸é ¿À·ù¸¦ Ãâ·ÂÇÏ°í Áö¿î´Ù. **/
+				/** If an incorrect text occurs, an error is printed and deleted. **/
 				e.printStackTrace();
 				L1BoardPost.delLfc(post.getId());
 				return;
@@ -264,7 +264,7 @@ public class MJLFCCreator implements Runnable{
 							setInstStatus(pc, InstStatus.INST_USERSTATUS_LFCINREADY);
 						MJLFCObject obj = MJLFCPlayFactory.create(_type.getPlayInstName());
 						
-						// ¸ÅÅ©·Î ¹æÁö.
+						// ãƒžã‚¯ãƒ­é˜²æ­¢ã€‚
 						if(_rnd.nextBoolean()){
 							obj.setRedTeam(_red);
 							obj.setBlueTeam(_blue);

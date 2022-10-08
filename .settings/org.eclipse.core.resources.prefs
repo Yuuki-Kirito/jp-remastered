@@ -163,6 +163,7 @@ encoding//src/l1j/server/MJInstanceSystem/MJInstanceType.java=UTF-8
 encoding//src/l1j/server/MJInstanceSystem/MJLFC/Compensate/MJLFCCompensate.java=UTF-8
 encoding//src/l1j/server/MJInstanceSystem/MJLFC/Compensate/MJLFCExpCompensate.java=UTF-8
 encoding//src/l1j/server/MJInstanceSystem/MJLFC/Compensate/MJLFCItemCompensate.java=UTF-8
+encoding//src/l1j/server/MJInstanceSystem/MJLFC/Creator/MJLFCCreator.java=UTF-8
 encoding//src/l1j/server/MJInstanceSystem/MJLFC/MJLFCPlayFactory.java=UTF-8
 encoding//src/l1j/server/MJInstanceSystem/MJLFC/MJLFCType.java=UTF-8
 encoding//src/l1j/server/MapReader.java=UTF-8
