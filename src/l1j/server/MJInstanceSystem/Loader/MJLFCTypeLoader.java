@@ -93,7 +93,7 @@ public class MJLFCTypeLoader {
 			sb.append(", field : ");
 			if(field == null)			sb.append("null");
 			else						sb.append(field);
-			sb.append(")À»(¸¦) ºÒ·¯µéÀÌ´Âµ¥ ½ÇÆĞÇß½À´Ï´Ù.");
+			sb.append(")ã‚’å‘¼ã³å‡ºã™ã®ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 			System.out.println(sb.toString());
 			e.printStackTrace();
 		}finally{

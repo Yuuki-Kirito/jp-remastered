@@ -42,7 +42,7 @@ public class MJInstanceLoadManager {
 	}
 	
 	private static final S_SystemMessage _basicMenus = new S_SystemMessage(
-			"[1. »óÅÂ], [2. ¸®·Îµå], [3. °­Á¦Á¾·á]"
+			"[1. çŠ¶æ…‹], [2. ãƒªãƒ­ãƒ¼ãƒ‰], [3. å¼·åˆ¶çµ‚äº†]"
 			);
 	public static void commands(L1PcInstance gm, String param){
 		try{
@@ -63,9 +63,9 @@ public class MJInstanceLoadManager {
 	}
 	
 	private static final S_SystemMessage _statusMenus = new S_SystemMessage(
-			"[»ç¿ë¹æ¹ı].ÀÎ½ºÅÏ½º 1\n" +
-			"[1. ³²Àº°ø°£], [2. ¿­¸°¸Ê], [3. »ó¼¼Á¤º¸] \n" +
-			"[¸Ê¾ÆÀÌµğ]"
+			"[ä½¿ç”¨æ–¹æ³•].ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ 1\n" +
+			"[1. æ®‹ã‚Šã®ã‚¹ãƒšãƒ¼ã‚¹], [2. ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒƒãƒ—], [3. è©³ç´°æƒ…å ±] \n" +
+			"[ãƒãƒƒãƒ—ID]"
 			);
 	
 	private static void statusCommands(L1PcInstance gm, ArrayDeque<Integer> argsQ){
@@ -77,7 +77,7 @@ public class MJInstanceLoadManager {
 		StringBuilder sb = new StringBuilder(256);
 		switch(argsQ.poll()){
 		case 1:{
-			sb.append("ÃÑ ").append(MIS_COPYMAP_SIZE).append("°³ÀÇ °ø°£ Áß\n");
+			sb.append("ì´ ").append(MIS_COPYMAP_SIZE).append("å€‹ã®ã‚¹ãƒšãƒ¼ã‚¹ã®ã†ã¡\n");
 			Iterator<Integer> it = MJInstanceSpace.getInstance().getOpensMaps().iterator();
 			Integer i;
 			int cnt = 0;
@@ -88,13 +88,13 @@ public class MJInstanceLoadManager {
 						cnt++;
 				}
 			}
-			sb.append(cnt).append("°³ »ç¿ë ÁßÀÔ´Ï´Ù.");
+			sb.append(cnt).append("çŠ¬ä½¿ç”¨ä¸­ã§ã™ã€‚");
 			break;
 		}
 		case 2:{
 			Iterator<Integer> it = MJInstanceSpace.getInstance().getOpensMaps().iterator();
 			Integer i;
-			sb.append("¿­¸° ¸Ê : ");
+			sb.append("ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒƒãƒ— : ");
 			while(it.hasNext()){
 				i = it.next();
 				if(!(i == null || i < MIS_COPYMAP_START_ID || i > MIS_COPYMAP_START_ID + MIS_COPYMAP_SIZE)){
@@ -112,7 +112,7 @@ public class MJInstanceLoadManager {
 			}
 			obj = MJInstanceSpace.getInstance().getOpenObject(argsQ.poll());
 			if(obj == null)
-				sb.append("ÇØ´ç ¸ÊÀº ¿­·Á ÀÖÁö ¾Ê½À´Ï´Ù.");
+				sb.append("ãã®ãƒãƒƒãƒ—ã¯é–‹ã„ã¦ã„ã¾ã›ã‚“ã€‚");
 			else
 				sb.append(obj.toString());
 			break;
@@ -126,9 +126,9 @@ public class MJInstanceLoadManager {
 	}
 	
 	private static final S_SystemMessage _reloadMenus = new S_SystemMessage(
-			"[»ç¿ë¹æ¹ı].ÀÎ½ºÅÏ½º 2\n" +
-			"[1. ÄÁÇÈ][2. Å¸ÀÔ][3. º¸»ó]\n" + 
-			"[4. ÀüÃ¼]"
+			"[ä½¿ç”¨æ–¹æ³•].ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ 2\n" +
+			"[1. confiction][2. ã‚¿ã‚¤ãƒ—][3. å ±é…¬]\n" + 
+			"[4. å…¨ä½“]"
 			);
 	private static void reloadCommands(L1PcInstance gm, ArrayDeque<Integer> argsQ){
 		if(argsQ.isEmpty()){
@@ -168,7 +168,7 @@ public class MJInstanceLoadManager {
 	}
 	
 	private static final S_SystemMessage _closeMenus = new S_SystemMessage(
-			"[»ç¿ë¹æ¹ı].ÀÎ½ºÅÏ½º 3 [¸Ê¾ÆÀÌµğ]"
+			"[ä½¿ã„æ–¹].ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹3 [ãƒãƒƒãƒ—ID]"
 			);
 	private static void closeCommands(L1PcInstance gm, ArrayDeque<Integer> argsQ){
 		if(argsQ.isEmpty()){
@@ -181,10 +181,10 @@ public class MJInstanceLoadManager {
 		MJInstanceObject 	obj = MJInstanceSpace.getInstance().getOpenObject(mid);
 		sb.append("[").append(mid).append("]");
 		if(obj == null)
-			sb.append("ÇØ´ç ¸ÊÀº ¿­·Á ÀÖÁö ¾Ê½À´Ï´Ù.");
+			sb.append("ãã®ãƒãƒƒãƒ—ã¯é–‹ã„ã¦ã„ã¾ã›ã‚“ã€‚");
 		else{
 			obj.closeForGM();
-			sb.append("ÇØ´ç ¸ÊÀ» °­Á¦·Î Á¾·á½ÃÄ×½À´Ï´Ù.\n").append("°­Á¦ Á¾·á´Â º¸»óÀ» Áö±ŞÇÏÁö ¾Ê½À´Ï´Ù.");
+			sb.append("ãã®ãƒãƒƒãƒ—ã‚’å¼·åˆ¶çµ‚äº†ã—ã¾ã—ãŸã€‚\n").append("å¼·åˆ¶çµ‚äº†ã¯å ±é…¬ã‚’æ”¯æ‰•ã„ã¾ã›ã‚“ã€‚");
 		}
 		gm.sendPackets(new S_SystemMessage(sb.toString()));
 	}
