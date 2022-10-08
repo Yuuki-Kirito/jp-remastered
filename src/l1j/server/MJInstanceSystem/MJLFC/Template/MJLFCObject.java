@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import l1j.server.MJInstanceSystem.Loader.MJInstanceLoadManager;
 import l1j.server.MJInstanceSystem.MJInstanceEnums.InstSpcMessages;
 import l1j.server.MJInstanceSystem.MJInstanceEnums.InstStatus;
 import l1j.server.MJInstanceSystem.MJInstanceEnums.LFCMessages;
 import l1j.server.MJInstanceSystem.MJInstanceObject;
 import l1j.server.MJInstanceSystem.MJInstanceSpace;
 import l1j.server.MJInstanceSystem.MJInstanceType;
+import l1j.server.MJInstanceSystem.Loader.MJInstanceLoadManager;
 import l1j.server.MJInstanceSystem.MJLFC.MJLFCType;
 import l1j.server.MJInstanceSystem.MJLFC.Creator.MJLFCCreator;
 import l1j.server.MJInstanceSystem.Util.MJLFCTrapThorn;
@@ -225,14 +225,14 @@ public class MJLFCObject extends MJInstanceObject {
 
 	protected void waitCount() throws Exception {
 		try {
-			String sec = new StringBuilder().append(_lType.getReadySecond()).append("ÃÊ ÈÄ °æ±â°¡ ½ÃÀÛµË´Ï´Ù.").toString();
+			String sec = new StringBuilder().append(_lType.getReadySecond()).append("ç§’å¾Œã€è©¦åˆãŒå§‹ã¾ã‚Šã¾ã™ã€‚").toString();
 			LFCMessages.INGAME_NOTIFY_READY.sendGreenMsgToList(_red, sec);
 			LFCMessages.INGAME_NOTIFY_READY.sendGreenMsgToList(_blue, sec);
 
 			for (int i = _lType.getReadySecond(); i > 0; i--) {
 				if (i <= 10) {
 					StringBuilder msg = new StringBuilder();
-					msg.append(i).append("ÃÊ ÈÄ °æ±â°¡ ½ÃÀÛµË´Ï´Ù.");
+					msg.append(i).append("ç§’å¾Œã€è©¦åˆãŒå§‹ã¾ã‚Šã¾ã™ã€‚");
 					LFCMessages.INGAME_NOTIFY_READY.sendGreenMsgToList(_red, msg.toString());
 					LFCMessages.INGAME_NOTIFY_READY.sendGreenMsgToList(_blue, msg.toString());
 				}
@@ -254,12 +254,12 @@ public class MJLFCObject extends MJInstanceObject {
 			_time--;
 
 			if (_time <= 10 && _time != 0) {
-				String sec = String.format("%dÃÊ ÈÄ °æ±â°¡ Á¾·áµË´Ï´Ù.", _time);
+				String sec = String.format("%dç§’å¾Œã€è©¦åˆã¯çµ‚äº†ã—ã¾ã™ã€‚", _time);
 				LFCMessages.INGAME_NOTIFY_CLOSETIME.sendGreenMsgToList(_red, sec);
 				LFCMessages.INGAME_NOTIFY_CLOSETIME.sendGreenMsgToList(_blue, sec);
 			}
 
-			/* ¹öÇÁ ½ºÆù */
+			/* buffã‚¹ãƒãƒ¼ãƒ³ */
 			if (_lType.getBuffSpawnSecond() != 0 && _time % _lType.getBuffSpawnSecond() == 0)
 				spawnBuff(2);
 		}
