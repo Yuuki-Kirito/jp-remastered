@@ -61,18 +61,18 @@ public final class ProtocolHandler extends SimpleChannelUpstreamHandler {
 			}
 
 			if (IpTable.getInstance().isBannedIp(array[0])) {
-				System.out.println("[Â÷´ÜµÈ IP Á¢¼Ó½Ãµµ Àı´Ü] IP:" + array[0]);
+				System.out.println("[ãƒ–ãƒ­ãƒƒã‚¯ã•ã‚ŒãŸIPæ¥ç¶šæ™‚ã‚‚åˆ‡æ–­] IP:" + array[0]);
 				event.getChannel().close();
 				return;
 			}
 
 			if (isConnectBan(array[0], System.currentTimeMillis())) {
-				System.out.println("[Áö¼ÓÀûÀÎ Á¢¼Ó½Ãµµ·Î ÀÎÇÏ¿© Á¢¼ÓÀ» Â÷´ÜÇÕ´Ï´Ù.] IP:" + array[0]);
+				System.out.println("[ç¶™ç¶šçš„ãªæ¥ç¶šè©¦è¡Œã«ã‚ˆã‚Šæ¥ç¶šã‚’é®æ–­ã—ã¾ã™ã€‚] IP:" + array[0]);
 				event.getChannel().close();
 				return;
 			}
 
-			System.out.println("[Á¢¼Ó ½Ãµµ Áß] IP:" + array[0] + "  Thread:" + Thread.activeCount() + "  Memory:"
+			System.out.println("[æ¥ç¶šè©¦è¡Œä¸­] IP:" + array[0] + "  Thread:" + Thread.activeCount() + "  Memory:"
 					+ SystemUtil.getUsedMemoryMB() + " MB");
 
 			_timerPool.getTimer().schedule(new sessionCheck(event.getChannel()), 3000);
@@ -95,10 +95,10 @@ public final class ProtocolHandler extends SimpleChannelUpstreamHandler {
 				return false;
 			}
 		}
-		// ºí·°µÈ ³ğÀº ¹«½Ã.
+		// ãƒ–ãƒ­ãƒƒã‚¯ã•ã‚ŒãŸå¥´ã¯ç„¡è¦–ã€‚
 		if (IP.isBlock())
 			return true;
-		// 3ÃÊ³»¿¡ 3¹øÀÌ»ó Á¢¼ÓÇÏ´Â ³ğµé ¹«½Ã.
+		// 3ç§’ä»¥å†…ã«3å›ä»¥ä¸Šæ¥ç¶šã™ã‚‹å¥´ã‚‰ç„¡è¦–ã€‚
 		if (time < IP.getTime() + 3000) {
 			if (IP.getCount() > 3) {
 				IP.setBlock(true);
