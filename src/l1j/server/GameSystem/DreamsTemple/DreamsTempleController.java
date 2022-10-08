@@ -59,7 +59,7 @@ public class DreamsTempleController implements Runnable {
 			public void run() {
 				for (L1NpcInstance npc : monster) {
 					if (npc.getNpcId() == 100747)
-						SHOUT_MSG(npc, "´©±¸³Ä ¾î¶»°Ô ¿ÔÁö?");
+						SHOUT_MSG(npc, "èª°ãŒã©ã†ã‚„ã£ã¦æ¥ãŸã®ï¼Ÿ");
 				}
 			}
 		}, 2000);
@@ -68,7 +68,7 @@ public class DreamsTempleController implements Runnable {
 			public void run() {
 				for (L1NpcInstance npc : monster) {
 					if (npc.getNpcId() == 100748) {
-						SHOUT_MSG(npc, "±×ºĞ²²¼­ ³Î °¡¸¸ µÎÁö ¾ÊÀ» °ÍÀÌ´Ù.");
+						SHOUT_MSG(npc, "å½¼ã¯ã‚ãªãŸã‚’å»ã‚‰ãªã„ã§ã—ã‚‡ã†ã€‚");
 						break;
 					}
 				}
@@ -93,7 +93,7 @@ public class DreamsTempleController implements Runnable {
 					int percent = (int) Math.round((double) unicorn.getCurrentHp()
 							/ (double) unicorn.getMaxHp() * 100);
 					if (percent < 30) {
-						GREEN_MSG("À¯´ÏÄÜÀÌ ³Ê¹« ¸¹Àº ÇÇÇØ¸¦ ÀÔ¾ú½À´Ï´Ù.");
+						GREEN_MSG("ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ³ãŒå¤šã™ãã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸã€‚");
 					}
 					ck = true;
 				}
@@ -111,9 +111,9 @@ public class DreamsTempleController implements Runnable {
 	private static final byte HEADING_TABLE_X[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 	private static final byte HEADING_TABLE_Y[] = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
-	class ´ëÁ¤·É implements Runnable {
+	class Great_spirit implements Runnable {
 		private boolean check = false;
-		private L1MonsterInstance Á¤·É = null;
+		private L1MonsterInstance government_ordinance = null;
 
 		@Override
 		public void run() {
@@ -124,26 +124,26 @@ public class DreamsTempleController implements Runnable {
 				if (!check) {
 					switch (rnd.nextInt(4)) {
 					case 0:
-						GREEN_MSG("¶¥ÀÇ ´ëÁ¤·ÉÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-						Á¤·É = (L1MonsterInstance) L1SpawnUtil.spawn2(32806,
+						GREEN_MSG("åœ°ã®å¤§ç²¾éœŠãŒç¾ã‚Œã¾ã—ãŸã€‚");
+						government_ordinance = (L1MonsterInstance) L1SpawnUtil.spawn2(32806,
 								32862, (short) _mapnum, 100758, 3, 0, 0);
 						check = true;
 						break;
 					case 1:
-						GREEN_MSG("¹Ù¶÷ÀÇ ´ëÁ¤·ÉÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-						Á¤·É = (L1MonsterInstance) L1SpawnUtil.spawn2(32801,
+						GREEN_MSG("é¢¨ã®å¤§ç²¾éœŠãŒç¾ã‚Œã¾ã—ãŸã€‚");
+						government_ordinance = (L1MonsterInstance) L1SpawnUtil.spawn2(32801,
 								32870, (short) _mapnum, 100759, 3, 0, 0);
 						check = true;
 						break;
 					case 2:
-						GREEN_MSG("¹°ÀÇ ´ëÁ¤·ÉÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-						Á¤·É = (L1MonsterInstance) L1SpawnUtil.spawn2(32793,
+						GREEN_MSG("æ°´ã®å¤§ç²¾éœŠãŒç¾ã‚ŒãŸã€‚");
+						government_ordinance = (L1MonsterInstance) L1SpawnUtil.spawn2(32793,
 								32861, (short) _mapnum, 100760, 3, 0, 0);
 						check = true;
 						break;
 					case 3:
-						GREEN_MSG("ºÒÀÇ ´ëÁ¤·ÉÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-						Á¤·É = (L1MonsterInstance) L1SpawnUtil.spawn2(32799,
+						GREEN_MSG("ç«ã®å¤§ç²¾éœŠãŒç¾ã‚Œã¾ã—ãŸã€‚");
+						government_ordinance = (L1MonsterInstance) L1SpawnUtil.spawn2(32799,
 								32854, (short) _mapnum, 100761, 3, 0, 0);
 						check = true;
 						break;
@@ -152,8 +152,8 @@ public class DreamsTempleController implements Runnable {
 					}
 
 				} else {
-					if (Á¤·É._destroyed || Á¤·É.isDead()) {
-						GREEN_MSG("´ëÁ¤·ÉÀÌ ¸·´ë¸¦ ¶³¾î¶ß·È½À´Ï´Ù. ¸·´ë¸¦ ÀÌ¿ëÇÏ¸é ÀüÅõ¿¡ Å« µµ¿òÀÌ µÉ °ÍÀÔ´Ï´Ù.");
+					if (government_ordinance._destroyed || government_ordinance.isDead()) {
+						GREEN_MSG("å¤§ç²¾éœŠãŒæ£’ã‚’è½ã¨ã—ã¾ã—ãŸã€‚ ãƒãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹ã¨ã€æˆ¦é—˜ã«å¤§ããªåŠ©ã‘ã«ãªã‚Šã¾ã™ã€‚");
 						List<Integer> dirList = new ArrayList<Integer>();
 						for (int j = 0; j < 8; j++) {
 							dirList.add(j);
@@ -173,11 +173,11 @@ public class DreamsTempleController implements Runnable {
 								dirList.remove(randomInt);
 								x = HEADING_TABLE_X[dir];
 								y = HEADING_TABLE_Y[dir];
-							} while (!Á¤·É.getMap().isPassable(Á¤·É.getX() + x,
-									Á¤·É.getY() + y));
+							} while (!government_ordinance.getMap().isPassable(government_ordinance.getX() + x,
+									government_ordinance.getY() + y));
 							L1GroundInventory targetInventory = L1World
-									.getInstance().getInventory(Á¤·É.getX() + x,
-											Á¤·É.getY() + y, Á¤·É.getMapId());
+									.getInstance().getInventory(government_ordinance.getX() + x,
+											government_ordinance.getY() + y, government_ordinance.getMapId());
 							targetInventory.storeItem(60513, 1);
 						}
 						return;
@@ -190,8 +190,8 @@ public class DreamsTempleController implements Runnable {
 		}
 	}
 
-	class Áö¹èÀÚ implements Runnable {
-		private int Áö¹èÀÚstep = 0;
+	class Ruler implements Runnable {
+		private int ruler_step = 0;
 		private L1MonsterInstance mon = null;
 
 		@Override
@@ -199,30 +199,30 @@ public class DreamsTempleController implements Runnable {
 			try {
 				if (!on)
 					return;
-				switch (Áö¹èÀÚstep) {
+				switch (ruler_step) {
 				case 0:
-					GREEN_MSG("¸ùÈ¯ÀÇ Áö¹èÀÚ : À¯´ÏÄÜÀ» »©¾Ñ¾Æ°¡·Á°í? ±×·¸°Ô ³öµÑ ¼ø ¾øÁö!!");
-					Áö¹èÀÚstep++;
+					GREEN_MSG("å¤¢å¹»ã®æ”¯é…è€…ï¼šãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ³ã‚’å¥ªã†ã¤ã‚‚ã‚Šã§ã™ã‹ï¼Ÿ ãã‚“ãªã«ç½®ã„ã¦ãã‚Œãªã„ã‚ˆï¼");
+					ruler_step++;
 					break;
 				case 1:
 					Random random = new Random(System.nanoTime());
 					int chance = random.nextInt(100);
 					if (chance <= 35) {
 					mon = (L1MonsterInstance) L1SpawnUtil.spawn2(32794, 32861,
-							(short) _mapnum, 110001, 3, 0, 0);//¾ÆÁî¸ğ´Ü
+							(short) _mapnum, 110001, 3, 0, 0);//Azmodan
 					} else if (chance <= 35) {
 						mon = (L1MonsterInstance) L1SpawnUtil.spawn2(32794, 32861, 
-								(short) _mapnum, 110000, 3, 0, 0);//¾Æºñ½¬
+								(short) _mapnum, 110000, 3, 0, 0);//Abish
 					} else {
 						mon = (L1MonsterInstance) L1SpawnUtil.spawn2(32794, 32861,
-								(short) _mapnum, 100762, 3, 0, 0);//Ãµ³â±¸¹ÌÈ£
+								(short) _mapnum, 100762, 3, 0, 0);//åƒå¹´ä¹å°¾ã®ç‹
 					}
-					Áö¹èÀÚstep++;
+					ruler_step++;
 					break;
-				case 2:// Á×¾ú´ÂÁö Ã¼Å©
+				case 2:// æ­»ã‚“ã ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯
 					if (mon == null || mon._destroyed || mon.isDead()) {
 						step = 5;
-						GREEN_MSG("¸ùÈ¯ÀÇ Áö¹èÀÚ°¡ ÅğÄ¡ µÇ¾ú½À´Ï´Ù.");
+						GREEN_MSG("å¤¢å¹»ã®æ”¯é…è€…ãŒé€€æ²»ã—ã¾ã—ãŸã€‚");
 						unicorn.setCurrentHp(unicorn.getMaxHp());
 						return;
 					}
@@ -276,14 +276,14 @@ public class DreamsTempleController implements Runnable {
 				break;
 			case 1:
 				if (sub_step == 0)
-					MSG(unicorn, "µµ¿ÍÁÖ·¯ ¿Í ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.");
+					MSG(unicorn, "åŠ©ã‘ã«æ¥ã¦ãã‚Œã¦ã‚ã‚ŠãŒã¨ã†ã€‚");
 				else if (sub_step == 1)
-					MSG(unicorn, "ÀÌ°èÀÇ Á¸Àç°¡ °ğ µ¹¾Æ¿Ã°Ì´Ï´Ù.");
+					MSG(unicorn, "ç•°ç•Œã®å­˜åœ¨ãŒã™ãã«æˆ»ã‚Šã¾ã™ã€‚");
 				else if (sub_step == 2)
-					MSG(unicorn, "±×Àü¿¡ Á¦°¡ ºÀÀÎÀ» Ç® ¼ö ÀÖµµ·Ï ½Ã°£À» ¹ú¾îÁÖ¼¼¿ä.");
+					MSG(unicorn, "ãã®å‰ã«ç§ãŒå°å°ã‚’è§£ãã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«æ™‚é–“ã‚’ç¨¼ã„ã§ãã ã•ã„ã€‚");
 				else if (sub_step == 3) {
-					MSG(unicorn, "¸¶¹ı ¸·´ë¸¦ ÀÌ¿ëÇØ ÀûÀ» Ã³Ä¡ÇØÁÖ¼¼¿ä.");
-					GREEN_MSG("¸¶¹ı ¸·´ë¸¦ ÀÌ¿ëÇØ ÀûÀ» Ã³Ä¡ÇØÁÖ¼¼¿ä.");
+					MSG(unicorn, "é­”æ³•ã®ãƒãƒ¼ã‚’ä½¿ã£ã¦æ•µã‚’å€’ã—ã¦ãã ã•ã„ã€‚");
+					GREEN_MSG("é­”æ³•ã®ãƒãƒ¼ã‚’ä½¿ã£ã¦æ•µã‚’å€’ã—ã¦ãã ã•ã„ã€‚");
 
 				}
 
@@ -295,9 +295,9 @@ public class DreamsTempleController implements Runnable {
 				}
 			case 2:
 				if (round == 0)
-					GREEN_MSG("ÀûµéÀÌ ¸ô·Á¿À°í ÀÖ½À´Ï´Ù.");
+					GREEN_MSG("æ•µãŒé›†ã¾ã£ã¦ãã¦ã„ã¾ã™ã€‚");
 				else
-					GREEN_MSG("ÀûµéÀÌ ´õ ¸ô·Á¿É´Ï´Ù. ÁØºñÇØ ÁÖ¼¼¿ä");
+					GREEN_MSG("æ•µãŒã‚ˆã‚Šé›†ã¾ã£ã¦ãã¾ã™ã€‚ æº–å‚™ã—ã¦ãã ã•ã„");
 				Effect_PEQ();
 				Round();
 				round++;
@@ -325,10 +325,10 @@ public class DreamsTempleController implements Runnable {
 					sub_step2--;
 					sub_step = 0;
 					if (round == 4 && sub_step2 == 0) {
-						GeneralThreadPool.getInstance().schedule(new Áö¹èÀÚ(),
+						GeneralThreadPool.getInstance().schedule(new Ruler(),
 								7000);
 					} else if (round == 4 && sub_step2 == 1) {
-						MSG(unicorn, "¾ó¸¶ ³²Áö ¾Ê¾Ò½À´Ï´Ù. Á¶±İ¸¸ ´õ ¹öÅßÁÖ¼¼¿ä");
+						MSG(unicorn, "å°‘ã—æ®‹ã£ã¦ã„ã¾ã›ã‚“ã§ã—ãŸã€‚ ã‚‚ã†å°‘ã—é ‘å¼µã£ã¦ãã ã•ã„");
 					}
 					GeneralThreadPool.getInstance().schedule(this, 2000);
 					return;
@@ -338,12 +338,12 @@ public class DreamsTempleController implements Runnable {
 					step++;
 				else {
 					step = 2;
-					GeneralThreadPool.getInstance().schedule(new ´ëÁ¤·É(), 1);
+					GeneralThreadPool.getInstance().schedule(new Great_spirit(), 1);
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				}
 				break;
-			case 4:// ´ë±â ¸ùÈ¯ÀÇÁö¹èÀÚ Á×¾ú´ÂÁö
+			case 4:// ëŒ€ê¸° ëª½í™˜ì˜ì§€ë°°ì ì£½ì—ˆëŠ”ì§€
 				break;
 			case 5:
 				for (L1Object ob : L1World.getInstance()
@@ -367,26 +367,26 @@ public class DreamsTempleController implements Runnable {
 					GeneralThreadPool.getInstance().schedule(this, 1000);
 					return;
 				} else if (sub_step == 1) {
-					MSG(unicorn, "°¨»çÇÕ´Ï´Ù");
-					GREEN_MSG("°¨»çÇÕ´Ï´Ù!");
+					MSG(unicorn, "ã‚ã‚ŠãŒã¨ã†");
+					GREEN_MSG("ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ï¼");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 2) {
-					MSG(unicorn, "´çºĞ°£ ±×°ÍÀº µ¹¾Æ¿Ã ¼ö ¾øÀ» °ÍÀÔ´Ï´Ù.");
-					GREEN_MSG("´çºĞ°£ ±×°ÍÀº µ¹¾Æ¿Ã ¼ö ¾øÀ» °ÍÀÔ´Ï´Ù.");
+					MSG(unicorn, "ã—ã°ã‚‰ãã¯æˆ»ã‚Œãªã„ã§ã—ã‚‡ã†ã€‚");
+					GREEN_MSG("ã—ã°ã‚‰ãã¯æˆ»ã‚Œãªã„ã§ã—ã‚‡ã†ã€‚");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 3) {
-					MSG(unicorn, "¾î¼­ ¸ùÈ¯ÀÇ ¼¶À¸·Î µ¹¾Æ°¡ ºÁ¾ß°Ú±º¿ä.");
-					GREEN_MSG("¾î¼­ ¸ùÈ¯ÀÇ ¼¶À¸·Î µ¹¾Æ°¡ ºÁ¾ß°Ú±º¿ä.");
+					MSG(unicorn, "ã•ã‚ã€ãƒ¢ãƒ³ãƒ•ã‚¡ãƒ³ã®å³¶ã«æˆ»ã£ã¦ã¿ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã­ã€‚");
+					GREEN_MSG("ã•ã‚ã€ãƒ¢ãƒ³ãƒ•ã‚¡ãƒ³ã®å³¶ã«æˆ»ã£ã¦ã¿ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã­ã€‚");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
 				} else if (sub_step == 4) {
-					MSG(unicorn, "¼±¹°À» µå¸®°í ½Í±º¿ä. ¸¶À½¿¡ µå¼ÌÀ¸¸é ÁÁ°Ú³×¿ä.");
-					GREEN_MSG("¼±¹°À» µå¸®°í ½Í±º¿ä. ¸¶À½¿¡ µå¼ÌÀ¸¸é ÁÁ°Ú³×¿ä.");
+					MSG(unicorn, "ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆã‚’å·®ã—ä¸Šã’ãŸã„ã§ã™ã­ã€‚ æ°—ã«å…¥ã£ã¦ã»ã—ã„ã§ã™ã­ã€‚");
+					GREEN_MSG("ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆã‚’å·®ã—ä¸Šã’ãŸã„ã§ã™ã­ã€‚ æ°—ã«å…¥ã£ã¦ã»ã—ã„ã§ã™ã­ã€‚");
 					sub_step++;
 					GeneralThreadPool.getInstance().schedule(this, 5000);
 					return;
@@ -395,19 +395,19 @@ public class DreamsTempleController implements Runnable {
 					int itemid = 0;
 
 					if (rnd == 5) {
-						itemid = 50004;//Ãà À¯´Ï °©¿Ê
+						itemid = 50004;//è»¸ãƒ¦ãƒ‹ã‚¢ãƒ¼ãƒãƒ¼
 					} else if (rnd == 5) {
-						itemid = 50003;//À¯´Ï °©¿Ê
+						itemid = 50003;//ãƒ¦ãƒ‹ã‚¢ãƒ¼ãƒãƒ¼
 					} else if (rnd <= 5) {
-						itemid = 50005;// ÀúÁÖ À¯´Ï °©¿Ê
+						itemid = 50005;// å‘ªã„ãƒ¦ãƒ‹ã‚¢ãƒ¼ãƒãƒ¼
 					} else if (rnd <= 15) {
-						itemid = 100030;// °í´ë ½ÅÀÇ Ã¢
+						itemid = 100030;// å¤ä»£ç¥ã®çª“
 					} else if (rnd <= 15) {
-						itemid = 100031;// °í´ë ½ÅÀÇ µµ³¢
+						itemid = 100031;// å¤ä»£ç¥ã®æ–§
 					} else if (rnd <= 30) {
-						itemid = 40074;// °©¿Ê¸¶¹ıÁÖ¹®¼­
+						itemid = 40074;// é§é­”æ³•æ³¨æ–‡æ›¸
 					} else if (rnd <= 25) {
-						itemid = 40087;// ¹«±â¸¶¹ıÁÖ¹®¼­
+						itemid = 40087;// æ­¦å™¨é­”æ³•æ³¨æ–‡æ›¸
 					}
 
 					L1GroundInventory targetInventory = L1World.getInstance()
@@ -427,25 +427,25 @@ public class DreamsTempleController implements Runnable {
 				}
 				break;
 			case 7:
-				GREEN_MSG("5ÃÊµÚ ¸¶À»·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+				GREEN_MSG("5ç§’å¾Œã«æ‘ã«ç§»å‹•ã—ã¾ã™ã€‚");
 				step++;
 				GeneralThreadPool.getInstance().schedule(this, 3000);
 				return;
 			case 8:
-				GREEN_MSG("2ÃÊµÚ ¸¶À»·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+				GREEN_MSG("2ç§’å¾Œã«æ‘ã«ç§»å‹•ã—ã¾ã™ã€‚");
 				step++;
 				GeneralThreadPool.getInstance().schedule(this, 2000);
 				return;
 			case 9:
-				GREEN_MSG("1ÃÊµÚ ¸¶À»·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+				GREEN_MSG("1ç§’å¾Œã«æ‘ã«ç§»å‹•ã—ã¾ã™ã€‚");
 				step++;
 				GeneralThreadPool.getInstance().schedule(this, 1000);
 				return;
-			case 10:// Á¤»ó Á¾·á
+			case 10:// æ­£å¸¸çµ‚äº†
 				quit();
 				break;
-			case 11:// À¯´ÏÄÜ »ç¸Á
-				GREEN_MSG("À¯´ÏÄÜÀÌ »ç¶óÁı´Ï´Ù.");
+			case 11:// ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ³æ­»äº¡
+				GREEN_MSG("ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ³ãŒæ¶ˆãˆã¾ã™ã€‚");
 				for (L1Object ob : L1World.getInstance()
 						.getVisibleObjects(_mapnum).values()) {
 					if (ob instanceof L1MonsterInstance) {
