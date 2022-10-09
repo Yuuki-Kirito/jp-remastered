@@ -503,8 +503,8 @@ public class UserCommands {
 				pc._PC_ROOM_BUFF = true;
 				String s = "08 01 f1 d5";// 피씨방..
 				pc.sendPackets(new S_NewCreateItem(126, s));
-				pc.getNetConnection().getAccount().setBuff_PC방(deleteTime);
-				pc.getNetConnection().getAccount().update피씨방();
+				pc.getNetConnection().getAccount().setBuff_PCroom(deleteTime);
+				pc.getNetConnection().getAccount().updatePC_room();
 				pc.getQuest().set_end(L1Quest.QUEST_PHONE);
 				phonenumber(name, phone, pc.getName());
 				pc.sendPackets(new S_SystemMessage("\\fT(" + name + ") 님 " + phone + " 번호로 고정 신청 되셨습니다. 감사합니다."));

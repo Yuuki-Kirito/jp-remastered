@@ -336,9 +336,9 @@ public class PremiumAinThread extends Thread {
 
 					long sysTime = System.currentTimeMillis();
 					if (_client._PC_ROOM_BUFF) {
-						if (_client.getNetConnection().getAccount().getBuff_PC¹æ() != null) {
-							if (sysTime <= _client.getNetConnection().getAccount().getBuff_PC¹æ().getTime()) {
-								long ÇÇ¾¾Å¸ÀÓ = _client.getNetConnection().getAccount().getBuff_PC¹æ().getTime() - sysTime;
+						if (_client.getNetConnection().getAccount().getBuff_PCroom() != null) {
+							if (sysTime <= _client.getNetConnection().getAccount().getBuff_PCroom().getTime()) {
+								long ÇÇ¾¾Å¸ÀÓ = _client.getNetConnection().getAccount().getBuff_PCroom().getTime() - sysTime;
 								TimeZone seoul = TimeZone.getTimeZone("UTC");
 								Calendar calendar = Calendar.getInstance(seoul);
 								calendar.setTimeInMillis(ÇÇ¾¾Å¸ÀÓ);

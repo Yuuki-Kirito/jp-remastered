@@ -211,6 +211,7 @@ encoding//src/l1j/server/netty/coder/types/UByte8.java=UTF-8
 encoding//src/l1j/server/netty/coder/types/UChar8.java=UTF-8
 encoding//src/l1j/server/netty/coder/types/ULong32.java=UTF-8
 encoding//src/l1j/server/quit_Q.java=UTF-8
+encoding//src/l1j/server/server/Account.java=UTF-8
 encoding//src/l1j/server/server/GMCommands.java=UTF-8
 encoding//src/l1j/server/server/command/executor/L1Recall.java=UTF-8
 encoding//src/l1j/server/server/datatables/AdenShopTable.java=UTF-8

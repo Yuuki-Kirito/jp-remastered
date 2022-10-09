@@ -41,14 +41,14 @@ import manager.LinAllManagerInfoThread;
 import server.LineageClient;
 
 public class Account {
-	/** °èÁ¤¸í */
+	/** account name */
 	private String _name;
-	/** Á¢¼ÓÀÚ IPÁÖ¼Ò */
+	/** Accessor IP address */
 	private String _ip;
-	/** ÆĞ½º¿öµå(¾ÏÈ£È­ µÊ) */
+	/** Password (encrypted) */
 	private String _password;
 
-	/** ÄÉ¸¯ºñ¹ø */
+	/** Kirkbyburn */
 	private String _CharPassword;
 	private byte[] _waitpacket = null;
 	private boolean _iscpwok = false;
@@ -56,29 +56,29 @@ public class Account {
 	
 	private boolean _is_changed_slot = false;
 
-	/** ÃÖ±Ù Á¢¼ÓÀÏ */
+	/** Last access date */
 	private Timestamp _lastActive;
 
 	public Timestamp _lastQuit;
-	/** ¿¢¼¼½º µî±Ş(GMÀÎ°¡?) */
+	/** Access level (is it GM?) */
 	private int _accessLevel;
-	/** Á¢¼ÓÀÚ È£½ºÆ®¸í */
+	/** connecter host name */
 	private String _host;
-	/** ¹ê À¯¹«(True == ±İÁö) */
+	/** Van presence (True == forbidden) */
 	private boolean _banned;
-	/** °èÁ¤ À¯È¿ À¯¹«(True == À¯È¿) */
+	/** Account Valid or Not (True == Valid) */
 	private boolean _isValid = false;
-	/** Ä³¸¯ÅÍ ½½·Ô(ÅÂ°íÀÇ¿Á¼â) */
+	/** Character Slot (Primordial Jade Chain) */
 	private int _charslot;
-	/** Ã¢°í ºñ¹Ğ¹øÈ£ */
+	/** warehouse password */
 	private int _GamePassword;
-	/** °èÁ¤ ½Ã°£ */
+	/** account time */
 	private int _AccountTime;
-	/** °èÁ¤ ½Ã°£ ¿¹¾à °ª */
+	/** Account Time Reservation Value */
 	private int _AccountTimeRead;
-	/** ÀÚµ¿¹æÁö ¹ÌÀÔ·Â Ä«¿îÆ® **/
+	/** Automatic prevention non-input count **/
 	public int _account_auto_check_count;
-	/** µå·¡°ï ·¹ÀÌµå ¹öÇÁ ½Ã°£ **/
+	/** Dragon Raid Buff Time **/
 	public Timestamp _dragon_raid_buff;
 
 	public Timestamp _Buff_HPMP;
@@ -91,26 +91,26 @@ public class Account {
 	public Timestamp _Buff_INT;
 	public Timestamp _Buff_WIS;
 	public Timestamp _Buff_HOLD;
-	public Timestamp _Buff_PC¹æ;
+	public Timestamp _Buff_PCroom;
 
-	/** ºÓÀº±â»ç´Ü º¸±Ş¹°ÀÚ ÀÌº¥Æ® ¹Ş¾Ò´ÂÁö **/
+	/** Did you receive the Red Knights supply event? **/
 	public boolean RedKnightEventItem = false;
-	/** ¸Ş¼¼Áö ·Î±×¿ë */
+	/** for message log */
 	private static Logger _log = Logger.getLogger(Account.class.getName());
 
 	public Account() {
 	}
 
 	/**
-	 * ÆĞ½º¿öµå¸¦ ¾ÏÈ£È­ÇÑ´Ù.
+	 * encrypt the password.
 	 * 
 	 * @param rawPassword
-	 *            ÆĞ½º¿öµå
+	 *            password
 	 * @return String
 	 * @throws NoSuchAlgorithmException
-	 *             ¾ÏÈ£È­ ¾Ë°í¸®ÁòÀ» »ç¿ëÇÒ ¼ö ¾øÀ» ¶§
+	 *             When encryption algorithms are not available
 	 * @throws UnsupportedEncodingException
-	 *             ÀÎÄÚµùÀÌ Áö¿øµÇÁö ¾ÊÀ» ¶§
+	 *             When encoding is not supported
 	 */
 	private static String encodePassword(final String rawPassword)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -121,26 +121,26 @@ public class Account {
 	}
 
 	/**
-	 * ½Å±Ô °èÁ¤ »ı¼º
+	 * Create a new account
 	 * 
 	 * @param name
-	 *            °èÁ¤¸í
+	 *            account name
 	 * @param rawPassword
-	 *            ÆĞ½º¿öµå
+	 *            password
 	 * @param ip
-	 *            Á¢¼ÓÀÚ IPÁÖ¼Ò
+	 *            Accessor IP address
 	 * @param host
-	 *            Á¢¼ÓÀÚ È£½ºÆ®¸í
+	 *            connecter host name
 	 * @return Account
 	 */
 	public static Account create(final String name, final String rawPassword, final String ip, final String host) {
 		Calendar cal = Calendar.getInstance();
-		int ½Ã°£ = Calendar.HOUR;
-		int ºĞ = Calendar.MINUTE;
-		/** 0 ¿ÀÀü , 1 ¿ÀÈÄ * */
-		String ¿ÀÀü¿ÀÈÄ = "¿ÀÈÄ";
+		int hour = Calendar.HOUR;
+		int minute = Calendar.MINUTE;
+		/** 0 morning , 1 afternoon * */
+		String morning_afternoon = "afternoon";
 		if (cal.get(Calendar.AM_PM) == 0) {
-			¿ÀÀü¿ÀÈÄ = "¿ÀÀü";
+			morning_afternoon = "afternoon";
 		}
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -182,7 +182,7 @@ public class Account {
 			pstm.setBytes(15, account._attendancePcHome);
 			pstm.executeUpdate();
 			
-			System.out.println(""+ ¿ÀÀü¿ÀÈÄ + " " + cal.get(½Ã°£) + "½Ã" + cal.get(ºĞ) + "ºĞ" + "   ¡á ½Å±Ô °èÁ¤: ["+name+"] »ı¼º¿Ï·á¡á");
+			System.out.println(""+ morning_afternoon + " " + cal.get(hour) + "ì‹œ" + cal.get(minute) + "ë¶„" + "   â–  ì‹ ê·œ ê³„ì •: ["+name+"] ìƒì„±ì™„ë£Œâ– ");
 			 LinAllManagerInfoThread.AccountCount += 1;
 			
 			return account;
@@ -196,10 +196,10 @@ public class Account {
 	}
 
 	/**
-	 * DB¿¡¼­ °èÁ¤ Á¤º¸ ºÒ·¯¿À±â
+	 * DBGet account information from
 	 * 
 	 * @param name
-	 *            °èÁ¤¸í
+	 *            account name
 	 * @return Account
 	 */
 
@@ -311,7 +311,7 @@ public class Account {
 			account._Buff_MAGIC = (rs.getTimestamp("BUFF_MAGIC_Time"));
 			account._Buff_STUN = (rs.getTimestamp("BUFF_STUN_Time"));
 			account._Buff_HOLD = (rs.getTimestamp("BUFF_HOLD_Time"));
-			account._Buff_PC¹æ = (rs.getTimestamp("BUFF_PCROOM_Time"));
+			account._Buff_PCroom = (rs.getTimestamp("BUFF_PCROOM_Time"));
 			account._Buff_STR = (rs.getTimestamp("BUFF_STR_Time"));
 			account._Buff_DEX = (rs.getTimestamp("BUFF_DEX_Time"));
 			account._Buff_INT = (rs.getTimestamp("BUFF_INT_Time"));
@@ -332,10 +332,10 @@ public class Account {
 	}
 
 	/**
-	 * DB¿¡ ÃÖ±Ù Á¢¼ÓÀÏ ¾÷µ¥ÀÌÆ®
+	 * DBì— Last Access Date Update
 	 * 
 	 * @param account
-	 *            °èÁ¤¸í
+	 *            account name
 	 */
 	public static void updateLastActive(final Account account, String sip) {
 		Connection con = null;
@@ -361,18 +361,18 @@ public class Account {
 	}
 
 	/*
-	 * public void Å½Æ÷ÀÎÆ®¾÷µ¥ÀÌÆ®(final Account account) { Timestamp °èÁ¤Á¾·á³¯Â¥ = _lastQuit;
-	 * Timestamp ÇöÀç³¯Â¥ = new Timestamp(System.currentTimeMillis());
-	 * 
-	 * long °èÁ¤¸¶Áö¸·Á¾·á½Ã°£ = 0; long ÇöÀç³¯Â¥½Ã°£ = ÇöÀç³¯Â¥.getTime(); long ½Ã°£Â÷ = 0; if (°èÁ¤Á¾·á³¯Â¥ !=
-	 * null) { °èÁ¤¸¶Áö¸·Á¾·á½Ã°£ = °èÁ¤Á¾·á³¯Â¥.getTime(); } else { return; } ½Ã°£Â÷ = ÇöÀç³¯Â¥½Ã°£ -
-	 * °èÁ¤¸¶Áö¸·Á¾·á½Ã°£; int Å½Ãß°¡È½¼ö = (int) (½Ã°£Â÷ / (60000 * 12)); if (Å½Ãß°¡È½¼ö < 1) { return; }
-	 * 
-	 * Å½¼öÄ¡Àû¿ë(account, °èÁ¤¸¶Áö¸·Á¾·á½Ã°£, Å½Ãß°¡È½¼ö); // System.out.println("Å½Ãß°¡È½¼ö : "+Å½Ãß°¡È½¼ö);
-	 * //¹ÌÁ¢¼ÓÅ½Áö±Ş }
+	 * public void final Account account { Timestamp account end date = _lastQuit;
+* Timestamp current date = new Timestamp(System.currentTimeMillis());
+*
+* long account last time = 0; long Current DateTime = Current Date.getTime(); long time difference = 0; if (account end date !=
+* null) { last account end time = account end date.getTime(); } else { return; } time difference = current date time -
+* Account last closing time; int number of probe additions = (int) (time difference / (60000 * 12)); if (Number of additions < 1) { return; }
+*
+* Apply the number of explorations (account, account last time, number of additions); // System.out.println("Number of search additions: "+ number of search additions);
+* //disconnection detection level }
 	 */
 
-	public void Å½¼öÄ¡Àû¿ë(final Account account, long Á¾·á³¯Â¥, int Å½Ãß°¡È½¼ö) {
+	public void applying_the_search_value(final Account account, long end_date, int number_of_additions) {
 		Connection con = null;
 		Connection con2 = null;
 		PreparedStatement pstm = null;
@@ -385,10 +385,10 @@ public class Account {
 		int char_objid = 0;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("SELECT * FROM `characters` WHERE account_name = ?"); // ÄÉ¸¯ÅÍ
-																								// Å×ÀÌºí¿¡¼­
-																								// ±ºÁÖ¸¸
-																								// °ñ¶ó¿Í¼­
+			pstm = con.prepareStatement("SELECT * FROM `characters` WHERE account_name = ?"); // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼
+																								// ãƒ†ãƒ¼ãƒ–ãƒ«ã‹ã‚‰
+																								// å›ä¸»ã®ã¿
+																								// é¸ã‚“ã§
 			pstm.setString(1, account.getName());
 			rs = pstm.executeQuery();
 			while (rs.next()) {
@@ -396,23 +396,23 @@ public class Account {
 				char_objid = rs.getInt("objid");
 				if (tamtime != null) {
 					if (sysTime <= tamtime.getTime()) {
-						// ÇöÀç±îÁöµµ Àû¿ëµÇ¾îÁö°íÀÖ´Â °æ¿ì.
-						int Ãß°¡È½¼ö = Å½Ãß°¡È½¼ö;
-						tam_point += Ãß°¡È½¼ö * tamcount;
+						// ä»Šã¾ã§ã‚‚é©ç”¨ã•ã‚Œã¦ã„ã‚‹å ´åˆã€‚
+						int additional_times = number_of_additions;
+						tam_point += additional_times * tamcount;
 						updateTam();
-						// System.out.println("ÇöÀçµµ Àû¿ëµÇ¾îÁö´Â Å½¿¡ Ãß°¡È½¼ö : "+Å½Ãß°¡È½¼ö);
+						// System.out.println("ç¾åœ¨ã‚‚é©ç”¨ã•ã‚Œã¦ã„ã‚‹ä¹—è»Šã«è¿½åŠ å›æ•°ï¼š+æ¢åµå›æ•°);
 					} else {
 						// if(Tam_wait_count(char_objid)!=0){
 						int day = Nexttam(char_objid);
 						if (day != 0) {
 							Timestamp deleteTime = null;
-							deleteTime = new Timestamp(sysTime + (86400000 * (long) day) + 10000);// 7ÀÏ
+							deleteTime = new Timestamp(sysTime + (86400000 * (long) day) + 10000);// 7ì¼
 							con2 = L1DatabaseFactory.getInstance().getConnection();
 							pstm2 = con2.prepareStatement(
-									"UPDATE `characters` SET TamEndTime=? WHERE account_name = ? AND objid = ?"); // ÄÉ¸¯ÅÍ
-																													// Å×ÀÌºí¿¡¼­
-																													// ±ºÁÖ¸¸
-																													// °ñ¶ó¿Í¼­
+									"UPDATE `characters` SET TamEndTime=? WHERE account_name = ? AND objid = ?"); // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼
+																													// ãƒ†ãƒ¼ãƒ–ãƒ«ã‹ã‚‰
+																													// å›ä¸»ã®ã¿
+																													// é¸ã‚“ã§
 							pstm2.setTimestamp(1, deleteTime);
 							pstm2.setString(2, account.getName());
 							pstm2.setInt(3, char_objid);
@@ -421,19 +421,19 @@ public class Account {
 							tamtime = deleteTime;
 						}
 						// }
-						if (Á¾·á³¯Â¥ <= tamtime.getTime()) {
-							// ÇöÀç´Â ¾Æ´ÏÁö¸¸ Á¾·áÀÌÈÄ Àû¿ëµÇ¾îÁö´Â °æ¿ì.
-							int Ãß°¡È½¼ö = (int) ((tamtime.getTime() - Á¾·á³¯Â¥) / (60000 * 12));
-							tam_point += Ãß°¡È½¼ö * tamcount;
+						if (end_date <= tamtime.getTime()) {
+							// ç¾åœ¨ã§ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€çµ‚äº†å¾Œã«é©ç”¨ã•ã‚Œã‚‹å ´åˆã€‚
+							int additional_times = (int) ((tamtime.getTime() - end_date) / (60000 * 12));
+							tam_point += additional_times * tamcount;
 							updateTam();
 						} else {
-							// System.out.println("Á¾·á³¯Â¥ ÀÌÀü¿¡ Å½½Ã°£µµ Á¾·áµÊ.");
+							// System.out.println("çµ‚äº†æ—¥ä»¥å‰ã«ä¹—è»Šæ™‚é–“ã‚‚çµ‚äº†ã—ã¾ã—ãŸã€‚");
 						}
 
 						/**/
 					}
 				} else {
-					// System.out.println("Å½Å¸ÀÓ ¾øÀ½");
+					// System.out.println("no tom time");
 				}
 			}
 		} catch (Exception e) {
@@ -455,10 +455,10 @@ public class Account {
 		int day = 0;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("SELECT day FROM `tam` WHERE objid = ? order by id asc limit 1"); // ÄÉ¸¯ÅÍ
-																											// Å×ÀÌºí¿¡¼­
-																											// ±ºÁÖ¸¸
-																											// °ñ¶ó¿Í¼­
+			pstm = con.prepareStatement("SELECT day FROM `tam` WHERE objid = ? order by id asc limit 1"); 
+																											
+																											
+																											
 			pstm.setInt(1, objectId);
 			rs = pstm.executeQuery();
 			while (rs.next()) {
@@ -510,10 +510,10 @@ public class Account {
 	}
 
 	/**
-	 * À¥ÆĞ½º¿öµå°ü·ÃÀÓ;
+	 * Web password related;
 	 * 
 	 * @param account
-	 *            °èÁ¤¸í
+	 *            account name
 	 */
 	public static void updateWebPwd(String AccountName, String pwd) {
 		Connection con = null;
@@ -540,10 +540,10 @@ public class Account {
 	}
 
 	/**
-	 * 2Â÷ºñ¹ø Àú°ü·ÃÀÓ;
+	 * 2ì°¨ë¹„ë²ˆ ì €ê´€ë ¨ì„;
 	 * 
 	 * @param account
-	 *            °èÁ¤¸í
+	 *            ê³„ì •ëª…
 	 */
 	public void UpdateCharPassword(String pwd) {
 		Connection con = null;
@@ -564,9 +564,9 @@ public class Account {
 	}
 
 	/**
-	 * ÇØ´ç °èÁ¤ÀÇ Ä³¸¯ÅÍ¼ö¸¦ ¼À
+	 * Count the number of characters in the account
 	 * 
-	 * @return result Ä³¸¯ÅÍ¼ö
+	 * @return result number of characters
 	 */
 	public int countCharacters() {
 		int result = 0;
@@ -631,9 +631,9 @@ public class Account {
 	}
 
 	/**
-	 * ÀÔ·ÂµÈ ºñ¹Ğ¹øÈ£¿Í DB¿¡ ÀúÀåµÈ ÆĞ½º¿öµå¸¦ ºñ±³
+	 * Compare the entered password with the password stored in the DB
 	 * 
-	 * @param rawPassword ÆĞ½º¿öµå
+	 * @param rawPassword password
 	 * @return boolean
 	 */
 	public boolean validatePassword(String accountName, final String rawPassword) {
@@ -644,7 +644,7 @@ public class Account {
 				_isValid = (_password.equals(rawPassword) || checkPassword(accountName, _password, rawPassword));
 			}
 			if (_isValid) {
-				_password = null; // ÀÎÁõÀÌ ¼º°øÇßÀ» °æ¿ì, ÆĞ½º¿öµå¸¦ ÆÄ±âÇÑ´Ù.
+				_password = null; // èªè¨¼ãŒæˆåŠŸã—ãŸå ´åˆã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç ´æ£„ã™ã‚‹ã€‚
 			}
 			return _isValid;
 		} catch (Exception e) {
@@ -654,7 +654,7 @@ public class Account {
 	}
 
 	/**
-	 * À¯È¿ÇÑ °èÁ¤ÀÎ°¡
+	 * Is it a valid account
 	 * 
 	 * @return boolean
 	 */
@@ -663,7 +663,7 @@ public class Account {
 	}
 
 	/**
-	 * GM °èÁ¤ÀÎ°¡
+	 * GM Is it an account
 	 * 
 	 * @return boolean
 	 */
@@ -700,7 +700,7 @@ public class Account {
 	}
 
 	/**
-	 * ÄûÁî¸¦ ÃëµæÇÑ´Ù.
+	 * take the quiz.
 	 * 
 	 * @return String
 	 */
@@ -790,12 +790,12 @@ public class Account {
 		_Buff_HOLD = ts;
 	}
 
-	public Timestamp getBuff_PC¹æ() {
-		return _Buff_PC¹æ;
+	public Timestamp getBuff_PCroom() {
+		return _Buff_PCroom;
 	}
 
-	public void setBuff_PC¹æ(Timestamp ts) {
-		_Buff_PC¹æ = ts;
+	public void setBuff_PCroom(Timestamp ts) {
+		_Buff_PCroom = ts;
 	}
 	
 	public Timestamp getBuff_STR() {
@@ -839,7 +839,7 @@ public class Account {
 	}
 
 	/**
-	 * ÄÉ¸¯ÅÍ ½½·Ô¼ö ¼³Á¤
+	 * character slot settings
 	 * 
 	 * @return boolean
 	 */
@@ -893,7 +893,7 @@ public class Account {
 					num = rs.getInt("cnt");
 			}
 
-			// µ¿ÀÏ IP·Î »ı¼ºµÈ °èÁ¤ÀÌ 5°³ ¹Ì¸¸ÀÎ °æ¿ì
+			// åŒã˜IPã§ä½œæˆã•ã‚ŒãŸã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒ5ã¤æœªæº€ã®å ´åˆ
 			if (num < 5)
 				return false;
 			else
@@ -908,7 +908,7 @@ public class Account {
 		return false;
 	}
 
-	// À¥ ¿¬µ¿À» À§ÇÑ ¸Ş¼Òµå Ãß°¡ - By Sini
+	// Webé€£æºã®ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ  - By ã‚ã‚“ã‚ã‚“
 	public static boolean checkPassword(String accountName, String _pwd, String rawPassword) {
 		String _inputPwd = null;
 		Connection con = null;
@@ -921,7 +921,7 @@ public class Account {
 			} else {
 				pstm = con.prepareStatement("SELECT ? as pwd ");
 			}
-			pstm.setString(1, rawPassword);// ÀÌºÎºĞ ¿¡·¯¶ä¤¤
+			pstm.setString(1, rawPassword);// ã“ã‚Œã¯ã‚¨ãƒ©ãƒ¼ã§ã™ã€‚
 			rs = pstm.executeQuery();
 			if (rs.next()) {
 				_inputPwd = rs.getString("pwd");
@@ -933,7 +933,7 @@ public class Account {
 			SQLUtil.close(rs);
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
-			if (_pwd.equals(_inputPwd)) { // µ¿ÀÏÇÏ´Ù¸é
+			if (_pwd.equals(_inputPwd)) { // åŒã˜ãªã‚‰
 				return true;
 			} else
 				return false;
@@ -948,7 +948,7 @@ public class Account {
 	}
 
 	/**
-	 * Ã¢°í ºñ¹ø
+	 * warehouse password
 	 * 
 	 * @return boolean
 	 */
@@ -976,10 +976,10 @@ public class Account {
 	}
 
 	/**
-	 * ·Î±×¾Æ¿ô½Ã ³²Àº Æ÷ÀÎÆ® °áÁ¦ÇÑ Å¸ÀÓÀ» ÀúÀå½ÃÅ²´Ù;
+	 * Stores the remaining points payment time when logging out;
 	 * 
 	 * @param account
-	 *            °èÁ¤¸í
+	 *            account name
 	 */
 	public static void updatePointAccount(String AccountName, long time) {
 		Connection con = null;
@@ -1207,14 +1207,14 @@ public class Account {
 		}
 	}
 
-	public void updateÇÇ¾¾¹æ() {
+	public void updatePC_room() {
 		Connection con = null;
 		PreparedStatement pstm = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
 			String sqlstr = "UPDATE accounts SET BUFF_PCROOM_Time=? WHERE login = ?";
 			pstm = con.prepareStatement(sqlstr);
-			pstm.setTimestamp(1, _Buff_PC¹æ);
+			pstm.setTimestamp(1, _Buff_PCroom);
 			pstm.setString(2, _name);
 			pstm.executeUpdate();
 		} catch (Exception e) {
@@ -1319,14 +1319,14 @@ public class Account {
 	public Timestamp waterlilyday;
 	public Timestamp blackbattleshipday;
 	public Timestamp rubberpcday;
-	/**¸®¸¶½ºÅÍ ´øÀü½Ã°£ Ãß°¡ºÎºĞ*/
+	/**Remastered Dungeon Time Addition*/
 	public int time;
 	public Timestamp budangday;
 	public int evatime;
 	public Timestamp evaday;
 	public int atubatime;
 	public Timestamp atoubaday;
-	/**¸®¸¶½ºÅÍ ´øÀü½Ã°£ Ãß°¡ºÎºĞ*/
+	/**Remastered Dungeon Time Addition*/
 
 	// public int ainhasad;
 
@@ -1335,11 +1335,11 @@ public class Account {
 	public int Shop_open_count;
 
 	/**
-	 * Ãâ¼®Ã¼Å©¸¦ ÃëµæÇÑ´Ù.
+	 * Get attendance check.
 	 * 
 	 * @return
 	 */
-	/** Ãâ¼®Ã¼Å© ½Ã°£ ÀúÀå */
+	/** Save attendance check time */
 	public void saveAttendanceTime(Account account) {
 		Connection con = null;
 		PreparedStatement pstm = null;
@@ -1358,7 +1358,7 @@ public class Account {
 		}
 	}
 
-	/** ÀÏ¹İ Ãâ¼®Ã¼Å©°¡ ´Ù µÇ¾ú´ÂÁö »óÅÂ */
+	/** Status of whether general attendance check has been completed */
 	private boolean _isAttendanceHome;
 
 	public void setAttendanceHome(boolean flag) {
@@ -1396,7 +1396,7 @@ public class Account {
 		_attendanceHome = b;
 	}
 
-	/** ÇÇ¾¾¹æ Ãâ¼®Ã¼Å© **/
+	/** PC room attendance check **/
 	private boolean _isAttendancePcHome;
 
 	public void setAttendancePcHome(boolean flag) {
@@ -1517,7 +1517,7 @@ public class Account {
 	public void updateAttendaceDate(){
 		Connection con = null;
 		PreparedStatement pstm = null;
-		Calendar cal = Calendar.getInstance(Locale.KOREA);	
+		Calendar cal = Calendar.getInstance(Locale.JAPAN);	
 		cal.set(Calendar.YEAR, 2016);
 		long tim = cal.getTimeInMillis();
 		java.sql.Date JAVANowtime = new java.sql.Date(tim);
@@ -1540,7 +1540,7 @@ public class Account {
 	public void updateAttendacePcDate(){
 		Connection con = null;
 		PreparedStatement pstm = null;
-		Calendar cal = Calendar.getInstance(Locale.KOREA);	
+		Calendar cal = Calendar.getInstance(Locale.JAPAN);	
 		cal.set(Calendar.YEAR, 2016);
 		long tim = cal.getTimeInMillis();
 		java.sql.Date JAVANowtime = new java.sql.Date(tim);

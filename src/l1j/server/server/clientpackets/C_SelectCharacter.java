@@ -1163,9 +1163,9 @@ public class C_SelectCharacter extends ClientBasePacket {
 				}
 			}
 
-			if (pc.getNetConnection().getAccount().getBuff_PC방() != null) {
-				if (sysTime <= pc.getNetConnection().getAccount().getBuff_PC방().getTime()) {
-					long 피씨타임 = pc.getNetConnection().getAccount().getBuff_PC방().getTime() - sysTime;
+			if (pc.getNetConnection().getAccount().getBuff_PCroom() != null) {
+				if (sysTime <= pc.getNetConnection().getAccount().getBuff_PCroom().getTime()) {
+					long 피씨타임 = pc.getNetConnection().getAccount().getBuff_PCroom().getTime() - sysTime;
 
 					TimeZone seoul = TimeZone.getTimeZone("UTC");
 					Calendar calendar = Calendar.getInstance(seoul);
