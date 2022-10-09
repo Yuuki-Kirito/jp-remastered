@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
+
 import l1j.server.server.model.L1World;
 import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.utils.L1SpawnUtil;
@@ -34,8 +35,8 @@ public class GiftBossController extends Thread {
   public boolean _Boss15Die = false;
   public boolean _startBoss = false;
   Random rnd = new Random();
-  private static final SimpleDateFormat s = new SimpleDateFormat("HH", Locale.KOREA);
-  private static final SimpleDateFormat ss = new SimpleDateFormat("MM-dd HH:mm", Locale.KOREA);
+  private static final SimpleDateFormat s = new SimpleDateFormat("HH", Locale.JAPAN);
+  private static final SimpleDateFormat ss = new SimpleDateFormat("MM-dd HH:mm", Locale.JAPAN);
 
   public boolean getGiftBossStart(){
     return _GiftBossStart;
@@ -98,8 +99,8 @@ public class GiftBossController extends Thread {
     try{
       int i = rnd.nextInt(4);
         L1SpawnUtil.spawn2(BossLocX[i], BossLocY[i], (short) 53, 60178, 0, 3800000, 0);
-        L1World.getInstance().broadcastServerMessage("\\aF±â¶õ°¨¿Á 1Ãş ¾îµò°¡¿¡ µÎ¸ñ ¼±¹°µµµÏÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "\\aF±â¶õ°¨¿Á 1Ãş ¾îµò°¡¿¡ µÎ¸ñ ¼±¹°µµµÏÀÌ ³ªÅ¸³µ½À´Ï´Ù."));
+        L1World.getInstance().broadcastServerMessage("\\aFã‚®ãƒ©ãƒ³ç›£ç„1éšã®ã©ã“ã‹ã«ä¸»ä»»ã‚®ãƒ•ãƒˆæ³¥æ£’ãŒç¾ã‚Œã¾ã—ãŸã€‚");
+        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "\\aFã‚®ãƒ©ãƒ³ç›£ç„1éšã®ã©ã“ã‹ã«ä¸»ä»»ã‚®ãƒ•ãƒˆæ³¥æ£’ãŒç¾ã‚Œã¾ã—ãŸã€‚"));
     } catch (Exception e) {
      e.printStackTrace();
     }
