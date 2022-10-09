@@ -35,16 +35,16 @@ public class GeneralThreadPool {
 
 	private static final int SCHEDULED_CORE_POOL_SIZE = 500;
 
-	private Executor _executor; // ¹ü¿ë ExecutorService
-	private ScheduledExecutorService _scheduler; // ¹ü¿ë ScheduledExecutorService
-	private ScheduledExecutorService _pcScheduler; // ÇÃ·¹ÀÌ¾îÀÇ ¸ğ´ÏÅÍ¿ë
+	private Executor _executor; // universal ExecutorService
+	private ScheduledExecutorService _scheduler; // universal ScheduledExecutorService
+	private ScheduledExecutorService _pcScheduler; // for the player's monitor
 													// ScheduledExecutorService
-	// ÀÏ´Ü L1J µğÆúÆ® »óÅÂ·Î, map:4¿¡ ÀÖ´Â ¾Æ¹«°Íµµ ÇÏ°í ÀÖÁö ¾Ê´Â PC°¡ 1ÃÊ°£¿¡ Á¡À¯ ÇÏ´Â ½ÇÇà ½Ã°£Àº ¾à
-	// 6ms(AutoUpdate: ¾à 6ms, ExpMonitor:±Ø¼Ò)
-	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // Àû´ç(20
-																				// User¿¡
-																				// 1°³Á¤µµÀÇ
-																				// ÇÒ´ç)
+	// L1J ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆçŠ¶æ…‹ã§ã€map:4 ã«ä½•ã‚‚ã—ã¦ã„ãªã„ PC ãŒ 1 ç§’é–“ã«å ã‚ã‚‹å®Ÿè¡Œæ™‚é–“ã¯ç´„
+	// 6ms(AutoUpdate: ì•½ 6ms, ExpMonitor:very small)
+	private final int _pcSchedulerPoolSize = 1 + Config.MAX_ONLINE_USERS / 20; // é©å½“(20
+																				// Userì—
+																				// 1æ”¹æ­£ã®
+																				// å‰²ã‚Šå½“ã¦)
 
 	public static GeneralThreadPool getInstance() {
 		if (_instance == null) {
@@ -120,7 +120,7 @@ public class GeneralThreadPool {
 				TimeUnit.MILLISECONDS);
 	}
 
-	// ThreadPoolManager ·ÎºÎÅÍ ¹èÂ÷
+	// ThreadPoolManager dispatch from
 	private class PriorityThreadFactory implements ThreadFactory {
 		private final int _prio;
 		private final String _name;

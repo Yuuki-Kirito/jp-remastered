@@ -10,7 +10,7 @@ public class GameServerSetting extends Thread {
 		return _instance;
 	}
 
-	/** Server Manager 1 관련 부분 **/
+	/** Server Manager 1 relevant part **/
 	public static boolean isNormal = false;
 	public static boolean isWishper = false;
 	public static boolean isGlobal = false;
