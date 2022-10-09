@@ -221,6 +221,7 @@ encoding//src/l1j/server/server/GameServerFullException.java=UTF-8
 encoding//src/l1j/server/server/GameServerSetting.java=UTF-8
 encoding//src/l1j/server/server/GeneralThreadPool.java=UTF-8
 encoding//src/l1j/server/server/GiftBossController.java=UTF-8
+encoding//src/l1j/server/server/GiftBoxController.java=UTF-8
 encoding//src/l1j/server/server/command/executor/L1Recall.java=UTF-8
 encoding//src/l1j/server/server/datatables/AdenShopTable.java=UTF-8
 encoding//src/l1j/server/server/datatables/ArmorSetTable.java=UTF-8

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
+
 import l1j.server.server.model.L1World;
 import l1j.server.server.serverpackets.S_PacketBox;
 import l1j.server.server.utils.L1SpawnUtil;
@@ -34,8 +35,8 @@ public class GiftBoxController extends Thread {
   public boolean _box15Die = false;
   public boolean _startBoss = false;
   Random rnd = new Random();
-  private static final SimpleDateFormat s = new SimpleDateFormat("HH", Locale.KOREA);
-  private static final SimpleDateFormat ss = new SimpleDateFormat("MM-dd HH:mm", Locale.KOREA);
+  private static final SimpleDateFormat s = new SimpleDateFormat("HH", Locale.JAPAN);
+  private static final SimpleDateFormat ss = new SimpleDateFormat("MM-dd HH:mm", Locale.JAPAN);
 
   public boolean getGiftBoxStart(){
     return _GiftBoxStart;
@@ -215,11 +216,11 @@ return _box15Die;
       L1SpawnUtil.spawn2(32771, 32768, (short) 53, 60184, 70, 3800000, 0);
       L1SpawnUtil.spawn2(32771, 32768, (short) 53, 60185, 70, 3800000, 0);
       L1SpawnUtil.spawn2(32771, 32768, (short) 53, 60186, 70, 3800000, 0);
-      L1World.getInstance().broadcastServerMessage("\\aJ¼±¹° µµµÏ Àâ±â ÀÌº¥Æ®°¡ ½ÃÀÛµÇ¾ú½À´Ï´Ù.");
-      L1World.getInstance().broadcastServerMessage("\\aJ±â¶õ°¨¿Á 1Ãş ¼±¹° µµµÏµéÀ» ¼ÒÅÁÇÏ¼¼¿ä.");
-      L1World.getInstance().broadcastServerMessage("\\aJº¸»ó : 1Ãµ¸¸¾Æµ§ ¹× ¿À¸²ÀÇÀå½Å±¸¸¶¹ıÁÖ¹®¼­»óÀÚ.");
-      L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJ¼±¹° µµµÏ Àâ±â ÀÌº¥Æ®°¡ ½ÃÀÛµÇ¾ú½À´Ï´Ù."));
-      L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJ±â¶õ °¨¿Á 1Ãş¿¡ ¼±¹° µµµÏÀÌ ³ªÅ¸³µ½À´Ï´Ù."));
+      L1World.getInstance().broadcastServerMessage("\\aJã‚®ãƒ•ãƒˆæ³¥æ£’ã‚­ãƒ£ãƒƒãƒã‚¤ãƒ™ãƒ³ãƒˆãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚");
+      L1World.getInstance().broadcastServerMessage("\\aJã‚®ãƒ©ãƒ³åˆ‘å‹™æ‰€1éšã®ã‚®ãƒ•ãƒˆæ³¥æ£’ã‚’æƒé™¤ã—ã¦ãã ã•ã„ã€‚");
+      L1World.getInstance().broadcastServerMessage("\\aJë³´ìƒ : 1000ä¸‡ã‚¢ãƒ‡ãƒ³ã¨ã‚ªãƒªãƒ ã®è£…èº«å…·é­”æ³•æ³¨æ–‡ãƒœãƒƒã‚¯ã‚¹ã€‚");
+      L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJã‚®ãƒ•ãƒˆæ³¥æ£’ã‚­ãƒ£ãƒƒãƒã‚¤ãƒ™ãƒ³ãƒˆãŒå§‹ã¾ã‚Šã¾ã—ãŸã€‚"));
+      L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJã‚®ãƒ©ãƒ³åˆ‘å‹™æ‰€1éšã«ã‚®ãƒ•ãƒˆæ³¥æ£’ãŒç¾ã‚Œã¾ã—ãŸã€‚"));
     } catch (Exception e)
     {
       e.printStackTrace();
@@ -232,12 +233,12 @@ return _box15Die;
       int j = rnd.nextInt(2);
       if (j < 1){
         L1SpawnUtil.spawn2(BossLocX[i], BossLocY[i], (short) 53, 60178, 0, 3800000, 0);
-        L1World.getInstance().broadcastServerMessage("\\aJ±â¶õ°¨¿Á1Ãş ¾îµò°¡¿¡ ÃÊ´ë¹Ú¼±¹° ²Ù·¯¹Ì°¡ ³ªÅ¸³µ½À´Ï´Ù.");
-        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJ±â¶õ°¨¿Á 1Ãş ¾îµò°¡¿¡ ¼±¹° µµµÏÀÌ ³ªÅ¸³µ½À´Ï´Ù."));
+        L1World.getInstance().broadcastServerMessage("\\aJã‚®ãƒ©ãƒ³ç›£ç„1éšã®ã©ã“ã‹ã«æ‹›å¾…çŠ¶ã®ã‚®ãƒ•ãƒˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãŒç¾ã‚Œã¾ã—ãŸã€‚");
+        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJã‚®ãƒ©ãƒ³åˆ‘å‹™æ‰€1éšã®ã©ã“ã‹ã«ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆæ³¥æ£’ãŒç¾ã‚Œã¾ã—ãŸã€‚"));
       } else {
         L1SpawnUtil.spawn2(BossLoc2X[i], BossLoc2Y[i], (short) 53, 60178, 0, 3800000, 0);
-        L1World.getInstance().broadcastServerMessage("\\aA±â¶õ°¨¿Á 1Ãş ¾îµò°¡¿¡ \\aGÃÊ´ë¹Ú¼º¹°²Ù·¯¹Ì\\aAÀÌ ³ªÅ¸³µ½À´Ï´Ù.");
-        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJ±â¶õ°¨¿Á 1Ãş ¾îµò°¡¿¡ ¼±¹° µµµÏÀÌ ³ªÅ¸³µ½À´Ï´Ù."));
+        L1World.getInstance().broadcastServerMessage("\\aAã‚®ãƒ©ãƒ³åˆ‘å‹™æ‰€1éšã®ã©ã“ã‹ã« \\aGæ‹›å¾…åšç‰©é¤¨\\aAã“ã‚ŒãŒç¾ã‚Œã¾ã—ãŸã€‚");
+        L1World.getInstance().broadcastPacketToAll(new S_PacketBox(84, "     \\aJã‚®ãƒ©ãƒ³åˆ‘å‹™æ‰€1éšã®ã©ã“ã‹ã«ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆæ³¥æ£’ãŒç¾ã‚Œã¾ã—ãŸã€‚"));
       }
     } catch (Exception e) {
      e.printStackTrace();
