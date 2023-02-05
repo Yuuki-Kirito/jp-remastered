@@ -411,7 +411,7 @@ public class L1Shop {
 					inv.storeNpcShopItem(item);
 					// inv.storeItem(item);
 					LogTable.lognpcshop(inv.getOwner(), getNpcId(), item, order.getItem().getPrice(), amount, 0);
-					if (GMCommands.무인상점구매체크) {
+					if (GMCommands.is_Unmanned_store_purchase_check) {
 						for (L1PcInstance temppc : L1World.getInstance().getAllPlayers()) {
 							if (temppc == null || temppc.getNetConnection() == null)
 								continue;

@@ -3030,7 +3030,7 @@ public class L1PcInstance extends L1Character {
 
 		if (_PUNCHUNG_BAG) {
 			if (serverbasepacket.getType().equalsIgnoreCase("[S] S_SabuTell")) {
-				L1Teleport.분신텔(this, dx, dy, dm, true);
+				L1Teleport.bunsintel(this, dx, dy, dm, true);
 			}
 		}
 
@@ -6604,7 +6604,7 @@ public class L1PcInstance extends L1Character {
 				// }
 		}
 
-		if (GMCommands._CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM && getLevel() == 50) {
+		if (GMCommands.is_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM && getLevel() == 50) {
 			boolean ck = IpPhoneCertificationTable.getInstance().list().contains(getNetConnection().getIp());
 			if (!ck)
 				L1Teleport.teleport(this, 32736, 32796, (short) 99, 5, true);

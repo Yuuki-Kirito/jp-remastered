@@ -1283,7 +1283,7 @@ public class C_SelectCharacter extends ClientBasePacket {
 
 			pc.sendPackets(new S_OwnCharStatus(pc), true);
 			if (pc.getClanid() != 0) { // 크란 소속중
-				pc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, pc.getClan().getmarkon()), true);
+				pc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, pc.getClan().getmarkon()), true);
 				pc.sendPackets(new S_문장주시(pc.getClan(), 2), true);
 				pc.sendPackets(new S_NewUI(0x19, pc.getClan().getClanName(), pc), true);
 

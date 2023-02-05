@@ -29,14 +29,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import l1j.server.server.model.L1Location;
-import l1j.server.server.templates.L1ItemSetItem;
-import l1j.server.server.utils.IterableElementList;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import l1j.server.server.model.L1Location;
+import l1j.server.server.templates.L1ItemSetItem;
+import l1j.server.server.utils.IterableElementList;
 
 public class GMCommandsConfig {
 	private static Logger _log = Logger.getLogger(GMCommandsConfig.class
@@ -137,7 +137,7 @@ public class GMCommandsConfig {
 				}
 			}
 		} catch (Exception e) {
-			_log.log(Level.SEVERE, "GMCommands.xml¿« readø° Ω«∆–", e);
+			_log.log(Level.SEVERE, "GMCommands.xmlÏùò readÏóê Ïã§Ìå®", e);
 		}
 	}
 }

@@ -261,7 +261,7 @@ public class C_JoinClan extends ClientBasePacket {
 					Broadcaster.broadcastPacket(joinPc,new S_ClanJoinLeaveStatus(joinPc));
 					joinPc.sendPackets(new S_ReturnedStat(joinPc,S_ReturnedStat.CLAN_JOIN_LEAVE), true);
 					Broadcaster.broadcastPacket(joinPc, new S_ReturnedStat(joinPc, S_ReturnedStat.CLAN_JOIN_LEAVE));
-					joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.Ç÷¸¶Å©¶ç¿ì±â,joinPc.getClan().getmarkon()), true);
+					joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark,joinPc.getClan().getmarkon()), true);
 					joinPc.sendPackets(new S_¹®ÀåÁÖ½Ã(joinPc.getClan(), 2), true);
 					pc.sendPackets(new S_PacketBox(pc,S_PacketBox.PLEDGE_REFRESH_PLUS));
 					joinPc.sendPackets(new S_ServerMessage(95, clanName)); // \f1%0

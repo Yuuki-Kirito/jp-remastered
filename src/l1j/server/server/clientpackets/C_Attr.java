@@ -1685,7 +1685,7 @@ public class C_Attr extends ClientBasePacket {
 			Broadcaster.broadcastPacket(joinPc, new S_ClanJoinLeaveStatus(joinPc));
 			joinPc.sendPackets(new S_ReturnedStat(joinPc,S_ReturnedStat.CLAN_JOIN_LEAVE), true);
 			Broadcaster.broadcastPacket(joinPc, new S_ReturnedStat(joinPc,S_ReturnedStat.CLAN_JOIN_LEAVE));
-			joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, joinPc.getClan().getmarkon()), true);
+			joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, joinPc.getClan().getmarkon()), true);
 			joinPc.sendPackets(new S_문장주시(joinPc.getClan(), 2), true);
 			ClanTable.getInstance().updateClan(joinPc.getClan());
 			if (pc != null) {

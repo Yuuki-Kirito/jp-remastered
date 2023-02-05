@@ -143,7 +143,7 @@ public class C_ActionUi extends ClientBasePacket {
 	private static final int DOLL_START = 122;
 	private static final int DOLL_RESULT = 124;
 	private static final int TELEPORT_SKY_GARDEN = 132;
-	private static final int 유저랭킹 = 135;
+	private static final int user_ranking = 135;
 	private static final int EventNotice = 143;
 	private static final int ACTIONKEY = 319;
 	private static final int CLAN_JOIN = 322;
@@ -790,7 +790,7 @@ public class C_ActionUi extends ClientBasePacket {
 			}
 		}
 			break;
-		case 유저랭킹: {
+		case user_ranking: {
 			readH();
 			readC();
 			int classId = readC();
@@ -3677,7 +3677,7 @@ public class C_ActionUi extends ClientBasePacket {
 		readP(1); // dummy
 		craftId = readBit();
 
-		if (GMCommands.제작체크) {
+		if (GMCommands.is_Production_check) {
 			System.out.println("제작아이디 - craftId : " + craftId);
 		}
 
@@ -3688,7 +3688,7 @@ public class C_ActionUi extends ClientBasePacket {
 
 		readP(1); // dummy
 		createItemCount = readBit();
-		if (GMCommands.제작체크) {
+		if (GMCommands.is_Production_check) {
 			System.out.println("제작만들갯수 - createItemCount : " + createItemCount);
 		}
 
@@ -3723,7 +3723,7 @@ public class C_ActionUi extends ClientBasePacket {
 				readP(5); // dummy
 			}
 
-			if (GMCommands.제작체크) {
+			if (GMCommands.is_Production_check) {
 				System.out.println("제작재료템 - descId : " + descId + " / enchant : " + enchant);
 			}
 

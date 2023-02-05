@@ -464,7 +464,7 @@ public class C_Report extends ClientBasePacket {
 				clan.setmarkon(on);
 				ClanTable.getInstance().updateClan(clan);
 				for (L1PcInstance targetPc : clan.getOnlineClanMember()) { // 온라인
-					targetPc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, on), true);
+					targetPc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, on), true);
 				}
 			}
 				break;
@@ -509,12 +509,12 @@ public class C_Report extends ClientBasePacket {
 
 				if (targetpc.isGm())
 					return;
-				if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.신고ディレイ)) {
-					int time = pc.getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.신고ディレイ);
+				if (pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.REPORT_DELAY)) {
+					int time = pc.getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.REPORT_DELAY);
 					pc.sendPackets(new S_SystemMessage("(" + time + ") 초후 다시 이용해 주세요."));
 					return;
 				}
-				pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.신고ディレイ, 60000);
+				pc.getSkillEffectTimerSet().setSkillEffect(L1SkillId.REPORT_DELAY, 60000);
 
 				// String date = currentTime();
 				Timestamp date = new Timestamp(System.currentTimeMillis());

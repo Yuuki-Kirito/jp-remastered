@@ -1024,11 +1024,11 @@ public class L1MobSkillUse {
 		case PAPOO_SKILL1: // 리오타! 피로이나
 		{ // 안타라스(리뉴얼) - 용언 스킬1
 			if (_attacker.getSkillEffectTimerSet().hasSkillEffect(
-					L1SkillId.PAPOO_구슬_ディレイ)) {
+					L1SkillId.PAPOO_BEAD_DELAY)) {
 				return;
 			}
 			_attacker.getSkillEffectTimerSet().setSkillEffect(
-					L1SkillId.PAPOO_구슬_ディレイ, 120 * 1000);
+					L1SkillId.PAPOO_BEAD_DELAY, 120 * 1000);
 			if (_attacker.skilluse == false) {
 				_attacker.skilluse = true;
 				Broadcaster.broadcastPacket(_attacker, new S_NpcChatPacket(

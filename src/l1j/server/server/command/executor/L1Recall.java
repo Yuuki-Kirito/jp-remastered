@@ -69,7 +69,7 @@ public class L1Recall implements L1CommandExecutor {
 				if (target instanceof L1RobotInstance) {
 					L1RobotInstance rob = (L1RobotInstance) target;
 					rob.delay(500);
-					L1Teleport.ロボットテル(rob, loc.getX(), loc.getY(),
+					L1Teleport.robottel(rob, loc.getX(), loc.getY(),
 							(short) loc.getMapId(), true);
 					continue;
 				}

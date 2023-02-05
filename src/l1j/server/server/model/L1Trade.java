@@ -884,7 +884,7 @@ public class L1Trade {
 	}
 
 	private void 운영자메시지(L1PcInstance pc, String msg) {
-		if (GMCommands.아덴교환체크) {
+		if (GMCommands.is_Aden_exchange_check) {
 			for (L1PcInstance gm : L1World.getInstance().getAllPlayersToArray()) {
 				if (gm.isGm() && pc != gm) {
 					gm.sendPackets(new S_SystemMessage(msg));

@@ -114,7 +114,7 @@ public class Resolvent extends L1ItemInstance {
 						.storeItem(crystal);
 			}
 		}
-		if (GMCommands.용해로그) {
+		if (GMCommands.is_Melt_log) {
 			if (Config._connection_chat_monitor() > 0) {
 				for (L1PcInstance gm : Config.toArray_connection_chat_monitor()) {
 					if (gm.getNetConnection() == null) {

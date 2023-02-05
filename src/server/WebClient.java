@@ -155,8 +155,8 @@ public class WebClient {
 				L1PcInstance _pc = L1World.getInstance().getPlayer(c_pcname);
 				if (_pc == null)
 					return;// 123
-				if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.가입신청ディレイ)) {
-					int time = _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.가입신청ディレイ);
+				if (_pc.getSkillEffectTimerSet().hasSkillEffect(L1SkillId.REGISTRATION_APPLICATION_DELAY)) {
+					int time = _pc.getSkillEffectTimerSet().getSkillEffectTimeSec(L1SkillId.REGISTRATION_APPLICATION_DELAY);
 					_pc.sendPackets(new S_SystemMessage("(" + time + ") 초후 다시 클릭해주세요."));
 					return;
 				}
@@ -223,7 +223,7 @@ public class WebClient {
 			return;
 		} else {// 승인가입
 			target.setTempID(player.getId()); // 상대의 오브젝트 ID를 보존해 둔다
-			player.getSkillEffectTimerSet().setSkillEffect(L1SkillId.가입신청ディレイ, 30000);
+			player.getSkillEffectTimerSet().setSkillEffect(L1SkillId.REGISTRATION_APPLICATION_DELAY, 30000);
 			// player.sendPackets(new
 			// S_SystemMessage("["+clan.getClanName()+"] 혈맹에 가입신청을 하였습니다."));
 			player.sendPackets(new S_NewCreateItem(S_NewCreateItem.CLAN_JOIN_MESSAGE, 1), true);
@@ -323,7 +323,7 @@ public class WebClient {
 					Broadcaster.broadcastPacket(joinPc, new S_ClanJoinLeaveStatus(joinPc));
 					joinPc.sendPackets(new S_ReturnedStat(joinPc, S_ReturnedStat.CLAN_JOIN_LEAVE), true);
 					Broadcaster.broadcastPacket(joinPc, new S_ReturnedStat(joinPc, S_ReturnedStat.CLAN_JOIN_LEAVE));
-					joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, joinPc.getClan().getmarkon()), true);
+					joinPc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, joinPc.getClan().getmarkon()), true);
 					joinPc.sendPackets(new S_문장주시(joinPc.getClan(), 2), true);
 					pc.sendPackets(new S_PacketBox(pc, S_PacketBox.PLEDGE_REFRESH_PLUS));
 					joinPc.sendPackets(new S_ServerMessage(95, clanName)); // \f1%0

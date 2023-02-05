@@ -797,7 +797,7 @@ public class C_ItemUSe extends ClientBasePacket {
 							Broadcaster.broadcastPacket(pc, new S_ClanJoinLeaveStatus(pc));
 							pc.sendPackets(new S_ReturnedStat(pc, S_ReturnedStat.CLAN_JOIN_LEAVE), true);
 							Broadcaster.broadcastPacket(pc, new S_ReturnedStat(pc, S_ReturnedStat.CLAN_JOIN_LEAVE));
-							pc.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, pc.getClan().getmarkon()), true);
+							pc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, pc.getClan().getmarkon()), true);
 							pc.sendPackets(new S_문장주시(pc.getClan(), 2), true);
 							ClanTable.getInstance().updateClan(pc.getClan());
 

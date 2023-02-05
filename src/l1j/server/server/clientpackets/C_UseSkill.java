@@ -97,7 +97,7 @@ public class C_UseSkill extends ClientBasePacket {
 				skillId = row  + 1;
 			}
 			
-			if (GMCommands.마법속도체크 && pc.isGm()) {
+			if (GMCommands.is_magic_speed_check && pc.isGm()) {
 				long time = System.currentTimeMillis();
 				long eve = 0;
 				if (pc._skilltime != 0) {
@@ -162,7 +162,7 @@ public class C_UseSkill extends ClientBasePacket {
 			}
 
 			
-			if (GMCommands.트리플포우스핵 && (skillId == L1SkillId.TRIPLE_ARROW || skillId == L1SkillId.FOU_SLAYER)) {
+			if (GMCommands.is_Triple_force_nucleus && (skillId == L1SkillId.TRIPLE_ARROW || skillId == L1SkillId.FOU_SLAYER)) {
 			} else {
 				int result;
 				result = pc.getAcceleratorChecker().checkSkillInterval(skillId);

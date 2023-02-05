@@ -125,7 +125,7 @@ public class L1Teleport {
 				1);
 	}
 
-	public static void «í«Ü«Ã«È«Æ«ë(L1RobotInstance rob, int x, int y, short m,
+	public static void robottel(L1RobotInstance rob, int x, int y, short m,
 			boolean swich) {
 		rob.tell(x, y, m);
 		/*
@@ -140,7 +140,7 @@ public class L1Teleport {
 		 */
 	}
 
-	public static void ºÐ½ÅÅÚ(L1PcInstance rob, int x, int y, short m,
+	public static void bunsintel(L1PcInstance rob, int x, int y, short m,
 			boolean swich) {
 		try {
 
@@ -565,7 +565,7 @@ public class L1Teleport {
 			int head, boolean effectable, int skillType) {
 		if (pc instanceof L1RobotInstance) {
 			L1RobotInstance rob = (L1RobotInstance) pc;
-			«í«Ü«Ã«È«Æ«ë(rob, x, y, mapId, true);
+			robottel(rob, x, y, mapId, true);
 			return;
 		}
 		pc.setTeleportX(x);
@@ -783,7 +783,7 @@ public class L1Teleport {
 				if (pc.noPlayerCK) {
 					if (pc instanceof L1RobotInstance) {
 						L1RobotInstance rob = (L1RobotInstance) pc;
-						L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, locX, locY, mapId, true);
+						L1Teleport.robottel(rob, locX, locY, mapId, true);
 					} else {
 						teleport((L1PcInstance) cha, locX, locY, mapId, cha
 								.getMoveState().getHeading());

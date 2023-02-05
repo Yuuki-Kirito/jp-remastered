@@ -1013,7 +1013,7 @@ public class L1NpcInstance extends L1Character {
 										1, false);
 								if (target instanceof L1RobotInstance) {
 									L1RobotInstance rob = (L1RobotInstance) target;
-									L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, loc.getX(), loc.getY(),
+									L1Teleport.robottel(rob, loc.getX(), loc.getY(),
 											(short) loc.getMapId(), true);
 								} else {
 									pc.dx = loc.getX();

@@ -19,17 +19,17 @@ public class S_ClanWindow extends ServerBasePacket {
 
 	public static final int 혈맹공지및정보 = 167;
 	public static final int 혈맹공지변경 = 168;
-	public static final int 혈맹원메모변경 = 169;
-	public static final int 혈맹원목록 = 170;
-	public static final int 접속유저 = 171;
+	public static final int clan_member_memo_change = 169;
+	public static final int clan_member_list = 170;
+	public static final int connected_user = 171;
 
-	public static final int 혈마크띄우기 = 173;
+	public static final int blood_mark = 173;
 
 	public S_ClanWindow(int subCode, int val) {
 		writeC(Opcodes.S_EVENT);
 		writeC(subCode);
 		switch (subCode) {
-		case 혈마크띄우기:
+		case blood_mark:
 			writeC(0x01);
 			writeC(val);
 			writeH(0);
@@ -81,7 +81,7 @@ public class S_ClanWindow extends ServerBasePacket {
 				writeC(0x00);
 			}
 			break;
-		case 혈맹원메모변경: {
+		case clan_member_memo_change: {
 			writeS(pc.getName());
 			if (pc.getMemo() != null) {
 				writeS(pc.getMemo());
@@ -97,7 +97,7 @@ public class S_ClanWindow extends ServerBasePacket {
 			}
 		}
 			break;
-		case 혈맹원목록:
+		case clan_member_list:
 			writeC(0x01);// 총페이지갯수
 			writeC(0x00);// 현제페이지번호
 			ArrayList<ClanMember> clanMemberList = clan.getClanMemberList(); // 모든
@@ -149,7 +149,7 @@ public class S_ClanWindow extends ServerBasePacket {
 			}
 			writeH(0x8ECD);
 			break;
-		case 접속유저:
+		case connected_user:
 			writeH(clan.getOnlineMemberCount());
 			for (L1PcInstance targetPc : clan.getOnlineClanMember()) { // 온라인
 				writeS(targetPc.getName());
@@ -162,7 +162,7 @@ public class S_ClanWindow extends ServerBasePacket {
 
 	public S_ClanWindow(List<ClanMember> clanMemberList, int total, int curpage) {
 		writeC(Opcodes.S_EVENT);
-		writeC(혈맹원목록);
+		writeC(clan_member_list);
 		writeC(total);// 총페이지갯수
 		writeC(curpage);// 현제페이지번호
 		// 2D e4 1e 52 - 13년 8월 29일

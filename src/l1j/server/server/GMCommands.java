@@ -157,22 +157,22 @@ public class GMCommands {
 	public static boolean fishBot = false;
 	public static boolean huntBot = false;
 	// public static boolean 매입상점 = false;
-	public static boolean 자동생성방지 = false;
-	public static boolean 주시아이피체크 = false;
-	public static boolean 무인상점구매체크 = true;
-	public static boolean _CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = false;
-	public static boolean 트리플포우스핵 = false;
-	public static boolean 용해로그 = false;
+	public static boolean is_PREVENTION_OF_AUTOMATIC_CREATION = false;
+	public static boolean is_JUSSI_IP_CHECK = false;
+	public static boolean is_Unmanned_store_purchase_check = true;
+	public static boolean is_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = false;
+	public static boolean is_Triple_force_nucleus = false;
+	public static boolean is_Melt_log = false;
 	public static boolean _CONNECTION_NAME_CHECK = false;
-	public static boolean 아덴교환체크 = false;
-	public static boolean 엔진체크 = true;
-	public static boolean 제작체크 = true;
+	public static boolean is_Aden_exchange_check = false;
+	public static boolean is_Engine_check = true;
+	public static boolean is_Production_check = true;
 
-	public static boolean 범위로그 = false;
-	public static boolean 마법속도체크 = false;
+	public static boolean is_range_log = false;
+	public static boolean is_magic_speed_check = false;
 	private static GMCommands _instance;
 
-	List<Integer> 테이블리스트 = new ArrayList<Integer>();
+	List<Integer> table_list = new ArrayList<Integer>();
 
 	private GMCommands() {
 	}
@@ -200,7 +200,7 @@ public class GMCommands {
 			}
 
 			if (pc.getAccessLevel() < command.getLevel()) {
-				pc.sendPackets(new S_ServerMessage(74, "커멘드 " + name), true); // \f1%0은 사용할 수 없습니다.
+				pc.sendPackets(new S_ServerMessage(74, "command " + name), true); // \f1%0は使用できません。
 				return true;
 			}
 
@@ -300,8 +300,8 @@ public class GMCommands {
 		}
 	}
 
-	private static int 할로윈리스트[] = { 90085, 90086, 90087, 90088, 90089, 90090, 90091, 90092, 160423, 435000, 160510, 160511, 21123, 21269 };
-	private static int 할로윈리스트2[] = { 90085, 90086, 90087, 90088, 90089, 90090, 90091, 90092, 160423, 435000, 160510, 160511, 21123 };
+	private static int halloween_list[] = { 90085, 90086, 90087, 90088, 90089, 90090, 90091, 90092, 160423, 435000, 160510, 160511, 21123, 21269 };
+	private static int halloween_list2[] = { 90085, 90086, 90087, 90088, 90089, 90090, 90091, 90092, 160423, 435000, 160510, 160511, 21123 };
 
 	public synchronized static void EventItemDelete() {
 		try {
@@ -310,8 +310,8 @@ public class GMCommands {
 					continue;
 				}
 
-				for (int i = 0; i < 할로윈리스트.length; i++) {
-					L1ItemInstance[] item = tempPc.getInventory().findItemsId(할로윈리스트[i]);
+				for (int i = 0; i < halloween_list.length; i++) {
+					L1ItemInstance[] item = tempPc.getInventory().findItemsId(halloween_list[i]);
 
 					if (item != null && item.length > 0) {
 						for (int o = 0; o < item.length; o++) {
@@ -330,7 +330,7 @@ public class GMCommands {
 							}
 
 							if (item[o].isEquipped()) {
-								tempPc.getInventory().setEquipped(item[o], false); // 추가해주세요.
+								tempPc.getInventory().setEquipped(item[o], false); // 追加してください。
 							}
 
 							tempPc.getInventory().removeItem(item[o]);
@@ -339,7 +339,7 @@ public class GMCommands {
 
 					try {
 						PrivateWarehouse pw = WarehouseManager.getInstance().getPrivateWarehouse(tempPc.getAccountName());
-						L1ItemInstance[] item2 = pw.findItemsId(할로윈리스트[i]);
+						L1ItemInstance[] item2 = pw.findItemsId(halloween_list[i]);
 						if (item2 != null && item2.length > 0) {
 							for (int o = 0; o < item2.length; o++) {
 								if (item[o].getItemId() == 21269) {
@@ -365,7 +365,7 @@ public class GMCommands {
 					try {
 						if (tempPc.getClanid() > 0) {
 							ClanWarehouse cw = WarehouseManager.getInstance().getClanWarehouse(tempPc.getClanname());
-							L1ItemInstance[] item3 = cw.findItemsId(할로윈리스트[i]);
+							L1ItemInstance[] item3 = cw.findItemsId(halloween_list[i]);
 							if (item3 != null && item3.length > 0) {
 								for (int o = 0; o < item3.length; o++) {
 									if (item3[o].getItemId() == 21269) {
@@ -393,7 +393,7 @@ public class GMCommands {
 						Collection<L1NpcInstance> pList = tempPc.getPetList();
 						if (pList.size() > 0) {
 							for (L1NpcInstance npc : pList) {
-								L1ItemInstance[] pitem = npc.getInventory().findItemsId(할로윈리스트[i]);
+								L1ItemInstance[] pitem = npc.getInventory().findItemsId(halloween_list[i]);
 								if (pitem != null && pitem.length > 0) {
 									for (int o = 0; o < pitem.length; o++) {
 										if (pitem[o].getItemId() == 21269) {
@@ -434,8 +434,8 @@ public class GMCommands {
 
 					}
 
-					for (int ii = 0; ii < 할로윈리스트.length; ii++) {
-						if (할로윈리스트[ii] == temp_item.getItemId()) {
+					for (int ii = 0; ii < halloween_list.length; ii++) {
+						if (halloween_list[ii] == temp_item.getItemId()) {
 							if (temp_item.getItemId() == 21269) {
 								if (temp_item.getEnchantLevel() >= 6) {
 									if (temp_item.getBless() >= 128) {
@@ -459,9 +459,9 @@ public class GMCommands {
 			}
 
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < 할로윈리스트2.length; i++) {
-				sb.append(+할로윈리스트2[i]);
-				if (i < 할로윈리스트2.length - 1) {
+			for (int i = 0; i < halloween_list2.length; i++) {
+				sb.append(+halloween_list2[i]);
+				if (i < halloween_list2.length - 1) {
 					sb.append(",");
 				}
 			}
@@ -516,7 +516,7 @@ public class GMCommands {
 
 	public void handleCommands(L1PcInstance gm, String cmdLine) {
 		StringTokenizer token = new StringTokenizer(cmdLine);
-		// 최초의 공백까지가 커맨드, 그 이후는 공백을 단락으로 한 파라미터로서 취급한다
+		// 最初の空白までがコマンド、それ以降は空白を段落にしたパラメータとして扱う
 		if (!token.hasMoreTokens()) {
 			return;
 		}
@@ -528,7 +528,7 @@ public class GMCommands {
 
 		param = param.trim();
 
-		// 데이타베이스화 된 커멘드
+		// データベース化されたコマンド
 		if (executeDatabaseCommand(gm, cmd, param)) {
 			if (!cmd.equalsIgnoreCase("Redo")) {
 				_lastCommands.put(gm.getId(), cmdLine);
@@ -541,14 +541,14 @@ public class GMCommands {
 			return;
 		}
 
-		if (gm.isSGm() && !cmd.equalsIgnoreCase("압류해제") && !cmd.equalsIgnoreCase("prison") && !cmd.equalsIgnoreCase("마을") && !cmd.equalsIgnoreCase("map")) {
-			gm.sendPackets(new S_ServerMessage(74, "커맨드 " + cmd), true);
+		if (gm.isSGm() && !cmd.equalsIgnoreCase("release of seizure") && !cmd.equalsIgnoreCase("prison") && !cmd.equalsIgnoreCase("Town") && !cmd.equalsIgnoreCase("map")) {
+			gm.sendPackets(new S_ServerMessage(74, "コマンド " + cmd), true);
 			return;
 		}
 
 		LinAllManager.getInstance().GmAppend(gm.getName(), cmd, param);
 
-		// GM에 개방하는 커맨드는 여기에 쓴다
+		// GMに開くコマンドはここに書く
 		if (cmd.equalsIgnoreCase("help")) {
 			showHelp(gm);
 		} else if (cmd.equalsIgnoreCase("timetest")) {
@@ -559,27 +559,27 @@ public class GMCommands {
 				gm.sendPackets(new S_PacketBox(S_PacketBox.MINIGAME_START_COUNT, time));
 				gm.sendPackets(new S_PacketBox(S_PacketBox.MINIGAME_END));
 			} catch (Exception e) {
-				gm.sendPackets(new S_SystemMessage("Time test time (millisecond)"));
+				gm.sendPackets(new S_SystemMessage("タイムテスト時間 (ミリ秒)"));
 			}
-		} else if (cmd.equalsIgnoreCase("upadteranking")) {
+		} else if (cmd.equalsIgnoreCase("top ranking")) {
 			UserRankingController.isRenewal = true;
-			gm.sendPackets(new S_SystemMessage("Ranking has been updated."));
-		} else if (cmd.equalsIgnoreCase("킬멘트")) {
-			killment(gm, param); // by 사부 킬 멘트
-		} else if (cmd.equalsIgnoreCase("자동압류")) {
-			자동압류(gm, param);
+			gm.sendPackets(new S_SystemMessage("ランキングを更新しました。"));
+		} else if (cmd.equalsIgnoreCase("Killment")) {
+			killment(gm, param); // by サブキールメント
+		} else if (cmd.equalsIgnoreCase("automatic creation")) {
+			automatic_seizure(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("판매상점")) {
+		} else if (cmd.equalsIgnoreCase("Sales outlet")) {
 			sellshop(gm);
-		} else if (cmd.equalsIgnoreCase("악영오픈")) {
+		} else if (cmd.equalsIgnoreCase("Akakyon Open")) {
 			DevilController.getInstance().isGmOpen = true;
-			gm.sendPackets(new S_SystemMessage("악마왕의 영토를 오픈합니다."));
-		} else if (cmd.equalsIgnoreCase("악영종료")) {
+			gm.sendPackets(new S_SystemMessage("魔王の領地開放。"));
+		} else if (cmd.equalsIgnoreCase("the end of evil")) {
 			DevilController.getInstance().isGmOpen = false;
-			gm.sendPackets(new S_SystemMessage("악마왕의 영토를 닫습니다."));
-		} else if (cmd.equalsIgnoreCase("지배오픈")) {
+			gm.sendPackets(new S_SystemMessage("魔王の領地を閉ざす。"));
+		} else if (cmd.equalsIgnoreCase("dominant open")) {
 			Jibaetower.getInstance().isGmOpen = true;
-		} else if (cmd.equalsIgnoreCase("지배종료")) {
+		} else if (cmd.equalsIgnoreCase("end of control")) {
 			Jibaetower.getInstance().End();
 
 			/*
@@ -590,12 +590,12 @@ public class GMCommands {
 			 * gm.sendPackets(new S_SystemMessage("라스타바드 던전을 닫습니다."));
 			 */
 
-		} else if (cmd.equalsIgnoreCase("폰인증시작")) {
-			폰인증시작(gm);
-		} else if (cmd.equalsIgnoreCase("폰인증종료")) {
-			폰인증종료(gm);
-		} else if (cmd.equalsIgnoreCase("폰인증초기화")) {
-			폰인증초기화(gm);
+		} else if (cmd.equalsIgnoreCase("Start phone verification")) {
+			start_phone_authentication(gm);
+		} else if (cmd.equalsIgnoreCase("Termination of phone verification")) {
+			end_of_phone_authentication(gm);
+		} else if (cmd.equalsIgnoreCase("Initialize phone authentication")) {
+			lnitialize_phone_authentication(gm);
 			/*
 			 * }else if (cmd.equalsIgnoreCase("폰인증")){ 폰인증(gm, param);
 			 */
@@ -607,420 +607,420 @@ public class GMCommands {
 			 * }else if (cmd.equalsIgnoreCase("폰인증초기화")){ 폰인증초기화(gm);
 			 */
 
-		} else if (cmd.equalsIgnoreCase("매입상점")) {
+		} else if (cmd.equalsIgnoreCase("Purchase store")) {
 			buyshop(gm);
 
-		} else if (cmd.equalsIgnoreCase("유저매입상점")) {
+		} else if (cmd.equalsIgnoreCase("User purchase store")) {
 			buyshop_user(gm);
-		} else if (cmd.equalsIgnoreCase("전체정리")) {
-			전체정리(gm);
-		} else if (cmd.equalsIgnoreCase("인형청소")) {
-			인형청소(gm);
-		} else if (cmd.equalsIgnoreCase("메모리반환")) {
-			메모리반환(gm);
-		} else if (cmd.equalsIgnoreCase("버그")) {
-			버그(gm, param);
-		} else if (cmd.equalsIgnoreCase("멘트")) {
-			멘트(gm, param);
+		} else if (cmd.equalsIgnoreCase("Overall arrangement")) {
+			total_cleanup(gm);
+		} else if (cmd.equalsIgnoreCase("doll cleaning")) {
+			doll_cleaning(gm);
+		} else if (cmd.equalsIgnoreCase("memory return")) {
+			memory_return(gm);
+		} else if (cmd.equalsIgnoreCase("bug")) {
+			bug(gm, param);
+		} else if (cmd.equalsIgnoreCase("comment")) {
+			ment(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("메세지")) {
-			메세지(gm, param);
+		} else if (cmd.equalsIgnoreCase("message")) {
+			message(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("버그2")) {
-			버그2(gm, param);
+		} else if (cmd.equalsIgnoreCase("bug 2")) {
+			bug2(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("던전초기화")) {
-			던전초기화(gm, param);
+		} else if (cmd.equalsIgnoreCase("Dungeon initialization")) {
+			dungeon_reset(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("서버종료")) {
-			서버종료(gm, param);
+		} else if (cmd.equalsIgnoreCase("server termination")) {
+			server_shutdown(gm, param);
 		} else if (cmd.equalsIgnoreCase("html")) {
 			html(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("기감초기화")) {
-			기감(gm);
-		} else if (cmd.equalsIgnoreCase("액숀")) {
-			시바(gm, param);
+		} else if (cmd.equalsIgnoreCase("Kikan Initialization")) {
+			feeling(gm);
+		} else if (cmd.equalsIgnoreCase("action")) {
+			shiba(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("아놀드상점")) {
-			아놀드상점(gm, param);
+		} else if (cmd.equalsIgnoreCase("arnold shop")) {
+			arnold_store(gm, param);
 
 			// }else if (cmd.equalsIgnoreCase("엔샵샵")) {
 			// 엔샵(gm);
-		} else if (cmd.equalsIgnoreCase("채팅로그")) {
-			채팅(gm, param);
-		} else if (cmd.equalsIgnoreCase("옵")) {
-			옵코드(gm, param);
+		} else if (cmd.equalsIgnoreCase("チャットログ")) {
+			chatting(gm, param);
+		} else if (cmd.equalsIgnoreCase("オプ")) {
+			opcode(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("버경")) {
-			버경(gm, param);
-		} else if (cmd.equalsIgnoreCase("마법속도체크")) {
-			마법속도(gm);
-		} else if (cmd.equalsIgnoreCase("입장시간")) {
+		} else if (cmd.equalsIgnoreCase("vigyeong")) {
+			vigyeong(gm, param);
+		} else if (cmd.equalsIgnoreCase("magic speed check")) {
+			magic_speed(gm);
+		} else if (cmd.equalsIgnoreCase("admission time")) {
 			checktime(gm);
-		} else if (cmd.equalsIgnoreCase("무대테스트")) {
-			텟트(gm);
-		} else if (cmd.equalsIgnoreCase("인첸축복")) {
-			인첸축복(gm, param);
-		} else if (cmd.equalsIgnoreCase("장인축복")) {
-			장인축복(gm, param);
-		} else if (cmd.equalsIgnoreCase("기운축복")) {
-			기운축복(gm, param);
-		} else if (cmd.equalsIgnoreCase("패킷박스")) {
+		} else if (cmd.equalsIgnoreCase("stage test")) {
+			tett(gm);
+		} else if (cmd.equalsIgnoreCase("Enchant Blessing")) {
+			enghcant_blessing(gm, param);
+		} else if (cmd.equalsIgnoreCase("artisan's blessing")) {
+			artisan_blessing(gm, param);
+		} else if (cmd.equalsIgnoreCase("energy blessing")) {
+			blessing(gm, param);
+		} else if (cmd.equalsIgnoreCase("packet box")) {
 			packetbox(gm, param);
-		} else if (cmd.equalsIgnoreCase("계정추가")) {
+		} else if (cmd.equalsIgnoreCase("Add account")) {
 			addaccount(gm, param);
 			// } else if (cmd.equalsIgnoreCase("버경")){
 			// SpecialEventHandler.getInstance().doBugRace();
-		} else if (cmd.equalsIgnoreCase("화면버프")) {
+		} else if (cmd.equalsIgnoreCase("screen buff")) {
 			SpecialEventHandler.getInstance().doScreenBuf(gm);
-		} else if (cmd.equalsIgnoreCase("화면버프2")) {
+		} else if (cmd.equalsIgnoreCase("screen buff 2")) {
 			SpecialEventHandler.getInstance().doscreenbuftest(gm);
-		} else if (cmd.equalsIgnoreCase("전체버프")) {
+		} else if (cmd.equalsIgnoreCase("All buff")) {
 			SpecialEventHandler.getInstance().doAllBuf();
-		} else if (cmd.equalsIgnoreCase("코마버프")) {
+		} else if (cmd.equalsIgnoreCase("Coma Buff")) {
 			SpecialEventHandler.getInstance().doAllComaBuf();
 
-		} else if (cmd.equalsIgnoreCase("코마")) {
+		} else if (cmd.equalsIgnoreCase("coma")) {
 			SpecialEventHandler.getInstance().doAllComa();
 
-		} else if (cmd.equalsIgnoreCase("화면코마")) {
+		} else if (cmd.equalsIgnoreCase("screen coma")) {
 			SpecialEventHandler.getInstance().doScreenComaBuf(gm);
 
-		} else if (cmd.equalsIgnoreCase("무인상점")) {
+		} else if (cmd.equalsIgnoreCase("unmanned shop")) {
 			autoshop(gm, param);
-		} else if (cmd.equalsIgnoreCase("비번변경")) {
+		} else if (cmd.equalsIgnoreCase("password change")) {
 			changepassword(gm, param);
-		} else if (cmd.equalsIgnoreCase("아")) {
+		} else if (cmd.equalsIgnoreCase("ah")) {
 			CodeTest(gm, param);
-		} else if (cmd.equalsIgnoreCase("정리")) {
+		} else if (cmd.equalsIgnoreCase("organize")) {
 			Clear(gm);
-		} else if (cmd.equalsIgnoreCase("대박선물")) {
+		} else if (cmd.equalsIgnoreCase("great gift")) {
 			GiftBoxController.getInstance().isGmOpen = true;
-		} else if (cmd.equalsIgnoreCase("불")) {
+		} else if (cmd.equalsIgnoreCase("fire")) {
 			spawnmodel(gm, param);
-		} else if (cmd.equalsIgnoreCase("서버저장")) {
-			serversave(gm);// 요고 추가
-		} else if (cmd.equalsIgnoreCase("가라")) {
+		} else if (cmd.equalsIgnoreCase("save server")) {
+			serversave(gm);// add yogo
+		} else if (cmd.equalsIgnoreCase("good")) {
 			nocall(gm, param);
-		} else if (cmd.equalsIgnoreCase("감옥")) {
+		} else if (cmd.equalsIgnoreCase("prison")) {
 			hellcall(gm, param);
-		} else if (cmd.startsWith("압류해제")) {
+		} else if (cmd.startsWith("release of seizure")) {
 			accountdel(gm, param);
-		} else if (cmd.startsWith("압류")) {
+		} else if (cmd.startsWith("seizure")) {
 			kick(gm, param);
-		} else if (cmd.startsWith("벤")) {
+		} else if (cmd.startsWith("ben")) {
 			ban(gm, param);
-		} else if (cmd.startsWith("버그")) {
+		} else if (cmd.startsWith("bug")) {
 			standBy7(gm, param);
-		} else if (cmd.startsWith("케릭삭제")) {
+		} else if (cmd.startsWith("Delete character")) {
 			standBy77(gm, param);
-		} else if (cmd.startsWith("이벤상점")) {
+		} else if (cmd.startsWith("Event Shop")) {
 			standBy79(gm, param);
-		} else if (cmd.startsWith("환수")) {
+		} else if (cmd.startsWith("return")) {
 			환수(gm, param);
-		} else if (cmd.equalsIgnoreCase("조작")) {
+		} else if (cmd.equalsIgnoreCase("Operation")) {
 			조작(gm, param);
-		} else if (cmd.startsWith("컨피그로드")) {
+		} else if (cmd.startsWith("load config")) {
 			standBy80(gm);
-		} else if (cmd.startsWith("분신")) {
+		} else if (cmd.startsWith("alter ego")) {
 			standBy81(gm, param);
-		} else if (cmd.startsWith("화면분신")) {
+		} else if (cmd.startsWith("screen alter ego")) {
 			standBy82(gm, param);
-		} else if (cmd.startsWith("샌드백정리")) {
+		} else if (cmd.startsWith("punching bag arrangement")) {
 			standBy82(gm);
 
-		} else if (cmd.equalsIgnoreCase("채금풀기")) {
+		} else if (cmd.equalsIgnoreCase("Debt release")) {
 			chatx(gm, param);
-		} else if (cmd.equalsIgnoreCase("전체선물")) {
+		} else if (cmd.equalsIgnoreCase("all gifts")) {
 			allpresent(gm, param);
-		} else if (cmd.equalsIgnoreCase("배율설정")) { // / 추가
+		} else if (cmd.equalsIgnoreCase("Magnification setting")) { // / addition
 			SetRates(gm, param);
-		} else if (cmd.equalsIgnoreCase("인챈설정")) {
+		} else if (cmd.equalsIgnoreCase("enchantment setting")) {
 			SetEnchantRates(gm, param);
-		} else if (cmd.equalsIgnoreCase("배율조회")) {
+		} else if (cmd.equalsIgnoreCase("Magnification query")) {
 			CheckAllRates(gm);
-		} else if (cmd.equalsIgnoreCase("조사")) { // #### 케릭검사
+		} else if (cmd.equalsIgnoreCase("Research")) { // #### character swordsman
 			chainfo(gm, param);
-		} else if (cmd.equalsIgnoreCase("데스크")) { // #### 케릭검사
-			데스크(gm, param);
-		} else if (cmd.equalsIgnoreCase("인벤")) { // #### 케릭검사
-			인벤(gm, param);
-		} else if (cmd.equalsIgnoreCase("판매체크")) {
-			판매체크(gm);
-		} else if (cmd.equalsIgnoreCase("데페작업")) {
+		} else if (cmd.equalsIgnoreCase("desk")) { // #### character swordsman
+			desk(gm, param);
+		} else if (cmd.equalsIgnoreCase("Inven")) { // #### character swordsman
+			lnven(gm, param);
+		} else if (cmd.equalsIgnoreCase("Sales check")) {
+			sales_check(gm);
+		} else if (cmd.equalsIgnoreCase("defe work")) {
 			jakjak(gm);
-		} else if (cmd.equalsIgnoreCase("아머작업")) {
+		} else if (cmd.equalsIgnoreCase("armor work")) {
 			jakjak2(gm);
-		} else if (cmd.equalsIgnoreCase("카배작업")) {
+		} else if (cmd.equalsIgnoreCase("carbae work")) {
 			jakjak3(gm);
-		} else if (cmd.equalsIgnoreCase("데스작업")) {
-			데스작업(gm);
-		} else if (cmd.equalsIgnoreCase("테스트1")) {
-			테스트1(gm);
-		} else if (cmd.equalsIgnoreCase("테스트2")) {
-			테스트2(gm);
-		} else if (cmd.equalsIgnoreCase("테스트3")) {
-			테스트3(gm);
-		} else if (cmd.equalsIgnoreCase("테스트4")) {
-			테스트4(gm);
-		} else if (cmd.equalsIgnoreCase("테스트5")) {
-			테스트5(gm);
-		} else if (cmd.equalsIgnoreCase("테스트6")) {
-			테스트6(gm);
-		} else if (cmd.equalsIgnoreCase("테스트7")) {
-			테스트7(gm);
-		} else if (cmd.equalsIgnoreCase("테스트8")) {
-			테스트8(gm);
-		} else if (cmd.equalsIgnoreCase("테스트9")) {
-			테스트9(gm);
-		} else if (cmd.equalsIgnoreCase("테스트10")) {
-			테스트10(gm);
-		} else if (cmd.equalsIgnoreCase("테스트11")) {
-			테스트11(gm);
-		} else if (cmd.equalsIgnoreCase("테스트12")) {
-			테스트12(gm);
-		} else if (cmd.equalsIgnoreCase("테스트13")) {
-			테스트13(gm);
-		} else if (cmd.equalsIgnoreCase("테스트13")) {
-			테스트13(gm);
-		} else if (cmd.equalsIgnoreCase("테스트14")) {
-			테스트14(gm);
-		} else if (cmd.equalsIgnoreCase("테스트15")) {
-			테스트15(gm);
+		} else if (cmd.equalsIgnoreCase("death work")) {
+			death_work(gm);
+		} else if (cmd.equalsIgnoreCase("Test1")) {
+			test1(gm);
+		} else if (cmd.equalsIgnoreCase("Test2")) {
+			test2(gm);
+		} else if (cmd.equalsIgnoreCase("Test3")) {
+			test3(gm);
+		} else if (cmd.equalsIgnoreCase("Test4")) {
+			test_4(gm);
+		} else if (cmd.equalsIgnoreCase("Test5")) {
+			test5(gm);
+		} else if (cmd.equalsIgnoreCase("Test6")) {
+			test6(gm);
+		} else if (cmd.equalsIgnoreCase("Test7")) {
+			test7(gm);
+		} else if (cmd.equalsIgnoreCase("Test8")) {
+			test8(gm);
+		} else if (cmd.equalsIgnoreCase("Test9")) {
+			test9(gm);
+		} else if (cmd.equalsIgnoreCase("Test10")) {
+			test10(gm);
+		} else if (cmd.equalsIgnoreCase("Test11")) {
+			test11(gm);
+		} else if (cmd.equalsIgnoreCase("Test12")) {
+			test12(gm);
+		} else if (cmd.equalsIgnoreCase("Test13")) {
+			test13(gm);
+		} else if (cmd.equalsIgnoreCase("Test13")) {
+			test13(gm);
+		} else if (cmd.equalsIgnoreCase("Test14")) {
+			test14(gm);
+		} else if (cmd.equalsIgnoreCase("Test15")) {
+			test15(gm);
 
-		} else if (cmd.equalsIgnoreCase("테스트16")) {
-			테스트16(gm);
-		} else if (cmd.equalsIgnoreCase("테스트17")) {
-			테스트17(gm);
-		} else if (cmd.equalsIgnoreCase("테스트18")) {
-			테스트18(gm);
-		} else if (cmd.equalsIgnoreCase("테스트19")) {
-			테스트19(gm);
-		} else if (cmd.equalsIgnoreCase("테스트20")) {
-			테스트20(gm);
-		} else if (cmd.equalsIgnoreCase("테스트21")) {
-			테스트21(gm);
-		} else if (cmd.equalsIgnoreCase("테스트22")) {
-			테스트22(gm);
-		} else if (cmd.equalsIgnoreCase("패킷1")) {
-			패킷1(gm);
-		} else if (cmd.equalsIgnoreCase("패킷2")) {
-			패킷2(gm);
-		} else if (cmd.equalsIgnoreCase("패킷3")) {
-			패킷3(gm);
-		} else if (cmd.equalsIgnoreCase("패킷4")) {
-			패킷4(gm);
-		} else if (cmd.equalsIgnoreCase("패킷5")) {
-			패킷5(gm);
-		} else if (cmd.equalsIgnoreCase("패킷6")) {
-			패킷6(gm);
-		} else if (cmd.equalsIgnoreCase("패킷7")) {
-			패킷7(gm);
-		} else if (cmd.equalsIgnoreCase("패킷8")) {
-			패킷8(gm);
-		} else if (cmd.equalsIgnoreCase("패킷9")) {
-			패킷9(gm);
-		} else if (cmd.equalsIgnoreCase("패킷10")) {
-			패킷10(gm);
-		} else if (cmd.equalsIgnoreCase("패킷11")) {
-			패킷11(gm);
-		} else if (cmd.equalsIgnoreCase("패킷12")) {
-			패킷12(gm);
-		} else if (cmd.equalsIgnoreCase("패킷13")) {
-			패킷13(gm);
-		} else if (cmd.equalsIgnoreCase("패킷14")) {
-			패킷14(gm);
-		} else if (cmd.equalsIgnoreCase("패킷15")) {
-			패킷15(gm);
-		} else if (cmd.equalsIgnoreCase("패킷16")) {
-			패킷16(gm);
-		} else if (cmd.equalsIgnoreCase("패킷17")) {
-			패킷17(gm);
-		} else if (cmd.equalsIgnoreCase("패킷18")) {
-			패킷18(gm);
-		} else if (cmd.equalsIgnoreCase("패킷19")) {
-			패킷19(gm);
-		} else if (cmd.equalsIgnoreCase("패킷20")) {
-			패킷20(gm);
-		} else if (cmd.equalsIgnoreCase("패킷21")) {
-			패킷21(gm);
-		} else if (cmd.equalsIgnoreCase("패킷22")) {
-			패킷22(gm);
-		} else if (cmd.equalsIgnoreCase("패킷23")) {
-			패킷23(gm);
-		} else if (cmd.equalsIgnoreCase("패킷24")) {
-			패킷24(gm);
-		} else if (cmd.equalsIgnoreCase("패킷25")) {
-			패킷25(gm);
-		} else if (cmd.equalsIgnoreCase("데스구라")) {
-			데스구라(gm);
-		} else if (cmd.equalsIgnoreCase("데몬구라")) {
-			데몬구라(gm);
-		} else if (cmd.equalsIgnoreCase("타락구라")) {
-			타락구라(gm);
-		} else if (cmd.equalsIgnoreCase("바포구라")) {
-			바포구라(gm);
-		} else if (cmd.equalsIgnoreCase("바란카구라")) {
-			바란카구라(gm);
-		} else if (cmd.equalsIgnoreCase("얼녀구라")) {
-			얼녀구라(gm);
-		} else if (cmd.equalsIgnoreCase("커츠구라")) {
-			커츠구라(gm);
-		} else if (cmd.equalsIgnoreCase("발라구라")) {
-			발라구라(gm);
-		} else if (cmd.equalsIgnoreCase("파푸구라")) {
-			파푸구라(gm);
-		} else if (cmd.equalsIgnoreCase("린드구라")) {
-			린드구라(gm);
-		} else if (cmd.equalsIgnoreCase("안타구라")) {
-			안타구라(gm);
+		} else if (cmd.equalsIgnoreCase("Test16")) {
+			test16(gm);
+		} else if (cmd.equalsIgnoreCase("Test17")) {
+			test17(gm);
+		} else if (cmd.equalsIgnoreCase("Test18")) {
+			test18(gm);
+		} else if (cmd.equalsIgnoreCase("Test19")) {
+			test19(gm);
+		} else if (cmd.equalsIgnoreCase("Test20")) {
+			test20(gm);
+		} else if (cmd.equalsIgnoreCase("Test21")) {
+			test21(gm);
+		} else if (cmd.equalsIgnoreCase("Test22")) {
+			test22(gm);
+		} else if (cmd.equalsIgnoreCase("packet1")) {
+			packet1(gm);
+		} else if (cmd.equalsIgnoreCase("packet2")) {
+			packet2(gm);
+		} else if (cmd.equalsIgnoreCase("packet3")) {
+			packet3(gm);
+		} else if (cmd.equalsIgnoreCase("packet4")) {
+			packet4(gm);
+		} else if (cmd.equalsIgnoreCase("packet5")) {
+			packet5(gm);
+		} else if (cmd.equalsIgnoreCase("packet6")) {
+			packet6(gm);
+		} else if (cmd.equalsIgnoreCase("packet7")) {
+			packet7(gm);
+		} else if (cmd.equalsIgnoreCase("packet8")) {
+			packet8(gm);
+		} else if (cmd.equalsIgnoreCase("packet9")) {
+			packet9(gm);
+		} else if (cmd.equalsIgnoreCase("packet10")) {
+			packet10(gm);
+		} else if (cmd.equalsIgnoreCase("packet11")) {
+			packet11(gm);
+		} else if (cmd.equalsIgnoreCase("packet12")) {
+			packet12(gm);
+		} else if (cmd.equalsIgnoreCase("packet13")) {
+			packet13(gm);
+		} else if (cmd.equalsIgnoreCase("packet14")) {
+			packet14(gm);
+		} else if (cmd.equalsIgnoreCase("packet15")) {
+			packet15(gm);
+		} else if (cmd.equalsIgnoreCase("packet16")) {
+			packet16(gm);
+		} else if (cmd.equalsIgnoreCase("packet17")) {
+			packet17(gm);
+		} else if (cmd.equalsIgnoreCase("packet18")) {
+			packet18(gm);
+		} else if (cmd.equalsIgnoreCase("packet19")) {
+			packet19(gm);
+		} else if (cmd.equalsIgnoreCase("packet20")) {
+			packet20(gm);
+		} else if (cmd.equalsIgnoreCase("packet21")) {
+			packet21(gm);
+		} else if (cmd.equalsIgnoreCase("packet22")) {
+			packet22(gm);
+		} else if (cmd.equalsIgnoreCase("packet23")) {
+			packet23(gm);
+		} else if (cmd.equalsIgnoreCase("packet24")) {
+			packet24(gm);
+		} else if (cmd.equalsIgnoreCase("packet25")) {
+			packet25(gm);
+		} else if (cmd.equalsIgnoreCase("Deathgura")) {
+			deathgura(gm);
+		} else if (cmd.equalsIgnoreCase("Demon Gura")) {
+			demon_gura(gm);
+		} else if (cmd.equalsIgnoreCase("Takgura")) {
+			takgura(gm);
+		} else if (cmd.equalsIgnoreCase("vaporogura")) {
+			vaporogura(gm);
+		} else if (cmd.equalsIgnoreCase("barankagura")) {
+			barankagura(gm);
+		} else if (cmd.equalsIgnoreCase("What a fool")) {
+			what_a_fool(gm);
+		} else if (cmd.equalsIgnoreCase("katsugura")) {
+			katsugura(gm);
+		} else if (cmd.equalsIgnoreCase("balagura")) {
+			balagura(gm);
+		} else if (cmd.equalsIgnoreCase("Papugura")) {
+			papugura(gm);
+		} else if (cmd.equalsIgnoreCase("Lindgoura")) {
+			lindgoura(gm);
+		} else if (cmd.equalsIgnoreCase("Antagoura")) {
+			antagoura(gm);
 
-		} else if (cmd.equalsIgnoreCase("축데스구라")) {
-			축데스구라(gm);
-		} else if (cmd.equalsIgnoreCase("축데몬구라")) {
-			축데몬구라(gm);
-		} else if (cmd.equalsIgnoreCase("축타락구라")) {
-			축타락구라(gm);
-		} else if (cmd.equalsIgnoreCase("축바포구라")) {
-			축바포구라(gm);
-		} else if (cmd.equalsIgnoreCase("축바란카구라")) {
-			축바란카구라(gm);
-		} else if (cmd.equalsIgnoreCase("축얼녀구라")) {
-			축얼녀구라(gm);
-		} else if (cmd.equalsIgnoreCase("축커츠구라")) {
-			축커츠구라(gm);
-		} else if (cmd.equalsIgnoreCase("제작체크")) {
-			if (!제작체크) {
-				제작체크 = true;
-				gm.sendPackets(new S_SystemMessage("제작체크 ON!"));
+		} else if (cmd.equalsIgnoreCase("congratulations")) {
+			congratulations(gm);
+		} else if (cmd.equalsIgnoreCase("Axis Demon Gura")) {
+			axis_demon_gura(gm);
+		} else if (cmd.equalsIgnoreCase("Corruption")) {
+			corruption(gm);
+		} else if (cmd.equalsIgnoreCase("Congratulations")) {
+			congratulations2(gm);
+		} else if (cmd.equalsIgnoreCase("Congratulations")) {
+			congratulations1(gm);
+		} else if (cmd.equalsIgnoreCase("I'm a fat girl")) {
+			im_a_fat_girl(gm);
+		} else if (cmd.equalsIgnoreCase("Chukkotsugura")) {
+			chukkotsugura(gm);
+		} else if (cmd.equalsIgnoreCase("production check")) {
+			if (!is_Production_check) {
+				is_Production_check = true;
+				gm.sendPackets(new S_SystemMessage("制作チェック ON!"));
 			} else {
-				제작체크 = false;
-				gm.sendPackets(new S_SystemMessage("제작체크 OFF!"));
+				is_Production_check = false;
+				gm.sendPackets(new S_SystemMessage("制作チェック OFF!"));
 			}
-		} else if (cmd.equals("공성시작")) {
+		} else if (cmd.equals("siege start")) {
 			castleWarStart(gm, param);
-		} else if (cmd.equals("공성종료")) {
+		} else if (cmd.equals("end of siege")) {
 			castleWarExit(gm, param);
-		} else if (cmd.startsWith("겸치복구")) {
+		} else if (cmd.startsWith("Combined Restoration")) {
 			returnEXP(gm, param);
-		} else if (cmd.equalsIgnoreCase("영자채팅")) { // by판도라 영자채팅
+		} else if (cmd.equalsIgnoreCase("English Chat")) { // by판도라 영자채팅
 			if (Config.isGmchat) {
 				Config.isGmchat = false;
-				gm.sendPackets(new S_SystemMessage("영자채팅 OFF"), true);
+				gm.sendPackets(new S_SystemMessage("英字チャット OFF"), true);
 			} else {
 				Config.isGmchat = true;
-				gm.sendPackets(new S_SystemMessage("영자채팅 ON"), true);
+				gm.sendPackets(new S_SystemMessage("英字チャット ON"), true);
 			}
-		} else if (cmd.equalsIgnoreCase("혈전시작")) {
+		} else if (cmd.equalsIgnoreCase("clot initiation")) {
 			StartWar(gm, param);
-		} else if (cmd.equalsIgnoreCase("혈전종료")) {
+		} else if (cmd.equalsIgnoreCase("end of blood clot")) {
 			StopWar(gm, param);
-		} else if (cmd.equalsIgnoreCase("검색")) { // ########## 검색 추가 ##########
+		} else if (cmd.equalsIgnoreCase("Search")) { // ########## 검색 추가 ##########
 			searchDatabase(gm, param);
-		} else if (cmd.equalsIgnoreCase("겜블")) {
+		} else if (cmd.equalsIgnoreCase("Gamble")) {
 			gamble(gm);
-		} else if (cmd.equalsIgnoreCase("데드락")) {
+		} else if (cmd.equalsIgnoreCase("deadlock")) {
 			GeneralThreadPool.getInstance().execute(new DeadLockDetector(gm));
-		} else if (cmd.equalsIgnoreCase("균열좌표")) {
+		} else if (cmd.equalsIgnoreCase("crack coordinates")) {
 			if (CrockSystem.getInstance().isOpen()) {
 				// L1EvaSystem eva = EvaSystemTable.getInstance().getSystem(1);
 				int[] loc = CrockSystem.getInstance().loc();
-				gm.sendPackets(new S_SystemMessage("균열 좌표 > x:" + loc[0] + " y:" + loc[1]), true);
+				gm.sendPackets(new S_SystemMessage("crack coordinates > x:" + loc[0] + " y:" + loc[1]), true);
 			}
-		} else if (cmd.equalsIgnoreCase("맵핵")) {
+		} else if (cmd.equalsIgnoreCase("map hack")) {
 			maphack(gm, param);
-		} else if (cmd.equalsIgnoreCase("마을")) {
+		} else if (cmd.equalsIgnoreCase("Town")) {
 			UserGiranTel(gm, param);
-		} else if (cmd.equalsIgnoreCase("맵버프")) {
+		} else if (cmd.equalsIgnoreCase("map buff")) {
 			mapBuff(gm);
 			// } else if (cmd.equalsIgnoreCase("신규지원")){
 			// 신규지원(gm, param);
-		} else if (cmd.equalsIgnoreCase("포트변경")) {
-			포트변경(gm, param);
-		} else if (cmd.equalsIgnoreCase("재실행")) {
+		} else if (cmd.equalsIgnoreCase("port change")) {
+			port_change(gm, param);
+		} else if (cmd.equalsIgnoreCase("redo")) {
 			if (!_lastCommands.containsKey(gm.getId())) {
-				gm.sendPackets(new S_ServerMessage(74, "커맨드 " + cmd), true); // \f1%0은 사용할 수 없습니다.
+				gm.sendPackets(new S_ServerMessage(74, "command " + cmd), true); // \f1%0은 사용할 수 없습니다.
 				return;
 			}
 			redo(gm, param);
 			return;
-		} else if (cmd.equalsIgnoreCase("화면스폰")) {
-			화면스폰(gm, param);
-		} else if (cmd.equalsIgnoreCase("액션속도")) {
+		} else if (cmd.equalsIgnoreCase("screen spawn")) {
+			screen_spawn(gm, param);
+		} else if (cmd.equalsIgnoreCase("action speed")) {
 			SprSpeed(gm, param);
-		} else if (cmd.equalsIgnoreCase("혈맹마크")) {
+		} else if (cmd.equalsIgnoreCase("clan mark")) {
 			clanMark(gm, param);
-		} else if (cmd.equalsIgnoreCase("로그기록")) {
+		} else if (cmd.equalsIgnoreCase("log record")) {
 			logSwitch(gm, param);
-		} else if (cmd.equalsIgnoreCase("자동생성")) {
+		} else if (cmd.equalsIgnoreCase("automatically generated")) {
 			autobot(gm, param);
-		} else if (cmd.equalsIgnoreCase("배틀존")) {
+		} else if (cmd.equalsIgnoreCase("battle zone")) {
 			if (BattleZone.getInstance().getDuelStart()) {
-				gm.sendPackets(new S_SystemMessage("배틀존이 실행 중 입니다."));
+				gm.sendPackets(new S_SystemMessage("バトルゾーンが実行中です。"));
 			} else {
 				BattleZone.getInstance().setGmStart(true);
-				gm.sendPackets(new S_SystemMessage("배틀존이 실행 되었습니다."));
+				gm.sendPackets(new S_SystemMessage("バトルゾーンが実行されました。"));
 			}
-		} else if (cmd.equalsIgnoreCase("하루상점리셋")) {
+		} else if (cmd.equalsIgnoreCase("daily shop reset")) {
 			L1MerchantInstance.resetOneDayBuy();
-			gm.sendPackets(new S_SystemMessage("하루상점 리셋"), true);
-		} else if (cmd.equalsIgnoreCase("길팅체크")) {
+			gm.sendPackets(new S_SystemMessage("日常店リセット"), true);
+		} else if (cmd.equalsIgnoreCase("gilting check")) {
 			길팅체크 = !길팅체크;
-			gm.sendPackets(new S_SystemMessage("길팅체크 : " + 길팅체크), true);
-		} else if (cmd.equalsIgnoreCase("루팅체크")) {
+			gm.sendPackets(new S_SystemMessage("ギルティングチェック : " + 길팅체크), true);
+		} else if (cmd.equalsIgnoreCase("Routing check")) {
 			루팅체크 = !루팅체크;
-			gm.sendPackets(new S_SystemMessage("루팅체크 : " + 루팅체크), true);
-		} else if (cmd.equalsIgnoreCase("맵누구")) {
+			gm.sendPackets(new S_SystemMessage("ルーティングチェック : " + 루팅체크), true);
+		} else if (cmd.equalsIgnoreCase("MapWho")) {
 			mapwho(gm, param);
-		} else if (cmd.equalsIgnoreCase("케릭명변경") || cmd.equalsIgnoreCase("캐릭명변경")) {
+		} else if (cmd.equalsIgnoreCase("character name change") || cmd.equalsIgnoreCase("character name change")) {
 			charname(gm, param);
 
-		} else if (cmd.equalsIgnoreCase("아이")) {
+		} else if (cmd.equalsIgnoreCase("children")) {
 			iconserch2(gm, param);
-		} else if (cmd.equalsIgnoreCase("자동아이피")) {
+		} else if (cmd.equalsIgnoreCase("children")) {
 			autoIpcheck(gm, param);
-		} else if (cmd.equalsIgnoreCase("봇")) {
-			봇(gm, param);
-		} else if (cmd.equalsIgnoreCase("엔진체크")) {
-			엔진체크 = !엔진체크;
-			gm.sendPackets(new S_SystemMessage("엔진체크 : " + 엔진체크), true);
-		} else if (cmd.equalsIgnoreCase("무인상점구매체크")) {
-			무인상점구매체크 = !무인상점구매체크;
-			gm.sendPackets(new S_SystemMessage("무인상점구매체크 : " + 무인상점구매체크), true);
-		} else if (cmd.equalsIgnoreCase("아이피체크")) {
-			주시아이피체크 = !주시아이피체크;
-			gm.sendPackets(new S_SystemMessage("아이피체크 : " + 주시아이피체크), true);
-		} else if (cmd.equalsIgnoreCase("영자인증")) {
-			_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = !_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM;
-			gm.sendPackets(new S_SystemMessage("영자인증 : " + _CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM), true);
-		} else if (cmd.equalsIgnoreCase("트리플스핵")) {
-			트리플포우스핵 = !트리플포우스핵;
-			gm.sendPackets(new S_SystemMessage("트리플스핵 : " + 트리플포우스핵), true);
-		} else if (cmd.equalsIgnoreCase("자동생성방지")) {
-			자동생성방지 = !자동생성방지;
-			gm.sendPackets(new S_SystemMessage("자동생성방지 : " + 자동생성방지), true);
-		} else if (cmd.equalsIgnoreCase("용해로그")) {
-			용해로그 = !용해로그;
-			gm.sendPackets(new S_SystemMessage("용해로그 : " + 용해로그), true);
-		} else if (cmd.equalsIgnoreCase("인증")) {
+		} else if (cmd.equalsIgnoreCase("bot")) {
+			bot(gm, param);
+		} else if (cmd.equalsIgnoreCase("engine check")) {
+			is_Engine_check = !is_Engine_check;
+			gm.sendPackets(new S_SystemMessage("エンジンチェック : " + is_Engine_check), true);
+		} else if (cmd.equalsIgnoreCase("Unmanned store purchase check")) {
+			is_Unmanned_store_purchase_check = !is_Unmanned_store_purchase_check;
+			gm.sendPackets(new S_SystemMessage("無人商店購入チェック : " + is_Unmanned_store_purchase_check), true);
+		} else if (cmd.equalsIgnoreCase("IP check")) {
+			is_JUSSI_IP_CHECK = !is_JUSSI_IP_CHECK;
+			gm.sendPackets(new S_SystemMessage("IP check : " + is_JUSSI_IP_CHECK), true);
+		} else if (cmd.equalsIgnoreCase("English character authentication")) {
+			is_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM = !is_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM;
+			gm.sendPackets(new S_SystemMessage("英字認証 : " + is_CHARACTER_VERIFICATION_ENGLISH_LANGUAGE_ROOM), true);
+		} else if (cmd.equalsIgnoreCase("triplex hack")) {
+			is_Triple_force_nucleus = !is_Triple_force_nucleus;
+			gm.sendPackets(new S_SystemMessage("トリプル核 : " + is_Triple_force_nucleus), true);
+		} else if (cmd.equalsIgnoreCase("Prevent automatic creation")) {
+			is_PREVENTION_OF_AUTOMATIC_CREATION = !is_PREVENTION_OF_AUTOMATIC_CREATION;
+			gm.sendPackets(new S_SystemMessage("自動生成防止 : " + is_PREVENTION_OF_AUTOMATIC_CREATION), true);
+		} else if (cmd.equalsIgnoreCase("melt log")) {
+			is_Melt_log = !is_Melt_log;
+			gm.sendPackets(new S_SystemMessage("溶解ログ : " + is_Melt_log), true);
+		} else if (cmd.equalsIgnoreCase("certification")) {
 			ipphone_certification(gm, param);
-		} else if (cmd.equalsIgnoreCase("대화창")) {
+		} else if (cmd.equalsIgnoreCase("dialog")) {
 			try {
 				StringTokenizer st = new StringTokenizer(param);
 				String s = st.nextToken();
 				gm.sendPackets(new S_NPCTalkReturn(gm.getId(), s), true);
 			} catch (Exception e) {
 			}
-		} else if (cmd.equalsIgnoreCase("접속이름체크")) {
+		} else if (cmd.equalsIgnoreCase("Check connection name")) {
 			_CONNECTION_NAME_CHECK = !_CONNECTION_NAME_CHECK;
-			gm.sendPackets(new S_SystemMessage("접속이름체크 : " + _CONNECTION_NAME_CHECK), true);
-		} else if (cmd.equalsIgnoreCase("접속이름체크리셋")) {
+			gm.sendPackets(new S_SystemMessage("接続名チェック : " + _CONNECTION_NAME_CHECK), true);
+		} else if (cmd.equalsIgnoreCase("Connection name check set")) {
 			connectCharNameReset();
-		} else if (cmd.equalsIgnoreCase("아덴교환체크")) {
-			아덴교환체크 = !아덴교환체크;
-			gm.sendPackets(new S_SystemMessage("아덴교환체크 : " + 아덴교환체크), true);
-		} else if (cmd.equalsIgnoreCase("인벤삭제")) {
+		} else if (cmd.equalsIgnoreCase("Aden exchange check")) {
+			is_Aden_exchange_check = !is_Aden_exchange_check;
+			gm.sendPackets(new S_SystemMessage("アデン交換チェック : " + is_Aden_exchange_check), true);
+		} else if (cmd.equalsIgnoreCase("Delete inventory")) {
 			try {
 				List<L1ItemInstance> list = gm.getInventory().getItems();
 				L1ItemInstance[] ll = list.toArray(new L1ItemInstance[list.size()]);
@@ -1029,69 +1029,69 @@ public class GMCommands {
 				}
 			} catch (Exception e) {
 			}
-		} else if (cmd.equalsIgnoreCase("혈문장")) {
-			혈문장(gm, param);
+		} else if (cmd.equalsIgnoreCase("blood crest")) {
+			blood_crest(gm, param);
 
-		} else if (cmd.equals("아지트지급")) {
+		} else if (cmd.equals("hideout payment")) {
 			GiveHouse(gm, param);
-		} else if (cmd.equalsIgnoreCase("드래곤상점")) {
+		} else if (cmd.equalsIgnoreCase("dragon shop")) {
 			if (NpcShopSystem._dragon_power) {
-				gm.sendPackets(new S_SystemMessage("이미 실행중입니다."), true);
+				gm.sendPackets(new S_SystemMessage("すでに実行中です。"), true);
 				return;
 			}
 			NpcShopSystem.getInstance().npcDragonShopStart();
 			// } else if (cmd.equalsIgnoreCase("이체크")){
 			// 이미지체크(gm);
-		} else if (cmd.equalsIgnoreCase("베이")) {
+		} else if (cmd.equalsIgnoreCase("Bay")) {
 			gm.sendPackets(new S_InvList(gm));
 
-		} else if (cmd.equalsIgnoreCase("말")) {
-			로봇채팅(gm, param);
-		} else if (cmd.equalsIgnoreCase("귓말")) {
-			로봇채팅귓말(gm, param);
-		} else if (cmd.equalsIgnoreCase("혈말")) {
-			로봇채팅혈말(gm, param);
-		} else if (cmd.equalsIgnoreCase("전말")) {
-			로봇채팅전말(gm, param);
-		} else if (cmd.equalsIgnoreCase("육성")) {
-			육성(gm, param);
-		} else if (cmd.equalsIgnoreCase("바둑이")) {
-			바둑이(gm, param);
-		} else if (cmd.equalsIgnoreCase("탐주기")) {
-			탐주기(gm, param);
-		} else if (cmd.equalsIgnoreCase("사냥아덴로그")) {
-			사냥아덴(gm, param);
-		} else if (cmd.equalsIgnoreCase("상점아덴로그")) {
-			상점아덴(gm, param);
-		} else if (cmd.equalsIgnoreCase("광역압류")) {
-			광역압류(gm, param);
-		} else if (cmd.equalsIgnoreCase("드")) {
-			드랍추가(gm, param);
-		} else if (cmd.equalsIgnoreCase("노")) {
-			노트(gm, param);
+		} else if (cmd.equalsIgnoreCase("Words")) {
+			robot_chat(gm, param);
+		} else if (cmd.equalsIgnoreCase("whisper")) {
+			robot_chat_whisper(gm, param);
+		} else if (cmd.equalsIgnoreCase("blood talk")) {
+			robot_chat_blood(gm, param);
+		} else if (cmd.equalsIgnoreCase("Whole story")) {
+			introduction_to_rpbot_chat(gm, param);
+		} else if (cmd.equalsIgnoreCase("Upbringing")) {
+			upbringing(gm, param);
+		} else if (cmd.equalsIgnoreCase("Badugi")) {
+			badugi(gm, param);
+		} else if (cmd.equalsIgnoreCase("coveted")) {
+			coveted(gm, param);
+		} else if (cmd.equalsIgnoreCase("hunting adenlog")) {
+			hunting_aden(gm, param);
+		} else if (cmd.equalsIgnoreCase("Shop Adenlog")) {
+			shop_aden(gm, param);
+		} else if (cmd.equalsIgnoreCase("wide area foreclosure")) {
+			wide_area_foreclosure(gm, param);
+		} else if (cmd.equalsIgnoreCase("de")) {
+			add_drop(gm, param);
+		} else if (cmd.equalsIgnoreCase("paddle")) {
+			note(gm, param);
 		} else {
-			gm.sendPackets(new S_SystemMessage("커멘드 " + cmd + " 는 존재하지 않습니다. "), true);
+			gm.sendPackets(new S_SystemMessage("コマンド " + cmd + " は存在しません。 "), true);
 		}
 		token = null;
 	}
 
-	private void 노트(L1PcInstance gm, String param) {
+	private void note(L1PcInstance gm, String param) {
 		StringTokenizer st = new StringTokenizer(param);
-		String _노트 = st.nextToken();
-		gm._note = _노트;
-		gm.sendPackets(new S_SystemMessage("노트값등록 :" + _노트));
+		String _note = st.nextToken();
+		gm._note = _note;
+		gm.sendPackets(new S_SystemMessage("メモ値登録 :" + _note));
 	}
 
 	public void killment(L1PcInstance pc, String param) { // by사부 멘트
-		if (param.equalsIgnoreCase("끔")) {
+		if (param.equalsIgnoreCase("off")) {
 			pc._KILMENT = false;
-			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시하지 않습니다."));
-		} else if (param.equalsIgnoreCase("켬")) {
+			pc.sendPackets(new S_SystemMessage("キルメントを表示しません。"));
+		} else if (param.equalsIgnoreCase("on")) {
 			pc._KILMENT = true;
-			pc.sendPackets(new S_SystemMessage("킬멘트 를 표시 합니다."));
+			pc.sendPackets(new S_SystemMessage("キルメントを表示します。"));
 
 		} else {
-			pc.sendPackets(new S_SystemMessage(".킬멘트 [켬/끔] 으로 입력해 주세요. "));
+			pc.sendPackets(new S_SystemMessage(".キルメント[オン/オフ]で入力してください。"));
 		}
 	}
 
@@ -1100,11 +1100,11 @@ public class GMCommands {
 			StringTokenizer tok = new StringTokenizer(cmd);
 			String chaName = tok.nextToken();
 			if (pc.getClanid() > 0) {
-				pc.sendPackets(new S_SystemMessage("\\fU혈맹탈퇴후 캐릭명을 변경할수 있습니다."));
+				pc.sendPackets(new S_SystemMessage("\\fU血盟脱退後キャリック名を変更できます。"));
 				return;
 			}
 			if (!pc.getInventory().checkItem(467009, 1)) { // 있나 체크
-				pc.sendPackets(new S_SystemMessage("\\fU케릭명 변경 비법서를 소지하셔야 가능합니다."));
+				pc.sendPackets(new S_SystemMessage("\\fUケリック名変更秘法書をお持ちください。"));
 				return;
 			}
 			for (int i = 0; i < chaName.length(); i++) {
@@ -1119,37 +1119,37 @@ public class GMCommands {
 						chaName.charAt(i) == 'ㅖ' || chaName.charAt(i) == 'ㅢ' || chaName.charAt(i) == 'ㅟ' || chaName.charAt(i) == 'ㅝ' || // 한문자(char)단위로 비교.
 						chaName.charAt(i) == 'ㅞ' || chaName.charAt(i) == 'ㅙ' || chaName.charAt(i) == 'ㅚ' || chaName.charAt(i) == 'ㅘ' || // 한문자(char)단위로 비교.
 						chaName.charAt(i) == '씹' || chaName.charAt(i) == '좃' || chaName.charAt(i) == '좆' || chaName.charAt(i) == 'ㅤ') {
-					pc.sendPackets(new S_SystemMessage("사용할수없는 케릭명입니다."));
+					pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 					return;
 				}
 			}
 			if (chaName.getBytes().length > 12) {
-				pc.sendPackets(new S_SystemMessage("이름이 너무 깁니다."));
+				pc.sendPackets(new S_SystemMessage("名前が長すぎます。"));
 				return;
 			}
 			if (chaName.length() == 0) {
-				pc.sendPackets(new S_SystemMessage("변경할 케릭명을 입력하세요."));
+				pc.sendPackets(new S_SystemMessage("変更するケリック名を入力してください。"));
 				return;
 			}
 			if (BadNamesList.getInstance().isBadName(chaName)) {
-				pc.sendPackets(new S_SystemMessage("사용할 수 없는 케릭명입니다."));
+				pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 				return;
 			}
 			if (isInvalidName(chaName)) {
-				pc.sendPackets(new S_SystemMessage("사용할 수 없는 케릭명입니다."));
+				pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 				return;
 			}
 			if (CharacterTable.doesCharNameExist(chaName)) {
-				pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
+				pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 				return;
 			}
 
 			if (CharacterTable.RobotNameExist(chaName)) {
-				pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
+				pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 				return;
 			}
 			if (CharacterTable.RobotCrownNameExist(chaName)) {
-				pc.sendPackets(new S_SystemMessage("동일한 케릭명이 존재합니다."));
+				pc.sendPackets(new S_SystemMessage("使用できないケリック名です。"));
 				return;
 			}
 			if (NpcShopSpawnTable.getInstance().getNpc(chaName) || npcshopNameCk(chaName)) {
@@ -1254,7 +1254,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 드랍추가(L1PcInstance gm, String param) {
+	private void add_drop(L1PcInstance gm, String param) {
 		StringTokenizer st = new StringTokenizer(param);
 		int itemid = Integer.parseInt(st.nextToken(), 10);
 		// int max = Integer.parseInt(st.nextToken(), 10);
@@ -1277,17 +1277,17 @@ public class GMCommands {
 		}
 	}
 
-	private void 광역압류(L1PcInstance gm, String param) {
+	private void wide_area_foreclosure(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			L1PcInstance pc = L1World.getInstance().getPlayer(이름);
+			String name = st.nextToken();
+			L1PcInstance pc = L1World.getInstance().getPlayer(name);
 			if (pc == null) {
-				gm.sendPackets(new S_SystemMessage(이름 + " 이란 케릭터는 미 접속 중입니다."), true);
+				gm.sendPackets(new S_SystemMessage(name + " 이란 케릭터는 미 접속 중입니다."), true);
 				return;
 			}
 			if (pc.getNetConnection() == null || pc.getNetConnection().getIp() == null) {
-				gm.sendPackets(new S_SystemMessage(이름 + " 이란 케릭터는 무인상점이거나 로봇 케릭터입니다."), true);
+				gm.sendPackets(new S_SystemMessage(name + " 이란 케릭터는 무인상점이거나 로봇 케릭터입니다."), true);
 				return;
 			}
 			String ip = pc.getNetConnection().getIp();
@@ -1320,24 +1320,24 @@ public class GMCommands {
 				SQLUtil.close(pstm);
 				SQLUtil.close(con);
 			}
-			gm.sendPackets(new S_SystemMessage(이름 + " 케릭터 관련 [" + ip + " 대역] IP 차단과 해당 계정을 압류시킵니다."), true);
+			gm.sendPackets(new S_SystemMessage(name + " 케릭터 관련 [" + ip + " 대역] IP 차단과 해당 계정을 압류시킵니다."), true);
 
 		} catch (Exception e) {
 		}
 	}
 
-	private void 사냥아덴(L1PcInstance gm, String param) {
+	private void hunting_aden(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			if (이름.equalsIgnoreCase("켬")) {
+			String name = st.nextToken();
+			if (name.equalsIgnoreCase("켬")) {
 				if (LogTable._isAden) {
 					gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 이미 실행중입니다."), true);
 					return;
 				}
 				LogTable.startAdenLog();
 				gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 실행 되었습니다."), true);
-			} else if (이름.equalsIgnoreCase("끔")) {
+			} else if (name.equalsIgnoreCase("끔")) {
 				if (!LogTable._isAden) {
 					gm.sendPackets(new S_SystemMessage("사냥아덴 로그가 이미 종료중입니다."), true);
 					return;
@@ -1349,18 +1349,18 @@ public class GMCommands {
 		}
 	}
 
-	private void 상점아덴(L1PcInstance gm, String param) {
+	private void shop_aden(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			if (이름.equalsIgnoreCase("켬")) {
+			String name = st.nextToken();
+			if (name.equalsIgnoreCase("켬")) {
 				if (LogTable._isStore) {
 					gm.sendPackets(new S_SystemMessage("상점아덴 로그가 이미 실행중입니다."), true);
 					return;
 				}
 				LogTable.startStoreLog();
 				gm.sendPackets(new S_SystemMessage("상점아덴 로그가 실행 되었습니다."), true);
-			} else if (이름.equalsIgnoreCase("끔")) {
+			} else if (name.equalsIgnoreCase("끔")) {
 				if (!LogTable._isStore) {
 					gm.sendPackets(new S_SystemMessage("상점아덴 로그가 이미 종료중입니다."), true);
 					return;
@@ -1372,123 +1372,123 @@ public class GMCommands {
 		}
 	}
 
-	private void 베이(L1PcInstance gm, String param) {
+	private void beige(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			if (이름.equalsIgnoreCase("켬")) {
+			String name = st.nextToken();
+			if (name.equalsIgnoreCase("켬")) {
 				ItemBayChatController.getInstance().OnOff(gm, true);
-			} else if (이름.equalsIgnoreCase("끔")) {
+			} else if (name.equalsIgnoreCase("끔")) {
 				ItemBayChatController.getInstance().OnOff(gm, false);
 			}
 		} catch (Exception e) {
 		}
 	}
 
-	private void 바둑이(L1PcInstance gm, String param) {
+	private void badugi(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			if (이름.equalsIgnoreCase("켬")) {
+			String name = st.nextToken();
+			if (name.equalsIgnoreCase("켬")) {
 				BadukiChatController.getInstance().OnOff(gm, true);
-			} else if (이름.equalsIgnoreCase("끔")) {
+			} else if (name.equalsIgnoreCase("끔")) {
 				BadukiChatController.getInstance().OnOff(gm, false);
 			}
 		} catch (Exception e) {
 		}
 	}
 
-	private void 육성(L1PcInstance gm, String param) {
+	private void upbringing(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			if (이름.equalsIgnoreCase("켬")) {
+			String name = st.nextToken();
+			if (name.equalsIgnoreCase("켬")) {
 				NurtureChatController.getInstance().OnOff(gm, true);
-			} else if (이름.equalsIgnoreCase("끔")) {
+			} else if (name.equalsIgnoreCase("끔")) {
 				NurtureChatController.getInstance().OnOff(gm, false);
 			}
 		} catch (Exception e) {
 		}
 	}
 
-	private void 탐주기(L1PcInstance gm, String param) {
+	private void coveted(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
+			String name = st.nextToken();
 			int id = Integer.parseInt(st.nextToken());
-			L1PcInstance 유저 = L1World.getInstance().getPlayer(이름);
-			if (유저 != null) {
-				유저.getNetConnection().getAccount().tam_point += id;
-				유저.getNetConnection().getAccount().updateTam();
+			L1PcInstance user = L1World.getInstance().getPlayer(name);
+			if (user != null) {
+				user.getNetConnection().getAccount().tam_point += id;
+				user.getNetConnection().getAccount().updateTam();
 				try {
-					유저.sendPackets(new S_NewCreateItem(S_NewCreateItem.TAM_POINT, 유저.getNetConnection()), true);
+					user.sendPackets(new S_NewCreateItem(S_NewCreateItem.TAM_POINT, user.getNetConnection()), true);
 				} catch (Exception e) {
 				}
-				gm.sendPackets(new S_SystemMessage(유저.getName() + "에게 탐 " + id + "개를 주었습니다."), true);
+				gm.sendPackets(new S_SystemMessage(user.getName() + "에게 탐 " + id + "개를 주었습니다."), true);
 			} else
 				gm.sendPackets(new S_SystemMessage("존재하지 않는 유저 입니다."), true);
 		} catch (Exception e) {
 		}
 	}
 
-	private void 자동압류(L1PcInstance gm, String param) {
+	private void automatic_seizure(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
-			String 이름 = st.nextToken();
-			L1PcInstance 로봇 = L1World.getInstance().getPlayer(이름);
-			if (로봇 != null) {
-				if (로봇 instanceof L1RobotInstance) {
+			String name = st.nextToken();
+			L1PcInstance robot = L1World.getInstance().getPlayer(name);
+			if (robot != null) {
+				if (robot instanceof L1RobotInstance) {
 					L1World world = L1World.getInstance();
-					if (((L1RobotInstance) 로봇).is_HUNTING_BOT) {
-						if (((L1RobotInstance) 로봇).is_HUNT_END) {
+					if (((L1RobotInstance) robot).is_HUNTING_BOT) {
+						if (((L1RobotInstance) robot).is_HUNT_END) {
 							gm.sendPackets(new S_SystemMessage("종료 대기중인 로봇입니다."), true);
 							return;
 						} else {
-							Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).hunting_bot_location, 60000);
-							((L1RobotInstance) 로봇).end(1);
-							gm.sendPackets(new S_SystemMessage(이름 + " 로봇을 종료 시킵니다."), true);
+							Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) robot).hunting_bot_location, 60000);
+							((L1RobotInstance) robot).end(1);
+							gm.sendPackets(new S_SystemMessage(name + " 로봇을 종료 시킵니다."), true);
 							return;
 						}
 					}
-					((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
-					if (!((L1RobotInstance) 로봇).is_LISBOT && !((L1RobotInstance) 로봇).is_FISHING_BOT) {
-						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
-							pc.sendPackets(new S_RemoveObject(로봇), true);
-							pc.getNearObjects().removeKnownObject(로봇);
+					((L1RobotInstance) robot).is_THREAD_EXIT = true;
+					if (!((L1RobotInstance) robot).is_LISBOT && !((L1RobotInstance) robot).is_FISHING_BOT) {
+						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(robot)) {
+							pc.sendPackets(new S_RemoveObject(robot), true);
+							pc.getNearObjects().removeKnownObject(robot);
 						}
-						world.removeVisibleObject(로봇);
-						world.removeObject(로봇);
-						로봇.getNearObjects().removeAllKnownObjects();
+						world.removeVisibleObject(robot);
+						world.removeObject(robot);
+						robot.getNearObjects().removeAllKnownObjects();
 					}
-					로봇.stopHalloweenRegeneration();
-					로봇.stopPapuBlessing();
-					로봇.stopLindBlessing();
-					로봇.stopHalloweenArmorBlessing();
-					로봇.stopAHRegeneration();
-					로봇.stopHpRegenerationByDoll();
-					로봇.stopMpRegenerationByDoll();
-					로봇.stopSHRegeneration();
-					로봇.stopMpDecreaseByScales();
-					로봇.stopEtcMonitor();
-					((L1RobotInstance) 로봇).berkyung_bot_type = 0;
-					((L1RobotInstance) 로봇).loc = null;
-					if (로봇.getClanid() != 0) {
-						로봇.getClan().removeOnlineClanMember(로봇.getName());
+					robot.stopHalloweenRegeneration();
+					robot.stopPapuBlessing();
+					robot.stopLindBlessing();
+					robot.stopHalloweenArmorBlessing();
+					robot.stopAHRegeneration();
+					robot.stopHpRegenerationByDoll();
+					robot.stopMpRegenerationByDoll();
+					robot.stopSHRegeneration();
+					robot.stopMpDecreaseByScales();
+					robot.stopEtcMonitor();
+					((L1RobotInstance) robot).berkyung_bot_type = 0;
+					((L1RobotInstance) robot).loc = null;
+					if (robot.getClanid() != 0) {
+						robot.getClan().removeOnlineClanMember(robot.getName());
 					}
-					Robot.Doll_Delete((L1RobotInstance) 로봇);
-					gm.sendPackets(new S_SystemMessage(이름 + " 로봇을 종료 시킵니다."), true);
+					Robot.Doll_Delete((L1RobotInstance) robot);
+					gm.sendPackets(new S_SystemMessage(name + " 로봇을 종료 시킵니다."), true);
 				} else {
-					gm.sendPackets(new S_SystemMessage(이름 + " 케릭터는 일반 유저 입니다."), true);
+					gm.sendPackets(new S_SystemMessage(name + " 케릭터는 일반 유저 입니다."), true);
 				}
 			} else {
-				gm.sendPackets(new S_SystemMessage(이름 + " 케릭터는 접속중이 아닙니다."), true);
+				gm.sendPackets(new S_SystemMessage(name + " 케릭터는 접속중이 아닙니다."), true);
 			}
 		} catch (Exception e) {
 			gm.sendPackets(new S_SystemMessage(".자동압류 [이름]"), true);
 		}
 	}
 
-	private void 혈문장(L1PcInstance gm, String param) {
+	private void blood_crest(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			String charname = st.nextToken();
@@ -1847,7 +1847,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 포트변경(L1PcInstance gm, String param) {
+	private void port_change(L1PcInstance gm, String param) {
 		try {
 			/*
 			 * StringTokenizer st = new StringTokenizer(param); int port =
@@ -1985,7 +1985,7 @@ public class GMCommands {
 						loc[2] = 622;
 						break;
 					}
-					L1Teleport.ロボットテル(rob, loc[0], loc[1], (short) loc[2], true);
+					L1Teleport.robottel(rob, loc[0], loc[1], (short) loc[2], true);
 				} else {
 					user._PRISON = false;
 					L1Teleport.teleport(user, 33437, 32812, (short) 4, 5, true); // /
@@ -2017,7 +2017,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 판매체크(L1PcInstance gm) {
+	private void sales_check(L1PcInstance gm) {
 		try {
 			if (sellShopNotice) {
 				sellShopNotice = false;
@@ -2083,10 +2083,10 @@ public class GMCommands {
 	}
 
 	private void showHelp(L1PcInstance gm) {
-		gm.sendPackets(new S_SystemMessage("[도움말],[타임테스트],[랭킹갱신],[킬멘트],[자동압류][판매상점],[악영오픈],[악영종료],[지배오픈],[지배종료]"), true);
+		gm.sendPackets(new S_SystemMessage("[도움말],[타임Test],[랭킹갱신],[킬멘트],[자동압류][판매상점],[악영오픈],[악영종료],[지배오픈],[지배종료]"), true);
 		gm.sendPackets(new S_SystemMessage("[폰인증시작],[폰인증종료],[폰인증초기화],[매입상점],[유저매입상점][전체정리],[인형청소],[메모리반환],[버그],[멘트]"), true);
 		gm.sendPackets(new S_SystemMessage("[메세지],[버그2],[던전초기화],[서버종료],[html][기감초기화],[로그],[액숀],[아놀드상점],[채팅로그]"), true);
-		gm.sendPackets(new S_SystemMessage("[옵],[버경],[마법속도체크],[입장시간],[무대테스트][인첸축복],[계정추가],[화면버프],[화면버프2],[전체버프]"), true);
+		gm.sendPackets(new S_SystemMessage("[옵],[버경],[마법속도체크],[입장시간],[무대Test][인첸축복],[계정추가],[화면버프],[화면버프2],[전체버프]"), true);
 		gm.sendPackets(new S_SystemMessage("[코마],[코마버프],[화면코마],[무인상점],[비번변경][대박선물],[서버저장],[가라],[감옥],[정리]"), true);
 		gm.sendPackets(new S_SystemMessage("[압류해제],[벤],[버그],[케릭삭제],[이벤상점][컨피그로드],[채금풀기],[전체선물],[배율설정],[배율조회]"), true);
 		gm.sendPackets(new S_SystemMessage("[조사],[데스크],[인벤],[판매체크],[제작체크][공성시작],[공성종료],[겸치복구],[검색],[균열좌표]"), true);
@@ -2094,54 +2094,54 @@ public class GMCommands {
 		gm.sendPackets(new S_SystemMessage("[하루상점리셋],[길팅체크],루팅체크],[맵누구],[케릭명변경][아이],[자동체크],[자동방지],[자동아이피],[봇]"), true);
 	}
 
-	private void 메모리반환(L1PcInstance gm) {
+	private void memory_return(L1PcInstance gm) {
 		System.out.println("강제로 가비지 처리를 진행 합니다.");
 		System.gc();
 		System.out.println("메모리 정리가 완료 되었습니다.");
 	}
 
-	private void 인형청소(L1PcInstance gm) {
+	private void doll_cleaning(L1PcInstance gm) {
 		int count = 0;
 		int ccount = 0;
 		for (Object obj : L1World.getInstance().getObject()) {
 			if (obj instanceof L1DollInstance) {
-				L1DollInstance 인형 = (L1DollInstance) obj;
-				if (인형.getMaster() == null) {
+				L1DollInstance doll = (L1DollInstance) obj;
+				if (doll.getMaster() == null) {
 					count++;
-					인형.deleteMe();
-				} else if (((L1PcInstance) 인형.getMaster()).getNetConnection() == null) {
+					doll.deleteMe();
+				} else if (((L1PcInstance) doll.getMaster()).getNetConnection() == null) {
 					ccount++;
-					인형.deleteMe();
+					doll.deleteMe();
 				}
 			}
 		}
-		gm.sendPackets(new S_SystemMessage("인형청소 갯수 - 주인X: " + count + "  주인접종: " + ccount), true);
+		gm.sendPackets(new S_SystemMessage("人形清掃本数 - オーナーX: " + count + "  主な接種: " + ccount), true);
 	}
 
-	private void 폰인증시작(L1PcInstance gm) {
+	private void start_phone_authentication(L1PcInstance gm) {
 		try {
 			Config._PHONE_AUTHENTICATION = true;
-			gm.sendPackets(new S_SystemMessage("폰인증 시스템 작동. 9레벨이 되면 감옥으로 텔됩니다."));
+			gm.sendPackets(new S_SystemMessage("電話認証システムの操作。 9レベルになると監獄になります。"));
 		} catch (Exception e) {
-			gm.sendPackets(new S_SystemMessage(".폰인증종료"));
+			gm.sendPackets(new S_SystemMessage(".電話認証の終了"));
 		}
 	}
 
-	private void 폰인증종료(L1PcInstance gm) {
+	private void end_of_phone_authentication(L1PcInstance gm) {
 		try {
 			Config._PHONE_AUTHENTICATION = false;
-			gm.sendPackets(new S_SystemMessage("폰인증 시스템을 중단합니다. 9레벨이 되어도 정상 이용됩니다."));
+			gm.sendPackets(new S_SystemMessage("電話認証システムを停止します。 9レベルになっても通常利用されます。"));
 		} catch (Exception e) {
-			gm.sendPackets(new S_SystemMessage(".폰인증종료"));
+			gm.sendPackets(new S_SystemMessage(".電話認証の終了"));
 		}
 	}
 
-	private void 폰인증초기화(L1PcInstance gm) {
+	private void lnitialize_phone_authentication(L1PcInstance gm) {
 		PhoneCheck.clearnocheck();
 		gm.sendPackets(new S_SystemMessage("폰인증 대기중인 케릭터를 초기화 시킵니다."));
 	}
 
-	private void 던전초기화(L1PcInstance gm, String param) {
+	private void dungeon_reset(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			String pcName = st.nextToken();
@@ -2320,7 +2320,7 @@ public class GMCommands {
 	 * }
 	 */
 
-	private void 전체정리(L1PcInstance gm) {
+	private void total_cleanup(L1PcInstance gm) {
 		int cnt = 0;
 		for (L1Object obj : L1World.getInstance().getObject()) {
 			if (obj instanceof L1MonsterInstance) {
@@ -2472,7 +2472,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 텟트(L1PcInstance gm) {
+	private void tett(L1PcInstance gm) {
 		L1UltimateBattle up = UBTable.getInstance().getUb(1);
 		up.start();
 	}
@@ -2504,12 +2504,12 @@ public class GMCommands {
 		}
 	}
 
-	private void 마법속도(L1PcInstance gm) {
-		if (마법속도체크) {
-			마법속도체크 = false;
+	private void magic_speed(L1PcInstance gm) {
+		if (is_magic_speed_check) {
+			is_magic_speed_check = false;
 			gm.sendPackets(new S_SystemMessage("마법속도 체크 off"));
 		} else {
-			마법속도체크 = true;
+			is_magic_speed_check = true;
 			gm.sendPackets(new S_SystemMessage("마법속도 체크 on"));
 		}
 	}
@@ -2621,10 +2621,10 @@ public class GMCommands {
 	// 라던
 	// 용계
 	// 화둥
-	private static final String 멘트[] = { "손", "손!", "손~", "손!!", "손~!", "발", "발~", "손~~", "발" };
+	private static final String ment[] = { "손", "손!", "손~", "손!!", "손~!", "발", "발~", "손~~", "발" };
 
-	class 로봇부처핸섬 implements Runnable {
-		public 로봇부처핸섬() {
+	class Robot_buddha_handsome implements Runnable {
+		public Robot_buddha_handsome() {
 		}
 
 		public void run() {
@@ -2636,7 +2636,7 @@ public class GMCommands {
 					}
 					Thread.sleep(_random.nextInt(100) + 50);
 					for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
-						listner.sendPackets(new S_ChatPacket(rob, 멘트[_random.nextInt(멘트.length)], Opcodes.S_MESSAGE, 3), true);
+						listner.sendPackets(new S_ChatPacket(rob, ment[_random.nextInt(ment.length)], Opcodes.S_MESSAGE, 3), true);
 					}
 				}
 			} catch (Exception e) {
@@ -2650,7 +2650,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 버그(L1PcInstance gm, String param) {
+	private void bug(L1PcInstance gm, String param) {
 		StringTokenizer tokenizer = new StringTokenizer(param);
 		int id = Integer.parseInt(tokenizer.nextToken(), 10);
 		for (L1Object obj : L1World.getInstance().getVisibleObjects(gm, 10)) {
@@ -2664,7 +2664,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 버그2(L1PcInstance gm, String param) {
+	private void bug2(L1PcInstance gm, String param) {
 		StringTokenizer tokenizer = new StringTokenizer(param);
 		int id = Integer.parseInt(tokenizer.nextToken(), 10);
 		for (L1Object obj : L1World.getInstance().getVisibleObjects(gm, 10)) {
@@ -2689,7 +2689,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 서버종료(L1PcInstance gm, String param) {
+	private void server_shutdown(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String type = tokenizer.nextToken();
@@ -2708,7 +2708,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 버경(L1PcInstance gm, String param) {
+	private void vigyeong(L1PcInstance gm, String param) {
 		StringTokenizer tokenizer = new StringTokenizer(param);
 		int oder = Integer.parseInt(tokenizer.nextToken(), 10);
 		int cnt = Integer.parseInt(tokenizer.nextToken(), 10);
@@ -2720,7 +2720,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 시바(L1PcInstance gm, String param) {
+	private void shiba(L1PcInstance gm, String param) {
 		StringTokenizer tokenizer = new StringTokenizer(param);
 		int id = Integer.parseInt(tokenizer.nextToken(), 10);
 		try {
@@ -2779,7 +2779,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 기감(L1PcInstance gm) {
+	private void feeling(L1PcInstance gm) {
 		try {
 			for (L1PcInstance allpc : L1World.getInstance().getAllPlayers()) {
 				allpc.setgirantime(0);
@@ -3167,11 +3167,11 @@ public class GMCommands {
 			int id = Integer.parseInt(st.nextToken(), 10);
 			pc.sendPackets(new S_PacketBox(83, id), true);
 		} catch (Exception exception) {
-			pc.sendPackets(new S_SystemMessage(".패킷박스 [id] 입력"), true);
+			pc.sendPackets(new S_SystemMessage(".packet박스 [id] 입력"), true);
 		}
 	}
 
-	private void 채팅(L1PcInstance gm, String param) {
+	private void chatting(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String pcName = tokenizer.nextToken();
@@ -3286,7 +3286,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 아놀드상점(L1PcInstance gm, String param) {
+	private void arnold_store(L1PcInstance gm, String param) {
 		if (param.equalsIgnoreCase("켬")) {
 			if (Config.ARNOLD_SHOP == null) {
 				L1NpcInstance npc = L1SpawnUtil.spawn4(33435, 32804, (short) 4, 0, 100880, 0, 0, 0);
@@ -3520,7 +3520,7 @@ public class GMCommands {
 		gm.sendPackets(new S_SystemMessage("[방어구인챈율]: " + Config.ENCHANT_CHANCE_ARMOR + "배"), true);
 	}
 
-	private void 인벤(L1PcInstance gm, String param) {
+	private void lnven(L1PcInstance gm, String param) {
 		try {
 			StringTokenizer stringtokenizer = new StringTokenizer(param);
 			String s = stringtokenizer.nextToken();
@@ -3744,7 +3744,7 @@ public class GMCommands {
 		return SB.toString();
 	}
 
-	public void 인첸축복(L1PcInstance gm, String arg) {
+	public void enghcant_blessing(L1PcInstance gm, String arg) {
 		try {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
@@ -3755,7 +3755,7 @@ public class GMCommands {
 		}
 	}
 
-	public void 장인축복(L1PcInstance gm, String arg) {
+	public void artisan_blessing(L1PcInstance gm, String arg) {
 		try {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
@@ -3766,7 +3766,7 @@ public class GMCommands {
 		}
 	}
 
-	public void 기운축복(L1PcInstance gm, String arg) {
+	public void blessing(L1PcInstance gm, String arg) {
 		try {
 			StringTokenizer tok = new StringTokenizer(arg);
 			String user = tok.nextToken();
@@ -4116,19 +4116,19 @@ public class GMCommands {
 		L1World.getInstance().broadcastPacketToAll(new S_PacketBox(S_PacketBox.GREEN_MESSAGE, "누군가가 에르자베의 알에서 " + item.getName() + " 를(을) 획득하였습니다."));
 	}
 
-	private void 데스구라(L1PcInstance gm) { // 데스
+	private void deathgura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600247);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 데몬구라(L1PcInstance gm) { // 데스
+	private void demon_gura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600246);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 데스크(L1PcInstance gm, String param) { // 데스
+	private void desk(L1PcInstance gm, String param) { // 데스
 		StringTokenizer stringtokenizer = new StringTokenizer(param);
 		String s = stringtokenizer.nextToken();
 		int desc = Integer.parseInt(s);
@@ -4137,360 +4137,360 @@ public class GMCommands {
 		gm.sendPackets(new S_ACTION_UI(desc, item), true);
 	}
 
-	private void 바란카구라(L1PcInstance gm) { // 데스
+	private void barankagura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(142922);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 바포구라(L1PcInstance gm) { // 데스
+	private void vaporogura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(753);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 얼녀구라(L1PcInstance gm) { // 데스
+	private void what_a_fool(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(754);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 커츠구라(L1PcInstance gm) { // 데스
+	private void katsugura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(755);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 타락구라(L1PcInstance gm) { // 데스
+	private void takgura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(752);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 린드구라(L1PcInstance gm) { // 데스
+	private void lindgoura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600261);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 발라구라(L1PcInstance gm) { // 데스
+	private void balagura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600262);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 안타구라(L1PcInstance gm) { // 데스
+	private void antagoura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600259);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 파푸구라(L1PcInstance gm) { // 데스
+	private void papugura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600260);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축데스구라(L1PcInstance gm) { // 데스
+	private void congratulations(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600322);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축데몬구라(L1PcInstance gm) { // 데스
+	private void axis_demon_gura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600321);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축바란카구라(L1PcInstance gm) { // 데스
+	private void congratulations1(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600323);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축바포구라(L1PcInstance gm) { // 데스
+	private void congratulations2(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600325);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축얼녀구라(L1PcInstance gm) { // 데스
+	private void im_a_fat_girl(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600326);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축커츠구라(L1PcInstance gm) { // 데스
+	private void chukkotsugura(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600327);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 축타락구라(L1PcInstance gm) { // 데스
+	private void corruption(L1PcInstance gm) { // 데스
 		L1ItemInstance item = null;
 		item = ItemTable.getInstance().createItem(600324);
 		L1World.getInstance().broadcastPacketToAll(new S_ACTION_UI(S_ACTION_UI.WORLD_MESSAGE_DROP, 4433, item), true);
 	}
 
-	private void 데스작업(L1PcInstance gm) { // 데스
+	private void death_work(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IllUSION_LICH, true, 128));
 	}
 
-	private void 테스트1(L1PcInstance gm) { // 데스
+	private void test1(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 01"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트2(L1PcInstance gm) { // 데스
+	private void test2(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 02"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트3(L1PcInstance gm) { // 데스
+	private void test3(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 03"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트4(L1PcInstance gm) { // 데스
+	private void test_4(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 04"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트5(L1PcInstance gm) { // 데스
+	private void test5(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 05"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트6(L1PcInstance gm) { // 데스
+	private void test6(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 06"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트7(L1PcInstance gm) { // 데스
+	private void test7(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 07"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트8(L1PcInstance gm) { // 데스
+	private void test8(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 08"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트9(L1PcInstance gm) { // 데스
+	private void test9(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 09"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트10(L1PcInstance gm) { // 데스
+	private void test10(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 10"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트11(L1PcInstance gm) { // 데스
+	private void test11(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox("0f 0"));// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트12(L1PcInstance gm) { // 데스
+	private void test12(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test10, true), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트13(L1PcInstance gm) { // 데스
+	private void test13(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test1, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트14(L1PcInstance gm) { // 데스
+	private void test14(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test2, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트15(L1PcInstance gm) { // 데스
+	private void test15(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test3, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트16(L1PcInstance gm) { // 데스
+	private void test16(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test4, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트17(L1PcInstance gm) { // 데스
+	private void test17(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test5, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트18(L1PcInstance gm) { // 데스
+	private void test18(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test6, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트19(L1PcInstance gm) { // 데스
+	private void test19(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test7, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트20(L1PcInstance gm) { // 데스
+	private void test20(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test8, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트21(L1PcInstance gm) { // 데스
+	private void test21(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test9, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 테스트22(L1PcInstance gm) { // 데스
+	private void test22(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_Paralysis(S_Paralysis.test10, false), true);// 1479
-		pc.sendPackets(new S_SystemMessage("정상 전송 완료 테스트"), true);
+		pc.sendPackets(new S_SystemMessage("정상 전송 완료 Test"), true);
 	}
 
-	private void 패킷1(L1PcInstance gm) { // 데스
+	private void packet1(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox(1, 1800, true, true, true));
 	}
 
-	private void 패킷2(L1PcInstance gm) { // 데스
+	private void packet2(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_PacketBox(2, 1800, true, true, true));
 	}
 
-	private void 패킷3(L1PcInstance gm) { // 데스
+	private void packet3(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.FIRE_SHIELD, true, 128));
 	}
 
-	private void 패킷4(L1PcInstance gm) { // 데스
+	private void packet4(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.FOCUS_WAVE, true, 128));
 	}
 
-	private void 패킷5(L1PcInstance gm) { // 데스
+	private void packet5(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_FIGHTER, true, 128));
 	}
 
-	private void 패킷6(L1PcInstance gm) { // 데스
+	private void packet6(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_SAGE, true, 128));
 	}
 
-	private void 패킷7(L1PcInstance gm) { // 데스
+	private void packet7(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.STATUS_KURTZ_BOWMASTER, true, 128));
 	}
 
-	private void 패킷8(L1PcInstance gm) { // 데스
+	private void packet8(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMPACT, true, 128));
 	}
 
-	private void 패킷9(L1PcInstance gm) { // 데스
+	private void packet9(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.블로우어택, true, 128));
 	}
 
-	private void 패킷10(L1PcInstance gm) { // 데스
+	private void packet10(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.포커스스피릿츠, true, 128));
 	}
 
-	private void 패킷11(L1PcInstance gm) { // 데스
+	private void packet11(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.LUCIFER, true, 128));
 	}
 
-	private void 패킷12(L1PcInstance gm) { // 데스
+	private void packet12(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IMMUNE_TO_HARM, true, 128));
 	}
 
-	private void 패킷13(L1PcInstance gm) { // 데스
+	private void packet13(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.RISING, true, 128));
 	}
 
-	private void 패킷14(L1PcInstance gm) { // 데스
+	private void packet14(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.SOUL_BARRIER, true, 128));
 	}
 
-	private void 패킷15(L1PcInstance gm) { // 데스
+	private void packet15(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IllUSION_OGRE, true, 128));
 	}
 
-	private void 패킷16(L1PcInstance gm) { // 데스
+	private void packet16(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.CUBE_IGNITION, true, 128));
 	}
 
-	private void 패킷17(L1PcInstance gm) { // 데스
+	private void packet17(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.CUBE_QUAKE, true, 128));
 	}
 
-	private void 패킷18(L1PcInstance gm) { // 데스
+	private void packet18(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IllUSION_DIAMONDGOLEM, true, 128));
 	}
 
-	private void 패킷19(L1PcInstance gm) { // 데스
+	private void packet19(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.CUBE_SHOCK, true, 128));
 	}
 
-	private void 패킷20(L1PcInstance gm) { // 데스
+	private void packet20(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.IllUSION_AVATAR, true, 128));
 	}
 
-	private void 패킷21(L1PcInstance gm) { // 데스
+	private void packet21(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.CUBE_BALANCE, true, 128));
 	}
 
-	private void 패킷22(L1PcInstance gm) { // 데스
+	private void packet22(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.GRACE, true, 128));
 	}
 
-	private void 패킷23(L1PcInstance gm) { // 데스
+	private void packet23(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.앱솔루트블레이드, true, 128));
 	}
 
-	private void 패킷24(L1PcInstance gm) { // 데스
+	private void packet24(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.DEATH_HILL, true, 128));
 	}
 
-	private void 패킷25(L1PcInstance gm) { // 데스
+	private void packet25(L1PcInstance gm) { // 데스
 		L1PcInstance pc = (L1PcInstance) gm;
 		pc.sendPackets(new S_NewSkillIcons(L1SkillId.WIND_SHACKLE, true, 128));
 	}
@@ -4579,7 +4579,7 @@ public class GMCommands {
 			+ "e1 49 18 00 20 00 2a 07 59 6f 75 72 6c 69 70 30 " + "0b 38 00 40 00 0a 1f 08 0e 10 ad 87 81 07 18 00 "
 			+ "20 00 2a 0c 41 61 77 65 66 69 6f 70 61 77 65 6a " + "30 01 38 07 40 00 10 03 18 00 20 00 00 00";
 
-	private void 화면스폰(L1PcInstance pc, String param) {
+	private void screen_spawn(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			int id = Integer.parseInt(st.nextToken(), 10);
@@ -4596,7 +4596,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 멘트(L1PcInstance pc, String param) {
+	private void ment(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			int id = Integer.parseInt(st.nextToken(), 10);
@@ -4608,7 +4608,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 메세지(L1PcInstance pc, String param) {
+	private void message(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			int type = Integer.parseInt(st.nextToken(), 10);
@@ -4621,7 +4621,7 @@ public class GMCommands {
 		}
 	}
 
-	public void 로봇채팅123(L1PcInstance gm, String cmd) {
+	public void robot_chat_123(L1PcInstance gm, String cmd) {
 		try {
 			StringTokenizer tok = new StringTokenizer(cmd);
 			String ment = tok.nextToken();
@@ -4642,7 +4642,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 로봇채팅(L1PcInstance pc, String param) {
+	private void robot_chat(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String Name = tokenizer.nextToken();
@@ -4664,14 +4664,14 @@ public class GMCommands {
 		}
 	}
 
-	private void 로봇채팅혈말(L1PcInstance pc, String param) {
+	private void robot_chat_blood(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String Name = tokenizer.nextToken();
 			L1RobotInstance Robot = L1World.getInstance().getRobot(Name);
 
 			if (Robot != null) {
-				L1Clan 혈맹 = L1World.getInstance().getClan(Robot.getClanid());
+				L1Clan clan = L1World.getInstance().getClan(Robot.getClanid());
 				String Ms = "";
 				if (tokenizer.hasMoreTokens()) {
 					int CountTokens = tokenizer.countTokens();
@@ -4679,7 +4679,7 @@ public class GMCommands {
 					for (int i = 0; i < CountTokens; i++)
 						Ms += (i == 0 ? "" : " ") + tokenizer.nextToken();
 				}
-				for (L1PcInstance clanMembers : 혈맹.getOnlineClanMember()) {
+				for (L1PcInstance clanMembers : clan.getOnlineClanMember()) {
 					clanMembers.sendPackets(new S_NewCreateItem(Robot, 4, 4, Ms, ""), true);
 				}
 			} else {
@@ -4690,7 +4690,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 로봇채팅전말(L1PcInstance pc, String param) {
+	private void introduction_to_rpbot_chat(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String Name = tokenizer.nextToken();
@@ -4712,7 +4712,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 로봇채팅귓말(L1PcInstance pc, String param) {
+	private void robot_chat_whisper(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(param);
 			String Name = tokenizer.nextToken();
@@ -4735,7 +4735,7 @@ public class GMCommands {
 		}
 	}
 
-	private void 옵코드(L1PcInstance pc, String param) {
+	private void opcode(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			int type = Integer.parseInt(st.nextToken(), 10);
@@ -4768,7 +4768,7 @@ public class GMCommands {
 			 * for (L1Object obj : L1World.getInstance().getVisibleObjects(pc, 50)) { if(obj
 			 * instanceof L1DoorInstance){ L1DoorInstance door = (L1DoorInstance)obj;
 			 * if(door.getNpcId() == 4040004){ door.isPassibleDoor(true);
-			 * door.setPassable(0); 문패킷(pc, door); door.deleteMe(); } } }
+			 * door.setPassable(0); 문packet(pc, door); door.deleteMe(); } } }
 			 */
 			Config.test222 = type;
 			// System.out.println("=================================");
@@ -4947,7 +4947,7 @@ public class GMCommands {
 			/*
 			 * int id2 = Integer.parseInt(st.nextToken(), 10); for (int i = 0; i < id2; i++)
 			 * { pc.sendPackets(new S_PacketBox(S_PacketBox.ICON_AURA,0,id,true));
-			 * pc.sendPackets(new S_SystemMessage(id+" 삭제패킷.")); id++; }
+			 * pc.sendPackets(new S_SystemMessage(id+" 삭제packet.")); id++; }
 			 */
 			// pc.sendPackets(new S_PacketBox(S_PacketBox.char_ER, pc.getEr()),
 			// true);
@@ -4992,13 +4992,13 @@ public class GMCommands {
 		}
 	}
 
-	public static int 텔옵 = 0;
+	public static int Telop = 0;
 
 	private void CodeTest(L1PcInstance pc, String param) {
 		try {
 			StringTokenizer st = new StringTokenizer(param);
 			int codetest = Integer.parseInt(st.nextToken(), 10);
-			텔옵 = codetest;
+			Telop = codetest;
 		} catch (Exception exception) {
 			pc.sendPackets(new S_SystemMessage(".코드 [숫자] 입력"), true);
 		}
@@ -5064,14 +5064,14 @@ public class GMCommands {
 		}
 	}
 
-	private void 봇(L1PcInstance gm, String param) {
+	private void bot(L1PcInstance gm, String param) {
 		StringTokenizer tokenizer = new StringTokenizer(param);
 		try {
 			String type = tokenizer.nextToken();
 			if (type.equalsIgnoreCase("종료")) {
 				try {
-					String 이름 = tokenizer.nextToken();
-					if (이름.equalsIgnoreCase("전체")) {
+					String name = tokenizer.nextToken();
+					if (name.equalsIgnoreCase("전체")) {
 						int _cnt = 0;
 						restartBot = false;
 						clanBot = false;
@@ -5117,7 +5117,7 @@ public class GMCommands {
 							Robot.Doll_Delete(bot);
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
-					} else if (이름.equalsIgnoreCase("사냥")) {
+					} else if (name.equalsIgnoreCase("사냥")) {
 						int _cnt = 0;
 						huntBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
@@ -5127,7 +5127,7 @@ public class GMCommands {
 							bot.end();
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
-					} else if (이름.equalsIgnoreCase("리스")) {
+					} else if (name.equalsIgnoreCase("리스")) {
 						int _cnt = 0;
 						restartBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
@@ -5149,7 +5149,7 @@ public class GMCommands {
 							Robot.Doll_Delete(bot);
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
-					} else if (이름.equalsIgnoreCase("버경")) {
+					} else if (name.equalsIgnoreCase("버경")) {
 						int _cnt = 0;
 						bugbearBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
@@ -5172,7 +5172,7 @@ public class GMCommands {
 							Robot.Doll_Delete(bot);
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
-					} else if (이름.equalsIgnoreCase("낚시")) {
+					} else if (name.equalsIgnoreCase("낚시")) {
 						int _cnt = 0;
 						fishBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
@@ -5194,7 +5194,7 @@ public class GMCommands {
 							Robot.Doll_Delete(bot);
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
-					} else if (이름.equalsIgnoreCase("군주")) {
+					} else if (name.equalsIgnoreCase("군주")) {
 						int _cnt = 0;
 						clanBot = false;
 						for (L1RobotInstance bot : L1World.getInstance().getAllRobot()) {
@@ -5226,46 +5226,46 @@ public class GMCommands {
 						}
 						gm.sendPackets(new S_SystemMessage(_cnt + "마리의 로봇을 종료 시켰습니다."), true);
 					} else {
-						L1PcInstance 로봇 = L1World.getInstance().getPlayer(이름);
-						if (로봇 != null) {
-							if (로봇 instanceof L1RobotInstance) {
+						L1PcInstance robot = L1World.getInstance().getPlayer(name);
+						if (robot != null) {
+							if (robot instanceof L1RobotInstance) {
 								L1World world = L1World.getInstance();
-								if (((L1RobotInstance) 로봇).is_HUNTING_BOT) {
-									if (((L1RobotInstance) 로봇).is_HUNT_END)
+								if (((L1RobotInstance) robot).is_HUNTING_BOT) {
+									if (((L1RobotInstance) robot).is_HUNT_END)
 										return;
 									else {
-										Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) 로봇).hunting_bot_location, 60000);
-										((L1RobotInstance) 로봇).end();
+										Robot_Hunt.getInstance().delay_spawn(((L1RobotInstance) robot).hunting_bot_location, 60000);
+										((L1RobotInstance) robot).end();
 										return;
 									}
 								}
-								((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
-								if (!((L1RobotInstance) 로봇).is_LISBOT && !((L1RobotInstance) 로봇).is_FISHING_BOT) {
-									for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
-										pc.sendPackets(new S_RemoveObject(로봇), true);
-										pc.getNearObjects().removeKnownObject(로봇);
+								((L1RobotInstance) robot).is_THREAD_EXIT = true;
+								if (!((L1RobotInstance) robot).is_LISBOT && !((L1RobotInstance) robot).is_FISHING_BOT) {
+									for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(robot)) {
+										pc.sendPackets(new S_RemoveObject(robot), true);
+										pc.getNearObjects().removeKnownObject(robot);
 									}
-									world.removeVisibleObject(로봇);
-									world.removeObject(로봇);
-									로봇.getNearObjects().removeAllKnownObjects();
+									world.removeVisibleObject(robot);
+									world.removeObject(robot);
+									robot.getNearObjects().removeAllKnownObjects();
 								}
-								로봇.stopHalloweenRegeneration();
-								로봇.stopPapuBlessing();
-								로봇.stopLindBlessing();
-								로봇.stopHalloweenArmorBlessing();
-								로봇.stopAHRegeneration();
-								로봇.stopHpRegenerationByDoll();
-								로봇.stopMpRegenerationByDoll();
-								로봇.stopSHRegeneration();
-								로봇.stopMpDecreaseByScales();
-								로봇.stopEtcMonitor();
-								((L1RobotInstance) 로봇).berkyung_bot_type = 0;
-								((L1RobotInstance) 로봇).loc = null;
-								if (로봇.getClanid() != 0) {
-									로봇.getClan().removeOnlineClanMember(로봇.getName());
+								robot.stopHalloweenRegeneration();
+								robot.stopPapuBlessing();
+								robot.stopLindBlessing();
+								robot.stopHalloweenArmorBlessing();
+								robot.stopAHRegeneration();
+								robot.stopHpRegenerationByDoll();
+								robot.stopMpRegenerationByDoll();
+								robot.stopSHRegeneration();
+								robot.stopMpDecreaseByScales();
+								robot.stopEtcMonitor();
+								((L1RobotInstance) robot).berkyung_bot_type = 0;
+								((L1RobotInstance) robot).loc = null;
+								if (robot.getClanid() != 0) {
+									robot.getClan().removeOnlineClanMember(robot.getName());
 								}
-								Robot.Doll_Delete((L1RobotInstance) 로봇);
-								gm.sendPackets(new S_SystemMessage(이름 + "로봇을 종료 시킵니다."), true);
+								Robot.Doll_Delete((L1RobotInstance) robot);
+								gm.sendPackets(new S_SystemMessage(name + "로봇을 종료 시킵니다."), true);
 							} else {
 								gm.sendPackets(new S_SystemMessage("로봇이 아닙니다."), true);
 							}
@@ -5279,29 +5279,29 @@ public class GMCommands {
 				}
 			} else if (type.equalsIgnoreCase("가입")) {
 				try {
-					String 혈이름 = tokenizer.nextToken();
-					String 이름 = tokenizer.nextToken();
-					String 호칭 = tokenizer.nextToken();
-					L1Clan 혈맹 = L1World.getInstance().getClan(혈이름);
-					if (혈맹 == null) {
-						gm.sendPackets(new S_SystemMessage(혈이름 + "혈맹이 존재하지 않습니다."), true);
+					String blood_name = tokenizer.nextToken();
+					String name = tokenizer.nextToken();
+					String designation = tokenizer.nextToken();
+					L1Clan _Clan = L1World.getInstance().getClan(blood_name);
+					if (_Clan == null) {
+						gm.sendPackets(new S_SystemMessage(blood_name + "혈맹이 존재하지 않습니다."), true);
 						return;
 					}
-					L1PcInstance 로봇 = L1World.getInstance().getPlayer(이름);
-					if (로봇 != null) {
-						if (로봇 instanceof L1RobotInstance) {
-							L1RobotInstance rob = (L1RobotInstance) 로봇;
-							rob.updateclan(혈이름, 혈맹.getClanId(), 호칭, true);
-							rob.setClanid(혈맹.getClanId());
-							rob.setClanname(혈이름);
+					L1PcInstance robot = L1World.getInstance().getPlayer(name);
+					if (robot != null) {
+						if (robot instanceof L1RobotInstance) {
+							L1RobotInstance rob = (L1RobotInstance) robot;
+							rob.updateclan(blood_name, _Clan.getClanId(), designation, true);
+							rob.setClanid(_Clan.getClanId());
+							rob.setClanname(blood_name);
 							rob.setClanRank(2);
-							rob.setTitle(호칭);
-							혈맹.addClanMember(rob.getName(), rob.getClanRank(), rob.getLevel(), rob.getType(), rob.getMemo(), rob.getOnlineStatus(), rob);
-							Broadcaster.broadcastPacket(rob, new S_CharTitle(rob.getId(), 호칭), true);
+							rob.setTitle(designation);
+							_Clan.addClanMember(rob.getName(), rob.getClanRank(), rob.getLevel(), rob.getType(), rob.getMemo(), rob.getOnlineStatus(), rob);
+							Broadcaster.broadcastPacket(rob, new S_CharTitle(rob.getId(), designation), true);
 							Broadcaster.broadcastPacket(rob, new S_Emblem(rob.getClanid(), rob.getClanid()), true);
-							rob.sendPackets(new S_ClanWindow(S_ClanWindow.혈마크띄우기, rob.getClan().getmarkon()), true);
+							rob.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, rob.getClan().getmarkon()), true);
 							rob.sendPackets(new S_문장주시(rob.getClan(), 2), true);
-							for (L1PcInstance clanMembers : 혈맹.getOnlineClanMember()) {
+							for (L1PcInstance clanMembers : _Clan.getOnlineClanMember()) {
 								clanMembers.sendPackets(new S_ServerMessage(94, rob.getName()));
 							}
 							L1Clan clan = L1World.getInstance().getClan(rob.getClanname());
@@ -5319,11 +5319,11 @@ public class GMCommands {
 				}
 			} else if (type.equalsIgnoreCase("추방")) {
 				try {
-					String 이름 = tokenizer.nextToken();
-					L1PcInstance 로봇 = L1World.getInstance().getPlayer(이름);
-					if (로봇 != null) {
-						if (로봇 instanceof L1RobotInstance) {
-							L1RobotInstance rob = (L1RobotInstance) 로봇;
+					String name = tokenizer.nextToken();
+					L1PcInstance robot = L1World.getInstance().getPlayer(name);
+					if (robot != null) {
+						if (robot instanceof L1RobotInstance) {
+							L1RobotInstance rob = (L1RobotInstance) robot;
 							rob.updateclan("", 0, "", false);
 							rob.setClanid(0);
 							rob.setClanname("");
@@ -5343,32 +5343,32 @@ public class GMCommands {
 					gm.sendPackets(new S_SystemMessage(".봇 추방 [이름]"), true);
 				}
 			} else if (type.equalsIgnoreCase("압류")) {
-				String 이름 = tokenizer.nextToken();
-				L1PcInstance 로봇 = L1World.getInstance().getPlayer(이름);
-				if (로봇 != null) {
-					if (로봇 instanceof L1RobotInstance) {
+				String name = tokenizer.nextToken();
+				L1PcInstance robot = L1World.getInstance().getPlayer(name);
+				if (robot != null) {
+					if (robot instanceof L1RobotInstance) {
 						L1World world = L1World.getInstance();
-						((L1RobotInstance) 로봇).is_THREAD_EXIT = true;
-						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(로봇)) {
-							pc.sendPackets(new S_RemoveObject(로봇), true);
-							pc.getNearObjects().removeKnownObject(로봇);
+						((L1RobotInstance) robot).is_THREAD_EXIT = true;
+						for (L1PcInstance pc : L1World.getInstance().getRecognizePlayer(robot)) {
+							pc.sendPackets(new S_RemoveObject(robot), true);
+							pc.getNearObjects().removeKnownObject(robot);
 						}
-						world.removeVisibleObject(로봇);
-						world.removeObject(로봇);
-						로봇.getNearObjects().removeAllKnownObjects();
-						로봇.stopHalloweenRegeneration();
-						로봇.stopPapuBlessing();
-						로봇.stopLindBlessing();
-						로봇.stopHalloweenArmorBlessing();
-						로봇.stopAHRegeneration();
-						로봇.stopHpRegenerationByDoll();
-						로봇.stopMpRegenerationByDoll();
-						로봇.stopSHRegeneration();
-						로봇.stopMpDecreaseByScales();
-						로봇.stopEtcMonitor();
-						로봇.setDead(true);
-						gm.sendPackets(new S_SystemMessage(이름 + "로봇을 압류 시킵니다."), true);
-						((L1RobotInstance) 로봇).updateban(true);
+						world.removeVisibleObject(robot);
+						world.removeObject(robot);
+						robot.getNearObjects().removeAllKnownObjects();
+						robot.stopHalloweenRegeneration();
+						robot.stopPapuBlessing();
+						robot.stopLindBlessing();
+						robot.stopHalloweenArmorBlessing();
+						robot.stopAHRegeneration();
+						robot.stopHpRegenerationByDoll();
+						robot.stopMpRegenerationByDoll();
+						robot.stopSHRegeneration();
+						robot.stopMpDecreaseByScales();
+						robot.stopEtcMonitor();
+						robot.setDead(true);
+						gm.sendPackets(new S_SystemMessage(name + "로봇을 압류 시킵니다."), true);
+						((L1RobotInstance) robot).updateban(true);
 					} else {
 						gm.sendPackets(new S_SystemMessage("로봇이 아닙니다."), true);
 					}
@@ -5376,7 +5376,7 @@ public class GMCommands {
 					gm.sendPackets(new S_SystemMessage("접속중인 로봇의 이름이 아닙니다."), true);
 				}
 			} else if (type.equalsIgnoreCase("손")) {
-				로봇부처핸섬 bot = new 로봇부처핸섬();
+				Robot_buddha_handsome bot = new Robot_buddha_handsome();
 				GeneralThreadPool.getInstance().execute(bot);
 			} else {
 				gm.sendPackets(new S_SystemMessage(".봇 종료 / 압류"), true);

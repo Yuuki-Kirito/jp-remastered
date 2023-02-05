@@ -279,7 +279,7 @@ public class UserCommands {
 			i = 3;
 			pc._WATCH_THE_SENTENCE = false;
 			pc.sendPackets(new S_¹®ÀåÁÖ½Ã(pc.getClan(), i), false);
-			pc.sendPackets(new S_ClanWindow(S_ClanWindow.Ç÷¸¶Å©¶ç¿ì±â, pc.getClan().getmarkon()), false);
+			pc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, pc.getClan().getmarkon()), false);
 			pc.sendPackets(new S_NewUI(0x19, pc.getClan().getClanName(), pc), false);
 		} else
 			pc._WATCH_THE_SENTENCE = true;
@@ -287,7 +287,7 @@ public class UserCommands {
 			if (clan != null) {
 				pc.sendPackets(new S_War(i, pc.getClanname(), clan.getClanName()));
 				pc.sendPackets(new S_¹®ÀåÁÖ½Ã(pc.getClan(), i), true);
-				pc.sendPackets(new S_ClanWindow(S_ClanWindow.Ç÷¸¶Å©¶ç¿ì±â, pc.getClan().getmarkon()), true);
+				pc.sendPackets(new S_ClanWindow(S_ClanWindow.blood_mark, pc.getClan().getmarkon()), true);
 				pc.sendPackets(new S_NewUI(0x19, pc.getClan().getClanName(), pc), true);
 			}
 		}

@@ -90,7 +90,7 @@ public class C_ClanNotice extends ClientBasePacket {
 				}
 				for (L1PcInstance targetPc : clan.getOnlineClanMember()) { // 온라인
 					S_ClanWindow packet = new S_ClanWindow(pc,
-							S_ClanWindow.혈맹원메모변경);
+							S_ClanWindow.clan_member_memo_change);
 					targetPc.sendPackets(packet);
 					packet = null;
 				}

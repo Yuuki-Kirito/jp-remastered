@@ -597,14 +597,14 @@ public class L1SkillId {
 	public static final int BRAVE_AVATAR = 10531;
 	public static final int 주군의버프 = 10534;
 
-	public static final int PAPOO_구슬_ディレイ = 90000;
+	public static final int PAPOO_BEAD_DELAY = 90000;
 	public static final int 안식처스킬준비 = 4065;
 
-	public static final int 가입신청ディレイ = 76271;
+	public static final int REGISTRATION_APPLICATION_DELAY = 76271;
 	public static final int 채팅파티버프 = 76272;
 
-	public static final int 신고ディレイ = 76273;
-	public static final int 파티초대ディレイ = 76274;
+	public static final int REPORT_DELAY = 76273;
+	public static final int PARTY_INVITATION_DELAY = 76274;
 
 	public static final int RANKING_BUFF_1 = 80000;
 	public static final int RANKING_BUFF_2 = 80001;

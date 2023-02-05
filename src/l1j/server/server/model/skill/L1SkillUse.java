@@ -6177,7 +6177,7 @@ public class L1SkillUse {
 						short mapId = (short) newLocation.getMapId();
 						if (pc instanceof L1RobotInstance) {
 							L1RobotInstance rob = (L1RobotInstance) pc;
-							L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, newX, newY, (short) mapId, true);
+							L1Teleport.robottel(rob, newX, newY, (short) mapId, true);
 						} else {
 							pc.dx = newX;
 							pc.dy = newY;
@@ -6199,7 +6199,7 @@ public class L1SkillUse {
 						short mapId = (short) newLocation.getMapId();
 						if (pc instanceof L1RobotInstance) {
 							L1RobotInstance rob = (L1RobotInstance) pc;
-							L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, newX, newY, (short) mapId, true);
+							L1Teleport.robottel(rob, newX, newY, (short) mapId, true);
 						} else {
 							pc.dx = newX;
 							pc.dy = newY;
@@ -6223,7 +6223,7 @@ public class L1SkillUse {
 
 						if (pc instanceof L1RobotInstance) {
 							L1RobotInstance rob = (L1RobotInstance) pc;
-							L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, newX, newY, (short) mapId, true);
+							L1Teleport.robottel(rob, newX, newY, (short) mapId, true);
 						} else {
 							pc.dx = newX;
 							pc.dy = newY;

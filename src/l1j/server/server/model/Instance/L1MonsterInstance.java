@@ -2068,7 +2068,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 					
 					if (pc instanceof L1RobotInstance) {
 						L1RobotInstance rob = (L1RobotInstance) pc;
-						L1Teleport.«í«Ü«Ã«È«Æ«ë(rob, newLoc.getX(), newLoc.getY(), getMapId(), true);
+						L1Teleport.robottel(rob, newLoc.getX(), newLoc.getY(), getMapId(), true);
 						break;
 					}
 					

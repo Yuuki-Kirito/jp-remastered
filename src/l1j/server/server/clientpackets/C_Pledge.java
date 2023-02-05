@@ -191,7 +191,7 @@ public class C_Pledge extends ClientBasePacket {
 
 				// pc.sendPackets(new
 				// S_NewCreateItem(S_NewCreateItem.CLAN_JOIN_WAIT));
-				pc.sendPackets(new S_ClanWindow(pc, S_ClanWindow.접속유저), true);
+				pc.sendPackets(new S_ClanWindow(pc, S_ClanWindow.connected_user), true);
 				
 				if(pc.getClan().isCaveOpen() && pc.getClan().getBlessHuntMaps() != null){
 					pc.sendPackets(new S_ClanBlessHuntUi(S_ClanBlessHuntUi.CLAN_BLESS_HUNT_TELEPORT, pc.getClan()));
